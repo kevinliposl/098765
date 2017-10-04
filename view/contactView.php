@@ -140,7 +140,7 @@ include_once 'public/footer.php';
 ?>
 
 <script type='text/javascript' src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCQkWM0oTBZWWCQZudbiZVOU0DEooJ4FSw'></script>
-<script type="text/javascript" src="js/jquery.gmap.js"></script>
+<script type="text/javascript" src="public/js/jquery.gmap.js"></script>
 
 <script type="text/javascript">
 
@@ -153,7 +153,7 @@ include_once 'public/footer.php';
                 address: "Fusión Academia de Música, Turrialba, Provincia de Cartago, Costa Rica",
                 html: '<div style="width: 300px;"><h4 style="margin-bottom: 8px;">Hi, we\'re <span>Envato</span></h4><p class="nobottommargin">Our mission is to help people to <strong>earn</strong> and to <strong>learn</strong> online. We operate <strong>marketplaces</strong> where hundreds of thousands of people buy and sell digital goods every day, and a network of educational blogs where millions learn <strong>creative skills</strong>.</p></div>',
                 icon: {
-                    image: "images/icons/map-icon-red.png",
+                    image: "public/images/icons/map-icon-red.png",
                     iconsize: [32, 39],
                     iconanchor: [32, 39]
                 }
