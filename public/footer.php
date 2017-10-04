@@ -2,6 +2,111 @@
 ============================================= -->
 <footer id="footer" class="dark">
 
+    <div class="container">
+
+        <!-- Footer Widgets
+        ============================================= -->
+        <div class="footer-widgets-wrap clearfix">
+
+            <div class="col_two_third">
+
+                <div class="col_one_third">
+
+                    <div class="widget clearfix">
+
+                        <img src="public/images/footer-fusion.png" alt="" class="footer-logo">
+                        <div style="background: url('public/images/world-map.png') no-repeat center center; background-size: 100%;">
+                            <address>
+                                <strong>Direcci&oacute;n:</strong><br>
+                                Barrio Tomas Guardia<br>
+                                Tercera calle<br>
+                            </address>
+                            <abbr title="Tel&eacute;fono"><strong>Tel&eacute;fono:</strong></abbr><br> 8545-0829 y 8326-1731<br>
+                            <abbr title="Correo Electr&oacute;nico"><strong>Correo:</strong></abbr> musica@fusionacademiacr.com
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col_one_third col_last">
+
+                    <div class="widget clearfix">
+                        <h4>Enlaces de Inter&eacute;s</h4>
+
+                        <div id="post-list-footer">
+                            <div class="spost clearfix">
+                                <div class="entry-c">
+                                    <div class="entry-title">
+                                        <h4><a href="?controlador=Index&accion=instrumentos">Nuestros Cursos</a></h4>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="spost clearfix">
+                                <div class="entry-c">
+                                    <div class="entry-title">
+                                        <h4><a href="#">Nuestros Profesores</a></h4>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="spost clearfix">
+                                <div class="entry-c">
+                                    <div class="entry-title">
+                                        <h4><a href="?controlador=Index&accion=contacto">Contacto</a></h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col_one_third col_last">
+
+                <div class="widget clearfix" style="margin-bottom: -20px;">
+
+                    <div class="row">
+
+                        <div class="col-md-6 clearfix bottommargin-sm">
+                            <a href="#" class="social-icon si-dark si-colored si-facebook nobottommargin" style="margin-right: 10px;">
+                                <i class="icon-facebook"></i>
+                                <i class="icon-facebook"></i>
+                            </a>
+                            <a href="#"><small style="display: block; margin-top: 3px;"><strong>Siguenos</strong><br>en Facebook</small></a>
+                        </div>
+                        <div class="col-md-6 clearfix">
+                            <a href="#" class="social-icon si-dark si-colored si-youtube nobottommargin" style="margin-right: 10px;">
+                                <i class="icon-youtube"></i>
+                                <i class="icon-youtube"></i>
+                            </a>
+                            <a href="#"><small style="display: block; margin-top: 3px;"><strong>Siguenos</strong><br>en Youtube</small></a>
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-6 clearfix bottommargin-sm">
+                            <a href="#" class="social-icon si-dark si-colored si-instagram nobottommargin" style="margin-right: 10px;">
+                                <i class="icon-instagram"></i>
+                                <i class="icon-instagram"></i>
+                            </a>
+                            <a href="#"><small style="display: block; margin-top: 3px;"><strong>Siguenos</strong><br>en Instagram</small></a>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div><!-- .footer-widgets-wrap end -->
+
+    </div>
+
     <!-- Copyrights
     ============================================= -->
     <div id="copyrights">
@@ -9,32 +114,15 @@
         <div class="container clearfix">
 
             <div class="col_half">
-                Copyrights &copy; 2017.<br>
-                <div class="copyright-links">All Rights Reserved.</div>
+                Todos los derechos reservados &copy; 2017<br>
+                <div class="copyright-links"><a href="#">Terminos de uso</a> / <a href="#">Politica de privacidad</a></div>
             </div>
 
             <div class="col_half col_last tright">
-                <div class="fright clearfix">
-                    <a href="https://www.facebook.com/fusionacademiacr" target="_blank" class="social-icon si-small si-borderless si-facebook">
-                        <i class="icon-facebook"></i>
-                        <i class="icon-facebook"></i>
-                    </a>
-
-                    <a href="#PONERTWITTER" class="social-icon si-small si-borderless si-twitter">
-                        <i class="icon-twitter"></i>
-                        <i class="icon-twitter"></i>
-                    </a>
-
-                    <a href="#PONERGOOGLEPLUS" class="social-icon si-small si-borderless si-gplus">
-                        <i class="icon-gplus"></i>
-                        <i class="icon-gplus"></i>
-                    </a>
-                </div>
 
                 <div class="clear"></div>
 
-                <i class="icon-envelope2"></i> musica@fusionacademiacr.com <span class="middot">&middot;</span>
-                <i class="icon-phone"></i> 8326-1731 / 8545-0829 <span class="middot"></span> 
+                <i class="icon-envelope2"></i> musica@fusionacademiacr.com <span class="middot">&middot;</span> <i class="icon-headphones"></i> 8326-1731 ó 8545-0829 <span class="middot">&middot;</span> <i class="icon-facebook"></i> fusionacademiacr
             </div>
 
         </div>
@@ -49,6 +137,10 @@
 ============================================= -->
 <div id="gotoTop" class="icon-angle-up"></div>
 
+<!-- Go To Top
+        ============================================= -->
+<div id="gotoTop" class="icon-angle-up"></div>
+
 <!-- External JavaScripts
 ============================================= -->
 <script type="text/javascript" src="public/js/jquery.js"></script>
@@ -57,9 +149,5 @@
 <!-- Footer Scripts
 ============================================= -->
 <script type="text/javascript" src="public/js/functions.js"></script>
-
-<script type="text/javascript" src="https://maps.google.com/maps/api/js"></script>
-<script type="text/javascript" src="public/js/jquery.gmap.js"></script>
-
 </body>
 </html>

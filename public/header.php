@@ -7,6 +7,8 @@
         <!-- Stylesheets
         ============================================= -->
         <link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
+        <link type="image/x-icon" href="public/images/favicon.ico" rel="icon"/>
+        <link type="image/x-icon" href="public/images/favicon.ico" rel="shortcut icon"/>
         <link rel="stylesheet" href="public/css/bootstrap.css" type="text/css" />
         <link rel="stylesheet" href="public/style.css" type="text/css" />
         <link rel="stylesheet" href="public/css/swiper.css" type="text/css" />
@@ -20,7 +22,7 @@
 
         <!-- Document Title
         ============================================= -->
-        <title>Fusi&oacute;n Academia Musical</title>
+        <title>Fusi&oacute;n Academia de M&uacute;sica</title>
 
     </head>
 
@@ -51,14 +53,22 @@
                         ============================================= -->
                         <nav id="primary-menu">
                             <ul>
-                                <li><a href="?"><div>Inicio</div></a></li>
+                                <li><a href="?"><div>Home</div></a>
                                 <li><a href="#"><div>CRUDS</div></a>
                                     <ul>
                                         <li><a href="?action=admin"><div>Administrador</div></a></li> 
                                     </ul>
                                 </li>
                                 <li><a href="?controller=User&action=loginUser"><div>Iniciar Sesi&oacute;n</div></a></li>
-                                <li><a href="?action=contact"><div>Acerca de</div></a></li>
+                                <li><a href="#"><div>De Pablo</div></a>
+                                    <ul>
+                                        <li><a href="?controlador=Index&accion=ejemploProfesor"><div>EJEMPLO PERFIL PROFESOR</div></a>
+                                        <li><a href="?controlador=Index&accion=instrumentos"><div>Cursos</div></a>
+                                        <li><a href="?controlador=Index&accion=galeria"><div>Galer&iacute;a</div></a>
+                                        <li><a href="?controlador=Index&accion=nosotros"><div>Sobre Nosotros</div></a>
+                                        <li><a href="?controlador=Index&accion=contacto"><div>Contacto</div></a>
+                                    </ul>
+                                </li>
                             </ul>
 
                         </nav><!-- #primary-menu end -->
