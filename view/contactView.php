@@ -12,10 +12,8 @@ if (isset($session->email)) {
 
 <div class="container clearfix">
 
-    <div class="clear"></div>
-
-    <div class="divider divider-short divider-center"><i class="icon-circle"></i></div>
-
+    <br>
+    <br>
     <div id="section-contact" class="heading-block title-center page-section">
         <h2>Get in Touch with us</h2>
         <span>Still have Questions? Contact Us using the Form below</span>
@@ -54,20 +52,9 @@ if (isset($session->email)) {
 
                 <div class="clear"></div>
 
-                <div class="col_two_third">
+                <div class="col_full">
                     <label for="template-contactform-subject">Subject <small>*</small></label>
                     <input type="text" id="template-contactform-subject" name="template-contactform-subject" value="" class="required sm-form-control" />
-                </div>
-
-                <div class="col_one_third col_last">
-                    <label for="template-contactform-service">Services</label>
-                    <select id="template-contactform-service" name="template-contactform-service" class="sm-form-control">
-                        <option value="">-- Select One --</option>
-                        <option value="Wordpress">Wordpress</option>
-                        <option value="PHP / MySQL">PHP / MySQL</option>
-                        <option value="HTML5 / CSS3">HTML5 / CSS3</option>
-                        <option value="Graphic Design">Graphic Design</option>
-                    </select>
                 </div>
 
                 <div class="clear"></div>

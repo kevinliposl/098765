@@ -22,6 +22,10 @@ class IndexController {
         $this->view->show("contactView.php");
     }
 
+    public function admin() {
+        $this->view->show("adminView.php");
+    }
+
 }
 
 // fin clase

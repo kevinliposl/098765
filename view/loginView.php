@@ -1,86 +1,108 @@
-<?php
-$session= SSession::getInstance();
+<!DOCTYPE html>
+<html dir="ltr" lang="es-ES">
+    <head>
 
-if (isset($session->email)) {
-    header('Location:?');
-} else {
-    include_once 'public/header.php';
-}
-?>
-<!-- Content
-============================================= -->
-<section id="content">
-    <div class="content-wrap">
-        <div class="container clearfix">
-            <div class="accordion accordion-lg divcenter nobottommargin clearfix" style="max-width: 550px;">
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta name="author" content="SemiColonWeb" />
 
-                <div class="acctitle"><i class="acc-closed icon-lock3"></i><i class="acc-open icon-unlock"></i>Login to your Account</div>
-                <div class="acc_content clearfix">
-                    <form class="nobottommargin" id="login-form">
+        <!-- Stylesheets
+        ============================================= -->
+        <link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="public/css/bootstrap.css" type="text/css" />
+        <link rel="stylesheet" href="public/style.css" type="text/css" />
+        <link rel="stylesheet" href="public/css/dark.css" type="text/css" />
+        <link rel="stylesheet" href="public/css/font-icons.css" type="text/css" />
+        <link rel="stylesheet" href="public/css/animate.css" type="text/css" />
+        <link rel="stylesheet" href="public/css/magnific-popup.css" type="text/css" />
 
-                        <div class="col_full">
-                            <label for="login-email">Email:</label>
-                            <input type="email" id="login-email" class="form-control" required/>
+        <link rel="stylesheet" href="public/css/responsive.css" type="text/css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <!-- Document Title
+        ============================================= -->
+        <title>Fusi&oacute;n Academia Musical</title>
+
+    </head>
+
+    <body class="stretched">
+
+        <!-- Document Wrapper
+        ============================================= -->
+        <div id="wrapper" class="clearfix">
+
+            <!-- Content
+            ============================================= -->
+            <section id="content">
+
+                <div class="content-wrap nopadding">
+
+                    <div class="section nopadding nomargin" style="width: 100%; height: 100%; position: absolute; left: 0; top: 0; background: #444;"></div>
+
+                    <div class="section nobg full-screen nopadding nomargin">
+                        <div class="container vertical-middle divcenter clearfix">
+
+                            <div class="row center">
+                                <a href="?"><img src="public/images/logo-dark.png" alt="Canvas Logo"></a>
+                            </div>
+
+                            <div class="panel panel-default divcenter noradius noborder" style="max-width: 400px;">
+                                <div class="panel-body" style="padding: 40px;">
+                                    <form id="login-form" name="login-form" class="nobottommargin" action="#" method="post">
+                                        <h3>Ingrese a su cuenta</h3>
+
+                                        <div class="col_full">
+                                            <label for="login-form-username">Usuario:</label>
+                                            <input type="text" id="login-form-username" name="login-form-username" class="form-control not-dark" />
+                                        </div>
+
+                                        <div class="col_full">
+                                            <label for="login-form-password">Contrase&ncaron;a:</label>
+                                            <input type="password" id="login-form-password" name="login-form-password" class="form-control not-dark" />
+                                        </div>
+
+                                        <div class="col_full nobottommargin">
+                                            <input type="button" class="button button-3d button-black nomargin" id="login-form-submit" name="login-form-submit" value="Ingresar ">
+                                            <a href="#" class="fright">Olvidó su contraseña?</a>
+                                        </div>
+                                    </form>
+
+                                    <div class="line line-sm"></div>
+
+<!--                                    <div class="center">
+                                        <h4 style="margin-bottom: 15px;">or Login with:</h4>
+                                        <a href="#" class="button button-rounded si-facebook si-colored">Facebook</a>
+                                        <span class="hidden-xs">or</span>
+                                        <a href="#" class="button button-rounded si-twitter si-colored">Twitter</a>
+                                    </div>-->
+                                </div>
+                            </div>
+
+                            <div class="row center dark"><small>Copyrights &copy; All Rights Reserved.</small></div>
+
                         </div>
+                    </div>
 
-                        <div class="col_full">
-                            <label for="login-password">Password:</label>
-                            <input type="password" id="login-password" class="form-control" required/>
-                        </div>
-
-                        <div class="col_full nobottommargin">
-                            <input type="button" class="button button-3d button-black nomargin" id="login-submit" value="Login"/>
-                        </div>
-                        <div id="login-message"></div>
-                    </form>
                 </div>
 
-                <div class="acctitle">
-                    <i class="acc-closed icon-user4"></i>
-                    <i class="acc-open icon-ok-sign"></i>
-                    New Signup? Register for an Account
-                </div>
-                <div class="acc_content clearfix">
-                    <form aclass="nobottommargin" id="register-form">
+            </section><!-- #content end -->
 
-                        <div class="col_full">
-                            <label for="register-email">Email:</label>
-                            <input type="email" id="register-email" class="form-control" required/>
-                        </div>
+        </div><!-- #wrapper end -->
 
-                        <div class="col_full">
-                            <label for="register-address">Address:</label>
-                            <input type="text" id="register-address" class="form-control" required/>
-                        </div>
+        <!-- Go To Top
+        ============================================= -->
+        <div id="gotoTop" class="icon-angle-up"></div>
 
-                        <div class="col_full">
-                            <label for="register-name">Name:</label>
-                            <input type="text" id="register-name" class="form-control" required />
-                        </div>
+        <!-- External JavaScripts
+        ============================================= -->
+        <script type="text/javascript" src="public/js/jquery.js"></script>
+        <script type="text/javascript" src="public/js/plugins.js"></script>
 
-                        <div class="col_full">
-                            <label for="register-lastname">LastName:</label>
-                            <input type="text" id="register-lastname" class="form-control" required />
-                        </div>
-                        <div class="col_full">
-                            <label for="register-password">Choose Password:</label>
-                            <input type="password" id="register-password" class="form-control" required />
-                        </div>
+        <!-- Footer Scripts
+        ============================================= -->
+        <script type="text/javascript" src="public/js/functions.js"></script>
 
-                        <div class="col_full">
-                            <label for="register-repassword">Re-enter Password:</label>
-                            <input type="password" id="register-repassword" class="form-control" required />
-                        </div>
-
-                        <div class="col_full">
-                            <input type="button" class="button button-3d button-black nomargin" id="register-submit" value="Register Now">
-                        </div>
-                        <div id="register-message"></div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
+    </body>
+</html>
 
 <!-- Ajax logIn
 ============================================= -->
@@ -100,7 +122,7 @@ if (isset($session->email)) {
             $.post("?controller=User&action=logIn", parameters, function (data) {
                 if (data.result === "true") {
                     $("#login-message").html("Success");
-                    location.href="?";
+                    location.href = "?";
                 } else {
                     $("#login-message").html("Failed");
                 }
@@ -112,46 +134,3 @@ if (isset($session->email)) {
         ;
     });
 </script>
-
-
-<!-- Ajax Register
-============================================= -->
-<script type="text/javascript">
-
-    $("#register-submit").click(function () {
-
-        if (validateForm(document.getElementById("register-form"))) {
-
-            var parameters = {
-                "email": $("#register-email").val(),
-                "name": $("#register-name").val(),
-                "lastname": $("#register-name").val(),
-                "address": $("#register-address").val(),
-                "password": $("#register-password").val()
-            };
-
-            if ($("#register-password").val() === $("#register-repassword").val()) {
-
-                $("#register-message").html("Processing, please wait...");
-
-                $.post("?controller=User&action=insertUser", parameters, function (data) {
-                    if (data.result === "true") {
-                        $("#register-message").html("Success");
-                        location.href="?controller=User&action=loginUser";
-                    } else {
-                        $("#register-message").html("Failed");
-                    }
-                    ;
-                }, "json");
-            } else {
-                $("#register-message").html("Passwords do not match");
-            }
-        } else {
-            $("#register-message").html("Complete the form please...");
-        }
-    });
-
-</script>
-
-<?php
-include_once 'public/footer.php';

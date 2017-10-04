@@ -10,7 +10,6 @@ if (isset($session->email)) {
 
 <section id="slider" class="slider-parallax swiper_wrapper full-screen clearfix">
     <div class="slider-parallax-inner">
-
         <div class="swiper-container swiper-parent">
             <div class="swiper-wrapper">
                 <div class="swiper-slide dark" style="background-image: url('public/images/slider/swiper/6.jpg');">
@@ -142,5 +141,4 @@ if (isset($session->email)) {
 <!-- End Content
 ============================================= -->    
 <?php
-
 include_once 'public/footer.php';

@@ -50,15 +50,15 @@
                         <!-- Primary Navigation
                         ============================================= -->
                         <nav id="primary-menu">
-
-                            <ul class="one-page-menu">
-                                <li class="current"><a href="#" data-href="#section-home"><div>Home</div></a></li>
-                                <li><a href="?" data-href="#section-features"><div>Features</div></a></li>
-                                <li><a href="?" data-href="#section-features"><div>Features</div></a></li>
-                                <li><a href="?" data-href="#section-pricing"><div>Pricing</div></a></li>
-                                <li><a href="?" data-href="#section-faqs"><div>FAQs</div></a></li>
-                                <li><a href="?action=contact"><div>Contact</div></a></li>
-                                <li><a href="?" data-href="#section-buy"><div>Buy Now</div></a></li>
+                            <ul>
+                                <li><a href="?"><div>Inicio</div></a></li>
+                                <li><a href="#"><div>CRUDS</div></a>
+                                    <ul>
+                                        <li><a href="?action=admin"><div>Administrador</div></a></li> 
+                                    </ul>
+                                </li>
+                                <li><a href="?controller=User&action=loginUser"><div>Iniciar Sesi&oacute;n</div></a></li>
+                                <li><a href="?action=contact"><div>Acerca de</div></a></li>
                             </ul>
 
                         </nav><!-- #primary-menu end -->
