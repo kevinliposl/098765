@@ -39,7 +39,7 @@
                             <div class="spost clearfix">
                                 <div class="entry-c">
                                     <div class="entry-title">
-                                        <h4><a href="?controlador=Index&accion=instruments">Nuestros Cursos</a></h4>
+                                        <h4><a href="?controlador=Index&action=instruments">Nuestros Cursos</a></h4>
                                     </div>
                                 </div>
                             </div>
@@ -55,7 +55,7 @@
                             <div class="spost clearfix">
                                 <div class="entry-c">
                                     <div class="entry-title">
-                                        <h4><a href="?controlador=Index&accion=contact">Contacto</a></h4>
+                                        <h4><a href="?controlador=Index&action=contact">Contacto</a></h4>
                                     </div>
                                 </div>
                             </div>

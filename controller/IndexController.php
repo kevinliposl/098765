@@ -26,7 +26,7 @@ class IndexController {
         $this->view->show("galeryView.php");
     }
 
-    public function contacto() {
+    public function contact() {
         $this->view->show("contactView.php");
     }
 
@@ -38,7 +38,7 @@ class IndexController {
         $this->view->show("coursesView.php");
     }
 
-    public function profesores() {
+    public function profesors() {
         $this->view->show("coursesView.php");
     }
 

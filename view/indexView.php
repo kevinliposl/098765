@@ -78,7 +78,7 @@ if (isset($session->email)) {
                             también talleres, clínicas y capacitaciones para 
                             público en general y toda agrupación musical que 
                             desee mejorar en sus aptitudes musicales. 
-                            <br><br><a href="?controlador=Index&accion=aboutus">¡Conozca m&aacute;s sobre nosotros!</a>
+                            <br><br><a href="?controlador=Index&action=aboutus">¡Conozca m&aacute;s sobre nosotros!</a>
                         </p>
                     </div>
 
@@ -92,7 +92,7 @@ if (isset($session->email)) {
                             estudiantes se forman en diferentes &aacute;reas de la 
                             música como Violin, Canto, Piano, Bater&iacute;a, Guitarra
                             entre muchas otras m&aacute;s.
-                            <br><br><a href="?controlador=Index&accion=instruments">¡Conozca m&aacute;s sobre los cursos!</a>
+                            <br><br><a href="?controlador=Index&action=instruments">¡Conozca m&aacute;s sobre los cursos!</a>
                         </p>
                     </div>
 
