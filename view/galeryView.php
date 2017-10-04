@@ -2,7 +2,6 @@
 include_once 'public/header.php';
 ?>
 
-
 <!-- Content
 ============================================= -->
 <section id="content">
@@ -35,12 +34,12 @@ include_once 'public/header.php';
 
                 <article class="portfolio-item pf-media pf-profesores">
                     <div class="portfolio-image">
-                        <a href="portfolio-single.html">
-                            <img src="images/portfolio/masonry/2/1.jpg" alt="Open Imagination">
+                        <a href="#">
+                            <img src="public/images/portfolio/masonry/2/1.jpg" alt="Open Imagination">
                         </a>
                         <div class="portfolio-overlay">
-                            <a href="images/portfolio/full/1.jpg" class="left-icon" data-lightbox="image"><i class="icon-line-plus"></i></a>
-                            <a href="portfolio-single.html" class="right-icon"><i class="icon-line-ellipsis"></i></a>
+                            <a href="public/images/portfolio/full/1.jpg" class="left-icon" data-lightbox="image"><i class="icon-line-plus"></i></a>
+                            <a href="#" class="right-icon"><i class="icon-line-ellipsis"></i></a>
                         </div>
                     </div>
                     <div class="portfolio-desc">
@@ -51,12 +50,12 @@ include_once 'public/header.php';
 
                 <article class="portfolio-item pf-instrumentos">
                     <div class="portfolio-image">
-                        <a href="portfolio-single.html">
-                            <img src="images/portfolio/masonry/2/2.jpg" alt="Locked Steel Gate">
+                        <a href="#">
+                            <img src="public/images/portfolio/masonry/2/2.jpg" alt="Locked Steel Gate">
                         </a>
                         <div class="portfolio-overlay">
-                            <a href="images/portfolio/full/2.jpg" class="left-icon" data-lightbox="image"><i class="icon-line-plus"></i></a>
-                            <a href="portfolio-single.html" class="right-icon"><i class="icon-line-ellipsis"></i></a>
+                            <a href="public/images/portfolio/full/2.jpg" class="left-icon" data-lightbox="image"><i class="icon-line-plus"></i></a>
+                            <a href="#" class="right-icon"><i class="icon-line-ellipsis"></i></a>
                         </div>
                     </div>
                     <div class="portfolio-desc">
@@ -68,11 +67,11 @@ include_once 'public/header.php';
                 <article class="portfolio-item pf-graphics pf-conciertos">
                     <div class="portfolio-image">
                         <a href="#">
-                            <img src="images/portfolio/masonry/2/3.jpg" alt="Mac Sunglasses">
+                            <img src="public/images/portfolio/masonry/2/3.jpg" alt="Mac Sunglasses">
                         </a>
                         <div class="portfolio-overlay">
                             <a href="http://vimeo.com/89396394" class="left-icon" data-lightbox="iframe"><i class="icon-line-play"></i></a>
-                            <a href="portfolio-single-video.html" class="right-icon"><i class="icon-line-ellipsis"></i></a>
+                            <a href="#" class="right-icon"><i class="icon-line-ellipsis"></i></a>
                         </div>
                     </div>
                     <div class="portfolio-desc">
@@ -86,15 +85,15 @@ include_once 'public/header.php';
                         <div class="fslider" data-arrows="false" data-speed="400" data-pause="4000">
                             <div class="flexslider">
                                 <div class="slider-wrap">
-                                    <div class="slide"><a href="portfolio-single-gallery.html"><img src="images/portfolio/masonry/2/4.jpg" alt="Morning Dew"></a></div>
-                                    <div class="slide"><a href="portfolio-single-gallery.html"><img src="images/portfolio/masonry/2/4-1.jpg" alt="Morning Dew"></a></div>
+                                    <div class="slide"><a href="#"><img src="public/images/portfolio/masonry/2/4.jpg" alt="Morning Dew"></a></div>
+                                    <div class="slide"><a href="p#"><img src="public/images/portfolio/masonry/2/4-1.jpg" alt="Morning Dew"></a></div>
                                 </div>
                             </div>
                         </div>
                         <div class="portfolio-overlay" data-lightbox="gallery">
-                            <a href="images/portfolio/full/4.jpg" class="left-icon" data-lightbox="gallery-item"><i class="icon-line-stack-2"></i></a>
-                            <a href="images/portfolio/full/4-1.jpg" class="hidden" data-lightbox="gallery-item"></a>
-                            <a href="portfolio-single-gallery.html" class="right-icon"><i class="icon-line-ellipsis"></i></a>
+                            <a href="public/images/portfolio/full/4.jpg" class="left-icon" data-lightbox="gallery-item"><i class="icon-line-stack-2"></i></a>
+                            <a href="public/images/portfolio/full/4-1.jpg" class="hidden" data-lightbox="gallery-item"></a>
+                            <a href="#" class="right-icon"><i class="icon-line-ellipsis"></i></a>
                         </div>
                     </div>
                     <div class="portfolio-desc">

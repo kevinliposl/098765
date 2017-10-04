@@ -22,7 +22,7 @@ class IndexController {
         $this->view->show("adminView.php");
     }
 
-    public function galeria() {
+    public function galery() {
         $this->view->show("galeryView.php");
     }
 
