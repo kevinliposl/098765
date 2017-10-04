@@ -1,0 +1,120 @@
+<!-- Footer
+============================================= -->
+<footer id="footer" class="dark">
+
+    <!-- Copyrights
+    ============================================= -->
+    <div id="copyrights">
+
+        <div class="container clearfix">
+
+            <div class="col_half">
+                Copyrights &copy; 2014 All Rights Reserved by Canvas Inc.<br>
+                <div class="copyright-links"><a href="#">Terms of Use</a> / <a href="#">Privacy Policy</a></div>
+            </div>
+
+            <div class="col_half col_last tright">
+                <div class="fright clearfix">
+                    <a href="#" class="social-icon si-small si-borderless si-facebook">
+                        <i class="icon-facebook"></i>
+                        <i class="icon-facebook"></i>
+                    </a>
+
+                    <a href="#" class="social-icon si-small si-borderless si-twitter">
+                        <i class="icon-twitter"></i>
+                        <i class="icon-twitter"></i>
+                    </a>
+
+                    <a href="#" class="social-icon si-small si-borderless si-gplus">
+                        <i class="icon-gplus"></i>
+                        <i class="icon-gplus"></i>
+                    </a>
+
+                    <a href="#" class="social-icon si-small si-borderless si-pinterest">
+                        <i class="icon-pinterest"></i>
+                        <i class="icon-pinterest"></i>
+                    </a>
+
+                    <a href="#" class="social-icon si-small si-borderless si-vimeo">
+                        <i class="icon-vimeo"></i>
+                        <i class="icon-vimeo"></i>
+                    </a>
+
+                    <a href="#" class="social-icon si-small si-borderless si-github">
+                        <i class="icon-github"></i>
+                        <i class="icon-github"></i>
+                    </a>
+
+                    <a href="#" class="social-icon si-small si-borderless si-yahoo">
+                        <i class="icon-yahoo"></i>
+                        <i class="icon-yahoo"></i>
+                    </a>
+
+                    <a href="#" class="social-icon si-small si-borderless si-linkedin">
+                        <i class="icon-linkedin"></i>
+                        <i class="icon-linkedin"></i>
+                    </a>
+                </div>
+
+                <div class="clear"></div>
+
+                <i class="icon-envelope2"></i> info@canvas.com <span class="middot">&middot;</span> <i class="icon-headphones"></i> +91-11-6541-6369 <span class="middot">&middot;</span> <i class="icon-skype2"></i> CanvasOnSkype
+            </div>
+
+        </div>
+
+    </div><!-- #copyrights end -->
+
+</footer><!-- #footer end -->
+
+</div><!-- #wrapper end -->
+
+<!-- Go To Top
+============================================= -->
+<div id="gotoTop" class="icon-angle-up"></div>
+
+<!-- External JavaScripts
+============================================= -->
+<script type="text/javascript" src="public/js/jquery.js"></script>
+<script type="text/javascript" src="public/js/plugins.js"></script>
+
+<!-- Footer Scripts
+============================================= -->
+<script type="text/javascript" src="public/js/functions.js"></script>
+
+<script type="text/javascript" src="https://maps.google.com/maps/api/js"></script>
+<script type="text/javascript" src="public/js/jquery.gmap.js"></script>
+
+<script type="text/javascript">
+
+    jQuery('#google-map').gMap({
+
+        address: 'Melbourne, Australia',
+        maptype: 'ROADMAP',
+        zoom: 14,
+        markers: [
+            {
+                address: "Melbourne, Australia",
+                html: '<div style="width: 300px;"><h4 style="margin-bottom: 8px;">Hi, we\'re <span>Envato</span></h4><p class="nobottommargin">Our mission is to help people to <strong>earn</strong> and to <strong>learn</strong> online. We operate <strong>marketplaces</strong> where hundreds of thousands of people buy and sell digital goods every day, and a network of educational blogs where millions learn <strong>creative skills</strong>.</p></div>',
+                icon: {
+                    image: "images/icons/map-icon-red.png",
+                    iconsize: [32, 39],
+                    iconanchor: [32, 39]
+                }
+            }
+        ],
+        doubleclickzoom: false,
+        controls: {
+            panControl: true,
+            zoomControl: true,
+            mapTypeControl: true,
+            scaleControl: false,
+            streetViewControl: false,
+            overviewMapControl: false
+        }
+
+    });
+</script>
+
+</body>
+</html>
