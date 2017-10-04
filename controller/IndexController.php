@@ -18,14 +18,33 @@ class IndexController {
         $this->view->show("loginView.php");
     }
 
-    public function contact() {
-        $this->view->show("contactView.php");
-    }
-
     public function admin() {
         $this->view->show("adminView.php");
     }
 
+    public function galeria() {
+        $this->view->show("galeryView.php");
+    }
+
+    public function contacto() {
+        $this->view->show("contactView.php");
+    }
+
+    public function aboutus() {
+        $this->view->show("aboutView.php");
+    }
+
+    public function instruments() {
+        $this->view->show("coursesView.php");
+    }
+
+    public function profesores() {
+        $this->view->show("coursesView.php");
+    }
+
+    public function ejemploProfesor() {
+        $this->view->show("profileProfesorView.php");
+    }
 }
 
 // fin clase
