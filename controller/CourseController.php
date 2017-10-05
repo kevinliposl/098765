@@ -36,7 +36,7 @@ class CourseController {
         $instrument = $_POST["instrument"];
 
         $result = $model->insertCourse($initials, $name, $description, $instrument);
-        echo json_encode(array("result" => $result));
+        echo json_encode($result);
     }
     
     public function deleteCourse() {

@@ -17,7 +17,11 @@ class AdminController {
         $secondLastName = $_POST["secondLastName"];
 
         $result = $model->insertAdmin($id, $email, $name, $firstLastName,$secondLastName);
-        echo json_encode(array("result" => $result));
+        echo json_encode($result);
+    }
+    
+    public function insertTeacherView(){
+        $this->view->show("insertTeacherView.php");
     }
     
 }
