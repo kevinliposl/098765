@@ -25,7 +25,7 @@ if (isset($session->email)) {
                 <div class="acctitle">
                     <div class="acc_content clearfix">
 
-                        <form id="form-20" class="nobottommargin">
+                        <form id="form-25" class="nobottommargin">
                             <h1 style="text-align: center;">Informaci&oacute;n Personal</h1>
                             <div class="acc_content clearfix"></div>
                             <div class="col_full">
@@ -59,7 +59,7 @@ if (isset($session->email)) {
                             </div>
                         </form>
 
-                        <form id="form-40" class="nobottommargin" style="display: none;">
+                        <form id="form-50" class="nobottommargin" style="display: none;">
                             <h1 style="text-align: center;">Informaci&oacute;n Personal</h1>
                             <div class="acc_content clearfix"></div>
                             <div class="col_full">
@@ -89,33 +89,37 @@ if (isset($session->email)) {
                             </div>
                         </form>
 
-                        <form id="form-60" class="nobottommargin" style="display: none;">
+                        <form id="form-75" class="nobottommargin" style="display: none;">
                             <h1 style="text-align: center;">Informaci&oacute;n de contacto</h1>
                             <div class="acc_content clearfix"></div>
                             <div class="col_full">
-                                <label for="form-nationality">Nacionalidad:</label>
-                                <input type="text" id="form-nationality"class="form-control" required pattern="{4-16}"/>
+                                <label for="form-contact-name">Nombre completo:</label>
+                                <input type="text" id="form-contact-name"class="form-control" required pattern="{4-16}"/>
                             </div>
                             <div class="col_full">
-                                <label for="form-phone1">Telefono:</label>
-                                <input type="text" id="form-phone1"class="form-control" required pattern="{4-16}"/>
+                                <label for="form-contact-phone">Telefono:</label>
+                                <input type="text" id="form-contact-phone"class="form-control" required pattern="{4-16}"/>
                             </div>
                             <div class="col_full">
-                                <label for="form-phone2">Otro teléfono:</label>
-                                <input type="text" id="form-phone2"class="form-control" required pattern="{4-16}"/>
+                                <label for="form-relationship">Relaci&oacute;n:</label>
+                                <input type="text" id="form-relationship"class="form-control" required pattern="{4-16}"/>
                             </div>
                             <div class="col_full">
-                                <label for="form-email">Correo Electronico:</label>
-                                <input type="email" id="form-email" class="form-control" required/>
+                                <label for="form-contact-email">Correo Electronico:</label>
+                                <input type="email" id="form-contact-email" class="form-control" required/>
                             </div>
-                            <div class="col_full">
-                                <label for="form-additionalInformation">Información Adicional:</label>
-                                <input type="text" id="form-additionalInformation"class="form-control" required pattern="{4-16}"/>
-                            </div>
-                            <div class="col_full nobottommargin">
+<!--                            <div class="col_full nobottommargin">
                                 <input type="button" class="button button-3d button-black nomargin" id="form-submit" value="Registrar"/>
                             </div>
-                            <div id="message"></div>
+                            <div id="message"></div>-->
+                        </form>
+                        
+                        <form id="form-100" class="nobottommargin" style="display: none;">
+                            <h1 style="text-align: center;">Resumen</h1>
+<!--                            <div class="col_full nobottommargin">
+                                <input type="button" class="button button-3d button-black nomargin" id="form-submit" value="Registrar"/>
+                            </div>
+                            <div id="message"></div>-->
                         </form>
                         <ul class="pager">
                             <li><a id="previous" onclick="">Previous</a></li>
@@ -123,7 +127,7 @@ if (isset($session->email)) {
                         </ul>
 
                         <div class="progress progress-striped active">
-                            <div id="progressBar" class="progress-bar"  role="progressbar" aria-valuenow="20" aria-valuemin="10" aria-valuemax="100" style="width: 10%">
+                            <div id="progressBar" class="progress-bar"  role="progressbar" aria-valuenow="25" aria-valuemin="10" aria-valuemax="100" style="width: 10%">
                                 <span class="sr-only">45% Complete</span>
                             </div>
                         </div>
@@ -165,7 +169,7 @@ if (isset($session->email)) {
 </script>
 <script>
     $("#next").click(function () {
-        var jump = 20;
+        var jump = 25;
         var cant = parseInt($('#progressBar').attr('aria-valuenow'));
         document.getElementById("form-" + cant).style.display = "none";
 
@@ -179,7 +183,7 @@ if (isset($session->email)) {
 </script>
 <script>
     $("#previous").click(function () {
-        var jump = 20;
+        var jump = 25;
         var cant = parseInt($('#progressBar').attr('aria-valuenow'));
         document.getElementById("form-" + cant).style.display = "none";
 
