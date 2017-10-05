@@ -236,34 +236,6 @@ if (isset($session->email)) {
 </section><!-- #content end -->
 
 <script>
-    $("#form-submit").click(function () {
-
-        var parameters = {
-            "typeId": $("#form-id").val,
-            "id": $("#form-id").val(),
-            "email": $("#form-email").val(),
-            "name": $("#form-name").val(),
-            "firstLastName": $("#form-firstLastName").val(),
-            "secondLastName": $("#form-secondLastName").val(),
-            "gender": $("#form-gender").val(),
-            "nationality": $("#form-nationality").val(),
-            "phone": $("#form-phone").val(),
-            "phone2": $("#form-phone2").val(),
-            "additionalInformation": $("#form-additionalInformation").val()
-        };
-
-        $("#message").html("Processing, please wait...");
-        $.post("?controller=Admin&action=insertProfessor", parameters, function (data) {
-            if (data.result === "1") {
-                $("#message").html("Success");
-            } else {
-                $("#message").html("Failed");
-            }
-            ;
-        }, "json");
-    });
-</script>
-<script>
     $("#next").click(function () {
         var jump = 25;
         var cant = parseInt($('#progressBar').attr('aria-valuenow'));
@@ -279,7 +251,7 @@ if (isset($session->email)) {
                 $('#next').html("Registrar");
 
                 document.getElementById("form-id-table").innerHTML = document.getElementById("form-id").value
-                        + " (" + $("input:radio[name='form-typeId']:checked").val()+")";
+                        + " (" + $("input:radio[name='form-typeId']:checked").val() + ")";
                 document.getElementById("form-name-table").innerHTML = document.getElementById("form-name").value;
                 document.getElementById("form-lastName-table").innerHTML = document.getElementById("form-firstLastName").value
                         + " " + document.getElementById("form-secondLastName").value;
@@ -296,6 +268,30 @@ if (isset($session->email)) {
                 document.getElementById("form-contact-email-table").innerHTML = document.getElementById("form-contact-email").value;
             }
         } else {
+
+            var parameters = {
+                "typeId": $("#form-id").val,
+                "id": $("#form-id").val(),
+                "email": $("#form-email").val(),
+                "name": $("#form-name").val(),
+                "firstLastName": $("#form-firstLastName").val(),
+                "secondLastName": $("#form-secondLastName").val(),
+                "gender": $("#form-gender").val(),
+                "nationality": $("#form-nationality").val(),
+                "phone": $("#form-phone").val(),
+                "phone2": $("#form-phone2").val(),
+                "additionalInformation": $("#form-additionalInformation").val()
+            };
+
+            $("#message").html("Processing, please wait...");
+            $.post("?controller=Admin&action=insertProfessor", parameters, function (data) {
+                if (data.result === "1") {
+                    $("#message").html("Success");
+                } else {
+                    $("#message").html("Failed");
+                }
+                ;
+            }, "json");
 
         }
 
