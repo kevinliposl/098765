@@ -239,10 +239,10 @@ if (isset($session->email)) {
                                     <h4 class="modal-title" id="myModalLabel">¡Aviso!</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <h4>¿Realmente desea insertar este nuevo Estudiante?</h4>
+                                    <h4 style="text-align: center;">¿Realmente desea insertar este nuevo Estudiante?</h4>
                                     <p>Consejos:
-                                    <li style="text-align: center;">Revisar que todos los campos tengan la informaci&oacute;n correcta</li>
-                                    <li style="text-align: center;">Revisar con ateci&oacute;n cada item de los cuadro resumen</li></p>
+                                    <li>Revisar que todos los campos tengan la informaci&oacute;n correcta</li>
+                                    <li>Revisar con ateci&oacute;n cada item de los cuadro resumen</li></p>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
@@ -313,6 +313,12 @@ if (isset($session->email)) {
             $('#progressBar').attr('aria-valuenow', (cant)).css('width', cant + '%');
             $("#message").html($('#progressBar').attr('aria-valuenow'));
         }
+
+    });
+</script>
+
+<script>
+    $("#insertButton").click(function () {
 
     });
 </script>
