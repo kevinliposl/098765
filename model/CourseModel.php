@@ -19,7 +19,8 @@ class CourseModel {
     public function selectAllCourses() {
         $query = $this->db->prepare("call sp_select_all_course()");
         $query->execute();
-        $result = $query->fetch();
+        $result = $query->fetchAll();
+        $query->closeCursor();
         return $result;
     }
 
@@ -29,7 +30,9 @@ class CourseModel {
     }
 
     public function deleteCourse($id) {
-
-        return NULL;
+        $query = $this->db->prepare("call sp_delete_course('$id')");
+        $query->execute();
+        $result = $query->fetch();
+        return $result;
     }
 }

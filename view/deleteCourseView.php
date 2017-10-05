@@ -26,33 +26,46 @@ if (isset($session->email)) {
                 <div class="acctitle">
                     <div class="acc_content clearfix">
                         <form class="nobottommargin">
-                            
                             <div class="white-section">
-                                <label for="form-id">Cursos Disponibles:</label>
-                                <select class="selectpicker form-control" data-live-search="true">
-                                    <option data-tokens="ketchup mustard">Hot Dog, Fries and a Soda</option>
-                                    <option data-tokens="mustard">Burger, Shake and a Smile</option>
-                                    <option data-tokens="frosting">Sugar, Spice and all things nice</option>
+                                <label for="form-id">Cursos:</label>
+                                <select id="form-courses" class="selectpicker form-control" data-live-search="true">
+                                    <?php foreach ($vars as $var) { ?>
+                                        <option value="<?php echo $var["id"] ?>" data-tokens="">
+                                            <?php echo $var["Course"]; ?></option>
+                                    <?php } ?>
                                 </select>
                             </div>
-                            
-                            <div class="col-md-6 bottommargin-sm">
-                                <div class="white-section">
-                                    <label>Key Words:</label>
-                                    <select class="selectpicker" data-live-search="true">
-                                        <option data-tokens="ketchup mustard">Hot Dog, Fries and a Soda</option>
-                                        <option data-tokens="mustard">Burger, Shake and a Smile</option>
-                                        <option data-tokens="frosting">Sugar, Spice and all things nice</option>
-                                    </select>
-
-                                </div>
-                            </div>
+                            <br>
 
                             <div class="col_full nobottommargin">
-                                <input type="button" class="button button-3d button-black nomargin" id="form-submit" value="Eliminar"/>
+                                <input type="button" class="button button-3d button-black nomargin" data-toggle="modal" id="delete" data-target="" onclick="" value="Eliminar"/>
                             </div>
+                            
                             <div id="message"></div>
                         </form>
+                    </div>
+                </div>
+                
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-body">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title" id="myModalLabel">¡Aviso!</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <h4 style="text-align: center;">¿Realmente desea eliminar el curso seleccionado?</h4>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                    <input type="button" class="btn btn-primary" button-black nomargin id="deleteButton" value="Confirmar"/>
+                                    <input type="hidden" id="warning" value="w"/>
+                                    <input type="hidden" id="success" value="s"/>
+                                    <input type="hidden" id="failed" value="f"/>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -60,26 +73,41 @@ if (isset($session->email)) {
 </section><!-- #content end -->
 
 <script>
-    $("#form-submit").click(function () {
+    $("#delete").click(function () {
+        $('#delete').attr('data-target', '#myModal');
+    });
+    
+    function Redirect() {
+        window.location = "?controller=Course&action=defaultDeleteCourse";
+    }
+    
+    $("#deleteButton").click(function () {
 
         var parameters = {
-            "initials": $("#form-initials").val(),
-            "name": $("#form-name").val(),
-            "instrument": $("#form-instrument").val(),
-            "description": $("#form-description").val()
+            "id": $("#form-courses").val()
         };
 
         $("#message").html("Processing, please wait...");
-        $.post("?controller=Course&action=insertCourse", parameters, function (data) {
+        $.post("?controller=Course&action=deleteCourse", parameters, function (data) {
             if (data.result === "1") {
-                $("#message").html("Success");
+                    $("#success").attr({
+                        "data-notify-type": "success",
+                        "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!<br><br> Se redirigir&aacute; en breve..."
+                    });
+                    SEMICOLON.widget.notifications($("#success"));
+                    setTimeout('Redirect()', 2000);
             } else {
-                $("#message").html("Failed");
+                    $("#warning").attr({
+                        "data-notify-type": "warning",
+                        "data-notify-msg": "<i class=icon-warning-sign></i> El Administrador ya existe en el Sistema!"
+                    });
+                    SEMICOLON.widget.notifications($("#warning"));
             }
             ;
         }, "json");
     });
 </script>
+
 
 <!-- End Content
 ============================================= -->    
