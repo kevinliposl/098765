@@ -6,23 +6,29 @@ class CourseController {
         $this->view = new View();
     }
 
-//    public function defaultAction() {
-//        require 'model/UserModel.php';
-//        $session = SSession::getInstance();
-//        $model = new UserModel();
-//        $result = $model->selectUser($session->email);
-//        $vars = array(
-//            "email" => $result->Email,
-//            "name" => $result->Name,
-//            "lastname" => $result->LastName,
-//            "password" => $result->Password,
-//            "address" => $result->Address);
-//        //$this->view->show("userView.php", $vars);
-//        $this->view->show("insertCourseView.php",null);
-//    }
-    
-    public function defaultInsertCourse(){
+    public function defaultAction() {
+        require 'model/UserModel.php';
+        $session = SSession::getInstance();
+        $model = new UserModel();
+        $result = $model->selectUser($session->email);
+        $vars = array(
+            "email" => $result->Email,
+            "name" => $result->Name,
+            "lastname" => $result->LastName,
+            "password" => $result->Password,
+            "address" => $result->Address);
+        //$this->view->show("userView.php", $vars);
         $this->view->show("insertCourseView.php",null);
+    }
+    
+    public function defaultInsertCourse(){     
+        $this->view->show("insertCourseView.php",null);
+    }
+    
+    public function defaultDeleteCourse(){
+        require 'model/CourseModel.php';
+        $model = new CourseModel();
+        $this->view->show("deleteCourseView.php",null);
     }
 
 

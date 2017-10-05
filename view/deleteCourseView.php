@@ -13,7 +13,7 @@ if (isset($session->email)) {
 <section id="page-title">
 
     <div class="container clearfix">
-        <h1>Registar Curso</h1>
+        <h1>Eliminar Curso</h1>
     </div>
 </section><!-- #page-title end -->
 
@@ -26,28 +26,19 @@ if (isset($session->email)) {
                 <div class="acctitle">
                     <div class="acc_content clearfix">
                         <form class="nobottommargin">
-                            <div class="col_full">
-                                <label for="form-initials">Siglas:</label>
-                                <input type="text" id="form-initials" class="form-control" maxlength="5" minlength="5"/>
-                            </div>
                             
-                            <div class="col_full">
-                                <label for="form-name">Nombre:</label>
-                                <input type="email" id="form-name" class="form-control" required/>
-                            </div>
-
-                            <div class="col_full">
-                                <label for="form-instrument">Instrumento:</label>
-                                <input type="text" id="form-instrument" class="form-control" required/>
-                            </div>
-
-                            <div class="col_full">
-                                <label for="form-description">Breve Descripci&oacute;n:</label>
-                                <input type="text" id="form-description"class="form-control" required/>
+                            <div class="col-md-6 bottommargin-sm">
+                                <div class="white-section">
+                                    <label>Cursos Disponibles:</label>
+                                    <select name="form-course" class="selectpicker" data-live-search="true">                      											<option data-tokens="ketchup mustard">Hot Dog, Fries and a Soda</option>
+                                        <option data-tokens="mustard">Burger, Shake and a Smile</option>
+					<option data-tokens="frosting">Sugar, Spice and all things nice</option>
+                                    </select>
+                                </div>
                             </div>
 
                             <div class="col_full nobottommargin">
-                                <input type="button" class="button button-3d button-black nomargin" id="form-submit" value="Registrar"/>
+                                <input type="button" class="button button-3d button-black nomargin" id="form-submit" value="Eliminar"/>
                             </div>
                             <div id="message"></div>
                         </form>
