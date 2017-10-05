@@ -6,6 +6,14 @@ class AdminController {
         $this->view = new View();
     }
 
+    public function insert() {
+        $this->view->show("insertAdminView.php");
+    }
+
+    public function delete() {
+        $this->view->show("deleteAdminView.php");
+    }
+
     public function insertAdmin() {
         require 'model/AdminModel.php';
         $model = new AdminModel();

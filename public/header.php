@@ -78,7 +78,8 @@
                                         </li>
                                         <li><a href="#"><div>CRUD Administrador</div></a>
                                             <ul>
-                                                <li><a href="?action=admin"><div>Insertar Administrador</div></a></li> 
+                                                <li><a href="?controller=Admin&action=insert"><div>Insertar Administrador</div></a></li>
+                                                <li><a href="?controller=Admin&action=delete"><div>Eliminar Administrador</div></a></li> 
                                             </ul>
                                         </li> 
                                     </ul>
