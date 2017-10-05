@@ -224,10 +224,9 @@ if (isset($session->email)) {
 
                         <div class="progress progress-striped active">
                             <div id="progressBar" class="progress-bar"  role="progressbar" aria-valuenow="25" aria-valuemin="10" aria-valuemax="100" style="width: 10%">
-                                <span class="sr-only">45% Complete</span>
+                                <span class="sr-only"></span>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -266,35 +265,10 @@ if (isset($session->email)) {
                 document.getElementById("form-relationship-table").innerHTML = document.getElementById("form-relationship").value;
                 document.getElementById("form-contact-phone-table").innerHTML = document.getElementById("form-contact-phone").value;
                 document.getElementById("form-contact-email-table").innerHTML = document.getElementById("form-contact-email").value;
+
             }
         } else {
-
-            var parameters = {
-                "typeId": $("#form-id").val,
-                "id": $("#form-id").val(),
-                "email": $("#form-email").val(),
-                "name": $("#form-name").val(),
-                "firstLastName": $("#form-firstLastName").val(),
-                "secondLastName": $("#form-secondLastName").val(),
-                "gender": $("#form-gender").val(),
-                "nationality": $("#form-nationality").val(),
-                "phone": $("#form-phone").val(),
-                "phone2": $("#form-phone2").val(),
-                "additionalInformation": $("#form-additionalInformation").val()
-            };
-
-            $("#message").html("Processing, please wait...");
-            $.post("?controller=Admin&action=insertProfessor", parameters, function (data) {
-                if (data.result === "1") {
-                    $("#message").html("Success");
-                } else {
-                    $("#message").html("Failed");
-                }
-                ;
-            }, "json");
-
         }
-
 
     });
 </script>
