@@ -18,14 +18,15 @@ class StudentController {
     }
 
     public function deleteStudent() {
+        require 'model/StudentModel.php';
         if (!isset($_POST["id"]) && !isset($_POST["email"])) {
-            require 'model/StudentModel.php';
             $model = new StudentModel();
             $result = $model->selectAllStudent();
             $this->view->show("deleteStudentView.php", $result);
         } else {
-            require 'model/StudentModel.php';
             $model = new StudentModel();
+            $result = $model->deleteStudent($_POST['id']);
+            echo json_encode($result);
         }
     }
 
@@ -37,7 +38,6 @@ class StudentController {
 
         $result = $model->selectStudent($id);
         echo json_encode($result);
-        
     }
 
 }

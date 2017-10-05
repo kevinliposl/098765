@@ -28,5 +28,11 @@ class StudentModel {
         $result = $query->fetch();
         return $result;
     }
+    public function deleteStudent($id) {
+        $query = $this->db->prepare("call sp_delete_student('$id')");
+        $query->execute();
+        $result = $query->fetch();
+        return $result;
+    }
 
 }
