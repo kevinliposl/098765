@@ -67,6 +67,11 @@
                                         <li><a href="?controller=Course&action=defaultInsertCourseView"><div>Insertar Curso</div></a></li> 
                                     </ul>
                                 </li>
+                                <li><a href="#"><div>CRUD Profesor</div></a>
+                                    <ul>
+                                        <li><a href="?controller=Admin&action=insertTeacherView"><div>Insertar Profesor</div></a></li> 
+                                    </ul>
+                                </li>
                                 <li><a href="?controller=User&action=loginUser"><div>Iniciar Sesi&oacute;n</div></a></li>
                                 <li><a href="#"><div>De Pablo</div></a>
                                     <ul>

@@ -20,4 +20,8 @@ class AdminController {
         echo json_encode($result);
     }
     
+    public function insertTeacherView(){
+        $this->view->show("insertTeacherView.php");
+    }
+    
 }
