@@ -108,18 +108,18 @@ if (isset($session->email)) {
                                 <label for="form-contact-email">Correo Electronico:</label>
                                 <input type="email" id="form-contact-email" class="form-control" required/>
                             </div>
-<!--                            <div class="col_full nobottommargin">
-                                <input type="button" class="button button-3d button-black nomargin" id="form-submit" value="Registrar"/>
-                            </div>
-                            <div id="message"></div>-->
+                            <!--                            <div class="col_full nobottommargin">
+                                                            <input type="button" class="button button-3d button-black nomargin" id="form-submit" value="Registrar"/>
+                                                        </div>
+                                                        <div id="message"></div>-->
                         </form>
-                        
+
                         <form id="form-100" class="nobottommargin" style="display: none;">
                             <h1 style="text-align: center;">Resumen</h1>
-<!--                            <div class="col_full nobottommargin">
-                                <input type="button" class="button button-3d button-black nomargin" id="form-submit" value="Registrar"/>
-                            </div>
-                            <div id="message"></div>-->
+                            <!--                            <div class="col_full nobottommargin">
+                                                            <input type="button" class="button button-3d button-black nomargin" id="form-submit" value="Registrar"/>
+                                                        </div>
+                                                        <div id="message"></div>-->
                         </form>
                         <ul class="pager">
                             <li><a id="previous" onclick="">Previous</a></li>
@@ -171,12 +171,15 @@ if (isset($session->email)) {
     $("#next").click(function () {
         var jump = 25;
         var cant = parseInt($('#progressBar').attr('aria-valuenow'));
-        document.getElementById("form-" + cant).style.display = "none";
 
-        var cant = cant + jump;
-        document.getElementById("form-" + cant).style.display = "block";
-        $('#progressBar').attr('aria-valuenow', (cant)).css('width', cant + '%');
-        $("#message").html($('#progressBar').attr('aria-valuenow'));
+        if (cant !== 100) {
+            document.getElementById("form-" + cant).style.display = "none";
+
+            var cant = cant + jump;
+            document.getElementById("form-" + cant).style.display = "block";
+            $('#progressBar').attr('aria-valuenow', (cant)).css('width', cant + '%');
+            $("#message").html($('#progressBar').attr('aria-valuenow'));
+        }
 
 
     });
@@ -185,13 +188,14 @@ if (isset($session->email)) {
     $("#previous").click(function () {
         var jump = 25;
         var cant = parseInt($('#progressBar').attr('aria-valuenow'));
-        document.getElementById("form-" + cant).style.display = "none";
+        if (cant !== jump) {
+            document.getElementById("form-" + cant).style.display = "none";
 
-        var cant = cant - jump;
-        document.getElementById("form-" + cant).style.display = "block";
-        $('#progressBar').attr('aria-valuenow', (cant)).css('width', cant + '%');
-        $("#message").html($('#progressBar').attr('aria-valuenow'));
-
+            var cant = cant - jump;
+            document.getElementById("form-" + cant).style.display = "block";
+            $('#progressBar').attr('aria-valuenow', (cant)).css('width', cant + '%');
+            $("#message").html($('#progressBar').attr('aria-valuenow'));
+        }
 
     });
 </script>
