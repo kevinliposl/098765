@@ -242,7 +242,7 @@ if (isset($session->email)) {
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                                    <input type="button" class="btn btn-primary" button-black nomargin" id="insertButton" value="Registrar"/>
+                                    <input type="button" class="btn btn-primary" button-black nomargin id="insertButton" value="Registrar"/>
                                            <input type="hidden" id="warning" value="w"/>
                                     <input type="hidden" id="success" value="s"/>
                                     <input type="hidden" id="failed" value="f"/>
