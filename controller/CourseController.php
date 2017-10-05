@@ -19,73 +19,40 @@ class CourseController {
             "address" => $result->Address);
         $this->view->show("userView.php", $vars);
     }
+    
+    public function insertCourse() {
+        require 'model/CourseModel.php';
+        $model = new CourseModel();
 
-    public function loginUser() {
-        $this->view->show("loginView.php");
-    }
-
-    public function insertUser() {
-        require 'model/UserModel.php';
-        $model = new UserModel();
-
-        $email = $_POST["email"];
+        $initials = $_POST["initials"];
         $name = $_POST["name"];
-        $lastname = $_POST["lastname"];
-        $address = $_POST["address"];
-        $password = $_POST["password"];
+        $description = $_POST["description"];
+        $instrument = $_POST["instrument"];
 
-        $result = $model->insertUser($email, $name, $lastname, $address, $password);
+        $result = $model->insertCourse($initials, $name, $description, $instrument);
         echo json_encode(array("result" => $result));
     }
+    
+    public function deleteCourse() {
+        require 'model/CourseModel.php';
+        $model = new CourseModel();
 
-    public function deleteUser() {
-        require 'model/UserModel.php';
-        $model = new UserModel();
+        $id = $_POST["id"];
 
-        $session = SSession::getInstance();
-        $result = $model->deleteUser($session->email);
-
-        if ($result == "true") {
-            $session->destroy();
-        }
+        $result = $model->deleteCourse($id);
         echo json_encode(array("result" => $result));
     }
+    
+    public function updateCourse() {
+        require 'model/CourseModel.php';
+        $model = new CourseModel();
 
-    public function updateUser() {
-        require 'model/UserModel.php';
-        $model = new UserModel();
-
-        $email = $_POST["email"];
+        $id = $_POST["id"];
         $name = $_POST["name"];
-        $lastname = $_POST["lastname"];
-        $address = $_POST["address"];
-        $password = $_POST["password"];
-        
-        $result = $model->updateUser($email, $name, $lastname, $address, $password);
-        
+        $description = $_POST["description"];
+        $instrument = $_POST["instrument"];
+
+        $result = $model->updateCourse($id, $name, $description, $instrument);
         echo json_encode(array("result" => $result));
     }
-
-    public function logIn() {
-        require 'model/UserModel.php';
-        $model = new UserModel();
-
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-
-        $result = $model->logIn($email, $password);
-
-        if ($result == "true") {
-            $session = SSession::getInstance();
-            $session->email = $_POST['email'];
-        }
-        echo json_encode(array("result" => $result));
-    }
-
-    public function signOff() {
-        $session = SSession::getInstance();
-        $session->destroy();
-        $this->view->show("indexView.php");
-    }
-
 }
