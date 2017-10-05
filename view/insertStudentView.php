@@ -105,13 +105,9 @@ if (isset($session->email)) {
                                     <input type="text" id="form-relationship"class="form-control" required pattern="{4-16}"/>
                                 </div>
                                 <div class="col_full">
-                                    <label for="form-contact-email">Correo Electronico:</label>
+                                    <label for="form-contact-email">Correo Electronico del contacto:</label>
                                     <input type="email" id="form-contact-email" class="form-control" required/>
                                 </div>
-                                <!--                            <div class="col_full nobottommargin">
-                                                                <input type="button" class="button button-3d button-black nomargin" id="form-submit" value="Registrar"/>
-                                                            </div>
-                                                            <div id="message"></div>-->
                             </div>
 
 
@@ -246,7 +242,10 @@ if (isset($session->email)) {
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                                    <a id="insertButton" class="btn btn-primary" data-notify-position="bottom-full-width" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Welcome to Canvas Demo!">Bottom Full Width</a>
+                                    <input type="button" class="btn btn-primary" button-black nomargin" id="insertButton" value="Registrar"/>
+                                           <input type="hidden" id="warning" value="w"/>
+                                    <input type="hidden" id="success" value="s"/>
+                                    <input type="hidden" id="failed" value="f"/>
                                 </div>
                             </div>
                         </div>
@@ -293,7 +292,7 @@ if (isset($session->email)) {
         }
 
     });
-    
+
     $("#previous").click(function () {
         var jump = 25;
         var cant = parseInt($('#progressBar').attr('aria-valuenow'));
@@ -318,8 +317,20 @@ if (isset($session->email)) {
     }
 
     $("#insertButton").click(function () {
-        SEMICOLON.widget.notifications(this);
-        setTimeout('Redirect()', 2000);
+        var i;
+        var flag = true;
+        var form = document.getElementById("form-insert-student");
+        var len = form.elements.length;
+        for (i = 0; i < len; i++) {
+            if (form.elements[i].value.trim().split(" ", 10).length > 1 || form.elements[i].value.trim().length <= 0) {
+                $("#failed").attr({
+                    "data-notify-type": "error",
+                    "data-notify-msg": "<i class=icon-remove-sign></i> Formulario incompleto. Complete e intente de nuevo!"
+                });
+                SEMICOLON.widget.notifications($("#failed"));
+                flag = false;
+            }
+        }
     });
 </script>
 
