@@ -15,6 +15,13 @@ class CourseModel {
         $result = $query->fetch();
         return $result;
     }
+    
+    public function selectAllCourses() {
+        $query = $this->db->prepare("call sp_select_all_course()");
+        $query->execute();
+        $result = $query->fetch();
+        return $result;
+    }
 
     public function updateCourse($id, $name, $description, $instrument) {
 
