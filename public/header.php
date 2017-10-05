@@ -19,7 +19,7 @@
 
         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
         <script src="public/js/validate.js"></script>
-        
+
         <link rel="stylesheet" href="public/css/responsive.css" type="text/css" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -59,17 +59,17 @@
                                 <li><a href="?"><div>Home</div></a>
                                 <li><a href="#"><div>CRUDS</div></a>
                                     <ul>
+                                        <li><a href="#"><div>CRUD CURSO</div></a>
+                                            <ul>
+                                                <li><a href="?controller=Course&action=defaultInsertCourseView"><div>Insertar Curso</div></a></li> 
+                                            </ul>
+                                        </li>
+                                        <li><a href="#"><div>CRUD Profesor</div></a>
+                                            <ul>
+                                                <li><a href="?controller=Admin&action=insertTeacherView"><div>Insertar Profesor</div></a></li> 
+                                            </ul>
+                                        </li>
                                         <li><a href="?action=admin"><div>Administrador</div></a></li> 
-                                    </ul>
-                                </li>
-                                <li><a href="#"><div>CRUD CURSO</div></a>
-                                    <ul>
-                                        <li><a href="?controller=Course&action=defaultInsertCourseView"><div>Insertar Curso</div></a></li> 
-                                    </ul>
-                                </li>
-                                <li><a href="#"><div>CRUD Profesor</div></a>
-                                    <ul>
-                                        <li><a href="?controller=Admin&action=insertTeacherView"><div>Insertar Profesor</div></a></li> 
                                     </ul>
                                 </li>
                                 <li><a href="?controller=User&action=loginUser"><div>Iniciar Sesi&oacute;n</div></a></li>
