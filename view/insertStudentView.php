@@ -331,6 +331,31 @@ if (isset($session->email)) {
                 flag = false;
             }
         }
+
+        if (flag) {
+            var parameters = {
+                "id": $("#form-id").val().trim(),
+                "email": $("#form-email").val().trim()
+            };
+            $.post("?controller=Student&action=insertStudent", parameters, function (data) {
+                if (data.result === "1") {
+                    $("#success").attr({
+                        "data-notify-type": "success",
+                        "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!"
+                    });
+                    SEMICOLON.widget.notifications($("#success"));
+                } else {
+                    $("#warning").attr({
+                        "data-notify-type": "warning",
+                        "data-notify-msg": "<i class=icon-warning-sign></i> Ese estudiante ya se encuentra en el sistema"
+                    });
+                    SEMICOLON.widget.notifications($("#warning"));
+                }
+                ;
+            }, "json");
+        }
+
+
     });
 </script>
 
