@@ -218,8 +218,8 @@ if (isset($session->email)) {
                         </form>
 
                         <ul class="pager">
-                            <li><a id="previous" onclick="">Previous</a></li>
-                            <li><a id="next" onclick="">Next</a></li>
+                            <li><a id="previous" onclick="">Anterior</a></li>
+                            <li><a id="next" onclick="">Siguiente</a></li>
                         </ul>
 
                         <div class="progress progress-striped active">
@@ -309,7 +309,7 @@ if (isset($session->email)) {
         var cant = parseInt($('#progressBar').attr('aria-valuenow'));
         if (cant !== jump) {
             if (cant === 100) {
-                $('#next').html("Next");
+                $('#next').html("Siguiente");
             }
 
             document.getElementById("form-" + cant).style.display = "none";
