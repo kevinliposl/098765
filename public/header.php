@@ -69,6 +69,13 @@
                                                 <li><a href="?controller=Admin&action=insertTeacherView"><div>Insertar Profesor</div></a></li> 
                                             </ul>
                                         </li>
+                                        <li><a href="#"><div>CRUD Estudiante</div></a>
+                                            <ul>
+                                                <li><a href="?controller=Student&action=insertStudentView"><div>Insertar Estudiante</div></a></li> 
+                                                <li><a href="?controller=Student&action=deleteStudentView"><div>Borrar Estudiante</div></a></li> 
+                                                <li><a href="?controller=Student&action=updateStudentView"><div>Actualizar Estudiante</div></a></li> 
+                                            </ul>
+                                        </li>
                                         <li><a href="?action=admin"><div>Administrador</div></a></li> 
                                     </ul>
                                 </li>
