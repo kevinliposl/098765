@@ -246,16 +246,14 @@ if (isset($session->email)) {
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                                    <button id="insertButton" type="button" class="btn btn-primary">Guardar estudiante</button>
+                                    <a id="insertButton" class="btn btn-primary" data-notify-position="bottom-full-width" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Welcome to Canvas Demo!">Bottom Full Width</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
-
 </section><!-- #content end -->
 
 <script>
@@ -319,13 +317,15 @@ if (isset($session->email)) {
 </script>
 
 <script>
-    $("#insertButton").click(function () {
+    function Redirect() {
+        window.location = "?";
+    }
 
+    $("#insertButton").click(function () {
+        SEMICOLON.widget.notifications(this);
+        setTimeout('Redirect()', 2000);
     });
 </script>
-
-
-
 
 <?php
 
