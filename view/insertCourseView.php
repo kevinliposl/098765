@@ -30,6 +30,12 @@ if (isset($session->email)) {
                                 <label for="form-initials">Siglas:</label>
                                 <input type="text" id="form-initials" class="form-control" maxlength="5" minlength="5"/>
                             </div>
+                            
+                            <select class="" name="tipo">    
+                    <option value="Visa">Visa</option>
+                    <option value="Master Card">Master Card</option>
+                    <option value="American Express">American Express</option>
+                </select>
 
                             <div class="col_full">
                                 <label for="form-name">Nombre:</label>
@@ -56,7 +62,6 @@ if (isset($session->email)) {
             </div>
         </div>
 </section><!-- #content end -->
-
 
 <script>
     $("#form-submit").click(function () {
