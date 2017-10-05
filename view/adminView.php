@@ -25,7 +25,7 @@ if (isset($session->email)) {
             <div class="accordion-lg divcenter nobottommargin" style="max-width: 550px;">
                 <div class="acctitle">
                     <div class="acc_content clearfix">
-                        <form class="nobottommargin">
+                        <form id="form" class="nobottommargin">
                             <div class="col_full">
                                 <label for="form-id">Cedula:</label>
                                 <input type="text" id="form-id" class="form-control" maxlength="9" minlength="9"/>
@@ -53,6 +53,9 @@ if (isset($session->email)) {
 
                             <div class="col_full nobottommargin">
                                 <input type="button" class="button button-3d button-black nomargin" id="form-submit" value="Registrar"/>
+                                <input type="hidden" id="warning" value="w"/>
+                                <input type="hidden" id="success" value="s"/>
+                                <input type="hidden" id="failed" value="f"/>
                             </div>
                             <div id="message"></div>
                         </form>
@@ -66,33 +69,48 @@ if (isset($session->email)) {
 <script>
     $("#form-submit").click(function () {
 
-        var parameters = {
-            "id": $("#form-id").val(),
-            "email": $("#form-email").val(),
-            "name": $("#form-name").val(),
-            "firstLastName": $("#form-firstLastName").val(),
-            "secondLastName": $("#form-secondLastName").val()
-        };
-        $("#form-submit").attr({
-            "data-notify-type": "success",
-            "data-notify-msg": "<i class=icon-ok-sign></i> Message Sent Successfully!"
-        });
-//        SEMICOLON.widget.notifications(this);
-//        $("#form-submit").attr({
-//            "data-notify-type": "error",
-//            "data-notify-msg": "<i class=icon-remove-sign></i> Incorrect Input. Please Try Again!"
-//        });
-//        SEMICOLON.widget.notifications(this);
-
-        $.post("?controller=Admin&action=insertAdmin", parameters, function (data) {
-            if (data.result === "1") {
-                $("#message").html("Exitoso");
-            } else {
-                $("#message").html("Fallido");
+        var i;
+        var flag = true;
+        var form = document.getElementById("form");
+        var len = form.elements.length - 1;
+        for (i = 0; i < len; i++) {
+            if (form.elements[i].value.trim().split(" ", 10).length > 1 || form.elements[i].value.trim().length <= 0) {
+                $("#failed").attr({
+                    "data-notify-type": "error",
+                    "data-notify-msg": "<i class=icon-remove-sign></i> Formulario incompleto. Complete e intente de nuevo!"
+                });
+                SEMICOLON.widget.notifications($("#failed"));
+                flag = false;
             }
-            ;
-        }, "json");
-    });
+        }
+
+        if (flag) {
+            var parameters = {
+                "id": $("#form-id").val().trim(),
+                "email": $("#form-email").val().trim(),
+                "name": $("#form-name").val().trim(),
+                "firstLastName": $("#form-firstLastName").val().trim(),
+                "secondLastName": $("#form-secondLastName").val().trim()
+            };
+            $.post("?controller=Admin&action=insertAdmin", parameters, function (data) {
+                if (data.result === "1") {
+                    $("#success").attr({
+                        "data-notify-type": "success",
+                        "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!"
+                    });
+                    SEMICOLON.widget.notifications($("#success"));
+                } else {
+                    $("#warning").attr({
+                        "data-notify-type": "warning",
+                        "data-notify-msg": "<i class=icon-warning-sign></i> El Administrador ya existe en el Sistema!"
+                    });
+                    SEMICOLON.widget.notifications($("#warning"));
+                }
+                ;
+            }, "json");
+        }
+    }
+    );
 </script>
 
 <!-- End Content
