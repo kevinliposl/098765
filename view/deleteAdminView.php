@@ -31,7 +31,7 @@ if (isset($session->email)) {
                                 <select id="form-admin" class="selectpicker form-control" data-live-search="true">
                                     <?php foreach ($vars as $var) { ?>
                                         <option value="<?php echo $var["identification"] ?>" data-tokens="">
-                                            <?php echo $var["name"] . " " . $var["first_lastname"]; ?></option>
+                                            <?php echo $var["name"] . " " . $var["first_lastname"]. " " . $var["second_lastname"]; ?></option>
                                     <?php } ?>
                                 </select>
                             </div>
