@@ -2,10 +2,10 @@
 
 class UserModel {
 
-    protected $database;
+    protected $db;
 
     public function __construct() {
-        $this->database = SPDO::singleton();
+        $this->db = SPDO::singleton();
     }
 
     public function logIn($email, $password) {

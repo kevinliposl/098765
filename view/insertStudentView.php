@@ -13,7 +13,7 @@ if (isset($session->email)) {
 <section id="page-title">
 
     <div class="container clearfix">
-        <h1>Registar Curso</h1>
+        <h1>Administrador</h1>
     </div>
 </section><!-- #page-title end -->
 
@@ -27,23 +27,28 @@ if (isset($session->email)) {
                     <div class="acc_content clearfix">
                         <form class="nobottommargin">
                             <div class="col_full">
-                                <label for="form-initials">Siglas:</label>
-                                <input type="text" id="form-initials" class="form-control" maxlength="5" minlength="5"/>
+                                <label for="form-id">Cedula:</label>
+                                <input type="text" id="form-id" class="form-control" maxlength="9" minlength="9"/>
+                            </div>
+
+                            <div class="col_full">
+                                <label for="form-email">Correo Electronico:</label>
+                                <input type="email" id="form-email" class="form-control" required/>
                             </div>
 
                             <div class="col_full">
                                 <label for="form-name">Nombre:</label>
-                                <input type="email" id="form-name" class="form-control" required/>
+                                <input type="text" id="form-name" class="form-control" required/>
                             </div>
 
                             <div class="col_full">
-                                <label for="form-instrument">Instrumento:</label>
-                                <input type="text" id="form-instrument" class="form-control" required/>
+                                <label for="form-firstlastname">Primer Apellido:</label>
+                                <input type="text" id="form-firstLastName"class="form-control" required/>
                             </div>
 
                             <div class="col_full">
-                                <label for="form-description">Breve Descripci&oacute;n:</label>
-                                <input type="text" id="form-description"class="form-control" required/>
+                                <label for="form-secondlastname">Segundo Apellido:</label>
+                                <input type="text" id="form-secondLastName"class="form-control" required />
                             </div>
 
                             <div class="col_full nobottommargin">
@@ -62,14 +67,15 @@ if (isset($session->email)) {
     $("#form-submit").click(function () {
 
         var parameters = {
-            "initials": $("#form-initials").val(),
+            "id": $("#form-id").val(),
+            "email": $("#form-email").val(),
             "name": $("#form-name").val(),
-            "instrument": $("#form-instrument").val(),
-            "description": $("#form-description").val()
+            "firstLastName": $("#form-firstLastName").val(),
+            "secondLastName": $("#form-secondLastName").val()
         };
 
         $("#message").html("Processing, please wait...");
-        $.post("?controller=Course&action=insertCourse", parameters, function (data) {
+        $.post("?controller=Admin&action=insertAdmin", parameters, function (data) {
             if (data.result === "1") {
                 $("#message").html("Success");
             } else {
@@ -84,3 +90,5 @@ if (isset($session->email)) {
 ============================================= -->    
 <?php
 include_once 'public/footer.php';
+
+

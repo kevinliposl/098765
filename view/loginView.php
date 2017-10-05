@@ -8,6 +8,9 @@
         <!-- Stylesheets
         ============================================= -->
         <link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
+        <link type="image/x-icon" href="public/images/favicon.ico" rel="icon"/>
+        <link type="image/x-icon" href="public/images/favicon.ico" rel="shortcut icon"/>
+
         <link rel="stylesheet" href="public/css/bootstrap.css" type="text/css" />
         <link rel="stylesheet" href="public/style.css" type="text/css" />
         <link rel="stylesheet" href="public/css/dark.css" type="text/css" />
@@ -68,12 +71,12 @@
 
                                     <div class="line line-sm"></div>
 
-<!--                                    <div class="center">
-                                        <h4 style="margin-bottom: 15px;">or Login with:</h4>
-                                        <a href="#" class="button button-rounded si-facebook si-colored">Facebook</a>
-                                        <span class="hidden-xs">or</span>
-                                        <a href="#" class="button button-rounded si-twitter si-colored">Twitter</a>
-                                    </div>-->
+                                    <!--                                    <div class="center">
+                                                                            <h4 style="margin-bottom: 15px;">or Login with:</h4>
+                                                                            <a href="#" class="button button-rounded si-facebook si-colored">Facebook</a>
+                                                                            <span class="hidden-xs">or</span>
+                                                                            <a href="#" class="button button-rounded si-twitter si-colored">Twitter</a>
+                                                                        </div>-->
                                 </div>
                             </div>
 

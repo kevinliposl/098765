@@ -6,19 +6,20 @@ class CourseController {
         $this->view = new View();
     }
 
-    public function defaultAction() {
-        require 'model/UserModel.php';
-        $session = SSession::getInstance();
-        $model = new UserModel();
-        $result = $model->selectUser($session->email);
-        $vars = array(
-            "email" => $result->Email,
-            "name" => $result->Name,
-            "lastname" => $result->LastName,
-            "password" => $result->Password,
-            "address" => $result->Address);
-        $this->view->show("userView.php", $vars);
-    }
+//    public function defaultAction() {
+//        require 'model/UserModel.php';
+//        $session = SSession::getInstance();
+//        $model = new UserModel();
+//        $result = $model->selectUser($session->email);
+//        $vars = array(
+//            "email" => $result->Email,
+//            "name" => $result->Name,
+//            "lastname" => $result->LastName,
+//            "password" => $result->Password,
+//            "address" => $result->Address);
+//        //$this->view->show("userView.php", $vars);
+//        $this->view->show("insertCourseView.php",null);
+//    }
     
     public function defaultInsertCourseView(){
         $this->view->show("insertCourseView.php",null);
@@ -34,6 +35,7 @@ class CourseController {
         $description = $_POST["description"];
         $instrument = $_POST["instrument"];
 
+        
         $result = $model->insertCourse($initials, $name, $description, $instrument);
         echo json_encode($result);
     }
@@ -45,7 +47,7 @@ class CourseController {
         $id = $_POST["id"];
 
         $result = $model->deleteCourse($id);
-        echo json_encode(array("result" => $result));
+        echo json_encode($result);
     }
     
     public function updateCourse() {
@@ -58,6 +60,6 @@ class CourseController {
         $instrument = $_POST["instrument"];
 
         $result = $model->updateCourse($id, $name, $description, $instrument);
-        echo json_encode(array("result" => $result));
+        echo json_encode($result);
     }
 }
