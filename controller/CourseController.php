@@ -47,7 +47,7 @@ class CourseController {
         $id = $_POST["id"];
 
         $result = $model->deleteCourse($id);
-        echo json_encode(array("result" => $result));
+        echo json_encode($result);
     }
     
     public function updateCourse() {
@@ -60,6 +60,6 @@ class CourseController {
         $instrument = $_POST["instrument"];
 
         $result = $model->updateCourse($id, $name, $description, $instrument);
-        echo json_encode(array("result" => $result));
+        echo json_encode($result);
     }
 }
