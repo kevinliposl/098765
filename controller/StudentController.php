@@ -6,7 +6,7 @@ class StudentController {
         $this->view = new View();
     }
 
-    public function insertAdmin() {
+    public function insertStudent() {
         require 'model/StudentModel.php';
         $model = new AdminModel();
 
