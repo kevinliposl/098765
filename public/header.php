@@ -17,6 +17,9 @@
         <link rel="stylesheet" href="public/css/animate.css" type="text/css" />
         <link rel="stylesheet" href="public/css/magnific-popup.css" type="text/css" />
 
+        <!-- Bootstrap Select CSS -->
+        <link rel="stylesheet" href="public/css/components/bs-select.css" type="text/css" />
+
         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
         <script src="public/js/validate.js"></script>
 

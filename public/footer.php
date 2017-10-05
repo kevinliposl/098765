@@ -146,6 +146,15 @@
 <script type="text/javascript" src="public/js/jquery.js"></script>
 <script type="text/javascript" src="public/js/plugins.js"></script>
 
+
+<!-- Bootstrap Select Plugin -->
+<script type="text/javascript" src="public/js/components/bs-select.js"></script>
+<link rel="stylesheet" href="public/css/components/bs-select.css" type="text/css" />
+
+<!-- Select Splitter Plugin -->
+<script type="text/javascript" src="public/js/components/selectsplitter.js"></script>
+
+
 <!-- Footer Scripts
 ============================================= -->
 <script type="text/javascript" src="public/js/functions.js"></script>
