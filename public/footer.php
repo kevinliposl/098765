@@ -154,6 +154,9 @@
 <!-- Select Splitter Plugin -->
 <script type="text/javascript" src="public/js/components/selectsplitter.js"></script>
 
+<script type="text/javascript">
+    $('.selectsplitter').selectsplitter();
+</script>
 
 <!-- Footer Scripts
 ============================================= -->

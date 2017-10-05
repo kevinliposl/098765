@@ -77,7 +77,8 @@ if (isset($session->email)) {
             if (form.elements[i].value.trim().split(" ", 10).length > 1 || form.elements[i].value.trim().length <= 0) {
                 $("#failed").attr({
                     "data-notify-type": "error",
-                    "data-notify-msg": "<i class=icon-remove-sign></i> Formulario incompleto. Complete e intente de nuevo!"
+                    "data-notify-msg": "<i class=icon-remove-sign></i> Formulario incompleto. Complete e intente de nuevo!",
+                    "data-notify-position":"bottom-full-width"
                 });
                 SEMICOLON.widget.notifications($("#failed"));
                 flag = false;
@@ -96,13 +97,15 @@ if (isset($session->email)) {
                 if (data.result === "1") {
                     $("#success").attr({
                         "data-notify-type": "success",
-                        "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!"
+                        "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!",
+                        "data-notify-position":"bottom-full-width"
                     });
                     SEMICOLON.widget.notifications($("#success"));
                 } else {
                     $("#warning").attr({
                         "data-notify-type": "warning",
-                        "data-notify-msg": "<i class=icon-warning-sign></i> El Administrador ya existe en el Sistema!"
+                        "data-notify-msg": "<i class=icon-warning-sign></i> El Administrador ya existe en el Sistema!",
+                        "data-notify-position":"bottom-full-width"
                     });
                     SEMICOLON.widget.notifications($("#warning"));
                 }
