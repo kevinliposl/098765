@@ -27,27 +27,15 @@ if (isset($session->email)) {
                     <div class="acc_content clearfix">
                         <form id="form" class="nobottommargin">
                             <div class="white-section">
-                                <label for="form-id">Cedula:</label>
-                                <select class="selectpicker form-control" data-live-search="true">
-                                    <option data-tokens="ketchup mustard">Hot Dog, Fries and a Soda</option>
-                                    <option data-tokens="mustard">Burger, Shake and a Smile</option>
-                                    <option data-tokens="frosting">Sugar, Spice and all things nice</option>
+                                <label for="form-id">Administradores:</label>
+                                <select id="form-admin" class="selectpicker form-control" data-live-search="true">
+                                    <?php foreach ($vars as $var) { ?>
+                                        <option value="<?php echo $var["identification"] ?>" data-tokens="">
+                                            <?php echo $var["name"] . " " . $var["first_lastname"]; ?></option>
+                                    <?php } ?>
                                 </select>
                             </div>
-
-
-                            <div class="col-md-6 bottommargin-sm">
-                                <div class="white-section">
-                                    <label>Key Words:</label>
-                                    <select class="selectpicker" data-live-search="true">
-                                        <option data-tokens="ketchup mustard">Hot Dog, Fries and a Soda</option>
-                                        <option data-tokens="mustard">Burger, Shake and a Smile</option>
-                                        <option data-tokens="frosting">Sugar, Spice and all things nice</option>
-                                    </select>
-
-                                </div>
-                            </div>
-
+                            <br>
                             <div class="col_full">
                                 <label for="form-id">Cedula:</label>
                                 <input type="text" id="form-id" class="form-control" maxlength="9" minlength="9"/>
@@ -74,7 +62,7 @@ if (isset($session->email)) {
                             </div>
 
                             <div class="col_full nobottommargin">
-                                <input type="button" class="button button-3d button-black nomargin" id="form-submit" value="Registrar"/>
+                                <input type="button" class="button button-3d button-black nomargin" id="form-submit" value="Eliminar"/>
                                 <input type="hidden" id="warning" value="w"/>
                                 <input type="hidden" id="success" value="s"/>
                                 <input type="hidden" id="failed" value="f"/>
@@ -87,8 +75,33 @@ if (isset($session->email)) {
         </div>
 </section><!-- #content end -->
 
+<script>
+
+    $("#form-admin").change(function () {
+        var parameters = {
+            "id": $("#form-admin").val()
+        };
+        $.post("?controller=Admin&action=selectAdmin", parameters, function (data) {
+            $("#form-id").val(data.identification);
+            $("#form-email").val(data.email);
+            $("#form-name").val(data.name);
+            $("#form-firstLastName").val(data.first_lastname);
+            $("#form-secondLastName").val(data.second_lastname);
+            
+            $("#success").attr({
+                "data-notify-type": "success",
+                "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!",
+                "data-notify-position":"bottom-full-width"
+            });
+            SEMICOLON.widget.notifications($("#success"));
+        }, "json");
+    });
+
+
+</script>
 
 <script>
+
     $("#form-submit").click(function () {
 
         var i;
