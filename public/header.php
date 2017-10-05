@@ -17,6 +17,9 @@
         <link rel="stylesheet" href="public/css/animate.css" type="text/css" />
         <link rel="stylesheet" href="public/css/magnific-popup.css" type="text/css" />
 
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="public/js/validate.js"></script>
+        
         <link rel="stylesheet" href="public/css/responsive.css" type="text/css" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
