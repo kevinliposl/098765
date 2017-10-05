@@ -2,11 +2,11 @@
 
 class AdminModel {
 
-    protected $database;
+    protected $db;
 
     public function __construct() {
         require 'libs/SPDO.php';
-        $this->database = SPDO::singleton();
+        $this->db = SPDO::singleton();
     }
 
     public function insertAdmin($id, $email, $name, $first_lastname, $second_lastname) {

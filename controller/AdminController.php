@@ -13,11 +13,11 @@ class AdminController {
         $id = $_POST["id"];
         $email = $_POST["email"];
         $name = $_POST["name"];
-        $lastname = $_POST["firstLastName"];
-        $address = $_POST["secondLastName"];
+        $firstLastName = $_POST["firstLastName"];
+        $secondLastName = $_POST["secondLastName"];
 
-        $result = $model->insertUser($email, $name, $lastname, $address, $password);
+        $result = $model->insertAdmin($id, $email, $name, $firstLastName,$secondLastName);
         echo json_encode(array("result" => $result));
     }
-
+    
 }

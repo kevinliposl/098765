@@ -50,10 +50,11 @@ if (isset($session->email)) {
                                 <label for="form-secondlastname">Segundo Apellido:</label>
                                 <input type="text" id="form-secondLastName"class="form-control" required />
                             </div>
-                            
+
                             <div class="col_full nobottommargin">
                                 <input type="button" class="button button-3d button-black nomargin" id="form-submit" value="Registrar"/>
                             </div>
+                            <div id="message"></div>
                         </form>
                     </div>
                 </div>
@@ -62,11 +63,28 @@ if (isset($session->email)) {
 </section><!-- #content end -->
 
 
+<script>
+    $("#form-submit").click(function () {
 
+        var parameters = {
+            "id": $("#form-id").val(),
+            "email": $("#form-email").val(),
+            "name": $("#form-name").val(),
+            "firstLastName": $("#form-firstLastName").val(),
+            "secondLastName": $("#form-secondLastName").val()
+        };
 
-
-
-
+        $("#message").html("Processing, please wait...");
+        $.post("?controller=Admin&action=insertAdmin", parameters, function (data) {
+            //    if (data.result === "1") {
+            $("#message").html("Success");
+            //  } else {
+            //$("#message").html("Failed");
+            //}
+            //;
+        }, "json");
+    });
+</script>
 
 <!-- End Content
 ============================================= -->    
