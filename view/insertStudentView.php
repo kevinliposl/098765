@@ -293,9 +293,7 @@ if (isset($session->email)) {
         }
 
     });
-</script>
-
-<script>
+    
     $("#previous").click(function () {
         var jump = 25;
         var cant = parseInt($('#progressBar').attr('aria-valuenow'));
@@ -314,9 +312,7 @@ if (isset($session->email)) {
         }
 
     });
-</script>
 
-<script>
     function Redirect() {
         window.location = "?";
     }
