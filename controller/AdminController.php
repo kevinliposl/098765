@@ -11,7 +11,10 @@ class AdminController {
     }
 
     public function delete() {
-        $this->view->show("deleteAdminView.php");
+        require 'model/AdminModel.php';
+        $model = new AdminModel();
+        $result = $model->selectAllAdmin();
+        $this->view->show("deleteAdminView.php", $result);
     }
 
     public function insertAdmin() {
@@ -33,12 +36,8 @@ class AdminController {
         $model = new AdminModel();
 
         $id = $_POST["id"];
-        $email = $_POST["email"];
-        $name = $_POST["name"];
-        $firstLastName = $_POST["firstLastName"];
-        $secondLastName = $_POST["secondLastName"];
 
-        $result = $model->insertAdmin($id, $email, $name, $firstLastName, $secondLastName);
+        $result = $model->selectAdmin($id);
         echo json_encode($result);
     }
 
