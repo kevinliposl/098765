@@ -115,11 +115,104 @@ if (isset($session->email)) {
                         </form>
 
                         <form id="form-100" class="nobottommargin" style="display: none;">
-                            <h1 style="text-align: center;">Resumen</h1>
-                            <!--                            <div class="col_full nobottommargin">
-                                                            <input type="button" class="button button-3d button-black nomargin" id="form-submit" value="Registrar"/>
-                                                        </div>
-                                                        <div id="message"></div>-->
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped">
+                                    <h5 style="text-align: center;">Informaci&oacute;n del Estudiante</h5>
+                                    <colgroup>
+                                        <col class="col-xs-3">
+                                        <col class="col-xs-8">
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <code>Identificaci&oacute;n</code>
+                                            </td>
+                                            <td id="form-id-table"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <code>Nombre</code>
+                                            </td>
+                                            <td id="form-name-table"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <code>Apellidos</code>
+                                            </td>
+                                            <td id="form-lastName-table"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <code>Fecha N.</code>
+                                            </td>
+                                            <td id="form-age-table"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <code>Residencia</code>
+                                            </td>
+                                            <td id="form-address-table"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <code>G&eacute;nero</code>
+                                            </td>
+                                            <td id="form-gender-table"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <code>Nacionalidad</code>
+                                            </td>
+                                            <td id="form-nationality-table"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <code>Tel&eacute;fonos</code>
+                                            </td>
+                                            <td id="form-phones-table"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <code>Email</code>
+                                            </td>
+                                            <td id="form-email-table"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table table-bordered table-striped">
+                                    <h5 style="text-align: center;">Informaci&oacute;n del Contacto</h5>
+                                    <colgroup>
+                                        <col class="col-xs-3">
+                                        <col class="col-xs-8">
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <code>Nombre Contacto</code>
+                                            </td>
+                                            <td id="form-contact-name-table"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <code>Tel&eacute;fono</code>
+                                            </td>
+                                            <td id="form-contact-phone-table"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <code>Relaci&oacute;n</code>
+                                            </td>
+                                            <td id="form-relationship-table"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <code>Email</code>
+                                            </td>
+                                            <td id="form-contact-email-table"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </form>
                         <ul class="pager">
                             <li><a id="previous" onclick="">Previous</a></li>
@@ -179,6 +272,11 @@ if (isset($session->email)) {
             document.getElementById("form-" + cant).style.display = "block";
             $('#progressBar').attr('aria-valuenow', (cant)).css('width', cant + '%');
             $("#message").html($('#progressBar').attr('aria-valuenow'));
+            if (cant === 100) {
+                $('#next').html("Registrar");
+            }
+        } else {
+
         }
 
 
@@ -189,6 +287,10 @@ if (isset($session->email)) {
         var jump = 25;
         var cant = parseInt($('#progressBar').attr('aria-valuenow'));
         if (cant !== jump) {
+            if (cant === 100) {
+                $('#next').html("Next");
+            }
+
             document.getElementById("form-" + cant).style.display = "none";
 
             var cant = cant - jump;
