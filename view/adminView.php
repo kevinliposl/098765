@@ -76,12 +76,12 @@ if (isset($session->email)) {
 
         $("#message").html("Processing, please wait...");
         $.post("?controller=Admin&action=insertAdmin", parameters, function (data) {
-            //    if (data.result === "1") {
-            $("#message").html("Success");
-            //  } else {
-            //$("#message").html("Failed");
-            //}
-            //;
+            if (data.result === "1") {
+                $("#message").html("Success");
+            } else {
+                $("#message").html("Failed");
+            }
+            ;
         }, "json");
     });
 </script>
