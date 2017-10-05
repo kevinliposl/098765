@@ -1,12 +1,11 @@
 <?php
-//$session = SSession::getInstance();
-//
-//if (isset($session->email)) {
-//    //include_once 'public/headerUser.php';
-//} else {
-//    include_once 'public/header.php';
-//}
-include_once 'public/header.php';
+$session = SSession::getInstance();
+
+if (isset($session->email)) {
+    //include_once 'public/headerUser.php';
+} else {
+    include_once 'public/header.php';
+}
 ?>
 
 <!-- Page Title
@@ -43,16 +42,45 @@ include_once 'public/header.php';
                             </div>
 
                             <div class="col_full">
-                                <label for="form-description">Breve descripci&oacute;n:</label>
+                                <label for="form-description">Breve Descripci&oacute;n:</label>
                                 <input type="text" id="form-description"class="form-control" required/>
                             </div>
-                            
+
                             <div class="col_full nobottommargin">
                                 <input type="button" class="button button-3d button-black nomargin" id="form-submit" value="Registrar"/>
                             </div>
+                            <div id="message"></div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
 </section><!-- #content end -->
+
+
+<script>
+    $("#form-submit").click(function () {
+
+        var parameters = {
+            "initials": $("#form-initials").val(),
+            "name": $("#form-name").val(),
+            "instrument": $("#form-instrument").val(),
+            "description": $("#form-description").val()
+        };
+
+        $("#message").html("Processing, please wait...");
+        $.post("?controller=Course&action=insertCourse", parameters, function (data) {
+            if (data.result === "1") {
+                $("#message").html("Success");
+            } else {
+                $("#message").html("Failed");
+            }
+            ;
+        }, "json");
+    });
+</script>
+
+<!-- End Content
+============================================= -->    
+<?php
+include_once 'public/footer.php';
