@@ -27,13 +27,24 @@ if (isset($session->email)) {
                     <div class="acc_content clearfix">
                         <form class="nobottommargin">
                             
+                            <div class="white-section">
+                                <label for="form-id">Cursos Disponibles:</label>
+                                <select class="selectpicker form-control" data-live-search="true">
+                                    <option data-tokens="ketchup mustard">Hot Dog, Fries and a Soda</option>
+                                    <option data-tokens="mustard">Burger, Shake and a Smile</option>
+                                    <option data-tokens="frosting">Sugar, Spice and all things nice</option>
+                                </select>
+                            </div>
+                            
                             <div class="col-md-6 bottommargin-sm">
                                 <div class="white-section">
-                                    <label>Cursos Disponibles:</label>
-                                    <select name="form-course" class="selectpicker" data-live-search="true">                      											<option data-tokens="ketchup mustard">Hot Dog, Fries and a Soda</option>
+                                    <label>Key Words:</label>
+                                    <select class="selectpicker" data-live-search="true">
+                                        <option data-tokens="ketchup mustard">Hot Dog, Fries and a Soda</option>
                                         <option data-tokens="mustard">Burger, Shake and a Smile</option>
-					<option data-tokens="frosting">Sugar, Spice and all things nice</option>
+                                        <option data-tokens="frosting">Sugar, Spice and all things nice</option>
                                     </select>
+
                                 </div>
                             </div>
 
