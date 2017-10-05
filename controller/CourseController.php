@@ -35,6 +35,7 @@ class CourseController {
         $description = $_POST["description"];
         $instrument = $_POST["instrument"];
 
+        
         $result = $model->insertCourse($initials, $name, $description, $instrument);
         echo json_encode($result);
     }

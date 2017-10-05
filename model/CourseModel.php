@@ -2,10 +2,10 @@
 
 class CourseModel {
 
-    protected $database;
+    protected $db;
 
     public function __construct() {
-        $this->database = SPDO::singleton();
+        $this->db = SPDO::singleton();
     }
     
     public function insertCourse($initials, $name, $description, $instrument) {
