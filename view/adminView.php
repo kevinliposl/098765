@@ -73,13 +73,22 @@ if (isset($session->email)) {
             "firstLastName": $("#form-firstLastName").val(),
             "secondLastName": $("#form-secondLastName").val()
         };
+        $("#form-submit").attr({
+            "data-notify-type": "success",
+            "data-notify-msg": "<i class=icon-ok-sign></i> Message Sent Successfully!"
+        });
+//        SEMICOLON.widget.notifications(this);
+//        $("#form-submit").attr({
+//            "data-notify-type": "error",
+//            "data-notify-msg": "<i class=icon-remove-sign></i> Incorrect Input. Please Try Again!"
+//        });
+//        SEMICOLON.widget.notifications(this);
 
-        $("#message").html("Processing, please wait...");
         $.post("?controller=Admin&action=insertAdmin", parameters, function (data) {
             if (data.result === "1") {
-                $("#message").html("Success");
+                $("#message").html("Exitoso");
             } else {
-                $("#message").html("Failed");
+                $("#message").html("Fallido");
             }
             ;
         }, "json");

@@ -76,17 +76,21 @@
                                                 <li><a href="?controller=Student&action=updateStudentView"><div>Actualizar Estudiante</div></a></li> 
                                             </ul>
                                         </li>
-                                        <li><a href="?action=admin"><div>Administrador</div></a></li> 
+                                        <li><a href="#"><div>CRUD Administrador</div></a>
+                                            <ul>
+                                                <li><a href="?action=admin"><div>Insertar Administrador</div></a></li> 
+                                            </ul>
+                                        </li> 
                                     </ul>
                                 </li>
                                 <li><a href="?controller=User&action=loginUser"><div>Iniciar Sesi&oacute;n</div></a></li>
                                 <li><a href="#"><div>De Pablo</div></a>
                                     <ul>
-                                        <li><a href="?controlador=Index&action=ejemploProfesor"><div>EJEMPLO PERFIL PROFESOR</div></a>
-                                        <li><a href="?controlador=Index&action=instruments"><div>Cursos</div></a>
-                                        <li><a href="?controlador=Index&action=galery"><div>Galer&iacute;a</div></a>
-                                        <li><a href="?controlador=Index&action=aboutus"><div>Sobre Nosotros</div></a>
-                                        <li><a href="?controlador=Index&action=contact"><div>Contacto</div></a>
+                                        <li><a href="?action=ejemploProfesor"><div>EJEMPLO PERFIL PROFESOR</div></a>
+                                        <li><a href="?action=instruments"><div>Cursos</div></a>
+                                        <li><a href="?action=galery"><div>Galer&iacute;a</div></a>
+                                        <li><a href="?action=aboutus"><div>Sobre Nosotros</div></a>
+                                        <li><a href="?action=contact"><div>Contacto</div></a>
                                     </ul>
                                 </li>
                             </ul>
