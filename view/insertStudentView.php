@@ -219,7 +219,7 @@ if (isset($session->email)) {
 
                         <ul class="pager">
                             <li><a id="previous" onclick="">Anterior</a></li>
-                            <li><a id="next" onclick="">Siguiente</a></li>
+                            <li><a data-toggle="modal" id="next" data-target="" onclick="">Siguiente</a></li>
                         </ul>
 
                         <div class="progress progress-striped active">
@@ -229,6 +229,32 @@ if (isset($session->email)) {
                         </div>
                     </div>
                 </div>
+
+                <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Launch modal</button>
+
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-body">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title" id="myModalLabel">¡Aviso!</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <h4>¿Realmente desea insertar este nuevo Estudiante?</h4>
+                                    <p>Consejos:
+                                    <li style="text-align: center;">Revisar que todos los campos tengan la informaci&oacute;n correcta</li>
+                                    <li style="text-align: center;">Revisar que todos los campos tengan la informaci&oacute;n correcta</li></p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                    <button id="insertButton" type="button" class="btn btn-primary">Guardar estudiante</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
 
@@ -265,9 +291,9 @@ if (isset($session->email)) {
                 document.getElementById("form-relationship-table").innerHTML = document.getElementById("form-relationship").value;
                 document.getElementById("form-contact-phone-table").innerHTML = document.getElementById("form-contact-phone").value;
                 document.getElementById("form-contact-email-table").innerHTML = document.getElementById("form-contact-email").value;
-
             }
         } else {
+            $('#next').attr('data-target', '#myModal');
         }
 
     });
