@@ -25,7 +25,7 @@ if (isset($session->email)) {
             <div class="accordion-lg divcenter nobottommargin" style="max-width: 550px;">
                 <div class="acctitle">
                     <div class="acc_content clearfix">
-                        <form class="nobottommargin">
+                        <form id="form" class="nobottommargin">
                             <div class="col_full">
                                 <label for="form-id">Cedula:</label>
                                 <input type="text" id="form-id" class="form-control" maxlength="9" minlength="9"/>
@@ -66,33 +66,54 @@ if (isset($session->email)) {
 <script>
     $("#form-submit").click(function () {
 
+        var separador = " ";
+        var limite = 10;
         var parameters = {
-            "id": $("#form-id").val(),
-            "email": $("#form-email").val(),
-            "name": $("#form-name").val(),
-            "firstLastName": $("#form-firstLastName").val(),
-            "secondLastName": $("#form-secondLastName").val()
+            "id": $("#form-id").val().trim(),
+            "email": $("#form-email").val().trim(),
+            "name": $("#form-name").val().trim(),
+            "firstLastName": $("#form-firstLastName").val().trim(),
+            "secondLastName": $("#form-secondLastName").val().trim()
         };
-        $("#form-submit").attr({
-            "data-notify-type": "success",
-            "data-notify-msg": "<i class=icon-ok-sign></i> Message Sent Successfully!"
-        });
-//        SEMICOLON.widget.notifications(this);
-//        $("#form-submit").attr({
-//            "data-notify-type": "error",
-//            "data-notify-msg": "<i class=icon-remove-sign></i> Incorrect Input. Please Try Again!"
-//        });
-//        SEMICOLON.widget.notifications(this);
-
-        $.post("?controller=Admin&action=insertAdmin", parameters, function (data) {
-            if (data.result === "1") {
-                $("#message").html("Exitoso");
-            } else {
-                $("#message").html("Fallido");
+        var i;
+        var form = document.getElementById("form");
+        var len= form.elements.length;
+        for (i = 0; i < len; i++) {
+            if (form.elements[i].split(separador, limite).length > 1) {
+                alert("Tiene Espacios");
             }
-            ;
-        }, "json");
-    });
+        }
+
+
+
+
+
+
+
+//        $.post("?controller=Admin&action=insertAdmin", parameters, function (data) {
+//            if (data.result === "1") {
+//                $("#message").html("Exitoso");
+//            } else {
+//                $("#message").html("Fallido");
+//            }
+//            ;
+//        }, "json");
+    }
+    );
+
+//        $("#form-submit").attr(
+//                {
+//                    "data-notify-type": "success",
+//                    "data-notify-msg": "<i class=icon-ok-sign></i> Message Sent Successfully!"
+//                });
+//        SEMICOLON.widget.notifications(this);
+//                $("#form-submit").attr({
+//                    "data-notify-type": "error",
+//                    "data-notify-msg": "<i class=icon-remove-sign></i> Incorrect Input. Please Try Again!"
+//                });
+//                SEMICOLON.widget.notifications(this);
+
+
 </script>
 
 <!-- End Content
