@@ -21,7 +21,7 @@ class IndexController {
     public function admin() {
         $this->view->show("adminView.php");
     }
-
+    
     public function galery() {
         $this->view->show("galeryView.php");
     }
