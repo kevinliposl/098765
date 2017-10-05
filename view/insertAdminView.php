@@ -13,7 +13,7 @@ if (isset($session->email)) {
 <section id="page-title">
 
     <div class="container clearfix">
-        <h1>Administrador</h1>
+        <h1>Insertar Administrador</h1>
     </div>
 </section><!-- #page-title end -->
 

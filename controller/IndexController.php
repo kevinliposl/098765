@@ -17,10 +17,6 @@ class IndexController {
     public function login() {
         $this->view->show("loginView.php");
     }
-
-    public function admin() {
-        $this->view->show("adminView.php");
-    }
     
     public function galery() {
         $this->view->show("galeryView.php");

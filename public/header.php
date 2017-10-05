@@ -17,6 +17,9 @@
         <link rel="stylesheet" href="public/css/animate.css" type="text/css" />
         <link rel="stylesheet" href="public/css/magnific-popup.css" type="text/css" />
 
+        <!-- Bootstrap Select CSS -->
+        <link rel="stylesheet" href="public/css/components/bs-select.css" type="text/css" />
+
         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
         <script src="public/js/validate.js"></script>
 
@@ -79,7 +82,8 @@
                                         </li>
                                         <li><a href="#"><div>CRUD Administrador</div></a>
                                             <ul>
-                                                <li><a href="?action=admin"><div>Insertar Administrador</div></a></li> 
+                                                <li><a href="?controller=Admin&action=insert"><div>Insertar Administrador</div></a></li>
+                                                <li><a href="?controller=Admin&action=delete"><div>Eliminar Administrador</div></a></li> 
                                             </ul>
                                         </li> 
                                     </ul>
