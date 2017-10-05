@@ -61,7 +61,7 @@
                                     <ul>
                                         <li><a href="#"><div>CRUD CURSO</div></a>
                                             <ul>
-                                                <li><a href="?controller=Course&action=defaultInsertCourseView"><div>Insertar Curso</div></a></li> 
+                                                <li><a href="?controller=Course&action=defaultInsertCourse"><div>Insertar Curso</div></a></li> 
                                             </ul>
                                         </li>
                                         <li><a href="#"><div>CRUD Profesor</div></a>

@@ -21,7 +21,7 @@ class CourseController {
 //        $this->view->show("insertCourseView.php",null);
 //    }
     
-    public function defaultInsertCourseView(){
+    public function defaultInsertCourse(){
         $this->view->show("insertCourseView.php",null);
     }
 
@@ -34,8 +34,7 @@ class CourseController {
         $name = $_POST["name"];
         $description = $_POST["description"];
         $instrument = $_POST["instrument"];
-
-        
+       
         $result = $model->insertCourse($initials, $name, $description, $instrument);
         echo json_encode($result);
     }
