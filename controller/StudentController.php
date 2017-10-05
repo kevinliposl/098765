@@ -8,6 +8,7 @@ class StudentController {
 
     public function insertStudent() {
         if (isset($_POST["id"]) && isset($_POST["email"])) {
+
             require 'model/StudentModel.php';
             $model = new AdminModel();
 
@@ -18,8 +19,11 @@ class StudentController {
             $secondLastName = $_POST["secondLastName"];
 
             $result = $model->insertAdmin($id, $email, $name, $firstLastName, $secondLastName);
+
+
             echo json_encode($result);
         } else {
+
             $this->view->show("insertStudentView.php");
         }
     }
