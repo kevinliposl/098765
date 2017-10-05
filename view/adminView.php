@@ -37,30 +37,33 @@ if (isset($session->email)) {
                             </div>
 
                             <div class="col_full">
-                                <label for="form-username">Nombre:</label>
-                                <input type="text" id="form-username"class="form-control" required/>
+                                <label for="form-name">Nombre:</label>
+                                <input type="text" id="form-name" class="form-control" required/>
                             </div>
 
                             <div class="col_full">
                                 <label for="form-firstlastname">Primer Apellido:</label>
-                                <input type="text" id="form-username"class="form-control" required/>
+                                <input type="text" id="form-firstLastName"class="form-control" required/>
                             </div>
 
                             <div class="col_full">
                                 <label for="form-secondlastname">Segundo Apellido:</label>
-                                <input type="text" id="form-username"class="form-control" required pattern="{4-16}"/>
+                                <input type="text" id="form-secondLastName"class="form-control" required />
                             </div>
                             
                             <div class="col_full nobottommargin">
-                                <input type="" class="button button-3d button-black nomargin" id="form-submit" value="Registrar">
+                                <input type="button" class="button button-3d button-black nomargin" id="form-submit" value="Registrar"/>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-
 </section><!-- #content end -->
+
+
+
+
 
 
 
