@@ -20,6 +20,11 @@ class CourseController {
         $this->view->show("userView.php", $vars);
     }
     
+    public function defaultInsertCourseView(){
+        $this->view->show("insertCourseView.php",null);
+    }
+
+
     public function insertCourse() {
         require 'model/CourseModel.php';
         $model = new CourseModel();

@@ -58,7 +58,6 @@ include_once 'public/header.php';
                         <img class="alignleft img-responsive" src="images/landing/bootstrap.png" alt="">
                         <h3>Otros servicios</h3>
                         Diseñado acorde con las más exigentes y modernas pedagogías de canto del mundo. Aprenderás cómo funciona el maravilloso instrumento de la VOZ, el desarrollo de las técnicas y solfeo básico, la impostación de la voz, el control de la respiración, vibrato, uso del diafragma, resonadores, la buena dicción, afinación, interpretación y proyección escénica.
-
                     </div>
                 </div>
             </div>
