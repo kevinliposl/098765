@@ -9,7 +9,7 @@ class StudentModel {
         $this->db = SPDO::singleton();
     }
 
-    public function insertAdmin($id, $email, $name, $first_lastname, $second_lastname) {
+    public function insertStudent($id, $email, $name, $first_lastname, $second_lastname) {
         $query = $this->db->prepare("call sp_insert_admin('$id','$email','$name','$first_lastname','$second_lastname')");
         $query->execute();
         $result = $query->fetch();

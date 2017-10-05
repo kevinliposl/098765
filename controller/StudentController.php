@@ -7,17 +7,25 @@ class StudentController {
     }
 
     public function insertStudent() {
-        require 'model/StudentModel.php';
-        $model = new AdminModel();
+        if (isset($_POST["id"]) && isset($_POST["email"])) {
 
-        $id = $_POST["id"];
-        $email = $_POST["email"];
-        $name = $_POST["name"];
-        $firstLastName = $_POST["firstLastName"];
-        $secondLastName = $_POST["secondLastName"];
+            require 'model/StudentModel.php';
+            $model = new AdminModel();
 
-        $result = $model->insertAdmin($id, $email, $name, $firstLastName,$secondLastName);
-        echo json_encode($result);
+            $id = $_POST["id"];
+            $email = $_POST["email"];
+            $name = $_POST["name"];
+            $firstLastName = $_POST["firstLastName"];
+            $secondLastName = $_POST["secondLastName"];
+
+            $result = $model->insertAdmin($id, $email, $name, $firstLastName, $secondLastName);
+
+
+            echo json_encode($result);
+        } else {
+
+            $this->view->show("insertStudentView.php");
+        }
     }
-    
+
 }

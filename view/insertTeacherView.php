@@ -68,8 +68,8 @@ if (isset($session->email)) {
                                 <input type="radio" name="form-gender" value="F"/><label>Femenino</label>
                             </div>
                             <div class="col_full">
-                                <label for="form-birthdate">Fecha de Nacimiento:</label>
-                                <input type="text" id="form-birthdate"class="form-control" required pattern="{4-16}"/>
+                                <label for="form-nationality">Nacionalidad:</label>
+                                <input type="text" id="form-nationality"class="form-control" required pattern="{4-16}"/>
                             </div>
                             <div class="col_full">
                                 <label for="form-phone1">Telefono:</label>
@@ -88,8 +88,9 @@ if (isset($session->email)) {
                                 <input type="text" id="form-additionalInformation"class="form-control" required pattern="{4-16}"/>
                             </div>
                             <div class="col_full nobottommargin">
-                                <input type="" class="button button-3d button-black nomargin" id="form-submit" value="Registrar">
+                                <input type="button" class="button button-3d button-black nomargin" id="form-submit" value="Registrar"/>
                             </div>
+                            <div id="message"></div>
                         </form>
                     </div>
                 </div>
@@ -98,7 +99,34 @@ if (isset($session->email)) {
 
 </section><!-- #content end -->
 
+<script>
+    $("#form-submit").click(function () {
 
+        var parameters = {
+            "typeId": $("#form-id").val,
+            "id": $("#form-id").val(),
+            "email": $("#form-email").val(),
+            "name": $("#form-name").val(),
+            "firstLastName": $("#form-firstLastName").val(),
+            "secondLastName": $("#form-secondLastName").val(),
+            "gender": $("#form-gender").val(),
+            "nationality": $("#form-nationality").val(),
+            "phone": $("#form-phone").val(),
+            "phone2": $("#form-phone2").val(),
+            "additionalInformation": $("#form-additionalInformation").val()
+        };
+
+        $("#message").html("Processing, please wait...");
+        $.post("?controller=Admin&action=insertProfessor", parameters, function (data) {
+            if (data.result === "1") {
+                $("#message").html("Success");
+            } else {
+                $("#message").html("Failed");
+            }
+            ;
+        }, "json");
+    });
+</script>
 
 
 <!-- End Content

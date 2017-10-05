@@ -71,9 +71,9 @@
                                         </li>
                                         <li><a href="#"><div>CRUD Estudiante</div></a>
                                             <ul>
-                                                <li><a href="?controller=Student&action=insertStudentView"><div>Insertar Estudiante</div></a></li> 
-                                                <li><a href="?controller=Student&action=deleteStudentView"><div>Borrar Estudiante</div></a></li> 
-                                                <li><a href="?controller=Student&action=updateStudentView"><div>Actualizar Estudiante</div></a></li> 
+                                                <li><a href="?controller=Student&action=insertStudent"><div>Insertar Estudiante</div></a></li> 
+                                                <li><a href="?controller=Student&action=deleteStudent"><div>Borrar Estudiante</div></a></li> 
+                                                <li><a href="?controller=Student&action=updateStudent"><div>Actualizar Estudiante</div></a></li> 
                                             </ul>
                                         </li>
                                         <li><a href="#"><div>CRUD Administrador</div></a>
