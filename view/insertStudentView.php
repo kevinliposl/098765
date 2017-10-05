@@ -313,7 +313,7 @@ if (isset($session->email)) {
     });
 
     function Redirect() {
-        window.location = "?";
+        window.location = "?controller=Student&action=insertStudent";
     }
 
     $("#insertButton").click(function () {
@@ -335,19 +335,34 @@ if (isset($session->email)) {
         if (flag) {
             var parameters = {
                 "id": $("#form-id").val().trim(),
-                "email": $("#form-email").val().trim()
+                "idType": $("input:radio[name='form-typeId']:checked").val().trim(),
+                "email": $("#form-email").val().trim(),
+                "name": $("#form-name").val().trim(),
+                "firstLastName": $("#form-firstLastName").val().trim(),
+                "secondLastName": $("#form-secondLastName").val().trim(),
+                "age": $("#form-age").val().trim(),
+                "address": $("#form-address").val().trim(),
+                "gender": $("input:radio[name='form-gender']:checked").val().trim(),
+                "nationality": $("#form-nationality").val().trim(),
+                "phoneOne": $("#form-phone1").val().trim(),
+                "phoneTwo": $("#form-phone2").val().trim(),
+                "contactName": $("#form-contact-name").val().trim(),
+                "contactRelationship": $("#form-relationship").val().trim(),
+                "contactPhone": $("#form-contact-phone").val().trim(),
+                "contactEmail": $("#form-contact-email").val().trim()
             };
             $.post("?controller=Student&action=insertStudent", parameters, function (data) {
                 if (data.result === "1") {
                     $("#success").attr({
                         "data-notify-type": "success",
-                        "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!"
+                        "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!<br><br> Se redirigir&aacute; en breve..."
                     });
                     SEMICOLON.widget.notifications($("#success"));
+                    setTimeout('Redirect()', 2000);
                 } else {
                     $("#warning").attr({
                         "data-notify-type": "warning",
-                        "data-notify-msg": "<i class=icon-warning-sign></i> Ese estudiante ya se encuentra en el sistema"
+                        "data-notify-msg": "<i class=icon-warning-sign></i> El Administrador ya existe en el Sistema!"
                     });
                     SEMICOLON.widget.notifications($("#warning"));
                 }
