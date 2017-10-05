@@ -230,8 +230,6 @@ if (isset($session->email)) {
                     </div>
                 </div>
 
-                <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Launch modal</button>
-
                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-body">
