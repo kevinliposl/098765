@@ -28,7 +28,7 @@ if (isset($session->email)) {
                         <form class="nobottommargin">
                             <div class="col_full">
                                 <label for="form-id">Cedula:</label>
-                                <input type="text" id="form-id" class="form-control" required/>
+                                <input type="text" id="form-id" class="form-control" maxlength="9" minlength="9"/>
                             </div>
 
                             <div class="col_full">
@@ -48,11 +48,11 @@ if (isset($session->email)) {
 
                             <div class="col_full">
                                 <label for="form-secondlastname">Segundo Apellido:</label>
-                                <input type="text" id="form-username"class="form-control" required/>
+                                <input type="text" id="form-username"class="form-control" required pattern="{4-16}"/>
                             </div>
                             
                             <div class="col_full nobottommargin">
-                                <input class="button button-3d button-black nomargin" id="form-submit" value="Registrar">
+                                <input type="" class="button button-3d button-black nomargin" id="form-submit" value="Registrar">
                             </div>
                         </form>
                     </div>
