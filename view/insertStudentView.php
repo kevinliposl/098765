@@ -304,6 +304,7 @@ if (isset($session->email)) {
         if (cant !== jump) {
             if (cant === 100) {
                 $('#next').html("Siguiente");
+                $('#next').attr('data-target', '');
             }
 
             document.getElementById("form-" + cant).style.display = "none";
