@@ -29,7 +29,7 @@ if (isset($session->email)) {
                             <div class="white-section">
                                 <label for="form-id">Cursos:</label>
                                 <select id="form-courses" class="selectpicker form-control" data-live-search="true">
-<<<<<<< HEAD
+
                                     <option data-tokens="">Seleccione un Curso</option>
                                     <?php
                                     foreach ($vars as $var) {
@@ -42,12 +42,6 @@ if (isset($session->email)) {
                                         }
                                     }
                                     ?>
-=======
-                                    <?php if(isset($vars)){ foreach ($vars as $var) { ?>
-                                        <option value="<?php echo $var["id"] ?>" data-tokens="">
-                                            <?php echo $var["initials"]." "."|"." ".$var["name"]; ?></option>
-                                    <?php } }?>
->>>>>>> 01f3b05a4ee0b130239e301b9cf8e289f3315895
                                 </select>
                             </div>
                             <br>
