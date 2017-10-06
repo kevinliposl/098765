@@ -182,10 +182,12 @@ if (isset($session->email)) {
                 document.getElementById("form-email").innerHTML = data.email;
                 document.getElementById("form-gender").innerHTML = data.gender;
                 document.getElementById("form-nationality").innerHTML = data.nationality;
-                document.getElementById("form-submit").style.display = "block";
-            }, "json");
-            $.post("?controller=Student&action=selectStudentContact", parameters, function (data) {
+                document.getElementById("form-age").innerHTML = data.birthdate;
                 document.getElementById("form-contact-name").innerHTML = data.full_contact_name;
+                document.getElementById("form-contact-phone").innerHTML = data.telephone_contact;
+                document.getElementById("form-relationship").innerHTML = data.relationship;
+                document.getElementById("form-contact-email").innerHTML = data.contact_email;
+                document.getElementById("form-submit").style.display = "block";
             }, "json");
         } else {
             document.getElementById("form-submit").style.display = "none";
