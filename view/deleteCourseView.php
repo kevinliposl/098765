@@ -29,7 +29,6 @@ if (isset($session->email)) {
                             <div class="white-section">
                                 <label for="form-id">Cursos:</label>
                                 <select id="form-courses" class="selectpicker form-control" data-live-search="true">
-                                    <option data-tokens="">Cursos Disponibles</option>
                                     <?php foreach ($vars as $var) { ?>
                                         <option value="<?php echo $var["id"] ?>" data-tokens="">
                                             <?php echo $var["Course"]; ?></option>
@@ -50,7 +49,7 @@ if (isset($session->email)) {
                                             <td>
                                                 <code>Siglas</code>
                                             </td>
-                                            <td id="form-initials-table"></td>
+                                            <td id="form-initials-table"><?php echo $vars[0]["Course"] ?></td>
                                         </tr>
                                         <tr>
                                             <td>
@@ -111,7 +110,7 @@ if (isset($session->email)) {
 
 <script>
     $("#form-courses").change(function () {
-        if ($("#form-courses").val() !== "-1" && $("#form-courses").val() !== "1") {
+        if ($("#form-courses").val() !== "-1") {
             var parameters = {
                 "id": $("#form-courses").val()
             };
@@ -128,11 +127,6 @@ if (isset($session->email)) {
                 });
                 SEMICOLON.widget.notifications($("#success"));
             }, "json");
-        }else{
-                document.getElementById("form-initials-table").innerHTML = "";
-                document.getElementById("form-name-table").innerHTML = "";
-                document.getElementById("form-instrument-table").innerHTML = "";
-                document.getElementById("form-description-table").innerHTML = "";
         }
     });
 

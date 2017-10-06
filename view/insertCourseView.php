@@ -61,10 +61,10 @@ if (isset($session->email)) {
     $("#form-submit").click(function () {
 
         var parameters = {
-            "initials": $("#form-initials").val(),
-            "name": $("#form-name").val(),
-            "instrument": $("#form-instrument").val(),
-            "description": $("#form-description").val()
+            "initials": $("#form-initials").val().trim(),
+            "name": $("#form-name").val().trim(),
+            "instrument": $("#form-instrument").val().trim(),
+            "description": $("#form-description").val().trim()
         };
 
         $("#message").html("Processing, please wait...");
