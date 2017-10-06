@@ -29,10 +29,18 @@ if (isset($session->email)) {
                             <div class="white-section">
                                 <label for="form-id">Cursos:</label>
                                 <select id="form-courses" class="selectpicker form-control" data-live-search="true">
-                                    <?php if(isset($vars)){ foreach ($vars as $var) { ?>
-                                        <option value="<?php echo $var["id"] ?>" data-tokens="">
-                                            <?php echo $var["Course"]; ?></option>
-                                    <?php } }?>
+                                    <option data-tokens="">Seleccione un Curso</option>
+                                    <?php
+                                    foreach ($vars as $var) {
+                                        if (isset($var["id"])) {
+                                            ?>
+                                            <option value="<?php echo $var["id"] ?> " data-tokens="">
+                                                <?php echo $var["name"] ?>
+                                            </option>
+                                            <?php
+                                        }
+                                    }
+                                    ?>
                                 </select>
                             </div>
                             <br>
@@ -49,7 +57,11 @@ if (isset($session->email)) {
                                             <td>
                                                 <code>Siglas</code>
                                             </td>
-                                            <td id="form-initials-table"><?php if(isset($vars[0])){echo $vars[0]["Course"];} ?></td>
+                                            <td id="form-initials-table"><?php
+                                                if (isset($vars[0]["Course"])) {
+                                                    echo $vars[0]["Course"];
+                                                }
+                                                ?></td>
                                         </tr>
                                         <tr>
                                             <td>
@@ -76,12 +88,12 @@ if (isset($session->email)) {
                             <div class="col_full nobottommargin">
                                 <input type="button" class="button button-3d button-black nomargin" data-toggle="modal" id="delete" data-target="" value="Eliminar"/>
                             </div>
-                            
+
                             <div id="message"></div>
                         </form>
                     </div>
                 </div>
-                
+
                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-body">
@@ -137,11 +149,11 @@ if (isset($session->email)) {
     $("#delete").click(function () {
         $('#delete').attr('data-target', '#myModal');
     });
-    
+
     function Redirect() {
         window.location = "?controller=Course&action=defaultDeleteCourse";
     }
-    
+
     $("#deleteButton").click(function () {
 
         var parameters = {
