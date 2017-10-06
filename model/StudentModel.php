@@ -12,7 +12,7 @@ class StudentModel {
     public function insertStudent($id, $idType, $email, $name, $firstLastName, $secondLastName, $age, $address, $gender, $nationality, $phoneOne, $phoneTwo, $contactName, $contactRelationship, $contactPhone, $contactEmail) {
         $query = $this->db->prepare("call sp_insert_student('$id', '$idType', '$email', '$name', '$firstLastName', '$secondLastName', '$age', '$address', '$gender', '$nationality', '$phoneOne', '$phoneTwo', '$contactName', '$contactRelationship', '$contactPhone', '$contactEmail')");
         $query->execute();
-        $result = $query->fetchAll();
+        $result = $query->fetch();
         $query->closeCursor();
         return $result;
     }
