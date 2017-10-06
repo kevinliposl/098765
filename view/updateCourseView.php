@@ -29,31 +29,31 @@ if (isset($session->email)) {
                             <div class="white-section">
                                 <label for="form-id">Cursos:</label>
                                 <select id="form-courses" class="selectpicker form-control" data-live-search="true">
-                                    <?php foreach ($vars as $var) { ?>
+                                    <?php if(isset($vars)){ foreach ($vars as $var) {?>
                                         <option value="<?php echo $var["id"] ?>" data-tokens="">
-                                            <?php echo $var["Course"]; ?></option>
-                                    <?php } ?>
+                                            <?php echo $var["initials"]." "."|"." ".$var["name"]; ?></option>
+                                    <?php }} ?>
                                 </select>
                             </div>
                             <br>
                             <div class="col_full">
                                 <label for="form-initials">Siglas:</label>
-                                <input type="text" id="form-initials" class="form-control" readonly="readonly"/>
+                                <input type="text" id="form-initials" class="form-control" readonly="readonly" value="<?php if(isset($vars[0])){echo $vars[0]["initials"];} ?>"/>
                             </div>
                             
                             <div class="col_full">
                                 <label for="form-name">Nombre:</label>
-                                <input type="email" id="form-name" class="form-control" required/>
+                                <input type="email" id="form-name" class="form-control" value="<?php if(isset($vars[0])){echo $vars[0]["name"];} ?>" required/>
                             </div>
 
                             <div class="col_full">
                                 <label for="form-instrument">Instrumento:</label>
-                                <input type="text" id="form-instrument" class="form-control" required/>
+                                <input type="text" id="form-instrument" class="form-control" value="<?php if(isset($vars[0])){echo $vars[0]["instrument"];} ?>" required/>
                             </div>
 
                             <div class="col_full">
                                 <label for="form-description">Breve Descripci&oacute;n:</label>
-                                <input type="text" id="form-description"class="form-control" required/>
+                                <input type="text" id="form-description"class="form-control" value="<?php if(isset($vars[0])){echo $vars[0]["description"];} ?>" required/>
                             </div>
 
                             <div class="col_full nobottommargin">
@@ -73,6 +73,8 @@ if (isset($session->email)) {
                                 </div>
                                 <div class="modal-body">
                                     <h4 style="text-align: center;">¿Realmente desea actualizar el curso seleccionado?</h4>
+                                    <p>Consejos:
+                                    <li>Revisar que todos los campos tengan la informaci&oacute;n correcta</li></p>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
@@ -123,23 +125,6 @@ if (isset($session->email)) {
     }
     
     $("#updateButton").click(function () {
-
-//        var i;
-//        var flag = true;
-//        var form = document.getElementById("form");
-//        var len = form.elements.length - 1;
-//        for (i = 0; i < len; i++) {
-//            if (form.elements[i].value.trim().split(" ", 10).length > 1 || form.elements[i].value.trim().length <= 0) {
-//                $("#failed").attr({
-//                    "data-notify-type": "error",
-//                    "data-notify-msg": "<i class=icon-remove-sign></i> Formulario incompleto. Complete e intente de nuevo!"
-//                });
-//                SEMICOLON.widget.notifications($("#failed"));
-//                flag = false;
-//            }
-//        }
-
-        if (true) {
             var parameters = {
                 "id": $("#form-courses").val().trim(),
                 "name": $("#form-name").val().trim(),
@@ -163,7 +148,6 @@ if (isset($session->email)) {
                 }
                 ;
             }, "json");
-        }
     }
     );
 </script>

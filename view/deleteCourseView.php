@@ -29,6 +29,7 @@ if (isset($session->email)) {
                             <div class="white-section">
                                 <label for="form-id">Cursos:</label>
                                 <select id="form-courses" class="selectpicker form-control" data-live-search="true">
+<<<<<<< HEAD
                                     <option data-tokens="">Seleccione un Curso</option>
                                     <?php
                                     foreach ($vars as $var) {
@@ -41,6 +42,12 @@ if (isset($session->email)) {
                                         }
                                     }
                                     ?>
+=======
+                                    <?php if(isset($vars)){ foreach ($vars as $var) { ?>
+                                        <option value="<?php echo $var["id"] ?>" data-tokens="">
+                                            <?php echo $var["initials"]." "."|"." ".$var["name"]; ?></option>
+                                    <?php } }?>
+>>>>>>> 01f3b05a4ee0b130239e301b9cf8e289f3315895
                                 </select>
                             </div>
                             <br>
@@ -57,29 +64,33 @@ if (isset($session->email)) {
                                             <td>
                                                 <code>Siglas</code>
                                             </td>
+<<<<<<< HEAD
                                             <td id="form-initials-table"><?php
                                                 if (isset($vars[0]["Course"])) {
                                                     echo $vars[0]["Course"];
                                                 }
                                                 ?></td>
+=======
+                                            <td id="form-initials-table"><?php if(isset($vars[0])){echo $vars[0]["initials"];} ?></td>
+>>>>>>> 01f3b05a4ee0b130239e301b9cf8e289f3315895
                                         </tr>
                                         <tr>
                                             <td>
                                                 <code>Nombre</code>
                                             </td>
-                                            <td id="form-name-table"></td>
+                                            <td id="form-name-table"><?php if(isset($vars[0])){echo $vars[0]["name"];} ?></td>
                                         </tr>
                                         <tr>
                                             <td>
                                                 <code>Instrumento</code>
                                             </td>
-                                            <td id="form-instrument-table"></td>
+                                            <td id="form-instrument-table"><?php if(isset($vars[0])){echo $vars[0]["instrument"];} ?></td>
                                         </tr>
                                         <tr>
                                             <td>
                                                 <code>Descripci&oacute;n</code>
                                             </td>
-                                            <td id="form-description-table"></td>
+                                            <td id="form-description-table"><?php if(isset($vars[0])){echo $vars[0]["description"];} ?></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -104,6 +115,9 @@ if (isset($session->email)) {
                                 </div>
                                 <div class="modal-body">
                                     <h4 style="text-align: center;">¿Realmente desea eliminar el curso seleccionado?</h4>
+                                    <p>Consejos:
+                                    <li>Verificar bien, si es el curso que realmente desea eliminar</li>
+                                    <li>El curso puede ser restaurado con servicio t&eacute;cnico</li></p>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
