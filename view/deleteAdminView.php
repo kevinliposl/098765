@@ -30,21 +30,62 @@ if (isset($session->email)) {
                                 <label for="form-id">Administradores:</label>
                                 <select id="form-admin" class="selectpicker form-control" data-live-search="true">
                                     <option data-tokens="">Seleccione un Administrador</option>
-                                        <?php foreach ($vars as $var) { 
-                                                if (isset($var["identification"])){?>
+                                    <?php
+                                    foreach ($vars as $var) {
+                                        if (isset($var["identification"])) {
+                                            ?>
                                             <option value=" <?php echo $var["identification"] ?> " data-tokens="">
-                                            <?php echo $var["identification"]." | ". $var["name"] . " " . $var["first_lastname"] . " " . $var["second_lastname"];?>
+                                                <?php echo $var["identification"] . " | " . $var["name"] . " " . $var["first_lastname"] . " " . $var["second_lastname"]; ?>
                                             </option>
-                                        <?php }} ?>
+                                        <?php }
+                                    }
+                                    ?>
                                 </select>
                             </div>
                             <br>
-                            <div class="col_full">
-                                <label for="form-id">Cedula:</label>
-                                <input type="text" id="form-id" readonly class="form-control"/>
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped">
+                                    <h5 style="text-align: center;">Informaci&oacute;n del Curso</h5>
+                                    <colgroup>
+                                        <col class="col-xs-3">
+                                        <col class="col-xs-8">
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <code>Cedula</code>
+                                            </td>
+                                            <td id="form-id-table"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <code>Correo</code>
+                                            </td>
+                                            <td id="form-email-table"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <code>Nombre</code>
+                                            </td>
+                                            <td id="form-name-table"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <code>Primer Apellido</code>
+                                            </td>
+                                            <td id="form-firstLastName-table"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <code>Segundo Apellido</code>
+                                            </td>
+                                            <td id="form-secondLastName-table"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                             <div class="col_full nobottommargin">
-                                <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" data-target="#myModal">Eliminar</a>
+                                <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" style="display : block; text-align: center;" data-target="#myModal">Eliminar</a>
                                 <input type="hidden" id="warning" value="w"/>
                                 <input type="hidden" id="success" value="s"/>
                                 <input type="hidden" id="failed" value="f"/>
@@ -87,7 +128,11 @@ if (isset($session->email)) {
             "id": $("#form-admin").val()
         };
         $.post("?controller=Admin&action=selectAdmin", parameters, function (data) {
-            $("#form-id").val(data.identification);
+            
+            alert(data);
+            $("#form-id-table").html(data.identification);
+            $("#form-name-table").html(data.name);
+            $("#form-email-table").html(data.email);
 
             $("#success").attr({
                 "data-notify-type": "success",

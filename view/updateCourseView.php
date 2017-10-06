@@ -68,7 +68,7 @@ if (isset($session->email)) {
                         <div class="modal-body">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <button type="button" class="close" data-dismiss="modal" value="as" aria-hidden="true">&times;</button>
                                     <h4 class="modal-title" id="myModalLabel">¡Aviso!</h4>
                                 </div>
                                 <div class="modal-body">
@@ -141,7 +141,7 @@ if (isset($session->email)) {
 
         if (true) {
             var parameters = {
-                "id": $("#form-courses").val(),
+                "id": $("#form-courses").val().trim(),
                 "name": $("#form-name").val().trim(),
                 "description": $("#form-description").val().trim(),
                 "instrument": $("#form-instrument").val().trim()
