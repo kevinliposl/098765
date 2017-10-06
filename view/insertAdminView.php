@@ -52,12 +52,11 @@ if (isset($session->email)) {
                             </div>
 
                             <div class="col_full nobottommargin">
-                                <input type="button" class="button button-3d button-black nomargin" id="form-submit" value="Registrar"/>
+                                <a id="form-submit" class="button button-3d button-black nomargin" data-target="" data-toggle="modal">Insertar</a>
                                 <input type="hidden" id="warning" value="w"/>
                                 <input type="hidden" id="success" value="s"/>
                                 <input type="hidden" id="failed" value="f"/>
                             </div>
-                            <div id="message"></div>
                         </form>
                     </div>
                 </div>
@@ -65,10 +64,33 @@ if (isset($session->email)) {
         </div>
 </section><!-- #content end -->
 
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-body">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">¡Aviso!</h4>
+                </div>
+                <div class="modal-body">
+                    <h4 style="text-align: center;">¿Realmente desea insertar este Administrador?</h4>
+                    <p>Consejos:
+                    <li>Verificar bien, si es el estudiante que realmente desea eliminar</li>
+                    <li>El estudiante puede ser restaurado con servicio t&eacute;cnico</li></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <input type="button" class="btn btn-primary button-black nomargin" id="form-submity" value="Eliminar"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script>
-    $("#form-submit").click(function () {
 
+    //Open Modal
+    $("#form-submit").click(function () {
         var i;
         var flag = true;
         var form = document.getElementById("form");
@@ -78,42 +100,46 @@ if (isset($session->email)) {
                 $("#failed").attr({
                     "data-notify-type": "error",
                     "data-notify-msg": "<i class=icon-remove-sign></i> Formulario incompleto. Complete e intente de nuevo!",
-                    "data-notify-position":"bottom-full-width"
+                    "data-notify-position": "bottom-full-width"
                 });
                 SEMICOLON.widget.notifications($("#failed"));
                 flag = false;
             }
         }
-
         if (flag) {
-            var parameters = {
-                "id": $("#form-id").val().trim(),
-                "email": $("#form-email").val().trim(),
-                "name": $("#form-name").val().trim(),
-                "firstLastName": $("#form-firstLastName").val().trim(),
-                "secondLastName": $("#form-secondLastName").val().trim()
-            };
-            $.post("?controller=Admin&action=insertAdmin", parameters, function (data) {
-                if (data.result === "1") {
-                    $("#success").attr({
-                        "data-notify-type": "success",
-                        "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!",
-                        "data-notify-position":"bottom-full-width"
-                    });
-                    SEMICOLON.widget.notifications($("#success"));
-                } else {
-                    $("#warning").attr({
-                        "data-notify-type": "warning",
-                        "data-notify-msg": "<i class=icon-warning-sign></i> El Administrador ya existe en el Sistema!",
-                        "data-notify-position":"bottom-full-width"
-                    });
-                    SEMICOLON.widget.notifications($("#warning"));
-                }
-                ;
-            }, "json");
+            $('#form-submit').attr('data-target', '#myModal');
         }
-    }
-    );
+    });
+
+    //Insert
+    $("#form-submity").click(function () {
+        var parameters = {
+            "id": $("#form-id").val().trim(),
+            "email": $("#form-email").val().trim(),
+            "name": $("#form-name").val().trim(),
+            "firstLastName": $("#form-firstLastName").val().trim(),
+            "secondLastName": $("#form-secondLastName").val().trim()
+        };
+
+        $.post("?controller=Admin&action=insertAdmin", parameters, function (data) {
+            if (data.result === "1") {
+                $("#success").attr({
+                    "data-notify-type": "success",
+                    "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!",
+                    "data-notify-position": "bottom-full-width"
+                });
+                SEMICOLON.widget.notifications($("#success"));
+            } else {
+                $("#warning").attr({
+                    "data-notify-type": "warning",
+                    "data-notify-msg": "<i class=icon-warning-sign></i> El Administrador ya existe en el Sistema!",
+                    "data-notify-position": "bottom-full-width"
+                });
+                SEMICOLON.widget.notifications($("#warning"));
+            }
+            ;
+        }, "json");
+    });
 </script>
 
 <!-- End Content

@@ -29,19 +29,22 @@ if (isset($session->email)) {
                             <div class="white-section">
                                 <label for="form-id">Administradores:</label>
                                 <select id="form-admin" class="selectpicker form-control" data-live-search="true">
-                                    <?php foreach ($vars as $var) { ?>
-                                        <option value="<?php echo $var["identification"] ?>" data-tokens="">
-                                            <?php echo "Nombre: " . $var["name"] . " " . $var["first_lastname"] . " " . $var["second_lastname"]; ?></option>
-                                    <?php } ?>
+                                    <option data-tokens="">Seleccione un Administrador</option>
+                                        <?php foreach ($vars as $var) { 
+                                                if (isset($var["identification"])){?>
+                                            <option value=" <?php echo $var["identification"] ?> " data-tokens="">
+                                            <?php echo $var["identification"]." | ". $var["name"] . " " . $var["first_lastname"] . " " . $var["second_lastname"];?>
+                                            </option>
+                                        <?php }} ?>
                                 </select>
                             </div>
                             <br>
                             <div class="col_full">
                                 <label for="form-id">Cedula:</label>
-                                <input type="text" id="form-id" readonly class="form-control" value="<?php echo $vars[0]["identification"] ?>"/>
+                                <input type="text" id="form-id" readonly class="form-control"/>
                             </div>
                             <div class="col_full nobottommargin">
-                                <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" data-target="#myModal" id="next">Eliminar</a>
+                                <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" data-target="#myModal">Eliminar</a>
                                 <input type="hidden" id="warning" value="w"/>
                                 <input type="hidden" id="success" value="s"/>
                                 <input type="hidden" id="failed" value="f"/>
@@ -52,6 +55,7 @@ if (isset($session->email)) {
             </div>
         </div>
 </section><!-- #content end -->
+
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-body">
