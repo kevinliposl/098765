@@ -78,10 +78,36 @@ if (isset($session->email)) {
                                     </tbody>
                                 </table>
                             </div>
+                            <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" data-target="#myModal" id="next" data-target="" style="display: none; text-align: center;">Eliminar</a>
                             <input type="hidden" id="warning" value="w"/>
                             <input type="hidden" id="success" value="s"/>
                             <input type="hidden" id="failed" value="f"/>
                         </form>
+                    </div>
+                </div>
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-body">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title" id="myModalLabel">¡Aviso!</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <h4 style="text-align: center;">¿Realmente desea eliminar este Estudiante?</h4>
+                                    <p>Consejos:
+                                    <li>Verificar bien, si es el estudiante que realmente desea eliminar</li>
+                                    <li>El estudiante puede ser restaurado con servicio t&eacute;cnico</li></p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                    <input type="button" class="btn btn-primary" button-black nomargin id="form-submity" value="Eliminar"/>
+                                    <input type="hidden" id="warning" value="w"/>
+                                    <input type="hidden" id="success" value="s"/>
+                                    <input type="hidden" id="failed" value="f"/>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -99,64 +125,40 @@ if (isset($session->email)) {
                 document.getElementById("form-lastName-table").innerHTML = data.first_lastname + " " + data.second_lastname;
                 document.getElementById("form-phones-table").innerHTML = data.phoneOne + ", " + data.phoneTwo;
                 document.getElementById("form-email-table").innerHTML = data.email;
-
-                $("#success").attr({
-                    "data-notify-type": "success",
-                    "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!",
-                    "data-notify-position": "bottom-full-width"
-                });
-                SEMICOLON.widget.notifications($("#success"));
+                document.getElementById("form-submit").style.display = "block";
             }, "json");
+        } else {
+            document.getElementById("form-submit").style.display = "none";
         }
-    });
-
-
-</script>
+    });</script>
 
 <script>
 
-    $("#form-submit").click(function () {
+    function Redirect() {
+        window.location = "?controller=Student&action=deleteStudent";
+    }
 
-        var i;
-        var flag = true;
-        var form = document.getElementById("form");
-        var len = form.elements.length - 1;
-        for (i = 0; i < len; i++) {
-            if (form.elements[i].value.trim().split(" ", 10).length > 1 || form.elements[i].value.trim().length <= 0) {
-                $("#failed").attr({
-                    "data-notify-type": "error",
-                    "data-notify-msg": "<i class=icon-remove-sign></i> Formulario incompleto. Complete e intente de nuevo!"
+    $("#form-submity").click(function () {
+        var parameters = {
+            "id": $("#form-student").val()
+        };
+        $.post("?controller=Student&action=deleteStudent", parameters, function (data) {
+            if (data.result === "1") {
+                $("#success").attr({
+                    "data-notify-type": "success",
+                    "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!"
                 });
-                SEMICOLON.widget.notifications($("#failed"));
-                flag = false;
+                SEMICOLON.widget.notifications($("#success"));
+                setTimeout('Redirect()', 1000);
+            } else {
+                $("#warning").attr({
+                    "data-notify-type": "warning",
+                    "data-notify-msg": "<i class=icon-warning-sign></i> El Estudiante no se pudo eliminar!"
+                });
+                SEMICOLON.widget.notifications($("#warning"));
             }
-        }
-
-        if (flag) {
-            var parameters = {
-                "id": $("#form-id").val().trim(),
-                "email": $("#form-email").val().trim(),
-                "name": $("#form-name").val().trim(),
-                "firstLastName": $("#form-firstLastName").val().trim(),
-                "secondLastName": $("#form-secondLastName").val().trim()
-            };
-            $.post("?controller=Admin&action=insertAdmin", parameters, function (data) {
-                if (data.result === "1") {
-                    $("#success").attr({
-                        "data-notify-type": "success",
-                        "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!"
-                    });
-                    SEMICOLON.widget.notifications($("#success"));
-                } else {
-                    $("#warning").attr({
-                        "data-notify-type": "warning",
-                        "data-notify-msg": "<i class=icon-warning-sign></i> El Administrador ya existe en el Sistema!"
-                    });
-                    SEMICOLON.widget.notifications($("#warning"));
-                }
-                ;
-            }, "json");
-        }
+            ;
+        }, "json");
     }
     );
 </script>

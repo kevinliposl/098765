@@ -41,4 +41,14 @@ class AdminController {
         echo json_encode($result);
     }
 
+    public function deleteAdmin() {
+        require 'model/AdminModel.php';
+        $model = new AdminModel();
+
+        $id = $_POST["id"];
+
+        $result = $model->deleteAdmin($id);
+        echo json_encode($result);
+    }
+
 }

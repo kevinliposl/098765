@@ -362,7 +362,7 @@ if (isset($session->email)) {
                 } else {
                     $("#warning").attr({
                         "data-notify-type": "warning",
-                        "data-notify-msg": "<i class=icon-warning-sign></i> El Administrador ya existe en el Sistema!"
+                        "data-notify-msg": "<i class=icon-warning-sign></i> Ese estudiante ya existe!"
                     });
                     SEMICOLON.widget.notifications($("#warning"));
                 }

@@ -35,7 +35,7 @@ class UserController {
         $password = $_POST["password"];
 
         $result = $model->insertUser($email, $name, $lastname, $address, $password);
-        echo json_encode(array("result" => $result));
+        echo json_encode(array("result" => "1"));
     }
 
     public function deleteUser() {
