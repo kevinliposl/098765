@@ -66,6 +66,7 @@
                                             <ul>
                                                 <li><a href="?controller=Course&action=defaultInsertCourse"><div>Insertar Curso</div></a></li> 
                                                 <li><a href="?controller=Course&action=defaultDeleteCourse"><div>Eliminar Curso</div></a></li> 
+                                                 <li><a href="?controller=Course&action=defaultUpdateCourse"><div>Actualizar Curso</div></a></li> 
                                             </ul>
                                         </li>
                                         <li><a href="#"><div>CRUD Profesor</div></a>
