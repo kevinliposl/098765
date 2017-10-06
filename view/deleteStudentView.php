@@ -126,12 +126,6 @@ if (isset($session->email)) {
                 document.getElementById("form-phones-table").innerHTML = data.phoneOne + ", " + data.phoneTwo;
                 document.getElementById("form-email-table").innerHTML = data.email;
                 document.getElementById("form-submit").style.display = "block";
-                $("#success").attr({
-                    "data-notify-type": "success",
-                    "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!",
-                    "data-notify-position": "bottom-full-width"
-                });
-                SEMICOLON.widget.notifications($("#success"));
             }, "json");
         } else {
             document.getElementById("form-submit").style.display = "none";
