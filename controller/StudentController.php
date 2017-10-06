@@ -29,6 +29,7 @@ class StudentController {
             echo json_encode($result);
         }
     }
+
     public function updateStudent() {
         require 'model/StudentModel.php';
         if (!isset($_POST["id"]) && !isset($_POST["email"])) {
@@ -38,7 +39,8 @@ class StudentController {
         } else {
             $model = new StudentModel();
 //            $result = $model->deleteStudent($_POST['id']);
-//            echo json_encode($result);
+            $result = array("result" => "1");
+            echo json_encode($result);
         }
     }
 
@@ -49,15 +51,6 @@ class StudentController {
         $id = $_POST["id"];
 
         $result = $model->selectStudent($id);
-        echo json_encode($result);
-    }
-    public function selectStudentContact() {
-        require 'model/StudentModel.php';
-        $model = new StudentModel();
-
-        $id = $_POST["id"];
-
-        $result = $model->selectStudentContact($id);
         echo json_encode($result);
     }
 

@@ -52,14 +52,13 @@ if (isset($session->email)) {
                                     <h4 class="modal-title" id="myModalLabel">¡Aviso!</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <h4 style="text-align: center;">¿Realmente desea eliminar este Estudiante?</h4>
+                                    <h4 style="text-align: center;">¿Realmente desea actualizar los datos de este Estudiante?</h4>
                                     <p>Consejos:
-                                    <li>Verificar bien, si es el estudiante que realmente desea eliminar</li>
-                                    <li>El estudiante puede ser restaurado con servicio t&eacute;cnico</li></p>
+                                    <li>Verificar bien, si es el estudiante que realmente desea actualizar</li>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                                    <input type="button" class="btn btn-primary" button-black nomargin id="form-submity" value="Eliminar"/>
+                                    <input type="button" class="btn btn-primary" button-black nomargin id="form-submity" value="Actualizar"/>
                                     <input type="hidden" id="warning" value="w"/>
                                     <input type="hidden" id="success" value="s"/>
                                     <input type="hidden" id="failed" value="f"/>
@@ -78,6 +77,12 @@ if (isset($session->email)) {
                         <td width="15%">Identificaci&oacute;n</td>
                         <td width="55%">
                             <a id="form-id" href="#" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese la identificación"></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Tipo de Identificaci&oacute;n</td>
+                        <td>
+                            <a id="form-id-type" class="bt-editable" href="#" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el tipo de identificación"></a>
                         </td>
                     </tr>
                     <tr>
@@ -174,6 +179,7 @@ if (isset($session->email)) {
             };
             $.post("?controller=Student&action=selectStudent", parameters, function (data) {
                 document.getElementById("form-id").innerHTML = data.identification;
+                document.getElementById("form-id-type").innerHTML = data.id_type;
                 document.getElementById("form-name").innerHTML = data.name;
                 document.getElementById("form-first-lastName").innerHTML = data.first_lastname;
                 document.getElementById("form-second-lastName").innerHTML = data.second_lastname;
@@ -197,14 +203,29 @@ if (isset($session->email)) {
 <script>
 
     function Redirect() {
-        window.location = "?controller=Student&action=deleteStudent";
+        window.location = "?controller=Student&action=updateStudent";
     }
 
     $("#form-submity").click(function () {
         var parameters = {
-            "id": $("#form-student").val()
+            "id": $("#form-id").val().trim(),
+            "idType": $("#form-id-type").val().trim(),
+            "email": $("#form-email").val().trim(),
+            "name": $("#form-name").val().trim(),
+            "firstLastName": $("#form-first-lastName").val().trim(),
+            "secondLastName": $("#form-second-lastName").val().trim(),
+            "age": $("#form-age").val().trim(),
+            "address": $("#form-address").val().trim(),
+            "gender": $("#form-gender").val().trim(),
+            "nationality": $("#form-nationality").val().trim(),
+            "phoneOne": $("#form-phone1").val().trim(),
+            "phoneTwo": $("#form-phone2").val().trim(),
+            "contactName": $("#form-contact-name").val().trim(),
+            "contactRelationship": $("#form-relationship").val().trim(),
+            "contactPhone": $("#form-contact-phone").val().trim(),
+            "contactEmail": $("#form-contact-email").val().trim()
         };
-        $.post("?controller=Student&action=deleteStudent", parameters, function (data) {
+        $.post("?controller=Student&action=updateStudent", parameters, function (data) {
             if (data.result === "1") {
                 $("#success").attr({
                     "data-notify-type": "success",
