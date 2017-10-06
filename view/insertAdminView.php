@@ -52,7 +52,7 @@ if (isset($session->email)) {
                             </div>
 
                             <div class="col_full nobottommargin">
-                                <a id="form-submit" class="button button-3d button-black nomargin" data-target="" data-toggle="modal">Insertar</a>
+                                <a id="form-submit" class="button button-3d button-black nomargin" style="display: block; text-align: center;" data-target="" data-toggle="modal">Insertar</a>
                                 <input type="hidden" id="warning" value="w"/>
                                 <input type="hidden" id="success" value="s"/>
                                 <input type="hidden" id="failed" value="f"/>
@@ -75,12 +75,12 @@ if (isset($session->email)) {
                 <div class="modal-body">
                     <h4 style="text-align: center;">¿Realmente desea insertar este Administrador?</h4>
                     <p>Consejos:
-                    <li>Verificar bien, si es el estudiante que realmente desea eliminar</li>
-                    <li>El estudiante puede ser restaurado con servicio t&eacute;cnico</li></p>
+                    <li>Revisar que todos los campos tengan la informaci&oacute;n correcta</li>
+                    </p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    <input type="button" class="btn btn-primary button-black nomargin" id="form-submity" value="Eliminar"/>
+                    <input type="button" class="btn btn-primary button-black nomargin" id="form-submity" value="Insertar"/>
                 </div>
             </div>
         </div>
@@ -129,6 +129,7 @@ if (isset($session->email)) {
                     "data-notify-position": "bottom-full-width"
                 });
                 SEMICOLON.widget.notifications($("#success"));
+                location.href = "?controller=Admin&action=insert";
             } else {
                 $("#warning").attr({
                     "data-notify-type": "warning",
