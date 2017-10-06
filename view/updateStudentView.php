@@ -106,7 +106,7 @@ if (isset($session->email)) {
                     <tr>
                         <td>G&eacute;nero</td>
                         <td>
-                            <a id="form-gender" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el g&eacute;nero (M: Masculino, F: Femenino)"></a>
+                            <a id="form-gender" href="#" class="bt-group" data-type="select" data-pk="1" data-value="" data-title="Seleccione el género"></a>
                         </td>
                     </tr>
                     <tr>
@@ -136,7 +136,7 @@ if (isset($session->email)) {
                     <tr>
                         <td>Fecha de Nacimiento</td>
                         <td>
-                            <a id="form-age" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese la fecha de nacimiento"></a>
+                            <a id="form-age" href="#" class="bt-editable" data-type="combodate" data-value="1984-05-15" data-format="YYYY-MM-DD" data-viewformat="DD/MM/YYYY" data-template="D / MMM / YYYY" data-pk="1"  data-title="Ingrese la fecha de nacimiento"></a>
                         </td>
                     </tr>
                     <tr>
@@ -209,22 +209,22 @@ if (isset($session->email)) {
 
     $("#form-submity").click(function () {
         var parameters = {
-            "id": $("#form-id").val().trim(),
-            "idType": $("#form-id-type").val().trim(),
-            "email": $("#form-email").val().trim(),
-            "name": $("#form-name").val().trim(),
-            "firstLastName": $("#form-first-lastName").val().trim(),
-            "secondLastName": $("#form-second-lastName").val().trim(),
-            "age": $("#form-age").val().trim(),
-            "address": $("#form-address").val().trim(),
-            "gender": $("#form-gender").val().trim(),
-            "nationality": $("#form-nationality").val().trim(),
-            "phoneOne": $("#form-phone1").val().trim(),
-            "phoneTwo": $("#form-phone2").val().trim(),
-            "contactName": $("#form-contact-name").val().trim(),
-            "contactRelationship": $("#form-relationship").val().trim(),
-            "contactPhone": $("#form-contact-phone").val().trim(),
-            "contactEmail": $("#form-contact-email").val().trim()
+            "id": document.getElementById("form-id").innerHTML.trim(),
+            "idType": document.getElementById("form-id-type").innerHTML.trim(),
+            "email": document.getElementById("form-email").innerHTML.trim(),
+            "name": document.getElementById("form-name").innerHTML.trim(),
+            "firstLastName": document.getElementById("form-first-lastName").innerHTML.trim(),
+            "secondLastName": document.getElementById("form-second-lastName").innerHTML.trim(),
+            "age": document.getElementById("form-age").innerHTML.trim(),
+            "address": " ",
+            "gender": document.getElementById("form-gender").innerHTML.trim(),
+            "nationality": document.getElementById("form-nationality").innerHTML.trim(),
+            "phoneOne": document.getElementById("form-phone1").innerHTML.trim(),
+            "phoneTwo": document.getElementById("form-phone2").innerHTML.trim(),
+            "contactName": document.getElementById("form-contact-name").innerHTML.trim(),
+            "contactRelationship": document.getElementById("form-relationship").innerHTML.trim(),
+            "contactPhone": document.getElementById("form-contact-phone").innerHTML.trim(),
+            "contactEmail": document.getElementById("form-contact-email").innerHTML.trim()
         };
         $.post("?controller=Student&action=updateStudent", parameters, function (data) {
             if (data.result === "1") {
@@ -274,10 +274,8 @@ if (isset($session->email)) {
         $('.bt-group').editable({
             showbuttons: false,
             source: [
-                {value: 1, text: 'Service'},
-                {value: 2, text: 'Admin'},
-                {value: 3, text: 'Support'},
-                {value: 4, text: 'Customer'}
+                {value: 1, text: 'M'},
+                {value: 2, text: 'F'}
             ],
         });
 
