@@ -52,14 +52,13 @@ if (isset($session->email)) {
                                     <h4 class="modal-title" id="myModalLabel">¡Aviso!</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <h4 style="text-align: center;">¿Realmente desea eliminar este Estudiante?</h4>
+                                    <h4 style="text-align: center;">¿Realmente desea actualizar los datos de este Estudiante?</h4>
                                     <p>Consejos:
-                                    <li>Verificar bien, si es el estudiante que realmente desea eliminar</li>
-                                    <li>El estudiante puede ser restaurado con servicio t&eacute;cnico</li></p>
+                                    <li>Verificar bien, si es el estudiante que realmente desea actualizar</li>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                                    <input type="button" class="btn btn-primary" button-black nomargin id="form-submity" value="Eliminar"/>
+                                    <input type="button" class="btn btn-primary" button-black nomargin id="form-submity" value="Actualizar"/>
                                     <input type="hidden" id="warning" value="w"/>
                                     <input type="hidden" id="success" value="s"/>
                                     <input type="hidden" id="failed" value="f"/>
