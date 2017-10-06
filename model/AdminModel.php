@@ -23,6 +23,13 @@ class AdminModel {
         return $result;
     }
 
+        public function deleteAdmin($id) {
+        $query = $this->db->prepare("call sp_delete_admin('$id')");
+        $query->execute();
+        $result = $query->fetch();
+        return $result;
+    }
+    
     public function selectAllAdmin() {
         $query = $this->db->prepare("call sp_select_all_admin()");
         $query->execute();

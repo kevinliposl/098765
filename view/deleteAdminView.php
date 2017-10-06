@@ -31,123 +31,94 @@ if (isset($session->email)) {
                                 <select id="form-admin" class="selectpicker form-control" data-live-search="true">
                                     <?php foreach ($vars as $var) { ?>
                                         <option value="<?php echo $var["identification"] ?>" data-tokens="">
-                                            <?php echo $var["name"] . " " . $var["first_lastname"]. " " . $var["second_lastname"]; ?></option>
+                                            <?php echo "Nombre: " . $var["name"] . " " . $var["first_lastname"] . " " . $var["second_lastname"]; ?></option>
                                     <?php } ?>
                                 </select>
                             </div>
                             <br>
                             <div class="col_full">
                                 <label for="form-id">Cedula:</label>
-                                <input type="text" id="form-id" class="form-control" maxlength="9" minlength="9"/>
+                                <input type="text" id="form-id" readonly class="form-control" value="<?php echo $vars[0]["identification"] ?>"/>
                             </div>
-
-                            <div class="col_full">
-                                <label for="form-email">Correo Electronico:</label>
-                                <input type="email" id="form-email" class="form-control" required/>
-                            </div>
-
-                            <div class="col_full">
-                                <label for="form-name">Nombre:</label>
-                                <input type="text" id="form-name" class="form-control" required/>
-                            </div>
-
-                            <div class="col_full">
-                                <label for="form-firstlastname">Primer Apellido:</label>
-                                <input type="text" id="form-firstLastName"class="form-control" required/>
-                            </div>
-
-                            <div class="col_full">
-                                <label for="form-secondlastname">Segundo Apellido:</label>
-                                <input type="text" id="form-secondLastName"class="form-control" required />
-                            </div>
-
                             <div class="col_full nobottommargin">
-                                <input type="button" class="button button-3d button-black nomargin" id="form-submit" value="Eliminar"/>
+                                <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" data-target="#myModal" id="next">Eliminar</a>
                                 <input type="hidden" id="warning" value="w"/>
                                 <input type="hidden" id="success" value="s"/>
                                 <input type="hidden" id="failed" value="f"/>
                             </div>
-                            <div id="message"></div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
 </section><!-- #content end -->
-
-
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-body">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">¡Aviso!</h4>
+                </div>
+                <div class="modal-body">
+                    <h4 style="text-align: center;">¿Realmente desea eliminar este Estudiante?</h4>
+                    <p>Consejos:
+                    <li>Verificar bien, si es el estudiante que realmente desea eliminar</li>
+                    <li>El estudiante puede ser restaurado con servicio t&eacute;cnico</li></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <input type="button" class="btn btn-primary" button-black nomargin id="form-submity" value="Eliminar"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script>
 
+    //Change Combobox
     $("#form-admin").change(function () {
         var parameters = {
             "id": $("#form-admin").val()
         };
         $.post("?controller=Admin&action=selectAdmin", parameters, function (data) {
             $("#form-id").val(data.identification);
-            $("#form-email").val(data.email);
-            $("#form-name").val(data.name);
-            $("#form-firstLastName").val(data.first_lastname);
-            $("#form-secondLastName").val(data.second_lastname);
-            
+
             $("#success").attr({
                 "data-notify-type": "success",
                 "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!",
-                "data-notify-position":"bottom-full-width"
+                "data-notify-position": "bottom-full-width"
             });
             SEMICOLON.widget.notifications($("#success"));
         }, "json");
     });
 
-
-</script>
-
-<script>
-
+    //Open Modal
     $("#form-submit").click(function () {
+        $('#form-submit').attr('data-target', '#myModal');
+    });
 
-        var i;
-        var flag = true;
-        var form = document.getElementById("form");
-        var len = form.elements.length - 1;
-        for (i = 0; i < len; i++) {
-            if (form.elements[i].value.trim().split(" ", 10).length > 1 || form.elements[i].value.trim().length <= 0) {
-                $("#failed").attr({
-                    "data-notify-type": "error",
-                    "data-notify-msg": "<i class=icon-remove-sign></i> Formulario incompleto. Complete e intente de nuevo!"
+    //Delete 
+    $("#form-submity").click(function () {
+        var parameters = {
+            "id": $("#form-admin").val()
+        };
+        $.post("?controller=Admin&action=deleteAdmin", parameters, function (data) {
+            if (data.result === "1") {
+                $("#success").attr({
+                    "data-notify-type": "success",
+                    "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!",
+                    "data-notify-position": "bottom-full-width"
                 });
-                SEMICOLON.widget.notifications($("#failed"));
-                flag = false;
-            }
-        }
+                SEMICOLON.widget.notifications($("#success"));
+            } else {
 
-        if (flag) {
-            var parameters = {
-                "id": $("#form-id").val().trim(),
-                "email": $("#form-email").val().trim(),
-                "name": $("#form-name").val().trim(),
-                "firstLastName": $("#form-firstLastName").val().trim(),
-                "secondLastName": $("#form-secondLastName").val().trim()
-            };
-            $.post("?controller=Admin&action=insertAdmin", parameters, function (data) {
-                if (data.result === "1") {
-                    $("#success").attr({
-                        "data-notify-type": "success",
-                        "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!"
-                    });
-                    SEMICOLON.widget.notifications($("#success"));
-                } else {
-                    $("#warning").attr({
-                        "data-notify-type": "warning",
-                        "data-notify-msg": "<i class=icon-warning-sign></i> El Administrador ya existe en el Sistema!"
-                    });
-                    SEMICOLON.widget.notifications($("#warning"));
-                }
-                ;
-            }, "json");
-        }
-    }
-    );
+
+            }
+        }, "json");
+    });
+
 </script>
 
 <!-- End Content
