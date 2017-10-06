@@ -320,17 +320,6 @@ if (isset($session->email)) {
         var i;
         var flag = true;
         var form = document.getElementById("form-insert-student");
-        var len = form.elements.length;
-        for (i = 0; i < len; i++) {
-            if (form.elements[i].value.trim().split(" ", 10).length > 1 || form.elements[i].value.trim().length <= 0) {
-                $("#failed").attr({
-                    "data-notify-type": "error",
-                    "data-notify-msg": "<i class=icon-remove-sign></i> Formulario incompleto. Complete e intente de nuevo!"
-                });
-                SEMICOLON.widget.notifications($("#failed"));
-                flag = false;
-            }
-        }
 
         if (flag) {
             var parameters = {
