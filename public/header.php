@@ -78,7 +78,9 @@
                                         </li>
                                         <li><a href="#"><div>CRUD Profesor</div></a>
                                             <ul>
-                                                <li><a href="?controller=Admin&action=insertTeacherView"><div>Insertar Profesor</div></a></li> 
+                                                <li><a href="?controller=Professor&action=updateProfessor"><div>Actualizar Profesor</div></a></li> 
+                                                <li><a href="?controller=Professor&action=insertProfessor"><div>Insertar Profesor</div></a></li> 
+                                                <li><a href="?controller=Professor&action=deleteProfessor"><div>Eliminar Profesor</div></a></li>
                                             </ul>
                                         </li>
                                         <li><a href="#"><div>CRUD Estudiante</div></a>
