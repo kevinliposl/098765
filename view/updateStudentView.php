@@ -80,6 +80,12 @@ if (isset($session->email)) {
                         </td>
                     </tr>
                     <tr>
+                        <td>Tipo de Identificaci&oacute;n</td>
+                        <td>
+                            <a id="form-id-type" class="bt-editable" href="#" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el tipo de identificación"></a>
+                        </td>
+                    </tr>
+                    <tr>
                         <td>Nombre</td>
                         <td>
                             <a id="form-name" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el nombre"></a>
@@ -173,6 +179,7 @@ if (isset($session->email)) {
             };
             $.post("?controller=Student&action=selectStudent", parameters, function (data) {
                 document.getElementById("form-id").innerHTML = data.identification;
+                document.getElementById("form-id-type").innerHTML = data.id_type;
                 document.getElementById("form-name").innerHTML = data.name;
                 document.getElementById("form-first-lastName").innerHTML = data.first_lastname;
                 document.getElementById("form-second-lastName").innerHTML = data.second_lastname;
@@ -196,14 +203,29 @@ if (isset($session->email)) {
 <script>
 
     function Redirect() {
-        window.location = "?controller=Student&action=deleteStudent";
+        window.location = "?controller=Student&action=updateStudent";
     }
 
     $("#form-submity").click(function () {
         var parameters = {
-            "id": $("#form-student").val()
+            "id": $("#form-id").val().trim(),
+            "idType": $("#form-id-type").val().trim(),
+            "email": $("#form-email").val().trim(),
+            "name": $("#form-name").val().trim(),
+            "firstLastName": $("#form-first-lastName").val().trim(),
+            "secondLastName": $("#form-second-lastName").val().trim(),
+            "age": $("#form-age").val().trim(),
+            "address": $("#form-address").val().trim(),
+            "gender": $("#form-gender").val().trim(),
+            "nationality": $("#form-nationality").val().trim(),
+            "phoneOne": $("#form-phone1").val().trim(),
+            "phoneTwo": $("#form-phone2").val().trim(),
+            "contactName": $("#form-contact-name").val().trim(),
+            "contactRelationship": $("#form-relationship").val().trim(),
+            "contactPhone": $("#form-contact-phone").val().trim(),
+            "contactEmail": $("#form-contact-email").val().trim()
         };
-        $.post("?controller=Student&action=deleteStudent", parameters, function (data) {
+        $.post("?controller=Student&action=updateStudent", parameters, function (data) {
             if (data.result === "1") {
                 $("#success").attr({
                     "data-notify-type": "success",
