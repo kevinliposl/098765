@@ -29,7 +29,7 @@ if (isset($session->email)) {
                             <div class="white-section">
                                 <label for="form-id">Cursos:</label>
                                 <select id="form-courses" class="selectpicker form-control" data-live-search="true">
-                                    <?php if(is_array($vars)){ foreach ($vars as $var) { ?>
+                                    <?php if(isset($vars)){ foreach ($vars as $var) { ?>
                                         <option value="<?php echo $var["id"] ?>" data-tokens="">
                                             <?php echo $var["Course"]; ?></option>
                                     <?php } }?>
@@ -49,7 +49,7 @@ if (isset($session->email)) {
                                             <td>
                                                 <code>Siglas</code>
                                             </td>
-                                            <td id="form-initials-table"><?php if(is_array($vars)){echo $vars[0]["Course"];} ?></td>
+                                            <td id="form-initials-table"><?php if(isset($vars[0])){echo $vars[0]["Course"];} ?></td>
                                         </tr>
                                         <tr>
                                             <td>
@@ -74,7 +74,7 @@ if (isset($session->email)) {
                             </div>
 
                             <div class="col_full nobottommargin">
-                                <input type="button" class="button button-3d button-black nomargin" data-toggle="modal" id="delete" data-target="" onclick="" value="Eliminar"/>
+                                <input type="button" class="button button-3d button-black nomargin" data-toggle="modal" id="delete" data-target="" value="Eliminar"/>
                             </div>
                             
                             <div id="message"></div>
