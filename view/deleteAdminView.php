@@ -34,10 +34,11 @@ if (isset($session->email)) {
                                     foreach ($vars as $var) {
                                         if (isset($var["identification"])) {
                                             ?>
-                                            <option value=" <?php echo $var["identification"] ?> " data-tokens="">
+                                            <option value="<?php echo $var["identification"] ?> " data-tokens="">
                                                 <?php echo $var["identification"] . " | " . $var["name"] . " " . $var["first_lastname"] . " " . $var["second_lastname"]; ?>
                                             </option>
-                                        <?php }
+                                            <?php
+                                        }
                                     }
                                     ?>
                                 </select>
@@ -45,7 +46,7 @@ if (isset($session->email)) {
                             <br>
                             <div class="table-responsive">
                                 <table class="table table-bordered table-striped">
-                                    <h5 style="text-align: center;">Informaci&oacute;n del Curso</h5>
+                                    <h5 style="text-align: center;">Informaci&oacute;n del Administrador</h5>
                                     <colgroup>
                                         <col class="col-xs-3">
                                         <col class="col-xs-8">
@@ -85,7 +86,7 @@ if (isset($session->email)) {
                                 </table>
                             </div>
                             <div class="col_full nobottommargin">
-                                <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" style="display : block; text-align: center;" data-target="#myModal">Eliminar</a>
+                                <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" style="display : none; text-align: center;" data-target="#myModal">Eliminar</a>
                                 <input type="hidden" id="warning" value="w"/>
                                 <input type="hidden" id="success" value="s"/>
                                 <input type="hidden" id="failed" value="f"/>
@@ -106,14 +107,14 @@ if (isset($session->email)) {
                     <h4 class="modal-title" id="myModalLabel">¡Aviso!</h4>
                 </div>
                 <div class="modal-body">
-                    <h4 style="text-align: center;">¿Realmente desea eliminar este Estudiante?</h4>
+                    <h4 style="text-align: center;">¿Realmente desea eliminar este Administrador?</h4>
                     <p>Consejos:
-                    <li>Verificar bien, si es el estudiante que realmente desea eliminar</li>
-                    <li>El estudiante puede ser restaurado con servicio t&eacute;cnico</li></p>
+                    <li>Verificar bien, si es el administrador que realmente desea eliminar</li>
+                    <li>El administrador puede ser restaurado con servicio t&eacute;cnico</li></p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    <input type="button" class="btn btn-primary" button-black nomargin id="form-submity" value="Eliminar"/>
+                    <input type="button" class="btn btn-primary button-black nomargin" id="form-submity" value="Eliminar"/>
                 </div>
             </div>
         </div>
@@ -127,19 +128,32 @@ if (isset($session->email)) {
         var parameters = {
             "id": $("#form-admin").val()
         };
-        $.post("?controller=Admin&action=selectAdmin", parameters, function (data) {
-            
-            alert(data);
-            $("#form-id-table").html(data.identification);
-            $("#form-name-table").html(data.name);
-            $("#form-email-table").html(data.email);
 
-            $("#success").attr({
-                "data-notify-type": "success",
-                "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!",
-                "data-notify-position": "bottom-full-width"
-            });
-            SEMICOLON.widget.notifications($("#success"));
+        $.post("?controller=Admin&action=selectAdmin", parameters, function (data) {
+            if (data.identification) {
+                $("#form-id-table").html(data.identification);
+                $("#form-name-table").html(data.name);
+                $("#form-email-table").html(data.email);
+                $("#form-firstLastName-table").html(data.first_lastname);
+                $("#form-secondLastName-table").html(data.second_lastname);
+
+                $("#form-submit").css("display", "block");
+
+                $("#success").attr({
+                    "data-notify-type": "success",
+                    "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!",
+                    "data-notify-position": "bottom-full-width"
+                });
+                SEMICOLON.widget.notifications($("#success"));
+            } else {
+                $("#form-id-table").html("");
+                $("#form-name-table").html("");
+                $("#form-email-table").html("");
+                $("#form-firstLastName-table").html("");
+                $("#form-secondLastName-table").html("");
+                
+                $("#form-submit").css("display", "none");
+            }
         }, "json");
     });
 
