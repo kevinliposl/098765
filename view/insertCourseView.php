@@ -63,6 +63,8 @@ if (isset($session->email)) {
                                 </div>
                                 <div class="modal-body">
                                     <h4 style="text-align: center;">¿Realmente desea registrar el curso?</h4>
+                                    <p>Consejos:
+                                    <li>Revisar que todos los campos tengan la informaci&oacute;n correcta</li></p>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
