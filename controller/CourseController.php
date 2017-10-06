@@ -28,7 +28,8 @@ class CourseController {
     public function defaultDeleteCourse(){
         require 'model/CourseModel.php';
         $model = new CourseModel();
-        $this->view->show("deleteCourseView.php",null);
+        $result = $model->selectAllCourses();
+        $this->view->show("deleteCourseView.php",$result);
     }
 
 

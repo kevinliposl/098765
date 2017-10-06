@@ -75,6 +75,8 @@ if (isset($session->email)) {
         </div>
 </section><!-- #content end -->
 
+
+
 <script>
 
     $("#form-admin").change(function () {
