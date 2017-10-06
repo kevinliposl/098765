@@ -29,10 +29,10 @@ if (isset($session->email)) {
                             <div class="white-section">
                                 <label for="form-id">Cursos:</label>
                                 <select id="form-courses" class="selectpicker form-control" data-live-search="true">
-                                    <?php foreach ($vars as $var) { ?>
+                                    <?php if(is_array($vars)){ foreach ($vars as $var) { ?>
                                         <option value="<?php echo $var["id"] ?>" data-tokens="">
                                             <?php echo $var["Course"]; ?></option>
-                                    <?php } ?>
+                                    <?php } }?>
                                 </select>
                             </div>
                             <br>
@@ -49,7 +49,7 @@ if (isset($session->email)) {
                                             <td>
                                                 <code>Siglas</code>
                                             </td>
-                                            <td id="form-initials-table"><?php echo $vars[0]["Course"] ?></td>
+                                            <td id="form-initials-table"><?php if(is_array($vars)){echo $vars[0]["Course"];} ?></td>
                                         </tr>
                                         <tr>
                                             <td>
