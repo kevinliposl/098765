@@ -151,18 +151,18 @@ if (isset($session->email)) {
         $("#message").html("Processing, please wait...");
         $.post("?controller=Course&action=deleteCourse", parameters, function (data) {
             if (data.result === "1") {
-                    $("#success").attr({
-                        "data-notify-type": "success",
-                        "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!<br><br> Se redirigir&aacute; en breve..."
-                    });
-                    SEMICOLON.widget.notifications($("#success"));
-                    setTimeout('Redirect()', 2000);
+                $("#success").attr({
+                    "data-notify-type": "success",
+                    "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!"
+                });
+                SEMICOLON.widget.notifications($("#success"));
+                setTimeout('Redirect()', 2000);
             } else {
-                    $("#warning").attr({
-                        "data-notify-type": "warning",
-                        "data-notify-msg": "<i class=icon-warning-sign></i> El Administrador ya existe en el Sistema!"
-                    });
-                    SEMICOLON.widget.notifications($("#warning"));
+                $("#warning").attr({
+                    "data-notify-type": "warning",
+                    "data-notify-msg": "<i class=icon-warning-sign></i> No se pudo insertar el curso!"
+                });
+                SEMICOLON.widget.notifications($("#warning"));
             }
             ;
         }, "json");
