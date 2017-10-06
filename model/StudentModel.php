@@ -16,6 +16,13 @@ class StudentModel {
         $query->closeCursor();
         return $result;
     }
+    public function updateStudent($id, $idType, $email, $name, $firstLastName, $secondLastName, $age, $address, $gender, $nationality, $phoneOne, $phoneTwo, $contactName, $contactRelationship, $contactPhone, $contactEmail) {
+        $query = $this->db->prepare("call sp_update_student('$id', '$idType', '$email', '$name', '$firstLastName', '$secondLastName', '$age', '$address', '$gender', '$nationality', '$phoneOne', '$phoneTwo', '$contactName', '$contactRelationship', '$contactPhone', '$contactEmail')");
+        $query->execute();
+        $result = $query->fetch();
+        $query->closeCursor();
+        return $result;
+    }
 
     public function selectAllStudent() {
         $query = $this->db->prepare("call sp_select_all_student()");
