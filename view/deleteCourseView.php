@@ -29,6 +29,7 @@ if (isset($session->email)) {
                             <div class="white-section">
                                 <label for="form-id">Cursos:</label>
                                 <select id="form-courses" class="selectpicker form-control" data-live-search="true">
+                                    <option data-tokens="">Cursos Disponibles</option>
                                     <?php foreach ($vars as $var) { ?>
                                         <option value="<?php echo $var["id"] ?>" data-tokens="">
                                             <?php echo $var["Course"]; ?></option>
@@ -36,6 +37,42 @@ if (isset($session->email)) {
                                 </select>
                             </div>
                             <br>
+                            <div class="acc_content clearfix"></div>
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped">
+                                    <h5 style="text-align: center;">Informaci&oacute;n del Curso</h5>
+                                    <colgroup>
+                                        <col class="col-xs-3">
+                                        <col class="col-xs-8">
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <code>Siglas</code>
+                                            </td>
+                                            <td id="form-initials-table"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <code>Nombre</code>
+                                            </td>
+                                            <td id="form-name-table"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <code>Instrumento</code>
+                                            </td>
+                                            <td id="form-instrument-table"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <code>Descripci&oacute;n</code>
+                                            </td>
+                                            <td id="form-description-table"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
 
                             <div class="col_full nobottommargin">
                                 <input type="button" class="button button-3d button-black nomargin" data-toggle="modal" id="delete" data-target="" onclick="" value="Eliminar"/>
@@ -71,6 +108,36 @@ if (isset($session->email)) {
             </div>
         </div>
 </section><!-- #content end -->
+
+<script>
+    $("#form-courses").change(function () {
+        if ($("#form-courses").val() !== "-1" && $("#form-courses").val() !== "1") {
+            var parameters = {
+                "id": $("#form-courses").val()
+            };
+            $.post("?controller=Course&action=selectCourse", parameters, function (data) {
+                document.getElementById("form-initials-table").innerHTML = data.initials;
+                document.getElementById("form-name-table").innerHTML = data.name;
+                document.getElementById("form-instrument-table").innerHTML = data.instrument;
+                document.getElementById("form-description-table").innerHTML = data.description;
+
+                $("#success").attr({
+                    "data-notify-type": "success",
+                    "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!",
+                    "data-notify-position": "bottom-full-width"
+                });
+                SEMICOLON.widget.notifications($("#success"));
+            }, "json");
+        }else{
+                document.getElementById("form-initials-table").innerHTML = "";
+                document.getElementById("form-name-table").innerHTML = "";
+                document.getElementById("form-instrument-table").innerHTML = "";
+                document.getElementById("form-description-table").innerHTML = "";
+        }
+    });
+
+
+</script>
 
 <script>
     $("#delete").click(function () {
