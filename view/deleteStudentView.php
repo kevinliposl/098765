@@ -149,7 +149,7 @@ if (isset($session->email)) {
                     "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!"
                 });
                 SEMICOLON.widget.notifications($("#success"));
-                setTimeout('Redirect()', 1500);
+                setTimeout('Redirect()', 1000);
             } else {
                 $("#warning").attr({
                     "data-notify-type": "warning",
