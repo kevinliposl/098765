@@ -51,5 +51,14 @@ class StudentController {
         $result = $model->selectStudent($id);
         echo json_encode($result);
     }
+    public function selectStudentContact() {
+        require 'model/StudentModel.php';
+        $model = new StudentModel();
+
+        $id = $_POST["id"];
+
+        $result = $model->selectStudentContact($id);
+        echo json_encode($result);
+    }
 
 }

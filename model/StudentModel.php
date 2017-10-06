@@ -31,6 +31,13 @@ class StudentModel {
         $result = $query->fetch();
         return $result;
     }
+    
+    public function selectStudentContact($id) {
+        $query = $this->db->prepare("call sp_select_studentContact('$id')");
+        $query->execute();
+        $result = $query->fetch();
+        return $result;
+    }
 
     public function deleteStudent($id) {
         $query = $this->db->prepare("call sp_delete_student('$id')");

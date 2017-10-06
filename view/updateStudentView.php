@@ -175,7 +175,7 @@ if (isset($session->email)) {
             $.post("?controller=Student&action=selectStudent", parameters, function (data) {
                 document.getElementById("form-id").innerHTML = data.identification;
                 document.getElementById("form-name").innerHTML = data.name;
-                document.getElementById("form-first-lastName").innerHTML = data.first_lastname ;
+                document.getElementById("form-first-lastName").innerHTML = data.first_lastname;
                 document.getElementById("form-second-lastName").innerHTML = data.second_lastname;
                 document.getElementById("form-phone1").innerHTML = data.phoneOne;
                 document.getElementById("form-phone2").innerHTML = data.phoneTwo;
@@ -183,6 +183,9 @@ if (isset($session->email)) {
                 document.getElementById("form-gender").innerHTML = data.gender;
                 document.getElementById("form-nationality").innerHTML = data.nationality;
                 document.getElementById("form-submit").style.display = "block";
+            }, "json");
+            $.post("?controller=Student&action=selectStudentContact", parameters, function (data) {
+                document.getElementById("form-contact-name").innerHTML = data.full_contact_name;
             }, "json");
         } else {
             document.getElementById("form-submit").style.display = "none";
