@@ -36,6 +36,42 @@ if (isset($session->email)) {
                                 </select>
                             </div>
                             <br>
+                            <div class="acc_content clearfix"></div>
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped">
+                                    <h5 style="text-align: center;">Informaci&oacute;n del Curso</h5>
+                                    <colgroup>
+                                        <col class="col-xs-3">
+                                        <col class="col-xs-8">
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <code>Siglas</code>
+                                            </td>
+                                            <td id="form-initials-table"><?php echo $vars[0]["Course"] ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <code>Nombre</code>
+                                            </td>
+                                            <td id="form-name-table"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <code>Instrumento</code>
+                                            </td>
+                                            <td id="form-instrument-table"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <code>Descripci&oacute;n</code>
+                                            </td>
+                                            <td id="form-description-table"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
 
                             <div class="col_full nobottommargin">
                                 <input type="button" class="button button-3d button-black nomargin" data-toggle="modal" id="delete" data-target="" onclick="" value="Eliminar"/>
@@ -73,6 +109,31 @@ if (isset($session->email)) {
 </section><!-- #content end -->
 
 <script>
+    $("#form-courses").change(function () {
+        if ($("#form-courses").val() !== "-1") {
+            var parameters = {
+                "id": $("#form-courses").val()
+            };
+            $.post("?controller=Course&action=selectCourse", parameters, function (data) {
+                document.getElementById("form-initials-table").innerHTML = data.initials;
+                document.getElementById("form-name-table").innerHTML = data.name;
+                document.getElementById("form-instrument-table").innerHTML = data.instrument;
+                document.getElementById("form-description-table").innerHTML = data.description;
+
+                $("#success").attr({
+                    "data-notify-type": "success",
+                    "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!",
+                    "data-notify-position": "bottom-full-width"
+                });
+                SEMICOLON.widget.notifications($("#success"));
+            }, "json");
+        }
+    });
+
+
+</script>
+
+<script>
     $("#delete").click(function () {
         $('#delete').attr('data-target', '#myModal');
     });
@@ -90,18 +151,18 @@ if (isset($session->email)) {
         $("#message").html("Processing, please wait...");
         $.post("?controller=Course&action=deleteCourse", parameters, function (data) {
             if (data.result === "1") {
-                    $("#success").attr({
-                        "data-notify-type": "success",
-                        "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!<br><br> Se redirigir&aacute; en breve..."
-                    });
-                    SEMICOLON.widget.notifications($("#success"));
-                    setTimeout('Redirect()', 2000);
+                $("#success").attr({
+                    "data-notify-type": "success",
+                    "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!"
+                });
+                SEMICOLON.widget.notifications($("#success"));
+                setTimeout('Redirect()', 2000);
             } else {
-                    $("#warning").attr({
-                        "data-notify-type": "warning",
-                        "data-notify-msg": "<i class=icon-warning-sign></i> El Administrador ya existe en el Sistema!"
-                    });
-                    SEMICOLON.widget.notifications($("#warning"));
+                $("#warning").attr({
+                    "data-notify-type": "warning",
+                    "data-notify-msg": "<i class=icon-warning-sign></i> No se pudo insertar el curso!"
+                });
+                SEMICOLON.widget.notifications($("#warning"));
             }
             ;
         }, "json");

@@ -7,18 +7,7 @@ class CourseController {
     }
 
     public function defaultAction() {
-        require 'model/UserModel.php';
-        $session = SSession::getInstance();
-        $model = new UserModel();
-        $result = $model->selectUser($session->email);
-        $vars = array(
-            "email" => $result->Email,
-            "name" => $result->Name,
-            "lastname" => $result->LastName,
-            "password" => $result->Password,
-            "address" => $result->Address);
-        //$this->view->show("userView.php", $vars);
-        $this->view->show("insertCourseView.php",null);
+        $this->view->show("indexView.php",null);
     }
     
     public function defaultInsertCourse(){     
@@ -31,7 +20,21 @@ class CourseController {
         $result = $model->selectAllCourses();
         $this->view->show("deleteCourseView.php",$result);
     }
-
+    
+    public function selectCourse(){
+        require 'model/CourseModel.php';
+        $model = new CourseModel();
+        $id = $_POST["id"];
+        $result = $model->selectCourse($id);
+        echo json_encode($result);
+    }
+    
+    public function defaultUpdateCourse(){
+        require 'model/CourseModel.php';
+        $model = new CourseModel();
+        $result = $model->selectAllCourses();
+        $this->view->show("updateCourseView.php",$result);
+    }
 
     public function insertCourse() {
         require 'model/CourseModel.php';
