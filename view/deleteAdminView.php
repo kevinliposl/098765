@@ -112,9 +112,14 @@ if (isset($session->email)) {
                     "data-notify-position": "bottom-full-width"
                 });
                 SEMICOLON.widget.notifications($("#success"));
+                location.href = "?controller=Admin&action=delete";
             } else {
-
-
+                $("#warning").attr({
+                    "data-notify-type": "warning",
+                    "data-notify-msg": "<i class=icon-warning-sign></i> Operacion Incompleta, intente de nuevo!",
+                    "data-notify-position": "bottom-full-width"
+                });
+                SEMICOLON.widget.notifications($("#warning"));
             }
         }, "json");
     });
