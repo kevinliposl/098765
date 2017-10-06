@@ -29,7 +29,6 @@ if (isset($session->email)) {
                             <div class="white-section">
                                 <label for="form-id">Cursos:</label>
                                 <select id="form-courses" class="selectpicker form-control" data-live-search="true">
-
                                     <option data-tokens="">Seleccione un Curso</option>
                                     <?php
                                     foreach ($vars as $var) {
@@ -40,8 +39,7 @@ if (isset($session->email)) {
                                             </option>
                                             <?php
                                         }
-                                    }
-                                    ?>
+                                    }?>
                                 </select>
                             </div>
                             <br>
@@ -58,15 +56,7 @@ if (isset($session->email)) {
                                             <td>
                                                 <code>Siglas</code>
                                             </td>
-<<<<<<< HEAD
-                                            <td id="form-initials-table"><?php
-                                                if (isset($vars[0]["Course"])) {
-                                                    echo $vars[0]["Course"];
-                                                }
-                                                ?></td>
-=======
                                             <td id="form-initials-table"><?php if(isset($vars[0])){echo $vars[0]["initials"];} ?></td>
->>>>>>> 01f3b05a4ee0b130239e301b9cf8e289f3315895
                                         </tr>
                                         <tr>
                                             <td>
@@ -93,8 +83,7 @@ if (isset($session->email)) {
                             <div class="col_full nobottommargin">
                                 <input type="button" class="button button-3d button-black nomargin" data-toggle="modal" id="delete" data-target="" value="Eliminar"/>
                             </div>
-
-                            <div id="message"></div>
+                            <div id="message"></div>                        
                         </form>
                     </div>
                 </div>
@@ -162,7 +151,7 @@ if (isset($session->email)) {
         window.location = "?controller=Course&action=defaultDeleteCourse";
     }
 
-    $("#deleteButton").click(function () {
+        $("#deleteButton").click(function () {
 
         var parameters = {
             "id": $("#form-courses").val()
