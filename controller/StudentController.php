@@ -29,6 +29,18 @@ class StudentController {
             echo json_encode($result);
         }
     }
+    public function updateStudent() {
+        require 'model/StudentModel.php';
+        if (!isset($_POST["id"]) && !isset($_POST["email"])) {
+            $model = new StudentModel();
+            $result = $model->selectAllStudent();
+            $this->view->show("updateStudentView.php", $result);
+        } else {
+            $model = new StudentModel();
+//            $result = $model->deleteStudent($_POST['id']);
+//            echo json_encode($result);
+        }
+    }
 
     public function selectStudent() {
         require 'model/StudentModel.php';

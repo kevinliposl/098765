@@ -146,6 +146,22 @@
 <script type="text/javascript" src="public/js/jquery.js"></script>
 <script type="text/javascript" src="public/js/plugins.js"></script>
 
+<script type="text/javascript" src="public/js/components/moment.js"></script>
+
+<!-- select2 bootstrap -->
+<script type="text/javascript" src="http://vitalets.github.io/x-editable/assets/select2/select2.js"></script>
+
+<!-- Bootstrap Editable Plugin -->
+<script type="text/javascript" src="public/js/components/bs-editable.js"></script>
+
+<!-- Bootstrap Typeaheadjs Plugin -->
+<script src="http://vitalets.github.io/x-editable/assets/x-editable/inputs-ext/typeaheadjs/lib/typeahead.js"></script>
+<script src="http://vitalets.github.io/x-editable/assets/x-editable/inputs-ext/typeaheadjs/typeaheadjs.js"></script>
+
+<!-- Date & Time Picker JS -->
+<script type="text/javascript" src="public/demos/travel/js/datepicker.js"></script>
+<script type="text/javascript" src="public/js/components/timepicker.js"></script>
+
 
 <!-- Bootstrap Select Plugin -->
 <script type="text/javascript" src="public/js/components/bs-select.js"></script>
