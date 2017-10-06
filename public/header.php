@@ -20,6 +20,13 @@
         <!-- Bootstrap Select CSS -->
         <link rel="stylesheet" href="public/css/components/bs-select.css" type="text/css" />
 
+        <!-- select2 bootstrap -->
+        <link rel="stylesheet" href="http://vitalets.github.io/x-editable/assets/select2/select2.css" type="text/css" />
+        <!-- Bootstrap Editable Plugin -->
+        <link rel="stylesheet" href="public/css/components/bs-editable.css" type="text/css" />
+        <!-- Bootstrap Typeaheadjs Plugin -->
+        <link href="http://vitalets.github.io/x-editable/assets/x-editable/inputs-ext/typeaheadjs/lib/typeahead.js-bootstrap.css" rel="stylesheet">
+
         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
         <script src="public/js/validate.js"></script>
 
