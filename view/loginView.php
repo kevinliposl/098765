@@ -70,18 +70,9 @@
                                     </form>
 
                                     <div class="line line-sm"></div>
-
-                                    <!--                                    <div class="center">
-                                                                            <h4 style="margin-bottom: 15px;">or Login with:</h4>
-                                                                            <a href="#" class="button button-rounded si-facebook si-colored">Facebook</a>
-                                                                            <span class="hidden-xs">or</span>
-                                                                            <a href="#" class="button button-rounded si-twitter si-colored">Twitter</a>
-                                                                        </div>-->
                                 </div>
                             </div>
-
                             <div class="row center dark"><small>Copyrights &copy; All Rights Reserved.</small></div>
-
                         </div>
                     </div>
 
@@ -111,29 +102,4 @@
 ============================================= -->
 <script type="text/javascript">
 
-    $("#login-submit").click(function () {
-
-        if (validateForm(document.getElementById("login-form"))) {
-
-            var parameters = {
-                "email": $("#login-email").val(),
-                "password": $("#login-password").val()
-            };
-
-            $("#login-message").html("Processing, please wait...");
-
-            $.post("?controller=User&action=logIn", parameters, function (data) {
-                if (data.result === "true") {
-                    $("#login-message").html("Success");
-                    location.href = "?";
-                } else {
-                    $("#login-message").html("Failed");
-                }
-                ;
-            }, "json");
-        } else {
-            $("#login-message").html("Complete the form please...");
-        }
-        ;
-    });
 </script>
