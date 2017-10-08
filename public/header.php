@@ -7,10 +7,10 @@
         <!-- Stylesheets
         ============================================= -->
         <link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
-        
+
         <link type="image/x-icon" href="public/images/favicon.ico" rel="icon"/>
         <link type="image/x-icon" href="public/images/favicon.ico" rel="shortcut icon"/>
-        
+
         <link rel="stylesheet" href="public/css/bootstrap.css" type="text/css" />
         <link rel="stylesheet" href="public/style.css" type="text/css" />
         <link rel="stylesheet" href="public/css/swiper.css" type="text/css" />
@@ -23,9 +23,11 @@
         <link rel="stylesheet" href="public/css/components/bs-editable.css" type="text/css" />
         <link rel="stylesheet" href="public/css/typeahead.js-bootstrap.css" type="text/css"/>
         <link rel="stylesheet" href="public/css/responsive.css" type="text/css" />
-        
+
         <script src="public/js/jquery-1.10.2.js"></script>
-        
+        <script src="public/js/Chart.bundle.js"></script>
+        <script src="public/js/utils.js"></script>
+
         <!-- Document Title
         ============================================= -->
         <title>Fusi&oacute;n Academia de M&uacute;sica</title>
@@ -60,6 +62,7 @@
                             <ul>
                                 <li><a href="?"><div>Home</div></a>
                                 <li><a href="?action=val"><div>Prueba Validacion</div></a>
+                                <li><a href="?action=report"><div>Reporte</div></a>
                                 <li><a href="#"><div>CRUDS</div></a>
                                     <ul>
 

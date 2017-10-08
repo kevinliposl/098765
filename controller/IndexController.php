@@ -17,7 +17,7 @@ class IndexController {
     public function login() {
         $this->view->show("loginView.php");
     }
-    
+
     public function galery() {
         $this->view->show("galeryView.php");
     }
@@ -41,10 +41,15 @@ class IndexController {
     public function ejemploProfesor() {
         $this->view->show("profileProfesorView.php");
     }
-    
-    public function val(){
+
+    public function val() {
         $this->view->show("pruebaValidacion.php");
     }
+
+    public function report() {
+        $this->view->show("reportView.php");
+    }
+
 }
 
 // fin clase

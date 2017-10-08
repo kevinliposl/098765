@@ -146,6 +146,11 @@
 <script type="text/javascript" src="public/js/jquery.js"></script>
 <script type="text/javascript" src="public/js/plugins.js"></script>
 
+<!-- Charts JavaScripts
+============================================= -->
+<script src="public/js/Chart.bundle.js"></script>
+<script src="public/js/utils.js"></script>
+
 <script type="text/javascript" src="public/js/components/moment.js"></script>
 
 <!-- select2 bootstrap -->
