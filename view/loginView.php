@@ -45,7 +45,7 @@
                         <div class="container vertical-middle divcenter clearfix">
 
                             <div class="row center">
-                                <a href="?"><img src="public/images/logo-dark.png" alt="Canvas Logo"></a>
+                                <a href="?"><img src="public/images/fusion-dark.png" alt="Canvas Logo"></a>
                             </div>
 
                             <div class="panel panel-default divcenter noradius noborder" style="max-width: 400px;">
