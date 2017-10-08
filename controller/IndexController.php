@@ -41,6 +41,10 @@ class IndexController {
     public function ejemploProfesor() {
         $this->view->show("profileProfesorView.php");
     }
+    
+    public function val(){
+        $this->view->show("pruebaValidacion.php");
+    }
 }
 
 // fin clase
