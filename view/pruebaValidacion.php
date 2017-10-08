@@ -57,7 +57,7 @@ if (isset($session->email)) {
                             </div>
 
                             <div class="col_full nobottommargin">                      
-                                <input type="submit" value="Validar" class="button button-3d button-black nomargin form-control" style="display: block; text-align: center;"/>
+                                <input type="submit" value="Insertar" class="button button-3d button-black nomargin form-control" style="display: block; text-align: center;"/>
                                 <input type="hidden" id="warning"/>
                                 <input type="hidden" id="success"/>
                                 <input type="hidden" id="failed"/>
