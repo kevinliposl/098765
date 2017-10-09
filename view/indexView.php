@@ -25,8 +25,6 @@ if (isset($session->email)) {
                     </div>
                 </div>
             </div>
-            <div id="slider-arrow-left"><i class="icon-angle-left"></i></div>
-            <div id="slider-arrow-right"><i class="icon-angle-right"></i></div>
         </div>
 
         <a href="#" data-scrollto="#content" data-offset="100" class="dark one-page-arrow"><i class="icon-angle-down infinite animated fadeInDown"></i></a>
@@ -176,9 +174,6 @@ if (isset($session->email)) {
 
 </section><!-- #content end -->
 
-
-
 <?php
 
 include_once 'public/footer.php';
-?>
