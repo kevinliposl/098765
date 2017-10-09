@@ -2,7 +2,7 @@
 
 class UserModel {
 
-    protected $db;
+    private $db;
 
     public function __construct() {
         $this->db = SPDO::singleton();

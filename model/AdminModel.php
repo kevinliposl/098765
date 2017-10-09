@@ -37,4 +37,5 @@ class AdminModel {
         $query->closeCursor();
         return $result;
     }
+
 }

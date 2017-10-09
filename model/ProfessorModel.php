@@ -1,7 +1,8 @@
 <?php
 
 class ProfessorModel {
-    protected $db;
+    
+    private $db;
     
     public function __construct() {
         require 'libs/SPDO.php';

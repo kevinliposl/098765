@@ -2,11 +2,11 @@
 
 class UserController {
 
-    public function __construct() {
+    function __construct() {
         $this->view = new View();
     }
 
-    public function defaultAction() {
+    function defaultAction() {
         require 'model/UserModel.php';
         $session = SSession::getInstance();
         $model = new UserModel();
@@ -20,11 +20,11 @@ class UserController {
         $this->view->show("userView.php", $vars);
     }
 
-    public function loginUser() {
+    function loginUser() {
         $this->view->show("loginView.php");
     }
 
-    public function insertUser() {
+    function insertUser() {
         require 'model/UserModel.php';
         $model = new UserModel();
 
@@ -38,7 +38,7 @@ class UserController {
         echo json_encode(array("result" => "1"));
     }
 
-    public function deleteUser() {
+    function deleteUser() {
         require 'model/UserModel.php';
         $model = new UserModel();
 
@@ -51,7 +51,7 @@ class UserController {
         echo json_encode(array("result" => $result));
     }
 
-    public function updateUser() {
+    function updateUser() {
         require 'model/UserModel.php';
         $model = new UserModel();
 
@@ -60,13 +60,13 @@ class UserController {
         $lastname = $_POST["lastname"];
         $address = $_POST["address"];
         $password = $_POST["password"];
-        
+
         $result = $model->updateUser($email, $name, $lastname, $address, $password);
-        
+
         echo json_encode(array("result" => $result));
     }
 
-    public function logIn() {
+    function logIn() {
         require 'model/UserModel.php';
         $model = new UserModel();
 
@@ -82,7 +82,7 @@ class UserController {
         echo json_encode(array("result" => $result));
     }
 
-    public function signOff() {
+    function signOff() {
         $session = SSession::getInstance();
         $session->destroy();
         $this->view->show("indexView.php");

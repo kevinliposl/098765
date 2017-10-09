@@ -49,5 +49,4 @@ class AdminController {
             $this->view->show("deleteAdminView.php");
         }
     }
-
 }

@@ -16,4 +16,5 @@ class ReportModel {
         $query->closeCursor();
         return $result;
     }
+
 }
