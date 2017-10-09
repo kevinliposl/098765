@@ -63,6 +63,8 @@
                                             <input type="password" id="login-form-password" name="login-form-password" class="form-control not-dark" />
                                         </div>
 
+                                        <div class="line line-sm"></div>
+
                                         <div class="col_full nobottommargin">
                                             <input type="button" class="button button-3d button-black nomargin" id="login-form-submit" name="login-form-submit" value="Ingresar ">
                                             <a href="#" class="fright">Olvidó su contraseña?</a>
@@ -70,6 +72,7 @@
                                     </form>
 
                                     <div class="line line-sm"></div>
+
                                 </div>
                             </div>
                             <div class="row center dark"><small>Copyrights &copy; All Rights Reserved.</small></div>

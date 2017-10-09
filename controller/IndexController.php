@@ -2,51 +2,51 @@
 
 class IndexController {
 
-    public function __construct() {
+    function __construct() {
         $this->view = new View();
     }
 
-    public function defaultAction() {
+    function defaultAction() {
         $this->view->show("indexView.php");
     }
 
-    public function notFound() {
+    function notFound() {
         $this->view->show("404View.php");
     }
 
-    public function login() {
+    function login() {
         $this->view->show("loginView.php");
     }
 
-    public function galery() {
+    function galery() {
         $this->view->show("galeryView.php");
     }
 
-    public function contact() {
+    function contact() {
         $this->view->show("contactView.php");
     }
 
-    public function aboutus() {
+    function aboutus() {
         $this->view->show("aboutView.php");
     }
 
-    public function instruments() {
+    function instruments() {
         $this->view->show("coursesView.php");
     }
 
-    public function profesors() {
+    function profesors() {
         $this->view->show("coursesView.php");
     }
 
-    public function ejemploProfesor() {
+    function ejemploProfesor() {
         $this->view->show("profileProfesorView.php");
     }
 
-    public function val() {
+    function val() {
         $this->view->show("pruebaValidacion.php");
     }
 
-    public function report() {
+    function report() {
         $this->view->show("reportView.php");
     }
 
