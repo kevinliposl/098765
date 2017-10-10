@@ -10,4 +10,3 @@ $config->set('dbhost', '163.178.107.130');
 $config->set('dbname', 'db_fusionAcademiaMusical');
 $config->set('dbuser', 'adm');
 $config->set('dbpass', 'saucr.092');
-$config->set('dbport', 53764);

@@ -12,22 +12,24 @@ class FrontController {
             $controllerName = 'IndexController';
         }
         if (!empty($_GET['action'])) {
-            $nombreAccion = $_GET['action'];
+            $actionName = $_GET['action'];
         } else {
-            $nombreAccion = 'defaultAction';
+            $actionName = 'defaultAction';
         }
-        $rutaControlador = $config->get('controllerFolder') . $controllerName . '.php';
+        
+        $controllerPath = $config->get('controllerFolder') . $controllerName . '.php';
 
-        if (is_file($rutaControlador)) {
-            require $rutaControlador;
+        if (is_file($controllerPath)) {
+            require $controllerPath;
         } else {
             die('Controlador no encontrado - 404 not found');
         }
 
-        if (is_callable(array($controllerName, $nombreAccion)) == FALSE) {
+        if (is_callable(array($controllerName, $actionName)) == FALSE) {
             return FALSE;
         }
         $controller = new $controllerName();
-        $controller->$nombreAccion();
+        $controller->$actionName();
     }
+
 }

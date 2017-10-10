@@ -12,7 +12,7 @@ class SSession {
         ;
     }
 
-    public static function getInstance() {
+    static function getInstance() {
         if (self::$instance == null) {
             self::$instance = new self;
         }
@@ -20,32 +20,32 @@ class SSession {
         return self::$instance;
     }
 
-    public function startSession() {
+    function startSession() {
         if ($this->sessionState == self::SESSION_NOT_STARTED) {
             $this->sessionState = session_start();
         }
         return $this->sessionState;
     }
 
-    public function __set($name, $value) {
+    function __set($name, $value) {
         $_SESSION[$name] = $value;
     }
 
-    public function __get($name) {
+    function __get($name) {
         if (isset($_SESSION[$name])) {
             return $_SESSION[$name];
         }
     }
 
-    public function __isset($name) {
+    function __isset($name) {
         return isset($_SESSION[$name]);
     }
 
-    public function __unset($name) {
+    function __unset($name) {
         unset($_SESSION[$name]);
     }
 
-    public function destroy() {
+    function destroy() {
         if ($this->sessionState == self::SESSION_STARTED) {
             $this->sessionState = !session_destroy();
             unset($_SESSION);
@@ -53,4 +53,5 @@ class SSession {
         }
         return FALSE;
     }
+
 }

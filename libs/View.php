@@ -2,7 +2,7 @@
 
 class View {
 
-    public function show($nombreVista, $vars = array()) {
+    function show($nombreVista, $vars = array()) {
         $config = Config::singleton();
         $path = $config->get('viewFolder') . $nombreVista;
 
