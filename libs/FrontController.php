@@ -6,25 +6,23 @@ class FrontController {
         require 'libs/View.php';
         require 'libs/configuration.php';
 
-        if (!empty($_GET['controller'])) {
-            $controllerName = $_GET['controller'] . 'Controller';
+        if (!empty(filter_input(INPUT_GET, 'controller'))) {
+            $controllerName = filter_input(INPUT_GET, 'controller') . 'Controller';
         } else {
             $controllerName = 'IndexController';
         }
-        if (!empty($_GET['action'])) {
-            $actionName = $_GET['action'];
+        if (!empty(filter_input(INPUT_GET, 'action'))) {
+            $actionName = filter_input(INPUT_GET, 'action');
         } else {
             $actionName = 'defaultAction';
         }
-        
+        $config = Config::singleton();
         $controllerPath = $config->get('controllerFolder') . $controllerName . '.php';
-
         if (is_file($controllerPath)) {
             require $controllerPath;
         } else {
             die('Controlador no encontrado - 404 not found');
         }
-
         if (is_callable(array($controllerName, $actionName)) == FALSE) {
             return FALSE;
         }
