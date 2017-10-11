@@ -16,14 +16,18 @@ class FrontController {
         } else {
             $actionName = 'defaultAction';
         }
+
         $config = Config::singleton();
         $controllerPath = $config->get('controllerFolder') . $controllerName . '.php';
+
         if (is_file($controllerPath)) {
             require $controllerPath;
         } else {
-            die('Controlador no encontrado - 404 not found');
+            include_once $config->get('viewFolder') . '404View.php';
+            return FALSE;
         }
-        if (is_callable(array($controllerName, $actionName)) == FALSE) {
+        if (!is_callable(array($controllerName, $actionName))) {
+            include_once $config->get('viewFolder') . '404View.php';
             return FALSE;
         }
         $controller = new $controllerName();

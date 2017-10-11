@@ -9,7 +9,7 @@ if (isset($session->email)) {
 }
 ?>
 
-<section id="slider" class="slider-parallax swiper_wrapper full-screen clearfix">
+<section id="slider" class="slider-parallax swiper_wrapper full-screen">
     <div class="slider-parallax-inner">
 
         <div class="swiper-container swiper-parent">
@@ -26,9 +26,7 @@ if (isset($session->email)) {
                 </div>
             </div>
         </div>
-
         <a href="#" data-scrollto="#content" data-offset="100" class="dark one-page-arrow"><i class="icon-angle-down infinite animated fadeInDown"></i></a>
-
     </div>
 </section>
 

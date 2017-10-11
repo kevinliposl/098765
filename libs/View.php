@@ -7,7 +7,7 @@ class View {
         $path = $config->get('viewFolder') . $nombreVista;
 
         if (is_file($path) == FALSE) {
-            trigger_error('Pagina ' . $path . 'No existe', E_USER_NOTICE);
+            include_once $config->get('viewFolder') . "404View.php";
             return FALSE;
         }
 
