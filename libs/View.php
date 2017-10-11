@@ -7,7 +7,7 @@ class View {
         $path = $config->get('viewFolder') . $nombreVista;
 
         if (is_file($path) == FALSE) {
-            include_once $config->get('viewFolder') . "404View.php";
+            include $config->get('viewFolder') . "404View.php";
             return FALSE;
         }
 
