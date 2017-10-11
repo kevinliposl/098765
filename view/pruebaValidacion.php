@@ -70,7 +70,7 @@ if (isset($session->email)) {
 </section><!-- #content end -->
 
 <!--MODAL -->
- <a id="showModal" style="display: none;"class="button button-3d button-black nomargin" data-target="#myModal" data-toggle="modal">Modal</a>
+<a id="showModal" style="display: none;"class="button button-3d button-black nomargin" data-target="#myModal" data-toggle="modal">Modal</a>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-body">
@@ -104,14 +104,14 @@ if (isset($session->email)) {
         firstLastName = $("#form-firstLastName").val().trim();
         secondLastName = $("#form-secondLastName").val().trim();
 
-        if (!/\w+@\w+\.+[a-z]/.test(email) || email.split(" ", 2).length > 1) {
-            $("#failed-email").attr("data-notify-msg", "<i class=icon-remove-sign></i> Correo Incorrecto. Complete e intente de nuevo!");
-            SEMICOLON.widget.notifications($("#failed-email"));
-            return false;
-
-        } else if (id.length < 9 || id.length > 9 || id.split(" ", 2).length > 1) {
+        if (id.length < 9 || id.length > 9 || id.split(" ", 2).length > 1) {
             $("#failed-id").attr("data-notify-msg", "<i class=icon-remove-sign></i> Cedula Incorrecta. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-id"));
+            return false;
+
+        } else if (!/\w+@\w+\.+[a-z]/.test(email) || email.split(" ", 2).length > 1) {
+            $("#failed-email").attr("data-notify-msg", "<i class=icon-remove-sign></i> Correo Incorrecto. Complete e intente de nuevo!");
+            SEMICOLON.widget.notifications($("#failed-email"));
             return false;
 
         } else if (name.length < 4 || name.split(" ", 2).length > 1) {
