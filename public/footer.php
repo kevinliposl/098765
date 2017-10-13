@@ -140,7 +140,6 @@
 
 <!-- Footer Scripts
 ============================================= -->
-<script src="public/js/functions.js" type="text/javascript"></script>
 <script src="public/js/jquery.js" type="text/javascript"></script>
 <script src="public/js/plugins.js" type="text/javascript"></script>
 <script src="public/js/components/moment.js" type="text/javascript"></script>
@@ -164,7 +163,7 @@
 
 <!-- Date & Time Picker JS
 ============================================= -->
-<script src="public/demos/travel/js/datepicker.js" type="text/javascript"></script>
+<script src="public/js/datepicker.js" type="text/javascript"></script>
 <script src="public/js/components/timepicker.js" type="text/javascript"></script>
 
 <!-- Bootstrap Select Plugin
@@ -178,6 +177,8 @@
 <script type="text/javascript">
     $('.selectsplitter').selectsplitter();
 </script>
+
+<script src="public/js/functions.js" type="text/javascript"></script>
 
 </body>
 </html>
