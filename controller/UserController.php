@@ -20,11 +20,11 @@ class UserController {
         $this->view->show("userView.php", $vars);
     }
 
-    function loginUser() {
+    function login() {
         $this->view->show("loginView.php");
     }
 
-    function insertUser() {
+    function insert() {
         require 'model/UserModel.php';
         $model = new UserModel();
 
@@ -38,7 +38,7 @@ class UserController {
         echo json_encode(array("result" => "1"));
     }
 
-    function deleteUser() {
+    function delete() {
         require 'model/UserModel.php';
         $model = new UserModel();
 
@@ -51,7 +51,7 @@ class UserController {
         echo json_encode(array("result" => $result));
     }
 
-    function updateUser() {
+    function update() {
         require 'model/UserModel.php';
         $model = new UserModel();
 

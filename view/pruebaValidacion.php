@@ -104,7 +104,7 @@ if (isset($session->email)) {
         firstLastName = $("#form-firstLastName").val().trim();
         secondLastName = $("#form-secondLastName").val().trim();
 
-        if (id.length < 9 || id.length > 9 || id.split(" ", 2).length > 1) {
+        if (isNaN(id) ||id.length < 9 || id.length > 9 || id.split(" ", 2).length > 1) {
             $("#failed-id").attr("data-notify-msg", "<i class=icon-remove-sign></i> Cedula Incorrecta. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-id"));
             return false;

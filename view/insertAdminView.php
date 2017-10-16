@@ -109,7 +109,7 @@ if (isset($session->email)) {
             SEMICOLON.widget.notifications($("#failed-email"));
             return false;
 
-        } else if (id.length < 9 || id.length > 9 || id.split(" ", 2).length > 1) {
+        } else if (isNaN(id) || id.length < 9 || id.length > 9 || id.split(" ", 2).length > 1) {
             $("#failed-id").attr("data-notify-msg", "<i class=icon-remove-sign></i> Cedula Incorrecta. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-id"));
             return false;
