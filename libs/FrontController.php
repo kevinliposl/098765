@@ -21,12 +21,17 @@ class FrontController {
         if (is_file($controllerPath)) {
             require $controllerPath;
         } else {
-            die('Controlador no encontrado - 404 not found');
+            include $config->get('viewFolder') . '404View.php';
+            return FALSE;
+            //die('Controlador no encontrado - 404 not found');
         }
         if (!is_callable(array($controllerName, $actionName))) {
-            die($controllerName . ' -> ' . $actionName . ' no existe - 404 not found');
+            include $config->get('viewFolder') . '404View.php';
+            return FALSE;
+            //die($controllerName . ' -> ' . $actionName . ' no encontrado - 404 not found');
         }
         $controller = new $controllerName();
         $controller->$actionName();
     }
+
 }

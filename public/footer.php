@@ -137,50 +137,48 @@
 ============================================= -->
 <div id="gotoTop" class="icon-angle-up"></div>
 
-<!-- Go To Top
-        ============================================= -->
-<div id="gotoTop" class="icon-angle-up"></div>
 
-<!-- External JavaScripts
+<!-- Footer Scripts
 ============================================= -->
-<script type="text/javascript" src="public/js/jquery.js"></script>
-<script type="text/javascript" src="public/js/plugins.js"></script>
+<script src="public/js/jquery.js" type="text/javascript"></script>
+<script src="public/js/plugins.js" type="text/javascript"></script>
+<script src="public/js/components/moment.js" type="text/javascript"></script>
 
 <!-- Charts JavaScripts
 ============================================= -->
-<script src="public/js/Chart.bundle.js"></script>
-<script src="public/js/utils.js"></script>
+<script src="public/js/Chart.bundle.min.js" type="text/javascript"></script>
+<script src="public/js/utils.js" type="text/javascript"></script>
 
-<script type="text/javascript" src="public/js/components/moment.js"></script>
+<!-- Bootstrap Select2
+============================================= -->
+<script src="public/js/select2.js" type="text/javascript"></script>
 
-<!-- select2 bootstrap -->
-<script type="text/javascript" src="http://vitalets.github.io/x-editable/assets/select2/select2.js"></script>
+<!-- Bootstrap Editable Plugin
+============================================= -->
+<script src="public/js/components/bs-editable.js" type="text/javascript"></script>
 
-<!-- Bootstrap Editable Plugin -->
-<script type="text/javascript" src="public/js/components/bs-editable.js"></script>
+<!-- Bootstrap Typeaheadjs Plugin SE QUITO ELEMENTOS
+============================================= -->
+<script src="public/js/typeahead.js" type="text/javascript"></script>
 
-<!-- Bootstrap Typeaheadjs Plugin -->
-<script src="http://vitalets.github.io/x-editable/assets/x-editable/inputs-ext/typeaheadjs/lib/typeahead.js"></script>
-<script src="http://vitalets.github.io/x-editable/assets/x-editable/inputs-ext/typeaheadjs/typeaheadjs.js"></script>
+<!-- Date & Time Picker JS
+============================================= -->
+<script src="public/js/datepicker.js" type="text/javascript"></script>
+<script src="public/js/components/timepicker.js" type="text/javascript"></script>
 
-<!-- Date & Time Picker JS -->
-<script type="text/javascript" src="public/demos/travel/js/datepicker.js"></script>
-<script type="text/javascript" src="public/js/components/timepicker.js"></script>
+<!-- Bootstrap Select Plugin
+============================================= -->
+<script src="public/js/components/bs-select.js" type="text/javascript"></script>
 
-
-<!-- Bootstrap Select Plugin -->
-<script type="text/javascript" src="public/js/components/bs-select.js"></script>
-<link rel="stylesheet" href="public/css/components/bs-select.css" type="text/css" />
-
-<!-- Select Splitter Plugin -->
-<script type="text/javascript" src="public/js/components/selectsplitter.js"></script>
+<!-- Select Splitter Plugin
+============================================= -->
+<script src="public/js/components/selectsplitter.js" type="text/javascript"></script>
 
 <script type="text/javascript">
     $('.selectsplitter').selectsplitter();
 </script>
 
-<!-- Footer Scripts
-============================================= -->
-<script type="text/javascript" src="public/js/functions.js"></script>
+<script src="public/js/functions.js" type="text/javascript"></script>
+
 </body>
 </html>

@@ -3,8 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Program%20Files%20(x86)/EasyPHP-Devserver-16.1/eds-www/FusionAcademiaMusical/view/pruebaValidacion.php</file>
             <file>file:/C:/Program%20Files%20(x86)/EasyPHP-Devserver-16.1/eds-www/FusionAcademiaMusical/public/header.php</file>
+=======
+            <file>file:/C:/xampp/htdocs/FusionAcademiaMusical/libs/SPDO.php</file>
+            <file>file:/C:/xampp/htdocs/FusionAcademiaMusical/libs/FrontController.php</file>
+>>>>>>> 5740d417c70afc1cf9a0741e2788cb0f9108b653
         </group>
     </open-files>
 </project-private>
