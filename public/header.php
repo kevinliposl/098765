@@ -16,7 +16,7 @@
         <!-- Stylesheets
         ============================================= -->
         <link rel="stylesheet" href="public/css/bootstrap.css" type="text/css" />
-        <link rel="stylesheet" href="public/style.css" type="text/css" />
+        <link rel="stylesheet" href="public/css/style.css" type="text/css" />
         <link rel="stylesheet" href="public/css/swiper.css" type="text/css" />
         <link rel="stylesheet" href="public/css/dark.css" type="text/css" />
         <link rel="stylesheet" href="public/css/font-icons.css" type="text/css" />
