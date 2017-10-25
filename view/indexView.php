@@ -9,9 +9,8 @@ if (isset($session->email)) {
 }
 ?>
 
-<section id="slider" class="slider-parallax swiper_wrapper full-screen">
+<section id="slider" class="slider-parallax swiper_wrapper dark full-screen">
     <div class="slider-parallax-inner">
-
         <div class="swiper-container swiper-parent">
             <div class="swiper-wrapper">
                 <div class="swiper-slide dark" style="background-image: url('public/images/mainPage.jpg');">
