@@ -3,9 +3,10 @@
 class UserController {
 
     function __construct() {
+        require_once 'model/UserModel.php';
         $this->view = new View();
     }
-
+    
     function defaultAction() {
         require 'model/UserModel.php';
         $session = SSession::getInstance();
@@ -18,10 +19,6 @@ class UserController {
             "password" => $result->Password,
             "address" => $result->Address);
         $this->view->show("userView.php", $vars);
-    }
-
-    function login() {
-        $this->view->show("loginView.php");
     }
 
     function insert() {
@@ -67,7 +64,7 @@ class UserController {
     }
 
     function logIn() {
-        require 'model/UserModel.php';
+
         $model = new UserModel();
 
         $email = $_POST['email'];

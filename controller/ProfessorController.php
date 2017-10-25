@@ -1,16 +1,16 @@
 <?php
 
 class ProfessorController {
-    
+
     public function __construct() {
         $this->view = new View();
     }
-    
+
     public function insertProfessor() {
         $this->view->show("insertProfessorView.php");
     }
-    
-    public function insertProfessorFuntion(){
+
+    public function insertProfessorFuntion() {
         require 'model/ProfessorModel.php';
         $model = new ProfessorModel();
 
@@ -27,48 +27,46 @@ class ProfessorController {
         $additionalInformation = $_POST["additionalInformation"];
         $address = $_POST["address"];
         $age = $_POST["age"];
-        
-        
+
+
         $result = $model->insertProfessor($typeId, $id, $nationality, $name, $firstLastName, $secondLastName, $address, $gender, $phone, $phone2, $email, $additionalInformation, $age);
         echo json_encode($result);
     }
-    
-    public function deleteProfessor(){
+
+    public function deleteProfessor() {
         require 'model/ProfessorModel.php';
         $model = new ProfessorModel();
-        
-        $result= $model->selectAllProfessor();
-        $this->view->show("deleteProfessorView.php", $result); 
+
+        $result = $model->selectAllProfessor();
+        $this->view->show("deleteProfessorView.php", $result);
     }
-    
-    public function deleteProfessorFunction(){
+
+    public function deleteProfessorFunction() {
         require 'model/ProfessorModel.php';
         $model = new ProfessorModel();
-        
+
         $result = $model->deleteProfessor($_POST["id"]);
         echo json_encode($result);
     }
-    
-    public function updateProfessor(){
+
+    public function updateProfessor() {
         require 'model/ProfessorModel.php';
         $model = new ProfessorModel();
-        
-        $result= $model->selectAllProfessor();
-        $this->view->show("updateProfessorView.php", $result); 
+
+        $result = $model->selectAllProfessor();
+        $this->view->show("updateProfessorView.php", $result);
     }
-    
-    public function updateProfessorFunction(){
+
+    public function updateProfessorFunction() {
         require 'model/ProfessorModel.php';
         $model = new ProfessorModel();
-        
-        $result = $model->updateProfessor($_POST["id"], $_POST["name"], $_POST["firstLastName"], $_POST["secondLastName"], 
-                $_POST["gender"], $_POST["nationality"], $_POST["address"], $_POST["typeId"], $_POST["phone"], $_POST["phone2"], 
-                $_POST["additionalInformation"], $_POST["email"], $_POST["age"]);
-        
+
+        $result = $model->updateProfessor($_POST["id"], $_POST["name"], $_POST["firstLastName"], $_POST["secondLastName"], $_POST["gender"], $_POST["nationality"], $_POST["address"], $_POST["typeId"], $_POST["phone"], $_POST["phone2"], $_POST["additionalInformation"], $_POST["email"], $_POST["age"]);
+
         echo json_encode($result);
     }
 
-        public function selectProfessor(){
+    public function selectProfessor() {
         require 'model/ProfessorModel.php';
         $model = new ProfessorModel();
 
@@ -77,4 +75,5 @@ class ProfessorController {
         $result = $model->selectProfessor($id);
         echo json_encode($result);
     }
+
 }

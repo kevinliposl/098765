@@ -96,13 +96,13 @@
                                 </li>
                                 <li><a href="#"><div>CRUD Administrador</div></a>
                                     <ul>
-                                        <li><a href="?controller=Admin&action=insert"><div>Insertar Administrador</div></a></li>
-                                        <li><a href="?controller=Admin&action=delete"><div>Eliminar Administrador</div></a></li> 
+                                        <li><a href="?controller=Admin&action=insertAdmin"><div>Insertar Administrador</div></a></li>
+                                        <li><a href="?controller=Admin&action=deleteAdmin"><div>Eliminar Administrador</div></a></li> 
                                     </ul>
                                 </li> 
                             </ul>
                             </li>
-                            <li><a href="?controller=User&action=loginUser"><div>Iniciar Sesi&oacute;n</div></a></li>
+                            <li><a href="?action=login"><div>Iniciar Sesi&oacute;n</div></a></li>
                             <li><a href="#"><div>De Pablo</div></a>
                                 <ul>
                                     <li><a href="?action=ejemploProfesor"><div>EJEMPLO PERFIL PROFESOR</div></a>
