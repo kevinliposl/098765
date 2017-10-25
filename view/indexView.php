@@ -14,7 +14,7 @@ if (isset($session->email)) {
 
         <div class="swiper-container swiper-parent">
             <div class="swiper-wrapper">
-                <div class="swiper-slide dark" style="background-image: url('public/images/slider/swiper/6.jpg');">
+                <div class="swiper-slide dark" style="background-image: url('public/images/mainPage.jpg');">
                     <div class="container clearfix">
                         <div class="slider-caption slider-caption-center">
                             <h2 data-caption-animate="fadeInUp">Bienvenido a Fusi&oacute;n</h2>

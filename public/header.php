@@ -66,7 +66,6 @@
                         <nav id="primary-menu">
                             <ul>
                                 <li><a href="?"><div>Home</div></a>
-                                <li><a href="?action=notFound"><div>404</div></a>
                                 <li><a href="?action=val"><div>Prueba Validacion</div></a>
                                 <li><a href="?action=report"><div>Reporte</div></a>
                                 <li><a href="#"><div>CRUDS</div></a>
