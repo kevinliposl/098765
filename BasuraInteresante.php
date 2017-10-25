@@ -1,5 +1,14 @@
 <?php
 
+
+/*
+https://wilvec.wordpress.com/2013/04/17/documentando-el-codigo-de-php/
+    Revisar
+    
+    
+    
+
+
 /**
  * Convierte las tildes de un texto a sus entidades HTML.
  * 

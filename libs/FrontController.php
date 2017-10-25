@@ -23,12 +23,10 @@ class FrontController {
         } else {
             include $config->get('viewFolder') . '404View.php';
             return FALSE;
-            //die('Controlador no encontrado - 404 not found');
         }
         if (!is_callable(array($controllerName, $actionName))) {
             include $config->get('viewFolder') . '404View.php';
             return FALSE;
-            //die($controllerName . ' -> ' . $actionName . ' no encontrado - 404 not found');
         }
         $controller = new $controllerName();
         $controller->$actionName();

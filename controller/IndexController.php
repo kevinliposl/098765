@@ -49,7 +49,4 @@ class IndexController {
     function report() {
         $this->view->show("reportView.php");
     }
-
 }
-
-// fin clase

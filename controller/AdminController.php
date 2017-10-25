@@ -7,6 +7,12 @@ class AdminController {
         require 'model/AdminModel.php';
     }
 
+    /**
+     *
+     * @author Kev 
+     * @return boolean
+     *
+     * */
     function insertAdmin() {
         if (isset($_POST["id"]) && isset($_POST["email"]) && isset($_POST["name"]) && isset($_POST["firstLastName"]) && isset($_POST["secondLastName"])) {
             $model = new AdminModel();
@@ -14,16 +20,6 @@ class AdminController {
             echo json_encode($result);
         } else {
             $this->view->show("insertAdminView.php");
-        }
-    }
-
-    function selectAdmin() {
-        if (isset($_POST["id"])) {
-            $model = new AdminModel();
-            $result = $model->selectAdmin($_POST["id"]);
-            echo json_encode($result);
-        } else {
-            $this->view->show("deleteAdminView.php");
         }
     }
 
@@ -37,6 +33,12 @@ class AdminController {
             $result = $model->selectAllAdmin();
             $this->view->show("deleteAdminView.php", $result);
         }
+    }
+
+    function selectAdmin() {
+        $model = new AdminModel();
+        $result = $model->selectAdmin($_POST["id"]);
+        echo json_encode($result);
     }
 
 }

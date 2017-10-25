@@ -3,14 +3,13 @@
 class UserController {
 
     function __construct() {
-        require_once 'model/UserModel.php';
         $this->view = new View();
-    }
-    
-    function defaultAction() {
         require 'model/UserModel.php';
-        $session = SSession::getInstance();
+    }
+
+    function defaultAction() {
         $model = new UserModel();
+        $session = SSession::getInstance();
         $result = $model->selectUser($session->email);
         $vars = array(
             "email" => $result->Email,
@@ -22,7 +21,6 @@ class UserController {
     }
 
     function insert() {
-        require 'model/UserModel.php';
         $model = new UserModel();
 
         $email = $_POST["email"];
@@ -36,7 +34,6 @@ class UserController {
     }
 
     function delete() {
-        require 'model/UserModel.php';
         $model = new UserModel();
 
         $session = SSession::getInstance();
@@ -49,7 +46,6 @@ class UserController {
     }
 
     function update() {
-        require 'model/UserModel.php';
         $model = new UserModel();
 
         $email = $_POST["email"];
@@ -64,7 +60,6 @@ class UserController {
     }
 
     function logIn() {
-
         $model = new UserModel();
 
         $email = $_POST['email'];
