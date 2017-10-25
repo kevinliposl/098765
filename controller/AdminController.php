@@ -7,12 +7,6 @@ class AdminController {
         require 'model/AdminModel.php';
     }
 
-    /**
-     *
-     * @author Kev 
-     * @return boolean
-     *
-     * */
     function insertAdmin() {
         if (isset($_POST["id"]) && isset($_POST["email"]) && isset($_POST["name"]) && isset($_POST["firstLastName"]) && isset($_POST["secondLastName"])) {
             $model = new AdminModel();
