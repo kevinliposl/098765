@@ -70,47 +70,51 @@
                                 <li><a href="?action=report"><div>Reporte</div></a>
                                 <li><a href="#"><div>CRUDS</div></a>
                                     <ul>
-
-                                </li>
-                                <li><a href="#"><div>CRUD CURSO</div></a>
-                                    <ul>
-                                        <li><a href="?controller=Course&action=defaultInsertCourse"><div>Insertar Curso</div></a></li> 
-                                        <li><a href="?controller=Course&action=defaultDeleteCourse"><div>Eliminar Curso</div></a></li> 
-                                        <li><a href="?controller=Course&action=defaultUpdateCourse"><div>Actualizar Curso</div></a></li> 
+                                        <li><a href="#"><div>CRUD CURSO</div></a>
+                                            <ul>
+                                                <li><a href="?controller=Course&action=defaultInsertCourse"><div>Insertar Curso</div></a></li> 
+                                                <li><a href="?controller=Course&action=defaultDeleteCourse"><div>Eliminar Curso</div></a></li> 
+                                                <li><a href="?controller=Course&action=defaultUpdateCourse"><div>Actualizar Curso</div></a></li> 
+                                            </ul>
+                                        </li>
+                                        <li><a href="#"><div>CRUD Profesor</div></a>
+                                            <ul>
+                                                <li><a href="?controller=Professor&action=updateProfessor"><div>Actualizar Profesor</div></a></li> 
+                                                <li><a href="?controller=Professor&action=insertProfessor"><div>Insertar Profesor</div></a></li> 
+                                                <li><a href="?controller=Professor&action=deleteProfessor"><div>Eliminar Profesor</div></a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#"><div>CRUD Estudiante</div></a>
+                                            <ul>
+                                                <li><a href="?controller=Student&action=insertStudent"><div>Insertar Estudiante</div></a></li> 
+                                                <li><a href="?controller=Student&action=deleteStudent"><div>Borrar Estudiante</div></a></li> 
+                                                <li><a href="?controller=Student&action=updateStudent"><div>Actualizar Estudiante</div></a></li> 
+                                            </ul>
+                                        </li>
+                                        <li><a href="#"><div>CRUD Administrador</div></a>
+                                            <ul>
+                                                <li><a href="?controller=Admin&action=insert"><div>Insertar Administrador</div></a></li>
+                                                <li><a href="?controller=Admin&action=delete"><div>Eliminar Administrador</div></a></li> 
+                                            </ul>
+                                        </li>
+                                        <li><a href="#"><div>CRUD Semestre</div></a>
+                                            <ul>
+                                                <li><a href="?controller=Semester&action=insert"><div>Insertar Semestre</div></a></li>
+                                                <li><a href="?controller=Semester&action=delete"><div>Eliminar Semestre</div></a></li>
+                                            </ul>
+                                        </li>
                                     </ul>
                                 </li>
-                                <li><a href="#"><div>CRUD Profesor</div></a>
+                                <li><a href="?action=login"><div>Iniciar Sesi&oacute;n</div></a></li>
+                                <li><a href="#"><div>De Pablo</div></a>
                                     <ul>
-                                        <li><a href="?controller=Professor&action=updateProfessor"><div>Actualizar Profesor</div></a></li> 
-                                        <li><a href="?controller=Professor&action=insertProfessor"><div>Insertar Profesor</div></a></li> 
-                                        <li><a href="?controller=Professor&action=deleteProfessor"><div>Eliminar Profesor</div></a></li>
+                                        <li><a href="?action=ejemploProfesor"><div>EJEMPLO PERFIL PROFESOR</div></a>
+                                        <li><a href="?action=instruments"><div>Cursos</div></a>
+                                        <li><a href="?action=galery"><div>Galer&iacute;a</div></a>
+                                        <li><a href="?action=aboutus"><div>Sobre Nosotros</div></a>
+                                        <li><a href="?action=contact"><div>Contacto</div></a>
                                     </ul>
                                 </li>
-                                <li><a href="#"><div>CRUD Estudiante</div></a>
-                                    <ul>
-                                        <li><a href="?controller=Student&action=insertStudent"><div>Insertar Estudiante</div></a></li> 
-                                        <li><a href="?controller=Student&action=deleteStudent"><div>Borrar Estudiante</div></a></li> 
-                                        <li><a href="?controller=Student&action=updateStudent"><div>Actualizar Estudiante</div></a></li> 
-                                    </ul>
-                                </li>
-                                <li><a href="#"><div>CRUD Administrador</div></a>
-                                    <ul>
-                                        <li><a href="?controller=Admin&action=insertAdmin"><div>Insertar Administrador</div></a></li>
-                                        <li><a href="?controller=Admin&action=deleteAdmin"><div>Eliminar Administrador</div></a></li> 
-                                    </ul>
-                                </li> 
-                            </ul>
-                            </li>
-                            <li><a href="?action=login"><div>Iniciar Sesi&oacute;n</div></a></li>
-                            <li><a href="#"><div>De Pablo</div></a>
-                                <ul>
-                                    <li><a href="?action=ejemploProfesor"><div>EJEMPLO PERFIL PROFESOR</div></a>
-                                    <li><a href="?action=instruments"><div>Cursos</div></a>
-                                    <li><a href="?action=galery"><div>Galer&iacute;a</div></a>
-                                    <li><a href="?action=aboutus"><div>Sobre Nosotros</div></a>
-                                    <li><a href="?action=contact"><div>Contacto</div></a>
-                                </ul>
-                            </li>
                             </ul>
 
                         </nav><!-- #primary-menu end -->

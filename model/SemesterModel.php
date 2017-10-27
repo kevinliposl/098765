@@ -1,6 +1,6 @@
 <?php
 
-class AdminModel {
+class SemesterModel {
 
     private $db;
 
@@ -9,29 +9,29 @@ class AdminModel {
         $this->db = SPDO::singleton();
     }
 
-    function insert($id, $email, $name, $first_lastname, $second_lastname) {
-        $query = $this->db->prepare("call sp_insert_admin('$id','$email','$name','$first_lastname','$second_lastname')");
+    function insert($year, $semester) {
+        $query = $this->db->prepare("call sp_insert_semester($year,$semester)");
         $query->execute();
         $result = $query->fetch();
         return $result;
     }
 
     function select($id) {
-        $query = $this->db->prepare("call sp_select_admin('$id')");
+        $query = $this->db->prepare("call sp_select_semester($id)");
         $query->execute();
         $result = $query->fetch();
         return $result;
     }
 
     function delete($id) {
-        $query = $this->db->prepare("call sp_delete_admin('$id')");
+        $query = $this->db->prepare("call sp_delete_semester($id)");
         $query->execute();
         $result = $query->fetch();
         return $result;
     }
 
     function selectAll() {
-        $query = $this->db->prepare("call sp_select_all_admin()");
+        $query = $this->db->prepare("call sp_select_all_semester()");
         $query->execute();
         $result = $query->fetchAll();
         $query->closeCursor();

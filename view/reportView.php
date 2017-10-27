@@ -17,26 +17,20 @@ include_once 'public/header.php';
 <section id="content">
     <div class="content-wrap">
         <div class="container clearfix">
-            <div class="accordion-lg divcenter nobottommargin">
-                <div class="acctitle">
-                    <div class="acc_content clearfix">
-                        <div class="white-section">
-                            <select id="form-report" class="selectpicker form-control" data-live-search="true">
-                                <option value="null" data-tokens>Seleccione un Reporte</option>
-                                <option value="usuariosActivos" data-tokens>Usuarios Activos</option>
-                            </select>
-                        </div>
-                        <div class="line"></div>
-                        <div id="canvas-holder">                            
-                            <canvas id="chart-area" />
-                        </div>
-                    </div>
-                </div>
+            <div class="white-section">
+                <select id="form-report" class="selectpicker form-control" data-live-search="true">
+                    <option value="null" data-tokens>Seleccione un Reporte</option>
+                    <option value="usuariosActivos" data-tokens>Usuarios Activos</option>
+                </select>
             </div>
+            <div class="line"></div>
+            <div class="col_half" style="width: 100%;" >
+                <canvas id="chart-area"/>
+            </div>
+
         </div>
     </div>
 </section><!-- #content end -->
-
 </div><!-- #wrapper end -->
 
 <script>
@@ -83,15 +77,6 @@ include_once 'public/header.php';
                 var ctx = document.getElementById("chart-area").getContext("2d");
                 myPie = new Chart(ctx, config);
 
-//            }, "json");
-
-//            config.data.datasets.forEach(function (dataset) {
-//                dataset.data = dataset.data.map(function () {
-//                    return 30;
-//                });
-//            });
-//            chart.update();
-//            $.post("?controller=Admin&action=deleteAdmin", null, function (data) {
             }, "json");
         } else if (option === "null") {
             config.data.datasets.splice(0, 1);
