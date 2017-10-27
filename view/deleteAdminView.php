@@ -34,7 +34,7 @@ if (isset($session->email)) {
                                     foreach ($vars as $var) {
                                         if (isset($var["identification"])) {
                                             ?>
-                                            <option value="<?php echo $var["identification"] ?> " data-tokens="">
+                                            <option value="<?php echo $var["ID"] ?> " data-tokens="">
                                                 <?php echo $var["identification"] . " | " . $var["name"] . " " . $var["first_lastname"] . " " . $var["second_lastname"]; ?>
                                             </option>
                                             <?php
@@ -129,7 +129,7 @@ if (isset($session->email)) {
             "id": $("#form-admin").val()
         };
 
-        $.post("?controller=Admin&action=selectAdmin", parameters, function (data) {
+        $.post("?controller=Admin&action=select", parameters, function (data) {
             if (data.identification) {
                 $("#form-id-table").html(data.identification);
                 $("#form-name-table").html(data.name);
@@ -167,7 +167,7 @@ if (isset($session->email)) {
         var parameters = {
             "id": $("#form-admin").val()
         };
-        $.post("?controller=Admin&action=deleteAdmin", parameters, function (data) {
+        $.post("?controller=Admin&action=delete", parameters, function (data) {
             if (data.result === "1") {
                 $("#success").attr({
                     "data-notify-type": "success",

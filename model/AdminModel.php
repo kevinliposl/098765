@@ -17,14 +17,14 @@ class AdminModel {
     }
 
     function select($id) {
-        $query = $this->db->prepare("call sp_select_admin('$id')");
+        $query = $this->db->prepare("call sp_select_admin($id)");
         $query->execute();
         $result = $query->fetch();
         return $result;
     }
 
     function delete($id) {
-        $query = $this->db->prepare("call sp_delete_admin('$id')");
+        $query = $this->db->prepare("call sp_delete_admin($id)");
         $query->execute();
         $result = $query->fetch();
         return $result;
