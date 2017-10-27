@@ -35,6 +35,8 @@ class CourseController {
         $result = $model->selectAllCourses();
         $this->view->show("updateCourseView.php",$result);
     }
+    
+    
 
     public function insertCourse() {
         require 'model/CourseModel.php';
