@@ -12,8 +12,9 @@ class Person {
     private $idType; //Cédula Nacional, Pasaporte, Dimex
     private $phone;
     private $celPhone;
+    private $user = array();
 
-    function __construct($ID, $celPhone, $firstLastname, $gender, $idType, $identification, $name, $nationality, $phone, $secondLastname) {
+    function __construct($ID, $identification, $name, $firstLastname, $secondLastname, $gender, $nationality, $idType, $phone, $celPhone, $user = array()) {
         $this->ID = $ID;
         $this->celPhone = $celPhone;
         $this->firstLastname = $firstLastname;
@@ -24,6 +25,11 @@ class Person {
         $this->nationality = $nationality;
         $this->phone = $phone;
         $this->secondLastname = $secondLastname;
+        $this->user = $user;
+    }
+
+    function getUser() {
+        return $this->user;
     }
 
     function getID() {
