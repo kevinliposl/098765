@@ -70,7 +70,7 @@ if (isset($session->email)) {
 </section><!-- #content end -->
 
 <!--MODAL -->
- <a id="showModal" style="display: none;"class="button button-3d button-black nomargin" data-target="#myModal" data-toggle="modal">Modal</a>
+<a id="showModal" style="display: none;"class="button button-3d button-black nomargin" data-target="#myModal" data-toggle="modal">Modal</a>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-body">
@@ -143,7 +143,8 @@ if (isset($session->email)) {
             "secondLastName": $("#form-secondLastName").val().trim()
         };
 
-        $.post("?controller=Admin&action=insertAdmin", parameters, function (data) {
+        $.post("?controller=Admin&action=insert", parameters, function (data) {
+            alert(data);
             if (data.result === "1") {
                 $("#success").attr({
                     "data-notify-type": "success",
