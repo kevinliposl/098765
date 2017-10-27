@@ -10,67 +10,50 @@ class CourseController {
         $this->view->show("indexView.php",null);
     }
     
-    public function defaultInsertCourse(){     
-        $this->view->show("insertCourseView.php",null);
-    }
-    
-    public function defaultDeleteCourse(){
-        require 'model/CourseModel.php';
-        $model = new CourseModel();
-        $result = $model->selectAllCourses();
-        $this->view->show("deleteCourseView.php",$result);
-    }
-    
-    public function selectCourse(){
+    public function select(){
         require 'model/CourseModel.php';
         $model = new CourseModel();
         $id = $_POST["id"];
-        $result = $model->selectCourse($id);
+        $result = $model->select($id);
         echo json_encode($result);
     }
     
-    public function defaultUpdateCourse(){
-        require 'model/CourseModel.php';
-        $model = new CourseModel();
-        $result = $model->selectAllCourses();
-        $this->view->show("updateCourseView.php",$result);
-    }
+    public function insert() {
+        if (isset($_POST["initials"]) && isset($_POST["name"]) && isset($_POST["description"]) && isset($_POST["instrument"])) {
+            require 'model/CourseModel.php';
+            $model = new CourseModel();
+            $result = $model->insert($_POST["initials"], $_POST["name"], $_POST["description"], $_POST["instrument"]);
+            echo json_encode($result);
+        }else{
+            $this->view->show("insertCourseView.php",null);
+        }//else
+    }//insert
     
+    public function delete() {
+        if (isset($_POST["id"])) {
+            require 'model/CourseModel.php';
+            $model = new CourseModel();
+            $result = $model->delete($_POST["id"]);
+            echo json_encode($result);
+        }else{
+            require 'model/CourseModel.php';
+            $model = new CourseModel();
+            $result = $model->selectAll();
+            $this->view->show("deleteCourseView.php", $result);
+        }//else
+    }//delete
     
-
-    public function insertCourse() {
-        require 'model/CourseModel.php';
-        $model = new CourseModel();
-
-        $initials = $_POST["initials"];
-        $name = $_POST["name"];
-        $description = $_POST["description"];
-        $instrument = $_POST["instrument"];
-       
-        $result = $model->insertCourse($initials, $name, $description, $instrument);
-        echo json_encode($result);
-    }
-    
-    public function deleteCourse() {
-        require 'model/CourseModel.php';
-        $model = new CourseModel();
-
-        $id = $_POST["id"];
-
-        $result = $model->deleteCourse($id);
-        echo json_encode($result);
-    }
-    
-    public function updateCourse() {
-        require 'model/CourseModel.php';
-        $model = new CourseModel();
-
-        $id = $_POST["id"];
-        $name = $_POST["name"];
-        $description = $_POST["description"];
-        $instrument = $_POST["instrument"];
-
-        $result = $model->updateCourse($id, $name, $description, $instrument);
-        echo json_encode($result);
-    }
+    public function update() {
+        if (isset($_POST["initials"]) && isset($_POST["name"]) && isset($_POST["description"]) && isset($_POST["instrument"])) {
+            require 'model/CourseModel.php';
+            $model = new CourseModel();
+            $result = $model->update($_POST["initials"],$_POST["name"],$_POST["description"],$_POST["instrument"]);
+            echo json_encode($result);
+        }else{
+            require 'model/CourseModel.php';
+            $model = new CourseModel();
+            $result = $model->selectAll();
+            $this->view->show("updateCourseView.php", $result);
+        }//else
+    }//update
 }
