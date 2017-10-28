@@ -9,8 +9,7 @@ class CourseController {
     public function select(){
         require 'model/CourseModel.php';
         $model = new CourseModel();
-        $id = $_POST["id"];
-        $result = $model->select($id);
+        $result = $model->select($_POST["initials"]);
         echo json_encode($result);
     }
     
@@ -26,10 +25,10 @@ class CourseController {
     }//insert
     
     public function delete() {
-        if (isset($_POST["id"])) {
+        if (isset($_POST["initials"])) {
             require 'model/CourseModel.php';
             $model = new CourseModel();
-            $result = $model->delete($_POST["id"]);
+            $result = $model->delete($_POST["initials"]);
             echo json_encode($result);
         }else{
             require 'model/CourseModel.php';

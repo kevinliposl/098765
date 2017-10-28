@@ -24,8 +24,8 @@ class CourseModel {
         return $result;
     }
     
-    public function select($id) {
-        $query = $this->db->prepare("call sp_select_course('$id')");
+    public function select($initials) {
+        $query = $this->db->prepare("call sp_select_course('$initials')");
         $query->execute();
         $result = $query->fetch();
         return $result;
@@ -38,8 +38,8 @@ class CourseModel {
         return $result;
     }
 
-    public function delete($id) {
-        $query = $this->db->prepare("call sp_delete_course('$id')");
+    public function delete($initials) {
+        $query = $this->db->prepare("call sp_delete_course('$initials')");
         $query->execute();
         $result = $query->fetch();
         return $result;
