@@ -25,7 +25,7 @@ if (isset($session->email)) {
             <div class="accordion-lg divcenter nobottommargin" style="max-width: 550px;">
                 <div class="acctitle">
                     <div class="acc_content clearfix">
-                        <form class="nobottommargin">
+                        <form id="form" class="nobottommargin" onsubmit="return validate();">
                             <div class="col_full">
                                 <label for="form-initials">Siglas:</label>
                                 <input type="text" id="form-initials" class="form-control" required/>
@@ -90,6 +90,7 @@ if (isset($session->email)) {
 
 <script>
     function validate() {
+
         var initials, name, description, instrument;
 
         initials = $("#form-initials").val().trim();
@@ -97,7 +98,7 @@ if (isset($session->email)) {
         description = $("#form-description").val().trim();
         instrument = $("#form-instrument").val().trim();
 
-        if (initials.length < 6 || initials.length > 6 || isNaN(initials.substr(3,3)) || !/^[a-z][a-z]*/.test(initials.substr(0,3)) || initials.split(" ", 2).length > 1) {
+        if (initials.length < 6 || initials.length > 6 || isNaN(initials.substr(3,3)) || /^[a-z][a-z]*/.test(initials.substr(0,3)) || initials.split(" ", 2).length > 1) {
             $("#failed-initials").attr("data-notify-msg", "<i class=icon-remove-sign></i> Inicial de curso Incorrecta. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-initials"));
             return false;
