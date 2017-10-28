@@ -6,10 +6,6 @@ class CourseController {
         $this->view = new View();
     }
 
-    public function defaultAction() {
-        $this->view->show("indexView.php",null);
-    }
-    
     public function select(){
         require 'model/CourseModel.php';
         $model = new CourseModel();
