@@ -96,6 +96,8 @@ if (isset($session->email)) {
         </div>
 </section><!-- #content end -->
 
+<!--MODAL -->
+<a id="showModal" style="display: none;"class="button button-3d button-black nomargin" data-target="#myModal" data-toggle="modal">Modal</a>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-body">
@@ -107,7 +109,8 @@ if (isset($session->email)) {
                 <div class="modal-body">
                     <h4 style="text-align: center;">¿Realmente desea actualizar este Curso?</h4>
                     <p>Consejos:
-                    <li>Revisar que todos los campos tengan la informaci&oacute;n correcta</li></p>
+                    <li>Revisar que todos los campos tengan la informaci&oacute;n correcta</li>
+                    </p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
@@ -153,37 +156,37 @@ if (isset($session->email)) {
 
         var initials, name, description, instrument;
 
-        initials = $("#form-initials-table").val().trim();
-        name = $("#form-name-table").val().trim();
-        description = $("#form-description-table").val().trim();
-        instrument = $("#form-instrument-table").val().trim();
+        initials = $("#form-initials-table").text().trim();
+        name = $("#form-name-table").text().trim();
+        description = $("#form-description-table").text().trim();
+        instrument = $("#form-instrument-table").text().trim();
 
-//        if (!isNaN(name) || name.length < 4 || name.split(" ", 2).length > 1) {
-//            $("#failed-name").attr("data-notify-msg", "<i class=icon-remove-sign></i> Nombre Incorrecto. Complete e intente de nuevo!");
-//            SEMICOLON.widget.notifications($("#failed-name"));
-//            return false;
-//
-//        } else if (!isNaN(description) || description.length < 4 || description.split(" ", 2).length > 1) {
-//            $("#failed-description").attr("data-notify-msg", "<i class=icon-remove-sign></i> Descripción Incorrecto. Complete e intente de nuevo!");
-//            SEMICOLON.widget.notifications($("#failed-description"));
-//            return false;
-//
-//        } else if (!isNaN(instrument) || instrument.length < 4 || instrument.split(" ", 2).length > 1) {
-//            $("#failed-instrument").attr("data-notify-msg", "<i class=icon-remove-sign></i> Instrumento Incorrecto. Complete e intente de nuevo!");
-//            SEMICOLON.widget.notifications($("#failed-instrument"));
-//            return false;
-//        }
-        $('#myModal').click();
+        if (!isNaN(name) || name.length < 4 || name.split(" ", 2).length > 1) {
+            $("#failed-name").attr("data-notify-msg", "<i class=icon-remove-sign></i> Nombre Incorrecto. Complete e intente de nuevo!");
+            SEMICOLON.widget.notifications($("#failed-name"));
+            return false;
+
+        } else if (!isNaN(description) || description.length < 4 || description.split(" ", 2).length > 1) {
+            $("#failed-description").attr("data-notify-msg", "<i class=icon-remove-sign></i> Descripción Incorrecto. Complete e intente de nuevo!");
+            SEMICOLON.widget.notifications($("#failed-description"));
+            return false;
+
+        } else if (!isNaN(instrument) || instrument.length < 4 || instrument.split(" ", 2).length > 1) {
+            $("#failed-instrument").attr("data-notify-msg", "<i class=icon-remove-sign></i> Instrumento Incorrecto. Complete e intente de nuevo!");
+            SEMICOLON.widget.notifications($("#failed-instrument"));
+            return false;
+        }
+        $('#showModal').click();
         return false;
     }
 
     //Delete 
     $("#form-submity").click(function () {
         var parameters = {
-            "initials": $("#form-initials-table").val().trim(),
-            "name": $("#form-name-table").val().trim(),
-            "description": $("#form-description-table").val().trim(),
-            "instrument": $("#form-instrument-table").val().trim()
+            "initials": $("#form-initials-table").text().trim(),
+            "name": $("#form-name-table").text().trim(),
+            "description": $("#form-description-table").text().trim(),
+            "instrument": $("#form-instrument-table").text().trim()
         };
         $.post("?controller=Course&action=update", parameters, function (data) {
             if (data.result === "1") {
@@ -209,68 +212,6 @@ if (isset($session->email)) {
         $('.bt-editable').editable();
     });
 </script>
-
-
-<!--<script>
-
-    $("#form-courses").change(function () {
-        var parameters = {
-            "id": $("#form-courses").val()
-        };
-        $.post("?controller=Course&action=selectCourse", parameters, function (data) {
-            $("#form-initials").val(data.initials);
-            $("#form-name").val(data.name);
-            $("#form-instrument").val(data.instrument);
-            $("#form-description").val(data.description);
-            
-            $("#success").attr({
-                "data-notify-type": "success",
-                "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!",
-                "data-notify-position":"bottom-full-width"
-            });
-            SEMICOLON.widget.notifications($("#success"));
-        }, "json");
-    });
-
-
-</script>-->
-
-<!--<script>
-    $("#update").click(function () {
-        $('#update').attr('data-target', '#myModal');
-    });
-    
-    function Redirect() {
-        window.location = "?controller=Course&action=defaultUpdateCourse";
-    }
-    
-    $("#updateButton").click(function () {
-            var parameters = {
-                "id": $("#form-courses").val().trim(),
-                "name": $("#form-name").val().trim(),
-                "description": $("#form-description").val().trim(),
-                "instrument": $("#form-instrument").val().trim()
-            };
-            $.post("?controller=Course&action=updateCourse", parameters, function (data) {
-                if (data.result === "1") {
-                    $("#success").attr({
-                        "data-notify-type": "success",
-                        "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!"
-                    });
-                    SEMICOLON.widget.notifications($("#success"));
-                    setTimeout('Redirect()', 2000);
-                } else {
-                    $("#warning").attr({
-                        "data-notify-type": "warning",
-                        "data-notify-msg": "<i class=icon-warning-sign></i> No se pudo actualizar el curso!"
-                    });
-                    SEMICOLON.widget.notifications($("#warning"));
-                }
-                ;
-            }, "json");
-    }
-    );
-</script>-->
 
 <!-- End Content
 ============================================= -->    
