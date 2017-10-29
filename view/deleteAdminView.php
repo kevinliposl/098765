@@ -87,9 +87,9 @@ if (isset($session->email)) {
                             </div>
                             <div class="col_full nobottommargin">
                                 <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" style="display : none; text-align: center;" data-target="#myModal">Eliminar</a>
-                                <input type="hidden" id="warning" value="w"/>
-                                <input type="hidden" id="success" value="s"/>
-                                <input type="hidden" id="failed" value="f"/>
+                                <input type="hidden" id="warning"/>
+                                <input type="hidden" id="success"/>
+                                <input type="hidden" id="failed"/>
                             </div>
                         </form>
                     </div>

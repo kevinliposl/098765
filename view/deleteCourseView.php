@@ -25,7 +25,7 @@ if (isset($session->email)) {
             <div class="accordion-lg divcenter nobottommargin" style="max-width: 550px;">
                 <div class="acctitle">
                     <div class="acc_content clearfix">
-                         <form id="form" class="nobottommargin">
+                        <form id="form" class="nobottommargin">
                             <div class="white-section">
                                 <label for="form-initials">Cursos:</label>
                                 <select id="form-courses" class="selectpicker form-control" data-live-search="true">
@@ -39,14 +39,15 @@ if (isset($session->email)) {
                                             </option>
                                             <?php
                                         }
-                                    }?>
+                                    }
+                                    ?>
                                 </select>
                             </div>
                             <br>
                             <div class="white-section">
                                 <label for="form-initials">Prueba:</label>
-                                <select id="form-prueba" class="selectpicker form-control" data-live-search="true">
-                                    <option data-tokens="">Seleccione un Curso</option>
+                                <select id="prueba" class="form-control selectpicker" data-live-search="true">
+                                    <option value="-1" data-tokens="">Seleccione un Curso</option>
                                 </select>
                             </div>
                             <div class="acc_content clearfix"></div>
@@ -152,11 +153,12 @@ if (isset($session->email)) {
 //
 //            }
 //        }, "json");
-        
+
         $.post("?controller=Course&action=selectAll", parameters, function (data) {
-                for(var i=0; i < data.length; i++){ 
-                    alert(data[i].initials)
-                }
+            for (var i = 0; i < data.length; i++) {
+                $('#prueba').append($("<option></option>").attr("value", data[i].initials).text(data[i].initials));//AGREGAR OPCIONES
+            }
+            $("#prueba").selectpicker("refresh");///REFRESCA SELECT PARA QUE AGARRE AGREGADOS
         }, "json");
     });
 
