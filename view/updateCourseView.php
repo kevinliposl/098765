@@ -63,21 +63,21 @@ if (isset($session->email)) {
                                             <td>
                                                 <code>Nombre</code>
                                             </td>
-                                            <td id="form-name-table" class="bt-editable" href="#" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el nombre"><?php echo "" ?></td>
+                                            <td id="form-name-table" class="bt-editable" href="#" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el nombre"><?php echo " " ?></td>
                                             <input type="hidden" id="failed-name" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                         </tr>
                                         <tr>
                                             <td>
                                                 <code>Instrumento</code>
                                             </td>
-                                            <td id="form-instrument-table" class="bt-editable" href="#" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el instrumento"><?php echo "" ?></td>
+                                            <td id="form-instrument-table" class="bt-editable" href="#" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el instrumento"><?php echo " " ?></td>
                                              <input type="hidden" id="failed-instrument" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                         </tr>
                                         <tr>
                                             <td>
                                                 <code>Descripci&oacute;n</code>
                                             </td>
-                                            <td id="form-description-table" class="bt-editable" href="#" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese la descripcion"><?php echo "" ?></td>
+                                            <td id="form-description-table" class="bt-editable" href="#" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese la descripcion"><?php echo " " ?></td>
                                             <input type="hidden" id="failed-description" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                         </tr>
                                     </tbody>
