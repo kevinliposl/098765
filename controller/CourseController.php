@@ -13,6 +13,13 @@ class CourseController {
         echo json_encode($result);
     }
     
+    public function selectAll(){
+            require 'model/CourseModel.php';
+            $model = new CourseModel();
+            $result = $model->selectAll();
+        echo json_encode($result);
+    }
+    
     public function insert() {
         if (isset($_POST["initials"]) && isset($_POST["name"]) && isset($_POST["description"]) && isset($_POST["instrument"])) {
             require 'model/CourseModel.php';
