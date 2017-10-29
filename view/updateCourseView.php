@@ -70,14 +70,14 @@ if (isset($session->email)) {
                                             <td>
                                                 <code>Instrumento</code>
                                             </td>
-                                            <td id="form-instrument-table" class="bt-editable" href="#" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required"><?php echo "" ?></td>
+                                            <td id="form-instrument-table" class="bt-editable" href="#" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el instrumento"><?php echo "" ?></td>
                                              <input type="hidden" id="failed-instrument" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                         </tr>
                                         <tr>
                                             <td>
                                                 <code>Descripci&oacute;n</code>
                                             </td>
-                                            <td id="form-description-table" class="bt-editable" href="#" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required"><?php echo "" ?></td>
+                                            <td id="form-description-table" class="bt-editable" href="#" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese la descripcion"><?php echo "" ?></td>
                                             <input type="hidden" id="failed-description" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                         </tr>
                                     </tbody>
@@ -153,7 +153,6 @@ if (isset($session->email)) {
     });
 
     function validate() {
-
         var initials, name, description, instrument;
 
         initials = $("#form-initials-table").text().trim();

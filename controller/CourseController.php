@@ -6,13 +6,27 @@ class CourseController {
         $this->view = new View();
     }
 
-    public function select(){
-        require 'model/CourseModel.php';
-        $model = new CourseModel();
-        $result = $model->select($_POST["initials"]);
-        echo json_encode($result);
-    }
+//    public function select(){
+//        require 'model/CourseModel.php';
+//        $model = new CourseModel();
+//        $result = $model->select($_POST["initials"]);
+//        echo json_encode($result);
+//    }
     
+    public function select() {
+        if (isset($_POST["initials"])) {
+            require 'model/CourseModel.php';
+            $model = new CourseModel();
+            $result = $model->select($_POST["initials"]);
+            echo json_encode($result);
+        } else {
+            require 'model/CourseModel.php';
+            $model = new CourseModel();
+            $result = $model->selectAll();
+            $this->view->show("selectCourseView.php", $result);
+        }//else
+    }//select
+
     public function selectAll(){
             require 'model/CourseModel.php';
             $model = new CourseModel();
