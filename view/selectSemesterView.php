@@ -28,7 +28,7 @@ if (isset($session->email)) {
                         <form id="form" class="nobottommargin" onsubmit="return validate();">
                             <div class="white-section">
                                 <label for="form-id">Semestres:</label>
-                                <select id="form-admin" class="selectpicker form-control" data-live-search="true">
+                                <select id="form-id" class="selectpicker form-control" data-live-search="true">
                                     <option value="-1" data-tokens="">Seleccione un Semestre</option>
                                     <?php
                                     foreach ($vars as $var) {
@@ -56,13 +56,13 @@ if (isset($session->email)) {
                                             <td>
                                                 <code>A&ncaron;o</code>
                                             </td>
-                                            <td id="form-id-table"></td>
+                                            <td id="form-year-table"></td>
                                         </tr>
                                         <tr>
                                             <td>
                                                 <code>Semestre</code>
                                             </td>
-                                            <td id="form-email-table"></td>
+                                            <td id="form-semester-table"></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -82,28 +82,23 @@ if (isset($session->email)) {
 <script>
 
     //Change Combobox
-    $("#form-admin").change(function () {
+    $("#form-id").change(function () {
         var parameters = {
-            "id": $("#form-admin").val()
+            "id": $("#form-id").val()
         };
 
-        $.post("?controller=Admin&action=select", parameters, function (data) {
-            if (data.identification) {
-                $("#form-id-table").html(data.identification);
-                $("#form-name-table").html(data.name);
-                $("#form-email-table").html(data.email);
-                $("#form-firstLastName-table").html(data.first_lastname);
-                $("#form-secondLastName-table").html(data.second_lastname);
-
+        $.post("?controller=Semester&action=select", parameters, function (data) {
+            if (data.ID) {
+                $("#form-year-table").html(data.year);
+                $("#form-semester-table").html(data.semester);
+                
                 $("#success").attr("data-notify-msg", "<i class=icon-ok-sign></i> Operacion Exitosa!");
 
                 SEMICOLON.widget.notifications($("#success"));
             } else {
-                $("#form-id-table").html("");
-                $("#form-name-table").html("");
-                $("#form-email-table").html("");
-                $("#form-firstLastName-table").html("");
-                $("#form-secondLastName-table").html("");
+                $("#form-year-table").html("");
+                $("#form-semester-table").html("");
+                
             }
         }, "json");
     });

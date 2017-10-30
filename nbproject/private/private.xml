@@ -3,19 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/xampp/htdocs/098765/libs/configuration.php</file>
-=======
-            <file>file:/C:/Program%20Files%20(x86)/EasyPHP-Devserver-16.1/eds-www/FusionAcademiaMusical/model/SemesterModel.php</file>
-            <file>file:/C:/Program%20Files%20(x86)/EasyPHP-Devserver-16.1/eds-www/FusionAcademiaMusical/controller/CourseController.php</file>
-            <file>file:/C:/Program%20Files%20(x86)/EasyPHP-Devserver-16.1/eds-www/FusionAcademiaMusical/view/insertCourseSemesterView.php</file>
-            <file>file:/C:/Program%20Files%20(x86)/EasyPHP-Devserver-16.1/eds-www/FusionAcademiaMusical/view/deleteCourseView.php</file>
-            <file>file:/C:/Program%20Files%20(x86)/EasyPHP-Devserver-16.1/eds-www/FusionAcademiaMusical/public/header.php</file>
-            <file>file:/C:/Program%20Files%20(x86)/EasyPHP-Devserver-16.1/eds-www/FusionAcademiaMusical/libs/FrontController.php</file>
-            <file>file:/C:/Program%20Files%20(x86)/EasyPHP-Devserver-16.1/eds-www/FusionAcademiaMusical/controller/CourseSemesterController.php</file>
-            <file>file:/C:/Program%20Files%20(x86)/EasyPHP-Devserver-16.1/eds-www/FusionAcademiaMusical/model/CourseSemesterModel.php</file>
-            <file>file:/C:/Program%20Files%20(x86)/EasyPHP-Devserver-16.1/eds-www/FusionAcademiaMusical/model/CourseModel.php</file>
->>>>>>> 199bc0896b7636d38dadef6e8b1fca8bd9d80d14
+            <file>file:/C:/xampp/htdocs/FusionAcademiaMusical/view/deleteSemesterView.php</file>
         </group>
     </open-files>
 </project-private>
