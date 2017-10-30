@@ -42,7 +42,7 @@ class ProfessorModel {
     public function selectProfessor($id){
         $query = $this->db->prepare("call sp_select_teacher('$id')");
         $query->execute();
-        $result = $query->fetch();
+        $result = $query->fetchAll();
         return $result;
     }
 }
