@@ -27,7 +27,7 @@ if (isset($session->email)) {
                     <div class="acc_content clearfix">
                         <form class="nobottommargin">
                             <div class="col_full">
-                                <label for="form-typeId">Tipo de Identificaci&acute;n:</label>
+                                <label for="form-typeId">Tipo de Identificaci&oacute;n:</label>
                                 <input type="radio" name="form-typeId" value="N" checked/><label>Cédula Nacional</label>
                                 <input type="radio" name="form-typeId" value="D"/> <label>Dimex</label>
                                 <input type="radio" name="form-typeId" value="E"/><label>Pasaporte</label>
