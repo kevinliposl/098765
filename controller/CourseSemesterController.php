@@ -23,4 +23,11 @@ class CourseSemesterController {
             $result = $model->selectAll();
             $this->view->show("insertCourseSemesterView.php", $result);
     }//insert  
+    
+    public function selectNotAll() {
+            require 'model/CourseSemesterModel.php';
+            $model = new CourseSemesterModel();
+            $result = $model->selectNotAll($_POST['ID_Semester']);
+            echo json_encode($result);
+    }//insert  
 }

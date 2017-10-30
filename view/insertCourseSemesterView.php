@@ -51,50 +51,21 @@ if (isset($session->email)) {
                             </div>
                             <br>
                             <div class="white-section">
-                                <label for="form-initials">Prueba:</label>
-                                <select id="prueba" class="form-control selectpicker" data-live-search="true">
+                                <label for="form-courses">Cursos:</label>
+                                <select id="form-courses" class="form-control selectpicker" data-live-search="true">
                                     <option value="-1" data-tokens="">Seleccione un Curso</option>
                                 </select>
                             </div>
-                            <div class="acc_content clearfix"></div>
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-striped">
-                                    <h5 style="text-align: center;">Informaci&oacute;n del Curso</h5>
-                                    <colgroup>
-                                        <col class="col-xs-3">
-                                        <col class="col-xs-8">
-                                    </colgroup>
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <code>Siglas</code>
-                                            </td>
-                                            <td id="form-initials-table"><?php echo "" ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <code>Nombre</code>
-                                            </td>
-                                            <td id="form-name-table"><?php echo "" ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <code>Instrumento</code>
-                                            </td>
-                                            <td id="form-instrument-table"><?php echo "" ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <code>Descripci&oacute;n</code>
-                                            </td>
-                                            <td id="form-description-table"><?php echo "" ?></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                            <br>
+                            <div class="white-section">
+                                <label for="form-professors">Profesores:</label>
+                                <select id="form-professors[]" class="form-control selectpicker" multiple data-live-search="true">
+                                    <option value="-1" data-tokens="">Seleccione los profesores</option>
+                                </select>
                             </div>
+                            <br>
                             <div class="col_full nobottommargin">
-                                <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" style="display : block; text-align: center;" data-target="#myModal">Eliminar</a>
-                                <!--<input type="submit" value="Eliminar" class="button button-3d button-black nomargin form-control" style="display: block; text-align: center;"/>-->
+                                <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" style="display : block; text-align: center;" data-target="#myModal">Asignar</a>
                                 <input type="hidden" id="warning" value="w"/>
                                 <input type="hidden" id="success" value="s"/>
                                 <input type="hidden" id="failed" value="f"/>
@@ -132,39 +103,18 @@ if (isset($session->email)) {
 <script>
 
     //Change Combobox
-    $("#form-courses").change(function () {
+    $("#form-semester").change(function () {
         var parameters = {
-            "initials": $("#form-courses").val()
+            "ID_Semester": $("#form-semester").val()
         };
-
-//        $.post("?controller=Course&action=select", parameters, function (data) {
-//            if (data.initials) {
-//                $("#form-initials-table").html(data.initials);
-//                $("#form-name-table").html(data.name);
-//                $("#form-instrument-table").html(data.instrument);
-//                $("#form-description-table").html(data.description);
-//
-//                $("#success").attr({
-//                    "data-notify-type": "success",
-//                    "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!",
-//                    "data-notify-position": "bottom-full-width"
-//                });
-//                SEMICOLON.widget.notifications($("#success"));
-//            } else {
-//                $("#form-initials-table").html("");
-//                $("#form-name-table").html("");
-//                $("#form-instrument-table").html("");
-//                $("#form-description-table").html("");
-//                $("#form-secondLastName-table").html("");
-//
-//            }
-//        }, "json");
-
-        $.post("?controller=Course&action=selectAll", parameters, function (data) {
+        document.getElementById("form-courses").options.length = 0;
+        document.getElementById("form-professors[]").options.length = 0;
+        $.post("?controller=CourseSemester&action=selectNotAll", parameters, function (data) {
+            $('#form-courses').append($("<option></option>").attr("value", "Seleccione un Curso").text("Seleccione un Curso"));
             for (var i = 0; i < data.length; i++) {
-                $('#prueba').append($("<option></option>").attr("value", data[i].initials).text(data[i].initials));//AGREGAR OPCIONES
+                $('#form-courses').append($("<option></option>").attr("value", data[i].initials).text(data[i].name));//AGREGAR OPCIONES
             }
-            $("#prueba").selectpicker("refresh");///REFRESCA SELECT PARA QUE AGARRE AGREGADOS
+            $("#form-courses").selectpicker("refresh");///REFRESCA SELECT PARA QUE AGARRE AGREGADOS
         }, "json");
     });
 
