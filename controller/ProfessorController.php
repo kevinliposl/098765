@@ -61,7 +61,7 @@ class ProfessorController {
         require 'model/ProfessorModel.php';
         $model = new ProfessorModel();
 
-        $result = $model->updateProfessor($_POST["id"], $_POST["name"], $_POST["firstLastName"], $_POST["secondLastName"], $_POST["gender"], $_POST["nationality"], $_POST["address"], $_POST["typeId"], $_POST["phone"], $_POST["phone2"], $_POST["additionalInformation"], $_POST["email"], $_POST["age"]);
+        $result = $model->updateProfessor($_POST["id"],$_POST["identification"], $_POST["name"], $_POST["firstLastName"], $_POST["secondLastName"], $_POST["gender"], $_POST["nationality"], $_POST["address"], $_POST["typeId"], $_POST["phone"], $_POST["phone2"], $_POST["additionalInformation"], $_POST["email"], $_POST["age"]);
 
         echo json_encode($result);
     }
@@ -72,8 +72,18 @@ class ProfessorController {
 
         $id = $_POST["id"];
 
-        $result = $model->selectProfessor($id);
+        $result = $model->selectProfessorData($id);
         echo json_encode($result);
     }
+    
+    public function personalSelection(){
+        require 'model/ProfessorModel.php';
+        $model = new ProfessorModel();
+        
+        $id="7";
+        
+        $result = $model->selectProfessor($id);
+        $this->view->show("selectProfessorDataView.php", $result);
+    }//personalSelection
 
 }

@@ -6,13 +6,6 @@ class CourseController {
         $this->view = new View();
     }
 
-//    public function select(){
-//        require 'model/CourseModel.php';
-//        $model = new CourseModel();
-//        $result = $model->select($_POST["initials"]);
-//        echo json_encode($result);
-//    }
-    
     public function select() {
         if (isset($_POST["initials"])) {
             require 'model/CourseModel.php';

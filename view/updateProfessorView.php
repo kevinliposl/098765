@@ -31,8 +31,8 @@ include_once 'public/header.php';
                                 <select id="form-professor" class="selectpicker form-control" data-live-search="true">
                                     <option value="-1" data-tokens="">Seleccione un Profesor</option>
                                 <?php foreach ($vars as $var) { ?>
-                                    <option value="<?php echo $var["identification"] ?>" data-tokens="">
-                                        <?php echo $var["Name"] ?></option>
+                                    <option value="<?php echo $var["ID"]?>" data-tokens="">
+                                        <?php echo $var["Name"]?></option>
                                 <?php } ?>
                                 </select>
                             </div>
@@ -42,9 +42,9 @@ include_once 'public/header.php';
                                 <table class="table table-bordered table-striped" style="clear: both">
                                     <tbody>
                                         <tr>
-                                            <td width="15%">Identificaci&oacute;n</td>
-                                            <td width="55%">
-                                                <a id="form-id" href="#" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese la identificación"></a>
+                                            <td width="30%">Identificaci&oacute;n</td>
+                                            <td width="70%">
+                                                <a id="form-id" class="bt-editable" href="#" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese la identificación"></a>
                                             </td>
                                         </tr>
                                         <tr>
@@ -198,8 +198,12 @@ include_once 'public/header.php';
     }
 
     $("#form-submity").click(function () {
+        
+        var id = $('#form-professor').val();
+        
         var parameters = {
-            "id": $("#form-id").text().trim(),
+            "id": id,
+            "identification": $("#form-id").text().trim(),
             "name": $("#form-name").text().trim(),
             "firstLastName": $("#form-first-lastName").text().trim(),
             "secondLastName": $("#form-second-lastName").text().trim(),
