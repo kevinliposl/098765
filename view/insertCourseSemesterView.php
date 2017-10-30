@@ -110,7 +110,7 @@ if (isset($session->email)) {
         document.getElementById("form-courses").options.length = 0;
         document.getElementById("form-professors[]").options.length = 0;
         $.post("?controller=CourseSemester&action=selectNotAll", parameters, function (data) {
-            $('#form-courses').append($("<option></option>").attr("value", "Seleccione un Curso").text("Seleccione un Curso"));
+            $('#form-courses').append($("<option></option>").attr("value", "-1").text("Seleccione un Curso"));
             for (var i = 0; i < data.length; i++) {
                 $('#form-courses').append($("<option></option>").attr("value", data[i].initials).text(data[i].name));//AGREGAR OPCIONES
             }
