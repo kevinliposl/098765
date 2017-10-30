@@ -136,7 +136,7 @@ if (isset($session->email)) {
                     <tr>
                         <td>Fecha de Nacimiento</td>
                         <td>
-                            <a id="form-age" href="#" class="bt-editable" data-type="combodate" data-value="1984-05-15" data-format="YYYY-MM-DD" data-viewformat="DD/MM/YYYY" data-template="D / MMM / YYYY" data-pk="1"  data-title="Ingrese la fecha de nacimiento"></a>
+                            <a id="form-age" href="#" class="bt-editable" data-type="combodate" data-value="1984-05-15" data-format="YYYY-MM-DD" data-viewformat="YYYY-MM-DD" data-template="YYYY / MMM / D" data-pk="1"  data-title="Ingrese la fecha de nacimiento"></a>
                         </td>
                     </tr>
                     <tr>
