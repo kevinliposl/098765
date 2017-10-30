@@ -56,6 +56,14 @@ if (isset($session->email)) {
                                     <option value="-1" data-tokens="">Seleccione un Curso</option>
                                 </select>
                             </div>
+                            <br>
+                            <div class="white-section">
+                                <label for="form-professors">Profesores:</label>
+                                <select id="form-professors[]" class="form-control selectpicker" multiple data-live-search="true">
+                                    <option value="-1" data-tokens="">Seleccione los profesores</option>
+                                </select>
+                            </div>
+                            <br>
                             <div class="col_full nobottommargin">
                                 <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" style="display : block; text-align: center;" data-target="#myModal">Asignar</a>
                                 <input type="hidden" id="warning" value="w"/>
@@ -100,6 +108,7 @@ if (isset($session->email)) {
             "ID_Semester": $("#form-semester").val()
         };
         document.getElementById("form-courses").options.length = 0;
+        document.getElementById("form-professors[]").options.length = 0;
         $.post("?controller=CourseSemester&action=selectNotAll", parameters, function (data) {
             $('#form-courses').append($("<option></option>").attr("value", "Seleccione un Curso").text("Seleccione un Curso"));
             for (var i = 0; i < data.length; i++) {
