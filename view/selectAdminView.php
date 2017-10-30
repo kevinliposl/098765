@@ -13,7 +13,7 @@ if (isset($session->email)) {
 <section id="page-title">
 
     <div class="container clearfix">
-        <h1>Eliminar Administrador</h1>
+        <h1>Obtener Administrador</h1>
     </div>
 </section><!-- #page-title end -->
 
@@ -42,8 +42,6 @@ if (isset($session->email)) {
                                     }
                                     ?>
                                 </select>
-                                <input type="hidden" id="success-id" data-notify-type="success" data-notify-position="bottom-full-width"/>
-                                <input type="hidden" id="failed-id" data-notify-type="error" data-notify-position="bottom-full-width"/>
                             </div>
                             <br>
                             <div class="table-responsive">
@@ -88,10 +86,9 @@ if (isset($session->email)) {
                                 </table>
                             </div>
                             <div class="col_full nobottommargin">
-                                <input type="submit" value="Eliminar" class="button button-3d button-black nomargin form-control" style="display: block; text-align: center;"/>
                                 <input type="hidden" id="warning" data-notify-position="bottom-full-width" data-notify-type= "warning"/>
                                 <input type="hidden" id="success" data-notify-position="bottom-full-width" data-notify-type= "success"/>
-                                <input type="hidden" id="failed" data-notify-position="bottom-full-width" data-notify-type= "failed"/>
+                                <input type="hidden" id="failed" data-notify-position="bottom-full-width" data-notify-type= "error"/>
                             </div>
                         </form>
                     </div>
@@ -100,44 +97,7 @@ if (isset($session->email)) {
         </div>
 </section><!-- #content end -->
 
-<a id="showModal" style="display: none;"class="button button-3d button-black nomargin" data-target="#myModal" data-toggle="modal">Modal</a>
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-body">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="myModalLabel">¡Aviso!</h4>
-                </div>
-                <div class="modal-body">
-                    <h4 style="text-align: center;">¿Realmente desea eliminar este Administrador?</h4>
-                    <p>Consejos:
-                    <li>Verificar bien, si es el administrador que realmente desea eliminar</li>
-                    <li>El administrador puede ser restaurado con servicio t&eacute;cnico</li></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    <input type="button" class="btn btn-primary button-black nomargin" id="form-submity" value="Eliminar"/>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 <script>
-    function validate() {
-
-        var id = $("#form-admin").val();
-        
-        if (id === "-1") {
-            $("#failed-id").attr("data-notify-msg", "<i class=icon-remove-sign></i> Seleccione un item. Complete e intente de nuevo!");
-            SEMICOLON.widget.notifications($("#failed-id"));
-            return false;
-        }
-
-        $('#showModal').click();
-        return false;
-    }
 
     //Change Combobox
     $("#form-admin").change(function () {
@@ -153,9 +113,9 @@ if (isset($session->email)) {
                 $("#form-firstLastName-table").html(data.first_lastname);
                 $("#form-secondLastName-table").html(data.second_lastname);
 
-                $("#success-id").attr("data-notify-msg", "<i class=icon-ok-sign></i> Operacion Exitosa!");
+                $("#success").attr("data-notify-msg", "<i class=icon-ok-sign></i> Operacion Exitosa!");
 
-                SEMICOLON.widget.notifications($("#success-id"));
+                SEMICOLON.widget.notifications($("#success"));
             } else {
                 $("#form-id-table").html("");
                 $("#form-name-table").html("");
@@ -165,33 +125,6 @@ if (isset($session->email)) {
             }
         }, "json");
     });
-
-    //Delete 
-    $("#form-submity").click(function () {
-        var parameters = {
-            "id": $("#form-admin").val()
-        };
-        
-        $.post("?controller=Admin&action=delete", parameters, function (data) {
-            if (data.result === "1") {
-                $("#success").attr({
-                    "data-notify-type": "success",
-                    "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!",
-                    "data-notify-position": "bottom-full-width"
-                });
-                SEMICOLON.widget.notifications($("#success"));
-                location.href = "?controller=Admin&action=delete";
-            } else {
-                $("#warning").attr({
-                    "data-notify-type": "warning",
-                    "data-notify-msg": "<i class=icon-warning-sign></i> Operacion Incompleta, intente de nuevo!",
-                    "data-notify-position": "bottom-full-width"
-                });
-                SEMICOLON.widget.notifications($("#warning"));
-            }
-        }, "json");
-    }
-    );
 
 </script>
 

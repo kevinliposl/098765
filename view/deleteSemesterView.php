@@ -13,7 +13,7 @@ if (isset($session->email)) {
 <section id="page-title">
 
     <div class="container clearfix">
-        <h1>Eliminar Administrador</h1>
+        <h1>Eliminar Semestre</h1>
     </div>
 </section><!-- #page-title end -->
 
@@ -27,9 +27,9 @@ if (isset($session->email)) {
                     <div class="acc_content clearfix">
                         <form id="form" class="nobottommargin" onsubmit="return validate();">
                             <div class="white-section">
-                                <label for="form-id">Administradores:</label>
+                                <label for="form-id">Semestre:</label>
                                 <select id="form-admin" class="selectpicker form-control" data-live-search="true">
-                                    <option value="-1" data-tokens="">Seleccione un Administrador</option>
+                                    <option value="-1" data-tokens="">Seleccione un Semestre</option>
                                     <?php
                                     foreach ($vars as $var) {
                                         if (isset($var["identification"])) {
