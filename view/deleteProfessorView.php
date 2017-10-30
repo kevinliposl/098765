@@ -33,9 +33,9 @@ if (isset($session->email)) {
                                     <option data-tokens="">Seleccione un Profesor</option>
                                     <?php
                                     foreach ($vars as $var) {
-                                        if (isset($var["identification"])) {
+                                        if (isset($var["ID"])) {
                                             ?>
-                                            <option value="<?php echo $var["identification"]?> " data-tokens="">
+                                            <option value="<?php echo $var["ID"]?> " data-tokens="">
                                                 <?php echo $var["Name"]?>
                                             </option>
                                             <?php
@@ -138,13 +138,6 @@ if (isset($session->email)) {
                 document.getElementById("form-first-lastName").innerHTML = data.first_lastname;
                 document.getElementById("form-second-lastName").innerHTML = data.second_lastname;
                 document.getElementById("form-email").innerHTML = data.email;
-
-                $("#success").attr({
-                    "data-notify-type": "success",
-                    "data-notify-msg": "<i class=icon-ok-sign></i> cambio!",
-                    "data-notify-position": "bottom-full-width"
-                });
-                SEMICOLON.widget.notifications($("#success"));
             }, "json");
         }
     });
@@ -179,7 +172,7 @@ if (isset($session->email)) {
             } else {
                 $("#warning").attr({
                     "data-notify-type": "warning",
-                    "data-notify-msg": "<i class=icon-warning-sign></i> No se pudo insertar el curso!"
+                    "data-notify-msg": "<i class=icon-warning-sign></i> No se pudo eliminar el profesor!"
                 });
                 SEMICOLON.widget.notifications($("#warning"));
             }

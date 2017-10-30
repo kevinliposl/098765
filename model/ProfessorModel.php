@@ -25,8 +25,8 @@ class ProfessorModel {
         return $result;
     }
     
-    public function updateProfessor($id, $name, $firstLastname, $secondLastname, $gender, $nationality, $address, $typeId, $phone, $phone2, $additionalInformation, $email, $age){
-        $query = $this->db->prepare("call sp_update_teacher('$id', '$name', '$firstLastname', '$secondLastname', '$gender', '$nationality', '$address' ,'$typeId', '$phone', '$phone2', '$additionalInformation', '$email', '$age')");
+    public function updateProfessor($id, $identification, $name, $firstLastname, $secondLastname, $gender, $nationality, $address, $typeId, $phone, $phone2, $additionalInformation, $email, $age){
+        $query = $this->db->prepare("call sp_update_teacher('$id','$identification', '$name', '$firstLastname', '$secondLastname', '$gender', '$nationality', '$address' ,'$typeId', '$phone', '$phone2', '$additionalInformation', '$email', '$age')");
         $query->execute();
         $result = $query->fetch();
         return $result;
@@ -43,6 +43,13 @@ class ProfessorModel {
         $query = $this->db->prepare("call sp_select_teacher('$id')");
         $query->execute();
         $result = $query->fetchAll();
+        return $result;
+    }
+    
+    public function selectProfessorData($id){
+        $query = $this->db->prepare("call sp_select_teacher('$id')");
+        $query->execute();
+        $result = $query->fetch();
         return $result;
     }
 }
