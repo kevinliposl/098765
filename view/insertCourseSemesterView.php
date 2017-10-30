@@ -13,7 +13,7 @@ if (isset($session->email)) {
 <section id="page-title">
 
     <div class="container clearfix">
-        <h1>Eliminar Administrador</h1>
+        <h1>Insertar Asignaciones de Cursos a Semestres</h1>
     </div>
 </section><!-- #page-title end -->
 
@@ -27,15 +27,21 @@ if (isset($session->email)) {
                     <div class="acc_content clearfix">
                         <form id="form" class="nobottommargin">
                             <div class="white-section">
-                                <label for="form-id">Administradores:</label>
-                                <select id="form-admin" class="selectpicker form-control" data-live-search="true">
-                                    <option data-tokens="">Seleccione un Administrador</option>
+                                <label for="form-semester">Semestres:</label>
+                                <select id="form-semester" class="selectpicker form-control" data-live-search="true">
+                                    <option data-tokens="">Seleccione un Semestre</option>
                                     <?php
                                     foreach ($vars as $var) {
-                                        if (isset($var["identification"])) {
+                                        if (isset($var["ID"])) {
                                             ?>
                                             <option value="<?php echo $var["ID"] ?> " data-tokens="">
-                                                <?php echo $var["identification"] . " | " . $var["name"] . " " . $var["first_lastname"] . " " . $var["second_lastname"]; ?>
+                                                <?php
+                                                        if($var["semester"]=='1'){
+                                                            echo "I semestre"." ".$var["year"];
+                                                        }else{
+                                                            echo "II semestre"." ".$var["year"];
+                                                        }
+                                                ?>
                                             </option>
                                             <?php
                                         }
@@ -44,9 +50,16 @@ if (isset($session->email)) {
                                 </select>
                             </div>
                             <br>
+                            <div class="white-section">
+                                <label for="form-initials">Prueba:</label>
+                                <select id="prueba" class="form-control selectpicker" data-live-search="true">
+                                    <option value="-1" data-tokens="">Seleccione un Curso</option>
+                                </select>
+                            </div>
+                            <div class="acc_content clearfix"></div>
                             <div class="table-responsive">
                                 <table class="table table-bordered table-striped">
-                                    <h5 style="text-align: center;">Informaci&oacute;n del Administrador</h5>
+                                    <h5 style="text-align: center;">Informaci&oacute;n del Curso</h5>
                                     <colgroup>
                                         <col class="col-xs-3">
                                         <col class="col-xs-8">
@@ -54,43 +67,38 @@ if (isset($session->email)) {
                                     <tbody>
                                         <tr>
                                             <td>
-                                                <code>Cedula</code>
+                                                <code>Siglas</code>
                                             </td>
-                                            <td id="form-id-table"></td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <code>Correo</code>
-                                            </td>
-                                            <td id="form-email-table"></td>
+                                            <td id="form-initials-table"><?php echo "" ?></td>
                                         </tr>
                                         <tr>
                                             <td>
                                                 <code>Nombre</code>
                                             </td>
-                                            <td id="form-name-table"></td>
+                                            <td id="form-name-table"><?php echo "" ?></td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <code>Primer Apellido</code>
+                                                <code>Instrumento</code>
                                             </td>
-                                            <td id="form-firstLastName-table"></td>
+                                            <td id="form-instrument-table"><?php echo "" ?></td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <code>Segundo Apellido</code>
+                                                <code>Descripci&oacute;n</code>
                                             </td>
-                                            <td id="form-secondLastName-table"></td>
+                                            <td id="form-description-table"><?php echo "" ?></td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                             <div class="col_full nobottommargin">
-                                <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" style="display : none; text-align: center;" data-target="#myModal">Eliminar</a>
-                                <input type="hidden" id="warning"/>
-                                <input type="hidden" id="success"/>
-                                <input type="hidden" id="failed"/>
-                            </div>
+                                <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" style="display : block; text-align: center;" data-target="#myModal">Eliminar</a>
+                                <!--<input type="submit" value="Eliminar" class="button button-3d button-black nomargin form-control" style="display: block; text-align: center;"/>-->
+                                <input type="hidden" id="warning" value="w"/>
+                                <input type="hidden" id="success" value="s"/>
+                                <input type="hidden" id="failed" value="f"/>
+                            </div>                     
                         </form>
                     </div>
                 </div>
@@ -107,10 +115,10 @@ if (isset($session->email)) {
                     <h4 class="modal-title" id="myModalLabel">¡Aviso!</h4>
                 </div>
                 <div class="modal-body">
-                    <h4 style="text-align: center;">¿Realmente desea eliminar este Administrador?</h4>
+                    <h4 style="text-align: center;">¿Realmente desea eliminar este Curso?</h4>
                     <p>Consejos:
-                    <li>Verificar bien, si es el administrador que realmente desea eliminar</li>
-                    <li>El administrador puede ser restaurado con servicio t&eacute;cnico</li></p>
+                    <li>Verificar bien, si es el Curso que realmente desea eliminar</li>
+                    <li>El Curso puede ser restaurado con servicio t&eacute;cnico</li></p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
@@ -124,36 +132,39 @@ if (isset($session->email)) {
 <script>
 
     //Change Combobox
-    $("#form-admin").change(function () {
+    $("#form-courses").change(function () {
         var parameters = {
-            "id": $("#form-admin").val()
+            "initials": $("#form-courses").val()
         };
 
-        $.post("?controller=Admin&action=select", parameters, function (data) {
-            if (data.identification) {
-                $("#form-id-table").html(data.identification);
-                $("#form-name-table").html(data.name);
-                $("#form-email-table").html(data.email);
-                $("#form-firstLastName-table").html(data.first_lastname);
-                $("#form-secondLastName-table").html(data.second_lastname);
+//        $.post("?controller=Course&action=select", parameters, function (data) {
+//            if (data.initials) {
+//                $("#form-initials-table").html(data.initials);
+//                $("#form-name-table").html(data.name);
+//                $("#form-instrument-table").html(data.instrument);
+//                $("#form-description-table").html(data.description);
+//
+//                $("#success").attr({
+//                    "data-notify-type": "success",
+//                    "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!",
+//                    "data-notify-position": "bottom-full-width"
+//                });
+//                SEMICOLON.widget.notifications($("#success"));
+//            } else {
+//                $("#form-initials-table").html("");
+//                $("#form-name-table").html("");
+//                $("#form-instrument-table").html("");
+//                $("#form-description-table").html("");
+//                $("#form-secondLastName-table").html("");
+//
+//            }
+//        }, "json");
 
-                $("#form-submit").css("display", "block");
-
-                $("#success").attr({
-                    "data-notify-type": "success",
-                    "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!",
-                    "data-notify-position": "bottom-full-width"
-                });
-                SEMICOLON.widget.notifications($("#success"));
-            } else {
-                $("#form-id-table").html("");
-                $("#form-name-table").html("");
-                $("#form-email-table").html("");
-                $("#form-firstLastName-table").html("");
-                $("#form-secondLastName-table").html("");
-                
-                $("#form-submit").css("display", "none");
+        $.post("?controller=Course&action=selectAll", parameters, function (data) {
+            for (var i = 0; i < data.length; i++) {
+                $('#prueba').append($("<option></option>").attr("value", data[i].initials).text(data[i].initials));//AGREGAR OPCIONES
             }
+            $("#prueba").selectpicker("refresh");///REFRESCA SELECT PARA QUE AGARRE AGREGADOS
         }, "json");
     });
 
@@ -165,9 +176,9 @@ if (isset($session->email)) {
     //Delete 
     $("#form-submity").click(function () {
         var parameters = {
-            "id": $("#form-admin").val()
+            "initials": $("#form-courses").val()
         };
-        $.post("?controller=Admin&action=delete", parameters, function (data) {
+        $.post("?controller=Course&action=delete", parameters, function (data) {
             if (data.result === "1") {
                 $("#success").attr({
                     "data-notify-type": "success",
@@ -175,7 +186,7 @@ if (isset($session->email)) {
                     "data-notify-position": "bottom-full-width"
                 });
                 SEMICOLON.widget.notifications($("#success"));
-                location.href = "?controller=Admin&action=delete";
+                location.href = "?controller=Course&action=delete";
             } else {
                 $("#warning").attr({
                     "data-notify-type": "warning",
@@ -189,9 +200,8 @@ if (isset($session->email)) {
 
 </script>
 
+
 <!-- End Content
 ============================================= -->    
 <?php
 include_once 'public/footer.php';
-
-

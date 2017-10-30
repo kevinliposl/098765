@@ -25,24 +25,31 @@ if (isset($session->email)) {
             <div class="accordion-lg divcenter nobottommargin" style="max-width: 550px;">
                 <div class="acctitle">
                     <div class="acc_content clearfix">
-                        <form class="nobottommargin">
+                        <form id="form" class="nobottommargin">
                             <div class="white-section">
-                                <label for="form-id">Cursos:</label>
+                                <label for="form-initials">Cursos:</label>
                                 <select id="form-courses" class="selectpicker form-control" data-live-search="true">
                                     <option data-tokens="">Seleccione un Curso</option>
                                     <?php
                                     foreach ($vars as $var) {
-                                        if (isset($var["id"])) {
+                                        if (isset($var["initials"])) {
                                             ?>
-                                            <option value="<?php echo $var["id"] ?> " data-tokens="">
+                                            <option value="<?php echo $var["initials"] ?> " data-tokens="">
                                                 <?php echo $var["name"] ?>
                                             </option>
                                             <?php
                                         }
-                                    }?>
+                                    }
+                                    ?>
                                 </select>
                             </div>
                             <br>
+                            <div class="white-section">
+                                <label for="form-initials">Prueba:</label>
+                                <select id="prueba" class="form-control selectpicker" data-live-search="true">
+                                    <option value="-1" data-tokens="">Seleccione un Curso</option>
+                                </select>
+                            </div>
                             <div class="acc_content clearfix"></div>
                             <div class="table-responsive">
                                 <table class="table table-bordered table-striped">
@@ -56,126 +63,135 @@ if (isset($session->email)) {
                                             <td>
                                                 <code>Siglas</code>
                                             </td>
-                                            <td id="form-initials-table"><?php if(isset($vars[0])){echo $vars[0]["initials"];} ?></td>
+                                            <td id="form-initials-table"><?php echo "" ?></td>
                                         </tr>
                                         <tr>
                                             <td>
                                                 <code>Nombre</code>
                                             </td>
-                                            <td id="form-name-table"><?php if(isset($vars[0])){echo $vars[0]["name"];} ?></td>
+                                            <td id="form-name-table"><?php echo "" ?></td>
                                         </tr>
                                         <tr>
                                             <td>
                                                 <code>Instrumento</code>
                                             </td>
-                                            <td id="form-instrument-table"><?php if(isset($vars[0])){echo $vars[0]["instrument"];} ?></td>
+                                            <td id="form-instrument-table"><?php echo "" ?></td>
                                         </tr>
                                         <tr>
                                             <td>
                                                 <code>Descripci&oacute;n</code>
                                             </td>
-                                            <td id="form-description-table"><?php if(isset($vars[0])){echo $vars[0]["description"];} ?></td>
+                                            <td id="form-description-table"><?php echo "" ?></td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
-
                             <div class="col_full nobottommargin">
-                                <input type="button" class="button button-3d button-black nomargin" data-toggle="modal" id="delete" data-target="" value="Eliminar"/>
-                            </div>
-                            <div id="message"></div>                        
+                                <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" style="display : block; text-align: center;" data-target="#myModal">Eliminar</a>
+                                <!--<input type="submit" value="Eliminar" class="button button-3d button-black nomargin form-control" style="display: block; text-align: center;"/>-->
+                                <input type="hidden" id="warning" value="w"/>
+                                <input type="hidden" id="success" value="s"/>
+                                <input type="hidden" id="failed" value="f"/>
+                            </div>                     
                         </form>
-                    </div>
-                </div>
-
-                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-body">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                    <h4 class="modal-title" id="myModalLabel">¡Aviso!</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <h4 style="text-align: center;">¿Realmente desea eliminar el curso seleccionado?</h4>
-                                    <p>Consejos:
-                                    <li>Verificar bien, si es el curso que realmente desea eliminar</li>
-                                    <li>El curso puede ser restaurado con servicio t&eacute;cnico</li></p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                                    <input type="button" class="btn btn-primary" button-black nomargin id="deleteButton" value="Confirmar"/>
-                                    <input type="hidden" id="warning" value="w"/>
-                                    <input type="hidden" id="success" value="s"/>
-                                    <input type="hidden" id="failed" value="f"/>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
 </section><!-- #content end -->
 
-<script>
-    $("#form-courses").change(function () {
-        if ($("#form-courses").val() !== "-1") {
-            var parameters = {
-                "id": $("#form-courses").val()
-            };
-            $.post("?controller=Course&action=selectCourse", parameters, function (data) {
-                document.getElementById("form-initials-table").innerHTML = data.initials;
-                document.getElementById("form-name-table").innerHTML = data.name;
-                document.getElementById("form-instrument-table").innerHTML = data.instrument;
-                document.getElementById("form-description-table").innerHTML = data.description;
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-body">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">¡Aviso!</h4>
+                </div>
+                <div class="modal-body">
+                    <h4 style="text-align: center;">¿Realmente desea eliminar este Curso?</h4>
+                    <p>Consejos:
+                    <li>Verificar bien, si es el Curso que realmente desea eliminar</li>
+                    <li>El Curso puede ser restaurado con servicio t&eacute;cnico</li></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <input type="button" class="btn btn-primary button-black nomargin" id="form-submity" value="Eliminar"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
+<script>
+
+    //Change Combobox
+    $("#form-courses").change(function () {
+        var parameters = {
+            "initials": $("#form-courses").val()
+        };
+
+//        $.post("?controller=Course&action=select", parameters, function (data) {
+//            if (data.initials) {
+//                $("#form-initials-table").html(data.initials);
+//                $("#form-name-table").html(data.name);
+//                $("#form-instrument-table").html(data.instrument);
+//                $("#form-description-table").html(data.description);
+//
+//                $("#success").attr({
+//                    "data-notify-type": "success",
+//                    "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!",
+//                    "data-notify-position": "bottom-full-width"
+//                });
+//                SEMICOLON.widget.notifications($("#success"));
+//            } else {
+//                $("#form-initials-table").html("");
+//                $("#form-name-table").html("");
+//                $("#form-instrument-table").html("");
+//                $("#form-description-table").html("");
+//                $("#form-secondLastName-table").html("");
+//
+//            }
+//        }, "json");
+
+        $.post("?controller=Course&action=selectAll", parameters, function (data) {
+            for (var i = 0; i < data.length; i++) {
+                $('#prueba').append($("<option></option>").attr("value", data[i].initials).text(data[i].initials));//AGREGAR OPCIONES
+            }
+            $("#prueba").selectpicker("refresh");///REFRESCA SELECT PARA QUE AGARRE AGREGADOS
+        }, "json");
+    });
+
+    //Open Modal
+    $("#form-submit").click(function () {
+        $('#form-submit').attr('data-target', '#myModal');
+    });
+
+    //Delete 
+    $("#form-submity").click(function () {
+        var parameters = {
+            "initials": $("#form-courses").val()
+        };
+        $.post("?controller=Course&action=delete", parameters, function (data) {
+            if (data.result === "1") {
                 $("#success").attr({
                     "data-notify-type": "success",
                     "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!",
                     "data-notify-position": "bottom-full-width"
                 });
                 SEMICOLON.widget.notifications($("#success"));
-            }, "json");
-        }
-    });
-
-
-</script>
-
-<script>
-    $("#delete").click(function () {
-        $('#delete').attr('data-target', '#myModal');
-    });
-
-    function Redirect() {
-        window.location = "?controller=Course&action=defaultDeleteCourse";
-    }
-
-        $("#deleteButton").click(function () {
-
-        var parameters = {
-            "id": $("#form-courses").val()
-        };
-
-        $("#message").html("Processing, please wait...");
-        $.post("?controller=Course&action=deleteCourse", parameters, function (data) {
-            if (data.result === "1") {
-                $("#success").attr({
-                    "data-notify-type": "success",
-                    "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!"
-                });
-                SEMICOLON.widget.notifications($("#success"));
-                setTimeout('Redirect()', 2000);
+                location.href = "?controller=Course&action=delete";
             } else {
                 $("#warning").attr({
                     "data-notify-type": "warning",
-                    "data-notify-msg": "<i class=icon-warning-sign></i> No se pudo insertar el curso!"
+                    "data-notify-msg": "<i class=icon-warning-sign></i> Operacion Incompleta, intente de nuevo!",
+                    "data-notify-position": "bottom-full-width"
                 });
                 SEMICOLON.widget.notifications($("#warning"));
             }
-            ;
         }, "json");
     });
+
 </script>
 
 

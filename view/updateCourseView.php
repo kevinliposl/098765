@@ -25,131 +25,191 @@ if (isset($session->email)) {
             <div class="accordion-lg divcenter nobottommargin" style="max-width: 550px;">
                 <div class="acctitle">
                     <div class="acc_content clearfix">
-                        <form id="form" class="nobottommargin">
+                        <form id="form" class="nobottommargin" onsubmit="return validate();">
                             <div class="white-section">
-                                <label for="form-id">Cursos:</label>
+                                <label for="form-initials">Cursos:</label>
                                 <select id="form-courses" class="selectpicker form-control" data-live-search="true">
-                                    <?php if(isset($vars)){ foreach ($vars as $var) {?>
-                                        <option value="<?php echo $var["id"] ?>" data-tokens="">
-                                            <?php echo $var["initials"]." "."|"." ".$var["name"]; ?></option>
-                                    <?php }} ?>
+                                    <option data-tokens="">Seleccione un Curso</option>
+                                    <?php
+                                    foreach ($vars as $var) {
+                                        if (isset($var["initials"])) {
+                                            ?>
+                                            <option value="<?php echo $var["initials"] ?> " data-tokens="">
+                                                <?php echo $var["name"] ?>
+                                            </option>
+                                            <?php
+                                        }
+                                    }?>
                                 </select>
                             </div>
                             <br>
-                            <div class="col_full">
-                                <label for="form-initials">Siglas:</label>
-                                <input type="text" id="form-initials" class="form-control" readonly="readonly" value="<?php if(isset($vars[0])){echo $vars[0]["initials"];} ?>"/>
+                            <div class="acc_content clearfix"></div>
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped">
+                                    <h5 style="text-align: center;">Informaci&oacute;n del Curso</h5>
+                                    <colgroup>
+                                        <col class="col-xs-3">
+                                        <col class="col-xs-8">
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <code>Siglas</code>
+                                            </td>
+                                            <td id="form-initials-table"><?php echo "" ?></td>
+                                            <input type="hidden" id="failed-initials" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <code>Nombre</code>
+                                            </td>
+                                            <td id="form-name-table" class="bt-editable" href="#" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el nombre"><?php echo " " ?></td>
+                                            <input type="hidden" id="failed-name" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <code>Instrumento</code>
+                                            </td>
+                                            <td id="form-instrument-table" class="bt-editable" href="#" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el instrumento"><?php echo " " ?></td>
+                                             <input type="hidden" id="failed-instrument" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <code>Descripci&oacute;n</code>
+                                            </td>
+                                            <td id="form-description-table" class="bt-editable" href="#" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese la descripcion"><?php echo " " ?></td>
+                                            <input type="hidden" id="failed-description" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
-                            
-                            <div class="col_full">
-                                <label for="form-name">Nombre:</label>
-                                <input type="email" id="form-name" class="form-control" value="<?php if(isset($vars[0])){echo $vars[0]["name"];} ?>" required/>
+                            <div class="col_full nobottommargin">                      
+                                <input type="submit" value="Actualizar" class="button button-3d button-black nomargin form-control" style="display: block; text-align: center;"/>
+                                <input type="hidden" id="warning"/>
+                                <input type="hidden" id="success"/>
+                                <input type="hidden" id="failed"/>
                             </div>
-
-                            <div class="col_full">
-                                <label for="form-instrument">Instrumento:</label>
-                                <input type="text" id="form-instrument" class="form-control" value="<?php if(isset($vars[0])){echo $vars[0]["instrument"];} ?>" required/>
-                            </div>
-
-                            <div class="col_full">
-                                <label for="form-description">Breve Descripci&oacute;n:</label>
-                                <input type="text" id="form-description"class="form-control" value="<?php if(isset($vars[0])){echo $vars[0]["description"];} ?>" required/>
-                            </div>
-
-                            <div class="col_full nobottommargin">
-                                <input type="button" class="button button-3d button-black nomargin" data-toggle="modal" id="update" data-target="" onclick="" value="Actualizar"/>
-                            </div>
-                            <div id="message"></div>
                         </form>
-                    </div>
-                </div>
-                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-body">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" value="as" aria-hidden="true">&times;</button>
-                                    <h4 class="modal-title" id="myModalLabel">¡Aviso!</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <h4 style="text-align: center;">¿Realmente desea actualizar el curso seleccionado?</h4>
-                                    <p>Consejos:
-                                    <li>Revisar que todos los campos tengan la informaci&oacute;n correcta</li></p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                                    <input type="button" class="btn btn-primary" button-black nomargin id="updateButton" value="Confirmar"/>
-                                    <input type="hidden" id="warning" value="w"/>
-                                    <input type="hidden" id="success" value="s"/>
-                                    <input type="hidden" id="failed" value="f"/>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
 </section><!-- #content end -->
 
+<!--MODAL -->
+<a id="showModal" style="display: none;"class="button button-3d button-black nomargin" data-target="#myModal" data-toggle="modal">Modal</a>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-body">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">¡Aviso!</h4>
+                </div>
+                <div class="modal-body">
+                    <h4 style="text-align: center;">¿Realmente desea actualizar este Curso?</h4>
+                    <p>Consejos:
+                    <li>Revisar que todos los campos tengan la informaci&oacute;n correcta</li>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <input type="button" class="btn btn-primary button-black nomargin" id="form-submity" value="Actualizar"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
 
+    //Change Combobox
     $("#form-courses").change(function () {
         var parameters = {
-            "id": $("#form-courses").val()
+            "initials": $("#form-courses").val()
         };
-        $.post("?controller=Course&action=selectCourse", parameters, function (data) {
-            $("#form-initials").val(data.initials);
-            $("#form-name").val(data.name);
-            $("#form-instrument").val(data.instrument);
-            $("#form-description").val(data.description);
-            
-            $("#success").attr({
-                "data-notify-type": "success",
-                "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!",
-                "data-notify-position":"bottom-full-width"
-            });
-            SEMICOLON.widget.notifications($("#success"));
+        $.post("?controller=Course&action=select", parameters, function (data) {
+            if (data.initials) {
+                $("#form-initials-table").html(data.initials);
+                $("#form-name-table").html(data.name);
+                $("#form-instrument-table").html(data.instrument);
+                $("#form-description-table").html(data.description);
+
+                $("#success").attr({
+                    "data-notify-type": "success",
+                    "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!",
+                    "data-notify-position": "bottom-full-width"
+                });
+                SEMICOLON.widget.notifications($("#success"));
+            } else {
+                $("#form-initials-table").html("");
+                $("#form-name-table").html("");
+                $("#form-instrument-table").html("");
+                $("#form-description-table").html("");
+                $("#form-secondLastName-table").html("");
+
+            }
         }, "json");
     });
 
+    function validate() {
+        var initials, name, description, instrument;
 
-</script>
+        initials = $("#form-initials-table").text().trim();
+        name = $("#form-name-table").text().trim();
+        description = $("#form-description-table").text().trim();
+        instrument = $("#form-instrument-table").text().trim();
 
-<script>
-    $("#update").click(function () {
-        $('#update').attr('data-target', '#myModal');
+        if (!isNaN(name) || name.length < 4 || name.split(" ", 2).length > 1) {
+            $("#failed-name").attr("data-notify-msg", "<i class=icon-remove-sign></i> Nombre Incorrecto. Complete e intente de nuevo!");
+            SEMICOLON.widget.notifications($("#failed-name"));
+            return false;
+
+        } else if (!isNaN(description) || description.length < 4 || description.split(" ", 2).length > 1) {
+            $("#failed-description").attr("data-notify-msg", "<i class=icon-remove-sign></i> Descripción Incorrecto. Complete e intente de nuevo!");
+            SEMICOLON.widget.notifications($("#failed-description"));
+            return false;
+
+        } else if (!isNaN(instrument) || instrument.length < 4 || instrument.split(" ", 2).length > 1) {
+            $("#failed-instrument").attr("data-notify-msg", "<i class=icon-remove-sign></i> Instrumento Incorrecto. Complete e intente de nuevo!");
+            SEMICOLON.widget.notifications($("#failed-instrument"));
+            return false;
+        }
+        $('#showModal').click();
+        return false;
+    }
+
+    //Delete 
+    $("#form-submity").click(function () {
+        var parameters = {
+            "initials": $("#form-initials-table").text().trim(),
+            "name": $("#form-name-table").text().trim(),
+            "description": $("#form-description-table").text().trim(),
+            "instrument": $("#form-instrument-table").text().trim()
+        };
+        $.post("?controller=Course&action=update", parameters, function (data) {
+            if (data.result === "1") {
+                $("#success").attr({
+                    "data-notify-type": "success",
+                    "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!",
+                    "data-notify-position": "bottom-full-width"
+                });
+                SEMICOLON.widget.notifications($("#success"));
+                location.href = "?controller=Course&action=update";
+            } else {
+                $("#warning").attr({
+                    "data-notify-type": "warning",
+                    "data-notify-msg": "<i class=icon-warning-sign></i> Operacion Incompleta, intente de nuevo!",
+                    "data-notify-position": "bottom-full-width"
+                });
+                SEMICOLON.widget.notifications($("#warning"));
+            }
+        }, "json");
     });
-    
-    function Redirect() {
-        window.location = "?controller=Course&action=defaultUpdateCourse";
-    }
-    
-    $("#updateButton").click(function () {
-            var parameters = {
-                "id": $("#form-courses").val().trim(),
-                "name": $("#form-name").val().trim(),
-                "description": $("#form-description").val().trim(),
-                "instrument": $("#form-instrument").val().trim()
-            };
-            $.post("?controller=Course&action=updateCourse", parameters, function (data) {
-                if (data.result === "1") {
-                    $("#success").attr({
-                        "data-notify-type": "success",
-                        "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!"
-                    });
-                    SEMICOLON.widget.notifications($("#success"));
-                    setTimeout('Redirect()', 2000);
-                } else {
-                    $("#warning").attr({
-                        "data-notify-type": "warning",
-                        "data-notify-msg": "<i class=icon-warning-sign></i> No se pudo actualizar el curso!"
-                    });
-                    SEMICOLON.widget.notifications($("#warning"));
-                }
-                ;
-            }, "json");
-    }
-    );
+
+    $(document).ready(function () {
+        $('.bt-editable').editable();
+    });
 </script>
 
 <!-- End Content

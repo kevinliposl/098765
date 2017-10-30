@@ -9,14 +9,14 @@ class CourseModel {
         $this->db = SPDO::singleton();
     }
     
-    public function insertCourse($initials, $name, $description, $instrument) {
+    public function insert($initials, $name, $description, $instrument) {
         $query = $this->db->prepare("call sp_insert_course('$initials','$name','$description','$instrument')");
         $query->execute();
         $result = $query->fetch();
         return $result;
     }
     
-    public function selectAllCourses() {
+    public function selectAll() {
         $query = $this->db->prepare("call sp_select_all_course()");
         $query->execute();
         $result = $query->fetchAll();
@@ -24,22 +24,22 @@ class CourseModel {
         return $result;
     }
     
-    public function selectCourse($id) {
-        $query = $this->db->prepare("call sp_select_course('$id')");
+    public function select($initials) {
+        $query = $this->db->prepare("call sp_select_course('$initials')");
         $query->execute();
         $result = $query->fetch();
         return $result;
     }
 
-    public function updateCourse($id, $name, $description, $instrument) {
-         $query = $this->db->prepare("call sp_update_course('$id','$name','$description','$instrument')");
+    public function update($initials, $name, $description, $instrument) {
+         $query = $this->db->prepare("call sp_update_course('$initials','$name','$description','$instrument')");
         $query->execute();
         $result = $query->fetch();
         return $result;
     }
 
-    public function deleteCourse($id) {
-        $query = $this->db->prepare("call sp_delete_course('$id')");
+    public function delete($initials) {
+        $query = $this->db->prepare("call sp_delete_course('$initials')");
         $query->execute();
         $result = $query->fetch();
         return $result;
