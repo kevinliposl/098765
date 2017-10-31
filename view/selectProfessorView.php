@@ -13,7 +13,7 @@ include_once 'public/header.php';
 <section id="page-title">
 
     <div class="container clearfix">
-        <h1>Actualizar Profesor</h1>
+        <h1>Datos Personales de los profesores</h1>
     </div>
 </section><!-- #page-title end -->
 
@@ -122,39 +122,7 @@ include_once 'public/header.php';
                                     </tbody>
                                 </table>
                             </div>
-                            
-                            <div class="col_full nobottommargin">
-                                <input type="button" class="button button-3d button-black nomargin" data-toggle="modal" id="form-actualizar" data-target="" value="Actualizar"/>
-                            </div>
-
-                            <div id="message"></div>
                         </form>
-                    </div>
-                </div>
-
-                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-body">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                    <h4 class="modal-title" id="myModalLabel">¡Aviso!</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <h4 style="text-align: center;">¿Realmente desea guardar los cambios?</h4>
-                                    <p>Consejos:
-                                    <li>Verificar que sea el profesor correcto</li>
-                                    <li>Insertar los datos en el formato correcto</li></p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                                    <input type="button" class="btn btn-primary" button-black nomargin id="form-submity" value="Confirmar"/>
-                                    <input type="hidden" id="warning" value="w"/>
-                                    <input type="hidden" id="success" value="s"/>
-                                    <input type="hidden" id="failed" value="f"/>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -187,59 +155,6 @@ include_once 'public/header.php';
             document.getElementById("form-submit").style.display = "none";
         }
     });</script>
-
-<script>
-
-     $("#form-actualizar").click(function () {
-        $('#form-actualizar').attr('data-target', '#myModal');
-    });
-    function Redirect() {
-        window.location = "?controller=Professor&action=updateProfessor";
-    }
-
-    $("#form-submity").click(function () {
-        var parameters = {
-            "id": $('#form-professor').val(),
-            "identification": $("#form-id").text().trim(),
-            "name": $("#form-name").text().trim(),
-            "firstLastName": $("#form-first-lastName").text().trim(),
-            "secondLastName": $("#form-second-lastName").text().trim(),
-            "gender": $("#form-gender").text().trim(),
-            "nationality": $("#form-nationality").text().trim(),
-            "address": $("#form-address").text().trim(),
-            "typeId": $("#form-id-type").text().trim(),
-            "phone": $("#form-phone1").text().trim(),
-            "phone2": $("#form-phone2").text().trim(),
-            "additionalInformation": $("#form-additionalInformation").text().trim(),
-            "email": $("#form-email").text().trim(),
-            "age": $("#form-age").text().trim()
-        };
-
-        $.post("?controller=Professor&action=updateProfessorFunction", parameters, function (data) {
-            if (data.result === "1") {
-                $("#success").attr({
-                    "data-notify-type": "success",
-                    "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!"
-                });
-                SEMICOLON.widget.notifications($("#success"));
-                setTimeout('Redirect()', 1000);
-            } else {
-                $("#warning").attr({
-                    "data-notify-type": "warning",
-                    "data-notify-msg": "<i class=icon-warning-sign></i> El profesor no se pudo actualizar!"
-                });
-                SEMICOLON.widget.notifications($("#warning"));
-            }
-            ;
-        }, "json");
-    }
-    );
-</script>
-<script>
-    $(document).ready(function () {
-        $('.bt-editable').editable();
-    });
-</script>
 
 <!-- End Content
 ============================================= -->    

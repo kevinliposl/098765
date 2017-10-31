@@ -85,5 +85,13 @@ class ProfessorController {
         $result = $model->selectProfessor($id);
         $this->view->show("selectProfessorDataView.php", $result);
     }//personalSelection
+    
+    public function professorSelection(){
+        require 'model/ProfessorModel.php';
+        $model = new ProfessorModel();
+
+        $result = $model->selectAllProfessor();
+        $this->view->show("selectProfessorView.php", $result);
+    }//professorSelection
 
 }

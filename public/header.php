@@ -91,6 +91,7 @@
                                                 <li><a href="?controller=Professor&action=updateProfessor"><div>Actualizar Profesor</div></a></li> 
                                                 <li><a href="?controller=Professor&action=insertProfessor"><div>Insertar Profesor</div></a></li> 
                                                 <li><a href="?controller=Professor&action=deleteProfessor"><div>Eliminar Profesor</div></a></li>
+                                                <li><a href="?controller=Professor&action=professorSelection"><div>Obtener Datos Personales Profesores</div></a></li>
                                                 <li><a href="?controller=Professor&action=personalSelection"><div>Obtener Datos Personales</div></a></li>
                                             </ul>
                                         </li>

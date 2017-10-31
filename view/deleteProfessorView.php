@@ -33,9 +33,9 @@ if (isset($session->email)) {
                                     <option data-tokens="">Seleccione un Profesor</option>
                                     <?php
                                     foreach ($vars as $var) {
-                                        if (isset($var["ID"])) {
+                                        if (isset($var["identification"])) {
                                             ?>
-                                            <option value="<?php echo $var["ID"]?> " data-tokens="">
+                                            <option value="<?php echo $var["identification"]?> " data-tokens="">
                                                 <?php echo $var["Name"]?>
                                             </option>
                                             <?php
