@@ -70,13 +70,15 @@ if (isset($session->email)) {
             </div>
         </div>
         <div class="container clearfix">
+            
+            <input type="hidden" id="form-old-id" name="form-old-id" value="">
 
             <table class="table table-bordered table-striped" style="clear: both">
                 <tbody>
                     <tr>
                         <td width="15%">Identificaci&oacute;n</td>
                         <td width="55%">
-                            <a id="form-id" href="#" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese la identificación"></a>
+                            <a id="form-id" class="bt-editable" href="#" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese la identificación"></a>
                         </td>
                     </tr>
                     <tr>
@@ -136,7 +138,7 @@ if (isset($session->email)) {
                     <tr>
                         <td>Fecha de Nacimiento</td>
                         <td>
-                            <a id="form-age" href="#" class="bt-editable" data-type="combodate" data-value="1984-05-15" data-format="YYYY-MM-DD" data-viewformat="DD/MM/YYYY" data-template="D / MMM / YYYY" data-pk="1"  data-title="Ingrese la fecha de nacimiento"></a>
+                            <a id="form-age" href="#" class="bt-editable" data-type="combodate" data-value="1984-05-15" data-format="YYYY-MM-DD" data-viewformat="YYYY-MM-DD" data-template="YYYY / MMM / D" data-pk="1"  data-title="Ingrese la fecha de nacimiento"></a>
                         </td>
                     </tr>
                     <tr>
@@ -179,6 +181,7 @@ if (isset($session->email)) {
             };
             $.post("?controller=Student&action=selectStudent", parameters, function (data) {
                 document.getElementById("form-id").innerHTML = data.identification;
+                document.getElementById("form-old-id").value = data.identification;
                 document.getElementById("form-id-type").innerHTML = data.id_type;
                 document.getElementById("form-name").innerHTML = data.name;
                 document.getElementById("form-first-lastName").innerHTML = data.first_lastname;
@@ -210,6 +213,7 @@ if (isset($session->email)) {
     $("#form-submity").click(function () {
         var parameters = {
             "id": document.getElementById("form-id").innerHTML.trim(),
+            "oldId": document.getElementById("form-old-id").value.trim(),
             "idType": document.getElementById("form-id-type").innerHTML.trim(),
             "email": document.getElementById("form-email").innerHTML.trim(),
             "name": document.getElementById("form-name").innerHTML.trim(),
