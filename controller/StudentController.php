@@ -29,6 +29,19 @@ class StudentController {
             echo json_encode($result);
         }
     }
+    
+    public function reactivateStudent() {
+        require 'model/StudentModel.php';
+        if (!isset($_POST["id"]) && !isset($_POST["email"])) {
+            $model = new StudentModel();
+            $result = $model->selectAllDeleteStudent();
+            $this->view->show("reactivateStudentView.php", $result);
+        } else {
+            $model = new StudentModel();
+            $result = $model->reactivateStudent($_POST['id']);
+            echo json_encode($result);
+        }
+    }
 
     public function updateStudent() {
         require 'model/StudentModel.php';
@@ -50,6 +63,16 @@ class StudentController {
         $id = $_POST["id"];
 
         $result = $model->selectStudent($id);
+        echo json_encode($result);
+    }
+    
+    public function selectDeleteStudent() {
+        require 'model/StudentModel.php';
+        $model = new StudentModel();
+
+        $id = $_POST["id"];
+
+        $result = $model->selectDeleteStudent($id);
         echo json_encode($result);
     }
 

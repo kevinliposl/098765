@@ -98,6 +98,7 @@
                                             <ul>
                                                 <li><a href="?controller=Student&action=insertStudent"><div>Insertar Estudiante</div></a></li> 
                                                 <li><a href="?controller=Student&action=deleteStudent"><div>Borrar Estudiante</div></a></li> 
+                                                <li><a href="?controller=Student&action=reactivateStudent"><div>Reactivar Estudiante</div></a></li> 
                                                 <li><a href="?controller=Student&action=updateStudent"><div>Actualizar Estudiante</div></a></li> 
                                             </ul>
                                         </li>
