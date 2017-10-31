@@ -13,7 +13,7 @@ if (isset($session->email)) {
 <section id="page-title">
 
     <div class="container clearfix">
-        <h1>Eliminar Administrador</h1>
+        <h1>Eliminar Semestre</h1>
     </div>
 </section><!-- #page-title end -->
 
@@ -27,15 +27,15 @@ if (isset($session->email)) {
                     <div class="acc_content clearfix">
                         <form id="form" class="nobottommargin" onsubmit="return validate();">
                             <div class="white-section">
-                                <label for="form-id">Administradores:</label>
-                                <select id="form-admin" class="selectpicker form-control" data-live-search="true">
-                                    <option value="-1" data-tokens="">Seleccione un Administrador</option>
+                                <label for="form-id">Semestre:</label>
+                                <select id="form-id" class="selectpicker form-control" data-live-search="true">
+                                    <option value="-1" data-tokens="">Seleccione un Semestre</option>
                                     <?php
                                     foreach ($vars as $var) {
-                                        if (isset($var["identification"])) {
+                                        if (isset($var["ID"])) {
                                             ?>
                                             <option value="<?php echo $var["ID"] ?> " data-tokens="">
-                                                <?php echo $var["identification"] . " | " . $var["name"] . " " . $var["first_lastname"] . " " . $var["second_lastname"]; ?>
+                                                <?php echo $var["ID"]; ?>
                                             </option>
                                             <?php
                                         }
@@ -56,33 +56,15 @@ if (isset($session->email)) {
                                     <tbody>
                                         <tr>
                                             <td>
-                                                <code>Cedula</code>
+                                                <code>A&ncaron;o</code>
                                             </td>
-                                            <td id="form-id-table"></td>
+                                            <td id="form-year-table"></td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <code>Correo</code>
+                                                <code>Semestre</code>
                                             </td>
-                                            <td id="form-email-table"></td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <code>Nombre</code>
-                                            </td>
-                                            <td id="form-name-table"></td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <code>Primer Apellido</code>
-                                            </td>
-                                            <td id="form-firstLastName-table"></td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <code>Segundo Apellido</code>
-                                            </td>
-                                            <td id="form-secondLastName-table"></td>
+                                            <td id="form-semester-table"></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -127,7 +109,7 @@ if (isset($session->email)) {
 <script>
     function validate() {
 
-        var id = $("#form-admin").val();
+        var id = $("#form-id").val();
         
         if (id === "-1") {
             $("#failed-id").attr("data-notify-msg", "<i class=icon-remove-sign></i> Seleccione un item. Complete e intente de nuevo!");
@@ -140,28 +122,22 @@ if (isset($session->email)) {
     }
 
     //Change Combobox
-    $("#form-admin").change(function () {
+    $("#form-id").change(function () {
         var parameters = {
-            "id": $("#form-admin").val()
+            "id": $("#form-id").val()
         };
-
-        $.post("?controller=Admin&action=select", parameters, function (data) {
-            if (data.identification) {
-                $("#form-id-table").html(data.identification);
-                $("#form-name-table").html(data.name);
-                $("#form-email-table").html(data.email);
-                $("#form-firstLastName-table").html(data.first_lastname);
-                $("#form-secondLastName-table").html(data.second_lastname);
-
+        if($("#form-id").val() !== "-1")
+        $.post("?controller=Semester&action=select", parameters, function (data) {
+            if (data.ID) {
+                $("#form-year-table").html(data.year);
+                $("#form-semester-table").html(data.semester);
+                
                 $("#success-id").attr("data-notify-msg", "<i class=icon-ok-sign></i> Operacion Exitosa!");
 
                 SEMICOLON.widget.notifications($("#success-id"));
             } else {
-                $("#form-id-table").html("");
-                $("#form-name-table").html("");
-                $("#form-email-table").html("");
-                $("#form-firstLastName-table").html("");
-                $("#form-secondLastName-table").html("");
+                $("#form-year-table").html("");
+                $("#form-semester-table").html("");
             }
         }, "json");
     });

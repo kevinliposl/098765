@@ -13,7 +13,7 @@ include_once 'public/header.php';
 <section id="page-title">
 
     <div class="container clearfix">
-        <h1>Actualizar Profesor</h1>
+        <h1>Actualizar Datos Peresonales</h1>
     </div>
 </section><!-- #page-title end -->
 
@@ -26,101 +26,94 @@ include_once 'public/header.php';
                 <div class="acctitle">
                     <div class="acc_content clearfix">
                         <form id="form" class="nobottommargin">
-                            <div class="white-section">
-                                <label for="form-professor">Profesores:</label>
-                                <select id="form-professor" class="selectpicker form-control" data-live-search="true">
-                                    <option value="-1" data-tokens="">Seleccione un Profesor</option>
-                                <?php foreach ($vars as $var) { ?>
-                                    <option value="<?php echo $var["identification"]?>" data-tokens="">
-                                        <?php echo $var["Name"]?></option>
-                                <?php } ?>
-                                </select>
-                            </div>
                             <div class="acc_content clearfix"></div>
                             <div class="table-responsive">
 
+                                 <?php foreach ($vars as $var) { ?>
+                                
                                 <table class="table table-bordered table-striped" style="clear: both">
                                     <tbody>
                                         <tr>
                                             <td width="30%">Identificaci&oacute;n</td>
                                             <td width="70%">
-                                                <a id="form-id" class="bt-editable" href="#" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese la identificación"></a>
+                                                <a id="form-id" class="bt-editable" href="#" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese la identificación"><?php echo $var[0];?></a>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Tipo de Identificaci&oacute;n</td>
                                             <td>
-                                                <a id="form-id-type" class="bt-editable" href="#" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el tipo de identificación"></a>
+                                                <a id="form-id-type" class="bt-editable" href="#" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el tipo de identificación"><?php echo $var[6];?></a>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Nombre</td>
                                             <td>
-                                                <a id="form-name" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el nombre"></a>
+                                                <a id="form-name" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el nombre"><?php echo $var[1];?></a>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Primer Apellido</td>
                                             <td>
-                                                <a id="form-first-lastName" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el Primer Apellido"></a>
+                                                <a id="form-first-lastName" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el Primer Apellido"><?php echo $var[2];?></a>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Segundo Apellido</td>
                                             <td>
-                                                <a id="form-second-lastName" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el Segundo Apellido"></a>
+                                                <a id="form-second-lastName" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el Segundo Apellido"><?php echo $var[3];?></a>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>G&eacute;nero</td>
                                             <td>
-                                                <a id="form-gender" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el g&eacute;nero (M: Masculino, F: Femenino)"></a>
+                                                <a id="form-gender" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el g&eacute;nero (M: Masculino, F: Femenino)"><?php echo $var[4];?></a>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Nacionalidad</td>
                                             <td>
-                                                <a id="form-nationality" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese la nacionalidad"></a>
+                                                <a id="form-nationality" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese la nacionalidad"><?php echo $var[5];?></a>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Tel&eacute;fono 1</td>
                                             <td>
-                                                <a id="form-phone1" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el Teléfono"></a>
+                                                <a id="form-phone1" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el Teléfono"><?php echo $var[7];?></a>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Tel&eacute;fono 2</td>
                                             <td>
-                                                <a id="form-phone2" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese otro Teléfono"></a>
+                                                <a id="form-phone2" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese otro Teléfono"><?php echo $var[8];?></a>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Email</td>
                                             <td>
-                                                <a id="form-email" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el email"></a>
+                                                <a id="form-email" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el email"><?php echo $var[12];?></a>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Fecha de Nacimiento</td>
                                             <td>
-                                                <a id="form-age" href="#" class="bt-editable" data-type="date" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese la fecha de nacimiento"></a>
+                                                <a id="form-age" href="#" class="bt-editable" data-type="date" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese la fecha de nacimiento"><?php echo $var[11];?></a>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Dirección:</td>
                                             <td>
-                                                <a id="form-address" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese la dirección"></a>
+                                                <a id="form-address" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese la dirección"><?php echo $var[10];?></a>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Informacion Adicional:</td>
                                             <td>
-                                                <a id="form-additionalInformation" class="bt-editable" href="#" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Información Adicional"></a>
+                                                <a id="form-additionalInformation" class="bt-editable" href="#" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Información Adicional"><?php echo $var[9];?></a>
                                             </td>
                                         </tr>
                                     </tbody>
                                 </table>
+                                <?php } ?>
                             </div>
                             
                             <div class="col_full nobottommargin">
@@ -161,32 +154,6 @@ include_once 'public/header.php';
         </div>
     </div>
 </section><!-- #content end -->
-<script>
-    $("#form-professor").change(function () {
-        if ($("#form-professor").val() !== "-1") {
-            var parameters = {
-                "id": $("#form-professor").val()
-            };
-            $.post("?controller=Professor&action=selectProfessor", parameters, function (data) {
-                document.getElementById("form-id").innerHTML = data.identification;
-                document.getElementById("form-id-type").innerHTML = data.id_type;
-                document.getElementById("form-name").innerHTML = data.name;
-                document.getElementById("form-first-lastName").innerHTML = data.first_lastname;
-                document.getElementById("form-second-lastName").innerHTML = data.second_lastname;
-                document.getElementById("form-phone1").innerHTML = data.phone;
-                document.getElementById("form-phone2").innerHTML = data.cel_phone;
-                document.getElementById("form-email").innerHTML = data.email;
-                document.getElementById("form-gender").innerHTML = data.gender;
-                document.getElementById("form-nationality").innerHTML = data.nationality;
-                document.getElementById("form-age").innerHTML = data.birthdate;
-                document.getElementById("form-address").innerHTML = data.address;
-                document.getElementById("form-additionalInformation").innerHTML = data.expedient;
-                document.getElementById("form-submit").style.display = "block";
-            }, "json");
-        } else {
-            document.getElementById("form-submit").style.display = "none";
-        }
-    });</script>
 
 <script>
 
@@ -194,12 +161,11 @@ include_once 'public/header.php';
         $('#form-actualizar').attr('data-target', '#myModal');
     });
     function Redirect() {
-        window.location = "?controller=Professor&action=updateProfessor";
+        window.location = "?controller=Professor&action=updatePersonal";
     }
 
     $("#form-submity").click(function () {
         var parameters = {
-            "id": $('#form-professor').val(),
             "identification": $("#form-id").text().trim(),
             "name": $("#form-name").text().trim(),
             "firstLastName": $("#form-first-lastName").text().trim(),
@@ -215,7 +181,7 @@ include_once 'public/header.php';
             "age": $("#form-age").text().trim()
         };
 
-        $.post("?controller=Professor&action=updateProfessorFunction", parameters, function (data) {
+        $.post("?controller=Professor&action=updatePersonalData", parameters, function (data) {
             if (data.result === "1") {
                 $("#success").attr({
                     "data-notify-type": "success",

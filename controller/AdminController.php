@@ -18,12 +18,11 @@ class AdminController {
     }
 
     function delete() {
+        $model = new AdminModel();
         if (isset($_POST["id"])) {
-            $model = new AdminModel();
             $result = $model->delete($_POST["id"]);
             echo json_encode($result);
         } else {
-            $model = new AdminModel();
             $result = $model->selectAll();
             $this->view->show("deleteAdminView.php", $result);
         }
@@ -31,8 +30,13 @@ class AdminController {
 
     function select() {
         $model = new AdminModel();
-        $result = $model->select($_POST["id"]);
-        echo json_encode($result);
+        if (isset($_POST["id"])) {
+            $result = $model->select($_POST["id"]);
+            echo json_encode($result);
+        } else {
+            $result = $model->selectAll();
+            $this->view->show("selectAdminView.php", $result);
+        }
     }
 
 }

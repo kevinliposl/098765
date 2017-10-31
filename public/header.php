@@ -91,13 +91,16 @@
                                                 <li><a href="?controller=Professor&action=updateProfessor"><div>Actualizar Profesor</div></a></li> 
                                                 <li><a href="?controller=Professor&action=insertProfessor"><div>Insertar Profesor</div></a></li> 
                                                 <li><a href="?controller=Professor&action=deleteProfessor"><div>Eliminar Profesor</div></a></li>
+                                                <li><a href="?controller=Professor&action=professorSelection"><div>Obtener Datos Personales Profesores</div></a></li>
                                                 <li><a href="?controller=Professor&action=personalSelection"><div>Obtener Datos Personales</div></a></li>
+                                                <li><a href="?controller=Professor&action=updatePersonal"><div>Actualizar Datos Personales</div></a></li>
                                             </ul>
                                         </li>
                                         <li><a href="#"><div>CRUD Estudiante</div></a>
                                             <ul>
                                                 <li><a href="?controller=Student&action=insertStudent"><div>Insertar Estudiante</div></a></li> 
                                                 <li><a href="?controller=Student&action=deleteStudent"><div>Borrar Estudiante</div></a></li> 
+                                                <li><a href="?controller=Student&action=reactivateStudent"><div>Reactivar Estudiante</div></a></li> 
                                                 <li><a href="?controller=Student&action=updateStudent"><div>Actualizar Estudiante</div></a></li> 
                                             </ul>
                                         </li>
@@ -105,12 +108,14 @@
                                             <ul>
                                                 <li><a href="?controller=Admin&action=insert"><div>Insertar Administrador</div></a></li>
                                                 <li><a href="?controller=Admin&action=delete"><div>Eliminar Administrador</div></a></li> 
+                                                <li><a href="?controller=Admin&action=select"><div>Obtener Administrador</div></a></li> 
                                             </ul>
                                         </li>
                                         <li><a href="#"><div>CRUD Semestre</div></a>
                                             <ul>
                                                 <li><a href="?controller=Semester&action=insert"><div>Insertar Semestre</div></a></li>
                                                 <li><a href="?controller=Semester&action=delete"><div>Eliminar Semestre</div></a></li>
+                                                <li><a href="?controller=Semester&action=select"><div>Obtener Semestre</div></a></li> 
                                             </ul>
                                         </li>
                                     </ul>

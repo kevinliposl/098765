@@ -10,7 +10,7 @@ class SemesterController {
     function insert() {
         if (isset($_POST["year"]) && isset($_POST["semester"])) {
             $model = new SemesterModel();
-            $result = $model->insert($_POST["year"],$_POST["semester"]);
+            $result = $model->insert($_POST["year"], $_POST["semester"]);
             echo json_encode($result);
         } else {
             $this->view->show("insertSemesterView.php");
@@ -25,14 +25,19 @@ class SemesterController {
         } else {
             $model = new SemesterModel();
             $result = $model->selectAll();
-            $this->view->show("deleteAdminView.php", $result);
+            $this->view->show("deleteSemesterView.php", $result);
         }
     }
 
     function select() {
         $model = new SemesterModel();
-        $result = $model->select($_POST["id"]);
-        echo json_encode($result);
+        if (isset($_POST["id"])) {
+            $result = $model->select($_POST["id"]);
+            echo json_encode($result);
+        } else {
+            $result = $model->selectAll();
+            $this->view->show("selectSemesterView.php", $result);
+        }
     }
 
 }

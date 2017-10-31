@@ -16,8 +16,9 @@ class StudentModel {
         $query->closeCursor();
         return $result;
     }
-    public function updateStudent($id, $idType, $email, $name, $firstLastName, $secondLastName, $age, $address, $gender, $nationality, $phoneOne, $phoneTwo, $contactName, $contactRelationship, $contactPhone, $contactEmail) {
-        $query = $this->db->prepare("call sp_update_student('$id', '$idType', '$email', '$name', '$firstLastName', '$secondLastName', '$age', '$address', '$gender', '$nationality', '$phoneOne', '$phoneTwo', '$contactName', '$contactRelationship', '$contactPhone', '$contactEmail')");
+
+    public function updateStudent($id, $oldId, $idType, $email, $name, $firstLastName, $secondLastName, $age, $address, $gender, $nationality, $phoneOne, $phoneTwo, $contactName, $contactRelationship, $contactPhone, $contactEmail) {
+        $query = $this->db->prepare("call sp_update_student('$id', '$oldId', '$idType', '$email', '$name', '$firstLastName', '$secondLastName', '$age', '$address', '$gender', '$nationality', '$phoneOne', '$phoneTwo', '$contactName', '$contactRelationship', '$contactPhone', '$contactEmail')");
         $query->execute();
         $result = $query->fetch();
         $query->closeCursor();
@@ -31,6 +32,14 @@ class StudentModel {
         $query->closeCursor();
         return $result;
     }
+    
+    public function selectAllDeleteStudent() {
+        $query = $this->db->prepare("call sp_select_all_delete_student()");
+        $query->execute();
+        $result = $query->fetchAll();
+        $query->closeCursor();
+        return $result;
+    }
 
     public function selectStudent($id) {
         $query = $this->db->prepare("call sp_select_student('$id')");
@@ -38,9 +47,22 @@ class StudentModel {
         $result = $query->fetch();
         return $result;
     }
+    
+    public function selectDeleteStudent($id) {
+        $query = $this->db->prepare("call sp_select_delete_student('$id')");
+        $query->execute();
+        $result = $query->fetch();
+        return $result;
+    }
 
     public function deleteStudent($id) {
         $query = $this->db->prepare("call sp_delete_student('$id')");
+        $query->execute();
+        $result = $query->fetch();
+        return $result;
+    }
+    public function reactivateStudent($id) {
+        $query = $this->db->prepare("call sp_reactivate_student('$id')");
         $query->execute();
         $result = $query->fetch();
         return $result;

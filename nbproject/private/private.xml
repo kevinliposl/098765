@@ -2,9 +2,13 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group>
             <file>file:/C:/Program%20Files%20(x86)/EasyPHP-Devserver-16.1/eds-www/098765/controller/CourseController.php</file>
             <file>file:/C:/Program%20Files%20(x86)/EasyPHP-Devserver-16.1/eds-www/098765/view/insertCourseSemesterView.php</file>
         </group>
+=======
+        <group/>
+>>>>>>> 9965147237583ac3d7da6b81e9ad9ecec4748508
     </open-files>
 </project-private>
