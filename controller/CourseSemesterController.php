@@ -24,10 +24,38 @@ class CourseSemesterController {
             $this->view->show("insertCourseSemesterView.php", $result);
     }//insert  
     
-    public function selectNotAll() {
+    public function selectNotAllCoursesSemester() {
             require 'model/CourseSemesterModel.php';
             $model = new CourseSemesterModel();
-            $result = $model->selectNotAll($_POST['ID_Semester']);
+            $result = $model->selectNotAllCoursesSemester($_POST['ID_Semester']);
             echo json_encode($result);
+    }//insert 
+    
+    public function selectNotAllProfessorsCourseSemester() {
+            require 'model/CourseSemesterModel.php';
+            $model = new CourseSemesterModel();
+            $result = $model->selectNotAllProfessorsCourseSemester($_POST['ID_Semester'],$_POST['initials']);
+            echo json_encode($result);
+    }//insert  
+    
+    public function assignmentCourseSemester() {
+            require 'model/CourseSemesterModel.php';
+            $model = new CourseSemesterModel();          
+            $professors = "";
+            $num_professors = 0;
+        if(isset($_POST['professors'])){    
+            foreach ($_POST['professors'] as $valorActual) {
+                if ($professors == '') {
+                    $professors= $valorActual;
+                } else {
+                    $professors = $valorActual . "," . $professors;
+                }
+                $num_professors = $num_professors+ 1;
+            }//for        
+            $result = $model->assignmentCourseSemester($_POST['ID_Semester'],$_POST['initials'],$professors,$num_professors);
+            echo json_encode($result);
+        }else{
+            $this->view->show("insertAdminView.php");
+        }
     }//insert  
 }

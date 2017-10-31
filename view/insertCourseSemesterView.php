@@ -58,8 +58,8 @@ if (isset($session->email)) {
                             </div>
                             <br>
                             <div class="white-section">
-                                <label for="form-professors">Profesores:</label>
-                                <select id="form-professors[]" class="form-control selectpicker" multiple data-live-search="true">
+                                <label for="form-professors">Cursos:</label>
+                                <select multiple name="form-professors[]" id="form-professors" class="form-control selectpicker" data-live-search="true">
                                     <option value="-1" data-tokens="">Seleccione los profesores</option>
                                 </select>
                             </div>
@@ -86,14 +86,13 @@ if (isset($session->email)) {
                     <h4 class="modal-title" id="myModalLabel">¡Aviso!</h4>
                 </div>
                 <div class="modal-body">
-                    <h4 style="text-align: center;">¿Realmente desea eliminar este Curso?</h4>
+                    <h4 style="text-align: center;">¿Realmente desea Asignar los Profesores al Curso?</h4>
                     <p>Consejos:
-                    <li>Verificar bien, si es el Curso que realmente desea eliminar</li>
-                    <li>El Curso puede ser restaurado con servicio t&eacute;cnico</li></p>
+                    <li>Verificar bien, si la asignacion esta completa</li></p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    <input type="button" class="btn btn-primary button-black nomargin" id="form-submity" value="Eliminar"/>
+                    <input type="button" class="btn btn-primary button-black nomargin" id="form-submity" value="Asignar"/>
                 </div>
             </div>
         </div>
@@ -108,13 +107,29 @@ if (isset($session->email)) {
             "ID_Semester": $("#form-semester").val()
         };
         document.getElementById("form-courses").options.length = 0;
-        document.getElementById("form-professors[]").options.length = 0;
-        $.post("?controller=CourseSemester&action=selectNotAll", parameters, function (data) {
+        document.getElementById("form-professors").options.length = 0;
+        $.post("?controller=Course&action=selectAll", parameters, function (data) {
             $('#form-courses').append($("<option></option>").attr("value", "-1").text("Seleccione un Curso"));
             for (var i = 0; i < data.length; i++) {
                 $('#form-courses').append($("<option></option>").attr("value", data[i].initials).text(data[i].name));//AGREGAR OPCIONES
             }
             $("#form-courses").selectpicker("refresh");///REFRESCA SELECT PARA QUE AGARRE AGREGADOS
+        }, "json");
+    });
+    
+    //Change Combobox
+    $("#form-courses").change(function () {
+        var parameters = {
+            "ID_Semester": $("#form-semester").val(),
+            "initials": $("#form-courses").val()
+        };
+        document.getElementById("form-professors").options.length = 0;
+        $.post("?controller=CourseSemester&action=selectNotAllProfessorsCourseSemester", parameters, function (data) {
+//            $('#form-professors').append($("<option></option>").attr("value", "-1").text("Seleccione los profesores"));
+            for (var i = 0; i < data.length; i++) {
+                $('#form-professors').append($("<option></option>").attr("value", data[i].identification).text(data[i].name));//AGREGAR OPCIONES
+            }
+            $("#form-professors").selectpicker("refresh");///REFRESCA SELECT PARA QUE AGARRE AGREGADOS
         }, "json");
     });
 
@@ -126,9 +141,11 @@ if (isset($session->email)) {
     //Delete 
     $("#form-submity").click(function () {
         var parameters = {
-            "initials": $("#form-courses").val()
+            "ID_Semester": $("#form-semester").val(),
+            "initials": $("#form-courses").val(),
+            "professors": $("#form-professors").val()
         };
-        $.post("?controller=Course&action=delete", parameters, function (data) {
+        $.post("?controller=CourseSemester&action=assignmentCourseSemester", parameters, function (data) {
             if (data.result === "1") {
                 $("#success").attr({
                     "data-notify-type": "success",
@@ -136,7 +153,7 @@ if (isset($session->email)) {
                     "data-notify-position": "bottom-full-width"
                 });
                 SEMICOLON.widget.notifications($("#success"));
-                location.href = "?controller=Course&action=delete";
+                location.href = "?controller=CourseSemester&action=insert";
             } else {
                 $("#warning").attr({
                     "data-notify-type": "warning",
