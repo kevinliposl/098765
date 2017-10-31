@@ -36,79 +36,79 @@ include_once 'public/header.php';
                                         <tr>
                                             <td width="30%">Identificaci&oacute;n</td>
                                             <td width="70%">
-                                                <a><?php echo $var[1];?></a>
+                                                <a><?php echo $var[0];?></a>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Tipo de Identificaci&oacute;n</td>
                                             <td>
-                                                <a><?php echo $var[7];?></a>
+                                                <a><?php echo $var[6];?></a>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Nombre</td>
                                             <td>
-                                                <a><?php echo $var[2];?></a>
+                                                <a><?php echo $var[1];?></a>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Primer Apellido</td>
                                             <td>
-                                                <a><?php echo $var[3];?></a>
+                                                <a><?php echo $var[2];?></a>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Segundo Apellido</td>
                                             <td>
-                                                <a><?php echo $var[4];?></a>
+                                                <a><?php echo $var[3];?></a>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>G&eacute;nero</td>
                                             <td>
-                                                <a><?php echo $var[5];?></a>
+                                                <a><?php echo $var[4];?></a>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Nacionalidad</td>
                                             <td>
-                                                <a><?php echo $var[6];?></a>
+                                                <a><?php echo $var[5];?></a>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Tel&eacute;fono 1</td>
                                             <td>
-                                                <a><?php echo $var[8];?></a>
+                                                <a><?php echo $var[7];?></a>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Tel&eacute;fono 2</td>
                                             <td>
-                                                <a><?php echo $var[9];?></a>
+                                                <a><?php echo $var[8];?></a>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Email</td>
                                             <td>
-                                                <a><?php echo $var[13];?></a>
+                                                <a><?php echo $var[12];?></a>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Fecha de Nacimiento</td>
                                             <td>
-                                                <a><?php echo $var[12];?></a>
+                                                <a><?php echo $var[11];?></a>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Dirección:</td>
                                             <td>
-                                                <a><?php echo $var[11];?></a>
+                                                <a><?php echo $var[10];?></a>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Informacion Adicional:</td>
                                             <td>
-                                                <a><?php echo $var[10];?></a>
+                                                <a><?php echo $var[9];?></a>
                                             </td>
                                         </tr>
                                     </tbody>

@@ -80,7 +80,7 @@ class ProfessorController {
         require 'model/ProfessorModel.php';
         $model = new ProfessorModel();
         
-        $id="7";
+        $id="301110222";
         
         $result = $model->selectProfessor($id);
         $this->view->show("selectProfessorDataView.php", $result);
@@ -93,5 +93,24 @@ class ProfessorController {
         $result = $model->selectAllProfessor();
         $this->view->show("selectProfessorView.php", $result);
     }//professorSelection
+    
+    public function updatePersonal(){
+        require 'model/ProfessorModel.php';
+        $model = new ProfessorModel();
+        
+        $id="301110222";
+        
+        $result = $model->selectProfessor($id);
+        $this->view->show("updateProfessorDataView.php", $result);
+    }//updatePersonal
+    
+    public function updatePersonalData() {
+        require 'model/ProfessorModel.php';
+        $model = new ProfessorModel();
+
+        $result = $model->updateProfessor("301110222",$_POST["identification"], $_POST["name"], $_POST["firstLastName"], $_POST["secondLastName"], $_POST["gender"], $_POST["nationality"], $_POST["address"], $_POST["typeId"], $_POST["phone"], $_POST["phone2"], $_POST["additionalInformation"], $_POST["email"], $_POST["age"]);
+
+        echo json_encode($result);
+    }
 
 }

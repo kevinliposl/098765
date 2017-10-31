@@ -93,6 +93,7 @@
                                                 <li><a href="?controller=Professor&action=deleteProfessor"><div>Eliminar Profesor</div></a></li>
                                                 <li><a href="?controller=Professor&action=professorSelection"><div>Obtener Datos Personales Profesores</div></a></li>
                                                 <li><a href="?controller=Professor&action=personalSelection"><div>Obtener Datos Personales</div></a></li>
+                                                <li><a href="?controller=Professor&action=updatePersonal"><div>Actualizar Datos Personales</div></a></li>
                                             </ul>
                                         </li>
                                         <li><a href="#"><div>CRUD Estudiante</div></a>
