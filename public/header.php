@@ -96,6 +96,13 @@
                                                 <li><a href="?controller=Professor&action=updatePersonal"><div>Actualizar Datos Personales</div></a></li>
                                             </ul>
                                         </li>
+                                        <li><a href="#"><div>CRUD Matricula</div></a>
+                                            <ul>
+                                                <li><a href="?controller=Enrollment&action=insert"><div>Matricular</div></a></li> 
+                                                <li><a href=""><div>Desmatricular</div></a></li> 
+                                                <li><a href=""><div>Obtener Matriculas</div></a></li>
+                                            </ul>
+                                        </li>
                                         <li><a href="#"><div>CRUD Estudiante</div></a>
                                             <ul>
                                                 <li><a href="?controller=Student&action=insertStudent"><div>Insertar Estudiante</div></a></li> 
