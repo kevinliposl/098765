@@ -67,5 +67,13 @@ class StudentModel {
         $result = $query->fetch();
         return $result;
     }
+    
+    public function selectStudentEnrolled() {
+        $query = $this->db->prepare("call sp_select_student_enrolled()");
+        $query->execute();
+        $result = $query->fetchAll();
+        $query->closeCursor();
+        return $result;
+    }
 
 }

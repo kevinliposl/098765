@@ -44,4 +44,12 @@ class CourseModel {
         $result = $query->fetch();
         return $result;
     }
+    
+    public function selectCoursesStudent($id) {
+        $query = $this->db->prepare("call sp_select_student_courses('$id')");
+        $query->execute();
+        $result = $query->fetchAll();
+        $query->closeCursor();
+        return $result;
+    }
 }
