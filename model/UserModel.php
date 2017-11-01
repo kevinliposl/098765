@@ -4,32 +4,15 @@ class UserModel {
 
     private $db;
 
-    public function __construct() {
+    function __construct() {
+        require 'libs/SPDO.php';
         $this->db = SPDO::singleton();
     }
 
-    public function logIn($email, $password) {
-
-        return NULL;
-    }
-
-    public function insertUser($email, $name, $lastname, $address, $password) {
-
-        return NULL;
-    }
-
-    public function updateUser($email, $name, $lastname, $address, $password) {
-
-        return NULL;
-    }
-
-    public function deleteUser($email) {
-
-        return NULL;
-    }
-
-    public function selectUser($email) {
-
-        return NULL;
+    function logIn($email, $password) {
+        $query = $this->db->prepare("call sp_user_login('$email','$password')");
+        $query->execute();
+        $result = $query->fetchAll();
+        return $result;
     }
 }

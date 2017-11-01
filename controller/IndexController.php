@@ -14,10 +14,6 @@ class IndexController {
         $this->view->show("404View.php");
     }
 
-    function login() {
-        $this->view->show("loginView.php");
-    }
-
     function galery() {
         $this->view->show("galeryView.php");
     }

@@ -7,71 +7,27 @@ class UserController {
         require 'model/UserModel.php';
     }
 
-    function defaultAction() {
-        $model = new UserModel();
-        $session = SSession::getInstance();
-        $result = $model->selectUser($session->email);
-        $vars = array(
-            "email" => $result->Email,
-            "name" => $result->Name,
-            "lastname" => $result->LastName,
-            "password" => $result->Password,
-            "address" => $result->Address);
-        $this->view->show("userView.php", $vars);
-    }
-
-    function insert() {
-        $model = new UserModel();
-
-        $email = $_POST["email"];
-        $name = $_POST["name"];
-        $lastname = $_POST["lastname"];
-        $address = $_POST["address"];
-        $password = $_POST["password"];
-
-        $result = $model->insertUser($email, $name, $lastname, $address, $password);
-        echo json_encode(array("result" => "1"));
-    }
-
-    function delete() {
-        $model = new UserModel();
-
-        $session = SSession::getInstance();
-        $result = $model->deleteUser($session->email);
-
-        if ($result == "true") {
-            $session->destroy();
-        }
-        echo json_encode(array("result" => $result));
-    }
-
-    function update() {
-        $model = new UserModel();
-
-        $email = $_POST["email"];
-        $name = $_POST["name"];
-        $lastname = $_POST["lastname"];
-        $address = $_POST["address"];
-        $password = $_POST["password"];
-
-        $result = $model->updateUser($email, $name, $lastname, $address, $password);
-
-        echo json_encode(array("result" => $result));
-    }
-
     function logIn() {
-        $model = new UserModel();
-
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-
-        $result = $model->logIn($email, $password);
-
-        if ($result == "true") {
-            $session = SSession::getInstance();
-            $session->email = $_POST['email'];
+        if (isset($_POST['email']) && $_POST['password']) {
+            $model = new UserModel();
+            $result = $model->logIn($_POST['email'], $_POST['password']);
+            if (isset($result[0]['permissions'])) {
+                $flag = count($result[0]['permissions']);
+                $this->permissions($flag);
+            } else {
+                echo json_encode(array('result', 'No tengo'));
+            }
+        } else {
+            $this->view->show("loginView.php");
         }
-        echo json_encode(array("result" => $result));
+    }
+
+    private function permissions($flag) {
+        if ($flag === 1) {
+            echo json_encode(array('result', 'Tengo uno'));
+        } else {
+            echo json_encode(array('result', 'Tengo varios'));
+        }
     }
 
     function signOff() {

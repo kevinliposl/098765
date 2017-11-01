@@ -156,6 +156,7 @@ if (isset($session->email)) {
                 $("#success-id").attr("data-notify-msg", "<i class=icon-ok-sign></i> Operacion Exitosa!");
 
                 SEMICOLON.widget.notifications($("#success-id"));
+                
             } else {
                 $("#form-id-table").html("");
                 $("#form-name-table").html("");
@@ -180,7 +181,7 @@ if (isset($session->email)) {
                     "data-notify-position": "bottom-full-width"
                 });
                 SEMICOLON.widget.notifications($("#success"));
-                location.href = "?controller=Admin&action=delete";
+                setTimeout("location.href = '?controller=Admin&action=delete';", 2000);
             } else {
                 $("#warning").attr({
                     "data-notify-type": "warning",
