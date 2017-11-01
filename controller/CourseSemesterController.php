@@ -24,19 +24,40 @@ class CourseSemesterController {
             $this->view->show("insertCourseSemesterView.php", $result);
     }//insert  
     
-    public function selectNotAllCoursesSemester() {
+//    public function selectNotAllCoursesSemester() {
+//            require 'model/CourseSemesterModel.php';
+//            $model = new CourseSemesterModel();
+//            $result = $model->selectNotAllCoursesSemester($_POST['ID_Semester']);
+//            echo json_encode($result);
+//    }//insert 
+    
+    public function selectAllCoursesSemester() {
             require 'model/CourseSemesterModel.php';
             $model = new CourseSemesterModel();
-            $result = $model->selectNotAllCoursesSemester($_POST['ID_Semester']);
+            $result = $model->selectAllCourseSemester($_POST['ID_Semester']);
             echo json_encode($result);
     }//insert 
-    
+
     public function selectNotAllProfessorsCourseSemester() {
             require 'model/CourseSemesterModel.php';
             $model = new CourseSemesterModel();
             $result = $model->selectNotAllProfessorsCourseSemester($_POST['ID_Semester'],$_POST['initials']);
             echo json_encode($result);
     }//insert  
+    
+    public function deleteCourseSemester() {
+        if (isset($_POST["ID_Semester"]) && isset($_POST["initials"])) {
+            require 'model/CourseSemesterModel.php';
+            $model = new CourseSemesterModel();
+            $result = $model->deleteCourseSemester($_POST['ID_Semester'],$_POST['initials']);
+            echo json_encode($result);
+        }else{
+            require 'model/SemesterModel.php';
+            $model = new SemesterModel();
+            $result = $model->selectAll();
+            $this->view->show("deleteCourseSemesterView.php", $result);
+        }//else
+    }//delete
     
     public function assignmentCourseSemester() {
             require 'model/CourseSemesterModel.php';

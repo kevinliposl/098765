@@ -31,4 +31,19 @@ class CourseSemesterModel {
         $result = $query->fetch();
         return $result;
     }
+    
+    public function selectAllCourseSemester($ID_semester) {
+        $query = $this->db->prepare("call sp_select_all_course_semester('$ID_semester')");
+        $query->execute();
+        $result = $query->fetchAll();
+        $query->closeCursor();
+        return $result;
+    }
+    
+    public function deleteCourseSemester($ID_semester,$initials) {
+        $query = $this->db->prepare("call sp_delete_course_semester('$ID_semester','$initials')");
+        $query->execute();
+        $result = $query->fetch();
+        return $result;
+    }
 }
