@@ -44,12 +44,6 @@ if (isset($session->email)) {
                                 </select>
                             </div>
                             <br>
-                            <div class="white-section">
-                                <label for="form-initials">Prueba:</label>
-                                <select id="prueba" class="form-control selectpicker" data-live-search="true">
-                                    <option value="-1" data-tokens="">Seleccione un Curso</option>
-                                </select>
-                            </div>
                             <div class="acc_content clearfix"></div>
                             <div class="table-responsive">
                                 <table class="table table-bordered table-striped">
@@ -130,35 +124,27 @@ if (isset($session->email)) {
         var parameters = {
             "initials": $("#form-courses").val()
         };
+        $.post("?controller=Course&action=select", parameters, function (data) {
+            if (data.initials) {
+                $("#form-initials-table").html(data.initials);
+                $("#form-name-table").html(data.name);
+                $("#form-instrument-table").html(data.instrument);
+                $("#form-description-table").html(data.description);
 
-//        $.post("?controller=Course&action=select", parameters, function (data) {
-//            if (data.initials) {
-//                $("#form-initials-table").html(data.initials);
-//                $("#form-name-table").html(data.name);
-//                $("#form-instrument-table").html(data.instrument);
-//                $("#form-description-table").html(data.description);
-//
-//                $("#success").attr({
-//                    "data-notify-type": "success",
-//                    "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!",
-//                    "data-notify-position": "bottom-full-width"
-//                });
-//                SEMICOLON.widget.notifications($("#success"));
-//            } else {
-//                $("#form-initials-table").html("");
-//                $("#form-name-table").html("");
-//                $("#form-instrument-table").html("");
-//                $("#form-description-table").html("");
-//                $("#form-secondLastName-table").html("");
-//
-//            }
-//        }, "json");
+                $("#success").attr({
+                    "data-notify-type": "success",
+                    "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!",
+                    "data-notify-position": "bottom-full-width"
+                });
+                SEMICOLON.widget.notifications($("#success"));
+            } else {
+                $("#form-initials-table").html("");
+                $("#form-name-table").html("");
+                $("#form-instrument-table").html("");
+                $("#form-description-table").html("");
+                $("#form-secondLastName-table").html("");
 
-        $.post("?controller=Course&action=selectAll", parameters, function (data) {
-            for (var i = 0; i < data.length; i++) {
-                $('#prueba').append($("<option></option>").attr("value", data[i].initials).text(data[i].initials));//AGREGAR OPCIONES
             }
-            $("#prueba").selectpicker("refresh");///REFRESCA SELECT PARA QUE AGARRE AGREGADOS
         }, "json");
     });
 
