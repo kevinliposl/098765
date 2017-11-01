@@ -46,6 +46,14 @@ class EnrollmentController {
         $result = $model->deleteEnrollment($_POST["ID"]);
         echo json_encode($result);
     }//deleteFunction
+    
+    public function selectCourseNotStudent(){
+        require 'model/EnrollmentModel.php';
+        $model = new EnrollmentModel();
+        
+        $result = $model->selectCoursesNotStudent($_POST["identification"]);
+        echo json_encode($result);
+    }//select
 }//end of class
 
 ?>

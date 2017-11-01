@@ -45,8 +45,8 @@ if (isset($session->email)) {
                             </div>
                             <br>
                             <div class="white-section">
-                                <label for="form-professors">Profesores:</label>
-                                <select name="form-professors" id="form-professors" class="form-control selectpicker" data-live-search="true">
+                                <label for="form-professors">Cursos disponibles:</label>
+                                <select multiple name="form-professors[]" id="form-professors" class="form-control selectpicker" data-live-search="true">
                                     <!--<option value="-1" data-tokens="">Seleccione los profesores</option>-->
                                 </select>
                             </div>

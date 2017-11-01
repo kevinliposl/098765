@@ -14,4 +14,12 @@ class EnrollmentModel {
         $result = $query->fetch();
         return $result;
     }//delete
+    
+    public function selectCoursesNotStudent($id) {
+        $query = $this->db->prepare("call sp_select_course_not_student('$id')");
+        $query->execute();
+        $result = $query->fetchAll();
+        $query->closeCursor();
+        return $result;
+    }
 }//end of class
