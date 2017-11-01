@@ -13,7 +13,7 @@ if (isset($session->email)) {
 <section id="page-title">
 
     <div class="container clearfix">
-        <h1>Matricular</h1>
+        <h1>Desmatricular</h1>
     </div>
 </section><!-- #page-title end -->
 
@@ -35,7 +35,7 @@ if (isset($session->email)) {
                                         if (isset($var["identification"])) {
                                             ?>
                                             <option value="<?php echo $var["identification"] ?> " data-tokens=""> 
-                                                <?php echo $var["name"]." ".$var["first_lastname"]." ".$var["second_lastname"];?>
+                                                <?php echo $var["Name"];?>
                                             </option>
                                             <?php
                                         }
@@ -45,8 +45,8 @@ if (isset($session->email)) {
                             </div>
                             <br>
                             <div class="white-section">
-                                <label for="form-professors">Profesores:</label>
-                                <select name="form-professors" id="form-professors" class="form-control selectpicker" data-live-search="true">
+                                <label for="form-professors">Cursos disponibles:</label>
+                                <select multiple name="form-professors[]" id="form-professors" class="form-control selectpicker" data-live-search="true">
                                     <!--<option value="-1" data-tokens="">Seleccione los profesores</option>-->
                                 </select>
                             </div>
@@ -95,7 +95,7 @@ if (isset($session->email)) {
             "identification": $("#form-student").val()
         };
         document.getElementById("form-professors").options.length = 0;
-        $.post("?controller=Enrollment&action=selectCourseNotStudent", parameters, function (data) {
+        $.post("?controller=Enrollment&action=selectCourses", parameters, function (data) {
             for (var i = 0; i < data.length; i++) {
                 $('#form-professors').append($("<option></option>").attr("value", data[i].ID).text("Curso: "+data[i].name+"-Profesor(a): "+data[i].Name));//AGREGAR OPCIONES
             }
@@ -140,3 +140,4 @@ if (isset($session->email)) {
 ============================================= -->    
 <?php
 include_once 'public/footer.php';
+
