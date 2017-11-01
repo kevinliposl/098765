@@ -13,7 +13,7 @@ if (isset($session->email)) {
 <section id="page-title">
 
     <div class="container clearfix">
-        <h1>Insertar Asignaciones de Cursos a Semestres</h1>
+        <h1>Eliminar Asignaciones de Profesores a Cursos en Semestres</h1>
     </div>
 </section><!-- #page-title end -->
 
@@ -59,13 +59,13 @@ if (isset($session->email)) {
                             <br>
                             <div class="white-section">
                                 <label for="form-professors">Profesores:</label>
-                                <select multiple name="form-professors[]" id="form-professors" class="form-control selectpicker" data-live-search="true">
-                                    <!--<option value="-1" data-tokens="">Seleccione los profesores</option>-->
+                                <select id="form-professors" class="form-control selectpicker" data-live-search="true">
+                                    <option value="-1" data-tokens="">Seleccione los profesores</option>
                                 </select>
                             </div>
                             <br>
                             <div class="col_full nobottommargin">
-                                <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" style="display : block; text-align: center;" data-target="#myModal">Asignar</a>
+                                <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" style="display : block; text-align: center;" data-target="#myModal">Eliminar</a>
                                 <input type="hidden" id="warning" value="w"/>
                                 <input type="hidden" id="success" value="s"/>
                                 <input type="hidden" id="failed" value="f"/>
@@ -86,13 +86,13 @@ if (isset($session->email)) {
                     <h4 class="modal-title" id="myModalLabel">¡Aviso!</h4>
                 </div>
                 <div class="modal-body">
-                    <h4 style="text-align: center;">¿Realmente desea Asignar los Profesores al Curso?</h4>
+                    <h4 style="text-align: center;">¿Realmente desea eliminar la asignacion de profesor al curso?</h4>
                     <p>Consejos:
-                    <li>Verificar bien, si la asignacion esta completa</li></p>
+                    <li>Verificar bien, si la asignacion es la correcta</li></p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    <input type="button" class="btn btn-primary button-black nomargin" id="form-submity" value="Asignar"/>
+                    <input type="button" class="btn btn-primary button-black nomargin" id="form-submity" value="Eliminar"/>
                 </div>
             </div>
         </div>
@@ -108,7 +108,7 @@ if (isset($session->email)) {
         };
         document.getElementById("form-courses").options.length = 0;
         document.getElementById("form-professors").options.length = 0;
-        $.post("?controller=Course&action=selectAll", parameters, function (data) {
+        $.post("?controller=CourseSemester&action=selectAllCoursesSemester", parameters, function (data) {
             $('#form-courses').append($("<option></option>").attr("value", "-1").text("Seleccione un Curso"));
             for (var i = 0; i < data.length; i++) {
                 $('#form-courses').append($("<option></option>").attr("value", data[i].initials).text(data[i].name));//AGREGAR OPCIONES
@@ -124,7 +124,7 @@ if (isset($session->email)) {
             "initials": $("#form-courses").val()
         };
         document.getElementById("form-professors").options.length = 0;
-        $.post("?controller=CourseSemester&action=selectNotAllProfessorsCourseSemester", parameters, function (data) {
+        $.post("?controller=CourseSemester&action=selectAllProfessorsCourseSemester", parameters, function (data) {
 //            $('#form-professors').append($("<option></option>").attr("value", "-1").text("Seleccione los profesores"));
             for (var i = 0; i < data.length; i++) {
                 $('#form-professors').append($("<option></option>").attr("value", data[i].identification).text(data[i].name));//AGREGAR OPCIONES
@@ -143,9 +143,9 @@ if (isset($session->email)) {
         var parameters = {
             "ID_Semester": $("#form-semester").val(),
             "initials": $("#form-courses").val(),
-            "professors": $("#form-professors").val()
+            "identification": $("#form-professors").val()
         };
-        $.post("?controller=CourseSemester&action=insert", parameters, function (data) {
+        $.post("?controller=CourseSemester&action=deleteProfessor", parameters, function (data) {
             if (data.result === "1") {
                 $("#success").attr({
                     "data-notify-type": "success",
@@ -153,7 +153,7 @@ if (isset($session->email)) {
                     "data-notify-position": "bottom-full-width"
                 });
                 SEMICOLON.widget.notifications($("#success"));
-                location.href = "?controller=CourseSemester&action=insert";
+                location.href = "?controller=CourseSemester&action=deleteProfessor";
             } else {
                 $("#warning").attr({
                     "data-notify-type": "warning",

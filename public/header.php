@@ -81,9 +81,9 @@
                                         <li><a href="#"><div>CRUD Asignacion</div></a>
                                             <ul>
                                                 <li><a href="?controller=CourseSemester&action=insert"><div>Insertar Asignacion</div></a></li> 
-                                                <li><a href="?controller=CourseSemester&action=deleteCourseSemester"><div>Eliminar Asignacion curso</div></a></li> 
-                                                <li><a href="?controller=CourseSemester&action=update"><div>Actualizar Curso</div></a></li> 
-                                                <li><a href="?controller=CourseSemester&action=select"><div>Ver Curso</div></a></li> 
+                                                <li><a href="?controller=CourseSemester&action=deleteCourse"><div>Eliminar Asignacion curso</div></a></li> 
+                                                <li><a href="?controller=CourseSemester&action=deleteProfessor"><div>Eliminar Asignacion Profesor</div></a></li> 
+                                                <li><a href="?controller=CourseSemester&action=select"><div>Ver Asignaciones</div></a></li> 
                                             </ul>
                                         </li>
                                         <li><a href="#"><div>CRUD Profesor</div></a>

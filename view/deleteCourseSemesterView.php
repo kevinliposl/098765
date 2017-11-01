@@ -121,7 +121,7 @@ if (isset($session->email)) {
             "ID_Semester": $("#form-semester").val(),
             "initials": $("#form-courses").val(),
         };
-        $.post("?controller=CourseSemester&action=deleteCourseSemester", parameters, function (data) {
+        $.post("?controller=CourseSemester&action=deleteCourse", parameters, function (data) {
             if (data.result === "1") {
                 $("#success").attr({
                     "data-notify-type": "success",
@@ -129,7 +129,7 @@ if (isset($session->email)) {
                     "data-notify-position": "bottom-full-width"
                 });
                 SEMICOLON.widget.notifications($("#success"));
-                location.href = "?controller=CourseSemester&action=deleteCourseSemester";
+                location.href = "?controller=CourseSemester&action=deleteCourse";
             } else {
                 $("#warning").attr({
                     "data-notify-type": "warning",
