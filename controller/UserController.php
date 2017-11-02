@@ -7,6 +7,7 @@ class UserController {
         require 'model/UserModel.php';
     }
 
+    /////TEMPORAR MIENTRAS ARREGLAN BIEN LOS INSERTS
     function logIn() {
         if (isset($_POST['email']) && $_POST['password']) {
             $model = new UserModel();
@@ -14,8 +15,9 @@ class UserController {
             if (isset($result[0]['permissions'])) {
                 $flag = count($result[0]['permissions']);
                 $this->permissions($flag);
+                SSession::getInstance()->email = $_POST['email'];
             } else {
-                echo json_encode(array('result', 'No tengo'));
+                echo json_encode(array('result', '0'));
             }
         } else {
             $this->view->show("loginView.php");
@@ -24,9 +26,9 @@ class UserController {
 
     private function permissions($flag) {
         if ($flag === 1) {
-            echo json_encode(array('result', 'Tengo uno'));
+            echo json_encode(array('result', '1'));
         } else {
-            echo json_encode(array('result', 'Tengo varios'));
+            echo json_encode(array('result', '2'));
         }
     }
 

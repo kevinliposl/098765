@@ -137,7 +137,7 @@
                                         <li><a href="?action=contact"><div>Contacto</div></a>
                                     </ul>
                                 </li>
-                                <?php if (SSession::getInstance()->state) { ?>
+                                <?php if (isset(SSession::getInstance()->email)) { ?>
                                     <li><a href="?controller=User&action=signOff"><div>Cerrar Sesi&oacute;n</div></a></li>
                                 <?php } ?>
                             </ul>
