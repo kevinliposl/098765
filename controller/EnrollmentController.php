@@ -56,20 +56,20 @@ class EnrollmentController {
     }//select
     
     public function insertFunction() {
-        if(isset($_POST['professors']) && isset($_POST['identification'])){  
-            require 'model/Enrollment.php';
+        if(isset($_POST['id-courses']) && isset($_POST['id-student'])){  
+            require 'model/EnrollmentModel.php';
             $model = new EnrollmentModel();          
-            $professors = "";
-            $num_professors = 0;
-            foreach ($_POST['professors'] as $valorActual) {
-                if ($professors == '') {
-                    $professors= $valorActual;
+            $ids = "";
+            $num_ids = 0;
+            foreach ($_POST['id-courses'] as $valorActual) {
+                if ($ids == '') {
+                    $ids= $valorActual;
                 } else {
-                    $professors = $valorActual . "," . $professors;
+                    $ids = $valorActual . "," . $ids;
                 }
-                $num_professors = $num_professors+ 1;
+                $num_ids = $num_ids+ 1;
             }//for        
-            $result = $model->insertEnrollment($_POST['identification'],$professors,$num_professors);
+            $result = $model->insertEnrollment($_POST['id-student'],$ids,$num_ids);
             echo json_encode($result);
         }else{
             $this->insert();
