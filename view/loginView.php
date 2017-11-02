@@ -87,46 +87,48 @@
                     </div>
                 </div>
             </section><!-- #content end -->
-            <script>
+
+            <?php sleep(5);
+            echo "<script>
                 function validate() {
                     var email, password;
 
-                    email = $("#form-email").val().trim();
-                    password = $("#form-password").val().trim();
+                    email = $('#form-email').val().trim();
+                    password = $('#form-password').val().trim();
 
-                    if (!/\w+@\w+\.+[a-z]/.test(email) || email.split(" ", 2).length > 1) {
-                        $("#failed-email").attr("data-notify-msg", "<i class=icon-remove-sign></i> Correo Incorrecto. Complete correctamente e intente de nuevo!");
-                        SEMICOLON.widget.notifications($("#failed-email"));
+                    if (!/\w+@\w+\.+[a-z]/.test(email) || email.split(' ', 2).length > 1) {
+                        $('#failed-email').attr('data-notify-msg', '<i class=icon-remove-sign></i> Correo Incorrecto. Complete correctamente e intente de nuevo!');
+                        SEMICOLON.widget.notifications($('#failed-email'));
                         return false;
                     }
-                    if (password.length < 1 || email.split(" ", 2).length > 1) {
-                        $("#failed-password").attr("data-notify-msg", "<i class=icon-remove-sign></i> Contrase&ncaron;a Incorrecta. Complete correctamente e intente de nuevo!");
-                        SEMICOLON.widget.notifications($("#failed-password"));
+                    if (password.length < 1 || email.split(' ', 2).length > 1) {
+                        $('#failed-password').attr('data-notify-msg', '<i class=icon-remove-sign></i> Contrase&ncaron;a Incorrecta. Complete correctamente e intente de nuevo!');
+                        SEMICOLON.widget.notifications($('#failed-password'));
                         return false;
                     }
 
                     var parameters = {
-                        "email": email,
-                        "password": password
+                        'email': email,
+                        'password': password
                     };
 
-                    $.post("?controller=User&action=logIn", parameters, function (data) {
-                        if (data.result === "0") {
-                            $("#failed").attr({
-                                "data-notify-msg": "<i class=icon-warning-sign></i> Correo o Contrase&ncaron;a Incorrectos. Complete correctamente e intente de nuevo!"
+                    $.post('?controller=User&action=logIn', parameters, function (data) {
+                        if (data.result === '0') {
+                            $('#failed').attr({
+                                'data-notify-msg': '<i class=icon-warning-sign></i> Correo o Contrase&ncaron;a Incorrectos. Complete correctamente e intente de nuevo!'
                             });
-                            SEMICOLON.widget.notifications($("#failed"));
-                        } else if (data.result === "1") {
-                            location.href = "?";
+                            SEMICOLON.widget.notifications($('#failed'));
+                        } else if (data.result === '1') {
+                            location.href = '?';
                         } else {
-                           location.href = "?";
+                           location.href = '?';
                         }
                         ;
-                    }, "json");
+                    }, 'json');
 
                     return false;
                 }
-            </script>
+            </script>"; ?>
 
             <?php
             include_once 'public/footer.php';
