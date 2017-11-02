@@ -13,7 +13,7 @@ if (isset($session->email)) {
 <section id="page-title">
 
     <div class="container clearfix">
-        <h1>Obtener Matriculas</h1>
+        <h1>Obtener cursos matriculados</h1>
     </div>
 </section><!-- #page-title end -->
 
@@ -27,15 +27,17 @@ if (isset($session->email)) {
                     <div class="acc_content clearfix">
                         <form id="form" class="nobottommargin">
                             <div class="white-section">
-                                <label for="form-initials">Estudiantes Matriculados:</label>
-                                <select id="form-courses" class="selectpicker form-control" data-live-search="true">
-                                    <option data-tokens="">Seleccione un estudiante</option>
+                                <label for="form-student">Estudiantes:</label>
+                                <select id="form-student" class="selectpicker form-control" data-live-search="true">
+                                    <option data-tokens="">Seleccione un Estudiante</option>
                                     <?php
                                     foreach ($vars as $var) {
                                         if (isset($var["identification"])) {
                                             ?>
                                             <option value="<?php echo $var["identification"] ?> " data-tokens="">
-                                                <?php echo $var["Name"]?>
+                                                <?php
+                                                        echo $var["Name"];
+                                                ?>
                                             </option>
                                             <?php
                                         }
@@ -44,42 +46,19 @@ if (isset($session->email)) {
                                 </select>
                             </div>
                             <br>
-                            <div class="acc_content clearfix"></div>
+                           <div class="acc_content clearfix"></div>
                             <div class="table-responsive">
-                                <table class="table table-bordered table-striped">
-                                    <h5 style="text-align: center;">Informaci&oacute;n del Curso</h5>
+                                <table class="table table-bordered table-striped" id="table-course-professor">
+                                    <h5 style="text-align: center;">Matriculas Activas</h5>
                                     <colgroup>
-                                        <col class="col-xs-3">
-                                        <col class="col-xs-8">
+                                        <col class="col-xs-4">
+                                        <col class="col-xs-4">
+                                        <col class="col-xs-4">
                                     </colgroup>
                                     <tbody>
-                                        <tr>
-                                            <td>
-                                                <code>Siglas</code>
-                                            </td>
-                                            <td id="form-initials-table"><?php echo "" ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <code>Nombre</code>
-                                            </td>
-                                            <td id="form-name-table"><?php echo "" ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <code>Instrumento</code>
-                                            </td>
-                                            <td id="form-instrument-table"><?php echo "" ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <code>Descripci&oacute;n</code>
-                                            </td>
-                                            <td id="form-description-table"><?php echo "" ?></td>
-                                        </tr>
                                     </tbody>
                                 </table>
-                            </div>                  
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -88,34 +67,38 @@ if (isset($session->email)) {
 </section><!-- #content end -->
 
 <script>
-
     //Change Combobox
-    $("#form-courses").change(function () {
+    $("#form-student").change(function () {
         var parameters = {
-            "initials": $("#form-courses").val()
+            "identification": $("#form-student").val()
         };
+        var Table = document.getElementById("table-course-professor");
+        Table.innerHTML = "";
+        $.post("?controller=Enrollment&action=selectCourses", parameters, function (data) {
 
-        $.post("?controller=Course&action=select", parameters, function (data) {
-            if (data.initials) {
-                $("#form-initials-table").html(data.initials);
-                $("#form-name-table").html(data.name);
-                $("#form-instrument-table").html(data.instrument);
-                $("#form-description-table").html(data.description);
-
-                $("#success").attr({
-                    "data-notify-type": "success",
-                    "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!",
-                    "data-notify-position": "bottom-full-width"
-                });
-                SEMICOLON.widget.notifications($("#success"));
-            } else {
-                $("#form-initials-table").html("");
-                $("#form-name-table").html("");
-                $("#form-instrument-table").html("");
-                $("#form-description-table").html("");
-                $("#form-secondLastName-table").html("");
-
+            var table = document.getElementById("table-course-professor");
+          
+            for (var i = 0; i < data.length; i++) {
+                var row = table.insertRow(0);
+               
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(0);
+                var cell3 = row.insertCell(0);
+                
+                cell1.innerHTML = data[i].initials+": "+data[i].name;
+                cell2.innerHTML = data[i].Name;
+                cell3.innerHTML = data[i].date;
             }
+            
+            var row = table.insertRow(0);
+               
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(0);
+            var cell3 = row.insertCell(0);
+                
+            cell1.innerHTML = "Curso";
+            cell2.innerHTML = "Profesor";
+            cell3.innerHTML = "Fecha";
         }, "json");
     });
 
