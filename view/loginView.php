@@ -111,7 +111,6 @@
                     };
 
                     $.post("?controller=User&action=logIn", parameters, function (data) {
-                        alert(data);
                         if (data.result === "0") {
                             $("#failed").attr({
                                 "data-notify-msg": "<i class=icon-warning-sign></i> Correo o Contrase&ncaron;a Incorrectos. Complete correctamente e intente de nuevo!"
@@ -120,7 +119,7 @@
                         } else if (data.result === "1") {
                             location.href = "?";
                         } else {
-                            ///Me voy a la pantalla que tiene los botones de perfiles
+                           location.href = "?";
                         }
                         ;
                     }, "json");

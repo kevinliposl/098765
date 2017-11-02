@@ -127,7 +127,6 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a href="?controller=User&action=logIn"><div>Iniciar Sesi&oacute;n</div></a></li>
                                 <li><a href="#"><div>De Pablo</div></a>
                                     <ul>
                                         <li><a href="?action=ejemploProfesor"><div>EJEMPLO PERFIL PROFESOR</div></a>
@@ -139,6 +138,8 @@
                                 </li>
                                 <?php if (isset(SSession::getInstance()->email)) { ?>
                                     <li><a href="?controller=User&action=signOff"><div>Cerrar Sesi&oacute;n</div></a></li>
+                                <?php } if (!isset(SSession::getInstance()->email)) { ?>
+                                    <li><a href="?controller=User&action=logIn"><div>Iniciar Sesi&oacute;n</div></a></li>
                                 <?php } ?>
                             </ul>
 
