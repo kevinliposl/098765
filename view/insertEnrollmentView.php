@@ -45,14 +45,14 @@ if (isset($session->email)) {
                             </div>
                             <br>
                             <div class="white-section">
-                                <label for="form-course-professor">Profesores:</label>
-                                <select id="form-course-professors[]" class="form-control selectpicker" multiple data-live-search="true">
-                                    <option value="-1" data-tokens="">Seleccione el curso a matricular</option>
+                                <label for="form-professors">Profesores:</label>
+                                <select name="form-professors" id="form-professors" class="form-control selectpicker" data-live-search="true">
+                                    <!--<option value="-1" data-tokens="">Seleccione los profesores</option>-->
                                 </select>
                             </div>
                             <br>
                             <div class="col_full nobottommargin">
-                                <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" style="display : block; text-align: center;" data-target="#myModal">Asignar</a>
+                                <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" style="display : block; text-align: center;" data-target="#myModal">Eliminar</a>
                                 <input type="hidden" id="warning" value="w"/>
                                 <input type="hidden" id="success" value="s"/>
                                 <input type="hidden" id="failed" value="f"/>
@@ -73,10 +73,10 @@ if (isset($session->email)) {
                     <h4 class="modal-title" id="myModalLabel">¡Aviso!</h4>
                 </div>
                 <div class="modal-body">
-                    <h4 style="text-align: center;">¿Realmente desea eliminar este Curso?</h4>
+                    <h4 style="text-align: center;">¿Realmente desea eliminar esta matricula?</h4>
                     <p>Consejos:
-                    <li>Verificar bien, si es el Curso que realmente desea eliminar</li>
-                    <li>El Curso puede ser restaurado con servicio t&eacute;cnico</li></p>
+                    <li>Verificar bien, si es el curso y estudiante correcto</li>
+                    <li>La matricula puede ser restaurada con ayuda t&eacute;cnico</li></p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
@@ -90,18 +90,16 @@ if (isset($session->email)) {
 <script>
 
     //Change Combobox
-    $("#form-semester").change(function () {
+    $("#form-student").change(function () {
         var parameters = {
-            "ID_Semester": $("#form-semester").val()
+            "identification": $("#form-student").val()
         };
-        document.getElementById("form-courses").options.length = 0;
-        document.getElementById("form-professors[]").options.length = 0;
-        $.post("?controller=CourseSemester&action=selectNotAll", parameters, function (data) {
-            $('#form-courses').append($("<option></option>").attr("value", "-1").text("Seleccione un Curso"));
+        document.getElementById("form-professors").options.length = 0;
+        $.post("?controller=Enrollment&action=selectCourseNotStudent", parameters, function (data) {
             for (var i = 0; i < data.length; i++) {
-                $('#form-courses').append($("<option></option>").attr("value", data[i].initials).text(data[i].name));//AGREGAR OPCIONES
+                $('#form-professors').append($("<option></option>").attr("value", data[i].ID).text("Curso: "+data[i].name+"-Profesor(a): "+data[i].Name));//AGREGAR OPCIONES
             }
-            $("#form-courses").selectpicker("refresh");///REFRESCA SELECT PARA QUE AGARRE AGREGADOS
+            $("#form-professors").selectpicker("refresh");
         }, "json");
     });
 
@@ -113,9 +111,9 @@ if (isset($session->email)) {
     //Delete 
     $("#form-submity").click(function () {
         var parameters = {
-            "initials": $("#form-courses").val()
+            "ID": $("#form-professors").val()
         };
-        $.post("?controller=Course&action=delete", parameters, function (data) {
+        $.post("?controller=Enrollment&action=deleteFunction", parameters, function (data) {
             if (data.result === "1") {
                 $("#success").attr({
                     "data-notify-type": "success",
@@ -123,7 +121,7 @@ if (isset($session->email)) {
                     "data-notify-position": "bottom-full-width"
                 });
                 SEMICOLON.widget.notifications($("#success"));
-                location.href = "?controller=Course&action=delete";
+                location.href = "?controller=Enrollment&action=delete";
             } else {
                 $("#warning").attr({
                     "data-notify-type": "warning",

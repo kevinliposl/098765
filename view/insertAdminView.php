@@ -144,7 +144,7 @@ if (isset($session->email)) {
         };
 
         $.post("?controller=Admin&action=insert", parameters, function (data) {
-            alert(data);
+            alert(data.result);
             if (data.result === "1") {
                 $("#success").attr({
                     "data-notify-type": "success",
@@ -152,7 +152,7 @@ if (isset($session->email)) {
                     "data-notify-position": "bottom-full-width"
                 });
                 SEMICOLON.widget.notifications($("#success"));
-                location.href = "?controller=Admin&action=insert";
+                setTimeout("location.href = '?controller=Admin&action=insert';", 2000);
             } else {
                 $("#warning").attr({
                     "data-notify-type": "warning",
