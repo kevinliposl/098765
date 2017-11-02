@@ -127,7 +127,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a href="?action=login"><div>Iniciar Sesi&oacute;n</div></a></li>
+                                <li><a href="?controller=User&action=logIn"><div>Iniciar Sesi&oacute;n</div></a></li>
                                 <li><a href="#"><div>De Pablo</div></a>
                                     <ul>
                                         <li><a href="?action=ejemploProfesor"><div>EJEMPLO PERFIL PROFESOR</div></a>
@@ -137,6 +137,9 @@
                                         <li><a href="?action=contact"><div>Contacto</div></a>
                                     </ul>
                                 </li>
+                                <?php if (SSession::getInstance()->state) { ?>
+                                    <li><a href="?controller=User&action=signOff"><div>Cerrar Sesi&oacute;n</div></a></li>
+                                <?php } ?>
                             </ul>
 
                         </nav><!-- #primary-menu end -->

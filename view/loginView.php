@@ -39,7 +39,7 @@
         <div id="wrapper" class="clearfix">
 
             <!-- Content
-    ============================================= -->
+            ============================================= -->
             <section id="content">
 
                 <div class="content-wrap nopadding">
@@ -50,39 +50,36 @@
                         <div class="container vertical-middle divcenter clearfix">
 
                             <div class="row center">
-
-                            </div>
-
-                            <div class="row center">
                                 <a href="?"><img src="public/images/fusion-dark.png"></a>
                             </div>
 
-
                             <div class="panel panel-default divcenter noradius noborder" style="max-width: 400px; background-color: rgba(255,255,255,0.93);">
                                 <div class="panel-body" style="padding: 40px;">
-                                    <form id="login-form" class="nobottommargin">
+                                    <form id="login-form" class="nobottommargin" onsubmit="return validate();">
                                         <h3>Ingrese a su cuenta</h3>
 
                                         <div class="col_full">
-                                            <label for="login-form-username">Usuario:</label>
-                                            <input type="text" id="login-form-username" class="form-control not-dark" />
+                                            <label for="form-email">Email:</label>
+                                            <input type="email" id="form-email" class="form-control not-dark" required/>
+                                            <input type="hidden" id="failed-email" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                         </div>
 
                                         <div class="col_full">
-                                            <label for="login-form-password">Contrase&ncaron;a:</label>
-                                            <input type="password" id="login-form-password" class="form-control not-dark" />
+                                            <label for="form-password">Contrase&ncaron;a:</label>
+                                            <input type="password" id="form-password" class="form-control not-dark" required/>
+                                            <input type="hidden" id="failed-password" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                         </div>
 
                                         <div class="line line-sm"></div>
 
                                         <div class="col_full nobottommargin">
-                                            <input type="button" class="button button-3d button-black nomargin" id="login-form-submit" name="login-form-submit" value="Ingresar ">
+                                            <input type="submit" class="button button-3d button-black nomargin" id="form-submit" value="Ingresar">
+                                            <input type="hidden" id="failed" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+
                                             <a href="#" class="fright" >Olvidó su contraseña?</a>
                                         </div>
                                     </form>
-
                                     <div class="line line-sm"></div>
-
                                 </div>
                             </div>
                             <div class="row center dark"><small>Copyrights &copy; All Rights Reserved.</small></div>
@@ -90,9 +87,46 @@
                     </div>
                 </div>
             </section><!-- #content end -->
+            <script>
+                function validate() {
+                    var email, password;
+
+                    email = $("#form-email").val().trim();
+                    password = $("#form-password").val().trim();
+
+                    if (!/\w+@\w+\.+[a-z]/.test(email) || email.split(" ", 2).length > 1) {
+                        $("#failed-email").attr("data-notify-msg", "<i class=icon-remove-sign></i> Correo Incorrecto. Complete correctamente e intente de nuevo!");
+                        SEMICOLON.widget.notifications($("#failed-email"));
+                        return false;
+                    }
+                    if (password.length < 1 || email.split(" ", 2).length > 1) {
+                        $("#failed-password").attr("data-notify-msg", "<i class=icon-remove-sign></i> Contrase&ncaron;a Incorrecta. Complete correctamente e intente de nuevo!");
+                        SEMICOLON.widget.notifications($("#failed-password"));
+                        return false;
+                    }
+
+                    var parameters = {
+                        "email": email,
+                        "password": password
+                    };
+
+                    $.post("?controller=User&action=logIn", parameters, function (data) {
+                        alert(data);
+//                        if (data.result === "1") {
+//                            location.href = "?";
+//                        } else {
+//                            $("#failed").attr({
+//                                "data-notify-msg": "<i class=icon-warning-sign></i> Correo o Contrase&ncaron;a Incorrectos. Complete correctamente e intente de nuevo!"
+//                            });
+//                            SEMICOLON.widget.notifications($("#failed"));
+//                        }
+//                        ;
+                    }, "json");
+
+                    return false;
+                }
+            </script>
+
             <?php
             include_once 'public/footer.php';
-
-
-
             
