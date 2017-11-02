@@ -72,10 +72,7 @@ class EnrollmentController {
             $result = $model->insertEnrollment($_POST['identification'],$professors,$num_professors);
             echo json_encode($result);
         }else{
-            require 'model/SemesterModel.php';
-            $model = new SemesterModel();
-            $result = $model->selectAll();
-            $this->view->show("insertCourseSemesterView.php", $result);
+            $this->insert();
         }
     }//insert 
 }//end of class
