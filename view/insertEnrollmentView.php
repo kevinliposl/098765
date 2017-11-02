@@ -52,7 +52,7 @@ if (isset($session->email)) {
                             </div>
                             <br>
                             <div class="col_full nobottommargin">
-                                <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" style="display : block; text-align: center;" data-target="#myModal">Eliminar</a>
+                                <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" style="display : block; text-align: center;" data-target="#myModal">Insertar</a>
                                 <input type="hidden" id="warning" value="w"/>
                                 <input type="hidden" id="success" value="s"/>
                                 <input type="hidden" id="failed" value="f"/>
@@ -73,7 +73,7 @@ if (isset($session->email)) {
                     <h4 class="modal-title" id="myModalLabel">¡Aviso!</h4>
                 </div>
                 <div class="modal-body">
-                    <h4 style="text-align: center;">¿Realmente desea eliminar esta matricula?</h4>
+                    <h4 style="text-align: center;">¿Realmente desea insetar esta matricula?</h4>
                     <p>Consejos:
                     <li>Verificar bien, si es el curso y estudiante correcto</li>
                     <li>La matricula puede ser restaurada con ayuda t&eacute;cnico</li></p>
@@ -108,12 +108,12 @@ if (isset($session->email)) {
         $('#form-submit').attr('data-target', '#myModal');
     });
 
-    //Delete 
     $("#form-submity").click(function () {
         var parameters = {
-            "ID": $("#form-professors").val()
+            "identification": $("#form-student").val(),
+            "professors": $("#form-professors").val()
         };
-        $.post("?controller=Enrollment&action=deleteFunction", parameters, function (data) {
+        $.post("?controller=Enrollment&action=insertFunction", parameters, function (data) {
             if (data.result === "1") {
                 $("#success").attr({
                     "data-notify-type": "success",
@@ -121,7 +121,7 @@ if (isset($session->email)) {
                     "data-notify-position": "bottom-full-width"
                 });
                 SEMICOLON.widget.notifications($("#success"));
-                location.href = "?controller=Enrollment&action=delete";
+                location.href = "?controller=CourseSemester&action=insert";
             } else {
                 $("#warning").attr({
                     "data-notify-type": "warning",
