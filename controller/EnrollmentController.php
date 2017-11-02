@@ -54,6 +54,30 @@ class EnrollmentController {
         $result = $model->selectCoursesNotStudent($_POST["identification"]);
         echo json_encode($result);
     }//select
+    
+    public function insertFunction() {
+        if(isset($_POST['professors']) && isset($_POST['identification'])){  
+            require 'model/Enrollment.php';
+            $model = new EnrollmentModel();          
+            $professors = "";
+            $num_professors = 0;
+            foreach ($_POST['professors'] as $valorActual) {
+                if ($professors == '') {
+                    $professors= $valorActual;
+                } else {
+                    $professors = $valorActual . "," . $professors;
+                }
+                $num_professors = $num_professors+ 1;
+            }//for        
+            $result = $model->insertEnrollment($_POST['identification'],$professors,$num_professors);
+            echo json_encode($result);
+        }else{
+            require 'model/SemesterModel.php';
+            $model = new SemesterModel();
+            $result = $model->selectAll();
+            $this->view->show("insertCourseSemesterView.php", $result);
+        }
+    }//insert 
 }//end of class
 
 ?>

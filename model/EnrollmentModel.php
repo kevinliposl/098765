@@ -22,4 +22,11 @@ class EnrollmentModel {
         $query->closeCursor();
         return $result;
     }
+    
+    public function insertEnrollment($student,$professors,$num_professors) {
+        $query = $this->db->prepare("call sp_insert_assignment_course_semester_professor('$ID_semester','$initials','$professors','$num_professors')");
+        $query->execute();
+        $result = $query->fetch();
+        return $result;
+    }
 }//end of class
