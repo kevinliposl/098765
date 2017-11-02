@@ -57,12 +57,23 @@ if (isset($session->email)) {
                                 </select>
                             </div>
                             <br>
-                            <div class="white-section">
+                           <div class="acc_content clearfix"></div>
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped" id="table-professor">
+                                    <h5 style="text-align: center;">Profesores Asociados</h5>
+                                    <colgroup>
+                                        <col class="col-xs-8">
+                                    </colgroup>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+<!--                            <div class="white-section">
                                 <label for="form-professors">Profesores:</label>
                                 <select id="form-professors" class="form-control selectpicker" data-live-search="true">
                                     <option value="-1" data-tokens="">Seleccione los profesores</option>
                                 </select>
-                            </div>               
+                            </div>               -->
                         </form>
                     </div>
                 </div>
@@ -78,7 +89,7 @@ if (isset($session->email)) {
             "ID_Semester": $("#form-semester").val()
         };
         document.getElementById("form-courses").options.length = 0;
-        document.getElementById("form-professors").options.length = 0;
+        //document.getElementById("form-professors").options.length = 0;
         $.post("?controller=CourseSemester&action=selectAllCoursesSemester", parameters, function (data) {
             $('#form-courses').append($("<option></option>").attr("value", "-1").text("Seleccione un Curso"));
             for (var i = 0; i < data.length; i++) {
@@ -88,19 +99,41 @@ if (isset($session->email)) {
         }, "json");
     });
     
+//    //Change Combobox
+//    $("#form-courses").change(function () {
+//        var parameters = {
+//            "ID_Semester": $("#form-semester").val(),
+//            "initials": $("#form-courses").val()
+//        };
+//        document.getElementById("form-professors").options.length = 0;
+//        $.post("?controller=CourseSemester&action=selectAllProfessorsCourseSemester", parameters, function (data) {
+////            $('#form-professors').append($("<option></option>").attr("value", "-1").text("Seleccione los profesores"));
+//            for (var i = 0; i < data.length; i++) {
+//                $('#form-professors').append($("<option></option>").attr("value", data[i].identification).text(data[i].name));//AGREGAR OPCIONES
+//            }
+//            $("#form-professors").selectpicker("refresh");///REFRESCA SELECT PARA QUE AGARRE AGREGADOS
+//        }, "json");
+//    });
+    
     //Change Combobox
     $("#form-courses").change(function () {
         var parameters = {
             "ID_Semester": $("#form-semester").val(),
             "initials": $("#form-courses").val()
         };
-        document.getElementById("form-professors").options.length = 0;
+        //document.getElementById("form-professors").options.length = 0;
+        var Table = document.getElementById("table-professor");
+Table.innerHTML = "";
         $.post("?controller=CourseSemester&action=selectAllProfessorsCourseSemester", parameters, function (data) {
 //            $('#form-professors').append($("<option></option>").attr("value", "-1").text("Seleccione los profesores"));
+            var table = document.getElementById("table-professor");
             for (var i = 0; i < data.length; i++) {
-                $('#form-professors').append($("<option></option>").attr("value", data[i].identification).text(data[i].name));//AGREGAR OPCIONES
+                //$('#table-professor').append($("<option></option>").attr("value", data[i].identification).text(data[i].name));//AGREGAR OPCIONES
+                var row = table.insertRow(0);
+                var cell1 = row.insertCell(0);
+                cell1.innerHTML = data[i].name;
             }
-            $("#form-professors").selectpicker("refresh");///REFRESCA SELECT PARA QUE AGARRE AGREGADOS
+           // $("#form-professors").selectpicker("refresh");///REFRESCA SELECT PARA QUE AGARRE AGREGADOS
         }, "json");
     });
 

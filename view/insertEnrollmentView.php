@@ -46,13 +46,13 @@ if (isset($session->email)) {
                             <br>
                             <div class="white-section">
                                 <label for="form-professors">Profesores:</label>
-                                <select name="form-professors" id="form-professors" class="form-control selectpicker" data-live-search="true">
+                                <select multiple name="form-professors[]" id="form-professors" class="form-control selectpicker" data-live-search="true">
                                     <!--<option value="-1" data-tokens="">Seleccione los profesores</option>-->
                                 </select>
                             </div>
                             <br>
                             <div class="col_full nobottommargin">
-                                <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" style="display : block; text-align: center;" data-target="#myModal">Eliminar</a>
+                                <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" style="display : block; text-align: center;" data-target="#myModal">Insertar</a>
                                 <input type="hidden" id="warning" value="w"/>
                                 <input type="hidden" id="success" value="s"/>
                                 <input type="hidden" id="failed" value="f"/>
@@ -73,14 +73,14 @@ if (isset($session->email)) {
                     <h4 class="modal-title" id="myModalLabel">¡Aviso!</h4>
                 </div>
                 <div class="modal-body">
-                    <h4 style="text-align: center;">¿Realmente desea eliminar esta matricula?</h4>
+                    <h4 style="text-align: center;">¿Realmente desea insertar esta matricula?</h4>
                     <p>Consejos:
                     <li>Verificar bien, si es el curso y estudiante correcto</li>
-                    <li>La matricula puede ser restaurada con ayuda t&eacute;cnico</li></p>
+                    <li>La matricula puede ser eliminada posteriormente</li></p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    <input type="button" class="btn btn-primary button-black nomargin" id="form-submity" value="Eliminar"/>
+                    <input type="button" class="btn btn-primary button-black nomargin" id="form-submity" value="Insertar"/>
                 </div>
             </div>
         </div>
@@ -108,12 +108,15 @@ if (isset($session->email)) {
         $('#form-submit').attr('data-target', '#myModal');
     });
 
-    //Delete 
     $("#form-submity").click(function () {
         var parameters = {
-            "ID": $("#form-professors").val()
+            "id-student": $("#form-student").val(),
+            "id-courses": $("#form-professors").val()
         };
-        $.post("?controller=Enrollment&action=deleteFunction", parameters, function (data) {
+        
+        alert($("#form-student").val());
+        alert($("#form-professors").val());
+        $.post("?controller=Enrollment&action=insertFunction", parameters, function (data) {
             if (data.result === "1") {
                 $("#success").attr({
                     "data-notify-type": "success",
@@ -121,7 +124,7 @@ if (isset($session->email)) {
                     "data-notify-position": "bottom-full-width"
                 });
                 SEMICOLON.widget.notifications($("#success"));
-                location.href = "?controller=Enrollment&action=delete";
+                location.href = "?controller=Enrollment&action=insert";
             } else {
                 $("#warning").attr({
                     "data-notify-type": "warning",

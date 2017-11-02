@@ -54,6 +54,27 @@ class EnrollmentController {
         $result = $model->selectCoursesNotStudent($_POST["identification"]);
         echo json_encode($result);
     }//select
+    
+    public function insertFunction() {
+        if(isset($_POST['id-courses']) && isset($_POST['id-student'])){  
+            require 'model/EnrollmentModel.php';
+            $model = new EnrollmentModel();          
+            $ids = "";
+            $num_ids = 0;
+            foreach ($_POST['id-courses'] as $valorActual) {
+                if ($ids == '') {
+                    $ids= $valorActual;
+                } else {
+                    $ids = $valorActual . "," . $ids;
+                }
+                $num_ids = $num_ids+ 1;
+            }//for        
+            $result = $model->insertEnrollment($_POST['id-student'],$ids,$num_ids);
+            echo json_encode($result);
+        }else{
+            $this->insert();
+        }
+    }//insert 
 }//end of class
 
 ?>

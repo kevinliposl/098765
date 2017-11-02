@@ -22,4 +22,11 @@ class EnrollmentModel {
         $query->closeCursor();
         return $result;
     }
+    
+    public function insertEnrollment($student,$ids,$num_id) {
+        $query = $this->db->prepare("call sp_insert_course_student('$student','$ids','$num_id')");
+        $query->execute();
+        $result = $query->fetch();
+        return $result;
+    }
 }//end of class
