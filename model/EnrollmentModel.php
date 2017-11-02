@@ -23,8 +23,8 @@ class EnrollmentModel {
         return $result;
     }
     
-    public function insertEnrollment($student,$professors,$num_professors) {
-        $query = $this->db->prepare("call sp_insert_assignment_course_semester_professor('$ID_semester','$initials','$professors','$num_professors')");
+    public function insertEnrollment($student,$ids,$num_id) {
+        $query = $this->db->prepare("call sp_insert_course_student('$student','$ids','$num_id')");
         $query->execute();
         $result = $query->fetch();
         return $result;
