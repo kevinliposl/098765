@@ -140,7 +140,7 @@ if (isset($session->email)) {
         var parameters = {
             "id": $("#form-professor").val()
         };
-        $.post("?controller=Professor&action=selectProfessor", parameters, function (data) {
+        $.post("?controller=Professor&action=select", parameters, function (data) {
             if (data.identification) {
                 $("#form-id").html(data.identification);
                 $("#form-id-type").html(data.id_type);

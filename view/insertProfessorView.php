@@ -195,7 +195,7 @@ if (isset($session->email)) {
             "age": $("#form-age").val()
         };
 
-        $.post("?controller=Professor&action=insertProfessorFuntion", parameters, function (data) {
+        $.post("?controller=Professor&action=insert", parameters, function (data) {
             if (data.result === "1") {
                 $("#success").attr({
                     "data-notify-type": "success",
@@ -203,7 +203,7 @@ if (isset($session->email)) {
                     "data-notify-position": "bottom-full-width"
                 });
                 SEMICOLON.widget.notifications($("#success"));
-                setTimeout("location.href = '?controller=Professor&action=insertProfessor';", 2000);
+                setTimeout("location.href = '?controller=Professor&action=insert';", 2000);
             } else {
                 $("#warning").attr({
                     "data-notify-type": "warning",
