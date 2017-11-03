@@ -112,6 +112,7 @@
                     };
 
                     $.post('?controller=User&action=logIn', parameters, function (data) {
+                        alert(data);
                         if (data.result === '0') {
                             $('#failed').attr({
                                 'data-notify-msg': '<i class=icon-warning-sign></i> Correo o Contrase&ncaron;a Incorrectos. Complete correctamente e intente de nuevo!'
@@ -119,10 +120,12 @@
                             SEMICOLON.widget.notifications($('#failed'));
                         } else if (data.result === '1') {
                             location.href = '?';
-                        } else {
-                            location.href = '?';
+                            alert('asdasd');
+                        } else if (data.result === "2") {
+                            location.href = '?action=permiso';
+                            alert('asdasd');
                         }
-                        ;
+                        location.href = '?action=permiso';
                     }, 'json');
 
                     return false;
