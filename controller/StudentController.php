@@ -29,7 +29,7 @@ class StudentController {
             echo json_encode($result);
         }
     }
-    
+
     public function reactivateStudent() {
         require 'model/StudentModel.php';
         if (!isset($_POST["id"]) && !isset($_POST["email"])) {
@@ -51,10 +51,35 @@ class StudentController {
             $this->view->show("updateStudentView.php", $result);
         } else {
             $model = new StudentModel();
-            $result = $model->updateStudent($_POST["id"],$_POST["oldId"], $_POST['idType'], $_POST["email"], $_POST["name"], $_POST["firstLastName"], $_POST["secondLastName"], $_POST["age"], " ", $_POST["gender"], $_POST["nationality"], $_POST["phoneOne"], $_POST["phoneTwo"], $_POST["contactName"], $_POST["contactRelationship"], $_POST["contactPhone"], $_POST["contactEmail"]);
+            $result = $model->updateStudent($_POST["id"], $_POST["oldId"], $_POST['idType'], $_POST["email"], $_POST["name"], $_POST["firstLastName"], $_POST["secondLastName"], $_POST["age"], " ", $_POST["gender"], $_POST["nationality"], $_POST["phoneOne"], $_POST["phoneTwo"], $_POST["contactName"], $_POST["contactRelationship"], $_POST["contactPhone"], $_POST["contactEmail"]);
             echo json_encode($result);
         }
     }
+
+    public function updatePersonalDataStudent() {
+        require 'model/StudentModel.php';
+        $ssession = SSession::getInstance();
+        if ($ssession->__isset("identification")) {
+            if (!isset($_POST["id"])) {
+                $model = new StudentModel();
+//                $id = $ssession->__get("identification");
+                $id = '12345678';
+
+                $result = $model->selectStudent($id);
+                $this->view->show("updatePersonalDataStudentView.php", $result);
+            } else {
+                $model = new StudentModel();
+                $result = $model->updateStudent($_POST["id"], $_POST["oldId"], $_POST['idType'], $_POST["email"], $_POST["name"], $_POST["firstLastName"], $_POST["secondLastName"], $_POST["age"], " ", $_POST["gender"], $_POST["nationality"], $_POST["phoneOne"], $_POST["phoneTwo"], $_POST["contactName"], $_POST["contactRelationship"], $_POST["contactPhone"], $_POST["contactEmail"]);
+                if ($result === "1") {
+//                    $ssession->__set("identification", $_POST["id"]);
+                }
+                echo json_encode($result);
+            }
+        } else {
+            $this->view->show("indexView.php", null);
+        }
+    }
+
     public function getStudentData() {
         require 'model/StudentModel.php';
         if (!isset($_POST["id"]) && !isset($_POST["email"])) {
@@ -73,7 +98,7 @@ class StudentController {
         $result = $model->selectStudent($id);
         echo json_encode($result);
     }
-    
+
     public function selectDeleteStudent() {
         require 'model/StudentModel.php';
         $model = new StudentModel();
