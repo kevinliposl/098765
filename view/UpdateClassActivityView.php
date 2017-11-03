@@ -54,7 +54,7 @@ if (isset($session->email)) {
                             <div class="white-section">
                                 <label for="form-activity">Actividades Disponibles:</label>
                                 <select id="form-activity" class="form-control selectpicker" data-live-search="true">
-                                    <option value="-1" data-tokens="">Seleccione una Actividad</option>
+                                    <!--<option value="-1" data-tokens="">Seleccione una Actividad</option>-->
                                 </select>
                             </div>     
                             <div class="col_full">
@@ -100,7 +100,10 @@ if (isset($session->email)) {
                                 <input type="text" id="form-observation" class="form-control" required/>
                                 <input type="hidden" id="failed-observation" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                             </div>
-
+                           <div class="white-section">
+                                <select id="form-backup" class="form-control selectpicker" data-live-search="true">
+                                </select>
+                            </div>  
                             <div class="col_full nobottommargin">
                                 <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" style="display : block; text-align: center;" data-target="#myModal">Insertar</a>
                                 <input type="hidden" id="warning" value="w"/>
@@ -212,6 +215,9 @@ if (isset($session->email)) {
     });
     
     $("#form-delete").click(function () {
+    
+        $('#form-backup').append($("<option></option>").attr("value", $("#form-addContent").val()).text($("#form-addContent").val()));//AGREGAR OPCIONES
+        $("#form-backup").selectpicker("refresh");///REFRESCA SELECT PARA QUE AGARRE AGREGADOS
         var sel = document.getElementById("form-addContent");
         sel.remove(sel.selectedIndex);
         $("#form-addContent").selectpicker("refresh");///REFRESCA SELECT PARA QUE AGARRE AGREGADOS 
@@ -220,12 +226,10 @@ if (isset($session->email)) {
     $("#form-submity").click(function () {     
         var content;
         content = $("#form-observation").val().trim();
-
         if (!isNaN(content) || content.length < 4) {
             $("#failed-observation").attr("data-notify-msg", "<i class=icon-remove-sign></i> Inicial de curso Incorrecta. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-observation"));
-        }else{ 
-            
+        }else{           
             var sel = document.getElementById("form-addContent"); 
             var dat="";
             for (var i = 0; i < sel.length; i++) {
