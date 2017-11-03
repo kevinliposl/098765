@@ -41,6 +41,27 @@ class ClassActivityController {
         echo json_encode($result);
     }
     
+    public function selectClassActivity(){
+            require 'model/ClassActivityModel.php';
+            $model = new ClassActivityModel();
+            $result = $model->selectClassActivity($_POST['appointment'],$_POST['identification'],$_POST['consecutive']);
+        echo json_encode($result);
+    }
+    
+    public function selectRecordStudentClassActivity(){
+            require 'model/ClassActivityModel.php';
+            $model = new ClassActivityModel();
+            $result = $model->selectRecordStudentClassActivity($_POST['appointment'],$_POST['identification']);
+        echo json_encode($result);
+    }
+    
+    public function selectRecordContentClassActivity(){
+            require 'model/ClassActivityModel.php';
+            $model = new ClassActivityModel();
+            $result = $model->selectRecordContentClassActivity($_POST['appointment'],$_POST['identification'],$_POST['consecutive']);
+        echo json_encode($result);
+    }
+    
     public function prueba(){
             require 'model/ClassActivityModel.php';
             $model = new ClassActivityModel();
@@ -89,16 +110,17 @@ class ClassActivityController {
     }//delete
     
     public function update() {
-        if (isset($_POST["initials"]) && isset($_POST["name"]) && isset($_POST["description"]) && isset($_POST["instrument"])) {
-            require 'model/CourseModel.php';
-            $model = new CourseModel();
-            $result = $model->update($_POST["initials"],$_POST["name"],$_POST["description"],$_POST["instrument"]);
+        if (isset($_POST["observation"])) {
+            require 'model/ClassActivityModel.php';
+            $model = new ClassActivityModel();
+            $result = $model->update($_POST["appointment"], $_POST["student"], $_POST["consecutive"], $_POST["date"],$_POST['typeA'],$_POST['contentsNew'],$_POST['countNew'],$_POST['contentsDelete'],$_POST['countDelete'],$_POST['observation']);
             echo json_encode($result);
         }else{
-            require 'model/CourseModel.php';
-            $model = new CourseModel();
-            $result = $model->selectAll();
-            $this->view->show("updateCourseView.php", $result);
+            require 'model/ClassActivityModel.php';
+            $model = new ClassActivityModel();
+            $id="999";
+            $result = $model->selectCourseClassActivity($id);
+            $this->view->show("updateClassActivityView.php",$result);
         }//else
     }//update
 }

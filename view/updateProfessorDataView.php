@@ -40,7 +40,7 @@ if (isset($session->email)) {
                                         <tr>
                                             <td><code>Identificaci&oacute;n</code></td>
                                             <td>
-                                                <a id="form-id" class="bt-editable" href="#" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese la identificación"><?php echo $var[0]; ?></a>
+                                                <a id="form-id"><?php echo $var[0]; ?></a>
                                                 <input type="hidden" id="failed-id" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                             </td>
                                         </tr>
@@ -172,44 +172,44 @@ if (isset($session->email)) {
 
 <script>
 
-    //Change Combobox
-    $("#form-professor").change(function () {
-        var parameters = {
-            "id": $("#form-professor").val()
-        };
-        $.post("?controller=Professor&action=selectProfessor", parameters, function (data) {
-            if (data.identification) {
-                $("#form-id").html(data.identification);
-                $("#form-id-type").html(data.id_type);
-                $("#form-name").html(data.name);
-                $("#form-first-lastName").html(data.first_lastname);
-                $("#form-second-lastName").html(data.second_lastname);
-                $("#form-phone1").html(data.phone);
-                $("#form-phone2").html(data.cel_phone);
-                $("#form-email").html(data.email);
-                $("#form-gender").html(data.gender);
-                $("#form-nationality").html(data.nationality);
-                $("#form-age").html(data.birthdate);
-                $("#form-address").html(data.address);
-                $("#form-additionalInformation").html(data.expedient);
-
-            } else {
-                $("#form-id").html("");
-                $("#form-id-type").html("");
-                $("#form-name").html("");
-                $("#form-first-lastName").html("");
-                $("#form-second-lastName").html("");
-                $("#form-phone1").html("");
-                $("#form-phone2").html("");
-                $("#form-email").html("");
-                $("#form-gender").html("");
-                $("#form-nationality").html("");
-                $("#form-age").html("");
-                $("#form-address").html("");
-                $("#form-additionalInformation").html("");
-            }
-        }, "json");
-    });
+//    //Change Combobox
+//    $("#form-professor").change(function () {
+//        var parameters = {
+//            "id": $("#form-professor").val()
+//        };
+//        $.post("?controller=Professor&action=selectProfessor", parameters, function (data) {
+//            if (data.identification) {
+//                $("#form-id").html(data.identification);
+//                $("#form-id-type").html(data.id_type);
+//                $("#form-name").html(data.name);
+//                $("#form-first-lastName").html(data.first_lastname);
+//                $("#form-second-lastName").html(data.second_lastname);
+//                $("#form-phone1").html(data.phone);
+//                $("#form-phone2").html(data.cel_phone);
+//                $("#form-email").html(data.email);
+//                $("#form-gender").html(data.gender);
+//                $("#form-nationality").html(data.nationality);
+//                $("#form-age").html(data.birthdate);
+//                $("#form-address").html(data.address);
+//                $("#form-additionalInformation").html(data.expedient);
+//
+//            } else {
+//                $("#form-id").html("");
+//                $("#form-id-type").html("");
+//                $("#form-name").html("");
+//                $("#form-first-lastName").html("");
+//                $("#form-second-lastName").html("");
+//                $("#form-phone1").html("");
+//                $("#form-phone2").html("");
+//                $("#form-email").html("");
+//                $("#form-gender").html("");
+//                $("#form-nationality").html("");
+//                $("#form-age").html("");
+//                $("#form-address").html("");
+//                $("#form-additionalInformation").html("");
+//            }
+//        }, "json");
+//    });
 
     function validate() {
 //        var initials, name, description, instrument;
@@ -255,7 +255,7 @@ if (isset($session->email)) {
             "email": $("#form-email").text().trim(),
             "age": $("#form-age").text().trim()
         };
-        $.post("?controller=Professor&action=updatePersonalData", parameters, function (data) {
+        $.post("?controller=Professor&action=updatePersonal", parameters, function (data) {
             if (data.result === "1") {
                 $("#success").attr({
                     "data-notify-type": "success",
