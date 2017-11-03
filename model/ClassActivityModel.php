@@ -40,8 +40,31 @@ class ClassActivityModel {
         return $result;
     }
     
+    public function selectRecordContentClassActivity($appointment,$identification) {
+        $query = $this->db->prepare("call sp_select_record_content_class_activity('$appointment','$identification')");
+        $query->execute();
+        $result = $query->fetchAll();
+        $query->closeCursor();
+        return $result;
+    }
+    
+    public function selectRecordStudentClassActivity($appointment,$identification) {
+        $query = $this->db->prepare("call sp_select_record_student_class_activity('$appointment','$identification')");
+        $query->execute();
+        $result = $query->fetchAll();
+        $query->closeCursor();
+        return $result;
+    }
+    
     public function selectConsecutiveClassActivity($appointment,$identification) {
         $query = $this->db->prepare("call sp_select_consecutive_class_activity('$appointment','$identification')");
+        $query->execute();
+        $result = $query->fetch();
+        return $result;
+    }
+    
+    public function selectClassActivity($appointment,$identification,$consecutive) {
+        $query = $this->db->prepare("call sp_select_class_activity('$appointment','$identification','$consecutive')");
         $query->execute();
         $result = $query->fetch();
         return $result;
