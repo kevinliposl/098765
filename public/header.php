@@ -136,11 +136,7 @@
                                         <li><a href="?action=contact"><div>Contacto</div></a>
                                     </ul>
                                 </li>
-                                <?php $session=SSession::getInstance(); if (isset($session->email)) { ?>
-                                    <li><a href="?controller=User&action=signOff"><div>Cerrar Sesi&oacute;n</div></a></li>
-                                <?php } if (!isset($session->email)) { ?>
-                                    <li><a href="?controller=User&action=logIn"><div>Iniciar Sesi&oacute;n</div></a></li>
-                                <?php } ?>
+                                <li><a href="?controller=User&action=logIn"><div>Iniciar Sesi&oacute;n</div></a></li>
                             </ul>
 
                         </nav><!-- #primary-menu end -->
