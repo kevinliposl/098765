@@ -54,11 +54,6 @@ class ProfessorController {
 
         $result = $model->selectAllProfessor();
         $this->view->show("updateProfessorView.php", $result);
-        
-//        require 'model/CourseModel.php';
-//            $model = new CourseModel();
-//            $result = $model->selectAll();
-//            $this->view->show("updateProfessorView.php", $result);
     }
 
     public function updateProfessorFunction() {
