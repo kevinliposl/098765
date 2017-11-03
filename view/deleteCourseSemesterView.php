@@ -56,7 +56,6 @@ if (isset($session->email)) {
                                     <option value="-1" data-tokens="">Seleccione un Curso</option>
                                 </select>
                             </div>
-
                             <br>
                             <div class="col_full nobottommargin">
                                 <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" style="display : block; text-align: center;" data-target="#myModal">Eliminar</a>

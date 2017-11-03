@@ -86,6 +86,13 @@
                                                 <li><a href="?controller=CourseSemester&action=select"><div>Ver Asignaciones</div></a></li> 
                                             </ul>
                                         </li>
+                                        <li><a href="#"><div>CRUD Asignacion</div></a>
+                                            <ul>
+                                                <li><a href="?controller=ClassActivity&action=insert"><div>Insertar Actividad de Clase</div></a></li> 
+                                                <li><a href="?controller=ClassActivity&action=update"><div>Actualizar Actividad de Clase</div></a></li> 
+                                                <li><a href="?controller=ClassActivity&action=select"><div>Ver Actividad de Clase</div></a></li> 
+                                            </ul>
+                                        </li>
                                         <li><a href="#"><div>CRUD Profesor</div></a>
                                             <ul>
                                                 <li><a href="?controller=Professor&action=updateProfessor"><div>Actualizar Profesor</div></a></li> 
