@@ -69,6 +69,7 @@
                                 <li><a href="?action=val"><div>Prueba Validacion</div></a>
                                 <li><a href="?action=report"><div>Reporte</div></a>
                                 <li><a href="?action=permiso"><div>Permisos</div></a>
+                                <li><a href="?action=schedule"><div>Horario</div></a>
                                 <li><a href="#"><div>CRUDS</div></a>
                                     <ul>
                                         <li><a href="#"><div>CRUD CURSO</div></a>
@@ -132,6 +133,13 @@
                                                 <li><a href="?controller=Semester&action=insert"><div>Insertar Semestre</div></a></li>
                                                 <li><a href="?controller=Semester&action=delete"><div>Eliminar Semestre</div></a></li>
                                                 <li><a href="?controller=Semester&action=select"><div>Obtener Semestre</div></a></li> 
+                                            </ul>
+                                        </li>
+                                        <li><a href="#"><div>CRUD Horario</div></a>
+                                            <ul>
+                                                <li><a href="?controller=Schedule&action=insert"><div>Insertar Horario</div></a></li>
+                                                <li><a href="?controller=Schedule&action=delete"><div>Eliminar Horario</div></a></li>
+                                                <li><a href="?controller=Schedule&action=select"><div>Obtener Horario</div></a></li> 
                                             </ul>
                                         </li>
                                     </ul>

@@ -22,6 +22,10 @@ class IndexController {
         $this->view->show("selectPermissionsView.php");
     }
 
+    function schedule() {
+        $this->view->show("scheduleView.php");
+    }
+
     function contact() {
         $this->view->show("contactView.php");
     }
