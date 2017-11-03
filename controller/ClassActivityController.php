@@ -34,24 +34,44 @@ class ClassActivityController {
         echo json_encode($result);
     }
     
+    public function selectConsecutiveClassActivity(){
+            require 'model/ClassActivityModel.php';
+            $model = new ClassActivityModel();
+            $result = $model->selectConsecutiveClassActivity($_POST['appointment'],$_POST['identification']);
+        echo json_encode($result);
+    }
+    
+    public function prueba(){
+            require 'model/ClassActivityModel.php';
+            $model = new ClassActivityModel();
+                        $professors = "";
+            $num_professors = 0;
+            foreach ($_POST['datos'] as $valorActual) {
+//                if ($professors == '') {
+//                    $professors= $valorActual;
+//                } else {
+//                    $professors = $valorActual . "," . $professors;
+//                }
+                $professors = $valorActual . "," . $professors;
+                $num_professors = $num_professors+ 1;
+            }//for 
+            $result = $model->prueba($num_professors,$professors);
+        echo json_encode($result);
+    }
+    
     public function insert() {
-//        if (isset($_POST["initials"]) && isset($_POST["name"]) && isset($_POST["description"]) && isset($_POST["instrument"])) {
-//            require 'model/CourseModel.php';
-//            $model = new CourseModel();
-//            $result = $model->insert($_POST["initials"], $_POST["name"], $_POST["description"], $_POST["instrument"]);
-//            echo json_encode($result);
-//        }else{
-//            require 'model/CourseModel.php';
-//            $model = new CourseModel();
-//            $result = $model->selectAll();
-//            $this->view->show("insertCourseView.php",null);
-//        }//else
-        
+        if (isset($_POST["observation"])) {
+            require 'model/ClassActivityModel.php';
+            $model = new ClassActivityModel();
+            $result = $model->insert($_POST["appointment"], $_POST["student"], $_POST["consecutive"], $_POST["date"],$_POST['typeA'],$_POST['contents'],$_POST['count'],$_POST['observation']);
+            echo json_encode($result);
+        }else{
             require 'model/ClassActivityModel.php';
             $model = new ClassActivityModel();
             $id="999";
             $result = $model->selectCourseClassActivity($id);
             $this->view->show("insertClassActivityView.php",$result);
+        }//else
     }//insert
     
     public function delete() {
