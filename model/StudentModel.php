@@ -48,8 +48,8 @@ class StudentModel {
         return $result;
     }
     
-    public function selectDeleteStudent($id) {
-        $query = $this->db->prepare("call sp_select_delete_student('$id')");
+    public function selectDeleteStudent($id, $tipo) {
+        $query = $this->db->prepare("call sp_select_delete_student('$id', '$tipo')");
         $query->execute();
         $result = $query->fetch();
         return $result;
@@ -61,8 +61,8 @@ class StudentModel {
         $result = $query->fetch();
         return $result;
     }
-    public function reactivateStudent($id) {
-        $query = $this->db->prepare("call sp_reactivate_student('$id')");
+    public function reactivateStudent($id, $tipo) {
+        $query = $this->db->prepare("call sp_reactivate_student('$id', '$tipo')");
         $query->execute();
         $result = $query->fetch();
         return $result;

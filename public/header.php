@@ -116,6 +116,7 @@
                                                 <li><a href="?controller=Student&action=deleteStudent"><div>Borrar Estudiante</div></a></li> 
                                                 <li><a href="?controller=Student&action=reactivateStudent"><div>Reactivar Estudiante</div></a></li> 
                                                 <li><a href="?controller=Student&action=updateStudent"><div>Actualizar Estudiante</div></a></li> 
+                                                <li><a href="?controller=Student&action=getStudentData"><div>Obtener Estudiante</div></a></li> 
                                             </ul>
                                         </li>
                                         <li><a href="#"><div>CRUD Administrador</div></a>
