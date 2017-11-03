@@ -36,7 +36,7 @@ if (isset($session->email)) {
                                         if (isset($var["ID"])) {
                                             ?>
                                             <option value="<?php echo $var["ID"] ?> " data-tokens="">
-                                                <?php echo $var["ID"]?>
+                                                <?php echo $var["name"]?>
                                             </option>
                                             <?php
                                         }
@@ -166,17 +166,65 @@ if (isset($session->email)) {
         $('#showModal').click();
         return false;
     }
+    
+        //Change Combobox
+    $("#form-courses").change(function () {
+        var parameters = {
+            "appointment": $("#form-courses").val()
+        };
+        document.getElementById("form-student").options.length = 0;
+        document.getElementById("form-addContent").options.length = 0;
+        $.post("?controller=ClassActivity&action=selectStudentClassActivity", parameters, function (data) {
+            $('#form-student').append($("<option></option>").attr("value", "-1").text("Seleccione un Estudiante"));
+            for (var i = 0; i < data.length; i++) {
+                $('#form-student').append($("<option></option>").attr("value", data[i].identification).text(data[i].name));//AGREGAR OPCIONES
+            }
+            $("#form-student").selectpicker("refresh");///REFRESCA SELECT PARA QUE AGARRE AGREGADOS
+        }, "json");
+    });
 
     //Open Modal
     $("#form-submit").click(function () {
         $('#form-submit').attr('data-target', '#myModal');
     });
     
+    //Open Modal
+    $("#form-save").click(function () {
+        var content;
+
+        content = $("#form-content").val().trim();
+
+        if (!isNaN(content) || content.length < 4) {
+            $("#failed-content").attr("data-notify-msg", "<i class=icon-remove-sign></i> Inicial de curso Incorrecta. Complete e intente de nuevo!");
+            SEMICOLON.widget.notifications($("#failed-content"));
+        }else{
+            $('#form-addContent').append($("<option></option>").attr("value", content).text(content));//AGREGAR OPCIONES
+            $("#form-addContent").selectpicker("refresh");///REFRESCA SELECT PARA QUE AGARRE AGREGADOS               
+        }
+    });
+    
+    //Open Modal
+    $("#form-delete").click(function () {
+        var sel = document.getElementById("form-addContent");
+        sel.remove(sel.selectedIndex);
+        $("#form-addContent").selectpicker("refresh");///REFRESCA SELECT PARA QUE AGARRE AGREGADOS 
+    });
+    
     //Insert
     $("#form-submity").click(function () {
+        
+        var content;
+
+        content = $("#form-observation").val().trim();
+
+        if (!isNaN(content) || content.length < 4) {
+            $("#failed-observation").attr("data-notify-msg", "<i class=icon-remove-sign></i> Inicial de curso Incorrecta. Complete e intente de nuevo!");
+            SEMICOLON.widget.notifications($("#failed-observation"));
+        }else{            
+        
         var parameters = {
-            "initials": $("#form-initials").val().trim(),
-            "name": $("#form-name").val().trim(),
+            "course": $("#form-courses").val(),
+            "student": $("#form-student").val(),
             "description": $("#form-description").val().trim(),
             "instrument": $("#form-instrument").val().trim()
         };
@@ -199,7 +247,7 @@ if (isset($session->email)) {
                 SEMICOLON.widget.notifications($("#warning"));
             }
             ;
-        }, "json");
+        }, "json");}
     });
 </script>
 

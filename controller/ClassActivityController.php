@@ -27,6 +27,13 @@ class ClassActivityController {
         echo json_encode($result);
     }
     
+    public function selectStudentClassActivity(){
+            require 'model/ClassActivityModel.php';
+            $model = new ClassActivityModel();
+            $result = $model->selectStudentClassActivity($_POST['appointment']);
+        echo json_encode($result);
+    }
+    
     public function insert() {
 //        if (isset($_POST["initials"]) && isset($_POST["name"]) && isset($_POST["description"]) && isset($_POST["instrument"])) {
 //            require 'model/CourseModel.php';
