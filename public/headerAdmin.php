@@ -65,12 +65,18 @@
                         ============================================= -->
                         <nav id="primary-menu">
                             <ul>
-                                <li><a href="?"><div>Home</div></a>
-                                <li><a href="?action=val"><div>Prueba Validacion</div></a>
-                                <li><a href="?action=report"><div>Reporte</div></a>
-                                <li><a href="#"><div>CRUDS</div></a>
+                                <li><a href="?"><div>Home</div></a> 
+                                <li><a href="#"><div>Sistema</div></a>
                                     <ul>
-                                        <li><a href="#"><div>CRUD CURSO</div></a>
+                                        <li><a href="#"><div>Estudiante</div></a>
+                                            <ul>
+                                                <li><a href="?controller=Student&action=insertStudent"><div>Insertar Estudiante</div></a></li> 
+                                                <li><a href="?controller=Student&action=deleteStudent"><div>Borrar Estudiante</div></a></li> 
+                                                <li><a href="?controller=Student&action=reactivateStudent"><div>Reactivar Estudiante</div></a></li> 
+                                                <li><a href="?controller=Student&action=updateStudent"><div>Actualizar Estudiante</div></a></li> 
+                                            </ul>
+                                        </li>
+                                        <li><a href="#"><div>Curso</div></a>
                                             <ul>
                                                 <li><a href="?controller=Course&action=insert"><div>Insertar Curso</div></a></li> 
                                                 <li><a href="?controller=Course&action=delete"><div>Eliminar Curso</div></a></li> 
@@ -78,22 +84,7 @@
                                                 <li><a href="?controller=Course&action=select"><div>Ver Curso</div></a></li> 
                                             </ul>
                                         </li>
-                                        <li><a href="#"><div>CRUD Asignacion</div></a>
-                                            <ul>
-                                                <li><a href="?controller=CourseSemester&action=insert"><div>Insertar Asignacion</div></a></li> 
-                                                <li><a href="?controller=CourseSemester&action=deleteCourse"><div>Eliminar Asignacion curso</div></a></li> 
-                                                <li><a href="?controller=CourseSemester&action=deleteProfessor"><div>Eliminar Asignacion Profesor</div></a></li> 
-                                                <li><a href="?controller=CourseSemester&action=select"><div>Ver Asignaciones</div></a></li> 
-                                            </ul>
-                                        </li>
-                                        <li><a href="#"><div>CRUD Asignacion</div></a>
-                                            <ul>
-                                                <li><a href="?controller=ClassActivity&action=insert"><div>Insertar Actividad de Clase</div></a></li> 
-                                                <li><a href="?controller=ClassActivity&action=update"><div>Actualizar Actividad de Clase</div></a></li> 
-                                                <li><a href="?controller=ClassActivity&action=select"><div>Ver Actividad de Clase</div></a></li> 
-                                            </ul>
-                                        </li>
-                                        <li><a href="#"><div>CRUD Profesor</div></a>
+                                        <li><a href="#"><div>Profesor</div></a>
                                             <ul>
                                                 <li><a href="?controller=Professor&action=updateProfessor"><div>Actualizar Profesor</div></a></li> 
                                                 <li><a href="?controller=Professor&action=insertProfessor"><div>Insertar Profesor</div></a></li> 
@@ -103,53 +94,36 @@
                                                 <li><a href="?controller=Professor&action=updatePersonal"><div>Actualizar Datos Personales</div></a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="#"><div>CRUD Matricula</div></a>
-                                            <ul>
-                                                <li><a href="?controller=Enrollment&action=insert"><div>Matricular</div></a></li> 
-                                                <li><a href="?controller=Enrollment&action=delete"><div>Desmatricular</div></a></li> 
-                                                <li><a href="?controller=Enrollment&action=select"><div>Obtener Matriculas</div></a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#"><div>CRUD Estudiante</div></a>
-                                            <ul>
-                                                <li><a href="?controller=Student&action=insertStudent"><div>Insertar Estudiante</div></a></li> 
-                                                <li><a href="?controller=Student&action=deleteStudent"><div>Borrar Estudiante</div></a></li> 
-                                                <li><a href="?controller=Student&action=reactivateStudent"><div>Reactivar Estudiante</div></a></li> 
-                                                <li><a href="?controller=Student&action=updateStudent"><div>Actualizar Estudiante</div></a></li> 
-                                            </ul>
-                                        </li>
-                                        <li><a href="#"><div>CRUD Administrador</div></a>
-                                            <ul>
-                                                <li><a href="?controller=Admin&action=insert"><div>Insertar Administrador</div></a></li>
-                                                <li><a href="?controller=Admin&action=delete"><div>Eliminar Administrador</div></a></li> 
-                                                <li><a href="?controller=Admin&action=select"><div>Obtener Administrador</div></a></li> 
-                                            </ul>
-                                        </li>
-                                        <li><a href="#"><div>CRUD Semestre</div></a>
+                                        <li><a href="#"><div>Semestre</div></a>
                                             <ul>
                                                 <li><a href="?controller=Semester&action=insert"><div>Insertar Semestre</div></a></li>
                                                 <li><a href="?controller=Semester&action=delete"><div>Eliminar Semestre</div></a></li>
                                                 <li><a href="?controller=Semester&action=select"><div>Obtener Semestre</div></a></li> 
                                             </ul>
+                                        </li>  
+                                        <li><a href="#"><div>Matriculas</div></a>
+                                            <ul>
+                                                <li><a href="?controller=Enrollment&action=insert"><div>Matricular</div></a></li> 
+                                                <li><a href="?controller=Enrollment&action=delete"><div>Desmatricular</div></a></li> 
+                                                <li><a href="?controller=Enrollment&action=select"><div>Obtener Matriculas</div></a></li>
+                                            </ul>
+                                        </li>                                      
+                                        <li><a href="#"><div>Asignaci&oacute;nes</div></a>
+                                            <ul>
+                                                <li><a href="?controller=CourseSemester&action=insert"><div>Insertar Asignacion</div></a></li> 
+                                                <li><a href="?controller=CourseSemester&action=deleteCourse"><div>Eliminar Asignacion curso</div></a></li> 
+                                                <li><a href="?controller=CourseSemester&action=deleteProfessor"><div>Eliminar Asignacion Profesor</div></a></li> 
+                                                <li><a href="?controller=CourseSemester&action=select"><div>Ver Asignaciones</div></a></li> 
+                                            </ul>
                                         </li>
-                                    </ul>
-                                </li>
-                                <li><a href="#"><div>De Pablo</div></a>
-                                    <ul>
-                                        <li><a href="?action=ejemploProfesor"><div>EJEMPLO PERFIL PROFESOR</div></a>
-                                        <li><a href="?action=instruments"><div>Cursos</div></a>
-                                        <li><a href="?action=galery"><div>Galer&iacute;a</div></a>
-                                        <li><a href="?action=aboutus"><div>Sobre Nosotros</div></a>
-                                        <li><a href="?action=contact"><div>Contacto</div></a>
+                                        <li><a href="?action=report"><div>Reportes</div></a>
                                     </ul>
                                 </li>
                                 <li><a href="?controller=User&action=logIn"><div>Iniciar Sesi&oacute;n</div></a></li>
                             </ul>
-
                         </nav><!-- #primary-menu end -->
-
                     </div>
-
                 </div>
-
             </header><!-- #header end -->
+
+

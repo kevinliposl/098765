@@ -24,17 +24,11 @@
                             <abbr title="Tel&eacute;fono"><strong>Tel&eacute;fono:</strong></abbr><br> 8545-0829 y 8326-1731<br>
                             <abbr title="Correo Electr&oacute;nico"><strong>Correo:</strong></abbr> musica@fusionacademiacr.com
                         </div>
-
                     </div>
-
                 </div>
-
-
                 <div class="col_one_third col_last">
-
                     <div class="widget clearfix">
                         <h4>Enlaces de Inter&eacute;s</h4>
-
                         <div id="post-list-footer">
                             <div class="spost clearfix">
                                 <div class="entry-c">
@@ -43,7 +37,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="spost clearfix">
                                 <div class="entry-c">
                                     <div class="entry-title">
@@ -51,7 +44,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="spost clearfix">
                                 <div class="entry-c">
                                     <div class="entry-title">
@@ -61,17 +53,12 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
-
             </div>
 
             <div class="col_one_third col_last">
-
                 <div class="widget clearfix" style="margin-bottom: -20px;">
-
                     <div class="row">
-
                         <div class="col-md-6 clearfix bottommargin-sm">
                             <a href="#" class="social-icon si-dark si-colored si-facebook nobottommargin" style="margin-right: 10px;">
                                 <i class="icon-facebook"></i>
@@ -87,9 +74,7 @@
                             <a href="#"><small style="display: block; margin-top: 3px;"><strong>Siguenos</strong><br>en Youtube</small></a>
                         </div>
                     </div>
-
                     <div class="row">
-
                         <div class="col-md-6 clearfix bottommargin-sm">
                             <a href="#" class="social-icon si-dark si-colored si-instagram nobottommargin" style="margin-right: 10px;">
                                 <i class="icon-instagram"></i>
@@ -98,45 +83,31 @@
                             <a href="#"><small style="display: block; margin-top: 3px;"><strong>Siguenos</strong><br>en Instagram</small></a>
                         </div>
                     </div>
-
                 </div>
-
             </div>
-
         </div><!-- .footer-widgets-wrap end -->
-
     </div>
 
     <!-- Copyrights
     ============================================= -->
     <div id="copyrights">
-
         <div class="container clearfix">
-
             <div class="col_half">
                 Todos los derechos reservados &copy; 2017<br>
                 <div class="copyright-links"><a href="#">Terminos de uso</a> / <a href="#">Politica de privacidad</a></div>
             </div>
-
             <div class="col_half col_last tright">
-
                 <div class="clear"></div>
-
                 <i class="icon-envelope2"></i> musica@fusionacademiacr.com <span class="middot">&middot;</span> <i class="icon-headphones"></i> 8326-1731 ó 8545-0829 <span class="middot">&middot;</span> <i class="icon-facebook"></i> fusionacademiacr
             </div>
-
         </div>
-
     </div><!-- #copyrights end -->
-
 </footer><!-- #footer end -->
-
 </div><!-- #wrapper end -->
 
 <!-- Go To Top
 ============================================= -->
 <div id="gotoTop" class="icon-angle-up"></div>
-
 
 <!-- Footer Scripts
 ============================================= -->
