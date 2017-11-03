@@ -136,9 +136,9 @@
                                         <li><a href="?action=contact"><div>Contacto</div></a>
                                     </ul>
                                 </li>
-                                <?php if (isset(SSession::getInstance()->email)) { ?>
+                                <?php $session=SSession::getInstance(); if (isset($session->email)) { ?>
                                     <li><a href="?controller=User&action=signOff"><div>Cerrar Sesi&oacute;n</div></a></li>
-                                <?php } if (!isset(SSession::getInstance()->email)) { ?>
+                                <?php } if (!isset($session->email)) { ?>
                                     <li><a href="?controller=User&action=logIn"><div>Iniciar Sesi&oacute;n</div></a></li>
                                 <?php } ?>
                             </ul>

@@ -1,5 +1,7 @@
 <?php
+SSession::getInstance();
 include_once 'public/header.php';
+
 ?>
 <!-- Page Title
 ============================================= -->

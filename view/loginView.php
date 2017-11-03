@@ -88,8 +88,7 @@
                 </div>
             </section><!-- #content end -->
 
-            <?php sleep(5);
-            echo "<script>
+            <script>
                 function validate() {
                     var email, password;
 
@@ -121,14 +120,14 @@
                         } else if (data.result === '1') {
                             location.href = '?';
                         } else {
-                           location.href = '?';
+                            location.href = '?';
                         }
                         ;
                     }, 'json');
 
                     return false;
                 }
-            </script>"; ?>
+            </script>
 
             <?php
             include_once 'public/footer.php';
