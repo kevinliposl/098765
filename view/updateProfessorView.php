@@ -185,7 +185,7 @@ if (isset($session->email)) {
         var parameters = {
             "id": $("#form-professor").val()
         };
-        $.post("?controller=Professor&action=selectProfessor", parameters, function (data) {
+        $.post("?controller=Professor&action=select", parameters, function (data) {
             if (data.identification) {
                 $("#form-id").html(data.identification);
                 $("#form-id-type").html(data.id_type);
@@ -270,7 +270,7 @@ if (isset($session->email)) {
             "email": $("#form-email").text().trim(),
             "age": $("#form-age").text().trim()
         };
-        $.post("?controller=Professor&action=updateProfessorFunction", parameters, function (data) {
+        $.post("?controller=Professor&action=update", parameters, function (data) {
             if (data.result === "1") {
                 $("#success").attr({
                     "data-notify-type": "success",
@@ -278,7 +278,7 @@ if (isset($session->email)) {
                     "data-notify-position": "bottom-full-width"
                 });
                 SEMICOLON.widget.notifications($("#success"));
-                setTimeout("location.href = '?controller=Professor&action=updateProfessor';", 2000);
+                setTimeout("location.href = '?controller=Professor&action=update';", 2000);
             } else {
                 $("#warning").attr({
                     "data-notify-type": "warning",

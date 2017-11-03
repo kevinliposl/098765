@@ -96,10 +96,10 @@
                                         </li>
                                         <li><a href="#"><div>CRUD Profesor</div></a>
                                             <ul>
-                                                <li><a href="?controller=Professor&action=updateProfessor"><div>Actualizar Profesor</div></a></li> 
-                                                <li><a href="?controller=Professor&action=insertProfessor"><div>Insertar Profesor</div></a></li> 
-                                                <li><a href="?controller=Professor&action=deleteProfessor"><div>Eliminar Profesor</div></a></li>
-                                                <li><a href="?controller=Professor&action=professorSelection"><div>Obtener Datos Personales Profesores</div></a></li>
+                                                <li><a href="?controller=Professor&action=update"><div>Actualizar Profesor</div></a></li> 
+                                                <li><a href="?controller=Professor&action=insert"><div>Insertar Profesor</div></a></li> 
+                                                <li><a href="?controller=Professor&action=delete"><div>Eliminar Profesor</div></a></li>
+                                                <li><a href="?controller=Professor&action=select"><div>Obtener Datos Personales Profesores</div></a></li>
                                                 <li><a href="?controller=Professor&action=personalSelection"><div>Obtener Datos Personales</div></a></li>
                                                 <li><a href="?controller=Professor&action=updatePersonal"><div>Actualizar Datos Personales</div></a></li>
                                             </ul>
