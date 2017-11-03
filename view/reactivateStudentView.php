@@ -31,9 +31,10 @@ if (isset($session->email)) {
                                 <select id="form-student" class="selectpicker form-control" data-live-search="true">
                                     <option value="-1" data-tokens="">Seleccione un Estudiante</option>
                                     <?php foreach ($vars as $var) { ?>
-                                        <option value="<?php echo $var["identification"] ?>" data-tokens="">
-                                            <?php echo $var["identification"] . " | " . $var["name"] . " " . $var["first_lastname"] . " " . $var["second_lastname"]; ?></option>
-                                    <?php } ?>
+                                        <option value="<?php echo $var["identification"]; ?>" data-tokens="">
+                                            <?php echo $var["identification"] . " | " . $var["name"] . " " . $var["first_lastname"] . " " . $var["second_lastname"] . " | " . $var["tipo"]; ?></option>
+                                        <?php }
+                                    ?>
                                 </select>
                             </div>
                             <div class="acc_content clearfix"></div>
@@ -75,6 +76,12 @@ if (isset($session->email)) {
                                             </td>
                                             <td id="form-email-table"></td>
                                         </tr>
+                                        <tr>
+                                            <td>
+                                                <code>Rango</code>
+                                            </td>
+                                            <td id="form-rango"></td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -114,9 +121,13 @@ if (isset($session->email)) {
 </section><!-- #content end -->
 <script>
     $("#form-student").change(function () {
+        var select = document.getElementById("form-student");
+        var text = select.options[select.selectedIndex].innerText.trim();
+        var le = text.length;
         if ($("#form-student").val() !== "-1") {
             var parameters = {
-                "id": $("#form-student").val()
+                "id": $("#form-student").val(),
+                "tipo": text.substring(le - 1, le)
             };
             $.post("?controller=Student&action=selectDeleteStudent", parameters, function (data) {
                 document.getElementById("form-id-table").innerHTML = data.identification;
@@ -124,6 +135,7 @@ if (isset($session->email)) {
                 document.getElementById("form-lastName-table").innerHTML = data.first_lastname + " " + data.second_lastname;
                 document.getElementById("form-phones-table").innerHTML = data.phoneOne + ", " + data.phoneTwo;
                 document.getElementById("form-email-table").innerHTML = data.email;
+                document.getElementById("form-rango").innerHTML = data.tipo;
                 document.getElementById("form-submit").style.display = "block";
             }, "json");
         } else {
@@ -138,8 +150,12 @@ if (isset($session->email)) {
     }
 
     $("#form-submity").click(function () {
+        var select = document.getElementById("form-student");
+        var text = select.options[select.selectedIndex].innerText.trim();
+        var le = text.length;
         var parameters = {
-            "id": $("#form-student").val()
+            "id": $("#form-student").val(),
+            "tipo": text.substring(le - 1, le)
         };
         $.post("?controller=Student&action=reactivateStudent", parameters, function (data) {
             if (data.result === "1") {
@@ -152,7 +168,7 @@ if (isset($session->email)) {
             } else {
                 $("#warning").attr({
                     "data-notify-type": "warning",
-                    "data-notify-msg": "<i class=icon-warning-sign></i> El Estudiante no se pudo eliminar!"
+                    "data-notify-msg": "<i class=icon-warning-sign></i> El Estudiante no se pudo reactivar!"
                 });
                 SEMICOLON.widget.notifications($("#warning"));
             }

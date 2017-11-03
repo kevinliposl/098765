@@ -7,15 +7,12 @@ class UserController {
         require 'model/UserModel.php';
     }
 
-    /////TEMPORAR MIENTRAS ARREGLAN BIEN LOS INSERTS
     function logIn() {
         if (isset($_POST['email']) && $_POST['password']) {
             $model = new UserModel();
             $result = $model->logIn($_POST['email'], $_POST['password']);
-            if (isset($result[0]['permissions'])) {
-                $flag = count($result[0]['permissions']);
-                $this->permissions($flag);
-                SSession::getInstance()->email = $_POST['email'];
+            if (isset($result[0]['identification'])) {
+                $this->permissions($result);
             } else {
                 echo json_encode(array('result', '0'));
             }
@@ -24,10 +21,14 @@ class UserController {
         }
     }
 
-    private function permissions($flag) {
-        if ($flag === 1) {
+    private function permissions($result = array()) {
+        $session = SSession::getInstance();
+        if (count($result) == 1) {
+            $session->identification = $result[0]['identification'];
+            $session->permissions = $result[0]['permissions'];
             echo json_encode(array('result', '1'));
         } else {
+            $session->user = $result;
             echo json_encode(array('result', '2'));
         }
     }

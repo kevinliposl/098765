@@ -2,9 +2,9 @@
 $session = SSession::getInstance();
 
 if (isset($session->email)) {
-//include_once 'public/headerUser.php';
+    //include_once 'public/headerUser.php';
 } else {
-include_once 'public/header.php';
+    include_once 'public/header.php';
 }
 ?>
 
@@ -13,7 +13,7 @@ include_once 'public/header.php';
 <section id="page-title">
 
     <div class="container clearfix">
-        <h1>Actualizar Profesor</h1>
+        <h1>Actualizar Datos de Profesor</h1>
     </div>
 </section><!-- #page-title end -->
 
@@ -23,180 +23,236 @@ include_once 'public/header.php';
     <div class="content-wrap">
         <div class="container clearfix">
             <div class="accordion-lg divcenter nobottommargin" style="max-width: 550px;">
-                <div class="acctitle">
-                    <div class="acc_content clearfix">
-                        <form id="form" class="nobottommargin">
-                            <div class="white-section">
-                                <label for="form-professor">Profesores:</label>
-                                <select id="form-professor" class="selectpicker form-control" data-live-search="true">
-                                    <option value="-1" data-tokens="">Seleccione un Profesor</option>
+                <!--<div class="acctitle">-->
+                <div class="acc_content clearfix">
+                    <form id="form" class="nobottommargin" onsubmit="return validate();">
+                        <div class="white-section">
+                            <label for="form-professor">Profesores:</label>
+                            <select id="form-professor" class="selectpicker form-control" data-live-search="true">
+                                <option data-tokens="">Seleccione un Profesor</option>
                                 <?php foreach ($vars as $var) { ?>
-                                    <option value="<?php echo $var["identification"]?>" data-tokens="">
-                                        <?php echo $var["Name"]?></option>
+                                    <option value="<?php echo $var["identification"] ?>" data-tokens="">
+                                        <?php echo $var["Name"] ?></option>
                                 <?php } ?>
-                                </select>
-                            </div>
-                            <div class="acc_content clearfix"></div>
-                            <div class="table-responsive">
-
-                                <table class="table table-bordered table-striped" style="clear: both">
-                                    <tbody>
-                                        <tr>
-                                            <td width="30%">Identificaci&oacute;n</td>
-                                            <td width="70%">
-                                                <a id="form-id" class="bt-editable" href="#" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese la identificación"></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Tipo de Identificaci&oacute;n</td>
-                                            <td>
-                                                <a id="form-id-type" class="bt-editable" href="#" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el tipo de identificación"></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Nombre</td>
-                                            <td>
-                                                <a id="form-name" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el nombre"></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Primer Apellido</td>
-                                            <td>
-                                                <a id="form-first-lastName" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el Primer Apellido"></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Segundo Apellido</td>
-                                            <td>
-                                                <a id="form-second-lastName" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el Segundo Apellido"></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>G&eacute;nero</td>
-                                            <td>
-                                                <a id="form-gender" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el g&eacute;nero (M: Masculino, F: Femenino)"></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Nacionalidad</td>
-                                            <td>
-                                                <a id="form-nationality" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese la nacionalidad"></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Tel&eacute;fono 1</td>
-                                            <td>
-                                                <a id="form-phone1" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el Teléfono"></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Tel&eacute;fono 2</td>
-                                            <td>
-                                                <a id="form-phone2" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese otro Teléfono"></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Email</td>
-                                            <td>
-                                                <a id="form-email" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el email"></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Fecha de Nacimiento</td>
-                                            <td>
-                                                <a id="form-age" href="#" class="bt-editable" data-type="date" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese la fecha de nacimiento"></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Dirección:</td>
-                                            <td>
-                                                <a id="form-address" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese la dirección"></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Informacion Adicional:</td>
-                                            <td>
-                                                <a id="form-additionalInformation" class="bt-editable" href="#" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Información Adicional"></a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            
-                            <div class="col_full nobottommargin">
-                                <input type="button" class="button button-3d button-black nomargin" data-toggle="modal" id="form-actualizar" data-target="" value="Actualizar"/>
-                            </div>
-
-                            <div id="message"></div>
-                        </form>
-                    </div>
-                </div>
-
-                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-body">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                    <h4 class="modal-title" id="myModalLabel">¡Aviso!</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <h4 style="text-align: center;">¿Realmente desea guardar los cambios?</h4>
-                                    <p>Consejos:
-                                    <li>Verificar que sea el profesor correcto</li>
-                                    <li>Insertar los datos en el formato correcto</li></p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                                    <input type="button" class="btn btn-primary" button-black nomargin id="form-submity" value="Confirmar"/>
-                                    <input type="hidden" id="warning" value="w"/>
-                                    <input type="hidden" id="success" value="s"/>
-                                    <input type="hidden" id="failed" value="f"/>
-                                </div>
-                            </div>
+                            </select>
                         </div>
-                    </div>
+                        <br>
+                        <div class="acc_content clearfix"></div>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped">
+                                <h5 style="text-align: center;">Informaci&oacute;n del Profesor</h5>
+                                <colgroup>
+                                    <col class="col-xs-5">
+                                    <col class="col-xs-8">
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <td><code>Identificaci&oacute;n</code></td>
+                                        <td>
+                                            <a id="form-id" class="bt-editable" href="#" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese la identificación"></a>
+                                            <input type="hidden" id="failed-id" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>Tipo de Identificaci&oacute;n</code></td>
+                                        <td>
+                                            <a id="form-id-type" class="bt-editable" href="#" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el tipo de identificación"></a>
+                                            <input type="hidden" id="failed-id-type" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>Nombre</code></td>
+                                        <td>
+                                            <a id="form-name" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el nombre"></a>
+                                            <input type="hidden" id="failed-name" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>Primer Apellido</code></td>
+                                        <td>
+                                            <a id="form-first-lastName" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el Primer Apellido"></a>
+                                            <input type="hidden" id="failed-first-lastName" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>Segundo Apellido</code></td>
+                                        <td>
+                                            <a id="form-second-lastName" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el Segundo Apellido"></a>
+                                            <input type="hidden" id="failed-second-lastName" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>G&eacute;nero</code></td>
+                                        <td>
+                                            <a id="form-gender" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el g&eacute;nero (M: Masculino, F: Femenino)"></a>
+                                            <input type="hidden" id="failed-gender" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>Nacionalidad</code></td>
+                                        <td>
+                                            <a id="form-nationality" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese la nacionalidad"></a>
+                                            <input type="hidden" id="failed-nationality" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>Tel&eacute;fono</code></td>
+                                        <td>
+                                            <a id="form-phone1" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el Teléfono"></a>
+                                            <input type="hidden" id="failed-phone1" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>Otro Tel&eacute;fono</code></td>
+                                        <td>
+                                            <a id="form-phone2" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese otro Teléfono"></a>
+                                            <input type="hidden" id="failed-phone2" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>Email</code></td>
+                                        <td>
+                                            <a id="form-email" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el email"></a>
+                                            <input type="hidden" id="failed-email" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>Fecha de Nacimiento</code></td>
+                                        <td>
+                                            <a id="form-age" href="#" class="bt-editable" data-type="date" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese la fecha de nacimiento"></a>
+                                            <input type="hidden" id="failed-age" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>Direcci&oacute;n</code></td>
+                                        <td>
+                                            <a id="form-address" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese la dirección"></a>
+                                            <input type="hidden" id="failed-address" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>Informaci&oacute;n Adicional</code></td>
+                                        <td>
+                                            <a id="form-additionalInformation" class="bt-editable" href="#" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Información Adicional"></a>
+                                            <input type="hidden" id="failed-additionalInformation" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col_full nobottommargin">                      
+                            <input type="submit" value="Actualizar" class="button button-3d button-black nomargin form-control" style="display: block; text-align: center;"/>
+                            <input type="hidden" id="warning"/>
+                            <input type="hidden" id="success"/>
+                            <input type="hidden" id="failed"/>
+                        </div>
+                    </form>
+                </div>
+                <!--</div>-->
+            </div>
+        </div>
+</section><!-- #content end -->
+
+<!--MODAL -->
+<a id="showModal" style="display: none;"class="button button-3d button-black nomargin" data-target="#myModal" data-toggle="modal">Modal</a>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-body">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">¡Aviso!</h4>
+                </div>
+                <div class="modal-body">
+                    <h4 style="text-align: center;">¿Realmente desea actualizar la información de este profesor?</h4>
+                    <p>Consejos:
+                    <li>Revisar que todos los campos tengan la informaci&oacute;n correcta</li>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <input type="button" class="btn btn-primary button-black nomargin" id="form-submity" value="Actualizar"/>
                 </div>
             </div>
         </div>
     </div>
-</section><!-- #content end -->
+</div>
+
 <script>
+
+    //Change Combobox
     $("#form-professor").change(function () {
-        if ($("#form-professor").val() !== "-1") {
-            var parameters = {
-                "id": $("#form-professor").val()
-            };
-            $.post("?controller=Professor&action=selectProfessor", parameters, function (data) {
-                document.getElementById("form-id").innerHTML = data.identification;
-                document.getElementById("form-id-type").innerHTML = data.id_type;
-                document.getElementById("form-name").innerHTML = data.name;
-                document.getElementById("form-first-lastName").innerHTML = data.first_lastname;
-                document.getElementById("form-second-lastName").innerHTML = data.second_lastname;
-                document.getElementById("form-phone1").innerHTML = data.phone;
-                document.getElementById("form-phone2").innerHTML = data.cel_phone;
-                document.getElementById("form-email").innerHTML = data.email;
-                document.getElementById("form-gender").innerHTML = data.gender;
-                document.getElementById("form-nationality").innerHTML = data.nationality;
-                document.getElementById("form-age").innerHTML = data.birthdate;
-                document.getElementById("form-address").innerHTML = data.address;
-                document.getElementById("form-additionalInformation").innerHTML = data.expedient;
-                document.getElementById("form-submit").style.display = "block";
-            }, "json");
-        } else {
-            document.getElementById("form-submit").style.display = "none";
-        }
-    });</script>
+        var parameters = {
+            "id": $("#form-professor").val()
+        };
+        $.post("?controller=Professor&action=selectProfessor", parameters, function (data) {
+            if (data.identification) {
+                $("#form-id").html(data.identification);
+                $("#form-id-type").html(data.id_type);
+                $("#form-name").html(data.name);
+                $("#form-first-lastName").html(data.first_lastname);
+                $("#form-second-lastName").html(data.second_lastname);
+                $("#form-phone1").html(data.phone);
+                $("#form-phone2").html(data.cel_phone);
+                $("#form-email").html(data.email);
+                $("#form-gender").html(data.gender);
+                $("#form-nationality").html(data.nationality);
+                $("#form-age").html(data.birthdate);
+                $("#form-address").html(data.address);
+                $("#form-additionalInformation").html(data.expedient);
 
-<script>
-
-     $("#form-actualizar").click(function () {
-        $('#form-actualizar').attr('data-target', '#myModal');
+//                $("#success").attr({
+//                    "data-notify-type": "success",
+//                    "data-notify-msg": "<i class=icon-ok-sign></i> Datos de Profesor!",
+//                    "data-notify-position": "bottom-full-width"
+//                });
+//                SEMICOLON.widget.notifications($("#success"));
+            } else {
+                $("#form-id").html("");
+                $("#form-id-type").html("");
+                $("#form-name").html("");
+                $("#form-first-lastName").html("");
+                $("#form-second-lastName").html("");
+                $("#form-phone1").html("");
+                $("#form-phone2").html("");
+                $("#form-email").html("");
+                $("#form-gender").html("");
+                $("#form-nationality").html("");
+                $("#form-age").html("");
+                $("#form-address").html("");
+                $("#form-additionalInformation").html("");
+            }
+        }, "json");
     });
-    function Redirect() {
-        window.location = "?controller=Professor&action=updateProfessor";
+
+    function validate() {
+//        var initials, name, description, instrument;
+//
+//        initials = $("#form-initials-table").text().trim();
+//        name = $("#form-name-table").text().trim();
+//        description = $("#form-description-table").text().trim();
+//        instrument = $("#form-instrument-table").text().trim();
+//
+//        if (!isNaN(name) || name.length < 4 || name.split(" ", 2).length > 1) {
+//            $("#failed-name").attr("data-notify-msg", "<i class=icon-remove-sign></i> Nombre Incorrecto. Complete e intente de nuevo!");
+//            SEMICOLON.widget.notifications($("#failed-name"));
+//            return false;
+//
+//        } else if (!isNaN(description) || description.length < 4 || description.split(" ", 2).length > 1) {
+//            $("#failed-description").attr("data-notify-msg", "<i class=icon-remove-sign></i> Descripción Incorrecto. Complete e intente de nuevo!");
+//            SEMICOLON.widget.notifications($("#failed-description"));
+//            return false;
+//
+//        } else if (!isNaN(instrument) || instrument.length < 4 || instrument.split(" ", 2).length > 1) {
+//            $("#failed-instrument").attr("data-notify-msg", "<i class=icon-remove-sign></i> Instrumento Incorrecto. Complete e intente de nuevo!");
+//            SEMICOLON.widget.notifications($("#failed-instrument"));
+//            return false;
+//        }
+        $('#showModal').click();
+        return false;
     }
 
+    //UPDATE 
     $("#form-submity").click(function () {
         var parameters = {
             "id": $('#form-professor').val(),
@@ -214,28 +270,26 @@ include_once 'public/header.php';
             "email": $("#form-email").text().trim(),
             "age": $("#form-age").text().trim()
         };
-
         $.post("?controller=Professor&action=updateProfessorFunction", parameters, function (data) {
             if (data.result === "1") {
                 $("#success").attr({
                     "data-notify-type": "success",
-                    "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!"
+                    "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!",
+                    "data-notify-position": "bottom-full-width"
                 });
                 SEMICOLON.widget.notifications($("#success"));
-                setTimeout('Redirect()', 1000);
+                setTimeout("location.href = '?controller=Professor&action=updateProfessor';", 2000);
             } else {
                 $("#warning").attr({
                     "data-notify-type": "warning",
-                    "data-notify-msg": "<i class=icon-warning-sign></i> El profesor no se pudo actualizar!"
+                    "data-notify-msg": "<i class=icon-warning-sign></i> Operacion Incompleta, intente de nuevo!",
+                    "data-notify-position": "bottom-full-width"
                 });
                 SEMICOLON.widget.notifications($("#warning"));
             }
-            ;
         }, "json");
-    }
-    );
-</script>
-<script>
+    });
+
     $(document).ready(function () {
         $('.bt-editable').editable();
     });

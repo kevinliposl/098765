@@ -114,8 +114,8 @@ if (isset($session->email)) {
             "id-courses": $("#form-professors").val()
         };
         
-        alert($("#form-student").val());
-        alert($("#form-professors").val());
+//        alert($("#form-student").val());
+//        alert($("#form-professors").val());
         $.post("?controller=Enrollment&action=insertFunction", parameters, function (data) {
             if (data.result === "1") {
                 $("#success").attr({
@@ -124,7 +124,7 @@ if (isset($session->email)) {
                     "data-notify-position": "bottom-full-width"
                 });
                 SEMICOLON.widget.notifications($("#success"));
-                location.href = "?controller=Enrollment&action=insert";
+                setTimeout("location.href = '?controller=Enrollment&action=insert';", 2000);
             } else {
                 $("#warning").attr({
                     "data-notify-type": "warning",

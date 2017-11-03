@@ -2,13 +2,20 @@
 
 $session = SSession::getInstance();
 
-if (isset($session->email)) {
-    include_once 'public/header.php';
-} else {
-    include_once 'public/header.php';
-}
-?>
+include_once 'public/header.php';
 
+//if (isset($session->email)) {
+//    include_once 'public/headerProfessor.php'; //Profesor
+//} elseif (isset($session->email)) {
+//    include_once 'public/headerStudent.php'; //Student
+//} elseif (isset($session->email)) {
+//    include_once 'public/headerRoot.php'; //Root
+//} elseif (isset($session->email)) {
+//    include_once 'public/headerAdmin.php'; //Admin
+//} else {
+//    include_once 'public/header.php'; //Normal
+//}
+?>
 <section id="slider" class="slider-parallax swiper_wrapper dark full-screen">
     <div class="slider-parallax-inner">
         <div class="swiper-container swiper-parent">
@@ -172,4 +179,5 @@ if (isset($session->email)) {
 </section><!-- #content end -->
 
 <?php
+
 include_once 'public/footer.php';

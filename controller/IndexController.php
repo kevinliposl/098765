@@ -18,6 +18,14 @@ class IndexController {
         $this->view->show("galeryView.php");
     }
 
+    function permiso() {
+        $this->view->show("selectPermissionsView.php");
+    }
+
+    function schedule() {
+        $this->view->show("scheduleView.php");
+    }
+
     function contact() {
         $this->view->show("contactView.php");
     }
@@ -45,4 +53,5 @@ class IndexController {
     function report() {
         $this->view->show("reportView.php");
     }
+
 }
