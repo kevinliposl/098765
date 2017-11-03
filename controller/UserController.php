@@ -10,22 +10,26 @@ class UserController {
     function logIn() {
         if (isset($_POST['email']) && $_POST['password']) {
             $model = new UserModel();
-            $session = SSession::getInstance();
             $result = $model->logIn($_POST['email'], $_POST['password']);
-
             if (isset($result[0]['identification'])) {
-                if (count($result) == 1) {
-                    $session->identification = $result[0]['identification'];
-                    echo json_encode(array('result', '1'));
-                } else {
-                    $session->user = $result;
-                    echo json_encode(array('result', '2'));
-                }
+                $this->permissions($result);
             } else {
                 echo json_encode(array('result', '0'));
             }
         } else {
             $this->view->show("loginView.php");
+        }
+    }
+
+    private function permissions($result = array()) {
+        $session = SSession::getInstance();
+        if (count($result) == 1) {
+            $session->identification = $result[0]['identification'];
+            $session->permissions = $result[0]['permissions'];
+            echo json_encode(array('result', '1'));
+        } else {
+            $session->user = $result;
+            echo json_encode(array('result', '2'));
         }
     }
 

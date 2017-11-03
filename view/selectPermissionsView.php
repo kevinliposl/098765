@@ -61,9 +61,10 @@
                 </div>
             </section>
             <script>
-            
-            
-            
+
+
+
+
             </script>
             <?php
             include_once 'public/footerEmpty.php';
