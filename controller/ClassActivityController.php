@@ -42,7 +42,8 @@ class ClassActivityController {
         
             require 'model/ClassActivityModel.php';
             $model = new ClassActivityModel();
-            $result = $model->selectCourseClassActivity("999");
+            $id="999";
+            $result = $model->selectCourseClassActivity($id);
             $this->view->show("insertClassActivityView.php",$result);
     }//insert
     

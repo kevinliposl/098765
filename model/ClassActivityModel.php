@@ -1,6 +1,6 @@
 <?php
 
-class CourseModel {
+class ClassActivityModel {
 
     private $db;
 

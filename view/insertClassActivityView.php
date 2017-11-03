@@ -36,7 +36,7 @@ if (isset($session->email)) {
                                         if (isset($var["ID"])) {
                                             ?>
                                             <option value="<?php echo $var["ID"] ?> " data-tokens="">
-                                                <?php echo $var["name"];?>
+                                                <?php echo $var["ID"]?>
                                             </option>
                                             <?php
                                         }
