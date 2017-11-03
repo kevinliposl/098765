@@ -121,7 +121,7 @@ if (isset($session->email)) {
                     "data-notify-position": "bottom-full-width"
                 });
                 SEMICOLON.widget.notifications($("#success"));
-                location.href = "?controller=Enrollment&action=delete";
+                setTimeout("location.href = '?controller=Enrollment&action=delete';", 2000);
             } else {
                 $("#warning").attr({
                     "data-notify-type": "warning",
