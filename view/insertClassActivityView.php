@@ -53,7 +53,7 @@ if (isset($session->email)) {
                             </div>                          
                             <div class="col_full">
                                 <label for="form-consecutive">Consecutivo de Actividad:</label>
-                                <input type="text" id="form-consecutive" class="form-control" required/>
+                                <input type="text" id="form-consecutive" class="form-control" />
                                 <input type="hidden" id="failed-consecutive" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                             </div>
                             <div class="col_full">
@@ -63,9 +63,9 @@ if (isset($session->email)) {
                             </div>
                             <div class="col_full">
                                 <label for="form-typeId">Control de Asistencia:</label>
-                                <input type="radio" name="form-typeId" value="P" checked/><label>Puntual</label>
-                                <input type="radio" name="form-typeId" value="I"/> <label>Ausencia Injustificada</label>
-                                <input type="radio" name="form-typeId" value="J"/><label>Ausencia Justificada</label>
+                                <input type="radio" name="form-typeA" value="P" checked/><label>Puntual</label>
+                                <input type="radio" name="form-typeA" value="I"/> <label>Ausencia Injustificada</label>
+                                <input type="radio" name="form-typeA" value="J"/><label>Ausencia Justificada</label>
                             </div>
                             <div class="col_full">
                                 <label for="form-content">Contenido de Clase:</label>
@@ -133,41 +133,7 @@ if (isset($session->email)) {
     </div>
 </div>
 
-<script>
-    function validate() {
-
-        var initials, name, description, instrument;
-
-        initials = $("#form-initials").val().trim();
-        name = $("#form-name").val().trim();
-        description = $("#form-description").val().trim();
-        instrument = $("#form-instrument").val().trim();
-
-        if (initials.length < 6 || initials.length > 6 || isNaN(initials.substr(3,3)) || /^[a-z][a-z]*/.test(initials.substr(0,3)) || initials.split(" ", 2).length > 1) {
-            $("#failed-initials").attr("data-notify-msg", "<i class=icon-remove-sign></i> Inicial de curso Incorrecta. Complete e intente de nuevo!");
-            SEMICOLON.widget.notifications($("#failed-initials"));
-            return false;
-
-        }else if (!isNaN(name) || name.length < 4 || name.split(" ", 2).length > 1) {
-            $("#failed-name").attr("data-notify-msg", "<i class=icon-remove-sign></i> Nombre Incorrecto. Complete e intente de nuevo!");
-            SEMICOLON.widget.notifications($("#failed-name"));
-            return false;
-
-        } else if (!isNaN(description) || description.length < 4 || description.split(" ", 2).length > 1) {
-            $("#failed-description").attr("data-notify-msg", "<i class=icon-remove-sign></i> Descripción Incorrecto. Complete e intente de nuevo!");
-            SEMICOLON.widget.notifications($("#failed-description"));
-            return false;
-
-        } else if (!isNaN(instrument) || instrument.length < 4 || instrument.split(" ", 2).length > 1) {
-            $("#failed-instrument").attr("data-notify-msg", "<i class=icon-remove-sign></i> Instrumento Incorrecto. Complete e intente de nuevo!");
-            SEMICOLON.widget.notifications($("#failed-instrument"));
-            return false;
-        }
-        $('#showModal').click();
-        return false;
-    }
-    
-        //Change Combobox
+<script>  
     $("#form-courses").change(function () {
         var parameters = {
             "appointment": $("#form-courses").val()
@@ -182,18 +148,24 @@ if (isset($session->email)) {
             $("#form-student").selectpicker("refresh");///REFRESCA SELECT PARA QUE AGARRE AGREGADOS
         }, "json");
     });
+    
+    $("#form-student").change(function () {
+        var parameters = {
+            "appointment": $("#form-courses").val(),
+            "identification": $("#form-student").val()
+        };
+        $.post("?controller=ClassActivity&action=selectConsecutiveClassActivity", parameters, function (data) {
+            document.getElementById("form-consecutive").value = parseInt(data.consecutive_class)+1;
+        }, "json");
+    });
 
-    //Open Modal
     $("#form-submit").click(function () {
         $('#form-submit').attr('data-target', '#myModal');
     });
     
-    //Open Modal
     $("#form-save").click(function () {
         var content;
-
         content = $("#form-content").val().trim();
-
         if (!isNaN(content) || content.length < 4) {
             $("#failed-content").attr("data-notify-msg", "<i class=icon-remove-sign></i> Inicial de curso Incorrecta. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-content"));
@@ -203,33 +175,42 @@ if (isset($session->email)) {
         }
     });
     
-    //Open Modal
     $("#form-delete").click(function () {
         var sel = document.getElementById("form-addContent");
         sel.remove(sel.selectedIndex);
         $("#form-addContent").selectpicker("refresh");///REFRESCA SELECT PARA QUE AGARRE AGREGADOS 
     });
     
-    //Insert
-    $("#form-submity").click(function () {
-        
+    $("#form-submity").click(function () {     
         var content;
-
         content = $("#form-observation").val().trim();
 
         if (!isNaN(content) || content.length < 4) {
             $("#failed-observation").attr("data-notify-msg", "<i class=icon-remove-sign></i> Inicial de curso Incorrecta. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-observation"));
-        }else{            
-        
+        }else{ 
+            
+            var sel = document.getElementById("form-addContent"); 
+            var dat="";
+            for (var i = 0; i < sel.length; i++) {
+                var opt = sel[i];
+                if(i===sel.length-1){
+                  dat+=opt.value;
+                }else{
+                  dat+=opt.value+",";
+                }
+            }
         var parameters = {
-            "course": $("#form-courses").val(),
+            "appointment": $("#form-courses").val(),
             "student": $("#form-student").val(),
-            "description": $("#form-description").val().trim(),
-            "instrument": $("#form-instrument").val().trim()
+            "consecutive": $("#form-consecutive").val(),
+            "date": $("#form-date").val().trim(),
+            "typeA": $("input:radio[name='form-typeA']:checked").val().trim(),
+            "contents":dat,
+            "count":sel.length,
+            "observation": $("#form-observation").val()
         };
-
-        $.post("?controller=Course&action=insert", parameters, function (data) {
+        $.post("?controller=ClassActivity&action=insert", parameters, function (data) {
             if (data.result === "1") {
                 $("#success").attr({
                     "data-notify-type": "success",
@@ -237,7 +218,7 @@ if (isset($session->email)) {
                     "data-notify-position": "bottom-full-width"
                 });
                 SEMICOLON.widget.notifications($("#success"));
-                location.href = "?controller=Course&action=insert";
+                location.href = "?controller=ClassActivity&action=insert";
             } else {
                 $("#warning").attr({
                     "data-notify-type": "warning",
@@ -247,7 +228,8 @@ if (isset($session->email)) {
                 SEMICOLON.widget.notifications($("#warning"));
             }
             ;
-        }, "json");}
+        }, "json");
+        }
     });
 </script>
 

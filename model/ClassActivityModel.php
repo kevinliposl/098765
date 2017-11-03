@@ -9,8 +9,8 @@ class ClassActivityModel {
         $this->db = SPDO::singleton();
     }
     
-    public function insert($initials, $name, $description, $instrument) {
-        $query = $this->db->prepare("call sp_insert_course('$initials','$name','$description','$instrument')");
+    public function insert($appointment, $student, $consecutive, $date,$assistance,$identification,$num_identifications,$observation) {
+        $query = $this->db->prepare("call sp_insert_class_activity('$appointment', '$student', '$consecutive', '$date','$assistance','$identification','$num_identifications','$observation')");
         $query->execute();
         $result = $query->fetch();
         return $result;
@@ -39,6 +39,13 @@ class ClassActivityModel {
         $query->closeCursor();
         return $result;
     }
+    
+    public function selectConsecutiveClassActivity($appointment,$identification) {
+        $query = $this->db->prepare("call sp_select_consecutive_class_activity('$appointment','$identification')");
+        $query->execute();
+        $result = $query->fetch();
+        return $result;
+    }
 
     public function update($initials, $name, $description, $instrument) {
          $query = $this->db->prepare("call sp_update_course('$initials','$name','$description','$instrument')");
@@ -59,6 +66,13 @@ class ClassActivityModel {
         $query->execute();
         $result = $query->fetchAll();
         $query->closeCursor();
+        return $result;
+    }
+    
+        public function prueba($ID_semester,$initials) {
+        $query = $this->db->prepare("call sp_prueba('$ID_semester','$initials')");
+        $query->execute();
+        $result = $query->fetch();
         return $result;
     }
 }

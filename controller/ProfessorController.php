@@ -27,8 +27,7 @@ class ProfessorController {
         $additionalInformation = $_POST["additionalInformation"];
         $address = $_POST["address"];
         $age = $_POST["age"];
-
-
+        
         $result = $model->insertProfessor($typeId, $id, $nationality, $name, $firstLastName, $secondLastName, $address, $gender, $phone, $phone2, $email, $additionalInformation, $age);
         echo json_encode($result);
     }
