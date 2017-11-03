@@ -16,6 +16,13 @@ class ClassActivityModel {
         return $result;
     }
     
+    public function update($appointment, $student, $consecutive, $date,$assistance,$identificationNew,$num_identificationsNew,$identificationDelete,$num_identificationsDelete,$observation) {
+        $query = $this->db->prepare("call sp_update_class_activity('$appointment', '$student', '$consecutive', '$date','$assistance','$identificationNew','$num_identificationsNew','$identificationDelete','$num_identificationsDelete','$observation')");
+        $query->execute();
+        $result = $query->fetch();
+        return $result;
+    }
+    
     public function selectAll() {
         $query = $this->db->prepare("call sp_select_all_course()");
         $query->execute();
@@ -40,8 +47,8 @@ class ClassActivityModel {
         return $result;
     }
     
-    public function selectRecordContentClassActivity($appointment,$identification) {
-        $query = $this->db->prepare("call sp_select_record_content_class_activity('$appointment','$identification')");
+    public function selectRecordContentClassActivity($appointment,$identification,$consecutive) {
+        $query = $this->db->prepare("call sp_select_record_content_class_activity('$appointment','$identification','$consecutive')");
         $query->execute();
         $result = $query->fetchAll();
         $query->closeCursor();
@@ -65,13 +72,6 @@ class ClassActivityModel {
     
     public function selectClassActivity($appointment,$identification,$consecutive) {
         $query = $this->db->prepare("call sp_select_class_activity('$appointment','$identification','$consecutive')");
-        $query->execute();
-        $result = $query->fetch();
-        return $result;
-    }
-
-    public function update($initials, $name, $description, $instrument) {
-         $query = $this->db->prepare("call sp_update_course('$initials','$name','$description','$instrument')");
         $query->execute();
         $result = $query->fetch();
         return $result;
