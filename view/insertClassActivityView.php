@@ -201,12 +201,12 @@ if (isset($session->email)) {
                 }
             }
         var parameters = {
-            "course": $("#form-courses").val(),
+            "appointment": $("#form-courses").val(),
             "student": $("#form-student").val(),
             "consecutive": $("#form-consecutive").val(),
             "date": $("#form-date").val().trim(),
             "typeA": $("input:radio[name='form-typeA']:checked").val().trim(),
-            "contents":sel,
+            "contents":dat,
             "count":sel.length,
             "observation": $("#form-observation").val()
         };

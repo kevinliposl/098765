@@ -60,23 +60,18 @@ class ClassActivityController {
     }
     
     public function insert() {
-//        if (isset($_POST["initials"]) && isset($_POST["name"]) && isset($_POST["description"]) && isset($_POST["instrument"])) {
-//            require 'model/CourseModel.php';
-//            $model = new CourseModel();
-//            $result = $model->insert($_POST["initials"], $_POST["name"], $_POST["description"], $_POST["instrument"]);
-//            echo json_encode($result);
-//        }else{
-//            require 'model/CourseModel.php';
-//            $model = new CourseModel();
-//            $result = $model->selectAll();
-//            $this->view->show("insertCourseView.php",null);
-//        }//else
-        
+        if (isset($_POST["observation"])) {
+            require 'model/ClassActivityModel.php';
+            $model = new ClassActivityModel();
+            $result = $model->insert($_POST["appointment"], $_POST["student"], $_POST["consecutive"], $_POST["date"],$_POST['typeA'],$_POST['contents'],$_POST['count'],$_POST['observation']);
+            echo json_encode($result);
+        }else{
             require 'model/ClassActivityModel.php';
             $model = new ClassActivityModel();
             $id="999";
             $result = $model->selectCourseClassActivity($id);
             $this->view->show("insertClassActivityView.php",$result);
+        }//else
     }//insert
     
     public function delete() {

@@ -9,8 +9,8 @@ class ClassActivityModel {
         $this->db = SPDO::singleton();
     }
     
-    public function insert($initials, $name, $description, $instrument) {
-        $query = $this->db->prepare("call sp_insert_course('$initials','$name','$description','$instrument')");
+    public function insert($appointment, $student, $consecutive, $date,$assistance,$identification,$num_identifications,$observation) {
+        $query = $this->db->prepare("call sp_insert_class_activity('$appointment', '$student', '$consecutive', '$date','$assistance','$identification','$num_identifications','$observation')");
         $query->execute();
         $result = $query->fetch();
         return $result;
