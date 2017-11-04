@@ -152,7 +152,6 @@ if (isset($session->permissions)) {
                 });
                 SEMICOLON.widget.notifications($("#warning"));
             }
-            ;
         }, "json");
     });
 </script>

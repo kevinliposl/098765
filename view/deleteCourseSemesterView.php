@@ -134,7 +134,7 @@ if (isset($session->permissions)) {
             $("#failed-form-semester").attr("data-notify-msg", "<i class=icon-remove-sign></i> Semestre inválido. Seleccione e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-form-semester"));
             return false;
-        }else if("#form-courses").val()==="-1"){
+        }else if(("#form-courses").val()==="-1"){
             $("#failed-form-courses").attr("data-notify-msg", "<i class=icon-remove-sign></i> Curso inválido. Seleccione e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-form-courses"));
             return false;
