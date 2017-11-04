@@ -24,7 +24,7 @@
         <link rel="stylesheet" href="public/css/typeahead.js-bootstrap.css" type="text/css"/>
         <link rel="stylesheet" href="public/css/responsive.css" type="text/css" />
 
-        <script src="public/js/jquery-1.10.2.js"></script>
+        <script src="public/js/jquery.min.js" type="text/javascript"></script>
 
         <!-- Document Title
         ============================================= -->
@@ -55,7 +55,8 @@
 
                             <div class="panel panel-default divcenter noradius noborder" style="max-width: 400px; background-color: rgba(255,255,255,0.93);">
                                 <div class="panel-body" style="padding: 40px;">
-                                    <form id="login-form" class="nobottommargin" onsubmit="return validate();">
+                                    <form id="login-form" class="nobottommargin" onsubmit="return false;">
+
                                         <h3>Ingrese a su cuenta</h3>
 
                                         <div class="col_full">
@@ -70,10 +71,18 @@
                                             <input type="hidden" id="failed-password" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                         </div>
 
+                                        <div class="col_full" id="div-permissions" style="display: none;">
+                                            <label for="form-permissions">Contrase&ncaron;a:</label>
+                                            <select id="form-permissions" class="form-control" data-live-search="true">
+                                                <option value="-1" data-tokens="" disabled selected>Seleccione un Curso</option>
+                                            </select>
+                                            <input type="hidden" id="failed-permissions" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                                        </div>
+
                                         <div class="line line-sm"></div>
 
                                         <div class="col_full nobottommargin">
-                                            <input type="submit" class="button button-3d button-black nomargin" id="form-submit" value="Ingresar">
+                                            <input type="submit" class="button button-3d button-black nomargin" id="submit" value="Ingresar">
                                             <input type="hidden" id="failed" data-notify-type= "error" data-notify-position="bottom-full-width"/>
 
                                             <a href="#" class="fright" >Olvidó su contraseña?</a>
@@ -89,11 +98,11 @@
             </section><!-- #content end -->
 
             <script>
-                function validate() {
-                    var email, password;
 
-                    email = $('#form-email').val().trim();
-                    password = $('#form-password').val().trim();
+                $("#submit").click(function () {
+
+                    var email = $('#form-email').val().trim();
+                    var password = $('#form-password').val().trim();
 
                     if (!/\w+@\w+\.+[a-z]/.test(email) || email.split(' ', 2).length > 1) {
                         $('#failed-email').attr('data-notify-msg', '<i class=icon-remove-sign></i> Correo Incorrecto. Complete correctamente e intente de nuevo!');
@@ -112,23 +121,18 @@
                     };
 
                     $.post('?controller=User&action=logIn', parameters, function (data) {
-                        alert(data);
                         if (data.result === '0') {
                             $('#failed').attr({
                                 'data-notify-msg': '<i class=icon-warning-sign></i> Correo o Contrase&ncaron;a Incorrectos. Complete correctamente e intente de nuevo!'
                             });
                             SEMICOLON.widget.notifications($('#failed'));
-                        }
-                        if (data.result === '1') {
+                        } else if (data.result === '1') {
                             location.href = '?';
                         }
-                        if (data.result === "2") {
-                            location.href = '?action=permiso';
-                        }
+                        ;
                     }, 'json');
+                });
 
-                    return false;
-                }
             </script>
 
             <?php

@@ -2,19 +2,19 @@
 
 $session = SSession::getInstance();
 
-include_once 'public/header.php';
-
-//if (isset($session->email)) {
-//    include_once 'public/headerProfessor.php'; //Profesor
-//} elseif (isset($session->email)) {
-//    include_once 'public/headerStudent.php'; //Student
-//} elseif (isset($session->email)) {
-//    include_once 'public/headerRoot.php'; //Root
-//} elseif (isset($session->email)) {
-//    include_once 'public/headerAdmin.php'; //Admin
-//} else {
-//    include_once 'public/header.php'; //Normal
-//}
+if (isset($session->permissions)) {
+    if ($session->permissions == 'A') {
+        include_once 'public/headerAdmin.php'; //Admin
+    } elseif ($session->permissions == 'S') {
+        include_once 'public/headerStudent.php'; //Student
+    } elseif ($session->permissions == 'R') {
+        include_once 'public/headerRoot.php'; //Root
+    } elseif ($session->permissions == 'T') {
+        include_once 'public/headerProfessor.php'; //Professor
+    }
+} else {
+    include_once 'public/header.php';
+}
 ?>
 <section id="slider" class="slider-parallax swiper_wrapper dark full-screen">
     <div class="slider-parallax-inner">
