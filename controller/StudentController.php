@@ -48,7 +48,7 @@ class StudentController {
         if (!isset($_POST["id"]) && !isset($_POST["email"])) {
             $model = new StudentModel();
             $result = $model->selectAllDeleteStudent();
-            $this->view->show("reactivateStudentView.php", $result);
+            $this->view->show("reactivateView.php", $result);
         } else {
             $model = new StudentModel();
             $result = $model->reactivateStudent($_POST['id'], $_POST['tipo']);
