@@ -1,8 +1,8 @@
 <?php
 $session = SSession::getInstance();
 
-if (isset($session->email)) {
-    include_once 'public/header.php';
+if (isset($session->permissions)) {
+    include_once 'public/headerAdmin.php';
 } else {
     include_once 'public/header.php';
 }

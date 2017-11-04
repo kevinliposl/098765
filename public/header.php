@@ -86,11 +86,12 @@
                                                 <li><a href="?controller=CourseSemester&action=select"><div>Ver Asignaciones</div></a></li> 
                                             </ul>
                                         </li>
-                                        <li><a href="#"><div>CRUD Asignacion</div></a>
+                                        <li><a href="#"><div>CRUD Actividad</div></a>
                                             <ul>
                                                 <li><a href="?controller=ClassActivity&action=insert"><div>Insertar Actividad de Clase</div></a></li> 
                                                 <li><a href="?controller=ClassActivity&action=update"><div>Actualizar Actividad de Clase</div></a></li> 
                                                 <li><a href="?controller=ClassActivity&action=select"><div>Ver Actividad de Clase</div></a></li> 
+                                                <li><a href="?controller=ClassActivity&action=record"><div>Ver expediente</div></a></li> 
                                             </ul>
                                         </li>
                                         <li><a href="#"><div>CRUD Profesor</div></a>
@@ -101,6 +102,7 @@
                                                 <li><a href="?controller=Professor&action=select"><div>Obtener Datos Personales Profesores</div></a></li>
                                                 <li><a href="?controller=Professor&action=personalSelection"><div>Obtener Datos Personales</div></a></li>
                                                 <li><a href="?controller=Professor&action=updatePersonal"><div>Actualizar Datos Personales</div></a></li>
+                                                <li><a href="?controller=User&action=change"><div>Cambiar Contraseña</div></a></li>
                                             </ul>
                                         </li>
                                         <li><a href="#"><div>CRUD Matricula</div></a>
@@ -118,6 +120,7 @@
                                                 <li><a href="?controller=Student&action=updateStudent"><div>Actualizar Estudiante</div></a></li> 
                                                 <li><a href="?controller=Student&action=getStudentData"><div>Obtener Estudiante</div></a></li> 
                                                 <li><a href="?controller=Student&action=updatePersonalDataStudent"><div>Actualizar Datos PersonalesEstudiante</div></a></li> 
+                                                <li><a href="?controller=Student&action=getStudentExp"><div>Expediente Estudiante</div></a></li> 
                                             </ul>
                                         </li>
                                         <li><a href="#"><div>CRUD Administrador</div></a>

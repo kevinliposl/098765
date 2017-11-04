@@ -75,6 +75,7 @@
                                     <ul>
                                         <li><a href="?controller=Professor&action=personalSelection"><div>Obtener Datos Personales</div></a></li>
                                         <li><a href="?controller=Professor&action=updatePersonal"><div>Actualizar Datos Personales</div></a></li>
+                                        <li><a href="?controller=User&action=change"><div>Cambiar Contraseña</div></a></li>
                                     </ul>
                                 </li>
                                 <li><a href="?controller=User&action=signOff"><div>Cerrar Sesi&oacute;n</div></a></li>

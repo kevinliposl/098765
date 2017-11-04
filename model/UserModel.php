@@ -15,4 +15,11 @@ class UserModel {
         $result = $query->fetchAll();
         return $result;
     }
+    
+    function change($id, $new_pass){
+        $query = $this->db->prepare("call sp_update_password_user('$id', '$new_pass')");
+        $query->execute();
+        $result = $query->fetch();
+        return $result;
+    }//change
 }

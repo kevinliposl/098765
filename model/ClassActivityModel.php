@@ -31,6 +31,13 @@ class ClassActivityModel {
         return $result;
     }
     
+    public function selectInformationStudentClassActivity($identification) {
+        $query = $this->db->prepare("call sp_select_information_student_class_activity('$identification')");
+        $query->execute();
+        $result = $query->fetch();
+        return $result;
+    }
+    
     public function selectStudentClassActivity($appointment) {
         $query = $this->db->prepare("call sp_select_student_class_activity('$appointment')");
         $query->execute();

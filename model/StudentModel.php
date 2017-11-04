@@ -32,7 +32,7 @@ class StudentModel {
         $query->closeCursor();
         return $result;
     }
-    
+
     public function selectAllDeleteStudent() {
         $query = $this->db->prepare("call sp_select_all_delete_student()");
         $query->execute();
@@ -47,7 +47,7 @@ class StudentModel {
         $result = $query->fetch();
         return $result;
     }
-    
+
     public function selectDeleteStudent($id, $tipo) {
         $query = $this->db->prepare("call sp_select_delete_student('$id', '$tipo')");
         $query->execute();
@@ -61,13 +61,22 @@ class StudentModel {
         $result = $query->fetch();
         return $result;
     }
+
+    public function getStudentExp($id) {
+        $query = $this->db->prepare("call sp_exp_student('$id')");
+        $query->execute();
+        $result = $query->fetchAll();
+        $query->closeCursor();
+        return $result;
+    }
+
     public function reactivateStudent($id, $tipo) {
         $query = $this->db->prepare("call sp_reactivate_student('$id', '$tipo')");
         $query->execute();
         $result = $query->fetch();
         return $result;
     }
-    
+
     public function selectStudentEnrolled() {
         $query = $this->db->prepare("call sp_select_student_enrolled()");
         $query->execute();

@@ -1,8 +1,8 @@
 <?php
 $session = SSession::getInstance();
 
-if (isset($session->email)) {
-    //include_once 'public/headerUser.php';
+if (isset($session->permissions)) {
+    include_once 'public/headerAdmin.php';
 } else {
     include_once 'public/header.php';
 }
@@ -47,7 +47,7 @@ if (isset($session->email)) {
                             <div class="white-section">
                                 <label for="form-professors">Profesores:</label>
                                 <select multiple name="form-professors[]" id="form-professors" class="form-control selectpicker" data-live-search="true">
-                                    <!--<option value="-1" data-tokens="">Seleccione los profesores</option>-->
+                                    <!--<option data-tokens="">Seleccione los profesores</option>-->
                                 </select>
                             </div>
                             <br>
@@ -116,7 +116,7 @@ if (isset($session->email)) {
         
 //        alert($("#form-student").val());
 //        alert($("#form-professors").val());
-        $.post("?controller=Enrollment&action=insertFunction", parameters, function (data) {
+        $.post("?controller=Enrollment&action=insert", parameters, function (data) {
             if (data.result === "1") {
                 $("#success").attr({
                     "data-notify-type": "success",
