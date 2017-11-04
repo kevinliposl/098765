@@ -8,12 +8,13 @@ class ScheduleController {
     }
 
     function insert() {
+        $model = new SemesterModel();
         if (isset($_POST["year"]) && isset($_POST["semester"])) {
-            $model = new SemesterModel();
             $result = $model->insert($_POST["year"], $_POST["semester"]);
             echo json_encode($result);
         } else {
-            $this->view->show("insertScheduleView.php");
+            $result = $model->selectAll();
+            $this->view->show("insertScheduleView.php",$result);
         }
     }
 

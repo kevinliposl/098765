@@ -29,10 +29,10 @@ if (isset($session->email)) {
                         <option value="-1" data-tokens="">Seleccione un Semestre</option>
                         <?php
                         foreach ($vars as $var) {
-                            if (isset($var["identification"])) {
+                            if (isset($var["ID"])) {
                                 ?>
                                 <option value="<?php echo $var["ID"] ?> " data-tokens="">
-                                    <?php echo $var["identification"] . " | " . $var["name"] . " " . $var["first_lastname"] . " " . $var["second_lastname"]; ?>
+                                    <?php echo $var["year"] . " | " . $var["semester"]; ?>
                                 </option>
                                 <?php
                             }
@@ -58,7 +58,6 @@ if (isset($session->email)) {
                         ?>
                     </select>
                 </div>
-
                 <div class="col_one_fourth">
                     <label for="billing-form-lname">Horario</label>
                     <select id="form-admin" class="form-control" data-live-search="true" disabled>
@@ -281,7 +280,7 @@ if (isset($session->email)) {
             "id": $("#form-admin").val()
         };
 
-        $.post("?controller=Admin&action=select", parameters, function (data) {
+        $.post("?controller=CourseSemestre&action=select", parameters, function (data) {
             if (data.identification) {
                 $("#form-id-table").html(data.identification);
                 $("#form-name-table").html(data.name);

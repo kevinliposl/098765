@@ -25,7 +25,7 @@ if (isset($session->email)) {
             <div class="accordion-lg divcenter nobottommargin" style="max-width: 550px;">
                 <div class="acctitle">
                     <div class="acc_content clearfix">
-                        <form id="form" class="nobottommargin" action="asdasd"onsubmit="return validate();">
+                        <form id="form" class="nobottommargin" onsubmit="return false">
                             <div class="col_full">
                                 <label for="form-year">A&ncaron;o:</label>
                                 <input type="number" id="form-year" class="form-control" required minlength="4" maxlength="4"/>
@@ -43,7 +43,7 @@ if (isset($session->email)) {
                             </div>
 
                             <div class="col_full nobottommargin">                      
-                                <input type="submit" value="Insertar" class="button button-3d button-black nomargin form-control" style="display: block; text-align: center;"/>
+                                <input type="submit" value="Insertar" class="button button-3d button-black nomargin form-control" id="submit" style="display: block; text-align: center;"/>
                                 <input type="hidden" id="warning"/>
                                 <input type="hidden" id="success"/>
                                 <input type="hidden" id="failed"/>
@@ -81,32 +81,34 @@ if (isset($session->email)) {
 </div>
 
 <script>
-    function validate() {
-        var year, email;
-        year = $("#form-year").val().trim();
-        semester = $("#form-semester").val().trim();
-        
-        if (email.split(" ", 2).length > 1) {
-            $("#failed-email").attr("data-notify-msg", "<i class=icon-remove-sign></i> Correo Incorrecto. Complete e intente de nuevo!");
-            SEMICOLON.widget.notifications($("#failed-"));
+    $("#submit").click(function () {
+
+        var year = $("#form-year").val().trim();
+        var semester = $("#form-semester").val().trim();
+
+        if (year < 2000 && !isNaN(year)) {
+            $("#failed-year").attr("data-notify-msg", "<i class=icon-remove-sign></i> A&ncaron;o Incorrecto. Complete e intente de nuevo!");
+            SEMICOLON.widget.notifications($("#failed-year"));
             return false;
-        } else if (isNaN(id) || id.length < 9 || id.length > 9 || id.split(" ", 2).length > 1) {
-            $("#failed-id").attr("data-notify-msg", "<i class=icon-remove-sign></i> Cedula Incorrecta. Complete e intente de nuevo!");
-            SEMICOLON.widget.notifications($("#failed-id"));
+        } else if (semester < 1) {
+            $("#failed-semester").attr("data-notify-msg", "<i class=icon-remove-sign></i> Semestre no Seleccionado. Complete e intente de nuevo!");
+            SEMICOLON.widget.notifications($("#failed-semester"));
             return false;
         }
-        
+
         $('#showModal').click();
         return false;
-    }
+    });
 
     //Insert
     $("#form-submity").click(function () {
+        
         var parameters = {
-            "id": $("#form-id").val().trim(),
-            "email": $("#form-email").val().trim(),
+            'year': $("#form-year").val().trim(),
+            'semester': $("#form-semester").val().trim()
         };
-        $.post("?controller=Admin&action=insert", parameters, function (data) {
+        
+        $.post("?controller=Semester&action=insert", parameters, function (data) {
             alert(data);
             if (data.result === "1") {
                 $("#success").attr({
@@ -115,11 +117,11 @@ if (isset($session->email)) {
                     "data-notify-position": "bottom-full-width"
                 });
                 SEMICOLON.widget.notifications($("#success"));
-                location.href = "?controller=Admin&action=insert";
+                setTimeout("location.href = '?controller=Semester&action=insert';", 2000);
             } else {
                 $("#warning").attr({
                     "data-notify-type": "warning",
-                    "data-notify-msg": "<i class=icon-warning-sign></i> El Administrador ya existe en el Sistema!",
+                    "data-notify-msg": "<i class=icon-warning-sign></i> El Semestre ya existe en el Sistema!",
                     "data-notify-position": "bottom-full-width"
                 });
                 SEMICOLON.widget.notifications($("#warning"));
