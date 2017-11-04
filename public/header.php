@@ -86,11 +86,12 @@
                                                 <li><a href="?controller=CourseSemester&action=select"><div>Ver Asignaciones</div></a></li> 
                                             </ul>
                                         </li>
-                                        <li><a href="#"><div>CRUD Asignacion</div></a>
+                                        <li><a href="#"><div>CRUD Actividad</div></a>
                                             <ul>
                                                 <li><a href="?controller=ClassActivity&action=insert"><div>Insertar Actividad de Clase</div></a></li> 
                                                 <li><a href="?controller=ClassActivity&action=update"><div>Actualizar Actividad de Clase</div></a></li> 
                                                 <li><a href="?controller=ClassActivity&action=select"><div>Ver Actividad de Clase</div></a></li> 
+                                                <li><a href="?controller=ClassActivity&action=record"><div>Ver expediente</div></a></li> 
                                             </ul>
                                         </li>
                                         <li><a href="#"><div>CRUD Profesor</div></a>
