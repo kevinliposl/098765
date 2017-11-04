@@ -72,10 +72,11 @@
                                         </div>
 
                                         <div class="col_full" id="div-permissions" style="display: none;">
-                                            <label for="form-permissions">Contrase&ncaron;a:</label>
+                                            <label for="form-permissions">Rol:</label>
                                             <select id="form-permissions" class="form-control" data-live-search="true">
-                                                <option value="-1" data-tokens="" disabled selected>Seleccione un Curso</option>
+                                                <option value="-1" data-tokens="" disabled selected>Seleccione un Rol</option>
                                             </select>
+                                            <input type="hidden" id="permissions" value="0"/>
                                             <input type="hidden" id="failed-permissions" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                         </div>
 
@@ -115,24 +116,43 @@
                         return false;
                     }
 
-                    var parameters = {
-                        'email': email,
-                        'password': password
+                    if ($('#permissions').val() <= 0) {
+                        var parameters = {
+                            'email': email,
+                            'password': password
+                        };
+                        $.post('?controller=User&action=logIn', parameters, function (data) {
+                            if (data.result === '0') {
+                                $('#failed').attr({
+                                    'data-notify-msg': '<i class=icon-warning-sign></i> Correo o Contrase&ncaron;a Incorrectos. Complete correctamente e intente de nuevo!'
+                                });
+                                SEMICOLON.widget.notifications($('#failed'));
+                            } else if (data.result === '1') {
+                                location.href = '?';
+                            } else {
+                                for (var i = 0; i < data.length; i++) {
+                                    var per;
+                                    data[i].permissions === 'A' ? per = 'Administrador' : data[i].permissions === 'S' ? per = 'Estudiante' : per = 'Profesor';
+                                    $('#form-permissions').append($("<option></option>").attr("value", data[i].permissions).text(per));
+                                }
+                                $('#div-permissions').css('display', 'block');
+                            }
+                        }, 'json');
+                        $('#permissions').val(1);
+                    } else {
+                        if ($('#form-permissions').val()) {
+                            var param = {
+                                'permissions': $('#form-permissions').val()
+                            };
+                            $.post('?controller=User&action=setPermissions', param, function (data) {
+                                location.href = '?';
+                            }, 'json');
+                        } else {
+                            $('#failed-permissions').attr('data-notify-msg', '<i class=icon-remove-sign></i> Seleccione un Rol. Complete correctamente e intente de nuevo!');
+                            SEMICOLON.widget.notifications($('#failed-permissions'));
+                        };
                     };
-
-                    $.post('?controller=User&action=logIn', parameters, function (data) {
-                        if (data.result === '0') {
-                            $('#failed').attr({
-                                'data-notify-msg': '<i class=icon-warning-sign></i> Correo o Contrase&ncaron;a Incorrectos. Complete correctamente e intente de nuevo!'
-                            });
-                            SEMICOLON.widget.notifications($('#failed'));
-                        } else if (data.result === '1') {
-                            location.href = '?';
-                        }
-                        ;
-                    }, 'json');
                 });
-
             </script>
 
             <?php

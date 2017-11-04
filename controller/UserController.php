@@ -28,7 +28,16 @@ class UserController {
             $session->permissions = $result[0]['permissions'];
             echo json_encode(array("result" => "1"));
         } else {
+            $session->identification = $result[0]['identification'];
             echo json_encode($result);
+        }
+    }
+
+    function setPermissions() {
+        if (isset($_POST['permissions'])) {
+            $session = SSession::getInstance();
+            $session->permissions = $_POST['permissions'];
+            echo json_encode(array('result' => '1'));
         }
     }
 
