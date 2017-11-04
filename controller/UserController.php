@@ -38,15 +38,6 @@ class UserController {
         $this->view->show("indexView.php");
     }
 
-    function change() {
-        if (isset($_POST['new'])) {
-            $model = new UserModel();
-            $result = $model->change('301110222', $_POST["new"]);
-            echo json_encode($result);
-        } else {
-            $this->view->show("changePasswordView.php");
-        }
-    }
 
 //change
 }
