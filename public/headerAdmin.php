@@ -117,7 +117,7 @@
                                         <li><a href="?action=report"><div>Reportes</div></a>
                                     </ul>
                                 </li>
-                                <li><a href="?controller=User&action=logIn"><div>Iniciar Sesi&oacute;n</div></a></li>
+                                <li><a href="?controller=User&action=signOff"><div>Cerrar Sesi&oacute;n</div></a></li>
                             </ul>
                         </nav><!-- #primary-menu end -->
                     </div>

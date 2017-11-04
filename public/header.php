@@ -102,7 +102,7 @@
                                                 <li><a href="?controller=Professor&action=select"><div>Obtener Datos Personales Profesores</div></a></li>
                                                 <li><a href="?controller=Professor&action=personalSelection"><div>Obtener Datos Personales</div></a></li>
                                                 <li><a href="?controller=Professor&action=updatePersonal"><div>Actualizar Datos Personales</div></a></li>
-                                                <li><a href="?controller=User&action=change"><div>Cambiar Contraseña</div></a></li>
+                                                <li><a href="?controller=Professor&action=change"><div>Cambiar Contraseña</div></a></li>
                                             </ul>
                                         </li>
                                         <li><a href="#"><div>CRUD Matricula</div></a>
