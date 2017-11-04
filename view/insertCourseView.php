@@ -1,8 +1,12 @@
 <?php
 $session = SSession::getInstance();
 
-if (isset($session->email)) {
-    //include_once 'public/headerUser.php';
+if (isset($session->permissions)) {
+    if($session->permissions=='A'){
+        include_once 'public/headerAdmin.php';
+    }else{
+        header("Location:?controller=Index&action=notFound");
+    }
 } else {
     include_once 'public/header.php';
 }
@@ -28,25 +32,25 @@ if (isset($session->email)) {
                         <form id="form" class="nobottommargin" onsubmit="return validate();">
                             <div class="col_full">
                                 <label for="form-initials">Siglas:</label>
-                                <input type="text" id="form-initials" class="form-control" required/>
+                                <input type="text" id="form-initials" class="form-control" placeholder="CAL000" required/>
                                 <input type="hidden" id="failed-initials" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                             </div>
                             
                             <div class="col_full">
                                 <label for="form-name">Nombre:</label>
-                                <input type="text" id="form-name" class="form-control" required/>
+                                <input type="text" id="form-name" class="form-control" placeholder="Canto Lírico" required/>
                                 <input type="hidden" id="failed-name" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                             </div>
 
                             <div class="col_full">
                                 <label for="form-instrument">Instrumento:</label>
-                                <input type="text" id="form-instrument" class="form-control" required/>
+                                <input type="text" id="form-instrument" class="form-control" placeholder="Voz" required/>
                                 <input type="hidden" id="failed-instrument" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                             </div>
 
                             <div class="col_full">
                                 <label for="form-description">Breve Descripci&oacute;n:</label>
-                                <input type="text" id="form-description" class="form-control" required/>
+                                <input type="text" id="form-description" class="form-control" placeholder="Breve Descripción" required/>
                                 <input type="hidden" id="failed-description" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                             </div>
 
@@ -103,17 +107,17 @@ if (isset($session->email)) {
             SEMICOLON.widget.notifications($("#failed-initials"));
             return false;
 
-        }else if (!isNaN(name) || name.length < 4 || name.split(" ", 2).length > 1) {
+        }else if (!isNaN(name) || name.length < 4 || name.length>50) {
             $("#failed-name").attr("data-notify-msg", "<i class=icon-remove-sign></i> Nombre Incorrecto. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-name"));
             return false;
 
-        } else if (!isNaN(description) || description.length < 4 || description.split(" ", 2).length > 1) {
+        } else if (!isNaN(description) || description.length < 4 || description.length>100) {
             $("#failed-description").attr("data-notify-msg", "<i class=icon-remove-sign></i> Descripción Incorrecto. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-description"));
             return false;
 
-        } else if (!isNaN(instrument) || instrument.length < 4 || instrument.split(" ", 2).length > 1) {
+        } else if (!isNaN(instrument) || instrument.length < 2 || instrument.length>100) {
             $("#failed-instrument").attr("data-notify-msg", "<i class=icon-remove-sign></i> Instrumento Incorrecto. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-instrument"));
             return false;
@@ -139,11 +143,11 @@ if (isset($session->email)) {
                     "data-notify-position": "bottom-full-width"
                 });
                 SEMICOLON.widget.notifications($("#success"));
-                location.href = "?controller=Course&action=insert";
+                setTimeout("location.href = '?controller=Course&action=insert';",2000);
             } else {
                 $("#warning").attr({
                     "data-notify-type": "warning",
-                    "data-notify-msg": "<i class=icon-warning-sign></i> Operacion Fallida!",
+                    "data-notify-msg": "<i class=icon-warning-sign></i> Operacion Incompleta, intente de nuevo!",
                     "data-notify-position": "bottom-full-width"
                 });
                 SEMICOLON.widget.notifications($("#warning"));
