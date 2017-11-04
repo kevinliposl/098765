@@ -1,8 +1,12 @@
 <?php
 $session = SSession::getInstance();
 
-if (isset($session->email)) {
-    include_once 'public/header.php';
+if (isset($session->permissions)) {
+    if($session->permissions=='A'){
+        include_once 'public/headerAdmin.php';
+    }else{
+        header("Location:?controller=Index&action=notFound");
+    }
 } else {
     include_once 'public/header.php';
 }
@@ -55,25 +59,25 @@ if (isset($session->email)) {
                                     <tbody>
                                         <tr>
                                             <td>
-                                                <code>Siglas</code>
+                                                Siglas
                                             </td>
                                             <td id="form-initials-table"><?php echo "" ?></td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <code>Nombre</code>
+                                                Nombre
                                             </td>
                                             <td id="form-name-table"><?php echo "" ?></td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <code>Instrumento</code>
+                                                Instrumento
                                             </td>
                                             <td id="form-instrument-table"><?php echo "" ?></td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <code>Descripci&oacute;n</code>
+                                                Descripci&oacute;n
                                             </td>
                                             <td id="form-description-table"><?php echo "" ?></td>
                                         </tr>
@@ -82,7 +86,6 @@ if (isset($session->email)) {
                             </div>
                             <div class="col_full nobottommargin">
                                 <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" style="display : block; text-align: center;" data-target="#myModal">Eliminar</a>
-                                <!--<input type="submit" value="Eliminar" class="button button-3d button-black nomargin form-control" style="display: block; text-align: center;"/>-->
                                 <input type="hidden" id="warning" value="w"/>
                                 <input type="hidden" id="success" value="s"/>
                                 <input type="hidden" id="failed" value="f"/>
@@ -143,7 +146,12 @@ if (isset($session->email)) {
                 $("#form-instrument-table").html("");
                 $("#form-description-table").html("");
                 $("#form-secondLastName-table").html("");
-
+                $("#warning").attr({
+                    "data-notify-type": "warning",
+                    "data-notify-msg": "<i class=icon-warning-sign></i> Operacion Incompleta, intente de nuevo!",
+                    "data-notify-position": "bottom-full-width"
+                });
+                SEMICOLON.widget.notifications($("#warning"));
             }
         }, "json");
     });
@@ -166,7 +174,7 @@ if (isset($session->email)) {
                     "data-notify-position": "bottom-full-width"
                 });
                 SEMICOLON.widget.notifications($("#success"));
-                location.href = "?controller=Course&action=delete";
+                setTimeout("location.href = '?controller=Course&action=delete';",2000);
             } else {
                 $("#warning").attr({
                     "data-notify-type": "warning",

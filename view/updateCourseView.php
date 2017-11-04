@@ -1,8 +1,12 @@
 <?php
 $session = SSession::getInstance();
 
-if (isset($session->email)) {
-    //include_once 'public/headerUser.php';
+if (isset($session->permissions)) {
+    if($session->permissions=='A'){
+        include_once 'public/headerAdmin.php';
+    }else{
+        header("Location:?controller=Index&action=notFound");
+    }
 } else {
     include_once 'public/header.php';
 }
@@ -54,30 +58,30 @@ if (isset($session->email)) {
                                     <tbody>
                                         <tr>
                                             <td>
-                                                <code>Siglas</code>
+                                                Siglas
                                             </td>
                                             <td id="form-initials-table"><?php echo "" ?></td>
                                             <input type="hidden" id="failed-initials" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <code>Nombre</code>
+                                               Nombre
                                             </td>
-                                            <td id="form-name-table" class="bt-editable" href="#" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el nombre"><?php echo " " ?></td>
+                                            <td id="form-name-table" class="bt-editable" href="#" data-type="text" data-pk="1" data-placeholder="Required" data-title="Ingrese el nombre"><?php echo " " ?></td>
                                             <input type="hidden" id="failed-name" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <code>Instrumento</code>
+                                                Instrumento
                                             </td>
-                                            <td id="form-instrument-table" class="bt-editable" href="#" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el instrumento"><?php echo " " ?></td>
+                                            <td id="form-instrument-table" class="bt-editable" href="#" data-type="text" data-pk="1" data-placeholder="Required" data-title="Ingrese el instrumento"><?php echo " " ?></td>
                                              <input type="hidden" id="failed-instrument" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <code>Descripci&oacute;n</code>
+                                                Descripci&oacute;n
                                             </td>
-                                            <td id="form-description-table" class="bt-editable" href="#" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese la descripcion"><?php echo " " ?></td>
+                                            <td id="form-description-table" class="bt-editable" href="#" data-type="text" data-pk="1" data-placeholder="Required" data-title="Ingrese la descripcion"><?php echo " " ?></td>
                                             <input type="hidden" id="failed-description" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                         </tr>
                                     </tbody>
@@ -147,7 +151,12 @@ if (isset($session->email)) {
                 $("#form-instrument-table").html("");
                 $("#form-description-table").html("");
                 $("#form-secondLastName-table").html("");
-
+                $("#warning").attr({
+                    "data-notify-type": "warning",
+                    "data-notify-msg": "<i class=icon-warning-sign></i> Operacion Incompleta, intente de nuevo!",
+                    "data-notify-position": "bottom-full-width"
+                });
+                SEMICOLON.widget.notifications($("#warning"));
             }
         }, "json");
     });
@@ -160,17 +169,17 @@ if (isset($session->email)) {
         description = $("#form-description-table").text().trim();
         instrument = $("#form-instrument-table").text().trim();
 
-        if (!isNaN(name) || name.length < 4 || name.split(" ", 2).length > 1) {
+        if (!isNaN(name) || name.length < 4 || name.length>50) {
             $("#failed-name").attr("data-notify-msg", "<i class=icon-remove-sign></i> Nombre Incorrecto. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-name"));
             return false;
 
-        } else if (!isNaN(description) || description.length < 4 || description.split(" ", 2).length > 1) {
+        } else if (!isNaN(description) || description.length < 4 || description.length>100) {
             $("#failed-description").attr("data-notify-msg", "<i class=icon-remove-sign></i> Descripción Incorrecto. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-description"));
             return false;
 
-        } else if (!isNaN(instrument) || instrument.length < 4 || instrument.split(" ", 2).length > 1) {
+        } else if (!isNaN(instrument) || instrument.length < 2 || instrument.length>100) {
             $("#failed-instrument").attr("data-notify-msg", "<i class=icon-remove-sign></i> Instrumento Incorrecto. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-instrument"));
             return false;
@@ -195,7 +204,7 @@ if (isset($session->email)) {
                     "data-notify-position": "bottom-full-width"
                 });
                 SEMICOLON.widget.notifications($("#success"));
-                location.href = "?controller=Course&action=update";
+                setTimeout("location.href = '?controller=Course&action=update';",2000);
             } else {
                 $("#warning").attr({
                     "data-notify-type": "warning",

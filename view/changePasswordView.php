@@ -1,8 +1,16 @@
 <?php
 $session = SSession::getInstance();
 
-if (isset($session->email)) {
-    //include_once 'public/headerUser.php';
+if (isset($session->permissions)) {
+    if($session->permissions == 'T'){
+        include_once 'public/headerProfessor.php';
+    }else if($session->permissions == 'S'){
+        include_once 'public/headerStudent.php';
+    }else if($session->permissions == 'A'){
+        include_once 'public/headerAdmin.php';
+    }else{
+       include_once 'public/header.php'; 
+    }
 } else {
     include_once 'public/header.php';
 }
@@ -109,7 +117,7 @@ if (isset($session->email)) {
             "new": $("#form-password").val().trim()
         };
 
-        $.post("?controller=User&action=change", parameters, function (data) {
+        $.post("?controller=Professor&action=change", parameters, function (data) {
             if (data.result === "1") {
                 $("#success").attr({
                     "data-notify-type": "success",
