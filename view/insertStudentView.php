@@ -238,7 +238,8 @@ if (isset($session->email)) {
                                     <h4 style="text-align: center;">¿Realmente desea insertar este nuevo Estudiante?</h4>
                                     <p>Consejos:
                                     <li>Revisar que todos los campos tengan la informaci&oacute;n correcta</li>
-                                    <li>Revisar con ateci&oacute;n cada item de los cuadro resumen</li></p>
+                                    <li>Revisar con ateci&oacute;n cada item de los cuadro resumen</li>
+                                    <li>Recuerde que el correo electr&oacute;nico es un dato &uacute;nico por usuario</li></p>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
