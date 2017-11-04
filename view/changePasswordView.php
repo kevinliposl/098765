@@ -82,12 +82,12 @@ if (isset($session->email)) {
         pass2 = $("#form-password2").val().trim();
 
         if (pass1.length < 8 || pass1.length > 10 || pass1.split(" ", 2).length > 1) {
-            $("#failed-password").attr("data-notify-msg", "<i class=icon-remove-sign></i> Formato de Contraseña no valido. Complete e intente de nuevo!");
+            $("#failed-password").attr("data-notify-msg", "<i class=icon-remove-sign></i> Formato de Contraseña no validom Minimo 8 caracteres. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-password"));
             return false;
 
         }else if (pass2.length < 8 || pass2.length > 10 || pass2.split(" ", 2).length > 1) {
-            $("#failed-password2").attr("data-notify-msg", "<i class=icon-remove-sign></i> Formato de Contraseña no valido. Complete e intente de nuevo!");
+            $("#failed-password2").attr("data-notify-msg", "<i class=icon-remove-sign></i> Formato de Contraseña no valido. Minimo 8 caracteres. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-password2"));
             return false;
 
