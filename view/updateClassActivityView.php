@@ -100,7 +100,7 @@ if (isset($session->email)) {
                                 <input type="text" id="form-observation" class="form-control" required/>
                                 <input type="hidden" id="failed-observation" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                             </div>
-                           <div class="white-section">
+                           <div class="white-section" style="display : none;">
                                 <select id="form-backup" class="form-control selectpicker" data-live-search="true">
                                 </select>
                             </div>  
@@ -190,7 +190,12 @@ if (isset($session->email)) {
             }
             document.getElementById("form-observation").value =data.observation;
         }, "json");
-        $.post("?controller=ClassActivity&action=selectRecordContentClassActivity", parameters, function (data) {
+        var parameters2 = {
+            "appointment": $("#form-courses").val(),
+            "identification": $("#form-student").val(),
+            "consecutive": $("#form-consecutive").val()
+        };
+        $.post("?controller=ClassActivity&action=selectRecordContentClassActivity", parameters2, function (data) {
             for (var i = 0; i < data.length; i++) {
                 $('#form-addContent').append($("<option></option>").attr("value", data[i].ID).text(data[i].content));//AGREGAR OPCIONES
             }
@@ -232,12 +237,29 @@ if (isset($session->email)) {
         }else{           
             var sel = document.getElementById("form-addContent"); 
             var dat="";
+            var counter=0;
             for (var i = 0; i < sel.length; i++) {
                 var opt = sel[i];
                 if(i===sel.length-1){
-                  dat+=opt.value;
+                    if(isNaN(opt.value)){
+                        dat+=opt.value;
+                        counter+=1;
+                    }
                 }else{
-                  dat+=opt.value+",";
+                    if(isNaN(opt.value)){
+                       dat+=opt.value+",";
+                       counter+=1;
+                    }
+                }
+            }
+            var sel2 = document.getElementById("form-backup"); 
+            var dat2="";
+            for (var i = 0; i < sel2.length; i++) {
+                var opt2 = sel2[i];
+                if(i===sel2.length-1){
+                  dat2+=opt2.value;
+                }else{
+                  dat2+=opt2.value+",";
                 }
             }
         var parameters = {
@@ -246,11 +268,13 @@ if (isset($session->email)) {
             "consecutive": $("#form-consecutive").val(),
             "date": $("#form-date").val().trim(),
             "typeA": $("input:radio[name='form-typeA']:checked").val().trim(),
-            "contents":dat,
-            "count":sel.length,
+            "contentsNew":dat,
+            "countNew":counter,
+            "contentsDelete":dat2,
+            "countDelete":sel2.length,
             "observation": $("#form-observation").val()
         };
-        $.post("?controller=ClassActivity&action=insert", parameters, function (data) {
+        $.post("?controller=ClassActivity&action=update", parameters, function (data) {
             if (data.result === "1") {
                 $("#success").attr({
                     "data-notify-type": "success",
@@ -258,7 +282,7 @@ if (isset($session->email)) {
                     "data-notify-position": "bottom-full-width"
                 });
                 SEMICOLON.widget.notifications($("#success"));
-                location.href = "?controller=ClassActivity&action=insert";
+                location.href = "?controller=ClassActivity&action=update";
             } else {
                 $("#warning").attr({
                     "data-notify-type": "warning",

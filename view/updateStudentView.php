@@ -70,105 +70,106 @@ if (isset($session->email)) {
             </div>
         </div>
         <div class="container clearfix">
-            
+
             <input type="hidden" id="form-old-id" name="form-old-id" value="">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped" style="clear: both">
+                    <tbody>
+                        <tr>
+                            <td width="15%">Identificaci&oacute;n</td>
+                            <td width="55%">
+                                <a id="form-id" class="bt-editable" href="#" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese la identificación"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Tipo de Identificaci&oacute;n</td>
+                            <td>
+                                <a id="form-id-type" class="bt-editable" href="#" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el tipo de identificación"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Nombre</td>
+                            <td>
+                                <a id="form-name" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el nombre"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Primer Apellido</td>
+                            <td>
+                                <a id="form-first-lastName" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el Primer Apellido"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Segundo Apellido</td>
+                            <td>
+                                <a id="form-second-lastName" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el Segundo Apellido"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>G&eacute;nero</td>
+                            <td>
+                                <a id="form-gender" href="#" class="bt-group" data-type="select" data-pk="1" data-value="" data-title="Seleccione el género"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Nacionalidad</td>
+                            <td>
+                                <a id="form-nationality" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese la nacionalidad"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Tel&eacute;fono 1</td>
+                            <td>
+                                <a id="form-phone1" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el Teléfono"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Tel&eacute;fono 2</td>
+                            <td>
+                                <a id="form-phone2" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese otro Teléfono"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td>
+                                <a id="form-email" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el email"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Fecha de Nacimiento</td>
+                            <td>
+                                <a id="form-age" href="#" class="bt-editable" data-type="combodate" data-value="1984-05-15" data-format="YYYY-MM-DD" data-viewformat="YYYY-MM-DD" data-template="YYYY / MMM / D" data-pk="1"  data-title="Ingrese la fecha de nacimiento"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Nombre del Contacto</td>
+                            <td>
+                                <a id="form-contact-name" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el nombre completo del contacto"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Tel&eacute;fono del Contacto</td>
+                            <td>
+                                <a id="form-contact-phone" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el teléfono"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Relaci&oacute;n</td>
+                            <td>
+                                <a id="form-relationship" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese la relación con el estudiante"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Email del Contacto</td>
+                            <td>
+                                <a id="form-contact-email" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el email"></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" data-target="#myModal" id="next" data-target="" style="display: none; text-align: center;">Actualizar</a>
 
-            <table class="table table-bordered table-striped" style="clear: both">
-                <tbody>
-                    <tr>
-                        <td width="15%">Identificaci&oacute;n</td>
-                        <td width="55%">
-                            <a id="form-id" class="bt-editable" href="#" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese la identificación"></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Tipo de Identificaci&oacute;n</td>
-                        <td>
-                            <a id="form-id-type" class="bt-editable" href="#" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el tipo de identificación"></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Nombre</td>
-                        <td>
-                            <a id="form-name" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el nombre"></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Primer Apellido</td>
-                        <td>
-                            <a id="form-first-lastName" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el Primer Apellido"></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Segundo Apellido</td>
-                        <td>
-                            <a id="form-second-lastName" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el Segundo Apellido"></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>G&eacute;nero</td>
-                        <td>
-                            <a id="form-gender" href="#" class="bt-group" data-type="select" data-pk="1" data-value="" data-title="Seleccione el género"></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Nacionalidad</td>
-                        <td>
-                            <a id="form-nationality" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese la nacionalidad"></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Tel&eacute;fono 1</td>
-                        <td>
-                            <a id="form-phone1" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el Teléfono"></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Tel&eacute;fono 2</td>
-                        <td>
-                            <a id="form-phone2" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese otro Teléfono"></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Email</td>
-                        <td>
-                            <a id="form-email" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el email"></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Fecha de Nacimiento</td>
-                        <td>
-                            <a id="form-age" href="#" class="bt-editable" data-type="combodate" data-value="1984-05-15" data-format="YYYY-MM-DD" data-viewformat="YYYY-MM-DD" data-template="YYYY / MMM / D" data-pk="1"  data-title="Ingrese la fecha de nacimiento"></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Nombre del Contacto</td>
-                        <td>
-                            <a id="form-contact-name" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el nombre completo del contacto"></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Tel&eacute;fono del Contacto</td>
-                        <td>
-                            <a id="form-contact-phone" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el teléfono"></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Relaci&oacute;n</td>
-                        <td>
-                            <a id="form-relationship" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese la relación con el estudiante"></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Email del Contacto</td>
-                        <td>
-                            <a id="form-contact-email" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el email"></a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" data-target="#myModal" id="next" data-target="" style="display: none; text-align: center;">Actualizar</a>
-
+            </div>
         </div>
 
     </div>
@@ -263,9 +264,9 @@ if (isset($session->email)) {
             ],
             display: function (value, sourceData) {
                 var colors = {"": "gray", 1: "green", 2: "blue"},
-                elem = $.grep(sourceData, function (o) {
-                    return o.value == value;
-                });
+                        elem = $.grep(sourceData, function (o) {
+                            return o.value == value;
+                        });
 
                 if (elem.length) {
                     $(this).text(elem[0].text).css("color", colors[value]);
