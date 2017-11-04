@@ -66,10 +66,8 @@
                         <nav id="primary-menu">
                             <ul>
                                 <li><a href="?"><div>Home</div></a>
-                                <li><a href="?action=val"><div>Prueba Validacion</div></a>
                                 <li><a href="?action=report"><div>Reporte</div></a>
                                 <li><a href="?action=permiso"><div>Permisos</div></a>
-                                <li><a href="?action=schedule"><div>Horario</div></a>
                                 <li><a href="#"><div>CRUDS</div></a>
                                     <ul>
                                         <li><a href="#"><div>CRUD CURSO</div></a>
