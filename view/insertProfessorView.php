@@ -28,9 +28,9 @@ if (isset($session->email)) {
                         <form id="form" class="nobottommargin" onsubmit="return validate();">
                             <div class="col_full">
                                 <label for="form-typeId">Tipo de Identificaci&oacute;n:</label>
-                                <input type="radio" name="form-typeId" value="N" checked/><label>Cédula Nacional</label>
+                                <input type="radio" name="form-typeId" value="C" checked/><label>Cédula Nacional</label>
                                 <input type="radio" name="form-typeId" value="D"/> <label>Dimex</label>
-                                <input type="radio" name="form-typeId" value="E"/><label>Pasaporte</label>
+                                <input type="radio" name="form-typeId" value="P"/><label>Pasaporte</label>
                             </div>
                             
                             <div class="col_full">
@@ -146,33 +146,77 @@ if (isset($session->email)) {
 <script>
     function validate() {
 
-//        var identification, name, firstLastName, secondLastName, email, additionalInformation, age, address, phone, phone2, nacionalidad;
-//
-//        initials = $("#form-initials").val().trim();
-//        name = $("#form-name").val().trim();
-//        description = $("#form-description").val().trim();
-//        instrument = $("#form-instrument").val().trim();
+        var typeId, identification, nameP, firstLastName, secondLastName, email, additionalInformation, age, address, phone, phone2, nationality;
+        typeId = $("input[name*='form-typeId']").val();
+        identification = $("#form-id").val().trim();
+        nameP = $("#form-name").val().trim();
+        firstLastName = $("#form-firstLastName").val().trim();
+        secondLastName = $("#form-secondLastName").val().trim();
+        email = $("#form-email").val().trim();
+        additionalInformation = $("#form-additionalInformation").val().trim();
+        age = $("#form-age").val().trim();
+        address = $("#form-address").val().trim();
+        phone = $("#form-phone1").val().trim();
+        phone2 = $("#form-phone2").val().trim();
+        nationality = $("#form-nationality").val().trim();
 
-//        if (initials.length < 6 || initials.length > 6 || isNaN(initials.substr(3,3)) || /^[a-z][a-z]*/.test(initials.substr(0,3)) || initials.split(" ", 2).length > 1) {
-//            $("#failed-initials").attr("data-notify-msg", "<i class=icon-remove-sign></i> Inicial de curso Incorrecta. Complete e intente de nuevo!");
-//            SEMICOLON.widget.notifications($("#failed-initials"));
-//            return false;
-//
-//        }else if (!isNaN(name) || name.length < 4 || name.split(" ", 2).length > 1) {
-//            $("#failed-name").attr("data-notify-msg", "<i class=icon-remove-sign></i> Nombre Incorrecto. Complete e intente de nuevo!");
-//            SEMICOLON.widget.notifications($("#failed-name"));
-//            return false;
-//
-//        } else if (!isNaN(description) || description.length < 4 || description.split(" ", 2).length > 1) {
-//            $("#failed-description").attr("data-notify-msg", "<i class=icon-remove-sign></i> Descripción Incorrecto. Complete e intente de nuevo!");
-//            SEMICOLON.widget.notifications($("#failed-description"));
-//            return false;
-//
-//        } else if (!isNaN(instrument) || instrument.length < 4 || instrument.split(" ", 2).length > 1) {
-//            $("#failed-instrument").attr("data-notify-msg", "<i class=icon-remove-sign></i> Instrumento Incorrecto. Complete e intente de nuevo!");
-//            SEMICOLON.widget.notifications($("#failed-instrument"));
-//            return false;
-//        }
+        
+        if (nameP.length < 3 || nameP.length > 49 || !isNaN(nameP)) {
+            $("#failed-name").attr("data-notify-msg", "<i class=icon-remove-sign></i> Dato de Nombre Incorrecto. Complete e intente de nuevo!");
+            SEMICOLON.widget.notifications($("#failed-name"));
+            return false;
+
+        } else if (firstLastName.length < 3 || firstLastName.length > 49 || !isNaN(firstLastName)) {
+            $("#failed-firstLastName").attr("data-notify-msg", "<i class=icon-remove-sign></i> Primer Apellido Incorrecto. Complete e intente de nuevo!");
+            SEMICOLON.widget.notifications($("#failed-firsLastName"));
+            return false;
+
+        } else if (secondLastName.length < 3 || secondLastName.length > 49 || !isNaN(secondLastName)) {
+            $("#failed-secondLastName").attr("data-notify-msg", "<i class=icon-remove-sign></i> Segundo Apellido Incorrecto. Complete e intente de nuevo!");
+            SEMICOLON.widget.notifications($("#failed-secondLastName"));
+            return false;
+
+        } else if (phone.length < 8 || phone.length > 8 || isNaN(phone)) {
+            $("#failed-phone1").attr("data-notify-msg", "<i class=icon-remove-sign></i> Formato de telefono incorrecto. Complete e intente de nuevo!");
+            SEMICOLON.widget.notifications($("#failed-phone1"));
+            return false;
+            
+        } else if (phone2.length < 8 || phone2.length > 8 || isNaN(phone2)) {
+            $("#failed-phone2").attr("data-notify-msg", "<i class=icon-remove-sign></i> Formato de otro telefono incorrecto. Complete e intente de nuevo!");
+            SEMICOLON.widget.notifications($("#failed-phone2"));
+            return false;
+            
+        } else if (nationality.length < 6 || nationality.length > 49 || !isNaN(nationality) || nationality.split(" ", 2).length > 1) {
+            $("#failed-nationality").attr("data-notify-msg", "<i class=icon-remove-sign></i> Formato de nacionalidad incorrecto. Complete e intente de nuevo!");
+            SEMICOLON.widget.notifications($("#failed-nationality"));
+            return false;
+            
+        } else if (address.length > 200) {
+            $("#failed-address").attr("data-notify-msg", "<i class=icon-remove-sign></i> Dirección muy extensa. Complete e intente de nuevo!");
+            SEMICOLON.widget.notifications($("#failed-address"));
+            return false;
+            
+        } else if (additionalInformation.length > 2000) {
+            $("#failed-additionalInformation").attr("data-notify-msg", "<i class=icon-remove-sign></i> Información adicional muy extensa. Complete e intente de nuevo!");
+            SEMICOLON.widget.notifications($("#failed-additionalInformation"));
+            return false;
+            
+        } else {
+            if(typeId=="C"){
+                if(isNaN(identification) || identification.length < 9 || identification.length>9){
+                    $("#failed-id").attr("data-notify-msg", "<i class=icon-remove-sign></i> Formato de identificacion incorrecto. Complete e intente de nuevo!");
+                    SEMICOLON.widget.notifications($("#failed-id"));
+                    return false;
+                }
+            }else if(typeId=="D"){
+                if( identification.length < 12 || identification.length > 12){
+                    $("#failed-id").attr("data-notify-msg", "<i class=icon-remove-sign></i> Formato de identificacion incorrecto. Complete e intente de nuevo!");
+                    SEMICOLON.widget.notifications($("#failed-id"));
+                    return false;
+                }
+            }//if-else
+        }//final
+        
         $('#showModal').click();
         return false;
     }
