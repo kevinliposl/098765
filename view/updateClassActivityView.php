@@ -190,7 +190,12 @@ if (isset($session->email)) {
             }
             document.getElementById("form-observation").value =data.observation;
         }, "json");
-        $.post("?controller=ClassActivity&action=selectRecordContentClassActivity", parameters, function (data) {
+        var parameters2 = {
+            "appointment": $("#form-courses").val(),
+            "identification": $("#form-student").val(),
+            "consecutive": $("#form-consecutive").val()
+        };
+        $.post("?controller=ClassActivity&action=selectRecordContentClassActivity", parameters2, function (data) {
             for (var i = 0; i < data.length; i++) {
                 $('#form-addContent').append($("<option></option>").attr("value", data[i].ID).text(data[i].content));//AGREGAR OPCIONES
             }

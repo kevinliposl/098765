@@ -7,17 +7,23 @@ class ClassActivityController {
     }
 
     public function select() {
-        if (isset($_POST["initials"])) {
-            require 'model/CourseModel.php';
-            $model = new CourseModel();
-            $result = $model->select($_POST["initials"]);
-            echo json_encode($result);
-        } else {
-            require 'model/CourseModel.php';
-            $model = new CourseModel();
-            $result = $model->selectAll();
-            $this->view->show("selectCourseView.php", $result);
-        }//else
+//        if (isset($_POST["initials"])) {
+//            require 'model/CourseModel.php';
+//            $model = new CourseModel();
+//            $result = $model->select($_POST["initials"]);
+//            echo json_encode($result);
+//        } else {
+//            require 'model/CourseModel.php';
+//            $model = new CourseModel();
+//            $result = $model->selectAll();
+//            $this->view->show("selectClassActivityView.php", $result);
+//        }//else
+        
+                    require 'model/ClassActivityModel.php';
+            $model = new ClassActivityModel();
+            $id="999";
+            $result = $model->selectCourseClassActivity($id);
+            $this->view->show("selectClassActivityView.php", $result);
     }//select
 
     public function selectAll(){
