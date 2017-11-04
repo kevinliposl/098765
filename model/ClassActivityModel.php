@@ -23,14 +23,6 @@ class ClassActivityModel {
         return $result;
     }
     
-    public function selectAll() {
-        $query = $this->db->prepare("call sp_select_all_course()");
-        $query->execute();
-        $result = $query->fetchAll();
-        $query->closeCursor();
-        return $result;
-    }
-    
     public function selectCourseClassActivity($identification) {
         $query = $this->db->prepare("call sp_select_course_class_activity('$identification')");
         $query->execute();
@@ -72,28 +64,6 @@ class ClassActivityModel {
     
     public function selectClassActivity($appointment,$identification,$consecutive) {
         $query = $this->db->prepare("call sp_select_class_activity('$appointment','$identification','$consecutive')");
-        $query->execute();
-        $result = $query->fetch();
-        return $result;
-    }
-
-    public function delete($initials) {
-        $query = $this->db->prepare("call sp_delete_course('$initials')");
-        $query->execute();
-        $result = $query->fetch();
-        return $result;
-    }
-    
-    public function selectCoursesStudent($id) {
-        $query = $this->db->prepare("call sp_select_student_courses('$id')");
-        $query->execute();
-        $result = $query->fetchAll();
-        $query->closeCursor();
-        return $result;
-    }
-    
-        public function prueba($ID_semester,$initials) {
-        $query = $this->db->prepare("call sp_prueba('$ID_semester','$initials')");
         $query->execute();
         $result = $query->fetch();
         return $result;

@@ -25,13 +25,6 @@ class ClassActivityController {
             $result = $model->selectCourseClassActivity($id);
             $this->view->show("selectClassActivityView.php", $result);
     }//select
-
-    public function selectAll(){
-            require 'model/CourseModel.php';
-            $model = new CourseModel();
-            $result = $model->selectAll();
-        echo json_encode($result);
-    }
     
     public function selectStudentClassActivity(){
             require 'model/ClassActivityModel.php';
@@ -67,25 +60,7 @@ class ClassActivityController {
             $result = $model->selectRecordContentClassActivity($_POST['appointment'],$_POST['identification'],$_POST['consecutive']);
         echo json_encode($result);
     }
-    
-    public function prueba(){
-            require 'model/ClassActivityModel.php';
-            $model = new ClassActivityModel();
-                        $professors = "";
-            $num_professors = 0;
-            foreach ($_POST['datos'] as $valorActual) {
-//                if ($professors == '') {
-//                    $professors= $valorActual;
-//                } else {
-//                    $professors = $valorActual . "," . $professors;
-//                }
-                $professors = $valorActual . "," . $professors;
-                $num_professors = $num_professors+ 1;
-            }//for 
-            $result = $model->prueba($num_professors,$professors);
-        echo json_encode($result);
-    }
-    
+
     public function insert() {
         if (isset($_POST["observation"])) {
             require 'model/ClassActivityModel.php';
@@ -100,20 +75,6 @@ class ClassActivityController {
             $this->view->show("insertClassActivityView.php",$result);
         }//else
     }//insert
-    
-    public function delete() {
-        if (isset($_POST["initials"])) {
-            require 'model/CourseModel.php';
-            $model = new CourseModel();
-            $result = $model->delete($_POST["initials"]);
-            echo json_encode($result);
-        }else{
-            require 'model/CourseModel.php';
-            $model = new CourseModel();
-            $result = $model->selectAll();
-            $this->view->show("deleteCourseView.php", $result);
-        }//else
-    }//delete
     
     public function update() {
         if (isset($_POST["observation"])) {
