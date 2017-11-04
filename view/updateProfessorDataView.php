@@ -1,8 +1,8 @@
 <?php
 $session = SSession::getInstance();
 
-if (isset($session->email)) {
-    //include_once 'public/headerUser.php';
+if (isset($session->permissions)) {
+    include_once 'public/headerProfessor.php';
 } else {
     include_once 'public/header.php';
 }
@@ -41,14 +41,12 @@ if (isset($session->email)) {
                                             <td><code>Identificaci&oacute;n</code></td>
                                             <td>
                                                 <a id="form-id"><?php echo $var[0]; ?></a>
-                                                <input type="hidden" id="failed-id" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td><code>Tipo de Identificaci&oacute;n</code></td>
                                             <td>
-                                                <a id="form-id-type" class="bt-editable" href="#" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el tipo de identificación"><?php echo $var[6]; ?></a>
-                                                <input type="hidden" id="failed-id-type" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                                                <a id="form-id-type"><?php echo $var[6]; ?></a>
                                             </td>
                                         </tr>
                                         <tr>
@@ -172,68 +170,66 @@ if (isset($session->email)) {
 
 <script>
 
-//    //Change Combobox
-//    $("#form-professor").change(function () {
-//        var parameters = {
-//            "id": $("#form-professor").val()
-//        };
-//        $.post("?controller=Professor&action=selectProfessor", parameters, function (data) {
-//            if (data.identification) {
-//                $("#form-id").html(data.identification);
-//                $("#form-id-type").html(data.id_type);
-//                $("#form-name").html(data.name);
-//                $("#form-first-lastName").html(data.first_lastname);
-//                $("#form-second-lastName").html(data.second_lastname);
-//                $("#form-phone1").html(data.phone);
-//                $("#form-phone2").html(data.cel_phone);
-//                $("#form-email").html(data.email);
-//                $("#form-gender").html(data.gender);
-//                $("#form-nationality").html(data.nationality);
-//                $("#form-age").html(data.birthdate);
-//                $("#form-address").html(data.address);
-//                $("#form-additionalInformation").html(data.expedient);
-//
-//            } else {
-//                $("#form-id").html("");
-//                $("#form-id-type").html("");
-//                $("#form-name").html("");
-//                $("#form-first-lastName").html("");
-//                $("#form-second-lastName").html("");
-//                $("#form-phone1").html("");
-//                $("#form-phone2").html("");
-//                $("#form-email").html("");
-//                $("#form-gender").html("");
-//                $("#form-nationality").html("");
-//                $("#form-age").html("");
-//                $("#form-address").html("");
-//                $("#form-additionalInformation").html("");
-//            }
-//        }, "json");
-//    });
-
     function validate() {
-//        var initials, name, description, instrument;
-//
-//        initials = $("#form-initials-table").text().trim();
-//        name = $("#form-name-table").text().trim();
-//        description = $("#form-description-table").text().trim();
-//        instrument = $("#form-instrument-table").text().trim();
-//
-//        if (!isNaN(name) || name.length < 4 || name.split(" ", 2).length > 1) {
-//            $("#failed-name").attr("data-notify-msg", "<i class=icon-remove-sign></i> Nombre Incorrecto. Complete e intente de nuevo!");
-//            SEMICOLON.widget.notifications($("#failed-name"));
-//            return false;
-//
-//        } else if (!isNaN(description) || description.length < 4 || description.split(" ", 2).length > 1) {
-//            $("#failed-description").attr("data-notify-msg", "<i class=icon-remove-sign></i> Descripción Incorrecto. Complete e intente de nuevo!");
-//            SEMICOLON.widget.notifications($("#failed-description"));
-//            return false;
-//
-//        } else if (!isNaN(instrument) || instrument.length < 4 || instrument.split(" ", 2).length > 1) {
-//            $("#failed-instrument").attr("data-notify-msg", "<i class=icon-remove-sign></i> Instrumento Incorrecto. Complete e intente de nuevo!");
-//            SEMICOLON.widget.notifications($("#failed-instrument"));
-//            return false;
-//        }
+        
+        var nameP, firstLastName, secondLastName, additionalInformation, address, phone, phone2, nationality, gender;
+      
+        nameP = $("#form-name").text().trim();
+        firstLastName = $("#form-first-lastName").text().trim();
+        secondLastName = $("#form-second-lastName").text().trim();
+        additionalInformation = $("#form-additionalInformation").text().trim();
+        address = $("#form-address").text().trim();
+        phone = $("#form-phone1").text().trim();
+        phone2 = $("#form-phone2").text().trim();
+        nationality = $("#form-nationality").text().trim();
+        gender = $("#form-gender").text().trim().toUpperCase();
+        
+        if (nameP.length < 3 || nameP.length > 49 || !isNaN(nameP)) {
+            $("#failed-name").attr("data-notify-msg", "<i class=icon-remove-sign></i> Dato de Nombre Incorrecto. Complete e intente de nuevo!");
+            SEMICOLON.widget.notifications($("#failed-name"));
+            return false;
+
+        } else if (firstLastName.length < 3 || firstLastName.length > 49 || !isNaN(firstLastName)) {
+            $("#failed-first-lastName").attr("data-notify-msg", "<i class=icon-remove-sign></i> Primer Apellido Incorrecto. Complete e intente de nuevo!");
+            SEMICOLON.widget.notifications($("#failed-firs-lastName"));
+            return false;
+
+        } else if (secondLastName.length < 3 || secondLastName.length > 49 || !isNaN(secondLastName)) {
+            $("#failed-second-lastName").attr("data-notify-msg", "<i class=icon-remove-sign></i> Segundo Apellido Incorrecto. Complete e intente de nuevo!");
+            SEMICOLON.widget.notifications($("#failed-second-lastName"));
+            return false;
+
+        } else if (phone.length < 8 || phone.length > 8 || isNaN(phone)) {
+            $("#failed-phone1").attr("data-notify-msg", "<i class=icon-remove-sign></i> Formato de telefono incorrecto. Complete e intente de nuevo!");
+            SEMICOLON.widget.notifications($("#failed-phone1"));
+            return false;
+            
+        } else if (phone2.length < 8 || phone2.length > 8 || isNaN(phone2)) {
+            $("#failed-phone2").attr("data-notify-msg", "<i class=icon-remove-sign></i> Formato de otro telefono incorrecto. Complete e intente de nuevo!");
+            SEMICOLON.widget.notifications($("#failed-phone2"));
+            return false;
+            
+        } else if (nationality.length < 6 || nationality.length > 49 || !isNaN(nationality) || nationality.split(" ", 2).length > 1) {
+            $("#failed-nationality").attr("data-notify-msg", "<i class=icon-remove-sign></i> Formato de nacionalidad incorrecto. Complete e intente de nuevo!");
+            SEMICOLON.widget.notifications($("#failed-nationality"));
+            return false;
+            
+        } else if (address.length > 200) {
+            $("#failed-address").attr("data-notify-msg", "<i class=icon-remove-sign></i> Dirección muy extensa. Complete e intente de nuevo!");
+            SEMICOLON.widget.notifications($("#failed-address"));
+            return false;
+            
+        } else if (additionalInformation.length > 2000) {
+            $("#failed-additionalInformation").attr("data-notify-msg", "<i class=icon-remove-sign></i> Información adicional muy extensa. Complete e intente de nuevo!");
+            SEMICOLON.widget.notifications($("#failed-additionalInformation"));
+            return false;
+            
+        } else if (gender.length > 1 || (gender!="M" && gender!="F")) {
+            $("#failed-gender").attr("data-notify-msg", "<i class=icon-remove-sign></i> Genero erroneo. Datos validos M o F. Complete e intente de nuevo!");
+            SEMICOLON.widget.notifications($("#failed-gender"));
+            return false; 
+        } 
+
         $('#showModal').click();
         return false;
     }

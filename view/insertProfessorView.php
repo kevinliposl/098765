@@ -146,15 +146,13 @@ if (isset($session->email)) {
 <script>
     function validate() {
 
-        var typeId, identification, nameP, firstLastName, secondLastName, email, additionalInformation, age, address, phone, phone2, nationality;
+        var typeId, identification, nameP, firstLastName, secondLastName, additionalInformation, address, phone, phone2, nationality;
         typeId = $("input[name*='form-typeId']").val();
         identification = $("#form-id").val().trim();
         nameP = $("#form-name").val().trim();
         firstLastName = $("#form-firstLastName").val().trim();
         secondLastName = $("#form-secondLastName").val().trim();
-        email = $("#form-email").val().trim();
         additionalInformation = $("#form-additionalInformation").val().trim();
-        age = $("#form-age").val().trim();
         address = $("#form-address").val().trim();
         phone = $("#form-phone1").val().trim();
         phone2 = $("#form-phone2").val().trim();

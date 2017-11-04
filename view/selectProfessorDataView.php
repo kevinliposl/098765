@@ -1,10 +1,10 @@
 <?php
 $session = SSession::getInstance();
 
-if (isset($session->email)) {
-//include_once 'public/headerUser.php';
+if (isset($session->permissions)) {
+    include_once 'public/headerProfessor.php';
 } else {
-include_once 'public/header.php';
+    include_once 'public/header.php';
 }
 ?>
 
