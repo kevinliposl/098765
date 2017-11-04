@@ -201,12 +201,6 @@ if (isset($session->email)) {
                 $("#form-address").html(data.address);
                 $("#form-additionalInformation").html(data.expedient);
 
-//                $("#success").attr({
-//                    "data-notify-type": "success",
-//                    "data-notify-msg": "<i class=icon-ok-sign></i> Datos de Profesor!",
-//                    "data-notify-position": "bottom-full-width"
-//                });
-//                SEMICOLON.widget.notifications($("#success"));
             } else {
                 $("#form-id").html("");
                 $("#form-id-type").html("");
@@ -226,28 +220,84 @@ if (isset($session->email)) {
     });
 
     function validate() {
-//        var initials, name, description, instrument;
-//
-//        initials = $("#form-initials-table").text().trim();
-//        name = $("#form-name-table").text().trim();
-//        description = $("#form-description-table").text().trim();
-//        instrument = $("#form-instrument-table").text().trim();
-//
-//        if (!isNaN(name) || name.length < 4 || name.split(" ", 2).length > 1) {
-//            $("#failed-name").attr("data-notify-msg", "<i class=icon-remove-sign></i> Nombre Incorrecto. Complete e intente de nuevo!");
-//            SEMICOLON.widget.notifications($("#failed-name"));
-//            return false;
-//
-//        } else if (!isNaN(description) || description.length < 4 || description.split(" ", 2).length > 1) {
-//            $("#failed-description").attr("data-notify-msg", "<i class=icon-remove-sign></i> Descripción Incorrecto. Complete e intente de nuevo!");
-//            SEMICOLON.widget.notifications($("#failed-description"));
-//            return false;
-//
-//        } else if (!isNaN(instrument) || instrument.length < 4 || instrument.split(" ", 2).length > 1) {
-//            $("#failed-instrument").attr("data-notify-msg", "<i class=icon-remove-sign></i> Instrumento Incorrecto. Complete e intente de nuevo!");
-//            SEMICOLON.widget.notifications($("#failed-instrument"));
-//            return false;
-//        }
+        var identification, typeId, nameP, firstLastName, secondLastName, additionalInformation, address, phone, phone2, nationality, gender;
+        
+        identification = $("#form-id").text().trim();
+        typeId = $("#form-id-type").text().trim();
+        nameP = $("#form-name").text().trim();
+        firstLastName = $("#form-first-lastName").text().trim();
+        secondLastName = $("#form-second-lastName").text().trim();
+        additionalInformation = $("#form-additionalInformation").text().trim();
+        address = $("#form-address").text().trim();
+        phone = $("#form-phone1").text().trim();
+        phone2 = $("#form-phone2").text().trim();
+        nationality = $("#form-nationality").text().trim();
+        gender = $("#form-gender").text().trim().toUpperCase();
+        
+        if (nameP.length < 3 || nameP.length > 49 || !isNaN(nameP)) {
+            $("#failed-name").attr("data-notify-msg", "<i class=icon-remove-sign></i> Dato de Nombre Incorrecto. Complete e intente de nuevo!");
+            SEMICOLON.widget.notifications($("#failed-name"));
+            return false;
+
+        } else if (firstLastName.length < 3 || firstLastName.length > 49 || !isNaN(firstLastName)) {
+            $("#failed-first-lastName").attr("data-notify-msg", "<i class=icon-remove-sign></i> Primer Apellido Incorrecto. Complete e intente de nuevo!");
+            SEMICOLON.widget.notifications($("#failed-firs-lastName"));
+            return false;
+
+        } else if (secondLastName.length < 3 || secondLastName.length > 49 || !isNaN(secondLastName)) {
+            $("#failed-second-lastName").attr("data-notify-msg", "<i class=icon-remove-sign></i> Segundo Apellido Incorrecto. Complete e intente de nuevo!");
+            SEMICOLON.widget.notifications($("#failed-second-lastName"));
+            return false;
+
+        } else if (phone.length < 8 || phone.length > 8 || isNaN(phone)) {
+            $("#failed-phone1").attr("data-notify-msg", "<i class=icon-remove-sign></i> Formato de telefono incorrecto. Complete e intente de nuevo!");
+            SEMICOLON.widget.notifications($("#failed-phone1"));
+            return false;
+            
+        } else if (phone2.length < 8 || phone2.length > 8 || isNaN(phone2)) {
+            $("#failed-phone2").attr("data-notify-msg", "<i class=icon-remove-sign></i> Formato de otro telefono incorrecto. Complete e intente de nuevo!");
+            SEMICOLON.widget.notifications($("#failed-phone2"));
+            return false;
+            
+        } else if (nationality.length < 6 || nationality.length > 49 || !isNaN(nationality) || nationality.split(" ", 2).length > 1) {
+            $("#failed-nationality").attr("data-notify-msg", "<i class=icon-remove-sign></i> Formato de nacionalidad incorrecto. Complete e intente de nuevo!");
+            SEMICOLON.widget.notifications($("#failed-nationality"));
+            return false;
+            
+        } else if (address.length > 200) {
+            $("#failed-address").attr("data-notify-msg", "<i class=icon-remove-sign></i> Dirección muy extensa. Complete e intente de nuevo!");
+            SEMICOLON.widget.notifications($("#failed-address"));
+            return false;
+            
+        } else if (additionalInformation.length > 2000) {
+            $("#failed-additionalInformation").attr("data-notify-msg", "<i class=icon-remove-sign></i> Información adicional muy extensa. Complete e intente de nuevo!");
+            SEMICOLON.widget.notifications($("#failed-additionalInformation"));
+            return false;
+            
+        } else if (gender.length > 1 || (gender!="M" && gender!="F")) {
+            $("#failed-gender").attr("data-notify-msg", "<i class=icon-remove-sign></i> Genero erroneo. Datos validos M o F. Complete e intente de nuevo!");
+            SEMICOLON.widget.notifications($("#failed-gender"));
+            return false; 
+        } else {
+            if(typeId=="C"){
+                if(isNaN(identification) || identification.length < 9 || identification.length>9){
+                    $("#failed-id").attr("data-notify-msg", "<i class=icon-remove-sign></i> Formato de identificacion incorrecto. Complete e intente de nuevo!");
+                    SEMICOLON.widget.notifications($("#failed-id"));
+                    return false;
+                }
+            }else if(typeId=="D"){
+                if( identification.length < 12 || identification.length > 12){
+                    $("#failed-id").attr("data-notify-msg", "<i class=icon-remove-sign></i> Formato de identificacion incorrecto. Complete e intente de nuevo!");
+                    SEMICOLON.widget.notifications($("#failed-id"));
+                    return false;
+                }
+            }else{
+                $("#failed-id-type").attr("data-notify-msg", "<i class=icon-remove-sign></i> Tipo de identificación incorrecta. C - para nacionales, P - pasapote, D - DIMEX Complete e intente de nuevo!");
+                SEMICOLON.widget.notifications($("#failed-id-type"));
+                return false;
+            }
+        }//final
+        
         $('#showModal').click();
         return false;
     }
