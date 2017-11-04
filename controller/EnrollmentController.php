@@ -7,44 +7,44 @@ class EnrollmentController {
     }
 
     public function select() {
-//        if (SSession::getInstance()->permissions == 'A') {
+        if (SSession::getInstance()->permissions == 'A') {
             require 'model/StudentModel.php';
             $model = new StudentModel();
 
             $result = $model->selectStudentEnrolled();
             $this->view->show("selectEnrollmentView.php", $result);
-//        } else {
-//            $this->view->show("indexView.php");
-//        }
+        } else {
+            $this->view->show("indexView.php");
+        }
     }
 
     public function selectCourses() {
-//        if (SSession::getInstance()->permissions == 'A') {
+        if (SSession::getInstance()->permissions == 'A') {
             require 'model/CourseModel.php';
             $model = new CourseModel();
 
             $result = $model->selectCoursesStudent($_POST["identification"]);
             echo json_encode($result);
-//        } else {
-//            $this->view->show("indexView.php");
-//        }
+        } else {
+            $this->view->show("indexView.php");
+        }
     }
 
     public function selectCourseNotStudent() {
-//        if (SSession::getInstance()->permissions == 'A') {
+        if (SSession::getInstance()->permissions == 'A') {
             require 'model/EnrollmentModel.php';
             $model = new EnrollmentModel();
 
             $result = $model->selectCoursesNotStudent($_POST["identification"]);
             echo json_encode($result);
-//        } else {
-//            $this->view->show("indexView.php");
-//        }
+        } else {
+            $this->view->show("indexView.php");
+        }
     }
 
     public function delete() {
 
-//        if (SSession::getInstance()->permissions == 'A') {
+        if (SSession::getInstance()->permissions == 'A') {
             if (isset($_POST["ID"])) {
                 require 'model/EnrollmentModel.php';
                 $model = new EnrollmentModel();
@@ -58,13 +58,13 @@ class EnrollmentController {
                 $result = $model->selectStudentEnrolled();
                 $this->view->show("deleteEnrollmentView.php", $result);
             }
-//        } else {
-//            $this->view->show("indexView.php");
-//        }
+        } else {
+            $this->view->show("indexView.php");
+        }
     }
 
     public function insert() {
-//        if (SSession::getInstance()->permissions == 'A') {
+        if (SSession::getInstance()->permissions == 'A') {
             if (isset($_POST['id-courses']) && isset($_POST['id-student'])) {
                 require 'model/EnrollmentModel.php';
                 $model = new EnrollmentModel();
@@ -87,9 +87,9 @@ class EnrollmentController {
                 $result = $model->selectAllStudent();
                 $this->view->show("insertEnrollmentView.php", $result);
             }
-//        } else {
-//            $this->view->show("indexView.php");
-//        }
+        } else {
+            $this->view->show("indexView.php");
+        }
     }
 
 }

@@ -29,7 +29,9 @@ if (isset($session->permissions)) {
                             <div class="acc_content clearfix"></div>
                             <div class="table-responsive">
                               
-                                <?php foreach ($vars as $var) { ?>
+                                <?php 
+                                if(isset($vars)){
+                                foreach ($vars as $var) { ?>
                                 
                                 <table class="table table-bordered table-striped" style="clear: both">
                                     <tbody>
@@ -113,7 +115,7 @@ if (isset($session->permissions)) {
                                         </tr>
                                     </tbody>
                                 </table>
-                                <?php } ?>
+                                <?php } }?>
                             </div>
                         </form>
                     </div>
