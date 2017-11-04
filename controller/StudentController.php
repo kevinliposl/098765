@@ -30,6 +30,19 @@ class StudentController {
         }
     }
 
+    public function getStudentExp() {
+        require 'model/StudentModel.php';
+        $ssession = SSession::getInstance();
+//        if($ssession->__isset("identification")){
+        $model = new StudentModel();
+//         $result = $model->getStudentExp($ssession->__get("identification"));
+         $result = $model->getStudentExp("301110222");
+        $this->view->show("getStudentExpView.php", $result);
+//        }else{
+//           $this->view->show("indexView.php", null); 
+//        }
+    }
+
     public function reactivateStudent() {
         require 'model/StudentModel.php';
         if (!isset($_POST["id"]) && !isset($_POST["email"])) {
