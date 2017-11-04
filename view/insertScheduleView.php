@@ -24,8 +24,8 @@ if (isset($session->email)) {
         <div class="container clearfix">
             <form class="nobottommargin" onsubmit="return validate();">
                 <div class="col_one_fifth">
-                    <label for="billing-form-name">Semestre:</label>
-                    <select id="form-admin" class="selectpicker form-control" data-live-search="true">
+                    <label for="form-semester">Semestre:</label>
+                    <select id="form-semester" class="selectpicker form-control" data-live-search="true">
                         <option value="-1" data-tokens="">Seleccione un Semestre</option>
                         <?php
                         foreach ($vars as $var) {
@@ -42,25 +42,14 @@ if (isset($session->email)) {
                 </div>
 
                 <div class="col_one_fourth">
-                    <label for="billing-form-lname">Curso</label>
-                    <select id="form-admin" class="selectpicker form-control" data-live-search="true" disabled>
+                    <label for="form-courses">Curso</label>
+                    <select id="form-courses" class="selectpicker form-control" data-live-search="true" disabled>
                         <option value="-1" data-tokens="">Seleccione un Curso</option>
-                        <?php
-                        foreach ($vars as $var) {
-                            if (isset($var["identification"])) {
-                                ?>
-                                <option value="<?php echo $var["ID"] ?> " data-tokens="">
-                                    <?php echo $var["identification"] . " | " . $var["name"] . " " . $var["first_lastname"] . " " . $var["second_lastname"]; ?>
-                                </option>
-                                <?php
-                            }
-                        }
-                        ?>
                     </select>
                 </div>
                 <div class="col_one_fourth">
-                    <label for="billing-form-lname">Horario</label>
-                    <select id="form-admin" class="form-control" data-live-search="true" disabled>
+                    <label for="form-hour-init">Horario</label>
+                    <select id="form-hour-init" class="form-control" data-live-search="true" disabled>
                         <option value="-1" data-tokens="">Seleccione la Hora de Inicio</option>
                         <option value="7" data-tokens="">7:00</option>
                         <option value="8" data-tokens="">8:00</option>
@@ -80,30 +69,30 @@ if (isset($session->email)) {
                         <option value="22" data-tokens="">22:00</option>
                     </select>
                     </br>
-                    <select id="form-admin" class="form-control" data-live-search="true" disabled>
+                    <select id="form-hour-end" class="form-control" data-live-search="true" disabled>
                         <option value="-1" data-tokens="">Seleccione la Hora de Finalizaci&oacute;n</option>
-                        <option value="0">7:50</option>
-                        <option value="1">8:50</option>
-                        <option value="2">9:50</option>
-                        <option value="3">10:50</option>
-                        <option value="4">11:50</option>
-                        <option value="5">12:50</option>
-                        <option value="6">13:50</option>
-                        <option value="7">14:50</option>
-                        <option value="8">15:50</option>
-                        <option value="9">16:50</option>
-                        <option value="10">17:50</option>
-                        <option value="11">18:50</option>
-                        <option value="12">19:50</option>
-                        <option value="13">20:50</option>
-                        <option value="14">21:50</option>
-                        <option value="15">22:50</option>
+                        <option value="7">7:50</option>
+                        <option value="8">8:50</option>
+                        <option value="9">9:50</option>
+                        <option value="10">10:50</option>
+                        <option value="11">11:50</option>
+                        <option value="12">12:50</option>
+                        <option value="13">13:50</option>
+                        <option value="14">14:50</option>
+                        <option value="15">15:50</option>
+                        <option value="16">16:50</option>
+                        <option value="17">17:50</option>
+                        <option value="18">18:50</option>
+                        <option value="19">19:50</option>
+                        <option value="20">20:50</option>
+                        <option value="21">21:50</option>
+                        <option value="22">22:50</option>
                     </select>
                 </div>
 
                 <div class="col_one_fourth">
-                    <label for="billing-form-lname">Dias:</label>
-                    <select multiple id="form-professors" class="form-control selectpicker" data-live-search="true" disabled>
+                    <label for="form-days">Dias:</label>
+                    <select multiple id="form-days" class="form-control selectpicker" data-live-search="true" disabled>
                         <option value="Lunes" data-tokens="">L</option>
                         <option value="Martes" data-tokens="">K</option>
                         <option value="Miercoles" data-tokens="">M</option>
@@ -275,26 +264,45 @@ if (isset($session->email)) {
 <script>
 
     //Change Combobox
-    $("#form-admin").change(function () {
+    $("#form-semester").change(function () {
         var parameters = {
-            "id": $("#form-admin").val()
+            "ID_Semester": $("#form-semester").val()
         };
 
-        $.post("?controller=CourseSemestre&action=select", parameters, function (data) {
-            if (data.identification) {
-                $("#form-id-table").html(data.identification);
-                $("#form-name-table").html(data.name);
-                
-                $("#success").attr("data-notify-msg", "<i class=icon-ok-sign></i> Operacion Exitosa!");
+        $('#form-courses').attr("disabled", false);
 
-                SEMICOLON.widget.notifications($("#success"));
-            } else {
-                $("#form-id-table").html("");
-                $("#form-name-table").html("");
-
+        $.post("?controller=CourseSemester&action=selectAllCoursesSemester", parameters, function (data) {
+            alert('asdasdasdasdasd');
+            for (var i = 0; i < data.length; i++) {
+                $('#form-courses').append($("<option></option>").attr("value", data[i].initials).text(data[i].name)); //AGREGAR OPCIONES
             }
+            $("#form-courses").selectpicker("refresh"); ///REFRESCA SELECT PARA QUE AGARRE AGREGADOS
+
         }, "json");
     });
+
+    //Change Combobox
+    $("#form-courses").change(function () {
+        $('#form-hour-end').attr("disabled", false);
+        $('#form-hour-init').attr("disabled", false);
+    });
+
+    $("#form-hour-init").change(function () {
+
+        if ($("#form-hour-init").val() !== -1 && $("#form-hour-end").val() !== -1) {
+            $('#form-days').attr("disabled", false);
+            $('#form-days').selectpicker("refresh");
+        }
+    });
+
+    $("#form-hour-end").change(function () {
+
+        if ($("#form-hour-init").val() !== -1 && $("#form-hour-end").val() !== -1) {
+            $('#form-days').attr("disabled", false);
+            $('#form-days').selectpicker("refresh");
+        }
+    });
+
 
 </script>
 
