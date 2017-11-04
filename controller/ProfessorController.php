@@ -28,7 +28,7 @@ class ProfessorController {
             
             $result = $model->insertProfessor($_POST["typeId"], $_POST["id"], $_POST["nationality"], $_POST["name"], $_POST["firstLastName"], $_POST["secondLastName"], $_POST["address"], $_POST["gender"], $_POST["phone"], $_POST["phone2"], $_POST["email"], $_POST["additionalInformation"], $_POST["age"]);
 
-            //$result = $model->insertProfessor($typeId, $id, $nationality, $name, $firstLastName, $secondLastName, $address, $gender, $phone, $phone2, $email, $additionalInformation, $age);
+            $result = $model->insertProfessor($typeId, $id, $nationality, $name, $firstLastName, $secondLastName, $address, $gender, $phone, $phone2, $email, $additionalInformation, $age);
             echo json_encode($result);
         } else {
             $this->view->show("insertProfessorView.php");
