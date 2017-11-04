@@ -14,7 +14,7 @@ class UserController {
             if (isset($result[0]['identification'])) {
                 $this->permissions($result);
             } else {
-                echo json_encode(array('result', '0'));
+                echo json_encode(array('result' => '0'));
             }
         } else {
             $this->view->show("loginView.php");
@@ -26,10 +26,9 @@ class UserController {
         if (count($result) == 1) {
             $session->identification = $result[0]['identification'];
             $session->permissions = $result[0]['permissions'];
-            echo json_encode(array('result', '1'));
+            echo json_encode(array("result" => "1"));
         } else {
-            $session->user = $result;
-            echo json_encode(array('result', '2'));
+            echo json_encode($result);
         }
     }
 
@@ -38,8 +37,8 @@ class UserController {
         $session->destroy();
         $this->view->show("indexView.php");
     }
-    
-    function change(){
+
+    function change() {
         if (isset($_POST['new'])) {
             $model = new UserModel();
             $result = $model->change('301110222', $_POST["new"]);
@@ -47,6 +46,7 @@ class UserController {
         } else {
             $this->view->show("changePasswordView.php");
         }
-    }//change
+    }
 
+//change
 }
