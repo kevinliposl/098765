@@ -1,9 +1,13 @@
 <?php
 $session = SSession::getInstance();
 
-if (isset($session->email)) {
-    //include_once 'public/headerUser.php';
-} else {
+if ($session->permissions == 'A') {
+    include_once 'public/headerAdmin.php';
+} else if ($session->permissions == 'T'){
+    include_once 'public/headerProfessor.php';
+}else if ($session->permissions == 'S'){
+    include_once 'public/headerStudent.php';
+}else{
     include_once 'public/header.php';
 }
 ?>
