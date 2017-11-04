@@ -13,7 +13,7 @@ if (isset($session->email)) {
 <section id="page-title">
 
     <div class="container clearfix">
-        <h1>Insertar Administrador</h1>
+        <h1>Insertar Semestre</h1>
     </div>
 </section><!-- #page-title end -->
 
@@ -25,35 +25,21 @@ if (isset($session->email)) {
             <div class="accordion-lg divcenter nobottommargin" style="max-width: 550px;">
                 <div class="acctitle">
                     <div class="acc_content clearfix">
-                        <form id="form" class="nobottommargin" onsubmit="return validate();">
+                        <form id="form" class="nobottommargin" action="asdasd"onsubmit="return validate();">
                             <div class="col_full">
-                                <label for="form-id">Cedula:</label>
-                                <input type="text" id="form-id" class="form-control" required maxlength="9" minlength="9"/>
-                                <input type="hidden" id="failed-id" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                                <label for="form-year">A&ncaron;o:</label>
+                                <input type="number" id="form-year" class="form-control" required minlength="4" maxlength="4"/>
+                                <input type="hidden" id="failed-year" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                             </div>
 
                             <div class="col_full">
-                                <label for="form-email">Correo Electronico:</label>
-                                <input type="email" id="form-email" class="form-control" required/>
-                                <input type="hidden" id="failed-email" data-notify-type= "error" data-notify-position="bottom-full-width"/>
-                            </div>
-
-                            <div class="col_full">
-                                <label for="form-name">Nombre:</label>
-                                <input type="text" id="form-name" class="form-control" required/>
-                                <input type="hidden" id="failed-name" data-notify-type= "error" data-notify-position="bottom-full-width"/>
-                            </div>
-
-                            <div class="col_full">
-                                <label for="form-firstlastname">Primer Apellido:</label>
-                                <input type="text" id="form-firstLastName"class="form-control" required/>
-                                <input type="hidden" id="failed-firstLastName" data-notify-type="error" data-notify-position="bottom-full-width"/>
-                            </div>
-
-                            <div class="col_full">
-                                <label for="form-secondlastname">Segundo Apellido:</label>
-                                <input type="text" id="form-secondLastName" class="form-control" required />
-                                <input type="hidden" id="failed-secondLastName" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                                <label for="form-semester">Semestre:</label>
+                                <select id="form-semester" class="form-control" data-live-search="true">
+                                    <option value="-1" data-tokens="">Seleccione un Semestre</option>
+                                    <option value="1" data-tokens=""> I Semestre</option>
+                                    <option value="2" data-tokens="">II Semestre</option>
+                                </select>
+                                <input type="hidden" id="failed-semester" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                             </div>
 
                             <div class="col_full nobottommargin">                      
@@ -80,7 +66,7 @@ if (isset($session->email)) {
                     <h4 class="modal-title" id="myModalLabel">¡Aviso!</h4>
                 </div>
                 <div class="modal-body">
-                    <h4 style="text-align: center;">¿Realmente desea insertar este Administrador?</h4>
+                    <h4 style="text-align: center;">¿Realmente desea insertar este Semestre?</h4>
                     <p>Consejos:
                     <li>Revisar que todos los campos tengan la informaci&oacute;n correcta</li>
                     </p>
@@ -96,39 +82,20 @@ if (isset($session->email)) {
 
 <script>
     function validate() {
-        var id, email, name, firstLastName, firstLastName, secondLastName;
-
-        id = $("#form-id").val().trim();
-        email = $("#form-email").val().trim();
-        name = $("#form-name").val().trim();
-        firstLastName = $("#form-firstLastName").val().trim();
-        secondLastName = $("#form-secondLastName").val().trim();
-
-        if (!/\w+@\w+\.+[a-z]/.test(email) || email.split(" ", 2).length > 1) {
+        var year, email;
+        year = $("#form-year").val().trim();
+        semester = $("#form-semester").val().trim();
+        
+        if (email.split(" ", 2).length > 1) {
             $("#failed-email").attr("data-notify-msg", "<i class=icon-remove-sign></i> Correo Incorrecto. Complete e intente de nuevo!");
-            SEMICOLON.widget.notifications($("#failed-email"));
+            SEMICOLON.widget.notifications($("#failed-"));
             return false;
-
         } else if (isNaN(id) || id.length < 9 || id.length > 9 || id.split(" ", 2).length > 1) {
             $("#failed-id").attr("data-notify-msg", "<i class=icon-remove-sign></i> Cedula Incorrecta. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-id"));
             return false;
-
-        } else if (name.length < 4 || name.split(" ", 2).length > 1) {
-            $("#failed-name").attr("data-notify-msg", "<i class=icon-remove-sign></i> Nombre Incorrecto. Complete e intente de nuevo!");
-            SEMICOLON.widget.notifications($("#failed-name"));
-            return false;
-
-        } else if (firstLastName.length < 4 || firstLastName.split(" ", 2).length > 1) {
-            $("#failed-firstLastName").attr("data-notify-msg", "<i class=icon-remove-sign></i> Primer Apellido Incorrecto. Complete e intente de nuevo!");
-            SEMICOLON.widget.notifications($("#failed-firstLastName"));
-            return false;
-
-        } else if (secondLastName.length < 4 || secondLastName.split(" ", 2).length > 1) {
-            $("#failed-secondLastName").attr("data-notify-msg", "<i class=icon-remove-sign></i> Segundo Apellido Incorrecto. Complete e intente de nuevo!");
-            SEMICOLON.widget.notifications($("#failed-secondLastName"));
-            return false;
         }
+        
         $('#showModal').click();
         return false;
     }
@@ -138,11 +105,7 @@ if (isset($session->email)) {
         var parameters = {
             "id": $("#form-id").val().trim(),
             "email": $("#form-email").val().trim(),
-            "name": $("#form-name").val().trim(),
-            "firstLastName": $("#form-firstLastName").val().trim(),
-            "secondLastName": $("#form-secondLastName").val().trim()
         };
-
         $.post("?controller=Admin&action=insert", parameters, function (data) {
             alert(data);
             if (data.result === "1") {

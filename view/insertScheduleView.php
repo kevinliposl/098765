@@ -285,17 +285,14 @@ if (isset($session->email)) {
             if (data.identification) {
                 $("#form-id-table").html(data.identification);
                 $("#form-name-table").html(data.name);
-                );
-
+                
                 $("#success").attr("data-notify-msg", "<i class=icon-ok-sign></i> Operacion Exitosa!");
 
                 SEMICOLON.widget.notifications($("#success"));
             } else {
                 $("#form-id-table").html("");
                 $("#form-name-table").html("");
-                $("#form-email-table").html("");
-                $("#form-firstLastName-table").html("");
-                $("#form-secondLastName-table").html("");
+
             }
         }, "json");
     });
