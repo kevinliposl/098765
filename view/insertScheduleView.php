@@ -275,7 +275,7 @@ if (isset($session->email)) {
             $('#form-courses').empty();
             $('#form-courses').append($("<option></option>").attr("value", -1).text('Seleccione un Curso'));
             for (var i = 0; i < data.length; i++) {
-                $('#form-courses').append($("<option></option>").attr("value", data[i].initials).text(data[i].initials + ' | ' + data[i].name)); //AGREGAR OPCIONES
+                $('#form-courses').append($("<option></option>").attr("value", data[i].ID).text(data[i].initials + ' | ' + data[i].name)); //AGREGAR OPCIONES
             }
             $("#form-courses").selectpicker("refresh"); ///REFRESCA SELECT PARA QUE AGARRE AGREGADOS
 
@@ -305,17 +305,15 @@ if (isset($session->email)) {
     $('#form-submit').click(function () {
 
         var parameters = {
-            "ID_Semester": $("#form-semester").val()
+            "ID": $("#form-courses").val(),
+            "start": $("#form-hour-init").val(),
+            "end": $("#form-hour-end").val(),
+            "day": $("#form-days").val()
         };
-        
-        $.post("?controller=Schedule&action=selectWithoutSchedule", parameters, function (data) {
-            $('#form-courses').empty();
-            $('#form-courses').append($("<option></option>").attr("value", -1).text('Seleccione un Curso'));
-            for (var i = 0; i < data.length; i++) {
-                $('#form-courses').append($("<option></option>").attr("value", data[i].initials).text(data[i].initials + ' | ' + data[i].name)); //AGREGAR OPCIONES
-            }
-            $("#form-courses").selectpicker("refresh"); ///REFRESCA SELECT PARA QUE AGARRE AGREGADOS
 
+        $.post("?controller=Schedule&action=insert", parameters, function (data) {
+            
+            
         }, "json");
 
 //        if ($('#form-courses').val() !== -1) {

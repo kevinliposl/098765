@@ -4,13 +4,13 @@ class ScheduleController {
 
     function __construct() {
         $this->view = new View();
-        require 'model/SemesterModel.php';
+        require 'model/ScheduleModel.php';
     }
 
     function insert() {
-        $model = new SemesterModel();
-        if (isset($_POST["ID"]) && isset($_POST["inicio"]) && isset($_POST["fin"]) && isset($_POST["day"])) {
-            $result = $model->insert($_POST["year"], $_POST["semester"]);
+        $model = new ScheduleModel();
+        if (isset($_POST["ID"]) && isset($_POST["start"]) && isset($_POST["end"]) && isset($_POST["day"])) {
+            $result = $model->insert($_POST["ID"],$_POST["start"],$_POST["end"],$_POST["day"]);
             echo json_encode($result);
         } else {
             $result = $model->selectAll();
