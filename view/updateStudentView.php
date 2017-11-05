@@ -72,31 +72,31 @@ include_once 'public/headerAdmin.php';
                         <tr>
                             <td width="15%">Identificaci&oacute;n</td>
                             <td width="55%">
-                                <a id="form-id" class="bt-editable" href="#" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese la identificación"></a>
+                                <a id="form-id" class="bt-editable" href="#" data-type="text" data-pk="1" data-placeholder="Required" data-title="Ingrese la identificación"></a>
                             </td>
                         </tr>
                         <tr>
                             <td>Tipo de Identificaci&oacute;n</td>
                             <td>
-                                <a id="form-id-type" class="bt-editable" href="#" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el tipo de identificación"></a>
+                                <a id="form-id-type" class="bt-editable" href="#" data-type="text" data-pk="1" data-placeholder="Required" data-title="Ingrese el tipo de identificación"></a>
                             </td>
                         </tr>
                         <tr>
                             <td>Nombre</td>
                             <td>
-                                <a id="form-name" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el nombre"></a>
+                                <a id="form-name" href="#" class="bt-editable" data-type="text" data-pk="1" data-placeholder="Required" data-title="Ingrese el nombre"></a>
                             </td>
                         </tr>
                         <tr>
                             <td>Primer Apellido</td>
                             <td>
-                                <a id="form-first-lastName" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el Primer Apellido"></a>
+                                <a id="form-first-lastName" href="#" class="bt-editable" data-type="text" data-pk="1"  data-placeholder="Required" data-title="Ingrese el Primer Apellido"></a>
                             </td>
                         </tr>
                         <tr>
                             <td>Segundo Apellido</td>
                             <td>
-                                <a id="form-second-lastName" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el Segundo Apellido"></a>
+                                <a id="form-second-lastName" href="#" class="bt-editable" data-type="text" data-pk="1"  data-placeholder="Required" data-title="Ingrese el Segundo Apellido"></a>
                             </td>
                         </tr>
                         <tr>
@@ -108,25 +108,25 @@ include_once 'public/headerAdmin.php';
                         <tr>
                             <td>Nacionalidad</td>
                             <td>
-                                <a id="form-nationality" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese la nacionalidad"></a>
+                                <a id="form-nationality" href="#" class="bt-editable" data-type="text" data-pk="1"  data-placeholder="Required" data-title="Ingrese la nacionalidad"></a>
                             </td>
                         </tr>
                         <tr>
                             <td>Tel&eacute;fono 1</td>
                             <td>
-                                <a id="form-phone1" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el Teléfono"></a>
+                                <a id="form-phone1" href="#" class="bt-editable" data-type="text" data-pk="1"  data-placeholder="Required" data-title="Ingrese el Teléfono"></a>
                             </td>
                         </tr>
                         <tr>
                             <td>Tel&eacute;fono 2</td>
                             <td>
-                                <a id="form-phone2" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese otro Teléfono"></a>
+                                <a id="form-phone2" href="#" class="bt-editable" data-type="text" data-pk="1"  data-placeholder="Required" data-title="Ingrese otro Teléfono"></a>
                             </td>
                         </tr>
                         <tr>
                             <td>Email</td>
                             <td>
-                                <a id="form-email" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el email"></a>
+                                <a id="form-email" href="#" class="bt-editable" data-type="text" data-pk="1"  data-placeholder="Required" data-title="Ingrese el email"></a>
                             </td>
                         </tr>
                         <tr>
@@ -138,7 +138,7 @@ include_once 'public/headerAdmin.php';
                         <tr>
                             <td>Nombre del Contacto</td>
                             <td>
-                                <a id="form-contact-name" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el nombre completo del contacto"></a>
+                                <a id="form-contact-name" href="#" class="bt-editable" data-type="text" data-pk="1"  data-placeholder="Required" data-title="Ingrese el nombre completo del contacto"></a>
                             </td>
                         </tr>
                         <tr>
