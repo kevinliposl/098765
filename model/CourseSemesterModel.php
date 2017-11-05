@@ -58,6 +58,7 @@ class CourseSemesterModel {
         $query = $this->db->prepare("call sp_select_appointment_without_schedule($ID_semester)");
         $query->execute();
         $result = $query->fetchAll();
+        $query->closeCursor();
         return $result;
     }
 

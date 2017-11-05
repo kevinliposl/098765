@@ -284,14 +284,12 @@ if (isset($session->email)) {
 
         $.post("?controller=Schedule&action=select", parameters, function (data) {
             for (var i = 0; i < data.length; i++) {
-                $("#" + data.day + data.start).addClass('info');
-                $("#" + data.day + data.start).text(data.name);
-                $("#" + data.day + data.end).addClass('info');
-                $("#" + data.day + data.end).text(data.name);
-                if (data.start < data.end) {
-                    for (var j = data.start; j <= data.end; j++) {
-                        $("#" + data.day + j).addClass('info');
-                        $("#" + data.day + j).text(data.name);
+
+                if (data[i].start <== data[i].end) {
+                    for (var j = data[i].start; j <= data[i].end; j++) {
+                        alert("#" + data[i].day + j);
+                        $("#" + data[i].day + j).addClass('info');
+                        $("#" + data[i].day + j).text(data[i].initials + ' | ' + data[i].name);
                     }
                 }
             }
@@ -331,22 +329,16 @@ if (isset($session->email)) {
             if (data.result === '1') {
                 $("#" + $("#form-days").val() + $("#form-hour-init").val()).addClass('info');
                 $("#" + $("#form-days").val() + $("#form-hour-init").val()).text($("#form-courses option:selected").text().trim());
+
+                if ($("#form-hour-init").val() < $("#form-hour-end").val()) {
+                    for (var j = $("#form-hour-init").val(); j <= $("#form-hour-end").val(); j++) {
+                        $("#" + $("#form-days").val() + j).addClass('info');
+                        $("#" + $("#form-days").val() + j).text($("#form-courses option:selected").text().trim());
+                    }
+                }
             }
         }, "json");
-
-//        if ($('#form-courses').val() !== -1) {
-//            if ($('#form-days').val()) {
-//                if ($("#form-hour-init").val() <= $("#form-hour-end").val()) {
-//                }
-//            }else{
-//                alert('Seleccione un curso');
-//            }
-//        } else {
-//            alert('Seleccione un curso');
-//        }
     });
-
-
 </script>
 
 <!-- End Content

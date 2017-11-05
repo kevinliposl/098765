@@ -20,6 +20,7 @@ class ScheduleModel {
         $query = $this->db->prepare("call sp_select_schedule($id)");
         $query->execute();
         $result = $query->fetchAll();
+        $query->closeCursor();
         return $result;
     }
 
