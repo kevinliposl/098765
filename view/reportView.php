@@ -27,7 +27,6 @@ include_once 'public/header.php';
             <div class="col_half" style="width: 100%;" >
                 <canvas id="chart-area"/>
             </div>
-
         </div>
     </div>
 </section><!-- #content end -->

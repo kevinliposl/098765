@@ -47,6 +47,4 @@ class UserController {
         $this->view->show("indexView.php");
     }
 
-
-//change
 }
