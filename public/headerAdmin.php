@@ -70,6 +70,7 @@
                                     <ul>
                                         <li><a href="#"><div>Estudiante</div></a>
                                             <ul>
+                                                <li><a href="?controller=Student&action=getStudentData"><div>Ver Estudiante</div></a></li> 
                                                 <li><a href="?controller=Student&action=insertStudent"><div>Insertar Estudiante</div></a></li> 
                                                 <li><a href="?controller=Student&action=deleteStudent"><div>Borrar Estudiante</div></a></li> 
                                                 <li><a href="?controller=Student&action=reactivateStudent"><div>Reactivar Estudiante</div></a></li> 

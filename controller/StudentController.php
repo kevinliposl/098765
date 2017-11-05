@@ -7,26 +7,36 @@ class StudentController {
     }
 
     public function insertStudent() {
-        if (isset($_POST["id"]) && isset($_POST["email"])) {
-            require 'model/StudentModel.php';
-            $model = new StudentModel();
-            $result = $model->insertStudent($_POST["id"], $_POST['idType'], $_POST["email"], $_POST["name"], $_POST["firstLastName"], $_POST["secondLastName"], $_POST["age"], $_POST["address"], $_POST["gender"], $_POST["nationality"], $_POST["phoneOne"], $_POST["phoneTwo"], $_POST["contactName"], $_POST["contactRelationship"], $_POST["contactPhone"], $_POST["contactEmail"]);
-            echo json_encode($result);
+        $ssession = SSession::getInstance();
+        if ($ssession->__isset("identification") && $ssession->__isset("permissions") && $ssession->__get("permissions") === "A") {
+            if (isset($_POST["id"]) && isset($_POST["email"])) {
+                require 'model/StudentModel.php';
+                $model = new StudentModel();
+                $result = $model->insertStudent($_POST["id"], $_POST['idType'], $_POST["email"], $_POST["name"], $_POST["firstLastName"], $_POST["secondLastName"], $_POST["age"], $_POST["address"], $_POST["gender"], $_POST["nationality"], $_POST["phoneOne"], $_POST["phoneTwo"], $_POST["contactName"], $_POST["contactRelationship"], $_POST["contactPhone"], $_POST["contactEmail"]);
+                echo json_encode($result);
+            } else {
+                $this->view->show("insertStudentView.php");
+            }
         } else {
-            $this->view->show("insertStudentView.php");
+            $this->view->show("indexView.php");
         }
     }
 
     public function deleteStudent() {
         require 'model/StudentModel.php';
-        if (!isset($_POST["id"]) && !isset($_POST["email"])) {
-            $model = new StudentModel();
-            $result = $model->selectAllStudent();
-            $this->view->show("deleteStudentView.php", $result);
+        $ssession = SSession::getInstance();
+        if ($ssession->__isset("identification") && $ssession->__isset("permissions") && $ssession->__get("permissions") === "A") {
+            if (!isset($_POST["id"]) && !isset($_POST["email"])) {
+                $model = new StudentModel();
+                $result = $model->selectAllStudent();
+                $this->view->show("deleteStudentView.php", $result);
+            } else {
+                $model = new StudentModel();
+                $result = $model->deleteStudent($_POST['id']);
+                echo json_encode($result);
+            }
         } else {
-            $model = new StudentModel();
-            $result = $model->deleteStudent($_POST['id']);
-            echo json_encode($result);
+            $this->view->show("indexView.php");
         }
     }
 
@@ -36,7 +46,7 @@ class StudentController {
 //        if($ssession->__isset("identification")){
         $model = new StudentModel();
 //         $result = $model->getStudentExp($ssession->__get("identification"));
-         $result = $model->getStudentExp("301110222");
+        $result = $model->getStudentExp("301110222");
         $this->view->show("getStudentExpView.php", $result);
 //        }else{
 //           $this->view->show("indexView.php", null); 
@@ -45,27 +55,37 @@ class StudentController {
 
     public function reactivateStudent() {
         require 'model/StudentModel.php';
-        if (!isset($_POST["id"]) && !isset($_POST["email"])) {
-            $model = new StudentModel();
-            $result = $model->selectAllDeleteStudent();
-            $this->view->show("reactivateView.php", $result);
+        $ssession = SSession::getInstance();
+        if ($ssession->__isset("identification") && $ssession->__isset("permissions") && $ssession->__get("permissions") === "A") {
+            if (!isset($_POST["id"]) && !isset($_POST["email"])) {
+                $model = new StudentModel();
+                $result = $model->selectAllDeleteStudent();
+                $this->view->show("reactivateView.php", $result);
+            } else {
+                $model = new StudentModel();
+                $result = $model->reactivateStudent($_POST['id'], $_POST['tipo']);
+                echo json_encode($result);
+            }
         } else {
-            $model = new StudentModel();
-            $result = $model->reactivateStudent($_POST['id'], $_POST['tipo']);
-            echo json_encode($result);
+            $this->view->show("indexView.php");
         }
     }
 
     public function updateStudent() {
         require 'model/StudentModel.php';
-        if (!isset($_POST["id"]) && !isset($_POST["email"])) {
-            $model = new StudentModel();
-            $result = $model->selectAllStudent();
-            $this->view->show("updateStudentView.php", $result);
+        $ssession = SSession::getInstance();
+        if ($ssession->__isset("identification") && $ssession->__isset("permissions") && $ssession->__get("permissions") === "A") {
+            if (!isset($_POST["id"]) && !isset($_POST["email"])) {
+                $model = new StudentModel();
+                $result = $model->selectAllStudent();
+                $this->view->show("updateStudentView.php", $result);
+            } else {
+                $model = new StudentModel();
+                $result = $model->updateStudent($_POST["id"], $_POST["oldId"], $_POST['idType'], $_POST["email"], $_POST["name"], $_POST["firstLastName"], $_POST["secondLastName"], $_POST["age"], " ", $_POST["gender"], $_POST["nationality"], $_POST["phoneOne"], $_POST["phoneTwo"], $_POST["contactName"], $_POST["contactRelationship"], $_POST["contactPhone"], $_POST["contactEmail"]);
+                echo json_encode($result);
+            }
         } else {
-            $model = new StudentModel();
-            $result = $model->updateStudent($_POST["id"], $_POST["oldId"], $_POST['idType'], $_POST["email"], $_POST["name"], $_POST["firstLastName"], $_POST["secondLastName"], $_POST["age"], " ", $_POST["gender"], $_POST["nationality"], $_POST["phoneOne"], $_POST["phoneTwo"], $_POST["contactName"], $_POST["contactRelationship"], $_POST["contactPhone"], $_POST["contactEmail"]);
-            echo json_encode($result);
+            $this->view->show("indexView.php");
         }
     }
 
