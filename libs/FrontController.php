@@ -21,11 +21,11 @@ class FrontController {
         if (is_file($controllerPath)) {
             require $controllerPath;
         } else {
-            include $config->get('viewFolder') . '404View.php';
+            header("Location:?action=notFound");
             return FALSE;
         }
         if (!is_callable(array($controllerName, $actionName))) {
-            include $config->get('viewFolder') . '404View.php';
+            header("Location:?action=notFound");
             return FALSE;
         }
         $controller = new $controllerName();

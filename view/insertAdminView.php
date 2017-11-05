@@ -1,10 +1,14 @@
 <?php
 $session = SSession::getInstance();
 
-if (isset($session->email)) {
-    //include_once 'public/headerUser.php';
+if (isset($session->permissions)) {
+    if ($session->permissions == 'R') {
+        include_once 'public/headerRoot.php';
+    } else {
+        header('Location:?action=notFound');
+    }
 } else {
-    include_once 'public/header.php';
+    header('Location:?action=notFound');
 }
 ?>
 

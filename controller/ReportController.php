@@ -4,14 +4,15 @@ class ReportController {
 
     function __construct() {
         $this->view = new View();
+        require 'model/ReportModel.php';
     }
 
     function selectUserState() {
-        require 'model/ReportModel.php';
-        $model = new ReportModel();
+        if (SSession::getInstance()->permissions == 'A') {
+            $model = new ReportModel();
 
-        $result = $model->selectUserState();
-        echo json_encode($result);
+            $result = $model->selectUserState();
+            echo json_encode($result);
+        }
     }
-
 }

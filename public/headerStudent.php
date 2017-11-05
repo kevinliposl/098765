@@ -66,12 +66,8 @@
                         <nav id="primary-menu">
                             <ul>
                                 <li><a href="?"><div>Home</div></a>
-                                <li><a href="#"><div>Sistema</div></a>
-                                    <ul>
-                                        <li><a href="?controller=Student&action=updatePersonalDataStudent"><div>Actualizar datos</div></a></li> 
-                                        <li><a href="?controller=Student&action=getStudentExp"><div>Expediente Académico</div></a></li> 
-                                    </ul>
-                                </li>
+                                <li><a href="?controller=Student&action=updatePersonalDataStudent"><div>Actualizar datos</div></a></li> 
+                                <li><a href="?controller=Student&action=getStudentExp"><div>Expediente Académico</div></a></li> 
                                 <li><a href="?controller=User&action=signOff"><div>Cerrar Sesi&oacute;n</div></a></li>
                             </ul>
                         </nav><!-- #primary-menu end -->
