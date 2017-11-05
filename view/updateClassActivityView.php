@@ -188,7 +188,7 @@ if (isset($session->permissions)) {
             $("#failed-form-courses").attr("data-notify-msg", "<i class=icon-remove-sign></i> Curso inválido. Seleccione e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-form-courses"));
             return false;
-        }else if(("#form-student").val()==="-1"){
+        }else if($("#form-student").val()==="-1"){
             $("#failed-form-student").attr("data-notify-msg", "<i class=icon-remove-sign></i> Estudiante inválido. Seleccione e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-form-student"));
             return false;
@@ -216,11 +216,11 @@ if (isset($session->permissions)) {
             $("#failed-form-courses").attr("data-notify-msg", "<i class=icon-remove-sign></i> Curso inválido. Seleccione e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-form-courses"));
             return false;
-        }else if(("#form-student").val()==="-1"){
+        }else if($("#form-student").val()==="-1"){
             $("#failed-form-student").attr("data-notify-msg", "<i class=icon-remove-sign></i> Estudiante inválido. Seleccione e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-form-student"));
             return false;
-        }else if(("#form-activity").val()==="-1"){
+        }else if($("#form-activity").val()==="-1"){
             $("#failed-form-activity").attr("data-notify-msg", "<i class=icon-remove-sign></i> Estudiante inválido. Seleccione e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-form-activity"));
             return false;
@@ -276,7 +276,7 @@ if (isset($session->permissions)) {
     });
     
     $("#form-delete").click(function () {
-        if(("#form-addContent").val()==="-1"){
+        if($("#form-addContent").val()==="-1"){
             $("#failed-form-addContent").attr("data-notify-msg", "<i class=icon-remove-sign></i> Estudiante inválido. Seleccione e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-form-addContent"));
             return false;
@@ -326,7 +326,7 @@ if (isset($session->permissions)) {
             $("#failed-form-courses").attr("data-notify-msg", "<i class=icon-remove-sign></i> Curso inválido. Seleccione e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-form-courses"));
             return false;
-        }else if(("#form-student").val()==="-1"){
+        }else if($("#form-student").val()==="-1"){
             $("#failed-form-student").attr("data-notify-msg", "<i class=icon-remove-sign></i> Estudiante inválido. Seleccione e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-form-student"));
             return false;
