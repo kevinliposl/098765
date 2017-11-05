@@ -69,31 +69,31 @@ if (isset($session->permissions)) {
                                     <tbody>
                                         <tr>
                                             <td>
-                                                <code>Identificacion</code>
+                                                Identificacion
                                             </td>
                                             <td id="form-identification-table"><?php echo "" ?></td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <code>Nombre Completo</code>
+                                                Nombre Completo
                                             </td>
                                             <td id="form-name-table"><?php echo "" ?></td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <code>Telefono</code>
+                                                Telefono
                                             </td>
                                             <td id="form-phone-table"><?php echo "" ?></td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <code>Nombre del Contacto</code>
+                                                Nombre del Contacto
                                             </td>
                                             <td id="form-contactName-table"><?php echo "" ?></td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <code>Telefono del Contacto</code>
+                                                Telefono del Contacto
                                             </td>
                                             <td id="form-contactPhone-table"><?php echo "" ?></td>
                                         </tr>
@@ -120,25 +120,25 @@ if (isset($session->permissions)) {
                                     <tbody>
                                         <tr>
                                             <td>
-                                                <code>Consecutivo</code>
+                                                Consecutivo
                                             </td>
                                             <td id="form-consecutive-table"><?php echo "" ?></td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <code>Fecha de Realizaci&oacute;n</code>
+                                                Fecha de Realizaci&oacute;n
                                             </td>
                                             <td id="form-date-table"><?php echo "" ?></td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <code>Asistencia</code>
+                                                Asistencia
                                             </td>
                                             <td id="form-typeA-table"><?php echo "" ?></td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <code>Observaci&oacute;n General</code>
+                                                Observaci&oacute;n General
                                             </td>
                                             <td id="form-observation-table"><?php echo "" ?></td>
                                         </tr>
@@ -199,7 +199,7 @@ if (isset($session->permissions)) {
             $("#failed-form-courses").attr("data-notify-msg", "<i class=icon-remove-sign></i> Curso inválido. Seleccione e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-form-courses"));
             return false;
-        }else if(("#form-student").val()==="-1"){
+        }else if($("#form-student").val()==="-1"){
             $("#failed-form-student").attr("data-notify-msg", "<i class=icon-remove-sign></i> Estudiante inválido. Seleccione e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-form-student"));
             return false;
@@ -236,11 +236,11 @@ if (isset($session->permissions)) {
             $("#failed-form-courses").attr("data-notify-msg", "<i class=icon-remove-sign></i> Curso inválido. Seleccione e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-form-courses"));
             return false;
-        }else if(("#form-student").val()==="-1"){
+        }else if($("#form-student").val()==="-1"){
             $("#failed-form-student").attr("data-notify-msg", "<i class=icon-remove-sign></i> Estudiante inválido. Seleccione e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-form-student"));
             return false;
-        }else if(("#form-activity").val()==="-1"){
+        }else if($("#form-activity").val()==="-1"){
             $("#failed-form-activity").attr("data-notify-msg", "<i class=icon-remove-sign></i> Actividad de clase inválida. Seleccione e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-form-activity"));
             return false;
