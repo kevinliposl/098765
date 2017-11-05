@@ -58,6 +58,49 @@ if (isset($session->permissions)) {
                                 <input type="hidden" id="failed-form-student" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                             </div>  
                             <br>
+                            <div class="acc_content clearfix"></div>
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped">
+                                    <h5 style="text-align: center;">Informaci&oacute;n del Estudiante</h5>
+                                    <colgroup>
+                                        <col class="col-xs-3">
+                                        <col class="col-xs-8">
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <code>Identificacion</code>
+                                            </td>
+                                            <td id="form-identification-table"><?php echo "" ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <code>Nombre Completo</code>
+                                            </td>
+                                            <td id="form-name-table"><?php echo "" ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <code>Telefono</code>
+                                            </td>
+                                            <td id="form-phone-table"><?php echo "" ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <code>Nombre del Contacto</code>
+                                            </td>
+                                            <td id="form-contactName-table"><?php echo "" ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <code>Telefono del Contacto</code>
+                                            </td>
+                                            <td id="form-contactPhone-table"><?php echo "" ?></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>  
+                            <br>
                             <div class="white-section">
                                 <label for="form-activity">Actividades Disponibles:</label>
                                 <select id="form-activity" class="form-control selectpicker" data-live-search="true">
@@ -135,6 +178,11 @@ if (isset($session->permissions)) {
             };
             document.getElementById("form-student").options.length = 0;
             document.getElementById("form-activity").options.length = 0;
+            $("#form-identification-table").html("");
+            $("#form-name-table").html("");
+            $("#form-phone-table").html("");
+            $("#form-contactName-table").html("");
+            $("#form-contactPhone-table").html("");
             $('#form-activity').append($("<option></option>").attr("value", "-1").text("Seleccione una Actividad"));
             $.post("?controller=ClassActivity&action=selectStudentClassActivity", parameters, function (data) {
                 $('#form-student').append($("<option></option>").attr("value", "-1").text("Seleccione un Estudiante"));
@@ -161,12 +209,24 @@ if (isset($session->permissions)) {
                 "identification": $("#form-student").val()
             };
             document.getElementById("form-activity").options.length = 0;
+            var table = document.getElementById("table-contents");
+            table.innerHTML = "";
             $.post("?controller=ClassActivity&action=selectRecordStudentClassActivity", parameters, function (data) {
                 $('#form-activity').append($("<option></option>").attr("value", "-1").text("Seleccione una Actividad"));
                 for (var i = 0; i < data.length; i++) {
                     $('#form-activity').append($("<option></option>").attr("value", data[i].consecutive_class).text(data[i].date));//AGREGAR OPCIONES
                 }
                 $("#form-activity").selectpicker("refresh");///REFRESCA SELECT PARA QUE AGARRE AGREGADOS
+            }, "json");
+            var parameters2 = {
+                "identification": $("#form-student").val()
+            };
+            $.post("?controller=ClassActivity&action=selectInformationStudentClassActivity", parameters2, function (data2) {
+                $("#form-identification-table").html(data2.identification);
+                $("#form-name-table").html(data2.name);
+                $("#form-phone-table").html(data2.phone);
+                $("#form-contactName-table").html(data2.full_contact_name);
+                $("#form-contactPhone-table").html(data2.telephone_contact);
             }, "json");
         }
     });
