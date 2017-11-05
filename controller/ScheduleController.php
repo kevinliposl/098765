@@ -31,9 +31,9 @@ class ScheduleController {
     }
 
     function select() {
-        $model = new SemesterModel();
-        if (isset($_POST["id"])) {
-            $result = $model->select($_POST["id"]);
+        $model = new ScheduleModel();
+        if (isset($_POST["ID_Semester"])) {
+            $result = $model->select($_POST["ID_Semester"]);
             echo json_encode($result);
         } else {
             $result = $model->selectAll();

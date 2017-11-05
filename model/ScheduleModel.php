@@ -17,9 +17,9 @@ class ScheduleModel {
     }
 
     function select($id) {
-        $query = $this->db->prepare("call sp_select_semester($id)");
+        $query = $this->db->prepare("call sp_select_schedule($id)");
         $query->execute();
-        $result = $query->fetch();
+        $result = $query->fetchAll();
         return $result;
     }
 

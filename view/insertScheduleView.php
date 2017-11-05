@@ -92,7 +92,7 @@ if (isset($session->email)) {
 
                 <div class="col_one_fourth">
                     <label for="form-days">Dias:</label>
-                    <select multiple id="form-days" class="form-control selectpicker" data-live-search="true" disabled>
+                    <select id="form-days" class="form-control selectpicker" data-live-search="true" disabled>
                         <option value="Lunes" data-tokens="">L</option>
                         <option value="Martes" data-tokens="">K</option>
                         <option value="Miercoles" data-tokens="">M</option>
@@ -280,6 +280,22 @@ if (isset($session->email)) {
             $("#form-courses").selectpicker("refresh"); ///REFRESCA SELECT PARA QUE AGARRE AGREGADOS
 
         }, "json");
+
+
+        $.post("?controller=Schedule&action=select", parameters, function (data) {
+            for (var i = 0; i < data.length; i++) {
+                $("#" + data.day + data.start).addClass('info');
+                $("#" + data.day + data.start).text(data.name);
+                $("#" + data.day + data.end).addClass('info');
+                $("#" + data.day + data.end).text(data.name);
+                if (data.start < data.end) {
+                    for (var j = data.start; j <= data.end; j++) {
+                        $("#" + data.day + j).addClass('info');
+                        $("#" + data.day + j).text(data.name);
+                    }
+                }
+            }
+        }, "json");
     });
 
     //Change Combobox
@@ -312,8 +328,10 @@ if (isset($session->email)) {
         };
 
         $.post("?controller=Schedule&action=insert", parameters, function (data) {
-            
-            
+            if (data.result === '1') {
+                $("#" + $("#form-days").val() + $("#form-hour-init").val()).addClass('info');
+                $("#" + $("#form-days").val() + $("#form-hour-init").val()).text($("#form-courses option:selected").text().trim());
+            }
         }, "json");
 
 //        if ($('#form-courses').val() !== -1) {
