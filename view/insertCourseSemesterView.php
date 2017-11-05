@@ -67,7 +67,6 @@ if (isset($session->permissions)) {
                             <div class="white-section">
                                 <label for="form-professors">Profesores:</label>
                                 <select multiple name="form-professors[]" id="form-professors" class="form-control selectpicker" data-live-search="true">
-                                    <option value="-1" data-tokens="">Seleccione los profesores</option>
                                 </select>
                                 <input type="hidden" id="failed-form-professors" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                             </div>
@@ -138,7 +137,7 @@ if (isset($session->permissions)) {
             $("#failed-form-semester").attr("data-notify-msg", "<i class=icon-remove-sign></i> Semestre inválido. Seleccione e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-form-semester"));
             return false;
-        }else if(("#form-courses").val()==="-1"){
+        }else if($("#form-courses").val()==="-1"){
             $("#failed-form-courses").attr("data-notify-msg", "<i class=icon-remove-sign></i> Curso inválido. Seleccione e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-form-courses"));
             return false;
@@ -149,7 +148,6 @@ if (isset($session->permissions)) {
             };
             document.getElementById("form-professors").options.length = 0;
             $.post("?controller=CourseSemester&action=selectNotAllProfessorsCourseSemester", parameters, function (data) {
-                $('#form-professors').append($("<option></option>").attr("value", "-1").text("Seleccione los profesores"));
                 for (var i = 0; i < data.length; i++) {
                     $('#form-professors').append($("<option></option>").attr("value", data[i].identification).text(data[i].name));//AGREGAR OPCIONES
                 }
@@ -169,11 +167,11 @@ if (isset($session->permissions)) {
             $("#failed-form-semester").attr("data-notify-msg", "<i class=icon-remove-sign></i> Semestre inválido. Seleccione e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-form-semester"));
             return false;
-        }else if(("#form-courses").val()==="-1"){
+        }else if($("#form-courses").val()==="-1"){
             $("#failed-form-courses").attr("data-notify-msg", "<i class=icon-remove-sign></i> Curso inválido. Seleccione e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-form-courses"));
             return false;
-        }else if(("#form-professors").val()==="-1"){
+        }else if($("#form-professors").val()==="-1"){
             $("#failed-form-professors").attr("data-notify-msg", "<i class=icon-remove-sign></i> Profesor inválido. Seleccione e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-form-professors"));
             return false;
@@ -191,7 +189,7 @@ if (isset($session->permissions)) {
                         "data-notify-position": "bottom-full-width"
                     });
                     SEMICOLON.widget.notifications($("#success"));
-                    setTimeout("location.href = '?controller=Course&action=insert';",2000);
+                    setTimeout("location.href = '?controller=CourseSemester&action=insert';",2000);
                 } else {
                     $("#warning").attr({
                         "data-notify-type": "warning",
