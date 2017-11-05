@@ -27,9 +27,9 @@ include_once 'public/headerAdmin.php';
                             </div>
                             <div class="col_full">
                                 <label for="form-typeId">Tipo de Identificación:</label>
-                                <input type="radio" name="form-typeId" value="N" checked/><label>Cédula Nacional</label>
+                                <input type="radio" name="form-typeId" value="C" checked/><label>Cédula Nacional</label>
                                 <input type="radio" name="form-typeId" value="D"/> <label>Dimex</label>
-                                <input type="radio" name="form-typeId" value="E"/><label>Pasaporte</label>
+                                <input type="radio" name="form-typeId" value="P"/><label>Pasaporte</label>
                             </div>
                             <div class="col_full">
                                 <label for="form-name">Nombre:</label>
