@@ -77,25 +77,25 @@ if (isset($session->permissions)) {
                                     <tbody>
                                         <tr>
                                             <td>
-                                                <code>Consecutivo</code>
+                                                Consecutivo
                                             </td>
                                             <td id="form-consecutive-table"><?php echo "" ?></td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <code>Fecha de Realizaci&oacute;n</code>
+                                                Fecha de Realizaci&oacute;n
                                             </td>
                                             <td id="form-date-table"><?php echo "" ?></td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <code>Asistencia</code>
+                                                Asistencia
                                             </td>
                                             <td id="form-typeA-table"><?php echo "" ?></td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <code>Observaci&oacute;n General</code>
+                                                Observaci&oacute;n General
                                             </td>
                                             <td id="form-observation-table"><?php echo "" ?></td>
                                         </tr>

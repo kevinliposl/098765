@@ -68,7 +68,7 @@ if (isset($session->permissions)) {
                             <br>
                             <div class="col_full">
                                 <label for="form-consecutive">Consecutivo de Actividad:</label>
-                                <input type="text" id="form-consecutive" class="form-control" />
+                                <input type="text" id="form-consecutive" class="form-control" readonly="readonly" />
                                 <input type="hidden" id="failed-consecutive" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                             </div>
                             <div class="col_full">
@@ -116,7 +116,7 @@ if (isset($session->permissions)) {
                                 <input type="hidden" id="failed-observation" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                             </div>
                             <div class="col_full nobottommargin">
-                                <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" style="display : block; text-align: center;" data-target="#myModal">Insertar</a>
+                                <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" style="display : block; text-align: center;" data-target="#myModal">Actualizar</a>
                                 <input type="hidden" id="warning" value="w"/>
                                 <input type="hidden" id="success" value="s"/>
                                 <input type="hidden" id="failed" value="f"/>
@@ -243,18 +243,18 @@ if (isset($session->permissions)) {
                     $("#radio_1").attr('checked', 'checked');
                 }
                 document.getElementById("form-observation").value =data.observation;
-            }, "json");
-            var parameters2 = {
-                "appointment": $("#form-courses").val(),
-                "identification": $("#form-student").val(),
-                "consecutive": $("#form-consecutive").val()
-            };
-            $.post("?controller=ClassActivity&action=selectRecordContentClassActivity", parameters2, function (data) {
-                $('#form-addContent').append($("<option></option>").attr("value", "-1").text("Seleccione un Contenido"));
-                for (var i = 0; i < data.length; i++) {
-                    $('#form-addContent').append($("<option></option>").attr("value", data[i].ID).text(data[i].content));//AGREGAR OPCIONES
-                }
-                $("#form-addContent").selectpicker("refresh");///REFRESCA SELECT PARA QUE AGARRE AGREGADOS
+                var parameters2 = {
+                    "appointment": $("#form-courses").val(),
+                    "identification": $("#form-student").val(),
+                    "consecutive": data.consecutive_class
+                };
+                $.post("?controller=ClassActivity&action=selectRecordContentClassActivity", parameters2, function (data2) {
+                    $('#form-addContent').append($("<option></option>").attr("value", "-1").text("Seleccione un Contenido"));
+                    for (var i = 0; i < data2.length; i++) {
+                        $('#form-addContent').append($("<option></option>").attr("value", data2[i].ID).text(data2[i].content));//AGREGAR OPCIONES
+                    }
+                    $("#form-addContent").selectpicker("refresh");///REFRESCA SELECT PARA QUE AGARRE AGREGADOS
+                }, "json");
             }, "json");
         }
     });
