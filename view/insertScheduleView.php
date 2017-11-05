@@ -285,12 +285,10 @@ if (isset($session->email)) {
         $.post("?controller=Schedule&action=select", parameters, function (data) {
             for (var i = 0; i < data.length; i++) {
 
-                if (data[i].start <== data[i].end) {
-                    for (var j = data[i].start; j <= data[i].end; j++) {
-                        alert("#" + data[i].day + j);
-                        $("#" + data[i].day + j).addClass('info');
-                        $("#" + data[i].day + j).text(data[i].initials + ' | ' + data[i].name);
-                    }
+                for (var j = data[i].start; j <= data[i].end; j++) {
+                    alert('Adentro ' + data[i].day + data[i].start + ' ' + data[i].end);
+                    $("#" + data[i].day + '' + j).addClass('info');
+                    $("#" + data[i].day + '' + j).text(data[i].initials + ' | ' + data[i].name);
                 }
             }
         }, "json");
