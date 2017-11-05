@@ -22,11 +22,13 @@ class CourseSemesterController {
             }//for        
             $result = $model->insertCourseSemester($_POST['ID_Semester'],$_POST['initials'],$professors,$num_professors);
             echo json_encode($result);
-        }else{
+        }else if(SSession::getInstance()->permissions == 'A'){
             require 'model/SemesterModel.php';
             $model = new SemesterModel();
             $result = $model->selectAll();
             $this->view->show("insertCourseSemesterView.php", $result);
+        }else{
+            $this->view->show("indexView.php");
         }
     }//insert  
     
@@ -80,12 +82,14 @@ class CourseSemesterController {
             $model = new CourseSemesterModel();
             $result = $model->deleteCourseSemester($_POST['ID_Semester'],$_POST['initials']);
             echo json_encode($result);
-        }else{
+        }else if(SSession::getInstance()->permissions == 'A'){
             require 'model/SemesterModel.php';
             $model = new SemesterModel();
             $result = $model->selectAll();
             $this->view->show("deleteCourseSemesterView.php", $result);
-        }//else
+        }else{
+            $this->view->show("indexView.php");
+        }
     }//delete
     
     public function deleteProfessor() {
@@ -94,11 +98,13 @@ class CourseSemesterController {
             $model = new CourseSemesterModel();
             $result = $model->deleteProfessorCourseSemester($_POST['ID_Semester'],$_POST['initials'],$_POST['identification']);
             echo json_encode($result);
-        }else{
+        }else if(SSession::getInstance()->permissions == 'A'){
             require 'model/SemesterModel.php';
             $model = new SemesterModel();
             $result = $model->selectAll();
             $this->view->show("deleteProfessorCourseSemesterView.php", $result);
-        }//else
+        }else{
+            $this->view->show("indexView.php");
+        }
     }//delete
 }

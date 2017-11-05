@@ -146,6 +146,7 @@ if (isset($session->permissions)) {
 
 <script>  
     $("#form-courses").change(function () {
+        alert("entro");
         if($("#form-courses").val()==="-1"){
             $("#failed-form-courses").attr("data-notify-msg", "<i class=icon-remove-sign></i> Curso inválido. Seleccione e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-form-courses"));
@@ -248,34 +249,34 @@ if (isset($session->permissions)) {
             $("#failed-addContent").attr("data-notify-msg", "<i class=icon-remove-sign></i> Cantidad de Contenidos inválidos. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-addContent"));
         }else{  
-            var parameters = {
-                "appointment": $("#form-courses").val(),
-                "student": $("#form-student").val(),
-                "consecutive": $("#form-consecutive").val(),
-                "date": $("#form-date").val().trim(),
-                "typeA": $("input:radio[name='form-typeA']:checked").val().trim(),
-                "contents":dat,
-                "count":sel.length,
-                "observation": $("#form-observation").val()
-            };
-            $.post("?controller=ClassActivity&action=insert", parameters, function (data) {
-                if (data.result === "1") {
-                    $("#success").attr({
-                        "data-notify-type": "success",
-                        "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!",
-                        "data-notify-position": "bottom-full-width"
-                    });
-                    SEMICOLON.widget.notifications($("#success"));
-                    setTimeout("location.href = '?controller=ClassActivity&action=insert';",2000);
-                } else {
-                    $("#warning").attr({
-                        "data-notify-type": "warning",
-                        "data-notify-msg": "<i class=icon-warning-sign></i> Operacion Incompleta, intente de nuevo!",
-                        "data-notify-position": "bottom-full-width"
-                    });
-                    SEMICOLON.widget.notifications($("#warning"));
-                }
-            }, "json");
+//            var parameters = {
+//                "appointment": $("#form-courses").val(),
+//                "student": $("#form-student").val(),
+//                "consecutive": $("#form-consecutive").val(),
+//                "date": $("#form-date").val().trim(),
+//                "typeA": $("input:radio[name='form-typeA']:checked").val().trim(),
+//                "contents":dat,
+//                "count":sel.length,
+//                "observation": $("#form-observation").val()
+//            };
+//            $.post("?controller=ClassActivity&action=insert", parameters, function (data) {
+//                if (data.result === "1") {
+//                    $("#success").attr({
+//                        "data-notify-type": "success",
+//                        "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!",
+//                        "data-notify-position": "bottom-full-width"
+//                    });
+//                    SEMICOLON.widget.notifications($("#success"));
+//                    setTimeout("location.href = '?controller=ClassActivity&action=insert';",2000);
+//                } else {
+//                    $("#warning").attr({
+//                        "data-notify-type": "warning",
+//                        "data-notify-msg": "<i class=icon-warning-sign></i> Operacion Incompleta, intente de nuevo!",
+//                        "data-notify-position": "bottom-full-width"
+//                    });
+//                    SEMICOLON.widget.notifications($("#warning"));
+//                }
+//            }, "json");
             }
     });
 </script>

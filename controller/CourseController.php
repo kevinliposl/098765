@@ -12,12 +12,14 @@ class CourseController {
             $model = new CourseModel();
             $result = $model->select($_POST["initials"]);
             echo json_encode($result);
-        } else {
+        } else if(SSession::getInstance()->permissions == 'A') {
             require 'model/CourseModel.php';
             $model = new CourseModel();
             $result = $model->selectAll();
             $this->view->show("selectCourseView.php", $result);
-        }//else
+        }else{
+            $this->view->show("indexView.php");
+        }
     }//select
 
     public function selectAll(){
@@ -37,9 +39,11 @@ class CourseController {
             $model = new CourseModel();
             $result = $model->insert($_POST["initials"], $_POST["name"], $_POST["description"], $_POST["instrument"]);
             echo json_encode($result);
-        }else{
+        }else if(SSession::getInstance()->permissions == 'A'){
             $this->view->show("insertCourseView.php",null);
-        }//else
+        }else{
+            $this->view->show("indexView.php");
+        }
     }//insert
     
     public function delete() {
@@ -48,12 +52,14 @@ class CourseController {
             $model = new CourseModel();
             $result = $model->delete($_POST["initials"]);
             echo json_encode($result);
-        }else{
+        }else if(SSession::getInstance()->permissions == 'A'){
             require 'model/CourseModel.php';
             $model = new CourseModel();
             $result = $model->selectAll();
             $this->view->show("deleteCourseView.php", $result);
-        }//else
+        }else{
+             $this->view->show("indexView.php");
+        }
     }//delete
     
     public function update() {
@@ -62,11 +68,13 @@ class CourseController {
             $model = new CourseModel();
             $result = $model->update($_POST["initials"],$_POST["name"],$_POST["description"],$_POST["instrument"]);
             echo json_encode($result);
-        }else{
+        }else if(SSession::getInstance()->permissions == 'A'){
             require 'model/CourseModel.php';
             $model = new CourseModel();
             $result = $model->selectAll();
             $this->view->show("updateCourseView.php", $result);
-        }//else
+        }else{
+              $this->view->show("indexView.php");
+        }
     }//update
 }
