@@ -49,7 +49,8 @@ include_once 'public/header.php';
                         datasets: [{
                                 data: [
                                     data[0].data,
-                                    data[1].data
+                                    data[1].data,
+                                    data[2].data
                                 ],
                                 backgroundColor: [
                                     window.chartColors.red,
@@ -61,8 +62,9 @@ include_once 'public/header.php';
                                 label: 'Dataset 1'
                             }],
                         labels: [
-                            "Inactivos ",
-                            "Activos "
+                            data[0].permissions,
+                            data[1].permissions,
+                            data[2].permissions
                         ]
                     },
                     options: {
