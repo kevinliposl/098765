@@ -98,6 +98,7 @@ if (isset($session->permissions)) {
                             <div class="white-section">
                                 <label for="form-addContent">Contenidos Agregados:</label>
                                 <select id="form-addContent" class="form-control selectpicker" data-live-search="true">
+                                    <option value="-1" data-tokens="">Seleccione un contenido</option>
                                 </select>
                                 <input type="hidden" id="failed-addContent" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                             </div> 
