@@ -7,7 +7,7 @@ class CourseController {
     }
 
     public function select() {
-        if (isset($_POST["initials"])) {
+        if (isset($_POST["initials"]) && SSession::getInstance()->permissions == 'A') {
             require 'model/CourseModel.php';
             $model = new CourseModel();
             $result = $model->select($_POST["initials"]);
@@ -21,14 +21,18 @@ class CourseController {
     }//select
 
     public function selectAll(){
+        if(SSession::getInstance()->permissions == 'A'){
             require 'model/CourseModel.php';
             $model = new CourseModel();
             $result = $model->selectAll();
-        echo json_encode($result);
+            echo json_encode($result);
+        }else{
+            $this->view->show("indexView.php");
+        }
     }
     
     public function insert() {
-        if (isset($_POST["initials"]) && isset($_POST["name"]) && isset($_POST["description"]) && isset($_POST["instrument"])) {
+        if (isset($_POST["initials"]) && isset($_POST["name"]) && isset($_POST["description"]) && isset($_POST["instrument"]) && SSession::getInstance()->permissions == 'A') {
             require 'model/CourseModel.php';
             $model = new CourseModel();
             $result = $model->insert($_POST["initials"], $_POST["name"], $_POST["description"], $_POST["instrument"]);
@@ -39,7 +43,7 @@ class CourseController {
     }//insert
     
     public function delete() {
-        if (isset($_POST["initials"])) {
+        if (isset($_POST["initials"]) && SSession::getInstance()->permissions == 'A') {
             require 'model/CourseModel.php';
             $model = new CourseModel();
             $result = $model->delete($_POST["initials"]);
@@ -53,7 +57,7 @@ class CourseController {
     }//delete
     
     public function update() {
-        if (isset($_POST["initials"]) && isset($_POST["name"]) && isset($_POST["description"]) && isset($_POST["instrument"])) {
+        if (isset($_POST["initials"]) && isset($_POST["name"]) && isset($_POST["description"]) && isset($_POST["instrument"]) && SSession::getInstance()->permissions == 'A') {
             require 'model/CourseModel.php';
             $model = new CourseModel();
             $result = $model->update($_POST["initials"],$_POST["name"],$_POST["description"],$_POST["instrument"]);

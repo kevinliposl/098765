@@ -11,7 +11,7 @@ class ClassActivityController {
             require 'model/ClassActivityModel.php';
             $model = new ClassActivityModel();
             $result = $model->selectCourseClassActivity('888');
-            $result = $model->selectCourseClassActivity($session->identification);
+            //$result = $model->selectCourseClassActivity($session->identification);
             $this->view->show("selectClassActivityView.php", $result);
         }else{
             $this->view->show("indexView.php");
@@ -22,8 +22,8 @@ class ClassActivityController {
         if (SSession::getInstance()->permissions == 'T'){
             require 'model/ClassActivityModel.php';
             $model = new ClassActivityModel();
-            //$result = $model->selectCourseClassActivity('888');
-            $result = $model->selectCourseClassActivity($session->identification);
+            $result = $model->selectCourseClassActivity('888');
+            //$result = $model->selectCourseClassActivity($session->identification);
             $this->view->show("selectRecordStudentForProfessorView.php", $result);
         }else{
             $this->view->show("indexView.php");
@@ -31,7 +31,7 @@ class ClassActivityController {
     }//record
     
     public function selectStudentClassActivity(){
-        if (SSession::getInstance()->permissions == 'T'){
+        if (isset($_POST["appointment"]) && SSession::getInstance()->permissions == 'T'){
              require 'model/ClassActivityModel.php';
             $model = new ClassActivityModel();
             $result = $model->selectStudentClassActivity($_POST['appointment']);
@@ -42,7 +42,7 @@ class ClassActivityController {
     }
     
     public function selectInformationStudentClassActivity(){
-        if (SSession::getInstance()->permissions == 'T'){
+        if (isset($_POST["identification"]) && SSession::getInstance()->permissions == 'T'){
             require 'model/ClassActivityModel.php';
             $model = new ClassActivityModel();
             $result = $model->selectInformationStudentClassActivity($_POST['identification']);
@@ -53,7 +53,7 @@ class ClassActivityController {
     }
     
     public function selectConsecutiveClassActivity(){
-        if (SSession::getInstance()->permissions == 'T'){
+        if ( isset($_POST["appointment"]) && isset($_POST["identification"]) && SSession::getInstance()->permissions == 'T'){
             require 'model/ClassActivityModel.php';
             $model = new ClassActivityModel();
             $result = $model->selectConsecutiveClassActivity($_POST['appointment'],$_POST['identification']);
@@ -64,7 +64,7 @@ class ClassActivityController {
     }
     
     public function selectClassActivity(){
-        if (SSession::getInstance()->permissions == 'T'){
+        if (isset($_POST["appointment"]) && isset($_POST["identification"]) && isset($_POST["consecutive"]) && SSession::getInstance()->permissions == 'T'){
             require 'model/ClassActivityModel.php';
             $model = new ClassActivityModel();
             $result = $model->selectClassActivity($_POST['appointment'],$_POST['identification'],$_POST['consecutive']);
@@ -75,7 +75,7 @@ class ClassActivityController {
     }
     
     public function selectRecordStudentClassActivity(){
-        if (SSession::getInstance()->permissions == 'T'){
+        if (isset($_POST["appointment"]) && isset($_POST["identification"]) && SSession::getInstance()->permissions == 'T'){
             require 'model/ClassActivityModel.php';
             $model = new ClassActivityModel();
             $result = $model->selectRecordStudentClassActivity($_POST['appointment'],$_POST['identification']);
@@ -84,13 +84,9 @@ class ClassActivityController {
             $this->view->show("indexView.php");
         }
     }
-                    if (SSession::getInstance()->permissions == 'T'){
-            
-        }else{
-            $this->view->show("indexView.php");
-        }
+
     public function selectRecordContentClassActivity(){
-        if (SSession::getInstance()->permissions == 'T'){
+        if (isset($_POST["appointment"]) && isset($_POST["identification"]) && isset($_POST["consecutive"]) && SSession::getInstance()->permissions == 'T'){
             require 'model/ClassActivityModel.php';
             $model = new ClassActivityModel();
             $result = $model->selectRecordContentClassActivity($_POST['appointment'],$_POST['identification'],$_POST['consecutive']);
@@ -101,7 +97,7 @@ class ClassActivityController {
     }
 
     public function insert() {
-        if (isset($_POST["observation"]) && SSession::getInstance()->permissions == 'T') {
+        if (isset($_POST["appointment"]) && isset($_POST["student"]) && isset($_POST["consecutive"]) && isset($_POST["date"]) && isset($_POST["typeA"]) && isset($_POST["contents"]) && isset($_POST["count"])  && isset($_POST["observation"]) && SSession::getInstance()->permissions == 'T') {
             require 'model/ClassActivityModel.php';
             $model = new ClassActivityModel();
             $result = $model->insert($_POST["appointment"], $_POST["student"], $_POST["consecutive"], $_POST["date"],$_POST['typeA'],$_POST['contents'],$_POST['count'],$_POST['observation']);
@@ -110,13 +106,13 @@ class ClassActivityController {
             require 'model/ClassActivityModel.php';
             $model = new ClassActivityModel();
             $result = $model->selectCourseClassActivity('888');
-            $result = $model->selectCourseClassActivity('888');
+            //$result = $model->selectCourseClassActivity($session->identification);
             $this->view->show("insertClassActivityView.php",$result);
         }//else
     }//insert
     
     public function update() {
-        if (isset($_POST["observation"])) {
+        if (isset($_POST["appointment"]) && isset($_POST["student"]) && isset($_POST["consecutive"]) && isset($_POST["date"]) && isset($_POST["typeA"]) && isset($_POST["contentsNew"]) && isset($_POST["countNew"]) && isset($_POST["contentsDelete"]) && isset($_POST["countDelete"]) && isset($_POST["observation"]) && SSession::getInstance()->permissions == 'T') {
             require 'model/ClassActivityModel.php';
             $model = new ClassActivityModel();
             $result = $model->update($_POST["appointment"], $_POST["student"], $_POST["consecutive"], $_POST["date"],$_POST['typeA'],$_POST['contentsNew'],$_POST['countNew'],$_POST['contentsDelete'],$_POST['countDelete'],$_POST['observation']);
@@ -124,8 +120,8 @@ class ClassActivityController {
         }else{
             require 'model/ClassActivityModel.php';
             $model = new ClassActivityModel();
-            $id="999";
-            $result = $model->selectCourseClassActivity($id);
+            $result = $model->selectCourseClassActivity('888');
+            //$result = $model->selectCourseClassActivity($session->identification);
             $this->view->show("updateClassActivityView.php",$result);
         }//else
     }//update
