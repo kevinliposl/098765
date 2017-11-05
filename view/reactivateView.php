@@ -1,11 +1,5 @@
 <?php
-$session = SSession::getInstance();
-
-if (isset($session->email)) {
-    //include_once 'public/headerUser.php';
-} else {
-    include_once 'public/header.php';
-}
+include_once 'public/headerAdmin.php';
 ?>
 
 <!-- Page Title
@@ -33,7 +27,7 @@ if (isset($session->email)) {
                                     <?php foreach ($vars as $var) { ?>
                                         <option value="<?php echo $var["identification"]; ?>" data-tokens="">
                                             <?php echo $var["identification"] . " | " . $var["name"] . " " . $var["first_lastname"] . " " . $var["second_lastname"] . " | " . $var["tipo"]; ?></option>
-                                        <?php }
+                                    <?php }
                                     ?>
                                 </select>
                             </div>

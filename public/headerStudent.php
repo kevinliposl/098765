@@ -67,15 +67,9 @@
                             <ul>
                                 <li><a href="?"><div>Home</div></a>
                                 <li><a href="#"><div>Sistema</div></a>
-<!--                                    Agregar ver expediente y demas.-->
-                                
-                                </li>
-                                <li><a href="#"><div>Perfil</div></a>
                                     <ul>
-                                        <li><a href="?controller=Student&action=insertStudent"><div>Insertar Estudiante</div></a></li> 
-                                        <li><a href="?controller=Student&action=deleteStudent"><div>Borrar Estudiante</div></a></li> 
-                                        <li><a href="?controller=Student&action=reactivateStudent"><div>Reactivar Estudiante</div></a></li> 
-                                        <li><a href="?controller=Student&action=updateStudent"><div>Actualizar Estudiante</div></a></li> 
+                                        <li><a href="?controller=Student&action=updatePersonalDataStudent"><div>Actualizar datos</div></a></li> 
+                                        <li><a href="?controller=Student&action=getStudentExp"><div>Expediente Académico</div></a></li> 
                                     </ul>
                                 </li>
                                 <li><a href="?controller=User&action=signOff"><div>Cerrar Sesi&oacute;n</div></a></li>
