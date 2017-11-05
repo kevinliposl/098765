@@ -134,7 +134,7 @@ if (isset($session->permissions)) {
             $("#failed-form-semester").attr("data-notify-msg", "<i class=icon-remove-sign></i> Semestre inválido. Seleccione e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-form-semester"));
             return false;
-        }else if(("#form-courses").val()==="-1"){
+        }else if($("#form-courses").val()==="-1"){
             $("#failed-form-courses").attr("data-notify-msg", "<i class=icon-remove-sign></i> Curso inválido. Seleccione e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-form-courses"));
             return false;
@@ -151,7 +151,7 @@ if (isset($session->permissions)) {
                         "data-notify-position": "bottom-full-width"
                     });
                     SEMICOLON.widget.notifications($("#success"));
-                    setTimeout("location.href = '?controller=Course&action=deleteCourse';",2000);
+                    setTimeout("location.href = '?controller=CourseSemester&action=deleteCourse';",2000);
                 } else {
                     $("#warning").attr({
                         "data-notify-type": "warning",
