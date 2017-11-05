@@ -10,8 +10,8 @@ class ClassActivityController {
         if (SSession::getInstance()->permissions == 'T'){
             require 'model/ClassActivityModel.php';
             $model = new ClassActivityModel();
-            $result = $model->selectCourseClassActivity('888');
-            //$result = $model->selectCourseClassActivity($session->identification);
+            //$result = $model->selectCourseClassActivity('888');
+            $result = $model->selectCourseClassActivity($session->identification);
             $this->view->show("selectClassActivityView.php", $result);
         }else{
             $this->view->show("indexView.php");
@@ -22,8 +22,8 @@ class ClassActivityController {
         if (SSession::getInstance()->permissions == 'T'){
             require 'model/ClassActivityModel.php';
             $model = new ClassActivityModel();
-            $result = $model->selectCourseClassActivity('888');
-            //$result = $model->selectCourseClassActivity($session->identification);
+            //$result = $model->selectCourseClassActivity('888');
+            $result = $model->selectCourseClassActivity($session->identification);
             $this->view->show("selectRecordStudentForProfessorView.php", $result);
         }else{
             $this->view->show("indexView.php");
@@ -105,8 +105,8 @@ class ClassActivityController {
         }else{
             require 'model/ClassActivityModel.php';
             $model = new ClassActivityModel();
-            $result = $model->selectCourseClassActivity('888');
-            //$result = $model->selectCourseClassActivity($session->identification);
+            //$result = $model->selectCourseClassActivity('888');
+            $result = $model->selectCourseClassActivity($session->identification);
             $this->view->show("insertClassActivityView.php",$result);
         }//else
     }//insert
@@ -120,8 +120,8 @@ class ClassActivityController {
         }else{
             require 'model/ClassActivityModel.php';
             $model = new ClassActivityModel();
-            $result = $model->selectCourseClassActivity('888');
-            //$result = $model->selectCourseClassActivity($session->identification);
+            //$result = $model->selectCourseClassActivity('888');
+            $result = $model->selectCourseClassActivity($session->identification);
             $this->view->show("updateClassActivityView.php",$result);
         }//else
     }//update
