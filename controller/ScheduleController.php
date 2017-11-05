@@ -9,12 +9,12 @@ class ScheduleController {
 
     function insert() {
         $model = new SemesterModel();
-        if (isset($_POST["year"]) && isset($_POST["semester"])) {
+        if (isset($_POST["ID"]) && isset($_POST["inicio"]) && isset($_POST["fin"]) && isset($_POST["day"])) {
             $result = $model->insert($_POST["year"], $_POST["semester"]);
             echo json_encode($result);
         } else {
             $result = $model->selectAll();
-            $this->view->show("insertScheduleView.php",$result);
+            $this->view->show("insertScheduleView.php", $result);
         }
     }
 
@@ -41,4 +41,12 @@ class ScheduleController {
         }
     }
 
+    function selectWithoutSchedule() {
+        if (isset($_POST["ID_Semester"])) {
+            require 'model/CourseSemesterModel.php';
+            $model = new CourseSemesterModel();
+            $result = $model->selectWithoutSchedule($_POST["ID_Semester"]);
+            echo json_encode($result);
+        }
+    }
 }

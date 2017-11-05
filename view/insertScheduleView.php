@@ -22,7 +22,7 @@ if (isset($session->email)) {
 <section id="content">
     <div class="content-wrap">
         <div class="container clearfix">
-            <form class="nobottommargin" onsubmit="return validate();">
+            <form class="nobottommargin" onsubmit="return false;">
                 <div class="col_one_fifth">
                     <label for="form-semester">Semestre:</label>
                     <select id="form-semester" class="selectpicker form-control" data-live-search="true">
@@ -43,33 +43,33 @@ if (isset($session->email)) {
 
                 <div class="col_one_fourth">
                     <label for="form-courses">Curso</label>
-                    <select id="form-courses" class="selectpicker form-control" data-live-search="true" disabled>
+                    <select id="form-courses" class="selectpicker form-control" data-live-search="true" disabled="true">
                         <option value="-1" data-tokens="">Seleccione un Curso</option>
                     </select>
                 </div>
                 <div class="col_one_fourth">
                     <label for="form-hour-init">Horario</label>
-                    <select id="form-hour-init" class="form-control" data-live-search="true" disabled>
-                        <option value="-1" data-tokens="">Seleccione la Hora de Inicio</option>
-                        <option value="7" data-tokens="">7:00</option>
-                        <option value="8" data-tokens="">8:00</option>
-                        <option value="9" data-tokens="">9:00</option>
-                        <option value="10" data-tokens="">10:00</option>
-                        <option value="11" data-tokens="">11:00</option>
-                        <option value="12" data-tokens="">12:00</option>
-                        <option value="13" data-tokens="">13:00</option>
-                        <option value="14" data-tokens="">14:00</option>
-                        <option value="15" data-tokens="">15:00</option>
-                        <option value="16" data-tokens="">16:00</option>
-                        <option value="17" data-tokens="">17:00</option>
-                        <option value="18" data-tokens="">18:00</option>
-                        <option value="19" data-tokens="">19:00</option>
-                        <option value="20" data-tokens="">20:00</option>
-                        <option value="21" data-tokens="">21:00</option>
-                        <option value="22" data-tokens="">22:00</option>
+                    <select id="form-hour-init" class="form-control" data-live-search="true" disabled="true">
+                        <option value="-1" data-tokens>Seleccione la Hora de Inicio</option>
+                        <option value="7" data-tokens>7:00</option>
+                        <option value="8" data-tokens>8:00</option>
+                        <option value="9" data-tokens>9:00</option>
+                        <option value="10" data-tokens>10:00</option>
+                        <option value="11" data-tokens>11:00</option>
+                        <option value="12" data-tokens>12:00</option>
+                        <option value="13" data-tokens>13:00</option>
+                        <option value="14" data-tokens>14:00</option>
+                        <option value="15" data-tokens>15:00</option>
+                        <option value="16" data-tokens>16:00</option>
+                        <option value="17" data-tokens>17:00</option>
+                        <option value="18" data-tokens>18:00</option>
+                        <option value="19" data-tokens>19:00</option>
+                        <option value="20" data-tokens>20:00</option>
+                        <option value="21" data-tokens>21:00</option>
+                        <option value="22" data-tokens>22:00</option>
                     </select>
                     </br>
-                    <select id="form-hour-end" class="form-control" data-live-search="true" disabled>
+                    <select id="form-hour-end" class="form-control" data-live-search="true" disabled="true">
                         <option value="-1" data-tokens="">Seleccione la Hora de Finalizaci&oacute;n</option>
                         <option value="7">7:50</option>
                         <option value="8">8:50</option>
@@ -103,6 +103,7 @@ if (isset($session->email)) {
                     </select>
                 </div>
                 <div class="col_full nobottommargin">
+                    <input type="submit" id="form-submit" value="Guardar horario" class="button button-3d button-black nomargin form-control"/>
                     <input type="hidden" id="warning" data-notify-position="bottom-full-width" data-notify-type= "warning"/>
                     <input type="hidden" id="success" data-notify-position="bottom-full-width" data-notify-type= "success"/>
                     <input type="hidden" id="failed" data-notify-position="bottom-full-width" data-notify-type= "error"/>
@@ -270,11 +271,11 @@ if (isset($session->email)) {
         };
 
         $('#form-courses').attr("disabled", false);
-
-        $.post("?controller=CourseSemester&action=selectAllCoursesSemester", parameters, function (data) {
-            alert('asdasdasdasdasd');
+        $.post("?controller=Schedule&action=selectWithoutSchedule", parameters, function (data) {
+            $('#form-courses').empty();
+            $('#form-courses').append($("<option></option>").attr("value", -1).text('Seleccione un Curso'));
             for (var i = 0; i < data.length; i++) {
-                $('#form-courses').append($("<option></option>").attr("value", data[i].initials).text(data[i].name)); //AGREGAR OPCIONES
+                $('#form-courses').append($("<option></option>").attr("value", data[i].initials).text(data[i].initials + ' | ' + data[i].name)); //AGREGAR OPCIONES
             }
             $("#form-courses").selectpicker("refresh"); ///REFRESCA SELECT PARA QUE AGARRE AGREGADOS
 
@@ -288,7 +289,6 @@ if (isset($session->email)) {
     });
 
     $("#form-hour-init").change(function () {
-
         if ($("#form-hour-init").val() !== -1 && $("#form-hour-end").val() !== -1) {
             $('#form-days').attr("disabled", false);
             $('#form-days').selectpicker("refresh");
@@ -296,11 +296,38 @@ if (isset($session->email)) {
     });
 
     $("#form-hour-end").change(function () {
-
         if ($("#form-hour-init").val() !== -1 && $("#form-hour-end").val() !== -1) {
             $('#form-days').attr("disabled", false);
             $('#form-days').selectpicker("refresh");
         }
+    });
+
+    $('#form-submit').click(function () {
+
+        var parameters = {
+            "ID_Semester": $("#form-semester").val()
+        };
+        
+        $.post("?controller=Schedule&action=selectWithoutSchedule", parameters, function (data) {
+            $('#form-courses').empty();
+            $('#form-courses').append($("<option></option>").attr("value", -1).text('Seleccione un Curso'));
+            for (var i = 0; i < data.length; i++) {
+                $('#form-courses').append($("<option></option>").attr("value", data[i].initials).text(data[i].initials + ' | ' + data[i].name)); //AGREGAR OPCIONES
+            }
+            $("#form-courses").selectpicker("refresh"); ///REFRESCA SELECT PARA QUE AGARRE AGREGADOS
+
+        }, "json");
+
+//        if ($('#form-courses').val() !== -1) {
+//            if ($('#form-days').val()) {
+//                if ($("#form-hour-init").val() <= $("#form-hour-end").val()) {
+//                }
+//            }else{
+//                alert('Seleccione un curso');
+//            }
+//        } else {
+//            alert('Seleccione un curso');
+//        }
     });
 
 
