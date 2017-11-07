@@ -65,12 +65,8 @@
                         ============================================= -->
                         <nav id="primary-menu">
                             <ul>
-                                <li><a href="?"><div>Home</div></a>
-                                <li><a href="#"><div>Sistema</div></a>
-                                    <ul>
-
-                                    </ul>
-                                </li>
+                                <li><a href="?"><div>Home</div></a></li>
+                                <li><a href="#"><div>Sistema</div></a></li>
                                 <li><a href="#"><div>Perfil</div></a>
                                     <ul>
                                         <li><a href="?controller=Professor&action=personalSelection"><div>Obtener Datos Personales</div></a></li>
