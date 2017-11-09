@@ -24,6 +24,8 @@
         <link rel="stylesheet" href="public/css/typeahead.js-bootstrap.css" type="text/css"/>
         <link rel="stylesheet" href="public/css/responsive.css" type="text/css" />
 
+        <!-- JS
+        ============================================= -->
         <script src="public/js/jquery.min.js" type="text/javascript"></script>
 
         <!-- Document Title
@@ -98,63 +100,8 @@
                 </div>
             </section><!-- #content end -->
 
-            <script>
-
-                $("#submit").click(function () {
-
-                    var email = $('#form-email').val().trim();
-                    var password = $('#form-password').val().trim();
-
-                    if (!/\w+@\w+\.+[a-z]/.test(email) || email.split(' ', 2).length > 1) {
-                        $('#failed-email').attr('data-notify-msg', '<i class=icon-remove-sign></i> Correo Incorrecto. Complete correctamente e intente de nuevo!');
-                        SEMICOLON.widget.notifications($('#failed-email'));
-                        return false;
-                    }
-                    if (password.length < 1 || email.split(' ', 2).length > 1) {
-                        $('#failed-password').attr('data-notify-msg', '<i class=icon-remove-sign></i> Contrase&ncaron;a Incorrecta. Complete correctamente e intente de nuevo!');
-                        SEMICOLON.widget.notifications($('#failed-password'));
-                        return false;
-                    }
-
-                    if ($('#permissions').val() <= 0) {
-                        var parameters = {
-                            'email': email,
-                            'password': password
-                        };
-                        $.post('?controller=User&action=logIn', parameters, function (data) {
-                            if (data.result === '0') {
-                                $('#failed').attr({
-                                    'data-notify-msg': '<i class=icon-warning-sign></i> Correo o Contrase&ncaron;a Incorrectos. Complete correctamente e intente de nuevo!'
-                                });
-                                SEMICOLON.widget.notifications($('#failed'));
-                            } else if (data.result === '1') {
-                                location.href = '?';
-                            } else {
-                                for (var i = 0; i < data.length; i++) {
-                                    var per;
-                                    data[i].permissions === 'A' ? per = 'Administrador' : data[i].permissions === 'S' ? per = 'Estudiante' : per = 'Profesor';
-                                    $('#form-permissions').append($("<option></option>").attr("value", data[i].permissions).text(per));
-                                }
-                                $('#div-permissions').css('display', 'block');
-                            }
-                        }, 'json');
-                        $('#permissions').val(1);
-                    } else {
-                        if ($('#form-permissions').val()) {
-                            var param = {
-                                'permissions': $('#form-permissions').val()
-                            };
-                            $.post('?controller=User&action=setPermissions', param, function (data) {
-                                location.href = '?';
-                            }, 'json');
-                        } else {
-                            $('#failed-permissions').attr('data-notify-msg', '<i class=icon-remove-sign></i> Seleccione un Rol. Complete correctamente e intente de nuevo!');
-                            SEMICOLON.widget.notifications($('#failed-permissions'));
-                        };
-                    };
-                });
-            </script>
+            <script src="public/js/validation/loginVal.js" type="text/javascript"></script>
 
             <?php
-            include_once 'public/footer.php';
+            include_once 'public/footerEmpty.php';
             

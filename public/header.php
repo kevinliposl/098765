@@ -30,9 +30,8 @@
         <link rel="stylesheet" href="public/css/responsive.css" type="text/css" />
 
         <!-- JS
-        ============================================= -->
+============================================= -->
         <script src="public/js/jquery.min.js" type="text/javascript"></script>
-
         <!-- Document Title
         ============================================= -->
         <title>Fusi&oacute;n Academia de M&uacute;sica</title>

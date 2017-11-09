@@ -109,16 +109,20 @@
 ============================================= -->
 <div id="gotoTop" class="icon-angle-up"></div>
 
+<!-- JS
+============================================= -->
+<script src="public/js/jquery.min.js" type="text/javascript"></script>
+
 <!-- Footer Scripts
 ============================================= -->
 <script src="public/js/jquery.js" type="text/javascript"></script>
 <script src="public/js/plugins.js" type="text/javascript"></script>
-<script src="public/js/components/moment.js" type="text/javascript"></script>
+<script async src="public/js/moment.js" type="text/javascript"></script>
 
 <!-- Charts JavaScripts
 ============================================= -->
-<script src="public/js/Chart.bundle.min.js" type="text/javascript"></script>
-<script src="public/js/utils.js" type="text/javascript"></script>
+<script async src="public/js/Chart.bundle.min.js" type="text/javascript"></script>
+<script async src="public/js/utils.js" type="text/javascript"></script>
 
 <!-- Bootstrap Select2
 ============================================= -->
@@ -126,7 +130,7 @@
 
 <!-- Bootstrap Editable Plugin
 ============================================= -->
-<script src="public/js/components/bs-editable.js" type="text/javascript"></script>
+<script async src="public/js/bs-editable.js" type="text/javascript"></script>
 
 <!-- Bootstrap Typeaheadjs Plugin SE QUITO ELEMENTOS
 ============================================= -->
@@ -134,16 +138,16 @@
 
 <!-- Date & Time Picker JS
 ============================================= -->
-<script src="public/js/datepicker.js" type="text/javascript"></script>
-<script src="public/js/components/timepicker.js" type="text/javascript"></script>
+<script async src="public/js/datepicker.js" type="text/javascript"></script>
+<script async src="public/js/timepicker.js" type="text/javascript"></script>
 
 <!-- Bootstrap Select Plugin
 ============================================= -->
-<script src="public/js/components/bs-select.js" type="text/javascript"></script>
+<script src="public/js/bs-select.js" type="text/javascript"></script>
 
 <!-- Select Splitter Plugin
 ============================================= -->
-<script src="public/js/components/selectsplitter.js" type="text/javascript"></script>
+<script src="public/js/selectsplitter.js" type="text/javascript"></script>
 
 <script type="text/javascript">
     $('.selectsplitter').selectsplitter();
