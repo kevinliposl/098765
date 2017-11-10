@@ -30,27 +30,22 @@
         <link rel="stylesheet" href="public/css/responsive.css" type="text/css" />
 
         <!-- JS
-============================================= -->
+        ============================================= -->
         <script src="public/js/jquery.min.js" type="text/javascript"></script>
+        
         <!-- Document Title
         ============================================= -->
         <title>Fusi&oacute;n Academia de M&uacute;sica</title>
-
     </head>
     <body class="stretched">
-
         <!-- Document Wrapper
         ============================================= -->
         <div id="wrapper" class="clearfix">
-
             <!-- Header
             ============================================= -->
             <header id="header" class="transparent-header full-header" data-sticky-class="not-dark">
-
                 <div id="header-wrap">
-
                     <div class="container clearfix">
-
                         <div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
 
                         <!-- Logo
@@ -68,9 +63,6 @@
                                 <li><a href="?controller=User&action=logIn"><div>Iniciar Sesi&oacute;n</div></a></li>
                             </ul>
                         </nav><!-- #primary-menu end -->
-
                     </div>
-
                 </div>
-
             </header><!-- #header end -->

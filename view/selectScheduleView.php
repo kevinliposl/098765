@@ -12,7 +12,7 @@ if (isset($session->permissions)) {
 <section id="page-title">
 
     <div class="container clearfix">
-        <h1>Insertar Horario</h1>
+        <h1>Horarios</h1>
     </div>
 </section><!-- #page-title end -->
 
@@ -198,43 +198,8 @@ if (isset($session->permissions)) {
 
 </section><!-- #content end -->
 
-<script>
+<script src="public/js/validation/selectSchedule.js" type="text/javascript"></script>
 
-    var days = {
-        1: 'Lunes',
-        2: 'Martes',
-        3: 'Miercoles',
-        4: 'Jueves',
-        5: 'Viernes',
-        6: 'Sabado',
-        7: 'Domingo'
-    };
-
-    //Change Combobox
-    $("#form-semester").change(function () {
-        var parameters = {
-            "ID_Semester": $("#form-semester").val()
-        };
-
-        for (var k = 1; k <= 7; k++) {
-            for (var x = 7; x <= 19; x++) {
-                $("#" + days[k] + '' + x).removeClass('info');
-                $("#" + days[k] + '' + x).text('');
-            }
-        }
-
-        $.post("?controller=Schedule&action=select", parameters, function (data) {
-
-            for (var i = 0; i < data.length; i++) {
-                for (var j = parseInt(data[i].start); j <= parseInt(data[i].end); j++) {
-                    $("#" + data[i].day + '' + j).addClass('info');
-                    $("#" + data[i].day + '' + j).text(data[i].initials + ' | ' + data[i].name);
-                }
-            }
-        }, "json");
-    });
-
-</script>
 
 <!-- End Content
 ============================================= -->    

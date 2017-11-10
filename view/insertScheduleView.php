@@ -273,6 +273,17 @@ if (isset($session->permissions)) {
         7: 'Domingo'
     };
 
+    var colorClass = {
+        0: 'info',
+        1: 'success',
+        2: 'danger',
+        3: 'warning'
+    };
+
+    function getRandomArbitrary(min, max) {
+        return Math.floor(Math.random() * (max - min)) + min;
+    }
+
     //Change Combobox
     $("#form-semester").change(function () {
         var parameters = {
@@ -293,17 +304,16 @@ if (isset($session->permissions)) {
 
         for (var k = 1; k <= 7; k++) {
             for (var x = 7; x <= 19; x++) {
-                $("#" + days[k] + '' + x).removeClass('info');
+                $("#" + days[k] + '' + x).removeClass();
                 $("#" + days[k] + '' + x).text('');
             }
         }
-
-
+        
         $.post("?controller=Schedule&action=select", parameters, function (data) {
-
             for (var i = 0; i < data.length; i++) {
+                var temp = getRandomArbitrary(0, 3);
                 for (var j = parseInt(data[i].start); j <= parseInt(data[i].end); j++) {
-                    $("#" + data[i].day + '' + j).addClass('info');
+                    $("#" + data[i].day + '' + j).addClass(colorClass[temp]);
                     $("#" + data[i].day + '' + j).text(data[i].initials + ' | ' + data[i].name);
                 }
             }
@@ -342,12 +352,13 @@ if (isset($session->permissions)) {
 
         $.post("?controller=Schedule&action=insert", parameters, function (data) {
             if (data.result === '1') {
+                var temp = getRandomArbitrary(0, 3);
                 $("#" + $("#form-days").val() + $("#form-hour-init").val()).addClass('info');
                 $("#" + $("#form-days").val() + $("#form-hour-init").val()).text($("#form-courses option:selected").text().trim());
 
                 if ($("#form-hour-init").val() < $("#form-hour-end").val()) {
                     for (var j = $("#form-hour-init").val(); j <= $("#form-hour-end").val(); j++) {
-                        $("#" + $("#form-days").val() + j).addClass('info');
+                        $("#" + $("#form-days").val() + j).addClass(colorClass[temp]);
                         $("#" + $("#form-days").val() + j).text($("#form-courses option:selected").text().trim());
                     }
                 }
