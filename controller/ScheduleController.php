@@ -37,7 +37,7 @@ class ScheduleController {
             echo json_encode($result);
         } else {
             $result = $model->selectAll();
-            $this->view->show("selectSemesterView.php", $result);
+            $this->view->show("selectScheduleView.php", $result);
         }
     }
 

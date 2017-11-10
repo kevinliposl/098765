@@ -113,6 +113,14 @@
                                         <li><a href="?controller=CourseSemester&action=select"><div>Ver Asignaciones</div></a></li> 
                                     </ul>
                                 </li>
+                                <li><a href="#"><div>Horarios</div></a>
+                                    <ul>
+                                        <li><a href="?controller=Schedule&action=insert"><div>Asignar Horario</div></a></li> 
+                                        <li><a href="?controller=Schedule&action=delete"><div>Eliminar Horario</div></a></li> 
+                                        <li><a href="?controller=Schedule&action=update"><div>Actualizar Horario</div></a></li> 
+                                        <li><a href="?controller=Schedule&action=select"><div>Ver Horarios</div></a></li> 
+                                    </ul>
+                                </li>
                                 <li><a href="?action=report"><div>Reportes</div></a>
                                 <li><a href="?controller=User&action=signOff"><div>Cerrar Sesi&oacute;n</div></a></li>
                             </ul>

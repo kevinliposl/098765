@@ -1,13 +1,12 @@
 <?php
 $session = SSession::getInstance();
 
-if (isset($session->email)) {
-    include_once 'public/headerUser.php';
+if (isset($session->permissions)) {
+    include_once 'public/headerAdmin.php';
 } else {
     include_once 'public/header.php';
 }
 ?>
-
 <!-- Page Title
 ============================================= -->
 <section id="page-title">
@@ -110,7 +109,7 @@ if (isset($session->email)) {
                 </div>
             </form>
             <div class="table-responsive">
-                <table class="table table-bordered nobottommargin table-striped" id="horario">
+                <table class="table table-bordered nobottommargin table-striped" id="shedule">
                     <thead>
                         <tr>
                             <th>Horas</th>
@@ -264,6 +263,16 @@ if (isset($session->email)) {
 
 <script>
 
+    var days = {
+        1: 'Lunes',
+        2: 'Martes',
+        3: 'Miercoles',
+        4: 'Jueves',
+        5: 'Viernes',
+        6: 'Sabado',
+        7: 'Domingo'
+    };
+
     //Change Combobox
     $("#form-semester").change(function () {
         var parameters = {
@@ -274,6 +283,7 @@ if (isset($session->email)) {
         $.post("?controller=Schedule&action=selectWithoutSchedule", parameters, function (data) {
             $('#form-courses').empty();
             $('#form-courses').append($("<option></option>").attr("value", -1).text('Seleccione un Curso'));
+
             for (var i = 0; i < data.length; i++) {
                 $('#form-courses').append($("<option></option>").attr("value", data[i].ID).text(data[i].initials + ' | ' + data[i].name)); //AGREGAR OPCIONES
             }
@@ -281,18 +291,25 @@ if (isset($session->email)) {
 
         }, "json");
 
+        for (var k = 1; k <= 7; k++) {
+            for (var x = 7; x <= 19; x++) {
+                $("#" + days[k] + '' + x).removeClass('info');
+                $("#" + days[k] + '' + x).text('');
+            }
+        }
+
 
         $.post("?controller=Schedule&action=select", parameters, function (data) {
-            for (var i = 0; i < data.length; i++) {
 
-                for (var j = data[i].start; j <= data[i].end; j++) {
-                    alert('Adentro ' + data[i].day + data[i].start + ' ' + data[i].end);
+            for (var i = 0; i < data.length; i++) {
+                for (var j = parseInt(data[i].start); j <= parseInt(data[i].end); j++) {
                     $("#" + data[i].day + '' + j).addClass('info');
                     $("#" + data[i].day + '' + j).text(data[i].initials + ' | ' + data[i].name);
                 }
             }
         }, "json");
-    });
+    }
+    );
 
     //Change Combobox
     $("#form-courses").change(function () {
