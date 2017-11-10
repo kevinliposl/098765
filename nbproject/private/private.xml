@@ -3,10 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/098765/public/headerAdmin.php</file>
-            <file>file:/C:/xampp/htdocs/098765/view/insertProfessorView.php</file>
-            <file>file:/C:/xampp/htdocs/098765/view/insertScheduleView.php</file>
-            <file>file:/C:/xampp/htdocs/098765/public/header.php</file>
+            <file>file:/C:/xampp/htdocs/098765/view/reportView.php</file>
+            <file>file:/C:/xampp/htdocs/098765/public/js/validation/report.js</file>
         </group>
     </open-files>
 </project-private>

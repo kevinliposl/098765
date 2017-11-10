@@ -15,7 +15,6 @@ if (isset($session->permissions)) {
 <!-- Page Title
 ============================================= -->
 <section id="page-title">
-
     <div class="container clearfix">
         <h1>Insertar Administrador</h1>
     </div>

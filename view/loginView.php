@@ -100,8 +100,7 @@
                 </div>
             </section><!-- #content end -->
 
-            <script src="public/js/validation/loginVal.js" type="text/javascript"></script>
+            <script src="public/js/validation/login.js" type="text/javascript"></script>
 
             <?php
-            include_once 'public/footerEmpty.php';
-            
+            include_once 'public/footerEmpty.php';            
