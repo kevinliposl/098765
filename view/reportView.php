@@ -25,26 +25,40 @@ if (isset($session->permissions)) {
 <section id="content">
     <div class="content-wrap">
         <div class="container clearfix">
-            <div class="accordion-lg divcenter nobottommargin">
-                <div class="acctitle">
-                    <div class="acc_content clearfix">
-                        <select id="form-report" class="selectpicker form-control" data-live-search="true">
-                            <option value="null" data-tokens>Seleccione un Reporte</option>
-                            <option value="usuariosActivos" data-tokens>Usuarios Activos</option>
-                            <option value="us" data-tokens>2</option>
-                            <option value="us" data-tokens>3</option>
-                        </select>
-                        </br>
-                        </br>
-                        </br>
-                        <div class="col_half" style="width: 100%;" >
-                            <canvas id="chart-area"/>
-                        </div>
-                    </div>
-                </div>
+            <div class="table-responsive">
+                <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                    <thead>
+
+                    </thead>
+                    <tfoot>
+
+                    </tfoot>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+            <select id="form-report" class="selectpicker form-control" data-live-search="true">
+                <option value="null" data-tokens>Seleccione un Reporte</option>
+                <option value="usuariosActivos" data-tokens>Usuarios Activos</option>
+                <option value="us" data-tokens>2</option>
+                <option value="us" data-tokens>3</option>
+            </select>
+            </br>
+            </br>
+            </br>
+            <div class="col_half" style="width: 100%;" >
+                <canvas id="chart-area"/>
             </div>
         </div>
+    </div>
 </section><!-- #content end -->
+
+<script>
+    $(document).ready(function () {
+        $('#datatable').DataTable();
+    });
+</script>
 
 <script src="public/js/validation/report.js" type="text/javascript"></script>
 

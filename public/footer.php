@@ -149,6 +149,9 @@
 ============================================= -->
 <script src="public/js/selectsplitter.js" type="text/javascript"></script>
 
+<!-- Bootstrap Data Table Plugin -->
+<script type="text/javascript" src="public/js/bs-datatable.js"></script>
+
 <script type="text/javascript">
     $('.selectsplitter').selectsplitter();
 </script>

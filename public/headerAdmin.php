@@ -116,8 +116,8 @@
                                 <li><a href="#"><div>Horarios</div></a>
                                     <ul>
                                         <li><a href="?controller=Schedule&action=insert"><div>Asignar Horario</div></a></li> 
-                                        <li><a href="?controller=Schedule&action=delete"><div>Eliminar Horario</div></a></li> 
-                                        <li><a href="?controller=Schedule&action=update"><div>Actualizar Horario</div></a></li> 
+                                        <!--<li><a href="?controller=Schedule&action=delete"><div>Eliminar Horario</div></a></li>--> 
+                                        <!--<li><a href="?controller=Schedule&action=update"><div>Actualizar Horario</div></a></li>--> 
                                         <li><a href="?controller=Schedule&action=select"><div>Ver Horarios</div></a></li> 
                                     </ul>
                                 </li>
