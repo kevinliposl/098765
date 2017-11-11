@@ -121,7 +121,7 @@
                                         <li><a href="?controller=Schedule&action=select"><div>Ver Horarios</div></a></li> 
                                     </ul>
                                 </li>
-                                <li><a href="?action=report"><div>Reportes</div></a>
+                                <li><a href="?action=report"><div>Reportes</div></a></li>
                                 <li><a href="?controller=User&action=signOff"><div>Cerrar Sesi&oacute;n</div></a></li>
                             </ul>
                         </nav><!-- #primary-menu end -->

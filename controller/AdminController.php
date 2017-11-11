@@ -2,11 +2,19 @@
 
 class AdminController {
 
+    /**
+     * 
+     *      
+     */
     function __construct() {
         $this->view = new View();
         require 'model/AdminModel.php';
     }
 
+    /**
+     * @return array data
+     *      
+     */
     function insert() {
         if (SSession::getInstance()->permissions == 'R') {
             if (isset($_POST["id"]) && isset($_POST["email"]) && isset($_POST["name"]) && isset($_POST["firstLastName"]) && isset($_POST["secondLastName"])) {
@@ -20,7 +28,11 @@ class AdminController {
             $this->view->show("404View.php");
         }
     }
-
+    
+    /**
+     * @return array data
+     *      
+     */
     function delete() {
         if (SSession::getInstance()->permissions == 'R') {
             $model = new AdminModel();
@@ -35,7 +47,11 @@ class AdminController {
             $this->view->show("404View.php");
         }
     }
-
+    
+    /**
+     * @return array data
+     *      
+     */
     function select() {
         if (SSession::getInstance()->permissions == 'R') {
             $model = new AdminModel();

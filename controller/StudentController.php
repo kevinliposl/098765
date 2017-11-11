@@ -2,10 +2,17 @@
 
 class StudentController {
 
+    /**
+     *      
+     */
     public function __construct() {
         $this->view = new View();
     }
 
+    /**
+     * @return array Data
+     *      
+     */
     public function insertStudent() {
         $ssession = SSession::getInstance();
         if ($ssession->__isset("identification") && $ssession->__isset("permissions") && $ssession->__get("permissions") === "A") {
@@ -22,6 +29,10 @@ class StudentController {
         }
     }
 
+    /**
+     * @return array Data
+     *      
+     */
     public function deleteStudent() {
         require 'model/StudentModel.php';
         $ssession = SSession::getInstance();
@@ -40,6 +51,10 @@ class StudentController {
         }
     }
 
+    /**
+     * @return array Data
+     *      
+     */
     public function getStudentExp() {
         require 'model/StudentModel.php';
         $ssession = SSession::getInstance();
@@ -52,6 +67,10 @@ class StudentController {
         }
     }
 
+    /**
+     * @return array Data
+     *      
+     */
     public function reactivateStudent() {
         require 'model/StudentModel.php';
         $ssession = SSession::getInstance();
@@ -70,6 +89,10 @@ class StudentController {
         }
     }
 
+    /**
+     * @return array Data
+     *      
+     */
     public function updateStudent() {
         require 'model/StudentModel.php';
         $ssession = SSession::getInstance();
@@ -88,6 +111,10 @@ class StudentController {
         }
     }
 
+    /**
+     * @return array Data
+     *      
+     */
     public function updatePersonalDataStudent() {
         require 'model/StudentModel.php';
         $ssession = SSession::getInstance();
@@ -110,6 +137,10 @@ class StudentController {
         }
     }
 
+    /**
+     * @return array Data
+     *      
+     */
     public function getStudentData() {
         require 'model/StudentModel.php';
         $ssession = SSession::getInstance();
@@ -124,6 +155,10 @@ class StudentController {
         }
     }
 
+    /**
+     * @return array Data
+     *      
+     */
     public function selectStudent() {
         require 'model/StudentModel.php';
         $ssession = SSession::getInstance();
@@ -138,6 +173,10 @@ class StudentController {
         }
     }
 
+    /**
+     * @return array Data
+     *      
+     */
     public function selectDeleteStudent() {
         require 'model/StudentModel.php';
         $ssession = SSession::getInstance();
@@ -150,5 +189,4 @@ class StudentController {
             echo json_encode($result);
         }
     }
-
 }

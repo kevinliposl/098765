@@ -2,11 +2,18 @@
 
 class UserController {
 
+    /**
+     *      
+     */
     function __construct() {
         $this->view = new View();
         require 'model/UserModel.php';
     }
 
+    /**
+     * @return array Data
+     *      
+     */
     function logIn() {
         if (isset($_POST['email']) && $_POST['password']) {
             $model = new UserModel();
@@ -21,6 +28,10 @@ class UserController {
         }
     }
 
+    /**
+     * @return array Data
+     *      
+     */
     private function permissions($result = array()) {
         $session = SSession::getInstance();
         if (count($result) == 1) {
@@ -33,6 +44,9 @@ class UserController {
         }
     }
 
+    /**
+     *      
+     */
     function setPermissions() {
         if (isset($_POST['permissions'])) {
             $session = SSession::getInstance();
@@ -41,6 +55,9 @@ class UserController {
         }
     }
 
+    /**
+     *      
+     */
     function signOff() {
         $session = SSession::getInstance();
         $session->destroy();

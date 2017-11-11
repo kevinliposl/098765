@@ -2,10 +2,18 @@
 
 class EnrollmentController {
 
+    /**
+     * 
+     *      
+     */
     public function __construct() {
         $this->view = new View();
     }
 
+    /**
+     * @return array data
+     *      
+     */
     public function select() {
         if (SSession::getInstance()->permissions == 'A') {
             require 'model/StudentModel.php';
@@ -18,6 +26,10 @@ class EnrollmentController {
         }
     }
 
+    /**
+     * @return array data
+     *      
+     */
     public function selectCourses() {
         if (SSession::getInstance()->permissions == 'A') {
             require 'model/CourseModel.php';
@@ -30,6 +42,10 @@ class EnrollmentController {
         }
     }
 
+    /**
+     * @return array data
+     *      
+     */
     public function selectCourseNotStudent() {
         if (SSession::getInstance()->permissions == 'A') {
             require 'model/EnrollmentModel.php';
@@ -42,8 +58,11 @@ class EnrollmentController {
         }
     }
 
+    /**
+     * @return array data
+     *      
+     */
     public function delete() {
-
         if (SSession::getInstance()->permissions == 'A') {
             if (isset($_POST["ID"])) {
                 require 'model/EnrollmentModel.php';
@@ -63,6 +82,10 @@ class EnrollmentController {
         }
     }
 
+    /**
+     * @return array data
+     *      
+     */
     public function insert() {
         if (SSession::getInstance()->permissions == 'A') {
             if (isset($_POST['id-courses']) && isset($_POST['id-student'])) {
@@ -95,4 +118,3 @@ class EnrollmentController {
 }
 
 //end of class
-?>

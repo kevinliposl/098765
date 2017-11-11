@@ -2,11 +2,18 @@
 
 class SemesterController {
 
+    /**
+     *      
+     */
     function __construct() {
         $this->view = new View();
         require 'model/SemesterModel.php';
     }
 
+    /**
+     * @return array Data
+     *      
+     */
     function insert() {
         if (SSession::getInstance()->permissions == 'A') {
             if (isset($_POST["year"]) && isset($_POST["semester"])) {
@@ -21,6 +28,10 @@ class SemesterController {
         }
     }
 
+    /**
+     * @return array Data
+     *      
+     */
     function delete() {
         if (SSession::getInstance()->permissions == 'A') {
             if (isset($_POST["id"])) {
@@ -37,6 +48,10 @@ class SemesterController {
         }
     }
 
+    /**
+     * @return array Data
+     *      
+     */
     function select() {
         if (SSession::getInstance()->permissions == 'A') {
             $model = new SemesterModel();

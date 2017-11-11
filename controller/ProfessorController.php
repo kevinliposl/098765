@@ -2,10 +2,17 @@
 
 class ProfessorController {
 
+    /**
+     *      
+     */
     public function __construct() {
         $this->view = new View();
     }
 
+    /**
+     * @return array Data
+     *      
+     */
     public function insert() {
         if (SSession::getInstance()->permissions == 'A') {
             if (isset($_POST["id"])) {
@@ -38,6 +45,10 @@ class ProfessorController {
         }
     }
 
+    /**
+     * @return array Data
+     *      
+     */
     public function delete() {
 
         if (SSession::getInstance()->permissions == 'A') {
@@ -73,6 +84,10 @@ class ProfessorController {
         }
     }
 
+    /**
+     * @return array Data
+     *      
+     */
     public function select() {
         if (SSession::getInstance()->permissions == 'A') {
             require 'model/ProfessorModel.php';
@@ -90,6 +105,10 @@ class ProfessorController {
         }
     }
 
+    /**
+     * @return array Data
+     *      
+     */
     public function personalSelection() {
         if (SSession::getInstance()->permissions == 'T') {
             require 'model/ProfessorModel.php';
@@ -105,11 +124,14 @@ class ProfessorController {
         }
     }
 
+    /**
+     * @return array Data
+     *      
+     */
     public function updatePersonal() {
         if (SSession::getInstance()->permissions == 'T') {
             require 'model/ProfessorModel.php';
             $model = new ProfessorModel();
-
             $session = SSession::getInstance();
 
             if (isset($_POST["identification"])) {
@@ -124,9 +146,12 @@ class ProfessorController {
         }
     }
 
+    /**
+     * @return array Data
+     *      
+     */
     function change() {
         if (SSession::getInstance()->permissions == 'T' || SSession::getInstance()->permissions == 'P' || SSession::getInstance()->permissions == 'S') {
-
             if (isset($_POST['new'])) {
                 $model = new UserModel();
                 $session = SSession::getInstance();

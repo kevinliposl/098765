@@ -2,10 +2,18 @@
 
 class CourseSemesterController {
 
+    /**
+     * 
+     *      
+     */
     public function __construct() {
         $this->view = new View();
     }
     
+    /**
+     * @return array data
+     *      
+     */
     public function insert() {
         if(isset($_POST['professors']) && isset($_POST['ID_Semester']) && isset($_POST['initials']) && SSession::getInstance()->permissions == 'A'){  
             require 'model/CourseSemesterModel.php';
@@ -32,6 +40,10 @@ class CourseSemesterController {
         }
     }//insert  
     
+    /**
+     * @return array data
+     *      
+     */
     public function select() {
         if(SSession::getInstance()->permissions == 'A'){
             require 'model/SemesterModel.php';
@@ -43,6 +55,10 @@ class CourseSemesterController {
         }
     }//insert  
     
+    /**
+     * @return array data
+     *      
+     */
     public function selectAllCoursesSemester() {
         if(isset($_POST['ID_Semester']) && SSession::getInstance()->permissions == 'A'){
             require 'model/CourseSemesterModel.php';
@@ -54,6 +70,10 @@ class CourseSemesterController {
         }
     }//insert 
 
+    /**
+     * @return array data
+     *      
+     */
     public function selectNotAllProfessorsCourseSemester() {
         if(isset($_POST['ID_Semester']) && isset($_POST['initials']) && SSession::getInstance()->permissions == 'A'){
             require 'model/CourseSemesterModel.php';
@@ -65,6 +85,10 @@ class CourseSemesterController {
         }
     }//insert  
     
+    /**
+     * @return array data
+     *      
+     */
     public function selectAllProfessorsCourseSemester() {
         if(isset($_POST['ID_Semester']) && isset($_POST['initials']) && SSession::getInstance()->permissions == 'A'){
             require 'model/CourseSemesterModel.php';
@@ -76,6 +100,10 @@ class CourseSemesterController {
         }
     }//insert  
     
+    /**
+     * @return array data
+     *      
+     */
     public function deleteCourse() {
         if (isset($_POST["ID_Semester"]) && isset($_POST["initials"]) && SSession::getInstance()->permissions == 'A') {
             require 'model/CourseSemesterModel.php';
@@ -92,6 +120,10 @@ class CourseSemesterController {
         }
     }//delete
     
+    /**
+     * @return array data
+     *      
+     */
     public function deleteProfessor() {
         if (isset($_POST["ID_Semester"]) && isset($_POST["initials"]) && isset($_POST["identification"]) && SSession::getInstance()->permissions == 'A') {
             require 'model/CourseSemesterModel.php';

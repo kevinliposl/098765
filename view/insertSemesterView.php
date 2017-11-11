@@ -1,8 +1,8 @@
 <?php
 $session = SSession::getInstance();
 
-if (isset($session->email)) {
-    //include_once 'public/headerUser.php';
+if (isset($session->permissions)) {
+    include_once 'public/headerAdmin.php';
 } else {
     include_once 'public/header.php';
 }
@@ -28,7 +28,7 @@ if (isset($session->email)) {
                         <form id="form" class="nobottommargin" onsubmit="return false">
                             <div class="col_full">
                                 <label for="form-year">A&ncaron;o:</label>
-                                <input type="number" id="form-year" class="form-control" required minlength="4" maxlength="4"/>
+                                <input type="number" id="form-year" class="form-control" required minlength="4" maxlength="4" placeholder="2000"/>
                                 <input type="hidden" id="failed-year" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                             </div>
 
