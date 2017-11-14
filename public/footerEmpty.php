@@ -4,10 +4,6 @@
 ============================================= -->
 <div id="gotoTop" class="icon-angle-up"></div>
 
-<!-- JS
-============================================= -->
-<script src="public/js/jquery.min.js" type="text/javascript"></script>
-
 <!-- Footer Scripts
 ============================================= -->
 <script src="public/js/jquery.js" type="text/javascript"></script>
