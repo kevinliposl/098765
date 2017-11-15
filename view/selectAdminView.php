@@ -1,10 +1,14 @@
 <?php
 $session = SSession::getInstance();
 
-if (isset($session->email)) {
-    //include_once 'public/headerUser.php';
+if (isset($session->permissions)) {
+    if ($session->permissions == 'R') {
+        include_once 'public/headerRoot.php';
+    } else {
+        header('Location:?action=notFound');
+    }
 } else {
-    include_once 'public/header.php';
+    header('Location:?action=notFound');
 }
 ?>
 
@@ -45,7 +49,7 @@ if (isset($session->email)) {
                             </div>
                             <br>
                             <div class="table-responsive">
-                                <table class="table table-bordered table-striped">
+                                <table class="table table-bordered table-striped table-responsive">
                                     <h5 style="text-align: center;">Informaci&oacute;n del Administrador</h5>
                                     <colgroup>
                                         <col class="col-xs-3">
