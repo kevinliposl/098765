@@ -17,7 +17,7 @@ include_once 'public/head.php';
             ============================================= -->
             <nav id="primary-menu">
                 <ul>
-                    <li><a href="?"><div>Home</div></a> 
+                    <li><a href="?"><div>Home</div></a></li> 
                     <li><a href="#"><div>Estudiante</div></a>
                         <ul>
                             <li><a href="?controller=Student&action=getStudentData"><div>Ver Estudiante</div></a></li> 

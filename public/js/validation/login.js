@@ -1,3 +1,9 @@
+
+$('#form-email').change(function () {
+    $('#permissions').val(0);
+});
+
+
 $("#submit").click(function () {
 
     var email = $('#form-email').val().trim();
