@@ -103,17 +103,6 @@ if (isset($session->permissions)) {
                                 <input type="hidden" id="failed-addContent" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                             </div>
                             <br>
-                            <div class="table-responsive">
-                                <table  class="table table-bordered table-striped" style="clear: both;">
-                                    <tbody id="bodyTable">
-                                        <tr>
-                                            <th  width="55%" style="text-align: center;">Actividades</th>
-                                            <th width="10%" style="text-align: center;">Acci&oacute;n</th>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <br>
                             <div class="col_full nobottommargin">
                                 <a id="form-delete"  class="button button-3d button-black nomargin" style="display : block; text-align: center;" >Eliminar Contenido</a>
                                 <input type="hidden" id="warning" value="w"/>
