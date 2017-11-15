@@ -23,15 +23,11 @@ include_once 'public/head.php';
             <nav id="primary-menu">
                 <ul>
                     <li><a href="?"><div>Home</div></a></li>
-                    <li><a href="#"><div>Sistema</div></a>
+                    <li><a href="#"><div>Administrador</div></a>
                         <ul>
-                            <li><a href="#"><div>Administrador</div></a>
-                                <ul>
-                                    <li><a href="?controller=Admin&action=insert"><div>Insertar Administrador</div></a></li>
-                                    <li><a href="?controller=Admin&action=delete"><div>Eliminar Administrador</div></a></li> 
-                                    <li><a href="?controller=Admin&action=select"><div>Obtener Administrador</div></a></li> 
-                                </ul>
-                            </li>
+                            <li><a href="?controller=Admin&action=insert"><div>Registrar Administrador</div></a></li>
+                            <li><a href="?controller=Admin&action=delete"><div>Eliminar Administrador</div></a></li> 
+                            <li><a href="?controller=Admin&action=select"><div>Ver Administradores</div></a></li> 
                         </ul>
                     </li>
                     <li><a href="?controller=User&action=signOff"><div>Cerrar Sesi&oacute;n</div></a></li>
