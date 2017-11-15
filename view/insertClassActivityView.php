@@ -302,7 +302,6 @@ if (isset($session->permissions)) {
     }
 
     function createCell(cell, len, text, style) {
-        alert();
         if (text !== "") {
             var a = document.createElement('a');
             a.setAttribute('class', "bt-editable");
