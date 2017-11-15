@@ -1,6 +1,6 @@
-
 $('#form-email').change(function () {
     $('#permissions').val(0);
+    $('#form-permissions option').remove();
 });
 
 
