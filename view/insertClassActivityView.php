@@ -26,7 +26,7 @@ if (isset($session->permissions)) {
 <section id="content">
     <div class="content-wrap">
         <div class="container clearfix">
-            <div class="accordion-lg divcenter nobottommargin">
+            <div class="accordion-lg divcenter nobottommargin " style="max-width: 550px;">
                 <div class="acctitle">
                     <div class="acc_content clearfix">
                         <form id="form" class="nobottommargin">                            
