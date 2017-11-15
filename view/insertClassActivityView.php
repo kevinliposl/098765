@@ -294,17 +294,22 @@ if (isset($session->permissions)) {
     });
 </script>
 <script>
+    var totalRowNumber = 1;
+
     function appendRow(text) {
         var tbl = document.getElementById('bodyTable'), // table reference
                 row = tbl.insertRow(tbl.rows.length);
         createCell(row.insertCell(0), tbl.rows.length, text, 'row');
         createCell(row.insertCell(1), tbl.rows.length, "", 'row');
+        row.id = totalRowNumber;
+        totalRowNumber = totalRowNumber + 1;
     }
 
     function createCell(cell, len, text, style) {
         if (text !== "") {
             var a = document.createElement('a');
-            a.setAttribute('class', "bt-editable");
+            a.setAttribute('id', "form-id-table-" + len);
+            a.setAttribute('class', "bt-editable editable editable-click editable-empty");
             a.setAttribute('href', "#");
             a.setAttribute('data-type', "text");
             a.setAttribute('data-pk', "1");
@@ -316,10 +321,16 @@ if (isset($session->permissions)) {
             var a = document.createElement('a');
             a.setAttribute('class', "button button-mini button-circle button-red");
             a.setAttribute('style', "display : block; text-align: center;");
-            a.setAttribute('onclick', "");
-            a.innerHTML = "Eliminar "+len;
+            a.setAttribute('onclick', "deleteActivity(" + totalRowNumber + ");return false;");
+            a.innerHTML = "Eliminar";
             cell.appendChild(a);
         }
+    }
+
+    function deleteActivity(rowNumber) {
+        alert(rowNumber);
+        var row = document.getElementById(rowNumber);
+        row.parentNode.removeChild(row);
     }
 
 
