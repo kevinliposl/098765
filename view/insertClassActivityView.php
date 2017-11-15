@@ -86,11 +86,8 @@ if (isset($session->permissions)) {
                                 <input type="hidden" id="failed" value="f"/>
                             </div> 
                             <br>
-                            <div class="white-section">
-                                <label for="form-addContent">Contenidos Agregados:</label>
-                                <select id="form-addContent" class="form-control selectpicker" data-live-search="true">
-                                    <option value="-1" data-tokens="">Seleccione un Contenido</option>
-                                </select>
+                            <div class="white-section" style="text-align: center;">
+                                <label for="form-addContent" >Contenidos Agregados</label>
                                 <input type="hidden" id="failed-addContent" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                             </div> 
                             <br>
@@ -105,16 +102,9 @@ if (isset($session->permissions)) {
                                 </table>
                             </div>
                             <br>
-                            <div class="col_full nobottommargin">
-                                <a id="form-delete"  class="button button-3d button-black nomargin" style="display : block; text-align: center;" >Eliminar Contenido</a>
-                                <input type="hidden" id="warning" value="w"/>
-                                <input type="hidden" id="success" value="s"/>
-                                <input type="hidden" id="failed" value="f"/>
-                            </div> 
-                            <br>
                             <div class="col_full">
                                 <label for="form-observation">Observaci&oacute;n General:</label>
-                                <input type="text" id="form-observation" class="form-control" required/>
+                                <input type="text" rows="4" cols="50"    id="form-observation" class="form-control" required/>
                                 <input type="hidden" id="failed-observation" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                             </div>
                             <div class="col_full nobottommargin">
@@ -156,8 +146,53 @@ if (isset($session->permissions)) {
 </div>
 
 <script>
+    var totalRowNumber = 1;
+
+    function appendRow(text) {
+        var tbl = document.getElementById('bodyTable'), // table reference
+                row = tbl.insertRow(tbl.rows.length);
+        createCell(row.insertCell(0), tbl.rows.length, text, 'row');
+        createCell(row.insertCell(1), tbl.rows.length, "", 'row');
+        row.id = totalRowNumber;
+        totalRowNumber = totalRowNumber + 1;
+    }
+    ;
+
+    function createCell(cell, len, text, style) {
+        if (text !== "") {
+            var a = document.createElement('a');
+            a.setAttribute('id', "form-id-table-" + len);
+            a.setAttribute('class', "bt-editable");
+            a.setAttribute('href', "#form-addContent");
+            a.setAttribute('data-type', "text");
+            a.setAttribute('data-pk', "1");
+            a.setAttribute('data-placeholder', "Required");
+            a.setAttribute('data-title', " Actualización de la Actividad");
+            a.innerHTML = text;
+            cell.appendChild(a);
+        } else {
+            var a = document.createElement('a');
+            a.setAttribute('class', "button button-mini button-circle button-red");
+            a.setAttribute('style', "display : block; text-align: center;");
+            a.setAttribute('onclick', "deleteActivity(" + totalRowNumber + ");return false;");
+            a.innerHTML = "Eliminar";
+            cell.appendChild(a);
+        }
+    }
+    ;
+
+    function deleteActivity(rowNumber) {
+        var row = document.getElementById(rowNumber);
+        row.parentNode.removeChild(row);
+    }
+    ;
+
+
+</script>
+
+
+<script>
     $("#form-courses").change(function () {
-        alert("entro");
         if ($("#form-courses").val() === "-1") {
             $("#failed-form-courses").attr("data-notify-msg", "<i class=icon-remove-sign></i> Curso inválido. Seleccione e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-form-courses"));
@@ -167,8 +202,6 @@ if (isset($session->permissions)) {
                 "appointment": $("#form-courses").val()
             };
             document.getElementById("form-student").options.length = 0;
-            document.getElementById("form-addContent").options.length = 0;
-            $('#form-addContent').append($("<option></option>").attr("value", "-1").text("Seleccione un Contenido"));
             $.post("?controller=ClassActivity&action=selectStudentClassActivity", parameters, function (data) {
                 $('#form-student').append($("<option></option>").attr("value", "-1").text("Seleccione un Estudiante"));
                 for (var i = 0; i < data.length; i++) {
@@ -193,8 +226,6 @@ if (isset($session->permissions)) {
                 "appointment": $("#form-courses").val(),
                 "identification": $("#form-student").val()
             };
-            document.getElementById("form-addContent").options.length = 0;
-            $('#form-addContent').append($("<option></option>").attr("value", "-1").text("Seleccione un Contenido"));
             $.post("?controller=ClassActivity&action=selectConsecutiveClassActivity", parameters, function (data) {
                 document.getElementById("form-consecutive").value = parseInt(data.consecutive_class) + 1;
             }, "json");
@@ -212,22 +243,8 @@ if (isset($session->permissions)) {
             $("#failed-content").attr("data-notify-msg", "<i class=icon-remove-sign></i> Contenido Incorrecto. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-content"));
         } else {
-            $('#form-addContent').append($("<option></option>").attr("value", content).text(content));//AGREGAR OPCIONES
-            $("#form-addContent").selectpicker("refresh");///REFRESCA SELECT PARA QUE AGARRE AGREGADOS      
             appendRow(content);
 
-        }
-    });
-
-    $("#form-delete").click(function () {
-        if ($("#form-addContent").val() === "-1") {
-            $("#failed-form-addContent").attr("data-notify-msg", "<i class=icon-remove-sign></i> Contenido inválido. Seleccione e intente de nuevo!");
-            SEMICOLON.widget.notifications($("#failed-form-addContent"));
-            return false;
-        } else {
-            var sel = document.getElementById("form-addContent");
-            sel.remove(sel.selectedIndex);
-            $("#form-addContent").selectpicker("refresh");///REFRESCA SELECT PARA QUE AGARRE AGREGADOS
         }
     });
 
@@ -235,18 +252,19 @@ if (isset($session->permissions)) {
         var content;
         content = $("#form-observation").val().trim();
 
-        var sel = document.getElementById("form-addContent");
+        var tableReg = document.getElementById('bodyTable');
+        var cellsOfRow = "";
+        var cont = "";
         var dat = "";
-        for (var i = 0; i < sel.length; i++) {
-            var opt = sel[i];
-            if (opt.value !== "-1") {
-                if (i === sel.length - 1) {
-                    dat += opt.value;
-                } else {
-                    dat += opt.value + ",";
-                }
-            }
+        for (var i = 1; i < tableReg.rows.length; i++) {
+            cellsOfRow = tableReg.rows[i].getElementsByTagName('td');
+            cont = cellsOfRow[0].getElementsByTagName('a');
+            dat += cont[0].textContent + ",";
         }
+
+        dat = dat.substring(0, dat.length - 1);
+
+
         if ($("#form-courses").val() === "-1") {
             $("#failed-form-courses").attr("data-notify-msg", "<i class=icon-remove-sign></i> Curso inválido. Seleccione e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-form-courses"));
@@ -258,7 +276,7 @@ if (isset($session->permissions)) {
         } else if (!isNaN(content) || content.length < 4 || content.length > 255) {
             $("#failed-observation").attr("data-notify-msg", "<i class=icon-remove-sign></i> Observación Incorrecta. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-observation"));
-        } else if (sel.length < 1) {
+        } else if (tableReg.rows.length < 2) {
             $("#failed-addContent").attr("data-notify-msg", "<i class=icon-remove-sign></i> Cantidad de Contenidos inválidos. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-addContent"));
         } else {
@@ -269,7 +287,7 @@ if (isset($session->permissions)) {
                 "date": $("#form-date").val().trim(),
                 "typeA": $("input:radio[name='form-typeA']:checked").val().trim(),
                 "contents": dat,
-                "count": ((sel.length) - 1),
+                "count": ((tableReg.rows.length) - 1),
                 "observation": $("#form-observation").val()
             };
             $.post("?controller=ClassActivity&action=insert", parameters, function (data) {
@@ -292,48 +310,6 @@ if (isset($session->permissions)) {
             }, "json");
         }
     });
-</script>
-<script>
-    var totalRowNumber = 1;
-
-    function appendRow(text) {
-        var tbl = document.getElementById('bodyTable'), // table reference
-                row = tbl.insertRow(tbl.rows.length);
-        createCell(row.insertCell(0), tbl.rows.length, text, 'row');
-        createCell(row.insertCell(1), tbl.rows.length, "", 'row');
-        row.id = totalRowNumber;
-        totalRowNumber = totalRowNumber + 1;
-    }
-
-    function createCell(cell, len, text, style) {
-        if (text !== "") {
-            var a = document.createElement('a');
-            a.setAttribute('id', "form-id-table-" + len);
-            a.setAttribute('class', "bt-editable editable editable-click editable-empty");
-            a.setAttribute('href', "#");
-            a.setAttribute('data-type', "text");
-            a.setAttribute('data-pk', "1");
-            a.setAttribute('data-placeholder', "Required");
-            a.setAttribute('data-title', " Actualización de la Actividad");
-            a.innerHTML = text;
-            cell.appendChild(a);
-        } else {
-            var a = document.createElement('a');
-            a.setAttribute('class', "button button-mini button-circle button-red");
-            a.setAttribute('style', "display : block; text-align: center;");
-            a.setAttribute('onclick', "deleteActivity(" + totalRowNumber + ");return false;");
-            a.innerHTML = "Eliminar";
-            cell.appendChild(a);
-        }
-    }
-
-    function deleteActivity(rowNumber) {
-        alert(rowNumber);
-        var row = document.getElementById(rowNumber);
-        row.parentNode.removeChild(row);
-    }
-
-
 </script>
 
 <script>
