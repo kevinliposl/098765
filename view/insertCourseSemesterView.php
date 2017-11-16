@@ -158,11 +158,14 @@ if (isset($session->permissions)) {
 
     //Open Modal
     $("#form-submit").click(function () {
-        $('#form-submit').attr('data-target', '#myModal');
-    });
-
-    //Delete 
-    $("#form-submity").click(function () {
+    
+        var sel2 = document.getElementById("form-professors");
+        var dat2 = 0;
+        for (var i = 0; i < sel2.length; i++) {
+            if(sel2.options[i].selected){
+                dat2+=1;
+            }
+        }
         if($("#form-semester").val()==="-1"){
             $("#failed-form-semester").attr("data-notify-msg", "<i class=icon-remove-sign></i> Semestre inválido. Seleccione e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-form-semester"));
@@ -171,35 +174,40 @@ if (isset($session->permissions)) {
             $("#failed-form-courses").attr("data-notify-msg", "<i class=icon-remove-sign></i> Curso inválido. Seleccione e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-form-courses"));
             return false;
-        }else if($("#form-professors").val()==="-1"){
+        }else if(dat2<1){
             $("#failed-form-professors").attr("data-notify-msg", "<i class=icon-remove-sign></i> Profesor inválido. Seleccione e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-form-professors"));
             return false;
         }else{
-            var parameters = {
-                "ID_Semester": $("#form-semester").val(),
-                "initials": $("#form-courses").val(),
-                "professors": $("#form-professors").val()
-            };
-            $.post("?controller=CourseSemester&action=insert", parameters, function (data) {
-                if (data.result === "1") {
-                    $("#success").attr({
-                        "data-notify-type": "success",
-                        "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!",
-                        "data-notify-position": "bottom-full-width"
-                    });
-                    SEMICOLON.widget.notifications($("#success"));
-                    setTimeout("location.href = '?controller=CourseSemester&action=insert';",2000);
-                } else {
-                    $("#warning").attr({
-                        "data-notify-type": "warning",
-                        "data-notify-msg": "<i class=icon-warning-sign></i> Operacion Incompleta, intente de nuevo!",
-                        "data-notify-position": "bottom-full-width"
-                    });
-                    SEMICOLON.widget.notifications($("#warning"));
-                }
-            }, "json");
+            $('#form-submit').attr('data-target', '#myModal');
         }
+    });
+
+    //Delete 
+    $("#form-submity").click(function () {
+        var parameters = {
+            "ID_Semester": $("#form-semester").val(),
+            "initials": $("#form-courses").val(),
+            "professors": $("#form-professors").val()
+        };
+        $.post("?controller=CourseSemester&action=insert", parameters, function (data) {
+            if (data.result === "1") {
+                $("#success").attr({
+                    "data-notify-type": "success",
+                    "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!",
+                    "data-notify-position": "bottom-full-width"
+                });
+                SEMICOLON.widget.notifications($("#success"));
+                setTimeout("location.href = '?controller=CourseSemester&action=insert';",2000);
+            } else {
+                $("#warning").attr({
+                    "data-notify-type": "warning",
+                    "data-notify-msg": "<i class=icon-warning-sign></i> Operacion Incompleta, intente de nuevo!",
+                    "data-notify-position": "bottom-full-width"
+                });
+                SEMICOLON.widget.notifications($("#warning"));
+            }
+        }, "json");
     });
 
 </script>

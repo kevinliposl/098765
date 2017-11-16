@@ -97,7 +97,7 @@ if (isset($session->permissions)) {
 
         var initials, name, description, instrument;
 
-        initials = $("#form-initials").val().trim();
+        initials = $("#form-initials").val().toUpperCase().trim();
         name = $("#form-name").val().trim();
         description = $("#form-description").val().trim();
         instrument = $("#form-instrument").val().trim();
@@ -129,7 +129,7 @@ if (isset($session->permissions)) {
     //Insert
     $("#form-submity").click(function () {
         var parameters = {
-            "initials": $("#form-initials").val().trim(),
+            "initials": $("#form-initials").val().toUpperCase().trim(),
             "name": $("#form-name").val().trim(),
             "description": $("#form-description").val().trim(),
             "instrument": $("#form-instrument").val().trim()

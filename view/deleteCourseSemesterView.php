@@ -124,12 +124,6 @@ if (isset($session->permissions)) {
 
     //Open Modal
     $("#form-submit").click(function () {
-        $('#form-submit').attr('data-target', '#myModal');
-    });
-
-    //Delete 
-    $("#form-submity").click(function () {
-        
         if($("#form-semester").val()==="-1"){
             $("#failed-form-semester").attr("data-notify-msg", "<i class=icon-remove-sign></i> Semestre inválido. Seleccione e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-form-semester"));
@@ -139,29 +133,34 @@ if (isset($session->permissions)) {
             SEMICOLON.widget.notifications($("#failed-form-courses"));
             return false;
         }else{
-            var parameters = {
-                "ID_Semester": $("#form-semester").val(),
-                "initials": $("#form-courses").val(),
-            };
-            $.post("?controller=CourseSemester&action=deleteCourse", parameters, function (data) {
-                if (data.result === "1") {
-                    $("#success").attr({
-                        "data-notify-type": "success",
-                        "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!",
-                        "data-notify-position": "bottom-full-width"
-                    });
-                    SEMICOLON.widget.notifications($("#success"));
-                    setTimeout("location.href = '?controller=CourseSemester&action=deleteCourse';",2000);
-                } else {
-                    $("#warning").attr({
-                        "data-notify-type": "warning",
-                        "data-notify-msg": "<i class=icon-warning-sign></i> Operacion Incompleta, intente de nuevo!",
-                        "data-notify-position": "bottom-full-width"
-                    });
-                    SEMICOLON.widget.notifications($("#warning"));
-                }
-            }, "json");
+            $('#form-submit').attr('data-target', '#myModal');
         }
+    });
+
+    //Delete 
+    $("#form-submity").click(function () {
+        var parameters = {
+            "ID_Semester": $("#form-semester").val(),
+            "initials": $("#form-courses").val(),
+        };
+        $.post("?controller=CourseSemester&action=deleteCourse", parameters, function (data) {
+            if (data.result === "1") {
+                $("#success").attr({
+                    "data-notify-type": "success",
+                    "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!",
+                    "data-notify-position": "bottom-full-width"
+                });
+                SEMICOLON.widget.notifications($("#success"));
+                setTimeout("location.href = '?controller=CourseSemester&action=deleteCourse';",2000);
+            } else {
+                $("#warning").attr({
+                    "data-notify-type": "warning",
+                    "data-notify-msg": "<i class=icon-warning-sign></i> Operacion Incompleta, intente de nuevo!",
+                    "data-notify-position": "bottom-full-width"
+                });
+                SEMICOLON.widget.notifications($("#warning"));
+            }
+        }, "json");
     });
 
 </script>
