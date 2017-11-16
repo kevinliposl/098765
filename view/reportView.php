@@ -25,31 +25,30 @@ if (isset($session->permissions)) {
 <section id="content">
     <div class="content-wrap">
         <div class="container clearfix">
-            <div class="table-responsive">
-                <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                    <thead>
-
-                    </thead>
-                    <tfoot>
-
-                    </tfoot>
-                    <tbody>
-
-                    </tbody>
-                </table>
+            <div class="col_full">
+                <select id="form-report" class="selectpicker form-control" data-live-search="true">
+                    <option value="null" data-tokens>Seleccione un Reporte</option>
+                    <option value="usuariosActivos" data-tokens>Usuarios Activos</option>
+                    <option value="us" data-tokens>2</option>
+                    <option value="us" data-tokens>3</option>
+                </select>
             </div>
-            <select id="form-report" class="selectpicker form-control" data-live-search="true">
-                <option value="null" data-tokens>Seleccione un Reporte</option>
-                <option value="usuariosActivos" data-tokens>Usuarios Activos</option>
-                <option value="us" data-tokens>2</option>
-                <option value="us" data-tokens>3</option>
-            </select>
-            </br>
-            </br>
-            </br>
-            <div class="col_half" style="width: 100%;" >
-                <canvas id="chart-area"/>
-            </div>
+            <table id="datatable" class="table table-responsive table-striped table-bordered" cellspacing="0" width="100%">
+                <thead id="head">
+                    <tr>
+                        <th> </th>
+                        <th> </th>
+                    </tr>
+                </thead>
+                <tfoot id="foot">
+                    <tr>
+                        <th> </th>
+                        <th> </th>
+                    </tr>
+                </tfoot>
+                <tbody id="content">
+                </tbody>
+            </table>
         </div>
     </div>
 </section><!-- #content end -->
@@ -60,7 +59,36 @@ if (isset($session->permissions)) {
     });
 </script>
 
-<script src="public/js/validation/report.js" type="text/javascript"></script>
+<script>
+    $("#form-report").change(function () {
+        var option = $('#form-report').val();
+        if (option === "usuariosActivos") {
+            $.post("?controller=Report&action=selectUserState", {}, function (data) {
+
+                $('#datatable').DataTable().clear();
+                $('#datatable thead').html('');
+                $('#datatable tfoot').html('');
+                $('#datatable thead').html("<tr><th>Permisos</th><th>Cantidad</th></tr>");
+                $('#datatable tfoot').html("<tr><th>Permisos</th><th>Cantidad</th></tr>");
+
+                for (var i = 0; i < data.length; i++) {
+                    $('#datatable').dataTable().fnAddData([data[i].permissions === 'A' ? 'Administrador' : data[i].permissions === 'T' ? "Profesor" : 'Estudiante'
+                                , data[i].data]);
+                }
+
+            }, "json");
+        } else if (option === "") {
+            $.post("?controller=Report&action=selectUserState", {}, function (data) {
+
+
+
+            }, "json");
+        } else if (option === "null") {
+            $('#datatable').remove();
+        }
+    }
+    );
+</script>
 
 <!-- End Content
 ============================================= -->    
