@@ -32,25 +32,25 @@ if (isset($session->permissions)) {
                         <form id="form" class="nobottommargin" onsubmit="return validate();">
                             <div class="col_full">
                                 <label for="form-initials">Siglas:</label>
-                                <input type="text" id="form-initials" class="form-control" placeholder="CAL000" required/>
+                                <input type="text" id="form-initials" class="form-control" placeholder="CAL000" minlength="6" maxlength="6" required/>
                                 <input type="hidden" id="failed-initials" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                             </div>
                             
                             <div class="col_full">
                                 <label for="form-name">Nombre:</label>
-                                <input type="text" id="form-name" class="form-control" placeholder="Canto Lírico" required/>
+                                <input type="text" id="form-name" class="form-control" placeholder="Canto Lírico" minlength="3" maxlength="49" required/>
                                 <input type="hidden" id="failed-name" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                             </div>
 
                             <div class="col_full">
                                 <label for="form-instrument">Instrumento:</label>
-                                <input type="text" id="form-instrument" class="form-control" placeholder="Voz" required/>
+                                <input type="text" id="form-instrument" class="form-control" placeholder="Voz" minlength="3" maxlength="99" required/>
                                 <input type="hidden" id="failed-instrument" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                             </div>
 
                             <div class="col_full">
                                 <label for="form-description">Breve Descripci&oacute;n:</label>
-                                <input type="text" id="form-description" class="form-control" placeholder="Breve Descripción" required/>
+                                <input type="text" id="form-description" class="form-control" placeholder="Breve Descripción" minlength="3" maxlength="99" required/>
                                 <input type="hidden" id="failed-description" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                             </div>
 
@@ -102,22 +102,22 @@ if (isset($session->permissions)) {
         description = $("#form-description").val().trim();
         instrument = $("#form-instrument").val().trim();
 
-        if (initials.length < 6 || initials.length > 6 || isNaN(initials.substr(3,3)) || /^[a-z][a-z]*/.test(initials.substr(0,3)) || initials.split(" ", 2).length > 1) {
+        if (isNaN(initials.substr(3,3)) || /^[a-z][a-z]*/.test(initials.substr(0,3)) || initials.split(" ", 2).length > 1) {
             $("#failed-initials").attr("data-notify-msg", "<i class=icon-remove-sign></i> Inicial de curso Incorrecta. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-initials"));
             return false;
 
-        }else if (!isNaN(name) || name.length < 4 || name.length>50) {
+        }else if (!isNaN(name)) {
             $("#failed-name").attr("data-notify-msg", "<i class=icon-remove-sign></i> Nombre Incorrecto. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-name"));
             return false;
 
-        } else if (!isNaN(description) || description.length < 4 || description.length>100) {
+        } else if (!isNaN(description)) {
             $("#failed-description").attr("data-notify-msg", "<i class=icon-remove-sign></i> Descripción Incorrecto. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-description"));
             return false;
 
-        } else if (!isNaN(instrument) || instrument.length < 2 || instrument.length>100) {
+        } else if (!isNaN(instrument)) {
             $("#failed-instrument").attr("data-notify-msg", "<i class=icon-remove-sign></i> Instrumento Incorrecto. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-instrument"));
             return false;

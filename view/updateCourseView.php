@@ -33,7 +33,7 @@ if (isset($session->permissions)) {
                             <div class="white-section">
                                 <label for="form-initials">Cursos:</label>
                                 <select id="form-courses" class="selectpicker form-control" data-live-search="true">
-                                    <option data-tokens="">Seleccione un Curso</option>
+                                    <option value="-1" data-tokens="">Seleccione un Curso</option>
                                     <?php
                                     foreach ($vars as $var) {
                                         if (isset($var["initials"])) {
@@ -45,6 +45,7 @@ if (isset($session->permissions)) {
                                         }
                                     }?>
                                 </select>
+                                <input type="hidden" id="failed-form-courses" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                             </div>
                             <br>
                             <div class="acc_content clearfix"></div>
@@ -169,7 +170,12 @@ if (isset($session->permissions)) {
         description = $("#form-description-table").text().trim();
         instrument = $("#form-instrument-table").text().trim();
 
-        if (!isNaN(name) || name.length < 4 || name.length>50) {
+        if($("#form-courses").val()==="-1"){
+            $("#failed-form-courses").attr("data-notify-msg", "<i class=icon-remove-sign></i> Curso inválido. Seleccione e intente de nuevo!");
+            SEMICOLON.widget.notifications($("#failed-form-courses"));
+            return false;
+            
+        }else if (!isNaN(name) || name.length < 4 || name.length>50) {
             $("#failed-name").attr("data-notify-msg", "<i class=icon-remove-sign></i> Nombre Incorrecto. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-name"));
             return false;
