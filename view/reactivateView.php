@@ -7,7 +7,7 @@ include_once 'public/headerAdmin.php';
 <section id="page-title">
 
     <div class="container clearfix">
-        <h1>Reactivar Estudiante</h1>
+        <h1>Reactivar Usuario</h1>
     </div>
 </section><!-- #page-title end -->
 
