@@ -64,7 +64,7 @@ include_once 'public/head.php';
                                     <li><a href="?controller=Enrollment&action=select"><div>Obtener Matriculas</div></a></li>
                                 </ul>
                             </li>                                      
-                            <li><a href="#"><div>Asignaci&oacute;nes</div></a>
+                            <li><a href="#"><div>Asignaciones</div></a>
                                 <ul>
                                     <li><a href="?controller=CourseSemester&action=insert"><div>Insertar Asignacion</div></a></li> 
                                     <li><a href="?controller=CourseSemester&action=deleteCourse"><div>Eliminar Asignacion curso</div></a></li> 
