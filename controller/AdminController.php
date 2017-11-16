@@ -1,19 +1,28 @@
 <?php
 
+/**
+ * @author Kev Sand <kevin.sandoval@ucr.ac.cr>
+ * @version 1.0
+ * @copyright (c) 2017, Funcion Academia Musical
+ * @access public
+ * @category controller
+ * Class Admin     
+ */
 class AdminController {
 
-    /**
-     * 
-     *      
-     */
     function __construct() {
         $this->view = new View();
         require 'model/AdminModel.php';
     }
 
     /**
-     * @return array data
-     *      
+     * @author Kev Sand <kevin.sandoval@ucr.ac.cr>
+     * @return null
+     * @param integer $id Identificador de entidad
+     * @param string $email Email de entidad
+     * @param string $name Nombre de entidad
+     * @param string $firstLastName Apellido de entidad
+     * Funcion para insertar administrador
      */
     function insert() {
         if (SSession::getInstance()->permissions == 'R') {
@@ -28,10 +37,12 @@ class AdminController {
             $this->view->show("404View.php");
         }
     }
-    
+
     /**
-     * @return array data
-     *      
+     * @author Kev Sand <kevin.sandoval@ucr.ac.cr>
+     * @return null
+     * @param integer $id Identificador de entidad
+     * Funcion para eliminar administrador
      */
     function delete() {
         if (SSession::getInstance()->permissions == 'R') {
@@ -47,10 +58,12 @@ class AdminController {
             $this->view->show("404View.php");
         }
     }
-    
+
     /**
-     * @return array data
-     *      
+     * @author Kev Sand <kevin.sandoval@ucr.ac.cr>
+     * @return null
+     * @param integer $id Identificador de entidad
+     * Funcion para seleccionar administrador
      */
     function select() {
         if (SSession::getInstance()->permissions == 'R') {
@@ -66,4 +79,5 @@ class AdminController {
             $this->view->show("404View.php");
         }
     }
+
 }
