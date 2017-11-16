@@ -23,4 +23,17 @@ class ReportController {
         }
     }
 
+    /**
+     * @return array Data
+     *      
+     */
+    function selectEnrolledPerMonth() {
+        if (SSession::getInstance()->permissions == 'A') {
+            $model = new ReportModel();
+
+            $result = $model->selectEnrolledPerMonth();
+            echo json_encode($result);
+        }
+    }
+
 }

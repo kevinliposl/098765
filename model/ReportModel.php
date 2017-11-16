@@ -17,4 +17,12 @@ class ReportModel {
         return $result;
     }
 
+    function selectEnrolledPerMonth() {
+        $query = $this->db->prepare("call sp_enrolled_per_month()");
+        $query->execute();
+        $result = $query->fetchAll();
+        $query->closeCursor();
+        return $result;
+    }
+
 }
