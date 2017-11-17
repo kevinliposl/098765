@@ -152,8 +152,8 @@ class ProfessorController {
      */
     function change() {
         if (SSession::getInstance()->permissions == 'T' || SSession::getInstance()->permissions == 'P' || SSession::getInstance()->permissions == 'S') {
-            if (isset($_POST['new'])) {
-                $model = new UserModel();
+            if (isset($_POST["new"])) {
+                $model = new ProfessorModel();
                 $session = SSession::getInstance();
 
                 $result = $model->change($session->identification, $_POST["new"]);
