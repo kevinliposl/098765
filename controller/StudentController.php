@@ -1,17 +1,38 @@
 <?php
 
+/**
+ * @authors <kevin.sandoval@ucr.ac.cr><diego.cendenofonseca@ucr.ac.cr><elena.calderonfernandez@ucr.ac.cr><brogudbarrientos@gmail.com>
+ * @version 1.0
+ * @copyright (c) 2017, Funcion Academia Musical
+ * @access public
+ * @category controller
+ * Class Estudiante     
+ */
 class StudentController {
 
-    /**
-     *      
-     */
     public function __construct() {
         $this->view = new View();
     }
 
     /**
-     * @return array Data
-     *      
+     * @return null
+     * @param integer $id Identificador de entidad
+     * @param string $email Email de entidad
+     * @param string $name Nombre de entidad
+     * @param string $firstLastName Apellido de entidad
+     * @param string $secondLastName Apellido de entidad
+     * @param string $idType tipo de identificacion de entidad
+     * @param integer $age edad de entidad
+     * @param string $address direccion de entidad
+     * @param string $gender genero de entidad
+     * @param string $nationality nacionalidad de entidad
+     * @param string $phoneOne telefono de entidad
+     * @param string $phoneTwo telefono de entidad
+     * @param string $contactName nombre de contacto de entidad
+     * @param string $contactRelationship parentezco de contacto
+     * @param string $contactPhone telefono de contacto
+     * @param string $contactEmail correo de contacto
+     * Funcion para insertar estudiante
      */
     public function insertStudent() {
         $ssession = SSession::getInstance();
@@ -30,8 +51,9 @@ class StudentController {
     }
 
     /**
-     * @return array Data
-     *      
+     * @return null
+     * @param integer $id Identificador de entidad
+     * Funcion para eliminar estudiante
      */
     public function deleteStudent() {
         require 'model/StudentModel.php';
@@ -52,8 +74,9 @@ class StudentController {
     }
 
     /**
-     * @return array Data
-     *      
+     * @return null
+     * @param integer $id Identificador de entidad
+     * Funcion para obtener expediente de estudiante 
      */
     public function getStudentExp() {
         require 'model/StudentModel.php';
@@ -68,8 +91,10 @@ class StudentController {
     }
 
     /**
-     * @return array Data
-     *      
+     * @return null
+     * @param integer $id Identificador de entidad
+     * @param string $email Email de entidad
+     * Funcion para reactivar estudiante
      */
     public function reactivateStudent() {
         require 'model/StudentModel.php';
@@ -90,8 +115,24 @@ class StudentController {
     }
 
     /**
-     * @return array Data
-     *      
+     * @return null
+     * @param integer $id Identificador de entidad
+     * @param string $email Email de entidad
+     * @param string $name Nombre de entidad
+     * @param string $firstLastName Apellido de entidad
+     * @param string $secondLastName Apellido de entidad
+     * @param string $idType tipo de identificacion de entidad
+     * @param integer $age edad de entidad
+     * @param string $address direccion de entidad
+     * @param string $gender genero de entidad
+     * @param string $nationality nacionalidad de entidad
+     * @param string $phoneOne telefono de entidad
+     * @param string $phoneTwo telefono de entidad
+     * @param string $contactName nombre de contacto de entidad
+     * @param string $contactRelationship parentezco de contacto
+     * @param string $contactPhone telefono de contacto
+     * @param string $contactEmail correo de contacto
+     * Funcion para actualizar estudiante
      */
     public function updateStudent() {
         require 'model/StudentModel.php';
@@ -112,8 +153,24 @@ class StudentController {
     }
 
     /**
-     * @return array Data
-     *      
+     * @return null
+     * @param integer $id Identificador de entidad
+     * @param string $email Email de entidad
+     * @param string $name Nombre de entidad
+     * @param string $firstLastName Apellido de entidad
+     * @param string $secondLastName Apellido de entidad
+     * @param string $idType tipo de identificacion de entidad
+     * @param integer $age edad de entidad
+     * @param string $address direccion de entidad
+     * @param string $gender genero de entidad
+     * @param string $nationality nacionalidad de entidad
+     * @param string $phoneOne telefono de entidad
+     * @param string $phoneTwo telefono de entidad
+     * @param string $contactName nombre de contacto de entidad
+     * @param string $contactRelationship parentezco de contacto
+     * @param string $contactPhone telefono de contacto
+     * @param string $contactEmail correo de contacto
+     * Funcion para actualizar informacion personal
      */
     public function updatePersonalDataStudent() {
         require 'model/StudentModel.php';
@@ -138,8 +195,10 @@ class StudentController {
     }
 
     /**
-     * @return array Data
-     *      
+     * @return null
+     * @param integer $id Identificador de entidad
+     * @param string $email Email de entidad
+     * Funcion para obtener datos estudiante
      */
     public function getStudentData() {
         require 'model/StudentModel.php';
@@ -156,8 +215,9 @@ class StudentController {
     }
 
     /**
-     * @return array Data
-     *      
+     * @return null
+     * @param integer $id Identificador de entidad
+     * Funcion para seleccionar estudiante
      */
     public function selectStudent() {
         require 'model/StudentModel.php';
@@ -174,8 +234,10 @@ class StudentController {
     }
 
     /**
-     * @return array Data
-     *      
+     * @return null
+     * @param integer $id Identificador de entidad
+     * @param string $email Email de entidad
+     * Funcion para eliminar estudiante
      */
     public function selectDeleteStudent() {
         require 'model/StudentModel.php';
@@ -189,4 +251,5 @@ class StudentController {
             echo json_encode($result);
         }
     }
+
 }

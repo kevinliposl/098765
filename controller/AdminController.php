@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @author Kev Sand <kevin.sandoval@ucr.ac.cr>
+ * @authors <kevin.sandoval@ucr.ac.cr><diego.cendenofonseca@ucr.ac.cr><elena.calderonfernandez@ucr.ac.cr><brogudbarrientos@gmail.com>
  * @version 1.0
  * @copyright (c) 2017, Funcion Academia Musical
  * @access public
@@ -16,7 +16,6 @@ class AdminController {
     }
 
     /**
-     * @author Kev Sand <kevin.sandoval@ucr.ac.cr>
      * @return null
      * @param integer $id Identificador de entidad
      * @param string $email Email de entidad
@@ -39,7 +38,6 @@ class AdminController {
     }
 
     /**
-     * @author Kev Sand <kevin.sandoval@ucr.ac.cr>
      * @return null
      * @param integer $id Identificador de entidad
      * Funcion para eliminar administrador
@@ -60,7 +58,6 @@ class AdminController {
     }
 
     /**
-     * @author Kev Sand <kevin.sandoval@ucr.ac.cr>
      * @return null
      * @param integer $id Identificador de entidad
      * Funcion para seleccionar administrador
@@ -79,5 +76,4 @@ class AdminController {
             $this->view->show("404View.php");
         }
     }
-
 }

@@ -1,19 +1,27 @@
 <?php
 
+/**
+ * @authors <kevin.sandoval@ucr.ac.cr><diego.cendenofonseca@ucr.ac.cr><elena.calderonfernandez@ucr.ac.cr><brogudbarrientos@gmail.com>
+ * @version 1.0
+ * @copyright (c) 2017, Funcion Academia Musical
+ * @access public
+ * @category controller
+ * Class Horario     
+ */
 class ScheduleController {
 
-    /**
-     * 
-     *      
-     */
     function __construct() {
         $this->view = new View();
         require 'model/ScheduleModel.php';
     }
 
     /**
-     * @return array Data
-     *      
+     * @return null
+     * @param integer $id Identificador del curso
+     * @param string $start Hora de inicio de curso
+     * @param string $end Hora de finalizacion de curso
+     * @param string $day Dia de inpartir el curso
+     * Funcion para insertar horario
      */
     function insert() {
         if (SSession::getInstance()->permissions == 'A' || SSession::getInstance()->permissions == 'T') {
@@ -31,8 +39,9 @@ class ScheduleController {
     }
 
     /**
-     * @return array Data
-     *      
+     * @return null
+     * @param integer $id Identificador de curso
+     * Funcion para eliminar horario
      */
     function delete() {
         if (SSession::getInstance()->permissions == 'A' || SSession::getInstance()->permissions == 'T') {
@@ -51,8 +60,9 @@ class ScheduleController {
     }
 
     /**
-     * @return array Data
-     *      
+     * @return null
+     * @param integer $id Identificador de semestre
+     * Funcion para seleccionar el horario del semestre
      */
     function select() {
         if (SSession::getInstance()->permissions == 'A' || SSession::getInstance()->permissions == 'T') {
@@ -70,8 +80,9 @@ class ScheduleController {
     }
 
     /**
-     * @return array Data
-     *      
+     * @return null
+     * @param integer $id Identificador de curso
+     * Funcion para seleccionar los cursos del semestre sin horario
      */
     function selectWithoutSchedule() {
         if (SSession::getInstance()->permissions == 'A' || SSession::getInstance()->permissions == 'T') {

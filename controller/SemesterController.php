@@ -1,18 +1,25 @@
 <?php
 
+/**
+ * @authors <kevin.sandoval@ucr.ac.cr><diego.cendenofonseca@ucr.ac.cr><elena.calderonfernandez@ucr.ac.cr><brogudbarrientos@gmail.com>
+ * @version 1.0
+ * @copyright (c) 2017, Funcion Academia Musical
+ * @access public
+ * @category controller
+ * Class Semestre   
+ */
 class SemesterController {
 
-    /**
-     *      
-     */
     function __construct() {
         $this->view = new View();
         require 'model/SemesterModel.php';
     }
 
     /**
-     * @return array Data
-     *      
+     * @return null
+     * @param integer $year anio del semestre
+     * @param integer $semester numero de semestre
+     * Funcion para insertar semestre
      */
     function insert() {
         if (SSession::getInstance()->permissions == 'A') {
@@ -29,8 +36,9 @@ class SemesterController {
     }
 
     /**
-     * @return array Data
-     *      
+     * @return null
+     * @param integer $id Identificador de semestre
+     * Funcion para eliminar semestre
      */
     function delete() {
         if (SSession::getInstance()->permissions == 'A') {
@@ -49,8 +57,9 @@ class SemesterController {
     }
 
     /**
-     * @return array Data
-     *      
+     * @return null
+     * @param integer $id Identificador de semestre
+     * Funcion para seleccionar semestre
      */
     function select() {
         if (SSession::getInstance()->permissions == 'A') {
@@ -66,5 +75,4 @@ class SemesterController {
             $this->view->show("404View.php");
         }
     }
-
 }
