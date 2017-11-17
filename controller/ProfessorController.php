@@ -1,41 +1,42 @@
 <?php
 
+/**
+ * @authors <kevin.sandoval@ucr.ac.cr><diego.cendenofonseca@ucr.ac.cr><elena.calderonfernandez@ucr.ac.cr><brogudbarrientos@gmail.com>
+ * @version 1.0
+ * @copyright (c) 2017, Funcion Academia Musical
+ * @access public
+ * @category controller
+ * Class Admin     
+ */
 class ProfessorController {
 
-    /**
-     *      
-     */
     public function __construct() {
         $this->view = new View();
     }
 
     /**
-     * @return array Data
-     *      
+     * @return null
+     * @param integer $id Identificador de entidad
+     * @param string $email Email de entidad
+     * @param string $name Nombre de entidad typeId            
+     * @param string $firstLastName Apellido de entidad
+     * @param string $secondLastName Apellido de entidad
+     * @param string $nationality nacionalidad de entidad
+     * @param string $address direccion de entidad
+     * @param string $gender genero de entidad
+     * @param string $phone nacionalidad de entidad
+     * @param string $phone2 nacionalidad de entidad
+     * @param string $additionalInformation nacionalidad de entidad
+     * @param integer $age nacionalidad de entidad
+     * Funcion para insertar profesor
      */
     public function insert() {
         if (SSession::getInstance()->permissions == 'A') {
             if (isset($_POST["id"])) {
                 require 'model/ProfessorModel.php';
                 $model = new ProfessorModel();
-
-//            $typeId = $_POST["typeId"];
-//            $id = $_POST["id"];
-//            $email = $_POST["email"];
-//            $name = $_POST["name"];
-//            $firstLastName = $_POST["firstLastName"];
-//            $secondLastName = $_POST["secondLastName"];
-//            $gender = $_POST["gender"];
-//            $nationality = $_POST["nationality"];
-//            $phone = $_POST["phone"];
-//            $phone2 = $_POST["phone2"];
-//            $additionalInformation = $_POST["additionalInformation"];
-//            $address = $_POST["address"];
-//            $age = $_POST["age"];
-
                 $result = $model->insertProfessor($_POST["typeId"], $_POST["id"], $_POST["nationality"], $_POST["name"], $_POST["firstLastName"], $_POST["secondLastName"], $_POST["address"], $_POST["gender"], $_POST["phone"], $_POST["phone2"], $_POST["email"], $_POST["additionalInformation"], $_POST["age"]);
 
-                //$result = $model->insertProfessor($typeId, $id, $nationality, $name, $firstLastName, $secondLastName, $address, $gender, $phone, $phone2, $email, $additionalInformation, $age);
                 echo json_encode($result);
             } else {
                 $this->view->show("insertProfessorView.php");
@@ -46,11 +47,11 @@ class ProfessorController {
     }
 
     /**
-     * @return array Data
-     *      
+     * @return null
+     * @param integer $id Identificador de entidad
+     * Funcion para eliminar profesor
      */
     public function delete() {
-
         if (SSession::getInstance()->permissions == 'A') {
             require 'model/ProfessorModel.php';
             $model = new ProfessorModel();
@@ -67,6 +68,22 @@ class ProfessorController {
         }
     }
 
+    /**
+     * @return null
+     * @param integer $id Identificador de entidad
+     * @param string $email Email de entidad
+     * @param string $name Nombre de entidad typeId            
+     * @param string $firstLastName Apellido de entidad
+     * @param string $secondLastName Apellido de entidad
+     * @param string $nationality nacionalidad de entidad
+     * @param string $address direccion de entidad
+     * @param string $gender genero de entidad
+     * @param string $phone nacionalidad de entidad
+     * @param string $phone2 nacionalidad de entidad
+     * @param string $additionalInformation nacionalidad de entidad
+     * @param integer $age nacionalidad de entidad
+     * Funcion para actualizar profesor
+     */
     public function update() {
         if (SSession::getInstance()->permissions == 'A') {
             require 'model/ProfessorModel.php';
@@ -85,8 +102,9 @@ class ProfessorController {
     }
 
     /**
-     * @return array Data
-     *      
+     * @return null
+     * @param integer $id Identificador de entidad
+     * Funcion para seleccionar profesor
      */
     public function select() {
         if (SSession::getInstance()->permissions == 'A') {
@@ -106,8 +124,9 @@ class ProfessorController {
     }
 
     /**
-     * @return array Data
-     *      
+     * @return null
+     * @param integer $identification Identificador de entidad
+     * Funcion para seleccionar informacion de perfil
      */
     public function personalSelection() {
         if (SSession::getInstance()->permissions == 'T') {
@@ -115,7 +134,6 @@ class ProfessorController {
             $model = new ProfessorModel();
 
             $session = SSession::getInstance();
-            //$id = "301110222";
 
             $result = $model->selectProfessor($session->identification);
             $this->view->show("selectProfessorDataView.php", $result);
@@ -125,8 +143,20 @@ class ProfessorController {
     }
 
     /**
-     * @return array Data
-     *      
+     * @return null
+     * @param integer $id Identificador de entidad
+     * @param string $email Email de entidad
+     * @param string $name Nombre de entidad typeId            
+     * @param string $firstLastName Apellido de entidad
+     * @param string $secondLastName Apellido de entidad
+     * @param string $nationality nacionalidad de entidad
+     * @param string $address direccion de entidad
+     * @param string $gender genero de entidad
+     * @param string $phone nacionalidad de entidad
+     * @param string $phone2 nacionalidad de entidad
+     * @param string $additionalInformation nacionalidad de entidad
+     * @param integer $age nacionalidad de entidad
+     * Funcion para actualizar informacion personal
      */
     public function updatePersonal() {
         if (SSession::getInstance()->permissions == 'T') {
@@ -147,12 +177,15 @@ class ProfessorController {
     }
 
     /**
-     * @return array Data
-     *      
+     * @return null
+     * @param integer $id Identificador de entidad
+     * @param string $new contrasena de entidad
+     * Funcion para cambiar contrasenna
      */
     function change() {
-        if (SSession::getInstance()->permissions == 'T' || SSession::getInstance()->permissions == 'P' || SSession::getInstance()->permissions == 'S') {
+        if (SSession::getInstance()->permissions == 'T' || SSession::getInstance()->permissions == 'A' || SSession::getInstance()->permissions == 'S') {
             if (isset($_POST["new"])) {
+                require 'model/ProfessorModel.php';
                 $model = new ProfessorModel();
                 $session = SSession::getInstance();
 
@@ -165,6 +198,4 @@ class ProfessorController {
             $this->view->show("indexView.php");
         }
     }
-
-//change
 }

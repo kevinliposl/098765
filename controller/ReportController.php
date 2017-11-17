@@ -1,18 +1,23 @@
 <?php
 
+/**
+ * @authors <kevin.sandoval@ucr.ac.cr><diego.cendenofonseca@ucr.ac.cr><elena.calderonfernandez@ucr.ac.cr><brogudbarrientos@gmail.com>
+ * @version 1.0
+ * @copyright (c) 2017, Funcion Academia Musical
+ * @access public
+ * @category controller
+ * Class Reporte    
+ */
 class ReportController {
 
-    /**
-     *      
-     */
     function __construct() {
         $this->view = new View();
         require 'model/ReportModel.php';
     }
 
     /**
-     * @return array Data
-     *      
+     * @return null
+     * Funcion para seleccionar los usuarios activos
      */
     function selectUserState() {
         if (SSession::getInstance()->permissions == 'A') {
@@ -24,8 +29,8 @@ class ReportController {
     }
 
     /**
-     * @return array Data
-     *      
+     * @return null
+     * Funcion para seleccionar las matriculas por mes
      */
     function selectEnrolledPerMonth() {
         if (SSession::getInstance()->permissions == 'A') {

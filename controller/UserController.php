@@ -1,18 +1,25 @@
 <?php
 
+/**
+ * @authors <kevin.sandoval@ucr.ac.cr><diego.cendenofonseca@ucr.ac.cr><elena.calderonfernandez@ucr.ac.cr><brogudbarrientos@gmail.com>
+ * @version 1.0
+ * @copyright (c) 2017, Funcion Academia Musical
+ * @access public
+ * @category controller
+ * Class Usuario     
+ */
 class UserController {
 
-    /**
-     *      
-     */
     function __construct() {
         $this->view = new View();
         require 'model/UserModel.php';
     }
 
     /**
-     * @return array Data
-     *      
+     * @return null
+     * @param string $email Email de entidad
+     * @param string $password Contrasenna de entidad
+     * Funcion para logueo de usuario
      */
     function logIn() {
         if (isset($_POST['email']) && $_POST['password']) {
@@ -29,8 +36,9 @@ class UserController {
     }
 
     /**
-     * @return array Data
-     *      
+     * @return null
+     * @param array $result Permisos de entidad
+     * Funcion para logueo de usuario
      */
     private function permissions($result = array()) {
         $session = SSession::getInstance();
@@ -45,7 +53,8 @@ class UserController {
     }
 
     /**
-     *      
+     * @return null
+     * Funcion para logueo de usuario
      */
     function setPermissions() {
         if (isset($_POST['permissions'])) {
@@ -56,7 +65,8 @@ class UserController {
     }
 
     /**
-     *      
+     * @return null
+     * Funcion para deslogueo de usuario
      */
     function signOff() {
         $session = SSession::getInstance();

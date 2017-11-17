@@ -1,18 +1,22 @@
 <?php
 
+/**
+ * @authors <kevin.sandoval@ucr.ac.cr><diego.cendenofonseca@ucr.ac.cr><elena.calderonfernandez@ucr.ac.cr><brogudbarrientos@gmail.com>
+ * @version 1.0
+ * @copyright (c) 2017, Funcion Academia Musical
+ * @access public
+ * @category controller
+ * Class Matricula
+ */
 class EnrollmentController {
 
-    /**
-     * 
-     *      
-     */
     public function __construct() {
         $this->view = new View();
     }
 
     /**
-     * @return array data
-     *      
+     * @return null
+     * Funcion para seleccionar una matricula
      */
     public function select() {
         if (SSession::getInstance()->permissions == 'A') {
@@ -27,8 +31,9 @@ class EnrollmentController {
     }
 
     /**
-     * @return array data
-     *      
+     * @return null
+     * @param integer $identification Identificador de estudiante
+     * Funcion para seleccionar todos los cursos matriculados
      */
     public function selectCourses() {
         if (SSession::getInstance()->permissions == 'A') {
@@ -43,8 +48,9 @@ class EnrollmentController {
     }
 
     /**
-     * @return array data
-     *      
+     * @return null
+     * @param integer $identification Identificador de estudiante
+     * Funcion para seleccionar todos los cursos sin matricular
      */
     public function selectCourseNotStudent() {
         if (SSession::getInstance()->permissions == 'A') {
@@ -59,8 +65,9 @@ class EnrollmentController {
     }
 
     /**
-     * @return array data
-     *      
+     * @return null
+     * @param integer $identification Identificador de estudiante
+     * Funcion para eliminar matricula de un estudiante
      */
     public function delete() {
         if (SSession::getInstance()->permissions == 'A') {
@@ -83,8 +90,10 @@ class EnrollmentController {
     }
 
     /**
-     * @return array data
-     *      
+     * @return null
+     * @param string[] $id-courses Identificador de cursos
+     * @param integer id-student Identificador de estudiante
+     * Funcion para insertar una matricula
      */
     public function insert() {
         if (SSession::getInstance()->permissions == 'A') {
@@ -116,5 +125,3 @@ class EnrollmentController {
     }
 
 }
-
-//end of class
