@@ -100,7 +100,7 @@ if (isset($session->permissions)) {
             SEMICOLON.widget.notifications($("#failed-password2"));
             return false;
 
-        } else if (pass1!=pass2) {
+        } else if (pass1!==pass2) {
             $("#failed-password").attr("data-notify-msg", "<i class=icon-remove-sign></i> Las contraseñas no coinciden. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-password"));
             return false;
@@ -116,7 +116,6 @@ if (isset($session->permissions)) {
         var parameters = {
             "new": $("#form-password").val().trim()
         };
-        alert($("#form-password").val());
         $.post("?controller=Professor&action=change", parameters, function (data) {
             if (data.result === "1") {
                 $("#success").attr({
