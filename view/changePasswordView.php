@@ -90,17 +90,17 @@ if (isset($session->permissions)) {
         pass1 = $("#form-password").val().trim();
         pass2 = $("#form-password2").val().trim();
 
-        if (pass1.length < 8 || pass1.length > 10 || pass1.split(" ", 2).length > 1) {
+        if (pass1.length < 8 || pass1.length > 15 || pass1.split(" ", 2).length > 1) {
             $("#failed-password").attr("data-notify-msg", "<i class=icon-remove-sign></i> Formato de Contraseña no validom Minimo 8 caracteres. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-password"));
             return false;
 
-        }else if (pass2.length < 8 || pass2.length > 10 || pass2.split(" ", 2).length > 1) {
+        }else if (pass2.length < 8 || pass2.length > 15 || pass2.split(" ", 2).length > 1) {
             $("#failed-password2").attr("data-notify-msg", "<i class=icon-remove-sign></i> Formato de Contraseña no valido. Minimo 8 caracteres. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-password2"));
             return false;
 
-        } else if (pass1!=pass2) {
+        } else if (pass1!==pass2) {
             $("#failed-password").attr("data-notify-msg", "<i class=icon-remove-sign></i> Las contraseñas no coinciden. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-password"));
             return false;
@@ -116,7 +116,6 @@ if (isset($session->permissions)) {
         var parameters = {
             "new": $("#form-password").val().trim()
         };
-
         $.post("?controller=Professor&action=change", parameters, function (data) {
             if (data.result === "1") {
                 $("#success").attr({

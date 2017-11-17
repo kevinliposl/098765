@@ -183,9 +183,10 @@ class ProfessorController {
      * Funcion para cambiar contrasenna
      */
     function change() {
-        if (SSession::getInstance()->permissions == 'T' || SSession::getInstance()->permissions == 'P' || SSession::getInstance()->permissions == 'S') {
-            if (isset($_POST['new'])) {
-                $model = new UserModel();
+        if (SSession::getInstance()->permissions == 'T' || SSession::getInstance()->permissions == 'A' || SSession::getInstance()->permissions == 'S') {
+            if (isset($_POST["new"])) {
+                require 'model/ProfessorModel.php';
+                $model = new ProfessorModel();
                 $session = SSession::getInstance();
 
                 $result = $model->change($session->identification, $_POST["new"]);
