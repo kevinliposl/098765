@@ -107,7 +107,7 @@ include_once 'public/header.php';
                 <div class="col-md-3 col-sm-6 bottommargin clearfix">
                     <div class="feature-box fbox-center fbox-bg fbox-plain">
                         <div class="fbox-icon">
-                            <a href="#"><i class="icon-map-marker2"></i></a>
+                            <a href="https://www.google.co.cr/maps/place/Fusi%C3%B3n+Academia+de+M%C3%BAsica/@9.9121748,-83.6817206,17z/data=!3m1!4b1!4m5!3m4!1s0x8fa0d6a057c987f9:0xbb309b791e096442!8m2!3d9.9121748!4d-83.6795319?hl=es" target="__blank"><i class="icon-map-marker2"></i></a>
                         </div>
                         <h3>Localizaci&oacute;n<span class="subtitle">Barrio Tom&aacute;s Guardia, Turrialba, Costa Rica</span></h3>
                     </div>
@@ -116,7 +116,7 @@ include_once 'public/header.php';
                 <div class="col-md-3 col-sm-6 bottommargin clearfix">
                     <div class="feature-box fbox-center fbox-bg fbox-plain">
                         <div class="fbox-icon">
-                            <a href="#"><i class="icon-phone3"></i></a>
+                            <a href="tel:+5068326 1731"><i class="icon-phone3"></i></a>
                         </div>
                         <h3>Puede llamar al<span class="subtitle">8326 1731</span></h3>
                     </div>
@@ -125,7 +125,7 @@ include_once 'public/header.php';
                 <div class="col-md-3 col-sm-6 bottommargin clearfix">
                     <div class="feature-box fbox-center fbox-bg fbox-plain">
                         <div class="fbox-icon">
-                            <a href="#"><i class="icon-facebook2"></i></a>
+                            <a href="https://www.facebook.com/fusionacademiacr/" target="__blank"><i class="icon-facebook2"></i></a>
                         </div>
                         <h3>Visitanos<span class="subtitle">fusionacademiacr</span></h3>
                     </div>
