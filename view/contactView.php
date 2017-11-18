@@ -44,7 +44,7 @@ if (isset($session->permissions)) {
 
                     <div class="contact-form-result"></div>
 
-                    <form class="nobottommargin" id="template-contactform" name="template-contactform" action="include/sendemail.php" method="post">
+                    <form class="nobottommargin" id="template-contactform" name="template-contactform" action="libs/sendemail.php" method="post">
 
                         <div class="form-process"></div>
 
