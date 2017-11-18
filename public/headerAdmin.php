@@ -82,10 +82,12 @@ include_once 'public/head.php';
                             </li>
                         </ul>
                     </li>
-
-
-
-                    <li><a href="?action=report"><div>Reportes</div></a></li>
+                    <li><a href="#"><div>Reportes</div></a>
+                        <ul>
+                            <li><a href="?controller=Report&action=selectUserState"><div>Usuarios Activos</div></a></li> 
+                            <li><a href="?controller=Report&action=selectEnrolledPerMonth"><div>Matriculados Por Mes</div></a></li> 
+                        </ul>
+                    </li>
                     <li><a href="?controller=User&action=signOff"><div>Cerrar Sesi&oacute;n</div></a></li>
                 </ul>
             </nav><!-- #primary-menu end -->
