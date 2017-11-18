@@ -17,7 +17,7 @@ if (isset($session->permissions)) {
 <section id="page-title">
 
     <div class="container clearfix">
-        <h1>Registar Curso</h1>
+        <h1>Registrar Curso</h1>
     </div>
 </section><!-- #page-title end -->
 

@@ -3,7 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/xampp/htdocs/098765/view/indexView.php</file>
+=======
+            <file>file:/C:/xampp/htdocs/098765/view/insertCourseView.php</file>
+            <file>file:/C:/xampp/htdocs/098765/controller/ReportController.php</file>
+>>>>>>> a39e3810d3a0c8838664f261f3f1d877f18c8971
         </group>
     </open-files>
 </project-private>
