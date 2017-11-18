@@ -21,6 +21,7 @@ class AdminController {
      * @param string $email Email de entidad
      * @param string $name Nombre de entidad
      * @param string $firstLastName Apellido de entidad
+     * @param string $secondLastName Apellido de entidad
      * Funcion para insertar administrador
      */
     function insert() {
