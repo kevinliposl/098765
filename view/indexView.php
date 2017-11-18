@@ -16,35 +16,23 @@ if (isset($session->permissions)) {
     include_once 'public/header.php';
 }
 ?>
-<section id="slider" class="slider-parallax swiper_wrapper dark full-screen">
+
+<section id="slider" class="slider-parallax" style="background: url('public/images/presentation/1.jpg') no-repeat; background-size: cover" data-height-lg="600" data-height-md="500" data-height-sm="400" data-height-xs="300" data-height-xxs="250">
     <div class="slider-parallax-inner">
-        <div class="swiper-container swiper-parent">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide dark" style="background-image: url('public/images/presentation/1.jpg');">
-                    <div class="container clearfix">
-                        <div class="slider-caption slider-caption-left">
-                            <h2 data-caption-animate="fadeInRight" style="text-align: center;">
-                                Bienvenido <br>a<br> <text style="color: #0044cc">F</text><text style="color: #0077b3">U</text><text style="color: #009EE4">S</text><text style="color: #666666">I</text><text style="color: #c0c0c0">&oacute;</text><text style="color: #00AFF0">N</text>!
-                            </h2>
-                            <p data-caption-animate="fadeInUp" data-caption-delay="200" style="font-size: medium; text-align: center;">
-                                <b>"La música da alma al universo, alas a la mente, vuelos a la imaginación, consuelo a la tristeza y vida y alegría a todas las cosas" -Platón-</b>
-                            </p>
-                        </div>
-                    </div>
+
+        <div class="container clearfix">
+            <div class="vertical-middle dark center">
+
+                <div class="heading-block nobottommargin center">
+                    <h1>
+                        <span class="text-rotater nocolor" data-separator="|" data-rotate="flipInX" data-speed="3500">
+                            Bienvenido a Fusi&oacute;n<br><span class="t-rotate">Lideres|en la Educaci&oacute;n musical|Turrialbe&ntilde;a</span>
+                        </span>
+                    </h1>
                 </div>
-                <div class="swiper-slide dark" style="background-image: url('public/images/presentation/2.jpg');">
-                    <div class="container clearfix">
-                        <div class="slider-caption slider-caption-top-left">
-                            <h2 data-caption-animate="fadeInUp" style="text-align: center;font-size: xx-large;">¡Bienvenido a Fusi&oacute;n!</h2>
-                            <p data-caption-animate="fadeInUp" data-caption-delay="200" style="font-size: medium;">
-                                <b>"La música da alma al universo, alas a la mente, vuelos a la imaginación, consuelo a la tristeza y vida y alegría a todas las cosas" -Platón-</b>
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                <a href="#ini" class="button button-border button-light button-rounded button-reveal tright button-large topmargin hidden-xs"><i class="icon-angle-right"></i><span>Start Tour</span></a>
             </div>
         </div>
-        <a href="#" data-scrollto="#content" data-offset="100" class="dark one-page-arrow"><i class="icon-angle-down infinite animated fadeInDown"></i></a>
     </div>
 </section>
 
@@ -52,7 +40,7 @@ if (isset($session->permissions)) {
 ============================================= -->
 <section id="content">
 
-    <div class="content-wrap">
+    <div class="content-wrap" id="ini">
 
         <div class="container clearfix">
             <div class="row clearfix">

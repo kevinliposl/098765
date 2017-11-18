@@ -3,7 +3,7 @@ include_once 'public/head.php';
 ?>
 <!-- Header
 ============================================= -->
-<header id="header" class="transparent-header full-header" data-sticky-class="not-dark">
+<header id="header" class="transparent-header dark full-header" data-sticky-class="not-dark">
     <div id="header-wrap">
         <div class="container clearfix">
             <div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
