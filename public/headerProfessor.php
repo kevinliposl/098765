@@ -29,7 +29,7 @@ include_once 'public/head.php';
                             <li><a href="?controller=ClassActivity&action=insert"><div>Ingresar Actividad de Clase</div></a></li> 
                             <li><a href="?controller=ClassActivity&action=update"><div>Actualizar Actividad de Clase</div></a></li> 
                             <li><a href="?controller=ClassActivity&action=select"><div>Ver Actividad de Clase</div></a></li> 
-                            <li><a href="?controller=ClassActivity&action=record"><div>Ver expediente</div></a></li> 
+                            <li><a href="?controller=ClassActivity&action=record"><div>Ver Expediente Estudiantil</div></a></li> 
                         </ul>
                     </li>
                     <li><a href="?controller=User&action=signOff"><div>Cerrar Sesi&oacute;n</div></a></li>

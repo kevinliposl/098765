@@ -77,4 +77,5 @@ class IndexController {
     function ejemploProfesor() {
         $this->view->show("profileProfesorView.php");
     }
+
 }
