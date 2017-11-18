@@ -20,10 +20,20 @@ if (isset($session->permissions)) {
     <div class="slider-parallax-inner">
         <div class="swiper-container swiper-parent">
             <div class="swiper-wrapper">
+                <div class="swiper-slide dark" style="background-image: url('public/images/presentation/1.jpg');">
+                    <div class="container clearfix">
+                        <div class="slider-caption slider-caption-left">
+                            <h2 data-caption-animate="fadeInLeft" style="text-align: center;">Bienvenido <br>a<br> Fusi&oacute;n</h2>
+                            <p data-caption-animate="fadeInUp" data-caption-delay="200" style="text-align: center;">
+                                Academia privada de m&uacute;sica.
+                            </p>
+                        </div>
+                    </div>
+                </div>
                 <div class="swiper-slide dark" style="background-image: url('public/images/mainPage.jpg');">
                     <div class="container clearfix">
-                        <div class="slider-caption slider-caption-center">
-                            <h2 data-caption-animate="fadeInUp">Bienvenido a Fusi&oacute;n</h2>
+                        <div class="slider-caption slider-caption-left">
+                            <h2 data-caption-animate="fadeInLeft">Bienvenido a Fusi&oacute;n</h2>
                             <p data-caption-animate="fadeInUp" data-caption-delay="200">
                                 Academia privada de m&uacute;sica.
                             </p>
@@ -132,9 +142,9 @@ if (isset($session->permissions)) {
                     <div class="flexslider">
                         <div class="slider-wrap">
                             <div class="slide">
-                                <div class="testi-image">
+<!--                                <div class="testi-image">
                                     <a href="#"><img src="public/images/icons/avatar.jpg" alt="Customer Testimonails"></a>
-                                </div>
+                                </div>-->
                                 <div class="testi-content">
                                     <p>
                                         Fusi&oacute;n es una excelente opci&oacute;n para aprender m&uacute;sica
@@ -152,7 +162,7 @@ if (isset($session->permissions)) {
             </div>
 
 
-            <br><h2 class="center">¡Nuestros socios!</h2>
+<!--            <br><h2 class="center">¡Nuestros socios!</h2>
 
             <div class="container clearfix">
 
@@ -172,7 +182,7 @@ if (isset($session->permissions)) {
                 </div>
 
 
-            </div>
+            </div>-->
 
         </div>
 
