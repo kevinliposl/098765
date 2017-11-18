@@ -11,7 +11,7 @@ class EmailSystem {
 
         $toemails[] = array(
             'email' => 'pruebaproyectosucr@gmail.com',
-            'name' => 'Fusión Academica de Música'
+            'name' => $nameT
         );
 
         $message_success = 'We have <strong>successfully</strong> received your Message and will get Back to you as soon as possible.';
