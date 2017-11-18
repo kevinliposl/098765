@@ -58,8 +58,8 @@ if (isset($session->permissions)) {
                 <div class="col-lg-7">
 
                     <div style="position: relative; margin-bottom: -60px;" class="ohidden" data-height-lg="426" data-height-md="567" data-height-sm="470" data-height-xs="287" data-height-xxs="183">
-                        <img src="public/images/landing/device1.png" style="position: absolute; top: 0; left: 0;" data-animate="fadeInUp" data-delay="100" alt="Chrome">
-                        <img src="public/images/landing/device2.png" style="position: absolute; top: 0; left: 0;" data-animate="fadeInUp" data-delay="400" alt="iPad">
+                        <!--<img src="public/images/landing/sol.png" style="position: absolute; top: 0; left: 0;" data-animate="fadeInUp" data-delay="100" alt="Sol">-->
+                        <img src="public/images/fusionOriginal.png" style="position: absolute; top: 0; left: 0;" data-animate="fadeInUp" data-delay="400" alt="Fa">
                     </div>
 
                 </div>
