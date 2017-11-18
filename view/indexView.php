@@ -30,7 +30,7 @@ if (isset($session->permissions)) {
                         </div>
                     </div>
                 </div>
-                <div class="swiper-slide dark" style="background-image: url('public/images/mainPage.jpg');">
+                <div class="swiper-slide dark" style="background-image: url('public/images/presentation/2.jpg');">
                     <div class="container clearfix">
                         <div class="slider-caption slider-caption-left">
                             <h2 data-caption-animate="fadeInLeft">Bienvenido a Fusi&oacute;n</h2>
