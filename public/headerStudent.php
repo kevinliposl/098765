@@ -10,7 +10,7 @@ include_once 'public/head.php';
             <!-- Logo
             ============================================= -->
             <div id="logo">
-                <a href="?" class="standard-logo" data-dark-logo="public/images/fusion-dark.png"><img src="public/images/fusion.png" alt="Canvas Logo"></a>
+                <a href="?" class="standard-logo" data-dark-logo="public/images/fusion-dark.png"><img src="public/images/fusionLogoOriginal.png" alt="Canvas Logo"></a>
                 <a href="?" class="retina-logo" data-dark-logo="public/images/fusion-dark@2x.png"><img src="public/images/fusion@2x.png" alt="Canvas Logo"></a>
             </div><!-- #logo end -->
             <!-- Primary Navigation

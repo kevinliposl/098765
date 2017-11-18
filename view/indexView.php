@@ -122,7 +122,7 @@ if (isset($session->permissions)) {
 
             <div class="clear"></div>
 
-            <div class="section parallax dark nobottommargin" style="background-image: url('public/images/landing/landing1.jpg'); padding: 100px 0;" data-stellar-background-ratio="0.4">
+            <div class="section parallax dark nobottommargin" style="background-image: url('public/images/landing/EscritorioFusion.jpg'); padding: 100px 0;" data-stellar-background-ratio="0.4">
 
                 <div class="heading-block center">
                     <h3>¿Qu&eacute; dice nuestros clientes?</h3>
