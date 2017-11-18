@@ -4,9 +4,9 @@ $session = SSession::getInstance();
 if (isset($session->permissions)) {
     if ($session->permissions == 'S') {
         include_once 'public/headerStudent.php';
-    } else if($session->permissions == 'A') {
+    } else if ($session->permissions == 'A') {
         include_once 'public/headerAdmin.php';
-    }elseif ($session->permissions == 'T') {
+    } elseif ($session->permissions == 'T') {
         include_once 'public/headerProfessor.php';
     }
 } else {
@@ -40,11 +40,11 @@ if (isset($session->permissions)) {
                     <h3>Envianos un correo</h3>
                 </div>
 
-                <div class="contact-widget" data-alert-type="inline">
+                <div class="contact-widget">
 
                     <div class="contact-form-result"></div>
 
-                    <form class="nobottommargin" id="template-contactform" name="template-contactform" action="libs/sendemail.php" method="post">
+                    <form class="nobottommargin" id="template-contactform" name="template-contactform" action="../libs/sendemail.php" method="post">
 
                         <div class="form-process"></div>
 
