@@ -46,13 +46,13 @@ class ScheduleController {
     function delete() {
         if (SSession::getInstance()->permissions == 'A' || SSession::getInstance()->permissions == 'T') {
             if (isset($_POST["id"])) {
-                $model = new SemesterModel();
+                $model = new ScheduleModel();
                 $result = $model->delete($_POST["id"]);
                 echo json_encode($result);
             } else {
-                $model = new SemesterModel();
+                $model = new ScheduleModel();
                 $result = $model->selectAll();
-                $this->view->show("deleteSemesterView.php", $result);
+                $this->view->show("deleteScheduleView.php", $result);
             }
         } else {
             $this->view->show("404View.php");
