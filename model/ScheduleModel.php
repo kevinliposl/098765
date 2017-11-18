@@ -25,18 +25,9 @@ class ScheduleModel {
     }
 
     function delete($id) {
-        $query = $this->db->prepare("call sp_delete_semester($id)");
+        $query = $this->db->prepare("call sp_delete_schedule($id)");
         $query->execute();
         $result = $query->fetch();
         return $result;
     }
-
-    function selectAll() {
-        $query = $this->db->prepare("call sp_select_all_semester()");
-        $query->execute();
-        $result = $query->fetchAll();
-        $query->closeCursor();
-        return $result;
-    }
-
 }
