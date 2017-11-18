@@ -22,16 +22,21 @@ class UserController {
      * Funcion para logueo de usuario
      */
     function logIn() {
-        if (isset($_POST['email']) && $_POST['password']) {
-            $model = new UserModel();
-            $result = $model->logIn($_POST['email'], $_POST['password']);
-            if (isset($result[0]['identification'])) {
-                $this->permissions($result);
+        $ssession = SSession::getInstance();
+        if (!$ssession->__isset("identification")) {
+            if (isset($_POST['email']) && $_POST['password']) {
+                $model = new UserModel();
+                $result = $model->logIn($_POST['email'], $_POST['password']);
+                if (isset($result[0]['identification'])) {
+                    $this->permissions($result);
+                } else {
+                    echo json_encode(array('result' => '0'));
+                }
             } else {
-                echo json_encode(array('result' => '0'));
+                $this->view->show("loginView.php");
             }
-        } else {
-            $this->view->show("loginView.php");
+        }else{
+            $this->view->show("indexView.php");
         }
     }
 
@@ -69,9 +74,33 @@ class UserController {
      * Funcion para deslogueo de usuario
      */
     function signOff() {
-        $session = SSession::getInstance();
-        $session->destroy();
-        $this->view->show("indexView.php");
+        $ssession = SSession::getInstance();
+        if ($ssession->__isset("identification")) {
+            $session = SSession::getInstance();
+            $session->destroy();
+            $this->view->show("indexView.php");
+        } else {
+            $this->view->show("indexView.php");
+        }
+    }
+
+    /**
+     * @return null
+     * Funcion para recordar contraseña de usuario
+     */
+    function rememberPassword() {
+        $ssession = SSession::getInstance();
+        if (!$ssession->__isset("identification")) {
+            if (isset($_POST["email"])) {
+                $model = new UserModel();
+                $result = "1";
+                echo json_encode($result);
+            } else {
+                $this->view->show("rememberPasswordView.php");
+            }
+        } else {
+            $this->view->show("indexView.php");
+        }
     }
 
 }
