@@ -40,66 +40,61 @@ if (isset($session->permissions)) {
                     <h3>Envianos un correo</h3>
                 </div>
 
-                <div class="contact-widget">
+                <div class="contact-form-result"></div>
 
-                    <div class="contact-form-result"></div>
+                <form class="nobottommargin" id="template-contactform" name="template-contactform" onsubmit="return validate();">
 
-                    <form class="nobottommargin" id="template-contactform" name="template-contactform" action="../libs/sendemail.php" method="post">
+                    <div class="form-process"></div>
 
-                        <div class="form-process"></div>
+                    <div class="col_one_third">
+                        <label for="template-contactform-name">Nombre <small>*</small></label>
+                        <input type="text" id="template-contactform-name" name="template-contactform-name" value="" class="sm-form-control"  Required/>
+                    </div>
 
-                        <div class="col_one_third">
-                            <label for="template-contactform-name">Nombre <small>*</small></label>
-                            <input type="text" id="template-contactform-name" name="nombre" value="" class="sm-form-control required" />
-                        </div>
+                    <div class="col_one_third">
+                        <label for="template-contactform-email">Correo <small>*</small></label>
+                        <input type="email" id="template-contactform-email" name="template-contactform-email" value="" class="email sm-form-control" Required/>
+                    </div>
 
-                        <div class="col_one_third">
-                            <label for="template-contactform-email">Correo <small>*</small></label>
-                            <input type="email" id="template-contactform-email" name="correo" value="" class="required email sm-form-control" />
-                        </div>
+                    <div class="col_one_third col_last">
+                        <label for="template-contactform-phone">Tel&eacute;fono</label>
+                        <input type="text" id="template-contactform-phone" name="template-contactform-phone" value="" class="sm-form-control" Required />
+                    </div>
 
-                        <div class="col_one_third col_last">
-                            <label for="template-contactform-phone">Tel&eacute;fono</label>
-                            <input type="text" id="template-contactform-phone" name="telefono" value="" class="sm-form-control" />
-                        </div>
+                    <div class="clear"></div>
 
-                        <div class="clear"></div>
+                    <div class="col_two_third">
+                        <label for="template-contactform-subject">Asunto <small>*</small></label>
+                        <input type="text" id="template-contactform-subject" name="template-contactform-subject" value="" class="sm-form-control" Required />
+                    </div>
 
-                        <div class="col_two_third">
-                            <label for="template-contactform-subject">Asunto <small>*</small></label>
-                            <input type="text" id="template-contactform-subject" name="asunto" value="" class="required sm-form-control" />
-                        </div>
+                    <div class="col_one_third col_last">
+                        <label for="template-contactform-service">Servicios</label>
+                        <select id="template-contactform-service" name="template-contactform-service" class="sm-form-control">
+                            <option value="Matricula">Matricula</option>
+                            <option value="Servicios">Servicios</option>
+                            <option value="Consulta">Consultas</option>
+                            <option value="Sugerencia">Sugerencias</option>
+                            <option value="Queja">Quejas</option>
+                        </select>
+                    </div>
 
-                        <div class="col_one_third col_last">
-                            <label for="template-contactform-service">Servicios</label>
-                            <select id="template-contactform-service" name="servicio" class="sm-form-control">
-                                <option value="">Seleccione uno</option>
-                                <option value="Matricula">Matricula</option>
-                                <option value="Servicios">Servicios</option>
-                                <option value="Consulta">Consultas</option>
-                                <option value="Sugerencia">Sugerencias</option>
-                                <option value="Queja">Quejas</option>
-                            </select>
-                        </div>
+                    <div class="clear"></div>
 
-                        <div class="clear"></div>
+                    <div class="col_full">
+                        <label for="template-contactform-message">Mensaje <small>*</small></label>
+                        <textarea class="required sm-form-control" id="template-contactform-message" name="template-contactform-message" rows="6" cols="30" Required></textarea>
+                    </div>
 
-                        <div class="col_full">
-                            <label for="template-contactform-message">Mensaje <small>*</small></label>
-                            <textarea class="required sm-form-control" id="template-contactform-message" name="template-contactform-message" rows="6" cols="30"></textarea>
-                        </div>
+                    <div class="col_full hidden">
+                        <input type="text" id="template-contactform-botcheck" name="template-contactform-botcheck" value="" class="sm-form-control" />
+                    </div>
 
-                        <div class="col_full hidden">
-                            <input type="text" id="template-contactform-botcheck" name="template-contactform-botcheck" value="" class="sm-form-control" />
-                        </div>
+                    <div class="col_full">
+                        <button name="submit" type="submit" id="submit-button" tabindex="5" value="Submit" class="button button-3d nomargin">¡Enviar!</button>
+                    </div>
 
-                        <div class="col_full">
-                            <button name="submit" type="submit" id="submit-button" tabindex="5" value="Submit" class="button button-3d nomargin">¡Enviar!</button>
-                        </div>
-
-                    </form>
-                </div>
-
+                </form>
             </div><!-- Contact Form End -->
 
             <!-- Google Map
@@ -147,6 +142,31 @@ if (isset($session->permissions)) {
     </div>
 </section><!-- #content end -->
 
+<script>
+    function validate() {
+        var parameters = {
+            'template-contactform-name': $("#template-contactform-name").val(),
+            'template-contactform-email': $("#template-contactform-email").val().trim(),
+            'template-contactform-phone': $("#template-contactform-phone").val().trim(),
+            'template-contactform-service': $("#template-contactform-service").val().trim(),
+            'template-contactform-subject': $("#template-contactform-subject").val().trim(),
+            'template-contactform-message': $("#template-contactform-message").val().trim()
+        };
+
+        $.post("?controller=Index&action=contactSendEmail", parameters, function (data) {
+            if (data === "1") {
+                alert("If");
+//                setTimeout("location.href = '?controller=Professor&action=insert';", 2000);
+            } else {
+                alert("Else");
+            }
+            ;
+        }, "json");
+
+        return false;
+    }
+</script>
+
 <?php
 include_once 'public/footer.php';
 ?>
@@ -183,3 +203,4 @@ include_once 'public/footer.php';
     });
 
 </script>
+
