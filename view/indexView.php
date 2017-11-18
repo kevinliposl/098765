@@ -25,7 +25,7 @@ if (isset($session->permissions)) {
                         <div class="slider-caption slider-caption-left">
                             <h2 data-caption-animate="fadeInLeft" style="text-align: center;">Bienvenido <br>a<br> Fusi&oacute;n</h2>
                             <p data-caption-animate="fadeInUp" data-caption-delay="200" style="text-align: center;">
-                                Academia privada de m&uacute;sica.
+                                "La música da alma al universo, alas a la mente, vuelos a la imaginación, consuelo a la tristeza y vida y alegría a todas las cosas" -Platón-
                             </p>
                         </div>
                     </div>
@@ -35,7 +35,7 @@ if (isset($session->permissions)) {
                         <div class="slider-caption slider-caption-left">
                             <h2 data-caption-animate="fadeInLeft">Bienvenido a Fusi&oacute;n</h2>
                             <p data-caption-animate="fadeInUp" data-caption-delay="200">
-                                Academia privada de m&uacute;sica.
+                                "La música da alma al universo, alas a la mente, vuelos a la imaginación, consuelo a la tristeza y vida y alegría a todas las cosas" -Platón-
                             </p>
                         </div>
                     </div>
