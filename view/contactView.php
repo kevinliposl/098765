@@ -40,8 +40,6 @@ if (isset($session->permissions)) {
                     <h3>Envianos un correo</h3>
                 </div>
 
-                <div class="contact-form-result"></div>
-
                 <form class="nobottommargin" id="template-contactform" name="template-contactform" onsubmit="return validate();">
 
                     <div class="form-process"></div>
@@ -91,10 +89,12 @@ if (isset($session->permissions)) {
                     </div>
 
                     <div class="col_full">
-                        <button name="submit" type="submit" id="submit-button" tabindex="5" value="Submit" class="button button-3d nomargin">¡Enviar!</button>
+                        <button name="submit" id="submit" type="submit" id="submit-button" tabindex="5" value="Submit" class="button button-3d nomargin">¡Enviar!</button>
                     </div>
 
                 </form>
+                <div class="contact-form-result alert-info" id="contact-form-result"></div>
+                <br>
             </div><!-- Contact Form End -->
 
             <!-- Google Map
@@ -155,11 +155,12 @@ if (isset($session->permissions)) {
 
         $.post("?controller=Index&action=contactSendEmail", parameters, function (data) {
             if (data === "1") {
-                alert("If");
-//                setTimeout("location.href = '?controller=Professor&action=insert';", 2000);
+                document.getElementById("contact-form-result").innerHTML = "Mensaje Enviado, será redireccionado en breve...";
+                setTimeout("location.href = '?';", 1000);
             } else {
-                alert("Else");
-            }
+                document.getElementById("contact-form-result").innerHTML = "Mensaje no enviado, intentelo de nuevo o pongase en contacto por los otros medios disponibles";
+                setTimeout("location.href = '#submit';", 0);
+            }   
             ;
         }, "json");
 
