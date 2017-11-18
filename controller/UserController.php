@@ -35,7 +35,7 @@ class UserController {
             } else {
                 $this->view->show("loginView.php");
             }
-        }else{
+        } else {
             $this->view->show("indexView.php");
         }
     }
@@ -93,7 +93,15 @@ class UserController {
         if (!$ssession->__isset("identification")) {
             if (isset($_POST["email"])) {
                 $model = new UserModel();
-                $result = "1";
+                $resultT = $model->rememberPassword($_POST["email"]);
+                if (!isset($resultT[0]['result'])) {
+                    require 'libs/EmailSystem.php';
+                    $email = new EmailSystem();
+                    $result = $email->contactSendPassword($_POST["email"], $resultT[0]['password']);
+                } else {
+                    $result = "0";
+                }
+
                 echo json_encode($result);
             } else {
                 $this->view->show("rememberPasswordView.php");

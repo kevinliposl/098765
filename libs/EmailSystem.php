@@ -60,5 +60,49 @@ class EmailSystem {
             return "0";
         endif;
     }
+    
+    function contactSendPassword($emailT, $passwordT) {
+        $toemails = array();
+
+        $toemails[] = array(
+            'email' => $emailT,
+            'name' => 'Sr. Usuario'
+        );
+
+        $mail = new PHPMailer();
+
+        $email = $emailT;
+        $password = $passwordT;
+
+        $subject = 'Servicio Tecnico - Fusión Academia de Música: Recuperación de Contraseña';
+
+        $mail->SetFrom($email, $subject);
+        $mail->AddReplyTo($email, $subject);
+
+        foreach ($toemails as $toemail) {
+            $mail->AddAddress($toemail['email'], $toemail['name']);
+        }
+        $mail->Subject = $subject;
+
+        $email = isset($email) ? "Email: $email<br><br>" : '';
+        $password = isset($password) ? "Contraseña: $passwordT<br><br>" : '';
+        $add = '<br> Por favor, no responder a este correo.';
+
+        $body = "$email $password $add";
+
+        if (isset($_FILES['template-contactform-file']) && $_FILES['template-contactform-file']['error'] == UPLOAD_ERR_OK) {
+            $mail->IsHTML(true);
+            $mail->AddAttachment($_FILES['template-contactform-file']['tmp_name'], $_FILES['template-contactform-file']['name']);
+        }
+
+        $mail->MsgHTML($body);
+        $sendEmail = $mail->Send();
+
+        if ($sendEmail == true):
+            return "1";
+        else:
+            return "0";
+        endif;
+    }
 
 }
