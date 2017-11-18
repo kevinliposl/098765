@@ -20,7 +20,7 @@ if (isset($session->permissions)) {
     <div class="slider-parallax-inner">
         <div class="swiper-container swiper-parent">
             <div class="swiper-wrapper">
-                <div class="swiper-slide dark" style="background-image: url('public/images/presentation/2.jpg');">
+                <div class="swiper-slide dark" style="background-image: url('public/images/presentation/1.jpg');">
                     <div class="container clearfix">
                         <div class="slider-caption slider-caption-left">
                             <h2 data-caption-animate="fadeInRight" style="text-align: center;">
@@ -32,7 +32,7 @@ if (isset($session->permissions)) {
                         </div>
                     </div>
                 </div>
-                <div class="swiper-slide dark" style="background-image: url('public/images/presentation/1.jpg');">
+                <div class="swiper-slide dark" style="background-image: url('public/images/presentation/2.jpg');">
                     <div class="container clearfix">
                     </div>
                 </div>
