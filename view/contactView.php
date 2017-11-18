@@ -159,7 +159,7 @@ if (isset($session->permissions)) {
                 setTimeout("location.href = '?';", 1000);
             } else {
                 document.getElementById("contact-form-result").innerHTML = "Mensaje no enviado, intentelo de nuevo o pongase en contacto por los otros medios disponibles";
-                setTimeout("location.href = '#submit';", 0);
+                setTimeout("location.href = '#template-contactform-message';", 0);
             }   
             ;
         }, "json");
