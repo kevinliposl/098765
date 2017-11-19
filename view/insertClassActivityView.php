@@ -17,7 +17,7 @@ if (isset($session->permissions)) {
 <section id="page-title">
 
     <div class="container clearfix">
-        <h1>Registar Actividad y Asistencia en Clase</h1>
+        <h1>Registrar Actividad y Asistencia en Clase</h1>
     </div>
 </section><!-- #page-title end -->
 
@@ -26,7 +26,7 @@ if (isset($session->permissions)) {
 <section id="content">
     <div class="content-wrap">
         <div class="container clearfix">
-            <div class="accordion-lg divcenter nobottommargin " style="max-width: 550px;">
+            <div class="accordion-lg divcenter nobottommargin ">
                 <div class="acctitle">
                     <div class="acc_content clearfix">
                         <form id="form" class="nobottommargin">                            

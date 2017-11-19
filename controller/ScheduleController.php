@@ -12,6 +12,7 @@ class ScheduleController {
 
     function __construct() {
         $this->view = new View();
+        require 'model/SemesterModel.php';
         require 'model/ScheduleModel.php';
     }
 
@@ -25,7 +26,7 @@ class ScheduleController {
      */
     function insert() {
         if (SSession::getInstance()->permissions == 'A' || SSession::getInstance()->permissions == 'T') {
-            $model = new ScheduleModel();
+            $model = new SemesterModel();
             if (isset($_POST["ID"]) && isset($_POST["start"]) && isset($_POST["end"]) && isset($_POST["day"])) {
                 $result = $model->insert($_POST["ID"], $_POST["start"], $_POST["end"], $_POST["day"]);
                 echo json_encode($result);
@@ -52,7 +53,7 @@ class ScheduleController {
             } else {
                 $model = new SemesterModel();
                 $result = $model->selectAll();
-                $this->view->show("deleteSemesterView.php", $result);
+                $this->view->show("deleteScheduleView.php", $result);
             }
         } else {
             $this->view->show("404View.php");
@@ -66,7 +67,7 @@ class ScheduleController {
      */
     function select() {
         if (SSession::getInstance()->permissions == 'A' || SSession::getInstance()->permissions == 'T') {
-            $model = new ScheduleModel();
+            $model = new SemesterModel();
             if (isset($_POST["ID_Semester"])) {
                 $result = $model->select($_POST["ID_Semester"]);
                 echo json_encode($result);

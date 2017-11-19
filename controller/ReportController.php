@@ -24,7 +24,7 @@ class ReportController {
             $model = new ReportModel();
 
             $result = $model->selectUserState();
-            echo json_encode($result);
+            $this->view->show("reportUserState.php", $result);
         }
     }
 
@@ -37,7 +37,7 @@ class ReportController {
             $model = new ReportModel();
 
             $result = $model->selectEnrolledPerMonth();
-            echo json_encode($result);
+            $this->view->show("reportEnrolledPerMonthView.php", $result);
         }
     }
 

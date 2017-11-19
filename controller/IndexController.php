@@ -46,6 +46,14 @@ class IndexController {
         $this->view->show("contactView.php");
     }
 
+    function contactSendEmail() {
+        require 'libs/EmailSystem.php';
+        $email = new EmailSystem();
+        $result = $email->contactSendEmail($_POST['template-contactform-name'], $_POST['template-contactform-email'], $_POST['template-contactform-phone'], $_POST['template-contactform-service'], $_POST['template-contactform-subject'], $_POST['template-contactform-message']);
+
+        echo json_encode($result);
+    }
+
     /**
      * @return null
      * Funcion para mostrar AcercaDe
@@ -77,4 +85,5 @@ class IndexController {
     function ejemploProfesor() {
         $this->view->show("profileProfesorView.php");
     }
+
 }

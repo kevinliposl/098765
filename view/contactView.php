@@ -1,5 +1,17 @@
 <?php
-include_once 'public/header.php';
+$session = SSession::getInstance();
+
+if (isset($session->permissions)) {
+    if ($session->permissions == 'S') {
+        include_once 'public/headerStudent.php';
+    } else if ($session->permissions == 'A') {
+        include_once 'public/headerAdmin.php';
+    } elseif ($session->permissions == 'T') {
+        include_once 'public/headerProfessor.php';
+    }
+} else {
+    include_once 'public/header.php';
+}
 ?>
 
 <!-- Page Title
@@ -28,66 +40,61 @@ include_once 'public/header.php';
                     <h3>Envianos un correo</h3>
                 </div>
 
-                <div class="contact-widget" data-alert-type="inline">
+                <form class="nobottommargin" id="template-contactform" name="template-contactform" onsubmit="return validate();">
 
-                    <div class="contact-form-result"></div>
+                    <div class="form-process"></div>
 
-                    <form class="nobottommargin" id="template-contactform" name="template-contactform" action="include/sendemail.php" method="post">
+                    <div class="col_one_third">
+                        <label for="template-contactform-name">Nombre <small>*</small></label>
+                        <input type="text" id="template-contactform-name" name="template-contactform-name" value="" class="sm-form-control"  Required/>
+                    </div>
 
-                        <div class="form-process"></div>
+                    <div class="col_one_third">
+                        <label for="template-contactform-email">Correo <small>*</small></label>
+                        <input type="email" id="template-contactform-email" name="template-contactform-email" value="" class="email sm-form-control" Required/>
+                    </div>
 
-                        <div class="col_one_third">
-                            <label for="template-contactform-name">Nombre <small>*</small></label>
-                            <input type="text" id="template-contactform-name" name="nombre" value="" class="sm-form-control required" />
-                        </div>
+                    <div class="col_one_third col_last">
+                        <label for="template-contactform-phone">Tel&eacute;fono</label>
+                        <input type="text" id="template-contactform-phone" name="template-contactform-phone" value="" class="sm-form-control" Required />
+                    </div>
 
-                        <div class="col_one_third">
-                            <label for="template-contactform-email">Correo <small>*</small></label>
-                            <input type="email" id="template-contactform-email" name="correo" value="" class="required email sm-form-control" />
-                        </div>
+                    <div class="clear"></div>
 
-                        <div class="col_one_third col_last">
-                            <label for="template-contactform-phone">Tel&eacute;fono</label>
-                            <input type="text" id="template-contactform-phone" name="telefono" value="" class="sm-form-control" />
-                        </div>
+                    <div class="col_two_third">
+                        <label for="template-contactform-subject">Asunto <small>*</small></label>
+                        <input type="text" id="template-contactform-subject" name="template-contactform-subject" value="" class="sm-form-control" Required />
+                    </div>
 
-                        <div class="clear"></div>
+                    <div class="col_one_third col_last">
+                        <label for="template-contactform-service">Servicios</label>
+                        <select id="template-contactform-service" name="template-contactform-service" class="sm-form-control">
+                            <option value="Matricula">Matricula</option>
+                            <option value="Servicios">Servicios</option>
+                            <option value="Consulta">Consultas</option>
+                            <option value="Sugerencia">Sugerencias</option>
+                            <option value="Queja">Quejas</option>
+                        </select>
+                    </div>
 
-                        <div class="col_two_third">
-                            <label for="template-contactform-subject">Asunto <small>*</small></label>
-                            <input type="text" id="template-contactform-subject" name="asunto" value="" class="required sm-form-control" />
-                        </div>
+                    <div class="clear"></div>
 
-                        <div class="col_one_third col_last">
-                            <label for="template-contactform-service">Servicios</label>
-                            <select id="template-contactform-service" name="servicio" class="sm-form-control">
-                                <option value="">Seleccione uno</option>
-                                <option value="Matricula">Matricula</option>
-                                <option value="Servicios">Servicios</option>
-                                <option value="Consulta">Consultas</option>
-                                <option value="Sugerencia">Sugerencias</option>
-                                <option value="Queja">Quejas</option>
-                            </select>
-                        </div>
+                    <div class="col_full">
+                        <label for="template-contactform-message">Mensaje <small>*</small></label>
+                        <textarea class="required sm-form-control" id="template-contactform-message" name="template-contactform-message" rows="6" cols="30" Required></textarea>
+                    </div>
 
-                        <div class="clear"></div>
+                    <div class="col_full hidden">
+                        <input type="text" id="template-contactform-botcheck" name="template-contactform-botcheck" value="" class="sm-form-control" />
+                    </div>
 
-                        <div class="col_full">
-                            <label for="template-contactform-message">Mensaje <small>*</small></label>
-                            <textarea class="required sm-form-control" id="template-contactform-message" name="template-contactform-message" rows="6" cols="30"></textarea>
-                        </div>
+                    <div class="col_full">
+                        <button name="submit" id="submit" type="submit" id="submit-button" tabindex="5" value="Submit" class="button button-3d nomargin">¡Enviar!</button>
+                    </div>
 
-                        <div class="col_full hidden">
-                            <input type="text" id="template-contactform-botcheck" name="template-contactform-botcheck" value="" class="sm-form-control" />
-                        </div>
-
-                        <div class="col_full">
-                            <button name="submit" type="submit" id="submit-button" tabindex="5" value="Submit" class="button button-3d nomargin">¡Enviar!</button>
-                        </div>
-
-                    </form>
-                </div>
-
+                </form>
+                <div class="contact-form-result alert-info" id="contact-form-result"></div>
+                <br>
             </div><!-- Contact Form End -->
 
             <!-- Google Map
@@ -107,7 +114,7 @@ include_once 'public/header.php';
                 <div class="col-md-3 col-sm-6 bottommargin clearfix">
                     <div class="feature-box fbox-center fbox-bg fbox-plain">
                         <div class="fbox-icon">
-                            <a href="#"><i class="icon-map-marker2"></i></a>
+                            <a href="https://www.google.co.cr/maps/place/Fusi%C3%B3n+Academia+de+M%C3%BAsica/@9.9121748,-83.6817206,17z/data=!3m1!4b1!4m5!3m4!1s0x8fa0d6a057c987f9:0xbb309b791e096442!8m2!3d9.9121748!4d-83.6795319?hl=es" target="__blank"><i class="icon-map-marker2"></i></a>
                         </div>
                         <h3>Localizaci&oacute;n<span class="subtitle">Barrio Tom&aacute;s Guardia, Turrialba, Costa Rica</span></h3>
                     </div>
@@ -116,7 +123,7 @@ include_once 'public/header.php';
                 <div class="col-md-3 col-sm-6 bottommargin clearfix">
                     <div class="feature-box fbox-center fbox-bg fbox-plain">
                         <div class="fbox-icon">
-                            <a href="#"><i class="icon-phone3"></i></a>
+                            <a href="tel:+5068326 1731"><i class="icon-phone3"></i></a>
                         </div>
                         <h3>Puede llamar al<span class="subtitle">8326 1731</span></h3>
                     </div>
@@ -125,7 +132,7 @@ include_once 'public/header.php';
                 <div class="col-md-3 col-sm-6 bottommargin clearfix">
                     <div class="feature-box fbox-center fbox-bg fbox-plain">
                         <div class="fbox-icon">
-                            <a href="#"><i class="icon-facebook2"></i></a>
+                            <a href="https://www.facebook.com/fusionacademiacr/" target="__blank"><i class="icon-facebook2"></i></a>
                         </div>
                         <h3>Visitanos<span class="subtitle">fusionacademiacr</span></h3>
                     </div>
@@ -134,6 +141,32 @@ include_once 'public/header.php';
         </div>
     </div>
 </section><!-- #content end -->
+
+<script>
+    function validate() {
+        var parameters = {
+            'template-contactform-name': $("#template-contactform-name").val(),
+            'template-contactform-email': $("#template-contactform-email").val().trim(),
+            'template-contactform-phone': $("#template-contactform-phone").val().trim(),
+            'template-contactform-service': $("#template-contactform-service").val().trim(),
+            'template-contactform-subject': $("#template-contactform-subject").val().trim(),
+            'template-contactform-message': $("#template-contactform-message").val().trim()
+        };
+
+        $.post("?controller=Index&action=contactSendEmail", parameters, function (data) {
+            if (data === "1") {
+                document.getElementById("contact-form-result").innerHTML = "Mensaje Enviado, será redireccionado en breve...";
+                setTimeout("location.href = '?';", 1000);
+            } else {
+                document.getElementById("contact-form-result").innerHTML = "Mensaje no enviado, intentelo de nuevo o pongase en contacto por los otros medios disponibles";
+                setTimeout("location.href = '#template-contactform-message';", 0);
+            }   
+            ;
+        }, "json");
+
+        return false;
+    }
+</script>
 
 <?php
 include_once 'public/footer.php';
@@ -171,3 +204,4 @@ include_once 'public/footer.php';
     });
 
 </script>
+

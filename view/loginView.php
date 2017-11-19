@@ -38,7 +38,7 @@ include_once 'public/head.php';
                                 <input type="submit" class="button button-3d button-black nomargin" id="submit" value="Ingresar">
                                 <input type="hidden" id="failed" data-notify-type= "error" data-notify-position="bottom-full-width"/>
 
-                                <a href="#" class="fright" >Olvidó su contraseña?</a>
+                                <a href="?controller=User&action=rememberPassword" class="fright" >¿Olvidó su contraseña?</a>
                             </div>
                         </form>
                         <div class="line line-sm"></div>

@@ -20,14 +20,20 @@ if (isset($session->permissions)) {
     <div class="slider-parallax-inner">
         <div class="swiper-container swiper-parent">
             <div class="swiper-wrapper">
-                <div class="swiper-slide dark" style="background-image: url('public/images/mainPage.jpg');">
+                <div class="swiper-slide dark" style="background-image: url('public/images/presentation/1.jpg');">
                     <div class="container clearfix">
-                        <div class="slider-caption slider-caption-center">
-                            <h2 data-caption-animate="fadeInUp">Bienvenido a Fusi&oacute;n</h2>
-                            <p data-caption-animate="fadeInUp" data-caption-delay="200">
-                                Academia privada de m&uacute;sica.
+                        <div class="slider-caption slider-caption-left">
+                            <h2 data-caption-animate="fadeInRight" style="text-align: center;">
+                                ¡Bienvenido <br>a<br> <text style="color: #0044cc">F</text><text style="color: #0077b3">U</text><text style="color: #009EE4">S</text><text style="color: #666666">I</text><text style="color: #c0c0c0">&oacute;</text><text style="color: #00AFF0">N</text>!
+                            </h2>
+                            <p data-caption-animate="fadeInUp" data-caption-delay="200" style="font-size: medium; text-align: center;">
+                                <b>"La música da alma al universo, alas a la mente, vuelos a la imaginación, consuelo a la tristeza y vida y alegría a todas las cosas" -Platón-</b>
                             </p>
                         </div>
+                    </div>
+                </div>
+                <div class="swiper-slide dark" style="background-image: url('public/images/presentation/2.jpg');">
+                    <div class="container clearfix">
                     </div>
                 </div>
             </div>
@@ -58,8 +64,7 @@ if (isset($session->permissions)) {
                 <div class="col-lg-7">
 
                     <div style="position: relative; margin-bottom: -60px;" class="ohidden" data-height-lg="426" data-height-md="567" data-height-sm="470" data-height-xs="287" data-height-xxs="183">
-                        <img src="public/images/landing/device1.png" style="position: absolute; top: 0; left: 0;" data-animate="fadeInUp" data-delay="100" alt="Chrome">
-                        <img src="public/images/landing/device2.png" style="position: absolute; top: 0; left: 0;" data-animate="fadeInUp" data-delay="400" alt="iPad">
+                        <img src="public/images/landing/piano.png" style="position: absolute; top: 0; left: 0;" data-animate="fadeInUp" data-delay="400" alt="Fa">
                     </div>
 
                 </div>
@@ -122,7 +127,7 @@ if (isset($session->permissions)) {
 
             <div class="clear"></div>
 
-            <div class="section parallax dark nobottommargin" style="background-image: url('public/images/landing/landing1.jpg'); padding: 100px 0;" data-stellar-background-ratio="0.4">
+            <div class="section parallax dark nobottommargin" style="background-image: url('public/images/landing/EscritorioFusion.jpg'); padding: 100px 0;" data-stellar-background-ratio="0.4">
 
                 <div class="heading-block center">
                     <h3>¿Qu&eacute; dice nuestros clientes?</h3>
@@ -132,9 +137,9 @@ if (isset($session->permissions)) {
                     <div class="flexslider">
                         <div class="slider-wrap">
                             <div class="slide">
-                                <div class="testi-image">
-                                    <a href="#"><img src="public/images/icons/avatar.jpg" alt="Customer Testimonails"></a>
-                                </div>
+                                <!--                                <div class="testi-image">
+                                                                    <a href="#"><img src="public/images/icons/avatar.jpg" alt="Customer Testimonails"></a>
+                                                                </div>-->
                                 <div class="testi-content">
                                     <p>
                                         Fusi&oacute;n es una excelente opci&oacute;n para aprender m&uacute;sica
@@ -152,27 +157,27 @@ if (isset($session->permissions)) {
             </div>
 
 
-            <br><h2 class="center">¡Nuestros socios!</h2>
-
-            <div class="container clearfix">
-
-                <div id="oc-clients" class="owl-carousel image-carousel carousel-widget" data-margin="60" data-loop="true" data-nav="false" data-autoplay="5000" data-pagi="false" data-items-xxs="2" data-items-xs="3" data-items-sm="4" data-items-md="5" data-items-lg="6">
-
-                    <div class="oc-item"><a href="#"><img src="public/images/icons/avatar.jpg" alt="Clients"></a></div>
-                    <div class="oc-item"><a href="#"><img src="public/images/icons/avatar.jpg" alt="Clients"></a></div>
-                    <div class="oc-item"><a href="#"><img src="public/images/icons/avatar.jpg" alt="Clients"></a></div>
-                    <div class="oc-item"><a href="#"><img src="public/images/icons/avatar.jpg" alt="Clients"></a></div>
-                    <div class="oc-item"><a href="#"><img src="public/images/icons/avatar.jpg" alt="Clients"></a></div>
-                    <div class="oc-item"><a href="#"><img src="public/images/icons/avatar.jpg" alt="Clients"></a></div>
-                    <div class="oc-item"><a href="#"><img src="public/images/icons/avatar.jpg" alt="Clients"></a></div>
-                    <div class="oc-item"><a href="#"><img src="public/images/icons/avatar.jpg" alt="Clients"></a></div>
-                    <div class="oc-item"><a href="#"><img src="public/images/icons/avatar.jpg" alt="Clients"></a></div>
-                    <div class="oc-item"><a href="#"><img src="public/images/icons/avatar.jpg" alt="Clients"></a></div>
-
-                </div>
-
-
-            </div>
+            <!--            <br><h2 class="center">¡Nuestros socios!</h2>
+            
+                        <div class="container clearfix">
+            
+                            <div id="oc-clients" class="owl-carousel image-carousel carousel-widget" data-margin="60" data-loop="true" data-nav="false" data-autoplay="5000" data-pagi="false" data-items-xxs="2" data-items-xs="3" data-items-sm="4" data-items-md="5" data-items-lg="6">
+            
+                                <div class="oc-item"><a href="#"><img src="public/images/icons/avatar.jpg" alt="Clients"></a></div>
+                                <div class="oc-item"><a href="#"><img src="public/images/icons/avatar.jpg" alt="Clients"></a></div>
+                                <div class="oc-item"><a href="#"><img src="public/images/icons/avatar.jpg" alt="Clients"></a></div>
+                                <div class="oc-item"><a href="#"><img src="public/images/icons/avatar.jpg" alt="Clients"></a></div>
+                                <div class="oc-item"><a href="#"><img src="public/images/icons/avatar.jpg" alt="Clients"></a></div>
+                                <div class="oc-item"><a href="#"><img src="public/images/icons/avatar.jpg" alt="Clients"></a></div>
+                                <div class="oc-item"><a href="#"><img src="public/images/icons/avatar.jpg" alt="Clients"></a></div>
+                                <div class="oc-item"><a href="#"><img src="public/images/icons/avatar.jpg" alt="Clients"></a></div>
+                                <div class="oc-item"><a href="#"><img src="public/images/icons/avatar.jpg" alt="Clients"></a></div>
+                                <div class="oc-item"><a href="#"><img src="public/images/icons/avatar.jpg" alt="Clients"></a></div>
+            
+                            </div>
+            
+            
+                        </div>-->
 
         </div>
 
