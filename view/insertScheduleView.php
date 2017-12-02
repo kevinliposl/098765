@@ -294,7 +294,6 @@ if (isset($session->permissions)) {
         $.post("?controller=Schedule&action=selectWithoutSchedule", parameters, function (data) {
             $('#form-courses').empty();
             $('#form-courses').append($("<option></option>").attr("value", -1).text('Seleccione un Curso'));
-
             for (var i = 0; i < data.length; i++) {
                 $('#form-courses').append($("<option></option>").attr("value", data[i].ID).text(data[i].initials + ' | ' + data[i].name)); //AGREGAR OPCIONES
             }
@@ -308,7 +307,7 @@ if (isset($session->permissions)) {
                 $("#" + days[k] + '' + x).text('');
             }
         }
-        
+
         $.post("?controller=Schedule&action=select", parameters, function (data) {
             for (var i = 0; i < data.length; i++) {
                 var temp = getRandomArbitrary(0, 3);
@@ -342,7 +341,6 @@ if (isset($session->permissions)) {
     });
 
     $('#form-submit').click(function () {
-
         var parameters = {
             "ID": $("#form-courses").val(),
             "start": $("#form-hour-init").val(),

@@ -12,7 +12,6 @@ class ScheduleController {
 
     function __construct() {
         $this->view = new View();
-        require 'model/SemesterModel.php';
         require 'model/ScheduleModel.php';
     }
 
@@ -25,12 +24,14 @@ class ScheduleController {
      * Funcion para insertar horario
      */
     function insert() {
-        if (SSession::getInstance()->permissions == 'A' || SSession::getInstance()->permissions == 'T') {
-            $model = new SemesterModel();
+        if (SSession::getInstance()->permissions == 'A' || SSession::getInstance()->permissions == 'T') {    
             if (isset($_POST["ID"]) && isset($_POST["start"]) && isset($_POST["end"]) && isset($_POST["day"])) {
+                $model = new ScheduleModel();
                 $result = $model->insert($_POST["ID"], $_POST["start"], $_POST["end"], $_POST["day"]);
                 echo json_encode($result);
             } else {
+                require 'model/SemesterModel.php';
+                $model = new SemesterModel();
                 $result = $model->selectAll();
                 $this->view->show("insertScheduleView.php", $result);
             }
@@ -47,11 +48,11 @@ class ScheduleController {
     function delete() {
         if (SSession::getInstance()->permissions == 'A' || SSession::getInstance()->permissions == 'T') {
             if (isset($_POST["id"])) {
-                $model = new SemesterModel();
+                $model = new ScheduleModel();
                 $result = $model->delete($_POST["id"]);
                 echo json_encode($result);
             } else {
-                $model = new SemesterModel();
+                $model = new ScheduleModel();
                 $result = $model->selectAll();
                 $this->view->show("deleteScheduleView.php", $result);
             }
@@ -67,7 +68,7 @@ class ScheduleController {
      */
     function select() {
         if (SSession::getInstance()->permissions == 'A' || SSession::getInstance()->permissions == 'T') {
-            $model = new SemesterModel();
+            $model = new ScheduleModel();
             if (isset($_POST["ID_Semester"])) {
                 $result = $model->select($_POST["ID_Semester"]);
                 echo json_encode($result);
