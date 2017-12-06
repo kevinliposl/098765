@@ -2,23 +2,22 @@
 
 class EmailSystem {
 
+    private $mail = NULL;
+
     function __construct() {
         require 'libs/phpmailer/PHPMailerAutoload.php';
+        $this->mail = new PHPMailer();
     }
 
     function contactSendEmail($nameT, $emailT, $phoneT, $serviceT, $subjectT, $messageT) {
-        $toemails = array();
-
-        $toemails[] = array(
+        $toemails = array(
             'email' => 'pruebaproyectosucr@gmail.com',
             'name' => $nameT
         );
 
         $message_success = 'We have <strong>successfully</strong> received your Message and will get Back to you as soon as possible.';
 
-
-        $mail = new PHPMailer();
-
+        
         $name = $nameT;
         $email = $emailT;
         $phone = $phoneT;
@@ -60,7 +59,7 @@ class EmailSystem {
             return "0";
         endif;
     }
-    
+
     function contactSendPassword($emailT, $passwordT) {
         $toemails = array();
 

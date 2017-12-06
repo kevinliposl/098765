@@ -9,8 +9,14 @@ class AdminModel {
         $this->db = SPDO::singleton();
     }
 
-    function insert($id, $email, $name, $first_lastname, $second_lastname) {
-        $query = $this->db->prepare("call sp_insert_admin('$id','$email','$name','$first_lastname','$second_lastname')");
+    function insert(Person $admin) {
+        $id = $admin->getId();
+        $email = $admin->getEmail();
+        $name = $admin->getName();
+        $firstLastname = $admin->getFirstLastName();
+        $secondLastname = $admin->getSecondLastName();
+
+        $query = $this->db->prepare("call sp_insert_admin('$id','$email','$name','$firstLastname','$secondLastname')");
         $query->execute();
         $result = $query->fetch();
         return $result;
@@ -23,8 +29,10 @@ class AdminModel {
         return $result;
     }
 
-    function delete($id) {
-        $query = $this->db->prepare("call sp_delete_admin($id)");
+    function delete(Person $admin) {
+        $id = $admin->getId();
+        
+        $query = $this->db->prepare("call sp_delete_admin('$id')");
         $query->execute();
         $result = $query->fetch();
         return $result;
