@@ -14,6 +14,7 @@ class AdminController {
         $this->view = new View();
         require 'public/Person.php';
         require 'model/AdminModel.php';
+        
     }
 
     /**
@@ -30,7 +31,6 @@ class AdminController {
             if (isset($_POST["id"]) && isset($_POST["email"]) && isset($_POST["name"]) && isset($_POST["firstLastName"]) && isset($_POST["secondLastName"])) {
                 $model = new AdminModel();
                 $admin = new Person($_POST["id"], $_POST["email"], $_POST["name"], $_POST["firstLastName"], $_POST["secondLastName"]);
-
                 $result = $model->insert($admin);
                 echo json_encode($result);
             } else {
