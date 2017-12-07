@@ -16,9 +16,11 @@ class Mail {
         $this->mail->Subject = $subject;
 
         $html = file_get_contents('view/mailView.php');
-        $body = str_replace("<p id='message'></p>", "<p id='message'>$messaje</p>", $html);
+        $body = str_replace("Mensaje", $messaje, $html);
+        
+        $body1 = str_replace("Asunto", $subject, $body);
 
-        $this->mail->Body = $body;
+        $this->mail->Body = $body1;
         $this->mail->AltBody = '---'; //Mensaje de sólo texto si el receptor no acepta HTML
         
         $this->mail->addAddress($addressee);
