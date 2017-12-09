@@ -24,12 +24,14 @@ class ScheduleController {
      * Funcion para insertar horario
      */
     function insert() {
-        if (SSession::getInstance()->permissions == 'A' || SSession::getInstance()->permissions == 'T') {
-            $model = new ScheduleModel();
+        if (SSession::getInstance()->permissions == 'A' || SSession::getInstance()->permissions == 'T') {    
             if (isset($_POST["ID"]) && isset($_POST["start"]) && isset($_POST["end"]) && isset($_POST["day"])) {
+                $model = new ScheduleModel();
                 $result = $model->insert($_POST["ID"], $_POST["start"], $_POST["end"], $_POST["day"]);
                 echo json_encode($result);
             } else {
+                require 'model/SemesterModel.php';
+                $model = new SemesterModel();
                 $result = $model->selectAll();
                 $this->view->show("insertScheduleView.php", $result);
             }

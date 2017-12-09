@@ -9,8 +9,9 @@ include_once 'public/head.php';
         <div class="section nobg full-screen nopadding nomargin">
             <div class="container vertical-middle divcenter clearfix">
                 <div class="row center">
-                    <a href="?"><img src="public/images/fusion-dark.png"></a>
+                    <a href="?"><img src="public/images/fusion-login.png"></a>    
                 </div>
+                </br>
                 <div class="panel panel-default divcenter noradius noborder" style="max-width: 400px; background-color: rgba(255,255,255,0.93);">
                     <div class="panel-body" style="padding: 40px;">
                         <form id="login-form" class="nobottommargin" onsubmit="return false;">

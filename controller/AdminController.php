@@ -12,7 +12,9 @@ class AdminController {
 
     function __construct() {
         $this->view = new View();
+        require 'public/Person.php';
         require 'model/AdminModel.php';
+        
     }
 
     /**
@@ -28,7 +30,8 @@ class AdminController {
         if (SSession::getInstance()->permissions == 'R') {
             if (isset($_POST["id"]) && isset($_POST["email"]) && isset($_POST["name"]) && isset($_POST["firstLastName"]) && isset($_POST["secondLastName"])) {
                 $model = new AdminModel();
-                $result = $model->insert($_POST["id"], $_POST["email"], $_POST["name"], $_POST["firstLastName"], $_POST["secondLastName"]);
+                $admin = new Person($_POST["id"], $_POST["email"], $_POST["name"], $_POST["firstLastName"], $_POST["secondLastName"]);
+                $result = $model->insert($admin);
                 echo json_encode($result);
             } else {
                 $this->view->show("insertAdminView.php");
@@ -47,7 +50,8 @@ class AdminController {
         if (SSession::getInstance()->permissions == 'R') {
             $model = new AdminModel();
             if (isset($_POST["id"])) {
-                $result = $model->delete($_POST["id"]);
+                $admin = new Person($_POST["id"]);
+                $result = $model->delete($admin);
                 echo json_encode($result);
             } else {
                 $result = $model->selectAll();
@@ -77,4 +81,5 @@ class AdminController {
             $this->view->show("404View.php");
         }
     }
+
 }

@@ -89,7 +89,7 @@ if (isset($session->permissions)) {
                     </div>
 
                     <div class="col_full">
-                        <button name="submit" id="submit" type="submit" id="submit-button" tabindex="5" value="Submit" class="button button-3d nomargin">¡Enviar!</button>
+                        <button name="submit" id="submit" type="submit" id="submit-button" tabindex="5" value="Submit" class="button button-3d nomargin button-dark">¡Enviar!</button>
                     </div>
 
                 </form>
@@ -111,7 +111,7 @@ if (isset($session->permissions)) {
             ============================================= -->
             <div class="row clear-bottommargin">
 
-                <div class="col-md-3 col-sm-6 bottommargin clearfix">
+                <div class="col-md-4 bottommargin clearfix">
                     <div class="feature-box fbox-center fbox-bg fbox-plain">
                         <div class="fbox-icon">
                             <a href="https://www.google.co.cr/maps/place/Fusi%C3%B3n+Academia+de+M%C3%BAsica/@9.9121748,-83.6817206,17z/data=!3m1!4b1!4m5!3m4!1s0x8fa0d6a057c987f9:0xbb309b791e096442!8m2!3d9.9121748!4d-83.6795319?hl=es" target="__blank"><i class="icon-map-marker2"></i></a>
@@ -120,7 +120,7 @@ if (isset($session->permissions)) {
                     </div>
                 </div>
 
-                <div class="col-md-3 col-sm-6 bottommargin clearfix">
+                <div class="col-md-4 bottommargin clearfix">
                     <div class="feature-box fbox-center fbox-bg fbox-plain">
                         <div class="fbox-icon">
                             <a href="tel:+5068326 1731"><i class="icon-phone3"></i></a>
@@ -129,7 +129,7 @@ if (isset($session->permissions)) {
                     </div>
                 </div>
 
-                <div class="col-md-3 col-sm-6 bottommargin clearfix">
+                <div class="col-md-4 bottommargin clearfix">
                     <div class="feature-box fbox-center fbox-bg fbox-plain">
                         <div class="fbox-icon">
                             <a href="https://www.facebook.com/fusionacademiacr/" target="__blank"><i class="icon-facebook2"></i></a>

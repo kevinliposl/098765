@@ -32,6 +32,17 @@ class IndexController {
 
     /**
      * @return null
+     * Funcion para mostrar 404
+     */
+    function mail() {
+        require 'libs/Mail.php';
+        $mail = new Mail();
+        $mail->sendMail('kevinliposl@gmail.com', 'Prueba', 'Hola');
+        $this->view->show("mailView.php");
+    }
+
+    /**
+     * @return null
      * Funcion para mostrar galeria
      */
     function galery() {
