@@ -35,7 +35,7 @@ if (isset($session->permissions)) {
                     <div class="acc_content clearfix">
                         <form id="form" class="nobottommargin" onsubmit="return validate();">
                             <div class="col_full">
-                                <label for="form-password">Correo Electronico:</label>
+                                <label for="form-password">Correo electr&oacute;nico:</label>
                                 <input type="email" id="form-password" class="form-control" required/>
                                 <input type="hidden" id="failed-password" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                             </div>
