@@ -19,7 +19,6 @@ include_once 'public/head.php';
             <nav id="primary-menu">
                 <ul>
                     <li><a href="?"><div>Home</div></a>
-                    <li><a href="?action=mail"><div>Mail</div></a>
                     <li><a href="?controller=User&action=logIn"><div>Iniciar Sesi&oacute;n</div></a></li>
                     <li><a href="?controller=Index&action=contact"><div>Contacto</div></a></li>
                 </ul>

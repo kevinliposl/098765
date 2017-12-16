@@ -9,13 +9,7 @@ class AdminModel {
         $this->db = SPDO::singleton();
     }
 
-    function insert(Person $admin) {
-        $id = $admin->getId();
-        $email = $admin->getEmail();
-        $name = $admin->getName();
-        $firstLastname = $admin->getFirstLastName();
-        $secondLastname = $admin->getSecondLastName();
-
+    function insert($id,$email,$name,$firstLastname,$secondLastname) {
         $query = $this->db->prepare("call sp_insert_admin('$id','$email','$name','$firstLastname','$secondLastname')");
         $query->execute();
         $result = $query->fetch();

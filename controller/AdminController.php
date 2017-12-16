@@ -12,9 +12,7 @@ class AdminController {
 
     function __construct() {
         $this->view = new View();
-        require 'public/Person.php';
         require 'model/AdminModel.php';
-        
     }
 
     /**
@@ -30,8 +28,12 @@ class AdminController {
         if (SSession::getInstance()->permissions == 'R') {
             if (isset($_POST["id"]) && isset($_POST["email"]) && isset($_POST["name"]) && isset($_POST["firstLastName"]) && isset($_POST["secondLastName"])) {
                 $model = new AdminModel();
-                $admin = new Person($_POST["id"], $_POST["email"], $_POST["name"], $_POST["firstLastName"], $_POST["secondLastName"]);
-                $result = $model->insert($admin);
+                $result = $model->insert($_POST["id"], $_POST["email"], $_POST["name"], $_POST["firstLastName"], $_POST["secondLastName"]);
+                if ($result["result"] === '1') {
+                    $mail = SMail::getInstance();
+                    $mail->sendMail($_POST["email"], 'Contraseña de ingreso al sitio', 'Hola, gracias por formar parte de la academia, la contraseña'
+                            . ' de ingreso al sitio es... <br><h1>'.$result['password'].'</h1>');
+                }
                 echo json_encode($result);
             } else {
                 $this->view->show("insertAdminView.php");

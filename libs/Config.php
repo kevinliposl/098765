@@ -3,7 +3,7 @@
 class Config {
 
     private $vars;
-    private static $instance;
+    private static $instance = null;
 
     private function __construct() {
         $this->vars = array();
@@ -22,11 +22,9 @@ class Config {
     }
 
     static function singleton() {
-        if (!isset(self::$instance)) {
-            $tmpClass = __CLASS__;
-            self::$instance = new $tmpClass;
+        if (self::$instance== null) {
+            self::$instance = new self;
         }
         return self::$instance;
     }
-
 }

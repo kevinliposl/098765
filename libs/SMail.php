@@ -1,10 +1,11 @@
 <?php
 
-class Mail {
+class SMail {
 
     private $mail;
-
-    function __construct() {
+    private static $instance = null;
+    
+    private function __construct() {
         require 'PHPMailer/PHPMailerAutoload.php';
         date_default_timezone_set('Etc/UTC');
         set_time_limit(0);
@@ -12,20 +13,33 @@ class Mail {
         $this->autoLoad();
     }
 
+    static function getInstance() {
+        if (self::$instance == null) {
+            self::$instance = new self;
+        }
+        return self::$instance;
+    }
+    
     function sendMail($addressee, $subject, $messaje) {
-        $this->mail->Subject = $subject;
+        try {
+            $this->mail->Subject = $subject;
 
-        $html = file_get_contents('view/mailView.php');
-        $body = str_replace("Mensaje", $messaje, $html);
-        
-        $body1 = str_replace("Asunto", $subject, $body);
+            $html = file_get_contents('view/mailView.php');
+            $body = str_replace("Mensaje", $messaje, $html);
+            $body1 = str_replace("Asunto", $subject, $body);
 
-        $this->mail->Body = $body1;
-        $this->mail->AltBody = '---'; //Mensaje de sólo texto si el receptor no acepta HTML
-        
-        $this->mail->addAddress($addressee);
+            $this->mail->AddEmbeddedImage("public/images/fusionOriginalMail.png","imagen0");
+            $this->mail->AddEmbeddedImage("public/images/facebook.png","imagen1");
+            
+            $this->mail->Body = $body1;
+            $this->mail->AltBody = 'La academia informa...';
 
-        return $this->mail->send();
+            $this->mail->addAddress($addressee);
+
+            return $this->mail->send();
+        } catch (Exception $exc) {
+            return $exc->getTraceAsString();
+        }
     }
 
     private function autoLoad() {
@@ -44,10 +58,8 @@ class Mail {
         $this->mail->SMTPOptions = array(
             'ssl' => array('verify_peer' => false, 'verify_peer_name' => false, 'allow_self_signed' => true)
         );
-
         $this->mail->Username = "3msqueters@gmail.com";
         $this->mail->Password = "mosquetero";
         $this->mail->setFrom('fusionAcademiaMusical.com', 'Kevin');
     }
-
 }
