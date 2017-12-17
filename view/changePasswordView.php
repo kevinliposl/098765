@@ -20,7 +20,6 @@ if (isset($session->permissions)) {
 <!-- Page Title
 ============================================= -->
 <section id="page-title">
-
     <div class="container clearfix">
         <h1>Cambiar Contraseña</h1>
     </div>

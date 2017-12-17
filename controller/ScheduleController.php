@@ -48,11 +48,12 @@ class ScheduleController {
     function delete() {
         if (SSession::getInstance()->permissions == 'A' || SSession::getInstance()->permissions == 'T') {
             if (isset($_POST["id"])) {
-                $model = new ScheduleModel();
+                $model = new SemesterModel();
                 $result = $model->delete($_POST["id"]);
                 echo json_encode($result);
-            } else {
-                $model = new ScheduleModel();
+            } else {    
+                require 'model/SemesterModel.php';
+                $model = new SemesterModel();
                 $result = $model->selectAll();
                 $this->view->show("deleteScheduleView.php", $result);
             }
@@ -68,11 +69,13 @@ class ScheduleController {
      */
     function select() {
         if (SSession::getInstance()->permissions == 'A' || SSession::getInstance()->permissions == 'T') {
-            $model = new ScheduleModel();
             if (isset($_POST["ID_Semester"])) {
+                $model = new ScheduleModel();
                 $result = $model->select($_POST["ID_Semester"]);
                 echo json_encode($result);
             } else {
+                require 'model/SemesterModel.php';
+                $model = new SemesterModel();
                 $result = $model->selectAll();
                 $this->view->show("selectScheduleView.php", $result);
             }

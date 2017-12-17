@@ -23,9 +23,7 @@ class AdminModel {
         return $result;
     }
 
-    function delete(Person $admin) {
-        $id = $admin->getId();
-        
+    function delete($id) {
         $query = $this->db->prepare("call sp_delete_admin('$id')");
         $query->execute();
         $result = $query->fetch();
@@ -40,4 +38,10 @@ class AdminModel {
         return $result;
     }
 
+    function changePassword($id,$password) {
+        $query = $this->db->prepare("call sp_change_password_admin('$id','$password')");
+        $query->execute();
+        $result = $query->fetch();
+        return $result;
+    }
 }
