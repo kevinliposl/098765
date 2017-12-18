@@ -25,8 +25,8 @@ include_once 'public/headerAdmin.php';
                                 <select id="form-student" class="selectpicker form-control" data-live-search="true">
                                     <option value="-1" data-tokens="">Seleccione un Estudiante</option>
                                     <?php foreach ($vars as $var) { ?>
-                                        <option value="<?php echo $var["identification"]; ?>" data-tokens="">
-                                            <?php echo $var["identification"] . " | " . $var["name"] . " " . $var["first_lastname"] . " " . $var["second_lastname"] . " | " . $var["tipo"]; ?></option>
+                                        <option value="<?php echo $var["identification"] . ';' . $var["tipo"]; ?>" data-tokens="">
+                                            <?php echo $var["identification"] . " | " . $var["name"] . " " . $var["first_lastname"] . " " . $var["second_lastname"] . " | " . (($var["tipo"] === 'S') ? 'Estudiante' : (($var["tipo"] === 'T') ? 'Profesor' : 'Administrador')); ?></option>
                                     <?php }
                                     ?>
                                 </select>
@@ -115,13 +115,12 @@ include_once 'public/headerAdmin.php';
 </section><!-- #content end -->
 <script>
     $("#form-student").change(function () {
-        var select = document.getElementById("form-student");
-        var text = select.options[select.selectedIndex].innerText.trim();
-        var le = text.length;
         if ($("#form-student").val() !== "-1") {
+            var value = $("#form-student").val();
+            var values = value.split(";");
             var parameters = {
-                "id": $("#form-student").val(),
-                "tipo": text.substring(le - 1, le)
+                "id": values[0],
+                "tipo": values[1]
             };
             $.post("?controller=Student&action=selectDeleteStudent", parameters, function (data) {
                 document.getElementById("form-id-table").innerHTML = data.identification;
@@ -144,12 +143,11 @@ include_once 'public/headerAdmin.php';
     }
 
     $("#form-submity").click(function () {
-        var select = document.getElementById("form-student");
-        var text = select.options[select.selectedIndex].innerText.trim();
-        var le = text.length;
+        var value = $("#form-student").val();
+        var values = value.split(";");
         var parameters = {
-            "id": $("#form-student").val(),
-            "tipo": text.substring(le - 1, le)
+            "id": values[0],
+            "tipo": values[1]
         };
         $.post("?controller=Student&action=reactivateStudent", parameters, function (data) {
             if (data.result === "1") {
