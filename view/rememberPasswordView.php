@@ -85,7 +85,7 @@ if (isset($session->permissions)) {
     //Insert
     $("#form-submity").click(function () {
         var parameters = {
-            "email": $("#form-password").val().trim()
+            "email": $("#form-email").val().trim()
         };
         $.post("?controller=User&action=rememberPassword", parameters, function (data) {
             if (data === "1") {

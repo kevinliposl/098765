@@ -38,7 +38,7 @@ class SMail {
 
             return $this->mail->send();
         } catch (Exception $exc) {
-            return $exc->getTraceAsString();
+            return false;
         }
     }
 
