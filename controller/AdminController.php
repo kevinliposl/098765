@@ -29,7 +29,9 @@ class AdminController {
             if (isset($_POST["id"]) && isset($_POST["email"]) && isset($_POST["name"]) && isset($_POST["firstLastName"]) && isset($_POST["secondLastName"])) {
                 $model = new AdminModel();
                 $result = $model->insert($_POST["id"], $_POST["email"], $_POST["name"], $_POST["firstLastName"], $_POST["secondLastName"]);
+                
                 echo json_encode($result);
+                
                 if ($result["result"] === '1') {
                     $mail = SMail::getInstance();
                     $mail->sendMail($_POST["email"], 'Contraseña de ingreso al sitio', 'Hola, gracias por formar parte de la academia, la contraseña'

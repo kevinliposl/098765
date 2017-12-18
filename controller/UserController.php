@@ -89,20 +89,16 @@ class UserController {
      * Funcion para recordar contraseña de usuario
      */
     function rememberPassword() {
-        $ssession = SSession::getInstance();
-        if (!$ssession->__isset("identification")) {
+        if (!SSession::getInstance()->__isset("identification")) {
             if (isset($_POST["email"])) {
                 $model = new UserModel();
-                $resultT = $model->rememberPassword($_POST["email"]);
-                if (!isset($resultT[0]['result'])) {
-                    require 'libs/EmailSystem.php';
-                    $email = new EmailSystem();
-                    $result = $email->contactSendPassword($_POST["email"], $resultT[0]['password']);
-                } else {
-                    $result = "0";
+                $result = $model->rememberPassword($_POST["email"]);
+                echo json_encode($result['result']);
+                if ($result['result'] === '1') {
+                    $mail = SMail::getInstance();
+                    $mail->sendMail($_POST["email"], 'Olvidó su contraseña de ingreso al sitio', 'Hola, gracias por formar parte de la academia. '
+                        . 'Su contraseña de ingreso al sitio es... <br><h1>' . $result['password'] . '</h1>');
                 }
-
-                echo json_encode($result);
             } else {
                 $this->view->show("rememberPasswordView.php");
             }

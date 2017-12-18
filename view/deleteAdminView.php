@@ -38,7 +38,7 @@ if (isset($session->permissions)) {
                                     foreach ($vars as $var) {
                                         if (isset($var["identification"])) {
                                             ?>
-                                            <option value="<?php echo $var["ID"] ?> " data-tokens="">
+                                            <option value="<?php echo $var["identification"] ?> " data-tokens="">
                                                 <?php echo $var["identification"] . " | " . $var["name"] . " " . $var["first_lastname"] . " " . $var["second_lastname"]; ?>
                                             </option>
                                             <?php
@@ -51,7 +51,7 @@ if (isset($session->permissions)) {
                             </div>
                             <br>
                             <div class="table-responsive">
-                                <table class="table table-bordered table-striped">
+                                <table class="table table-bordered table-striped" style="clear: both">
                                     <h5 style="text-align: center;">Informaci&oacute;n del Administrador</h5>
                                     <colgroup>
                                         <col class="col-xs-3">
@@ -60,31 +60,31 @@ if (isset($session->permissions)) {
                                     <tbody>
                                         <tr>
                                             <td>
-                                                <code>Cedula</code>
+                                                Cedula
                                             </td>
                                             <td id="form-id-table"></td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <code>Correo</code>
+                                                Correo
                                             </td>
                                             <td id="form-email-table"></td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <code>Nombre</code>
+                                                Nombre
                                             </td>
                                             <td id="form-name-table"></td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <code>Primer Apellido</code>
+                                                Primer Apellido
                                             </td>
                                             <td id="form-firstLastName-table"></td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <code>Segundo Apellido</code>
+                                                Segundo Apellido
                                             </td>
                                             <td id="form-secondLastName-table"></td>
                                         </tr>
