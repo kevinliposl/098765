@@ -6,9 +6,9 @@ class SMail {
     private static $instance = null;
     
     private function __construct() {
-        require 'PHPMailer/PHPMailerAutoload.php';
+        require 'phpmailer/PHPMailerAutoload.php';
         date_default_timezone_set('Etc/UTC');
-        set_time_limit(0);
+//        set_time_limit(0);
         ignore_user_abort(true);
         $this->autoLoad();
     }
