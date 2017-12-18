@@ -97,12 +97,12 @@ class UserController {
                     $mail = SMail::getInstance();
                     if ($mail->sendMail($_POST["email"], 'Olvidó su contraseña de ingreso al sitio', 'Hola, gracias por formar parte de la academia. '
                                     . 'Su contraseña de ingreso al sitio es... <br><h1>' . $result['password'] . '</h1>')) {
-                        return json_encode('1');
+                        echo json_encode(array("result" => '1'));
                     } else {
-                        return json_encode('0');
+                        echo json_encode(array("result" => '0'));
                     }
                 } else {
-                    return json_encode('0');
+                    echo json_encode(array("result" => '0'));
                 }
             } else {
                 $this->view->show("rememberPasswordView.php");

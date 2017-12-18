@@ -87,8 +87,9 @@ if (isset($session->permissions)) {
         var parameters = {
             "email": $("#form-email").val().trim()
         };
+        
         $.post("?controller=User&action=rememberPassword", parameters, function (data) {
-            if (data === "1") {
+            if (data.result === "1") {
                 $("#success").attr({
                     "data-notify-type": "success",
                     "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!",
