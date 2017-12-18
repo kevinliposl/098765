@@ -38,5 +38,4 @@ class ScheduleModel {
         $query->closeCursor();
         return $result;
     }
-
 }

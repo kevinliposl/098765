@@ -17,10 +17,10 @@
                                                 <tr>
                                                     <td colspan="3" rowspan="3" bgcolor="#FFFFFF" style="padding:0">
                                                         <a style="display:block; margin:auto;" href="#">
-                                                            <img src="public/images/fusionOriginalMail.png" style=" max-width: 100%; display:inline-block; border:0; margin:auto; background:#eeeeee;">
+                                                            <img src="cid:imagen0" style=" max-width: 100%; display:inline-block; border:0; margin:auto; background:#eeeeee;">
                                                         </a>
-                                                        <br>
-                                                        <p style="margin:0 30px 33px;; text-align:center; text-transform:uppercase; font-size:24px; line-height:30px; font-weight:bold; color:#484a42;">
+                                                        <p style="margin:30px 33px;; text-align:center; text-transform:uppercase; font-size:24px; line-height:30px; font-weight:bold; color:#484a42;">
+                                                            
                                                             La academia informa...
                                                         </p>
                                                         <!-- inicio articulos -->
@@ -68,8 +68,7 @@
                                                                     </td>
                                                                     <td width="26"><p style="margin:0; font-size:1px; line-height:1px;">&nbsp;</p></td>
                                                                     <td width="114">
-                                                                        <a href="#" target="_blank" style="float:left; width:24px; height:24px; margin:6px 15px 10px 0;"><img src="public/images/facebook.png" width="30" height="30" alt="facebook" style="display:block; margin:0; border:0; background:#eeeeee;"></a>
-                                                                        <a href="#" target="_blank" style="float:left; width:24px; height:24px; margin:6px 15px 10px 0;"><img src="public/images/twitter.png" width="30" height="30" alt="twitter" style="display:block; margin:0; border:0; background:#eeeeee;"></a>
+                                                                        <a href="https://www.facebook.com/fusionacademiacr" target="_blank" style="float:left; width:24px; height:24px; margin:6px 15px 10px 0;"><img src="cid:imagen1" width="30" height="30" alt="facebook" style="display:block; margin:0; border:0; background:#eeeeee;"></a>
                                                                     </td>
                                                                     <td width="30"><p style="margin:0; font-size:1px; line-height:1px;">&nbsp;</p></td>
                                                                 </tr>

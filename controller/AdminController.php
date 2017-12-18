@@ -12,9 +12,7 @@ class AdminController {
 
     function __construct() {
         $this->view = new View();
-        require 'public/Person.php';
         require 'model/AdminModel.php';
-        
     }
 
     /**
@@ -30,9 +28,15 @@ class AdminController {
         if (SSession::getInstance()->permissions == 'R') {
             if (isset($_POST["id"]) && isset($_POST["email"]) && isset($_POST["name"]) && isset($_POST["firstLastName"]) && isset($_POST["secondLastName"])) {
                 $model = new AdminModel();
-                $admin = new Person($_POST["id"], $_POST["email"], $_POST["name"], $_POST["firstLastName"], $_POST["secondLastName"]);
-                $result = $model->insert($admin);
+                $result = $model->insert($_POST["id"], $_POST["email"], $_POST["name"], $_POST["firstLastName"], $_POST["secondLastName"]);
+                
                 echo json_encode($result);
+                
+                if ($result["result"] === '1') {
+                    $mail = SMail::getInstance();
+                    $mail->sendMail($_POST["email"], 'Contraseña de ingreso al sitio', 'Hola, gracias por formar parte de la academia, la contraseña'
+                        . ' de ingreso al sitio es... <br><h1>' . $result['password'] . '</h1>');
+                }
             } else {
                 $this->view->show("insertAdminView.php");
             }
@@ -82,4 +86,27 @@ class AdminController {
         }
     }
 
+    /**
+     * @return null
+     * @param integer $id Identificador de entidad
+     * Funcion para seleccionar administrador
+     */
+    function changePassword(){
+        if(SSession::getInstance()->permissions == 'A'){
+            if(isset($_POST['newPass'])){
+                $model = new AdminModel();
+                $result = $model->changePassword(SSession::getInstance()->identification,$_POST['newPass']);
+                echo json_encode($result);
+                if ($result["result"] === '1') {
+                    $mail = SMail::getInstance();
+                    $mail->sendMail($result["email"], 'Contraseña de ingreso al sitio', 'Hola, su contraseña a sido cambiada. Su nueva contraseña'
+                        . ' de ingreso al sitio es... <br><h1>' . $result["password"] . '</h1>');
+                }
+            }else{
+                $this->view->show("changePasswordAdminView.php");   
+            }
+        }else{
+            $this->view->show("404View.php");
+        }
+    }
 }

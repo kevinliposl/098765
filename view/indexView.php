@@ -32,10 +32,6 @@ if (isset($session->permissions)) {
                         </div>
                     </div>
                 </div>
-                <div class="swiper-slide dark" style="background-image: url('public/images/presentation/2.jpg');">
-                    <div class="container clearfix">
-                    </div>
-                </div>
             </div>
         </div>
         <a href="#" data-scrollto="#content" data-offset="100" class="dark one-page-arrow"><i class="icon-angle-down infinite animated fadeInDown"></i></a>

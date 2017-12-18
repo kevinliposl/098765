@@ -2,28 +2,22 @@
 $session = SSession::getInstance();
 
 if (isset($session->permissions)) {
-    if($session->permissions=='A'){
+    if ($session->permissions == 'A') {
         include_once 'public/headerAdmin.php';
-    }else{
+    } else {
         header("Location:?controller=Index&action=notFound");
     }
 } else {
     include_once 'public/header.php';
 }
 ?>
-?>
 
-<!-- Page Title
-============================================= -->
 <section id="page-title">
-
     <div class="container clearfix">
         <h1>Insertar Asignaciones de Cursos a Semestres</h1>
     </div>
-</section><!-- #page-title end -->
+</section>
 
-<!-- Content
-============================================= -->
 <section id="content">
     <div class="content-wrap">
         <div class="container clearfix">
@@ -41,11 +35,11 @@ if (isset($session->permissions)) {
                                             ?>
                                             <option value="<?php echo $var["ID"] ?> " data-tokens="">
                                                 <?php
-                                                        if($var["semester"]=='1'){
-                                                            echo "I semestre"." ".$var["year"];
-                                                        }else{
-                                                            echo "II semestre"." ".$var["year"];
-                                                        }
+                                                if ($var["semester"] == '1') {
+                                                    echo "I semestre" . " " . $var["year"];
+                                                } else {
+                                                    echo "II semestre" . " " . $var["year"];
+                                                }
                                                 ?>
                                             </option>
                                             <?php
@@ -82,7 +76,7 @@ if (isset($session->permissions)) {
                 </div>
             </div>
         </div>
-</section><!-- #content end -->
+</section>
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -110,11 +104,11 @@ if (isset($session->permissions)) {
 
     //Change Combobox
     $("#form-semester").change(function () {
-        if($("#form-semester").val()==="-1"){
+        if ($("#form-semester").val() === "-1") {
             $("#failed-form-semester").attr("data-notify-msg", "<i class=icon-remove-sign></i> Semestre inválido. Seleccione e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-form-semester"));
             return false;
-        }else{
+        } else {
             var parameters = {
                 "ID_Semester": $("#form-semester").val()
             };
@@ -130,18 +124,18 @@ if (isset($session->permissions)) {
             }, "json");
         }
     });
-    
+
     //Change Combobox
     $("#form-courses").change(function () {
-        if($("#form-semester").val()==="-1"){
+        if ($("#form-semester").val() === "-1") {
             $("#failed-form-semester").attr("data-notify-msg", "<i class=icon-remove-sign></i> Semestre inválido. Seleccione e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-form-semester"));
             return false;
-        }else if($("#form-courses").val()==="-1"){
+        } else if ($("#form-courses").val() === "-1") {
             $("#failed-form-courses").attr("data-notify-msg", "<i class=icon-remove-sign></i> Curso inválido. Seleccione e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-form-courses"));
             return false;
-        }else{
+        } else {
             var parameters = {
                 "ID_Semester": $("#form-semester").val(),
                 "initials": $("#form-courses").val()
@@ -158,27 +152,27 @@ if (isset($session->permissions)) {
 
     //Open Modal
     $("#form-submit").click(function () {
-    
+
         var sel2 = document.getElementById("form-professors");
         var dat2 = 0;
         for (var i = 0; i < sel2.length; i++) {
-            if(sel2.options[i].selected){
-                dat2+=1;
+            if (sel2.options[i].selected) {
+                dat2 += 1;
             }
         }
-        if($("#form-semester").val()==="-1"){
+        if ($("#form-semester").val() === "-1") {
             $("#failed-form-semester").attr("data-notify-msg", "<i class=icon-remove-sign></i> Semestre inválido. Seleccione e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-form-semester"));
             return false;
-        }else if($("#form-courses").val()==="-1"){
+        } else if ($("#form-courses").val() === "-1") {
             $("#failed-form-courses").attr("data-notify-msg", "<i class=icon-remove-sign></i> Curso inválido. Seleccione e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-form-courses"));
             return false;
-        }else if(dat2<1){
+        } else if (dat2 < 1) {
             $("#failed-form-professors").attr("data-notify-msg", "<i class=icon-remove-sign></i> Profesor inválido. Seleccione e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-form-professors"));
             return false;
-        }else{
+        } else {
             $('#form-submit').attr('data-target', '#myModal');
         }
     });
@@ -198,7 +192,7 @@ if (isset($session->permissions)) {
                     "data-notify-position": "bottom-full-width"
                 });
                 SEMICOLON.widget.notifications($("#success"));
-                setTimeout("location.href = '?controller=CourseSemester&action=insert';",2000);
+                setTimeout("location.href = '?controller=CourseSemester&action=insert';", 2000);
             } else {
                 $("#warning").attr({
                     "data-notify-type": "warning",
@@ -209,11 +203,7 @@ if (isset($session->permissions)) {
             }
         }, "json");
     });
-
 </script>
 
-
-<!-- End Content
-============================================= -->    
 <?php
 include_once 'public/footer.php';

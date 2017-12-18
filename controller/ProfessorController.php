@@ -36,8 +36,12 @@ class ProfessorController {
                 require 'model/ProfessorModel.php';
                 $model = new ProfessorModel();
                 $result = $model->insertProfessor($_POST["typeId"], $_POST["id"], $_POST["nationality"], $_POST["name"], $_POST["firstLastName"], $_POST["secondLastName"], $_POST["address"], $_POST["gender"], $_POST["phone"], $_POST["phone2"], $_POST["email"], $_POST["additionalInformation"], $_POST["age"]);
-
                 echo json_encode($result);
+                if ($result["result"] === '1') {
+                    $mail = SMail::getInstance();
+                    $mail->sendMail($_POST["email"], 'Contraseña de ingreso al sitio', 'Hola, gracias por formar parte de la academia, la contraseña'
+                            . ' de ingreso al sitio es... <br><h1>' . $result['password'] . '</h1>');
+                }
             } else {
                 $this->view->show("insertProfessorView.php");
             }//else
@@ -198,4 +202,5 @@ class ProfessorController {
             $this->view->show("indexView.php");
         }
     }
+
 }
