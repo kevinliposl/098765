@@ -1,5 +1,12 @@
 <?php
-
+/**
+ * @authors <kevin.sandoval@ucr.ac.cr><diego.cendenofonseca@ucr.ac.cr><elena.calderonfernandez@ucr.ac.cr><brogudbarrientos@gmail.com>
+ * @version 1.0
+ * @copyright (c) 2017, Funcion Academia Musical
+ * @access public
+ * @category Model
+ * Class Admin     
+ */
 class AdminModel {
 
     private $db;
@@ -9,27 +16,50 @@ class AdminModel {
         $this->db = SPDO::singleton();
     }
 
-    function insert($id,$email,$name,$firstLastname,$secondLastname) {
+    /**
+     * @return String result
+     * @param integer $id Identificador de entidad
+     * @param string $email Email de entidad
+     * @param string $name Nombre de entidad
+     * @param string $firstLastName Apellido de entidad
+     * @param string $secondLastName Apellido de entidad
+     * Funcion para insertar administrador
+     */
+    function insert($id, $email, $name, $firstLastname, $secondLastname) {
         $query = $this->db->prepare("call sp_insert_admin('$id','$email','$name','$firstLastname','$secondLastname')");
         $query->execute();
         $result = $query->fetch();
         return $result;
     }
-
-    function select($id) {
-        $query = $this->db->prepare("call sp_select_admin($id)");
-        $query->execute();
-        $result = $query->fetch();
-        return $result;
-    }
-
+    
+    /**
+     * @return String result
+     * @param integer $id Identificador de entidad
+     * Funcion para eliminar administrador
+     */
     function delete($id) {
         $query = $this->db->prepare("call sp_delete_admin('$id')");
         $query->execute();
         $result = $query->fetch();
         return $result;
     }
+    
+    /**
+     * @return Admin
+     * @param integer $id Identificador de entidad
+     * Funcion para seleccionar administrador
+     */
+    function select($id) {
+        $query = $this->db->prepare("call sp_select_admin('$id')");
+        $query->execute();
+        $result = $query->fetch();
+        return $result;
+    }
 
+    /**
+     * @return array Admin
+     * Funcion para cambiar la contraseña del administrador
+     */
     function selectAll() {
         $query = $this->db->prepare("call sp_select_all_admin()");
         $query->execute();
@@ -38,8 +68,29 @@ class AdminModel {
         return $result;
     }
 
-    function changePassword($id,$password) {
+    /**
+     * @return String result
+     * @param integer $id Identificador de entidad
+     * Funcion para cambiar contrasenna de administrador
+     */
+    function changePassword($id, $password) {
         $query = $this->db->prepare("call sp_change_password_admin('$id','$password')");
+        $query->execute();
+        $result = $query->fetch();
+        return $result;
+    }
+
+    /**
+     * @return String result
+     * @param integer $id Identificador de entidad
+     * @param string $email Email de entidad
+     * @param string $name Nombre de entidad
+     * @param string $firstLastName Apellido de entidad
+     * @param string $secondLastName Apellido de entidad
+     * Funcion para actualizar administrador
+     */
+    function updatePersonalData($idOld, $id, $email, $name, $firstLastname, $secondLastname) {
+        $query = $this->db->prepare("call sp_update_admin('$idOld','$id','$email','$name','$firstLastname','$secondLastname')");
         $query->execute();
         $result = $query->fetch();
         return $result;

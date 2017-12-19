@@ -47,91 +47,91 @@ if (isset($session->permissions)) {
                                 </colgroup>
                                 <tbody>
                                     <tr>
-                                        <td><code>Identificaci&oacute;n</code></td>
+                                        <td>Identificaci&oacute;n</td>
                                         <td>
                                             <a id="form-id" class="bt-editable" href="#" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese la identificación"></a>
                                             <input type="hidden" id="failed-id" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><code>Tipo de Identificaci&oacute;n</code></td>
+                                        <td>Tipo de Identificaci&oacute;n</td>
                                         <td>
                                             <a id="form-id-type" class="bt-editable" href="#" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el tipo de identificación"></a>
                                             <input type="hidden" id="failed-id-type" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><code>Nombre</code></td>
+                                        <td>Nombre</td>
                                         <td>
                                             <a id="form-name" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el nombre"></a>
                                             <input type="hidden" id="failed-name" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><code>Primer Apellido</code></td>
+                                        <td>Primer Apellido</td>
                                         <td>
                                             <a id="form-first-lastName" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el Primer Apellido"></a>
                                             <input type="hidden" id="failed-first-lastName" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><code>Segundo Apellido</code></td>
+                                        <td>Segundo Apellido</td>
                                         <td>
                                             <a id="form-second-lastName" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el Segundo Apellido"></a>
                                             <input type="hidden" id="failed-second-lastName" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><code>G&eacute;nero</code></td>
+                                        <td>G&eacute;nero</td>
                                         <td>
                                             <a id="form-gender" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el g&eacute;nero (M: Masculino, F: Femenino)"></a>
                                             <input type="hidden" id="failed-gender" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><code>Nacionalidad</code></td>
+                                        <td>Nacionalidad</td>
                                         <td>
                                             <a id="form-nationality" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese la nacionalidad"></a>
                                             <input type="hidden" id="failed-nationality" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><code>Tel&eacute;fono</code></td>
+                                        <td>Tel&eacute;fono</td>
                                         <td>
                                             <a id="form-phone1" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el Teléfono"></a>
                                             <input type="hidden" id="failed-phone1" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><code>Otro Tel&eacute;fono</code></td>
+                                        <td>Otro Tel&eacute;fono</td>
                                         <td>
                                             <a id="form-phone2" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese otro Teléfono"></a>
                                             <input type="hidden" id="failed-phone2" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><code>Email</code></td>
+                                        <td>Email</td>
                                         <td>
                                             <a id="form-email" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el email"></a>
                                             <input type="hidden" id="failed-email" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><code>Fecha de Nacimiento</code></td>
+                                        <td>Fecha de Nacimiento</td>
                                         <td>
                                             <a id="form-age" href="#" class="bt-editable" data-type="date" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese la fecha de nacimiento"></a>
                                             <input type="hidden" id="failed-age" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><code>Direcci&oacute;n</code></td>
+                                        <td>Direcci&oacute;n</td>
                                         <td>
                                             <a id="form-address" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese la dirección"></a>
                                             <input type="hidden" id="failed-address" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><code>Informaci&oacute;n Adicional</code></td>
+                                        <td>Informaci&oacute;n Adicional</td>
                                         <td>
                                             <a id="form-additionalInformation" class="bt-editable" href="#" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Información Adicional"></a>
                                             <input type="hidden" id="failed-additionalInformation" data-notify-type= "error" data-notify-position="bottom-full-width"/>

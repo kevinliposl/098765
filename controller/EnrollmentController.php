@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @authors <kevin.sandoval@ucr.ac.cr><diego.cendenofonseca@ucr.ac.cr><elena.calderonfernandez@ucr.ac.cr><brogudbarrientos@gmail.com>
  * @version 1.0
@@ -10,7 +9,7 @@
  */
 class EnrollmentController {
 
-    public function __construct() {
+    function __construct() {
         $this->view = new View();
     }
 
@@ -18,7 +17,7 @@ class EnrollmentController {
      * @return null
      * Funcion para seleccionar una matricula
      */
-    public function select() {
+    function select() {
         if (SSession::getInstance()->permissions == 'A') {
             require 'model/StudentModel.php';
             $model = new StudentModel();
@@ -35,7 +34,7 @@ class EnrollmentController {
      * @param integer $identification Identificador de estudiante
      * Funcion para seleccionar todos los cursos matriculados
      */
-    public function selectCourses() {
+    function selectCourses() {
         if (SSession::getInstance()->permissions == 'A') {
             require 'model/CourseModel.php';
             $model = new CourseModel();
@@ -52,7 +51,7 @@ class EnrollmentController {
      * @param integer $identification Identificador de estudiante
      * Funcion para seleccionar todos los cursos sin matricular
      */
-    public function selectCourseNotStudent() {
+    function selectCourseNotStudent() {
         if (SSession::getInstance()->permissions == 'A') {
             require 'model/EnrollmentModel.php';
             $model = new EnrollmentModel();
@@ -69,7 +68,7 @@ class EnrollmentController {
      * @param integer $identification Identificador de estudiante
      * Funcion para eliminar matricula de un estudiante
      */
-    public function delete() {
+    function delete() {
         if (SSession::getInstance()->permissions == 'A') {
             if (isset($_POST["ID"])) {
                 require 'model/EnrollmentModel.php';
@@ -95,7 +94,7 @@ class EnrollmentController {
      * @param integer id-student Identificador de estudiante
      * Funcion para insertar una matricula
      */
-    public function insert() {
+    function insert() {
         if (SSession::getInstance()->permissions == 'A') {
             if (isset($_POST['id-courses']) && isset($_POST['id-student'])) {
                 require 'model/EnrollmentModel.php';
@@ -123,5 +122,4 @@ class EnrollmentController {
             $this->view->show("indexView.php");
         }
     }
-
 }

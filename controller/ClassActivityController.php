@@ -205,5 +205,4 @@ class ClassActivityController {
             $this->view->show("indexView.php");
         }
     }
-
 }

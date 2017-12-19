@@ -10,27 +10,18 @@ if (isset($session->email)) {
 <!-- Page Title
 ============================================= -->
 <section id="page-title">
-
     <div class="container clearfix">
         <h1>My Account</h1>
     </div>
-
 </section><!-- #page-title end -->
-
 <!-- Content
 ============================================= -->
 <section id="content">
-
     <div class="content-wrap">
-
         <div class="container clearfix">
-
             <div class="col_two_third col_last nobottommargin">
-
                 <h3>Update the information you want</h3>
-
                 <form id="register-form" class="nobottommargin">
-
                     <div class="col_half">
                         <label for="email">Email:</label>
                         <input type="email" id="email" class="form-control" value="<?php if(isset($vars)){ echo $vars["email"];} ?>" required/>

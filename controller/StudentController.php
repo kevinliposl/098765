@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @authors <kevin.sandoval@ucr.ac.cr><diego.cendenofonseca@ucr.ac.cr><elena.calderonfernandez@ucr.ac.cr><brogudbarrientos@gmail.com>
  * @version 1.0
@@ -10,7 +9,7 @@
  */
 class StudentController {
 
-    public function __construct() {
+    function __construct() {
         $this->view = new View();
     }
 
@@ -34,7 +33,7 @@ class StudentController {
      * @param string $contactEmail correo de contacto
      * Funcion para insertar estudiante
      */
-    public function insertStudent() {
+    function insertStudent() {
         $ssession = SSession::getInstance();
         if ($ssession->__isset("identification") && $ssession->__isset("permissions") && $ssession->__get("permissions") === "A") {
             if (isset($_POST["id"]) && isset($_POST["email"])) {
@@ -60,7 +59,7 @@ class StudentController {
      * @param integer $id Identificador de entidad
      * Funcion para eliminar estudiante
      */
-    public function deleteStudent() {
+    function deleteStudent() {
         require 'model/StudentModel.php';
         $ssession = SSession::getInstance();
         if ($ssession->__isset("identification") && $ssession->__isset("permissions") && $ssession->__get("permissions") === "A") {
@@ -83,7 +82,7 @@ class StudentController {
      * @param integer $id Identificador de entidad
      * Funcion para obtener expediente de estudiante 
      */
-    public function getStudentExp() {
+    function getStudentExp() {
         require 'model/StudentModel.php';
         $ssession = SSession::getInstance();
         if ($ssession->__isset("identification") && $ssession->__isset("permissions") && $ssession->__get("permissions") === "S") {
@@ -101,7 +100,7 @@ class StudentController {
      * @param string $email Email de entidad
      * Funcion para reactivar estudiante
      */
-    public function reactivateStudent() {
+    function reactivateStudent() {
         require 'model/StudentModel.php';
         $ssession = SSession::getInstance();
         if ($ssession->__isset("identification") && $ssession->__isset("permissions") && $ssession->__get("permissions") === "A") {
@@ -139,7 +138,7 @@ class StudentController {
      * @param string $contactEmail correo de contacto
      * Funcion para actualizar estudiante
      */
-    public function updateStudent() {
+    function updateStudent() {
         require 'model/StudentModel.php';
         $ssession = SSession::getInstance();
         if ($ssession->__isset("identification") && $ssession->__isset("permissions") && $ssession->__get("permissions") === "A") {
@@ -177,7 +176,7 @@ class StudentController {
      * @param string $contactEmail correo de contacto
      * Funcion para actualizar informacion personal
      */
-    public function updatePersonalDataStudent() {
+    function updatePersonalDataStudent() {
         require 'model/StudentModel.php';
         $ssession = SSession::getInstance();
         if ($ssession->__isset("identification") && $ssession->__isset("permissions") && $ssession->__get("permissions") === "S") {
@@ -205,7 +204,7 @@ class StudentController {
      * @param string $email Email de entidad
      * Funcion para obtener datos estudiante
      */
-    public function getStudentData() {
+    function getStudentData() {
         require 'model/StudentModel.php';
         $ssession = SSession::getInstance();
         if ($ssession->__isset("identification") && $ssession->__isset("permissions") && $ssession->__get("permissions") === "A") {
@@ -224,7 +223,7 @@ class StudentController {
      * @param integer $id Identificador de entidad
      * Funcion para seleccionar estudiante
      */
-    public function selectStudent() {
+    function selectStudent() {
         require 'model/StudentModel.php';
         $ssession = SSession::getInstance();
         if ($ssession->__isset("identification") && $ssession->__isset("permissions") && $ssession->__get("permissions") === "A" || $ssession->__get("permissions") === "S" || $ssession->__get("permissions") === "T") {
@@ -244,7 +243,7 @@ class StudentController {
      * @param string $email Email de entidad
      * Funcion para eliminar estudiante
      */
-    public function selectDeleteStudent() {
+    function selectDeleteStudent() {
         require 'model/StudentModel.php';
         $ssession = SSession::getInstance();
         if ($ssession->__isset("identification") && $ssession->__isset("permissions") && $ssession->__get("permissions") === "A") {
@@ -256,5 +255,4 @@ class StudentController {
             echo json_encode($result);
         }
     }
-
 }

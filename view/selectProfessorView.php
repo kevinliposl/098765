@@ -46,79 +46,79 @@ if (isset($session->permissions)) {
                                 </colgroup>
                                 <tbody>
                                     <tr>
-                                        <td><code>Identificaci&oacute;n</code></td>
+                                        <td>Identificaci&oacute;n</td>
                                         <td>
                                             <a id="form-id"></a>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><code>Tipo de Identificaci&oacute;n</code></td>
+                                        <td>Tipo de Identificaci&oacute;n</td>
                                         <td>
                                             <a id="form-id-type"></a>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><code>Nombre</code></td>
+                                        <td>Nombre</td>
                                         <td>
                                             <a id="form-name"></a>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><code>Primer Apellido</code></td>
+                                        <td>Primer Apellido</td>
                                         <td>
                                             <a id="form-first-lastName"></a>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><code>Segundo Apellido</code></td>
+                                        <td>Segundo Apellido</td>
                                         <td>
                                             <a id="form-second-lastName"></a>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><code>G&eacute;nero</code></td>
+                                        <td>G&eacute;nero</td>
                                         <td>
                                             <a id="form-gender"></a>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><code>Nacionalidad</code></td>
+                                        <td>Nacionalidad</td>
                                         <td>
                                             <a id="form-nationality"></a>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><code>Tel&eacute;fono</code></td>
+                                        <td>Tel&eacute;fono</td>
                                         <td>
                                             <a id="form-phone1"></a>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><code>Otro Tel&eacute;fono</code></td>
+                                        <td>Otro Tel&eacute;fono</td>
                                         <td>
                                             <a id="form-phone2"></a>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><code>Email</code></td>
+                                        <td>Email</td>
                                         <td>
                                             <a id="form-email"></a>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><code>Fecha de Nacimiento</code></td>
+                                        <td>Fecha de Nacimiento</td>
                                         <td>
                                             <a id="form-age"></a>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><code>Direcci&oacute;n</code></td>
+                                        <td>Direcci&oacute;n</td>
                                         <td>
                                             <a id="form-address"></a>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><code>Informaci&oacute;n Adicional</code></td>
+                                        <td>Informaci&oacute;n Adicional</td>
                                         <td>
                                             <a id="form-additionalInformation"></a>
                                         </td>

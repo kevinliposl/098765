@@ -11,8 +11,7 @@
 class ScheduleController {
 
     function __construct() {
-        $this->view = new View();
-        require 'model/ScheduleModel.php';
+        $this->view = new View();   
     }
 
     /**
@@ -26,6 +25,7 @@ class ScheduleController {
     function insert() {
         if (SSession::getInstance()->permissions == 'A' || SSession::getInstance()->permissions == 'T') {    
             if (isset($_POST["ID"]) && isset($_POST["start"]) && isset($_POST["end"]) && isset($_POST["day"])) {
+                require 'model/ScheduleModel.php';
                 $model = new ScheduleModel();
                 $result = $model->insert($_POST["ID"], $_POST["start"], $_POST["end"], $_POST["day"]);
                 echo json_encode($result);
@@ -48,7 +48,8 @@ class ScheduleController {
     function delete() {
         if (SSession::getInstance()->permissions == 'A' || SSession::getInstance()->permissions == 'T') {
             if (isset($_POST["id"])) {
-                $model = new SemesterModel();
+                require 'model/ScheduleModel.php';
+                $model = new ScheduleModel();
                 $result = $model->delete($_POST["id"]);
                 echo json_encode($result);
             } else {    
@@ -70,6 +71,7 @@ class ScheduleController {
     function select() {
         if (SSession::getInstance()->permissions == 'A' || SSession::getInstance()->permissions == 'T') {
             if (isset($_POST["ID_Semester"])) {
+                require 'model/ScheduleModel.php';
                 $model = new ScheduleModel();
                 $result = $model->select($_POST["ID_Semester"]);
                 echo json_encode($result);
@@ -96,6 +98,8 @@ class ScheduleController {
                 $model = new CourseSemesterModel();
                 $result = $model->selectWithoutSchedule($_POST["ID_Semester"]);
                 echo json_encode($result);
+            } else{
+                $this->view->show("404View.php");
             }
         } else {
             $this->view->show("404View.php");

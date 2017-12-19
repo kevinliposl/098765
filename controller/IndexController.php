@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @authors <kevin.sandoval@ucr.ac.cr>,<diego.cendenofonseca@ucr.ac.cr>,<elena.calderonfernandez@ucr.ac.cr>,<brogudbarrientos@gmail.com>
  * @version 1.0
@@ -58,7 +57,6 @@ class IndexController {
         require 'libs/EmailSystem.php';
         $email = new EmailSystem();
         $result = $email->contactSendEmail($_POST['template-contactform-name'], $_POST['template-contactform-email'], $_POST['template-contactform-phone'], $_POST['template-contactform-service'], $_POST['template-contactform-subject'], $_POST['template-contactform-message']);
-
         echo json_encode($result);
     }
 
@@ -93,5 +91,4 @@ class IndexController {
     function ejemploProfesor() {
         $this->view->show("profileProfesorView.php");
     }
-
 }

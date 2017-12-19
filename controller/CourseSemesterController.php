@@ -10,7 +10,7 @@
  */
 class CourseSemesterController {
 
-    public function __construct() {
+    function __construct() {
         $this->view = new View();
     }
 
@@ -21,7 +21,7 @@ class CourseSemesterController {
      * @param string $initials identificador de curso
      * Funcion para insertar curso en semestre
      */
-    public function insert() {
+    function insert() {
         if (isset($_POST['professors']) && isset($_POST['ID_Semester']) && isset($_POST['initials']) && SSession::getInstance()->permissions == 'A') {
             require 'model/CourseSemesterModel.php';
             $model = new CourseSemesterModel();
@@ -51,7 +51,7 @@ class CourseSemesterController {
      * @return null
      * Funcion para seleccionar todos los semestres
      */
-    public function select() {
+    function select() {
         if (SSession::getInstance()->permissions == 'A') {
             require 'model/SemesterModel.php';
             $model = new SemesterModel();
@@ -67,7 +67,7 @@ class CourseSemesterController {
      * @param integer $ID_Semester Identificador de semestre
      * Funcion para seleccionar todos los cursos por semestre administrador
      */
-    public function selectAllCoursesSemester() {
+    function selectAllCoursesSemester() {
         if (isset($_POST['ID_Semester']) && SSession::getInstance()->permissions == 'A') {
             require 'model/CourseSemesterModel.php';
             $model = new CourseSemesterModel();
@@ -84,7 +84,7 @@ class CourseSemesterController {
      * @param string $initials Identificador de curso
      * Funcion para seleccionar los profesores que no estan inscritos en un curso del semestre
      */
-    public function selectNotAllProfessorsCourseSemester() {
+    function selectNotAllProfessorsCourseSemester() {
         if (isset($_POST['ID_Semester']) && isset($_POST['initials']) && SSession::getInstance()->permissions == 'A') {
             require 'model/CourseSemesterModel.php';
             $model = new CourseSemesterModel();
@@ -101,7 +101,7 @@ class CourseSemesterController {
      * @param string $initials Identificador de curso
      * Funcion para seleccionar los profesores inscritos en un curso del semestre
      */
-    public function selectAllProfessorsCourseSemester() {
+    function selectAllProfessorsCourseSemester() {
         if (isset($_POST['ID_Semester']) && isset($_POST['initials']) && SSession::getInstance()->permissions == 'A') {
             require 'model/CourseSemesterModel.php';
             $model = new CourseSemesterModel();
@@ -118,7 +118,7 @@ class CourseSemesterController {
      * @param string $initials Identificador de curso
      * Funcion para eliminar curso del semestre administrador
      */
-    public function deleteCourse() {
+    function deleteCourse() {
         if (isset($_POST["ID_Semester"]) && isset($_POST["initials"]) && SSession::getInstance()->permissions == 'A') {
             require 'model/CourseSemesterModel.php';
             $model = new CourseSemesterModel();
@@ -141,7 +141,7 @@ class CourseSemesterController {
      * @param integer $identification Identificador de profesor
      * Funcion para eliminar un profesor de un curso del semestre
      */
-    public function deleteProfessor() {
+    function deleteProfessor() {
         if (isset($_POST["ID_Semester"]) && isset($_POST["initials"]) && isset($_POST["identification"]) && SSession::getInstance()->permissions == 'A') {
             require 'model/CourseSemesterModel.php';
             $model = new CourseSemesterModel();
@@ -156,5 +156,4 @@ class CourseSemesterController {
             $this->view->show("indexView.php");
         }
     }
-
 }

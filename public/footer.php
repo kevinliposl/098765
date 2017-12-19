@@ -113,12 +113,7 @@
 ============================================= -->
 <script src="public/js/jquery.js" type="text/javascript"></script>
 <script src="public/js/plugins.js" type="text/javascript"></script>
-<script async src="public/js/moment.js" type="text/javascript"></script>
-
-<!-- Charts JavaScripts
-============================================= -->
-<script async src="public/js/Chart.bundle.min.js" type="text/javascript"></script>
-<script async src="public/js/utils.js" type="text/javascript"></script>
+<script src="public/js/moment.js" type="text/javascript"></script>
 
 <!-- Bootstrap Select2
 ============================================= -->
@@ -126,7 +121,7 @@
 
 <!-- Bootstrap Editable Plugin
 ============================================= -->
-<script async src="public/js/bs-editable.js" type="text/javascript"></script>
+<script src="public/js/bs-editable.js" type="text/javascript"></script>
 
 <!-- Bootstrap Typeaheadjs Plugin SE QUITO ELEMENTOS
 ============================================= -->
@@ -134,8 +129,8 @@
 
 <!-- Date & Time Picker JS
 ============================================= -->
-<script async src="public/js/datepicker.js" type="text/javascript"></script>
-<script async src="public/js/timepicker.js" type="text/javascript"></script>
+<script src="public/js/datepicker.js" type="text/javascript"></script>
+<script src="public/js/timepicker.js" type="text/javascript"></script>
 
 <!-- Bootstrap Select Plugin
 ============================================= -->
@@ -146,7 +141,7 @@
 <script src="public/js/selectsplitter.js" type="text/javascript"></script>
 
 <!-- Bootstrap Data Table Plugin -->
-<script type="text/javascript" src="public/js/bs-datatable.js"></script>
+<script src="public/js/bs-datatable.js" type="text/javascript"></script>
 
 <script type="text/javascript">
     $('.selectsplitter').selectsplitter();

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @authors <kevin.sandoval@ucr.ac.cr><diego.cendenofonseca@ucr.ac.cr><elena.calderonfernandez@ucr.ac.cr><brogudbarrientos@gmail.com>
  * @version 1.0
@@ -42,12 +41,11 @@ class SemesterController {
      */
     function delete() {
         if (SSession::getInstance()->permissions == 'A') {
-            if (isset($_POST["id"])) {
-                $model = new SemesterModel();
+            $model = new SemesterModel();
+            if (isset($_POST["id"])) {                
                 $result = $model->delete($_POST["id"]);
                 echo json_encode($result);
             } else {
-                $model = new SemesterModel();
                 $result = $model->selectAll();
                 $this->view->show("deleteSemesterView.php", $result);
             }

@@ -28,7 +28,6 @@ if (isset($session->permissions)) {
                         <div class="acc_content clearfix"></div>
                         <div class="table-responsive">
 
-
                             <?php foreach ($vars as $var) { ?>
                                 <table class="table table-bordered table-striped">
                                     <h5 style="text-align: center;">Informaci&oacute;n Personal</h5>

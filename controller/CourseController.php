@@ -5,12 +5,12 @@
  * @version 1.0
  * @copyright (c) 2017, Funcion Academia Musical
  * @access public
- * @category controller
- * Class Curso   
+ * @category Controller
+ * Class Course
  */
 class CourseController {
 
-    public function __construct() {
+    function __construct() {
         $this->view = new View();
     }
 
@@ -19,7 +19,7 @@ class CourseController {
      * @param integer $initials Identificador de entidad
      * Funcion para seleccionar un curso
      */
-    public function select() {
+    function select() {
         if (isset($_POST["initials"]) && SSession::getInstance()->permissions == 'A') {
             require 'model/CourseModel.php';
             $model = new CourseModel();
@@ -39,7 +39,7 @@ class CourseController {
      * @return null
      * Funcion para seleccionar todos los cursos
      */
-    public function selectAll() {
+    function selectAll() {
         if (SSession::getInstance()->permissions == 'A') {
             require 'model/CourseModel.php';
             $model = new CourseModel();
@@ -58,7 +58,7 @@ class CourseController {
      * @param string $instrument instrumento de entidad
      * Funcion para insertar curso
      */
-    public function insert() {
+    function insert() {
         if (isset($_POST["initials"]) && isset($_POST["name"]) && isset($_POST["description"]) && isset($_POST["instrument"]) && SSession::getInstance()->permissions == 'A') {
             require 'model/CourseModel.php';
             $model = new CourseModel();
@@ -76,7 +76,7 @@ class CourseController {
      * @param integer $id Identificador de entidad
      * Funcion para eliminar curso
      */
-    public function delete() {
+    function delete() {
         if (isset($_POST["initials"]) && SSession::getInstance()->permissions == 'A') {
             require 'model/CourseModel.php';
             $model = new CourseModel();
@@ -100,7 +100,7 @@ class CourseController {
      * @param string $instrument instrumento de entidad
      * Funcion para actualizar curso
      */
-    public function update() {
+    function update() {
         if (isset($_POST["initials"]) && isset($_POST["name"]) && isset($_POST["description"]) && isset($_POST["instrument"]) && SSession::getInstance()->permissions == 'A') {
             require 'model/CourseModel.php';
             $model = new CourseModel();
@@ -115,5 +115,4 @@ class CourseController {
             $this->view->show("404View.php");
         }
     }
-
 }

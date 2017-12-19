@@ -32,7 +32,7 @@ if (isset($session->permissions)) {
                             <div class="col_full">
                                 <label for="form-id">Cedula:</label>
                                 <input type="text" id="form-id" class="form-control" required minlength="9" placeholder="304440555"/>
-                                <input type="hidden" id="failed-id" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                                <input type="hidden" id="failed-id" data-notify-type="error" data-notify-position="bottom-full-width"/>
                             </div>
 
                             <div class="col_full">
