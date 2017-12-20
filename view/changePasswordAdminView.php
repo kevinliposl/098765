@@ -26,7 +26,7 @@ if (isset($session->permissions)) {
                 <div class="accordion-lg divcenter nobottommargin" style="max-width: 550px;">
                     <div class="acctitle">
                         <div class="acc_content clearfix">
-                            <form id="form" class="nobottommargin" onsubmit="return false;">
+                            <form class="nobottommargin" onsubmit="return val();">
                                 
                                 <div class="col_full">
                                     <label for="form-password">Nueva Contraseña:</label>
@@ -41,11 +41,9 @@ if (isset($session->permissions)) {
                                 </div>
 
                                 <div class="col_full nobottommargin">                      
-                                    <input type="submit" id="change" value="Cambiar" class="button button-3d button-black nomargin form-control" 
-                                    style="display: block; text-align: center;"/>
-                                    <input type="hidden" id="warning"/>
-                                    <input type="hidden" id="success"/>
-                                    <input type="hidden" id="failed"/>
+                                    <input type="submit" value="Cambiar" class="button button-3d button-black nomargin form-control" style="display: block; text-align: center;"/>
+                                    <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i> Operacion Fallida!" data-notify-position="bottom-full-width"/>
+                                    <input type="hidden" id="success" data-notify-type="success" data-notify-msg ="<i class='icon-ok-sign'></i> Operacion Exitosa!" data-notify-position="bottom-full-width"/>
                                 </div>
                             </form>
                         </div>
@@ -54,7 +52,7 @@ if (isset($session->permissions)) {
             </div>
         </section>
 
-        <a id="showModal" style="display: none;"class="button button-3d button-black nomargin" data-target="#myModal" data-toggle="modal">Modal</a>
+        <a id="showModal" style="display: none;" class="button button-3d button-black nomargin" data-target="#myModal" data-toggle="modal">Modal</a>
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-body">
@@ -78,23 +76,13 @@ if (isset($session->permissions)) {
     //Insert
     $("#form-submity").click(function () {
         var parameters = {
-            "newPass": $("#form-password").val().trim()
+            "newPass": pass1
         };
         $.post("?controller=Admin&action=changePassword", parameters, function (data) {
             if (data.result === "1") {
-                $("#success").attr({
-                    "data-notify-type": "success",
-                    "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!",
-                    "data-notify-position": "bottom-full-width"
-                });
                 SEMICOLON.widget.notifications($("#success"));
                 setTimeout("location.href = '?';", 1500);
             } else {
-                $("#warning").attr({
-                    "data-notify-type": "warning",
-                    "data-notify-msg": "<i class=icon-warning-sign></i> Operacion Fallida!",
-                    "data-notify-position": "bottom-full-width"
-                });
                 SEMICOLON.widget.notifications($("#warning"));
             }
             ;
@@ -102,9 +90,9 @@ if (isset($session->permissions)) {
     });
 
     //Open Modal
-    $('#change').click(function(){
-        var pass1 = $("#form-password").val().trim();
-        var pass2 = $("#form-password2").val().trim();
+    function val(){
+        pass1 = $("#form-password").val().trim();
+        pass2 = $("#form-password2").val().trim();
 
         if (pass1.length < 8 || pass1.length > 15 || pass1.split(" ", 2).length > 1) {
             $("#failed-password").attr("data-notify-msg", "<i class=icon-remove-sign></i> Formato no valido, Minimo 8 caracteres. Complete e intente de nuevo!");
@@ -122,6 +110,7 @@ if (isset($session->permissions)) {
             return false;
         } 
         $('#showModal').click();
+        return false;
     });
 
 </script>

@@ -22,6 +22,10 @@ class SMail {
     
     function sendMail($addressee, $subject, $messaje) {
         try {
+            $this->mail->Username = "3msqueters@gmail.com";
+            $this->mail->Password = "mosquetero";
+            $this->mail->setFrom('fusionAcademiaMusical.com', 'Kevin');
+
             $this->mail->Subject = $subject;
 
             $html = file_get_contents('view/mailView.php');
@@ -35,6 +39,32 @@ class SMail {
             $this->mail->AltBody = 'La academia informa...';
 
             $this->mail->addAddress($addressee);
+
+            return $this->mail->send();
+        } catch (Exception $exc) {
+            return false;
+        }
+    }
+
+    function contactMail($form_name, $form_email, $form_phone, $form_service, $form_subject, $form_message) {
+        try {
+            $this->mail->Username = "3msqueters@gmail.com";
+            $this->mail->Password = "mosquetero";
+            $this->mail->setFrom('fusionAcademiaMusical.com', 'Kevin');
+
+            $this->mail->Subject = $form_subject;
+
+            $html = file_get_contents('view/mailView.php');
+            $body = str_replace("Mensaje", $form_message, $html);
+            $body1 = str_replace("Asunto", ($form_subject .' '. $form_service), $body);
+
+            $this->mail->AddEmbeddedImage("public/images/fusionOriginalMail.png","imagen0");
+            $this->mail->AddEmbeddedImage("public/images/facebook.png","imagen1");
+            
+            $this->mail->Body = $body1;
+            $this->mail->AltBody = 'Mensaje de '. $form_name .' -- '. $form_email .' -- '. $form_phone;
+
+            $this->mail->addAddress('kevinliposl@gmail.com');//////Poner direccion de envio
 
             return $this->mail->send();
         } catch (Exception $exc) {
@@ -58,8 +88,5 @@ class SMail {
         $this->mail->SMTPOptions = array(
             'ssl' => array('verify_peer' => false, 'verify_peer_name' => false, 'allow_self_signed' => true)
         );
-        $this->mail->Username = "3msqueters@gmail.com";
-        $this->mail->Password = "mosquetero";
-        $this->mail->setFrom('fusionAcademiaMusical.com', 'Kevin');
     }
 }

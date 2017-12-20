@@ -54,10 +54,9 @@ class IndexController {
     }
 
     function contactSendEmail() {
-        require 'libs/EmailSystem.php';
-        $email = new EmailSystem();
-        $result = $email->contactSendEmail($_POST['template-contactform-name'], $_POST['template-contactform-email'], $_POST['template-contactform-phone'], $_POST['template-contactform-service'], $_POST['template-contactform-subject'], $_POST['template-contactform-message']);
-        echo json_encode($result);
+        $mail = SMail::getInstance();
+        $result = $mail->contactMail($_POST['form-name'], $_POST['form-email'], $_POST['form-phone'], $_POST['form-service'], $_POST['form-subject'], $_POST['form-message']);
+        echo json_encode(array('result' => $result.''));
     }
 
     /**

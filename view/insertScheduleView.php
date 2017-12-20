@@ -311,14 +311,13 @@ if (isset($session->permissions)) {
         $.post("?controller=Schedule&action=select", parameters, function (data) {
             for (var i = 0; i < data.length; i++) {
                 var temp = getRandomArbitrary(0, 3);
-                for (var j = parseInt(data[i].start); j <= parseInt(data[i].end); j++) {
+                for (var j = data[i].start; j <= data[i].end; j++) {
                     $("#" + data[i].day + '' + j).addClass(colorClass[temp]);
                     $("#" + data[i].day + '' + j).text(data[i].initials + ' | ' + data[i].name);
                 }
             }
         }, "json");
-    }
-    );
+    });
 
     //Change Combobox
     $("#form-courses").change(function () {

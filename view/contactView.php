@@ -15,60 +15,47 @@ if (isset($session->permissions)) {
 ?>
 
 <!-- Page Title
-                ============================================= -->
+    ============================================= -->
 <section id="page-title">
-
     <div class="container clearfix">
         <h1>Contactenos</h1>
     </div>
-
-</section><!-- #page-title end -->
+</section>
 
 <!-- Content
-============================================= -->
+    ============================================= -->
 <section id="content">
-
     <div class="content-wrap">
-
         <div class="container clearfix">
-
             <!-- Contact Form
-            ============================================= -->
+                ============================================= -->
             <div class="col_half">
-
                 <div class="fancy-title title-dotted-border">
                     <h3>Envianos un correo</h3>
                 </div>
-
-                <form class="nobottommargin" id="template-contactform" name="template-contactform" onsubmit="return validate();">
-
-                    <div class="form-process"></div>
-
+                <form class="nobottommargin" onsubmit="return val();">
                     <div class="col_one_third">
-                        <label for="template-contactform-name">Nombre <small>*</small></label>
-                        <input type="text" id="template-contactform-name" name="template-contactform-name" value="" class="sm-form-control"  Required/>
+                        <label for="form-name">Nombre <small>*</small></label>
+                        <input type="text" id="form-name" class="form-control" required/>
                     </div>
-
                     <div class="col_one_third">
-                        <label for="template-contactform-email">Correo <small>*</small></label>
-                        <input type="email" id="template-contactform-email" name="template-contactform-email" value="" class="email sm-form-control" Required/>
+                        <label for="form-email">Correo <small>*</small></label>
+                        <input type="email" id="form-email" class="form-control" required/>
                     </div>
-
                     <div class="col_one_third col_last">
-                        <label for="template-contactform-phone">Tel&eacute;fono</label>
-                        <input type="text" id="template-contactform-phone" name="template-contactform-phone" value="" class="sm-form-control" Required />
+                        <label for="form-phone">Tel&eacute;fono</label>
+                        <input type="text" id="form-phone" class="form-control"/>
                     </div>
 
                     <div class="clear"></div>
 
                     <div class="col_two_third">
-                        <label for="template-contactform-subject">Asunto <small>*</small></label>
-                        <input type="text" id="template-contactform-subject" name="template-contactform-subject" value="" class="sm-form-control" Required />
+                        <label for="form-subject">Asunto <small>*</small></label>
+                        <input type="text" id="form-subject" class="form-control" required/>
                     </div>
-
                     <div class="col_one_third col_last">
-                        <label for="template-contactform-service">Servicios</label>
-                        <select id="template-contactform-service" name="template-contactform-service" class="sm-form-control">
+                        <label for="form-service">Servicios</label>
+                        <select id="form-service" class="form-control">
                             <option value="Matricula">Matricula</option>
                             <option value="Servicios">Servicios</option>
                             <option value="Consulta">Consultas</option>
@@ -80,35 +67,29 @@ if (isset($session->permissions)) {
                     <div class="clear"></div>
 
                     <div class="col_full">
-                        <label for="template-contactform-message">Mensaje <small>*</small></label>
-                        <textarea class="required sm-form-control" id="template-contactform-message" name="template-contactform-message" rows="6" cols="30" Required></textarea>
+                        <label for="form-message">Mensaje <small>*</small></label>
+                        <textarea class="form-control" id="form-message" rows="6" cols="30" required></textarea>
                     </div>
-
-                    <div class="col_full hidden">
-                        <input type="text" id="template-contactform-botcheck" name="template-contactform-botcheck" value="" class="sm-form-control" />
-                    </div>
-
                     <div class="col_full">
-                        <button name="submit" id="submit" type="submit" id="submit-button" tabindex="5" value="Submit" class="button button-3d nomargin button-dark">¡Enviar!</button>
+                        <input type="submit" id="form-submit" value="¡Enviar!" class="button button-3d button-black nomargin"/>
+                        <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i> Mensaje no enviado, intentelo de nuevo o pongase en contacto por los otros medios disponibles!" data-notify-position="bottom-full-width"/>
+                        <input type="hidden" id="success" data-notify-type="success" data-notify-msg ="<i class='icon-ok-sign'></i> Mensaje Enviado, será redireccionado en breve...!" data-notify-position="bottom-full-width"/>
+                        <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Espere un momento...!" data-notify-position="bottom-full-width"/>
                     </div>
-
                 </form>
-                <div class="contact-form-result alert-info" id="contact-form-result"></div>
                 <br>
             </div><!-- Contact Form End -->
 
             <!-- Google Map
-            ============================================= -->
+                ============================================= -->
             <div class="col_half col_last">
-
                 <section id="google-map" class="gmap" style="height: 410px;"></section>
-
             </div><!-- Google Map End -->
 
             <div class="clear"></div>
 
             <!-- Contact Info
-            ============================================= -->
+                ============================================= -->
             <div class="row clear-bottommargin">
 
                 <div class="col-md-4 bottommargin clearfix">
@@ -142,42 +123,37 @@ if (isset($session->permissions)) {
     </div>
 </section><!-- #content end -->
 
-<script>
-    function validate() {
+<script type="text/javascript">
+    function val() {
         var parameters = {
-            'template-contactform-name': $("#template-contactform-name").val(),
-            'template-contactform-email': $("#template-contactform-email").val().trim(),
-            'template-contactform-phone': $("#template-contactform-phone").val().trim(),
-            'template-contactform-service': $("#template-contactform-service").val().trim(),
-            'template-contactform-subject': $("#template-contactform-subject").val().trim(),
-            'template-contactform-message': $("#template-contactform-message").val().trim()
+            'form-name': $("#form-name").val(),
+            'form-email': $("#form-email").val().trim(),
+            'form-phone': $("#form-phone").val().trim(),
+            'form-service': $("#form-service").val().trim(),
+            'form-subject': $("#form-subject").val().trim(),
+            'form-message': $("#form-message").val().trim()
         };
 
+        SEMICOLON.widget.notifications($("#wait"));
+
         $.post("?controller=Index&action=contactSendEmail", parameters, function (data) {
-            if (data === "1") {
-                document.getElementById("contact-form-result").innerHTML = "Mensaje Enviado, será redireccionado en breve...";
-                setTimeout("location.href = '?';", 1000);
+            if (data.result === "1") {
+                SEMICOLON.widget.notifications($("#success"));
+                setTimeout("location.href = '?';", 1500);
             } else {
-                document.getElementById("contact-form-result").innerHTML = "Mensaje no enviado, intentelo de nuevo o pongase en contacto por los otros medios disponibles";
-                setTimeout("location.href = '#template-contactform-message';", 0);
-            }   
+                SEMICOLON.widget.notifications($("#warning"));
+            }
             ;
         }, "json");
-
         return false;
     }
-</script>
-
-<?php
-include_once 'public/footer.php';
-?>
+</script>>
 
 <script type='text/javascript' src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCQkWM0oTBZWWCQZudbiZVOU0DEooJ4FSw'></script>
 <script type="text/javascript" src="public/js/jquery.gmap.js"></script>
 
-<script type="text/javascript">
-
-    jQuery('#google-map').gMap({
+<script>
+    $('#google-map').gMap({
         address: 'Fusión Academia de Música, Turrialba, Provincia de Cartago, Costa Rica',
         maptype: 'ROADMAP',
         zoom: 15,
@@ -202,6 +178,7 @@ include_once 'public/footer.php';
             overviewMapControl: false
         }
     });
-
 </script>
 
+<?php
+include_once 'public/footer.php';
