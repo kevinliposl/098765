@@ -31,8 +31,8 @@ include_once 'public/headerAdmin.php';
                                         </select>
                                     </div>
                                     <div class="acc_content clearfix"></div>
-                                    <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i> El Estudiante no se pudo eliminar!" data-notify-position="bottom-full-width"/>
-                                    <input type="hidden" id="success" data-notify-type="success" data-notify-msg="<i class='icon-ok-sign'></i> Operacion Exitosa!" data-notify-position="bottom-full-width"/>
+                                    <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i> No se pudo obtener la informaci&oacute;n necesaria!" data-notify-position="bottom-full-width"/>
+                                    <input type="hidden" id="success" data-notify-type="success" data-notify-msg="<i class='icon-ok-sign'></i>Operaci&oacute;n Exitosa. Informaci&oacute;n visualizada!" data-notify-position="bottom-full-width"/>
                                 </form>
                             </div>
                         </div>
@@ -64,6 +64,7 @@ include_once 'public/headerAdmin.php';
                         <input type="hidden" id="form-old-id" name="form-old-id" value="">
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped" style="clear: both">
+                                <h5 style="text-align: center;">Informaci&oacute;n del Estudiante</h5>    
                                 <tbody>
                                     <tr>
                                         <td width="15%">Identificaci&oacute;n</td>

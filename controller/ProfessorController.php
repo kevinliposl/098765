@@ -179,27 +179,4 @@ class ProfessorController {
             $this->view->show("indexView.php");
         }
     }
-
-    /**
-     * @return null
-     * @param integer $id Identificador de entidad
-     * @param string $new contrasena de entidad
-     * Funcion para cambiar contrasenna
-     */
-    function change() {
-        if (SSession::getInstance()->permissions == 'T' || SSession::getInstance()->permissions == 'A' || SSession::getInstance()->permissions == 'S') {
-            if (isset($_POST["new"])) {
-                require 'model/ProfessorModel.php';
-                $model = new ProfessorModel();
-                $session = SSession::getInstance();
-
-                $result = $model->change($session->identification, $_POST["new"]);
-                echo json_encode($result);
-            } else {
-                $this->view->show("changePasswordView.php");
-            }
-        } else {
-            $this->view->show("indexView.php");
-        }
-    }
 }

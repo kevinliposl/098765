@@ -83,7 +83,7 @@ include_once 'public/head.php';
                     <li><a href="#"><div>Perfil</div></a>
                         <ul>
                             <li><a href="?controller=Admin&action=updatePersonalData"><div>Datos Personales</div></a></li> 
-                            <li><a href="?controller=Admin&action=changePassword"><div>Cambiar Contraseña</div></a></li> 
+                            <li><a href="?controller=User&action=changePassword"><div>Cambiar Contraseña</div></a></li> 
                         </ul>
                     </li>
                     <li><a href="?controller=User&action=signOff"><div>Cerrar Sesi&oacute;n</div></a></li>

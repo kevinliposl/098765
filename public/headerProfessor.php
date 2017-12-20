@@ -21,7 +21,7 @@ include_once 'public/head.php';
                         <ul>
                             <li><a href="?controller=Professor&action=personalSelection"><div>Ver Datos Personales</div></a></li>
                             <li><a href="?controller=Professor&action=updatePersonal"><div>Actualizar Datos Personales</div></a></li>
-                            <li><a href="?controller=Professor&action=change"><div>Cambiar Contraseña</div></a></li>
+                            <li><a href="?controller=User&action=changePassword"><div>Cambiar Contraseña</div></a></li>
                         </ul>
                     </li>
                     <li><a href="#"><div>Mantenimiento de Actividades</div></a>

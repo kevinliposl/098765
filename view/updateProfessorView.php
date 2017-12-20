@@ -22,8 +22,7 @@ if (isset($session->permissions)) {
 <section id="content">
     <div class="content-wrap">
         <div class="container clearfix">
-            <div class="accordion-lg divcenter nobottommargin" style="max-width: 550px;">
-                <!--<div class="acctitle">-->
+            <div class="accordion-lg divcenter nobottommargin">
                 <div class="acc_content clearfix">
                     <form id="form" class="nobottommargin" onsubmit="return validate();">
                         <div class="white-section">
@@ -40,7 +39,6 @@ if (isset($session->permissions)) {
                         <div class="acc_content clearfix"></div>
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped">
-                                <h5 style="text-align: center;">Informaci&oacute;n del Profesor</h5>
                                 <colgroup>
                                     <col class="col-xs-5">
                                     <col class="col-xs-8">
@@ -221,7 +219,7 @@ if (isset($session->permissions)) {
 
     function validate() {
         var identification, typeId, nameP, firstLastName, secondLastName, additionalInformation, address, phone, phone2, nationality, gender;
-        
+
         identification = $("#form-id").text().trim();
         typeId = $("#form-id-type").text().trim();
         nameP = $("#form-name").text().trim();
@@ -233,7 +231,7 @@ if (isset($session->permissions)) {
         phone2 = $("#form-phone2").text().trim();
         nationality = $("#form-nationality").text().trim();
         gender = $("#form-gender").text().trim().toUpperCase();
-        
+
         if (nameP.length < 3 || nameP.length > 49 || !isNaN(nameP)) {
             $("#failed-name").attr("data-notify-msg", "<i class=icon-remove-sign></i> Dato de Nombre Incorrecto. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-name"));
@@ -253,51 +251,51 @@ if (isset($session->permissions)) {
             $("#failed-phone1").attr("data-notify-msg", "<i class=icon-remove-sign></i> Formato de telefono incorrecto. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-phone1"));
             return false;
-            
+
         } else if (phone2.length < 8 || phone2.length > 8 || isNaN(phone2)) {
             $("#failed-phone2").attr("data-notify-msg", "<i class=icon-remove-sign></i> Formato de otro telefono incorrecto. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-phone2"));
             return false;
-            
+
         } else if (nationality.length < 6 || nationality.length > 49 || !isNaN(nationality) || nationality.split(" ", 2).length > 1) {
             $("#failed-nationality").attr("data-notify-msg", "<i class=icon-remove-sign></i> Formato de nacionalidad incorrecto. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-nationality"));
             return false;
-            
+
         } else if (address.length > 200) {
             $("#failed-address").attr("data-notify-msg", "<i class=icon-remove-sign></i> Dirección muy extensa. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-address"));
             return false;
-            
+
         } else if (additionalInformation.length > 2000) {
             $("#failed-additionalInformation").attr("data-notify-msg", "<i class=icon-remove-sign></i> Información adicional muy extensa. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-additionalInformation"));
             return false;
-            
-        } else if (gender.length > 1 || (gender!="M" && gender!="F")) {
+
+        } else if (gender.length > 1 || (gender != "M" && gender != "F")) {
             $("#failed-gender").attr("data-notify-msg", "<i class=icon-remove-sign></i> Genero erroneo. Datos validos M o F. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-gender"));
-            return false; 
+            return false;
         } else {
-            if(typeId=="C"){
-                if(isNaN(identification) || identification.length < 9 || identification.length>9){
+            if (typeId == "C") {
+                if (isNaN(identification) || identification.length < 9 || identification.length > 9) {
                     $("#failed-id").attr("data-notify-msg", "<i class=icon-remove-sign></i> Formato de identificacion incorrecto. Complete e intente de nuevo!");
                     SEMICOLON.widget.notifications($("#failed-id"));
                     return false;
                 }
-            }else if(typeId=="D"){
-                if( identification.length < 12 || identification.length > 12){
+            } else if (typeId == "D") {
+                if (identification.length < 12 || identification.length > 12) {
                     $("#failed-id").attr("data-notify-msg", "<i class=icon-remove-sign></i> Formato de identificacion incorrecto. Complete e intente de nuevo!");
                     SEMICOLON.widget.notifications($("#failed-id"));
                     return false;
                 }
-            }else{
+            } else {
                 $("#failed-id-type").attr("data-notify-msg", "<i class=icon-remove-sign></i> Tipo de identificación incorrecta. C - para nacionales, P - pasapote, D - DIMEX Complete e intente de nuevo!");
                 SEMICOLON.widget.notifications($("#failed-id-type"));
                 return false;
             }
         }//final
-        
+
         $('#showModal').click();
         return false;
     }

@@ -21,8 +21,8 @@ class AdminModel {
      * @param integer $id Identificador de entidad
      * @param string $email Email de entidad
      * @param string $name Nombre de entidad
-     * @param string $firstLastName Apellido de entidad
-     * @param string $secondLastName Apellido de entidad
+     * @param string $firstLastname Apellido de entidad
+     * @param string $secondLastname Apellido de entidad
      * Funcion para insertar administrador
      */
     function insert($id, $email, $name, $firstLastname, $secondLastname) {
@@ -65,18 +65,6 @@ class AdminModel {
         $query->execute();
         $result = $query->fetchAll();
         $query->closeCursor();
-        return $result;
-    }
-
-    /**
-     * @return String result
-     * @param integer $id Identificador de entidad
-     * Funcion para cambiar contrasenna de administrador
-     */
-    function changePassword($id, $password) {
-        $query = $this->db->prepare("call sp_change_password_admin('$id','$password')");
-        $query->execute();
-        $result = $query->fetch();
         return $result;
     }
 

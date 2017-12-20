@@ -22,90 +22,90 @@ if (isset($session->permissions)) {
 <section id="content">
     <div class="content-wrap">
         <div class="container clearfix">
-            <div class="accordion-lg divcenter nobottommargin" style="max-width: 550px;">
+            <div class="accordion-lg divcenter nobottommargin">
                 <div class="acctitle">
                     <div class="acc_content clearfix">
                         <form id="form" class="nobottommargin" onsubmit="return validate();">
-                            <div class="col_full">
+                            <div class="col-lg-6" style="padding: 10px;">
                                 <label for="form-typeId">Tipo de Identificaci&oacute;n:</label>
-                                <input type="radio" name="form-typeId" value="C" checked/><label>Cédula Nacional</label>
-                                <input type="radio" name="form-typeId" value="D"/> <label>Dimex</label>
-                                <input type="radio" name="form-typeId" value="P"/><label>Pasaporte</label>
+                                <input type="radio" name="form-typeId" value="C" checked/><label>Cédula.</label>
+                                <input type="radio" name="form-typeId" value="D"/> <label> Dimex.</label>
+                                <input type="radio" name="form-typeId" value="P"/><label> Pasaporte.</label>
                             </div>
-                            
-                            <div class="col_full">
+
+                            <div class="col-lg-6" style="padding: 10px;">
                                 <label for="form-id">Número de Identificaci&oacute;n:</label>
                                 <input type="text" id="form-id" class="form-control" required/>
                                 <input type="hidden" id="failed-id" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                             </div>
-                            
-                            <div class="col_full">
+
+                            <div class="col-lg-6" style="padding: 10px;">
                                 <label for="form-name">Nombre:</label>
                                 <input type="text" id="form-name" class="form-control" required/>
                                 <input type="hidden" id="failed-name" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                             </div>
 
-                            <div class="col_full">
+                            <div class="col-lg-6" style="padding: 10px;">
                                 <label for="form-firstLastName">Primer Apellido:</label>
                                 <input type="text" id="form-firstLastName" class="form-control" required/>
                                 <input type="hidden" id="failed-firstLastName" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                             </div>
 
-                            <div class="col_full">
+                            <div class="col-lg-6" style="padding: 10px;">
                                 <label for="form-secondLastName">Segundo Apellido:</label>
                                 <input type="text" id="form-secondLastName" class="form-control" required/>
                                 <input type="hidden" id="failed-secondLastName" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                             </div>
-                            
-                            <div class="col_full">
+
+                            <div class="col-lg-6" style="padding: 10px;">
                                 <label for="form-address">Lugar de Residencia:</label>
                                 <input type="text" id="form-address" class="form-control" required/>
                                 <input type="hidden" id="failed-address" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                             </div>
-                            
-                            <div class="col_full">
+
+                            <div class="col-lg-6" style="padding: 10px;">
                                 <label for="form-gender">G&eacute;nero:</label>
                                 <input type="radio" name="form-gender" value="M" checked/> <label>Masculino</label>
                                 <input type="radio" name="form-gender" value="F"/><label>Femenino</label>
                             </div>
-                            
-                            <div class="col_full">
+
+                            <div class="col-lg-6" style="padding: 10px;">
                                 <label for="form-nationality">Nacionalidad:</label>
                                 <input type="text" id="form-nationality" class="form-control" required/>
                                 <input type="hidden" id="failed-nationality" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                             </div>
-                            
-                            <div class="col_full">
+
+                            <div class="col-lg-6" style="padding: 10px;">
                                 <label for="form-phone1">Tel&eacute;fono:</label>
                                 <input type="text" id="form-phone1" class="form-control" required/>
                                 <input type="hidden" id="failed-phone1" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                             </div>
-                            
-                            <div class="col_full">
+
+                            <div class="col-lg-6" style="padding: 10px;">
                                 <label for="form-phone2">Otro Tel&eacute;fono:</label>
                                 <input type="text" id="form-phone2" class="form-control" required/>
                                 <input type="hidden" id="failed-phone2" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                             </div>
-                            
-                            <div class="col_full">
+
+                            <div class="col-lg-6" style="padding: 10px;">
                                 <label for="form-email">Correo Electr&oacute;nico:</label>
                                 <input type="email" id="form-email" class="form-control" required/>
                                 <input type="hidden" id="failed-email" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                             </div>
-                            
-                            <div class="col_full">
+
+                            <div class="col-lg-6" style="padding: 10px;">
                                 <label for="form-age">Fecha de nacimiento:</label>
                                 <input type="date" id="form-age" class="form-control" required/>
                                 <input type="hidden" id="failed-age" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                             </div>
-                            
-                            <div class="col_full">
+
+                            <div class="col_full" style="padding: 10px;">
                                 <label for="form-additionalInformation">Informaci&oacute;n Adicional:</label>
                                 <input type="text" id="form-additionalInformation" class="form-control" required/>
                                 <input type="hidden" id="failed-additionalInformation" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                             </div>
 
-                            <div class="col_full nobottommargin">                      
+                            <div class="col_full" style="padding: 10px;">                      
                                 <input type="submit" value="Insertar" class="button button-3d button-black nomargin form-control" style="display: block; text-align: center;"/>
                                 <input type="hidden" id="warning"/>
                                 <input type="hidden" id="success"/>
@@ -116,6 +116,7 @@ if (isset($session->permissions)) {
                 </div>
             </div>
         </div>
+    </div>
 </section><!-- #content end -->
 
 <!--MODAL -->
@@ -158,7 +159,7 @@ if (isset($session->permissions)) {
         phone2 = $("#form-phone2").val().trim();
         nationality = $("#form-nationality").val().trim();
 
-        
+
         if (nameP.length < 3 || nameP.length > 49 || !isNaN(nameP)) {
             $("#failed-name").attr("data-notify-msg", "<i class=icon-remove-sign></i> Dato de Nombre Incorrecto. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-name"));
@@ -178,43 +179,43 @@ if (isset($session->permissions)) {
             $("#failed-phone1").attr("data-notify-msg", "<i class=icon-remove-sign></i> Formato de telefono incorrecto. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-phone1"));
             return false;
-            
+
         } else if (phone2.length < 8 || phone2.length > 8 || isNaN(phone2)) {
             $("#failed-phone2").attr("data-notify-msg", "<i class=icon-remove-sign></i> Formato de otro telefono incorrecto. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-phone2"));
             return false;
-            
+
         } else if (nationality.length < 6 || nationality.length > 49 || !isNaN(nationality) || nationality.split(" ", 2).length > 1) {
             $("#failed-nationality").attr("data-notify-msg", "<i class=icon-remove-sign></i> Formato de nacionalidad incorrecto. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-nationality"));
             return false;
-            
+
         } else if (address.length > 200) {
             $("#failed-address").attr("data-notify-msg", "<i class=icon-remove-sign></i> Dirección muy extensa. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-address"));
             return false;
-            
+
         } else if (additionalInformation.length > 2000) {
             $("#failed-additionalInformation").attr("data-notify-msg", "<i class=icon-remove-sign></i> Información adicional muy extensa. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-additionalInformation"));
             return false;
-            
+
         } else {
-            if(typeId=="C"){
-                if(isNaN(identification) || identification.length < 9 || identification.length>9){
+            if (typeId == "C") {
+                if (isNaN(identification) || identification.length < 9 || identification.length > 9) {
                     $("#failed-id").attr("data-notify-msg", "<i class=icon-remove-sign></i> Formato de identificacion incorrecto. Complete e intente de nuevo!");
                     SEMICOLON.widget.notifications($("#failed-id"));
                     return false;
                 }
-            }else if(typeId=="D"){
-                if( identification.length < 12 || identification.length > 12){
+            } else if (typeId == "D") {
+                if (identification.length < 12 || identification.length > 12) {
                     $("#failed-id").attr("data-notify-msg", "<i class=icon-remove-sign></i> Formato de identificacion incorrecto. Complete e intente de nuevo!");
                     SEMICOLON.widget.notifications($("#failed-id"));
                     return false;
                 }
             }//if-else
         }//final
-        
+
         $('#showModal').click();
         return false;
     }

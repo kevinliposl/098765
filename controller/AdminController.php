@@ -87,30 +87,6 @@ class AdminController {
     /**
      * @return null
      * @param integer $id Identificador de entidad
-     * Funcion para cambiar la contraseña del administrador
-     */
-    function changePassword() {
-        if (SSession::getInstance()->permissions == 'A') {
-            if (isset($_POST['newPass'])) {
-                $model = new AdminModel();
-                $result = $model->changePassword(SSession::getInstance()->identification, $_POST['newPass']);
-                echo json_encode($result);
-                if ($result["result"] === '1') {
-                    $mail = SMail::getInstance();
-                    $mail->sendMail($result["email"], 'Contraseña de ingreso al sitio', 'Hola, su contraseña a sido cambiada. Su nueva contraseña'
-                        . ' de ingreso al sitio es... <br><h1>' . $result["password"] . '</h1>');
-                }
-            } else {
-                $this->view->show("changePasswordAdminView.php");
-            }
-        } else {
-            $this->view->show("404View.php");
-        }
-    }
-
-    /**
-     * @return null
-     * @param integer $id Identificador de entidad
      * Funcion para actualizar administrador
      */
     function updatePersonalData() {
