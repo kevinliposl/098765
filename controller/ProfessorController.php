@@ -131,20 +131,21 @@ class ProfessorController {
      * @return null
      * @param integer $identification Identificador de entidad
      * Funcion para seleccionar informacion de perfil
+
+      function personalSelection() {
+      if (SSession::getInstance()->permissions == 'T') {
+      require 'model/ProfessorModel.php';
+      $model = new ProfessorModel();
+
+      $session = SSession::getInstance();
+
+      $result = $model->selectProfessor($session->identification);
+      $this->view->show("selectProfessorDataView.php", $result);
+      } else {
+      $this->view->show("indexView.php");
+      }
+      }
      */
-    function personalSelection() {
-        if (SSession::getInstance()->permissions == 'T') {
-            require 'model/ProfessorModel.php';
-            $model = new ProfessorModel();
-
-            $session = SSession::getInstance();
-
-            $result = $model->selectProfessor($session->identification);
-            $this->view->show("selectProfessorDataView.php", $result);
-        } else {
-            $this->view->show("indexView.php");
-        }
-    }
 
     /**
      * @return null
@@ -179,4 +180,5 @@ class ProfessorController {
             $this->view->show("indexView.php");
         }
     }
+
 }

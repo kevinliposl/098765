@@ -30,7 +30,7 @@ if (isset($session->permissions)) {
                 <div class="acctitle">
                     <div class="acc_content clearfix">
                         <form id="form" class="nobottommargin">                            
-                            <div class="white-section">
+                            <div class="col-lg-6" style="padding: 10px;">
                                 <label for="form-courses">Cursos Disponibles:</label>
                                 <select id="form-courses" class="selectpicker form-control" data-live-search="true">
                                     <option value="-1" data-tokens="">Seleccione un Curso</option>
@@ -48,66 +48,62 @@ if (isset($session->permissions)) {
                                 </select>
                                 <input type="hidden" id="failed-form-courses" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                             </div>
-                            <br>
-                            <div class="white-section">
+                            <div class="col-lg-6" style="padding: 10px;">
                                 <label for="form-student">Estudiantes Disponibles:</label>
                                 <select id="form-student" class="form-control selectpicker" data-live-search="true">
                                     <option value="-1" data-tokens="">Seleccione un Estudiante</option>
                                 </select>
                                 <input type="hidden" id="failed-form-student" data-notify-type= "error" data-notify-position="bottom-full-width"/>
-                            </div>                          
-                            <div class="col_full">
+                            </div>
+                            <div class="col-lg-6" style="padding: 10px;">
                                 <label for="form-consecutive">Consecutivo de Actividad:</label>
                                 <input type="text" id="form-consecutive" class="form-control" readonly="readonly" />
                                 <input type="hidden" id="failed-consecutive" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                             </div>
-                            <div class="col_full">
+                            <div class="col-lg-6" style="padding: 10px;">
                                 <label for="form-date">Fecha de Realizaci&oacute;n:</label>
                                 <input type="date" id="form-date" class="form-control" required/>
                                 <input type="hidden" id="failed-date" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                             </div>
-                            <div class="col_full">
+                            <div class="col_full" style="padding: 10px;">
                                 <label for="form-typeId">Control de Asistencia:</label>
                                 <input type="radio" name="form-typeA" value="P" checked/><label>Puntual</label>
-                                <input type="radio" name="form-typeA" value="I"/> <label>Ausencia Injustificada</label>
+                                <input type="radio" name="form-typeA" value="I"/><label>Ausencia Injustificada</label>
                                 <input type="radio" name="form-typeA" value="J"/><label>Ausencia Justificada</label>
                             </div>
-                            <br>
-                            <div class="col_full">
-                                <label for="form-content">Contenido de Clase:</label>
+                            <div class="line line-sm"></div>
+                            <div class="col_full" style="padding: 10px;">
+                                <label for="form-content">Contenido de Clase:</label>    
                                 <input type="text" id="form-content" class="form-control" required/>
                                 <input type="hidden" id="failed-content" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                             </div>
-                            <br>
-                            <div class="col_full nobottommargin">
+                            <div class="col_full" style="padding: 10px;">
                                 <a id="form-save"  class="button button-3d button-black nomargin" style="display : block; text-align: center;" >Guardar Contenido</a>
                                 <input type="hidden" id="warning" value="w"/>
                                 <input type="hidden" id="success" value="s"/>
                                 <input type="hidden" id="failed" value="f"/>
-                            </div> 
-                            <br>
+                            </div>
                             <div class="white-section" style="text-align: center;">
                                 <label for="form-addContent" >Contenidos Agregados</label>
                                 <input type="hidden" id="failed-addContent" data-notify-type= "error" data-notify-position="bottom-full-width"/>
-                            </div> 
-                            <br>
-                            <div class="table-responsive">
+                            </div>
+                            <div class="table-responsive col_full" style="padding: 10px;">
                                 <table  class="table table-bordered table-striped" style="clear: both;">
                                     <tbody id="bodyTable">
                                         <tr>
-                                            <th  width="55%" style="text-align: center;">Actividades</th>
-                                            <th width="10%" style="text-align: center;">Acci&oacute;n</th>
+                                            <th  width="40%" style="text-align: center;">Actividades</th>
+                                            <th width="20%" style="text-align: center;">Acci&oacute;n</th>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
-                            <br>
-                            <div class="col_full">
+                            <div class="line line-sm"></div>
+                            <div class="col_full" style="padding: 10px;">
                                 <label for="form-observation">Observaci&oacute;n General:</label>
                                 <input type="text" rows="4" cols="50"    id="form-observation" class="form-control" required/>
                                 <input type="hidden" id="failed-observation" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                             </div>
-                            <div class="col_full nobottommargin">
+                            <div class="col_full" style="padding: 10px;">
                                 <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" style="display : block; text-align: center;" data-target="#myModal">Insertar</a>
                                 <input type="hidden" id="warning" value="w"/>
                                 <input type="hidden" id="success" value="s"/>
@@ -315,86 +311,6 @@ if (isset($session->permissions)) {
 <script>
     $(document).ready(function () {
         $('.bt-editable').editable();
-
-        $('.bt-sex').editable({
-            prepend: "not selected",
-            source: [
-                {value: 1, text: 'Male'},
-                {value: 2, text: 'Female'}
-            ],
-            display: function (value, sourceData) {
-                var colors = {"": "gray", 1: "green", 2: "blue"},
-                        elem = $.grep(sourceData, function (o) {
-                            return o.value == value;
-                        });
-
-                if (elem.length) {
-                    $(this).text(elem[0].text).css("color", colors[value]);
-                } else {
-                    $(this).empty();
-                }
-            }
-        });
-
-        $('.bt-group').editable({
-            showbuttons: false,
-            source: [
-                {value: 1, text: 'M'},
-                {value: 2, text: 'F'}
-            ],
-        });
-
-        $('.bt-event').editable({
-            placement: 'right',
-            combodate: {
-                firstItem: 'name'
-            }
-        });
-
-        $('.bt-state').editable({
-            value: 'California',
-            typeahead: {
-                name: 'state',
-                local: ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Dakota", "North Carolina", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"]
-            }
-        });
-
-        $('.bt-comments').editable({
-            showbuttons: 'bottom'
-        });
-
-        $('.bt-fruits').editable({
-            pk: 1,
-            limit: 3,
-            source: [
-                {value: 1, text: 'banana'},
-                {value: 2, text: 'peach'},
-                {value: 3, text: 'apple'},
-                {value: 4, text: 'watermelon'},
-                {value: 5, text: 'orange'}
-            ]
-        });
-
-        $('.bt-tags').editable({
-            inputclass: 'input-large',
-            select2: {
-                tags: ['html', 'javascript', 'css', 'ajax'],
-                tokenSeparators: [",", " "]
-            }
-        });
-
-        var countries = [];
-        $.each({"BD": "Bangladesh", "BE": "Belgium", "BF": "Burkina Faso", "BG": "Bulgaria", "BA": "Bosnia and Herzegovina", "BB": "Barbados", "WF": "Wallis and Futuna", "BL": "Saint Bartelemey", "BM": "Bermuda", "BN": "Brunei Darussalam", "BO": "Bolivia", "BH": "Bahrain", "BI": "Burundi", "BJ": "Benin", "BT": "Bhutan", "JM": "Jamaica", "BV": "Bouvet Island", "BW": "Botswana", "WS": "Samoa", "BR": "Brazil", "BS": "Bahamas", "JE": "Jersey", "BY": "Belarus", "O1": "Other Country", "LV": "Latvia", "RW": "Rwanda", "RS": "Serbia", "TL": "Timor-Leste", "RE": "Reunion", "LU": "Luxembourg", "TJ": "Tajikistan", "RO": "Romania", "PG": "Papua New Guinea", "GW": "Guinea-Bissau", "GU": "Guam", "GT": "Guatemala", "GS": "South Georgia and the South Sandwich Islands", "GR": "Greece", "GQ": "Equatorial Guinea", "GP": "Guadeloupe", "JP": "Japan", "GY": "Guyana", "GG": "Guernsey", "GF": "French Guiana", "GE": "Georgia", "GD": "Grenada", "GB": "United Kingdom", "GA": "Gabon", "SV": "El Salvador", "GN": "Guinea", "GM": "Gambia", "GL": "Greenland", "GI": "Gibraltar", "GH": "Ghana", "OM": "Oman", "TN": "Tunisia", "JO": "Jordan", "HR": "Croatia", "HT": "Haiti", "HU": "Hungary", "HK": "Hong Kong", "HN": "Honduras", "HM": "Heard Island and McDonald Islands", "VE": "Venezuela", "PR": "Puerto Rico", "PS": "Palestinian Territory", "PW": "Palau", "PT": "Portugal", "SJ": "Svalbard and Jan Mayen", "PY": "Paraguay", "IQ": "Iraq", "PA": "Panama", "PF": "French Polynesia", "BZ": "Belize", "PE": "Peru", "PK": "Pakistan", "PH": "Philippines", "PN": "Pitcairn", "TM": "Turkmenistan", "PL": "Poland", "PM": "Saint Pierre and Miquelon", "ZM": "Zambia", "EH": "Western Sahara", "RU": "Russian Federation", "EE": "Estonia", "EG": "Egypt", "TK": "Tokelau", "ZA": "South Africa", "EC": "Ecuador", "IT": "Italy", "VN": "Vietnam", "SB": "Solomon Islands", "EU": "Europe", "ET": "Ethiopia", "SO": "Somalia", "ZW": "Zimbabwe", "SA": "Saudi Arabia", "ES": "Spain", "ER": "Eritrea", "ME": "Montenegro", "MD": "Moldova, Republic of", "MG": "Madagascar", "MF": "Saint Martin", "MA": "Morocco", "MC": "Monaco", "UZ": "Uzbekistan", "MM": "Myanmar", "ML": "Mali", "MO": "Macao", "MN": "Mongolia", "MH": "Marshall Islands", "MK": "Macedonia", "MU": "Mauritius", "MT": "Malta", "MW": "Malawi", "MV": "Maldives", "MQ": "Martinique", "MP": "Northern Mariana Islands", "MS": "Montserrat", "MR": "Mauritania", "IM": "Isle of Man", "UG": "Uganda", "TZ": "Tanzania, United Republic of", "MY": "Malaysia", "MX": "Mexico", "IL": "Israel", "FR": "France", "IO": "British Indian Ocean Territory", "FX": "France, Metropolitan", "SH": "Saint Helena", "FI": "Finland", "FJ": "Fiji", "FK": "Falkland Islands (Malvinas)", "FM": "Micronesia, Federated States of", "FO": "Faroe Islands", "NI": "Nicaragua", "NL": "Netherlands", "NO": "Norway", "NA": "Namibia", "VU": "Vanuatu", "NC": "New Caledonia", "NE": "Niger", "NF": "Norfolk Island", "NG": "Nigeria", "NZ": "New Zealand", "NP": "Nepal", "NR": "Nauru", "NU": "Niue", "CK": "Cook Islands", "CI": "Cote d'Ivoire", "CH": "Switzerland", "CO": "Colombia", "CN": "China", "CM": "Cameroon", "CL": "Chile", "CC": "Cocos (Keeling) Islands", "CA": "Canada", "CG": "Congo", "CF": "Central African Republic", "CD": "Congo, The Democratic Republic of the", "CZ": "Czech Republic", "CY": "Cyprus", "CX": "Christmas Island", "CR": "Costa Rica", "CV": "Cape Verde", "CU": "Cuba", "SZ": "Swaziland", "SY": "Syrian Arab Republic", "KG": "Kyrgyzstan", "KE": "Kenya", "SR": "Suriname", "KI": "Kiribati", "KH": "Cambodia", "KN": "Saint Kitts and Nevis", "KM": "Comoros", "ST": "Sao Tome and Principe", "SK": "Slovakia", "KR": "Korea, Republic of", "SI": "Slovenia", "KP": "Korea, Democratic People's Republic of", "KW": "Kuwait", "SN": "Senegal", "SM": "San Marino", "SL": "Sierra Leone", "SC": "Seychelles", "KZ": "Kazakhstan", "KY": "Cayman Islands", "SG": "Singapore", "SE": "Sweden", "SD": "Sudan", "DO": "Dominican Republic", "DM": "Dominica", "DJ": "Djibouti", "DK": "Denmark", "VG": "Virgin Islands, British", "DE": "Germany", "YE": "Yemen", "DZ": "Algeria", "US": "United States", "UY": "Uruguay", "YT": "Mayotte", "UM": "United States Minor Outlying Islands", "LB": "Lebanon", "LC": "Saint Lucia", "LA": "Lao People's Democratic Republic", "TV": "Tuvalu", "TW": "Taiwan", "TT": "Trinidad and Tobago", "TR": "Turkey", "LK": "Sri Lanka", "LI": "Liechtenstein", "A1": "Anonymous Proxy", "TO": "Tonga", "LT": "Lithuania", "A2": "Satellite Provider", "LR": "Liberia", "LS": "Lesotho", "TH": "Thailand", "TF": "French Southern Territories", "TG": "Togo", "TD": "Chad", "TC": "Turks and Caicos Islands", "LY": "Libyan Arab Jamahiriya", "VA": "Holy See (Vatican City State)", "VC": "Saint Vincent and the Grenadines", "AE": "United Arab Emirates", "AD": "Andorra", "AG": "Antigua and Barbuda", "AF": "Afghanistan", "AI": "Anguilla", "VI": "Virgin Islands, U.S.", "IS": "Iceland", "IR": "Iran, Islamic Republic of", "AM": "Armenia", "AL": "Albania", "AO": "Angola", "AN": "Netherlands Antilles", "AQ": "Antarctica", "AP": "Asia/Pacific Region", "AS": "American Samoa", "AR": "Argentina", "AU": "Australia", "AT": "Austria", "AW": "Aruba", "IN": "India", "AX": "Aland Islands", "AZ": "Azerbaijan", "IE": "Ireland", "ID": "Indonesia", "UA": "Ukraine", "QA": "Qatar", "MZ": "Mozambique"}, function (k, v) {
-            countries.push({id: k, text: v});
-        });
-        $('.bt-country').editable({
-            source: countries,
-            select2: {
-                width: 200,
-                placeholder: 'Select country',
-                allowClear: true
-            }
-        });
     });
 </script>
 

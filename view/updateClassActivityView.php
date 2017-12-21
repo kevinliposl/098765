@@ -26,12 +26,11 @@ if (isset($session->permissions)) {
 <section id="content">
     <div class="content-wrap">
         <div class="container clearfix">
-            <div class="accordion-lg divcenter nobottommargin" style="max-width: 550px;">
+            <div class="accordion-lg divcenter nobottommargin">
                 <div class="acctitle">
                     <div class="acc_content clearfix">
                         <form id="form" class="nobottommargin">
-
-                            <div class="white-section">
+                            <div class="white-section" style="padding: 10px;">
                                 <label for="form-courses">Cursos Disponibles:</label>
                                 <select id="form-courses" class="selectpicker form-control" data-live-search="true">
                                     <option value="-1" data-tokens="">Seleccione un Curso</option>
@@ -49,73 +48,69 @@ if (isset($session->permissions)) {
                                 </select>
                                 <input type="hidden" id="failed-form-courses" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                             </div>
-                            <br>
-                            <div class="white-section">
+                            <div class="col-lg-6" style="padding: 10px;">
                                 <label for="form-student">Estudiantes Disponibles:</label>
                                 <select id="form-student" class="form-control selectpicker" data-live-search="true">
                                     <option value="-1" data-tokens="">Seleccione un Estudiante</option>
                                 </select>
                                 <input type="hidden" id="failed-form-student" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                             </div> 
-                            <br>
-                            <div class="white-section">
+                            <div class="col-lg-6" style="padding: 10px;">
                                 <label for="form-activity">Actividades Disponibles:</label>
                                 <select id="form-activity" class="form-control selectpicker" data-live-search="true">
                                     <option value="-1" data-tokens="">Seleccione una Actividad</option>
                                 </select>
                                 <input type="hidden" id="failed-form-activity" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                             </div> 
-                            <br>
-                            <div class="col_full">
+                            <div class="col-lg-6" style="padding: 10px;">
                                 <label for="form-consecutive">Consecutivo de Actividad:</label>
                                 <input type="text" id="form-consecutive" class="form-control" readonly="readonly" />
                                 <input type="hidden" id="failed-consecutive" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                             </div>
-                            <div class="col_full">
+                            <div class="col-lg-6" style="padding: 10px;">
                                 <label for="form-date">Fecha de Realizaci&oacute;n:</label>
                                 <input type="date" id="form-date" class="form-control" required/>
                                 <input type="hidden" id="failed-date" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                             </div>
-                            <div class="col_full">
+                            <div class="col_full" style="padding: 10px;">
                                 <label for="form-typeId">Control de Asistencia:</label>
                                 <input type="radio" id='radio_1' name="form-typeA" value="P" checked/><label>Puntual</label>
                                 <input type="radio" id='radio_2' name="form-typeA" value="I"/> <label>Ausencia Injustificada</label>
                                 <input type="radio" id='radio_3' name="form-typeA" value="J"/><label>Ausencia Justificada</label>
                             </div>
-                            <div class="col_full">
+                            <div class="line line-sm"></div>
+                            <div class="col-lg-6" style="padding: 10px;">
                                 <label for="form-content">Contenido de Clase:</label>
                                 <input type="text" id="form-content" class="form-control" required/>
                                 <input type="hidden" id="failed-content" data-notify-type= "error" data-notify-position="bottom-full-width"/>
-                            </div>
-                            <br>
-                            <div class="col_full nobottommargin">
+                                
+                                <div class="line line-sm"></div>
+                                
                                 <a id="form-save"  class="button button-3d button-black nomargin" style="display : block; text-align: center;" >Guardar Contenido</a>
                                 <input type="hidden" id="warning" value="w"/>
                                 <input type="hidden" id="success" value="s"/>
                                 <input type="hidden" id="failed" value="f"/>
                             </div>  
-                            <br>
-                            <div class="white-section">
+                            <div class="col-lg-6" style="padding: 10px;">
                                 <label for="form-addContent">Contenidos Agregados:</label>
                                 <select id="form-addContent" class="form-control selectpicker" data-live-search="true">
                                     <option value="-1" data-tokens="">Seleccione un contenido</option>
                                 </select>
                                 <input type="hidden" id="failed-addContent" data-notify-type= "error" data-notify-position="bottom-full-width"/>
-                            </div>
-                            <br>
-                            <div class="col_full nobottommargin">
+                            
+                                <div class="line line-sm"></div>
+                                
                                 <a id="form-delete"  class="button button-3d button-black nomargin" style="display : block; text-align: center;" >Eliminar Contenido</a>
                                 <input type="hidden" id="warning" value="w"/>
                                 <input type="hidden" id="success" value="s"/>
                                 <input type="hidden" id="failed" value="f"/>
-                            </div>  
-                            <br>
-                            <div class="col_full">
+                            </div>
+                            <div class="col_full" style="padding: 10px;">
                                 <label for="form-observation">Observaci&oacute;n General:</label>
                                 <input type="text" id="form-observation" class="form-control" required/>
                                 <input type="hidden" id="failed-observation" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                             </div>
-                            <div class="col_full nobottommargin">
+                            <div class="col_full" style="padding: 10px;">
                                 <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" style="display : block; text-align: center;" data-target="#myModal">Actualizar</a>
                                 <input type="hidden" id="warning" value="w"/>
                                 <input type="hidden" id="success" value="s"/>

@@ -5,7 +5,7 @@ if (isset($session->permissions)) {
     if($session->permissions=='T'){
         include_once 'public/headerProfessor.php';
     }else{
-        header("Location:?controller=Index&action=notFound");
+        header("Location:?action=notFound");
     }
 } else {
     include_once 'public/header.php';
@@ -26,7 +26,7 @@ if (isset($session->permissions)) {
 <section id="content">
     <div class="content-wrap">
         <div class="container clearfix">
-            <div class="accordion-lg divcenter nobottommargin" style="max-width: 550px;">
+            <div class="accordion-lg divcenter nobottommargin">
                 <div class="acctitle">
                     <div class="acc_content clearfix">
                         <form id="form" class="nobottommargin">

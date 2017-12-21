@@ -5,7 +5,7 @@ if (isset($session->permissions)) {
     if($session->permissions=='A'){
         include_once 'public/headerAdmin.php';
     }else{
-        header("Location:?controller=Index&action=notFound");
+        header("Location:?action=notFound");
     }
 } else {
     include_once 'public/header.php';

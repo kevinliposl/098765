@@ -2,32 +2,33 @@
 $session = SSession::getInstance();
 
 if (isset($session->permissions)) {
-    include_once 'public/headerProfessor.php';
+    if ($session->permissions == 'T') {
+        include_once 'public/headerProfessor.php';
+    } else {
+        header("Location:?action=notFound");
+    }
 } else {
-    include_once 'public/header.php';
+    header("Location:?action=notFound");
 }
 ?>
 
 <!-- Page Title
 ============================================= -->
 <section id="page-title">
-
     <div class="container clearfix">
-        <h1>Actualizar Datos Personales</h1>
+        <h1>Datos Personales</h1>
     </div>
-</section><!-- #page-title end -->
-
+</section>
 <!-- Content
 ============================================= -->
 <section id="content">
     <div class="content-wrap">
         <div class="container clearfix">
-            <div class="accordion-lg divcenter nobottommargin" style="max-width: 550px;">
+            <div class="accordion-lg divcenter nobottommargin">
                 <div class="acc_content clearfix">
-                    <form id="form" class="nobottommargin" onsubmit="return validate();">
+                    <form id="form" class="nobottommargin" onsubmit="return val();">
                         <div class="acc_content clearfix"></div>
                         <div class="table-responsive">
-
                             <?php foreach ($vars as $var) { ?>
                                 <table class="table table-bordered table-striped">
                                     <h5 style="text-align: center;">Informaci&oacute;n Personal</h5>
@@ -37,89 +38,89 @@ if (isset($session->permissions)) {
                                     </colgroup>
                                     <tbody>
                                         <tr>
-                                            <td><code>Identificaci&oacute;n</code></td>
+                                            <td>Identificaci&oacute;n</td>
                                             <td>
                                                 <a id="form-id"><?php echo $var[0]; ?></a>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><code>Tipo de Identificaci&oacute;n</code></td>
+                                            <td>Tipo de Identificaci&oacute;n</td>
                                             <td>
                                                 <a id="form-id-type"><?php echo $var[6]; ?></a>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><code>Nombre</code></td>
+                                            <td>Nombre</td>
                                             <td>
                                                 <a id="form-name" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el nombre"><?php echo $var[1]; ?></a>
                                                 <input type="hidden" id="failed-name" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><code>Primer Apellido</code></td>
+                                            <td>Primer Apellido</td>
                                             <td>
                                                 <a id="form-first-lastName" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el Primer Apellido"><?php echo $var[2]; ?></a>
                                                 <input type="hidden" id="failed-first-lastName" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><code>Segundo Apellido</code></td>
+                                            <td>Segundo Apellido</td>
                                             <td>
                                                 <a id="form-second-lastName" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el Segundo Apellido"><?php echo $var[3]; ?></a>
                                                 <input type="hidden" id="failed-second-lastName" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><code>G&eacute;nero</code></td>
+                                            <td>G&eacute;nero</td>
                                             <td>
                                                 <a id="form-gender" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el g&eacute;nero (M: Masculino, F: Femenino)"><?php echo $var[4]; ?></a>
                                                 <input type="hidden" id="failed-gender" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><code>Nacionalidad</code></td>
+                                            <td>Nacionalidad</td>
                                             <td>
                                                 <a id="form-nationality" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese la nacionalidad"><?php echo $var[5]; ?></a>
                                                 <input type="hidden" id="failed-nationality" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><code>Tel&eacute;fono</code></td>
+                                            <td>Tel&eacute;fono</td>
                                             <td>
                                                 <a id="form-phone1" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el Teléfono"><?php echo $var[7]; ?></a>
                                                 <input type="hidden" id="failed-phone1" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><code>Otro Tel&eacute;fono</code></td>
+                                            <td>Otro Tel&eacute;fono</td>
                                             <td>
                                                 <a id="form-phone2" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese otro Teléfono"><?php echo $var[8]; ?></a>
                                                 <input type="hidden" id="failed-phone2" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><code>Email</code></td>
+                                            <td>Email</td>
                                             <td>
                                                 <a id="form-email" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el email"><?php echo $var[12]; ?></a>
                                                 <input type="hidden" id="failed-email" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><code>Fecha de Nacimiento</code></td>
+                                            <td>Fecha de Nacimiento</td>
                                             <td>
                                                 <a id="form-age" href="#" class="bt-editable" data-type="date" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese la fecha de nacimiento"><?php echo $var[11]; ?></a>
                                                 <input type="hidden" id="failed-age" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><code>Direcci&oacute;n</code></td>
+                                            <td>Direcci&oacute;n</td>
                                             <td>
                                                 <a id="form-address" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese la dirección"><?php echo $var[10]; ?></a>
                                                 <input type="hidden" id="failed-address" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><code>Informaci&oacute;n Adicional</code></td>
+                                            <td>Informaci&oacute;n Adicional</td>
                                             <td>
                                                 <a id="form-additionalInformation" class="bt-editable" href="#" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Información Adicional"><?php echo $var[9]; ?></a>
                                                 <input type="hidden" id="failed-additionalInformation" data-notify-type= "error" data-notify-position="bottom-full-width"/>
@@ -168,11 +169,10 @@ if (isset($session->permissions)) {
 </div>
 
 <script>
+    function val() {
 
-    function validate() {
-        
         var nameP, firstLastName, secondLastName, additionalInformation, address, phone, phone2, nationality, gender;
-      
+
         nameP = $("#form-name").text().trim();
         firstLastName = $("#form-first-lastName").text().trim();
         secondLastName = $("#form-second-lastName").text().trim();
@@ -182,7 +182,7 @@ if (isset($session->permissions)) {
         phone2 = $("#form-phone2").text().trim();
         nationality = $("#form-nationality").text().trim();
         gender = $("#form-gender").text().trim().toUpperCase();
-        
+
         if (nameP.length < 3 || nameP.length > 49 || !isNaN(nameP)) {
             $("#failed-name").attr("data-notify-msg", "<i class=icon-remove-sign></i> Dato de Nombre Incorrecto. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-name"));
@@ -202,32 +202,32 @@ if (isset($session->permissions)) {
             $("#failed-phone1").attr("data-notify-msg", "<i class=icon-remove-sign></i> Formato de telefono incorrecto. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-phone1"));
             return false;
-            
+
         } else if (phone2.length < 8 || phone2.length > 8 || isNaN(phone2)) {
             $("#failed-phone2").attr("data-notify-msg", "<i class=icon-remove-sign></i> Formato de otro telefono incorrecto. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-phone2"));
             return false;
-            
+
         } else if (nationality.length < 6 || nationality.length > 49 || !isNaN(nationality) || nationality.split(" ", 2).length > 1) {
             $("#failed-nationality").attr("data-notify-msg", "<i class=icon-remove-sign></i> Formato de nacionalidad incorrecto. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-nationality"));
             return false;
-            
+
         } else if (address.length > 200) {
             $("#failed-address").attr("data-notify-msg", "<i class=icon-remove-sign></i> Dirección muy extensa. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-address"));
             return false;
-            
+
         } else if (additionalInformation.length > 2000) {
             $("#failed-additionalInformation").attr("data-notify-msg", "<i class=icon-remove-sign></i> Información adicional muy extensa. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-additionalInformation"));
             return false;
-            
-        } else if (gender.length > 1 || (gender!="M" && gender!="F")) {
+
+        } else if (gender.length > 1 || (gender != "M" && gender != "F")) {
             $("#failed-gender").attr("data-notify-msg", "<i class=icon-remove-sign></i> Genero erroneo. Datos validos M o F. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-gender"));
-            return false; 
-        } 
+            return false;
+        }
 
         $('#showModal').click();
         return false;
