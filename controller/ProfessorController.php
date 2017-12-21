@@ -39,14 +39,8 @@ class ProfessorController {
                 echo json_encode($result);
                 if ($result["result"] === '1') {
                     $mail = SMail::getInstance();
-                    if ($mail->sendMail($_POST["email"], 'Contraseña de ingreso al sitio', 'Hola, gracias por formar parte de la academia, la contraseña'
-                                    . ' de ingreso al sitio es... <br><h1>' . $result['password'] . '</h1>')) {
-                        echo json_encode(array("result" => '1'));
-                    } else {
-                        echo json_encode(array("result" => '0'));
-                    }
-                } else {
-                    echo json_encode(array("result" => '0'));
+                    $mail->sendMail($_POST["email"], 'Contraseña de ingreso al sitio', 'Hola, gracias por formar parte de la academia, la contraseña'
+                                    . ' de ingreso al sitio es... <br><h1>' . $result['password'] . '</h1>');
                 }
             } else {
                 $this->view->show("insertProfessorView.php");
