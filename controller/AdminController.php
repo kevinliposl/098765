@@ -29,11 +29,16 @@ class AdminController {
             if (isset($_POST["id"]) && isset($_POST["email"]) && isset($_POST["name"]) && isset($_POST["firstLastName"]) && isset($_POST["secondLastName"])) {
                 $model = new AdminModel();
                 $result = $model->insert($_POST["id"], $_POST["email"], $_POST["name"], $_POST["firstLastName"], $_POST["secondLastName"]);
-                echo json_encode($result);
-                if ($result["result"] === '1') {
+                if ($result['result'] === '1') {
                     $mail = SMail::getInstance();
-                    $mail->sendMail($_POST["email"], 'Contraseña de ingreso al sitio', 'Hola, gracias por formar parte de la academia, la contraseña'
-                        . ' de ingreso al sitio es... <br><h1>' . $result['password'] . '</h1>');
+                    if ($mail->sendMail($_POST["email"], 'Contraseña de ingreso al sitio', 'Hola, gracias por formar parte de la academia, la contraseña'
+                                    . ' de ingreso al sitio es... <br><h1>' . $result['password'] . '</h1>')) {
+                        echo json_encode(array("result" => '1'));
+                    } else {
+                        echo json_encode(array("result" => '0'));
+                    }
+                } else {
+                    echo json_encode(array("result" => '0'));
                 }
             } else {
                 $this->view->show("insertAdminView.php");
@@ -90,18 +95,19 @@ class AdminController {
      * Funcion para actualizar administrador
      */
     function updatePersonalData() {
-        $ssession =SSession::getInstance();
+        $ssession = SSession::getInstance();
         if ($ssession->permissions == 'A') {
             $model = new AdminModel();
-            if (isset($_POST['id']) && isset($_POST['email']) && isset($_POST['name']) && isset($_POST['firstLastName']) && isset($_POST['secondLastName']) ) {
+            if (isset($_POST['id']) && isset($_POST['email']) && isset($_POST['name']) && isset($_POST['firstLastName']) && isset($_POST['secondLastName'])) {
                 $result = $model->updatePersonalData(SSession::getInstance()->identification, $_POST['id'], $_POST['email'], $_POST['name'], $_POST['firstLastName'], $_POST['secondLastName']);
                 echo json_encode($result);
             } else {
                 $result = $model->select($ssession->identification);
-                $this->view->show("updatePersonalDataAdminView.php",$result);
+                $this->view->show("updatePersonalDataAdminView.php", $result);
             }
         } else {
             $this->view->show("404View.php");
         }
     }
+
 }
