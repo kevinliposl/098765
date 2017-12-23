@@ -34,6 +34,17 @@ class CourseController {
             $this->view->show("indexView.php");
         }
     }
+    
+    function selectDelete() {
+        if (isset($_POST["initials"]) && SSession::getInstance()->permissions == 'A') {
+            require 'model/CourseModel.php';
+            $model = new CourseModel();
+            $result = $model->selectDelete($_POST["initials"]);
+            echo json_encode($result);
+        } else {
+            echo json_decode('0');
+        }
+    }
 
     /**
      * @return null
@@ -87,6 +98,27 @@ class CourseController {
             $model = new CourseModel();
             $result = $model->selectAll();
             $this->view->show("deleteCourseView.php", $result);
+        } else {
+            $this->view->show("404View.php");
+        }
+    }
+    
+    /**
+     * @return null
+     * @param integer $id Identificador de entidad
+     * Funcion para reactivar curso
+     */
+    function reactivate() {
+        if (isset($_POST["initials"]) && SSession::getInstance()->permissions == 'A') {
+            require 'model/CourseModel.php';
+            $model = new CourseModel();
+            $result = $model->reactivate($_POST["initials"]);
+            echo json_encode($result);
+        } else if (SSession::getInstance()->permissions == 'A') {
+            require 'model/CourseModel.php';
+            $model = new CourseModel();
+            $result = $model->selectAllDelete();
+            $this->view->show("reactivateCourseView.php", $result);
         } else {
             $this->view->show("404View.php");
         }

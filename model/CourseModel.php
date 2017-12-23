@@ -24,8 +24,23 @@ class CourseModel {
         return $result;
     }
     
+    public function selectAllDelete() {
+        $query = $this->db->prepare("call sp_select_all_course_delete()");
+        $query->execute();
+        $result = $query->fetchAll();
+        $query->closeCursor();
+        return $result;
+    }
+    
     public function select($initials) {
         $query = $this->db->prepare("call sp_select_course('$initials')");
+        $query->execute();
+        $result = $query->fetch();
+        return $result;
+    }
+    
+    public function selectDelete($initials) {
+        $query = $this->db->prepare("call sp_select_course_delete('$initials')");
         $query->execute();
         $result = $query->fetch();
         return $result;
@@ -40,6 +55,13 @@ class CourseModel {
 
     public function delete($initials) {
         $query = $this->db->prepare("call sp_delete_course('$initials')");
+        $query->execute();
+        $result = $query->fetch();
+        return $result;
+    }
+    
+    public function reactivate($initials) {
+        $query = $this->db->prepare("call sp_reactivate_course('$initials')");
         $query->execute();
         $result = $query->fetch();
         return $result;
