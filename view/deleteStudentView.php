@@ -5,9 +5,8 @@ include_once 'public/headerAdmin.php';
 <!-- Page Title
     ============================================= -->
     <section id="page-title">
-
         <div class="container clearfix">
-            <h1>Eliminar Estudiante</h1>
+            <h1>Desactivar Estudiante</h1>
         </div>
     </section>
 

@@ -4,9 +4,8 @@ include_once 'public/headerAdmin.php';
 ?>
 
 <section id="page-title">
-
     <div class="container clearfix">
-        <h1>Insertar Estudiante</h1>
+        <h1>Registrar Estudiante</h1>
     </div>
 </section><!-- #page-title end -->
 

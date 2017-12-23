@@ -7,7 +7,7 @@ include_once 'public/headerAdmin.php';
     <section id="page-title">
 
         <div class="container clearfix">
-            <h1>Obtener Estudiante</h1>
+            <h1>Ver Estudiantes</h1>
         </div>
     </section><!-- #page-title end -->
 

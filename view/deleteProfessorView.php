@@ -11,9 +11,8 @@ if (isset($session->permissions)) {
 <!-- Page Title
     ============================================= -->
     <section id="page-title">
-
         <div class="container clearfix">
-            <h1>Eliminar Profesor</h1>
+            <h1>Desactivar Profesor</h1>
         </div>
     </section><!-- #page-title end -->
 
