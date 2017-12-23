@@ -24,7 +24,7 @@ if (isset($session->permissions)) {
                     <div class="container clearfix">
                         <div class="slider-caption slider-caption-left">
                             <h2 data-caption-animate="fadeInRight" style="text-align: center;">
-                                ¡Bienvenido <br>a<br> <text style="color: #0044cc">F</text><text style="color: #0077b3">U</text><text style="color: #009EE4">S</text><text style="color: #666666">I</text><text style="color: #c0c0c0">&oacute;</text><text style="color: #00AFF0">N</text>!
+                                ¡Bienvenido <br>a<br> Fusi&oacute;n!
                             </h2>
                             <p data-caption-animate="fadeInUp" data-caption-delay="200" style="font-size: medium; text-align: center;">
                                 <b>"La música da alma al universo, alas a la mente, vuelos a la imaginación, consuelo a la tristeza y vida y alegría a todas las cosas" -Platón-</b>
