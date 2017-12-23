@@ -176,11 +176,6 @@ if (isset($session->permissions)) {
         var parameters = {
             "id": $("#form-admin").val()
         };
-<<<<<<< HEAD
-        alert('asdasdasd');
-=======
-
->>>>>>> 42a1ddddb4679cb0e9adb23f007b03d1179026e4
         $.post("?controller=Admin&action=delete", parameters, function (data) {
             if (data.result === "1") {
                 $("#success").attr({
@@ -198,7 +193,6 @@ if (isset($session->permissions)) {
                 });
                 SEMICOLON.widget.notifications($("#warning"));
             }
-            alert('asdasdasd2');
         }, "json");
     }
     );
