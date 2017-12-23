@@ -100,6 +100,9 @@ class AdminController {
             if (isset($_POST['id']) && isset($_POST['email']) && isset($_POST['name']) && isset($_POST['firstLastName']) && isset($_POST['secondLastName'])) {
                 $result = $model->updatePersonalData(SSession::getInstance()->identification, $_POST['id'], $_POST['email'], $_POST['name'], $_POST['firstLastName'], $_POST['secondLastName']);
                 echo json_encode($result);
+                if ($result['result'] === '1') {
+                    SSession::getInstance()->identification = $_POST['id'];
+                }
             } else {
                 $result = $model->select($ssession->identification);
                 $this->view->show("updatePersonalDataAdminView.php", $result);
