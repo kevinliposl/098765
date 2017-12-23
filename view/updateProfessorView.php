@@ -8,17 +8,13 @@ if (isset($session->permissions)) {
 }
 ?>
 
-<!-- Page Title
-============================================= -->
 <section id="page-title">
 
     <div class="container clearfix">
         <h1>Actualizar Datos de Profesor</h1>
     </div>
-</section><!-- #page-title end -->
+</section>
 
-<!-- Content
-============================================= -->
 <section id="content">
     <div class="content-wrap">
         <div class="container clearfix">
@@ -28,7 +24,7 @@ if (isset($session->permissions)) {
                         <div class="white-section">
                             <label for="form-professor">Profesores:</label>
                             <select id="form-professor" class="selectpicker form-control" data-live-search="true">
-                                <option data-tokens="">Seleccione un Profesor</option>
+                                <option value="-1" data-tokens="">Seleccione un Profesor</option>
                                 <?php foreach ($vars as $var) { ?>
                                     <option value="<?php echo $var["identification"] ?>" data-tokens="">
                                         <?php echo $var["Name"] ?></option>
@@ -47,109 +43,109 @@ if (isset($session->permissions)) {
                                     <tr>
                                         <td>Identificaci&oacute;n</td>
                                         <td>
-                                            <a id="form-id" class="bt-editable" href="#" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese la identificación"></a>
+                                            <a id="form-id" class="bt-editable" data-emptytext='' href="#" data-type="text" data-pk="1" data-placeholder="Required" data-title="Ingrese la identificación"></a>
                                             <input type="hidden" id="failed-id" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Tipo de Identificaci&oacute;n</td>
                                         <td>
-                                            <a id="form-id-type" class="bt-editable" href="#" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el tipo de identificación"></a>
+                                            <a id="form-id-type" class="bt-editable" data-emptytext='' href="#" data-type="text" data-pk="1" data-placeholder="Required" data-title="Ingrese el tipo de identificación"></a>
                                             <input type="hidden" id="failed-id-type" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Nombre</td>
                                         <td>
-                                            <a id="form-name" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el nombre"></a>
-                                            <input type="hidden" id="failed-name" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                                            <a id="form-name" href="#" class="bt-editable" data-emptytext='' data-type="text" data-pk="1" data-placeholder="Required" data-title="Ingrese el nombre"></a>
+                                            <input type="hidden" id="failed-name" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class='icon-remove-sign'></i> Dato de Nombre Incorrecto. Complete e intente de nuevo!"/>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Primer Apellido</td>
                                         <td>
-                                            <a id="form-first-lastName" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el Primer Apellido"></a>
-                                            <input type="hidden" id="failed-first-lastName" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                                            <a id="form-first-lastName" href="#" class="bt-editable" data-emptytext='' data-type="text" data-pk="1" data-placeholder="Required" data-title="Ingrese el Primer Apellido"></a>
+                                            <input type="hidden" id="failed-first-lastName" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class='icon-remove-sign'></i> Primer Apellido Incorrecto. Complete e intente de nuevo!"/>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Segundo Apellido</td>
                                         <td>
-                                            <a id="form-second-lastName" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el Segundo Apellido"></a>
-                                            <input type="hidden" id="failed-second-lastName" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                                            <a id="form-second-lastName" href="#" class="bt-editable" data-emptytext='' data-type="text" data-pk="1" data-placeholder="Required" data-title="Ingrese el Segundo Apellido"></a>
+                                            <input type="hidden" id="failed-second-lastName" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class='icon-remove-sign'></i> Segundo Apellido Incorrecto. Complete e intente de nuevo!"/>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>G&eacute;nero</td>
                                         <td>
-                                            <a id="form-gender" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el g&eacute;nero (M: Masculino, F: Femenino)"></a>
-                                            <input type="hidden" id="failed-gender" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                                            <a id="form-gender" href="#" class="bt-editable" data-emptytext='' data-type="text" data-pk="1" data-placeholder="Required" data-title="Ingrese el g&eacute;nero (M: Masculino, F: Femenino)"></a>
+                                            <input type="hidden" id="failed-gender" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class='icon-remove-sign'></i> Genero erroneo. Datos validos M o F. Complete e intente de nuevo!"/>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Nacionalidad</td>
                                         <td>
-                                            <a id="form-nationality" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese la nacionalidad"></a>
-                                            <input type="hidden" id="failed-nationality" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                                            <a id="form-nationality" href="#" class="bt-editable" data-emptytext='' data-type="text" data-pk="1" data-placeholder="Required" data-title="Ingrese la nacionalidad"></a>
+                                            <input type="hidden" id="failed-nationality" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class='icon-remove-sign'></i> Formato de nacionalidad incorrecto. Complete e intente de nuevo!"/>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Tel&eacute;fono</td>
                                         <td>
-                                            <a id="form-phone1" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el Teléfono"></a>
-                                            <input type="hidden" id="failed-phone1" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                                            <a id="form-phone1" href="#" class="bt-editable" data-emptytext='' data-type="text" data-pk="1" data-placeholder="Required" data-title="Ingrese el Teléfono"></a>
+                                            <input type="hidden" id="failed-phone1" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class='icon-remove-sign'></i> Formato de telefono incorrecto. Complete e intente de nuevo!"/>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Otro Tel&eacute;fono</td>
                                         <td>
-                                            <a id="form-phone2" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese otro Teléfono"></a>
-                                            <input type="hidden" id="failed-phone2" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                                            <a id="form-phone2" href="#" class="bt-editable" data-emptytext='' data-type="text" data-pk="1" data-placeholder="Required" data-title="Ingrese otro Teléfono"></a>
+                                            <input type="hidden" id="failed-phone2" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg= "<i class='icon-remove-sign'></i> Formato de otro telefono incorrecto. Complete e intente de nuevo!"/>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Email</td>
                                         <td>
-                                            <a id="form-email" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el email"></a>
+                                            <a id="form-email" href="#" class="bt-editable" data-emptytext='' data-type="text" data-pk="1" data-placeholder="Required" data-title="Ingrese el email"></a>
                                             <input type="hidden" id="failed-email" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Fecha de Nacimiento</td>
                                         <td>
-                                            <a id="form-age" href="#" class="bt-editable" data-type="date" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese la fecha de nacimiento"></a>
+                                            <a id="form-age" href="#" class="bt-editable" data-emptytext='' data-type="date" data-pk="1" data-placeholder="Required" data-title="Ingrese la fecha de nacimiento"></a>
                                             <input type="hidden" id="failed-age" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Direcci&oacute;n</td>
                                         <td>
-                                            <a id="form-address" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese la dirección"></a>
-                                            <input type="hidden" id="failed-address" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                                            <a id="form-address" href="#" class="bt-editable" data-emptytext='' data-type="text" data-pk="1" data-placeholder="Required" data-title="Ingrese la dirección"></a>
+                                            <input type="hidden" id="failed-address" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class='icon-remove-sign'></i> Dirección muy extensa. Complete e intente de nuevo!"/>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Informaci&oacute;n Adicional</td>
                                         <td>
-                                            <a id="form-additionalInformation" class="bt-editable" href="#" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Información Adicional"></a>
-                                            <input type="hidden" id="failed-additionalInformation" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                                            <a id="form-additionalInformation" class="bt-editable" href="#" data-emptytext='' data-type="text" data-pk="1" data-placeholder="Required" data-title="Información Adicional"></a>
+                                            <input type="hidden" id="failed-additionalInformation" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class='icon-remove-sign'></i> Información adicional muy extensa. Complete e intente de nuevo!"/>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                         <div class="col_full nobottommargin">                      
-                            <input type="submit" value="Actualizar" class="button button-3d button-black nomargin form-control" style="display: block; text-align: center;"/>
-                            <input type="hidden" id="warning"/>
-                            <input type="hidden" id="success"/>
-                            <input type="hidden" id="failed"/>
+                            <input type="submit" id="form-submit" value="Actualizar" class="button button-3d button-black nomargin form-control" style="display: none; text-align: center;"/>
+                            <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i>La operacion no se pudo realizar, intente de nuevo o m&aacute;s tarde!" data-notify-position="bottom-full-width"/>
+                            <input type="hidden" id="success" data-notify-type="success" data-notify-msg="<i class='icon-ok-sign'></i> Operaci&oacute;n exitosa, revise en breve...!" data-notify-position="bottom-full-width"/>
+                            <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Espere un momento...!" data-notify-position="bottom-full-width"/>
                         </div>
                     </form>
                 </div>
-                <!--</div>-->
             </div>
         </div>
-</section><!-- #content end -->
+    </div>
+</section>
 
 <!--MODAL -->
 <a id="showModal" style="display: none;"class="button button-3d button-black nomargin" data-target="#myModal" data-toggle="modal">Modal</a>
@@ -180,41 +176,63 @@ if (isset($session->permissions)) {
 
     //Change Combobox
     $("#form-professor").change(function () {
-        var parameters = {
-            "id": $("#form-professor").val()
-        };
-        $.post("?controller=Professor&action=select", parameters, function (data) {
-            if (data.identification) {
-                $("#form-id").html(data.identification);
-                $("#form-id-type").html(data.id_type);
-                $("#form-name").html(data.name);
-                $("#form-first-lastName").html(data.first_lastname);
-                $("#form-second-lastName").html(data.second_lastname);
-                $("#form-phone1").html(data.phone);
-                $("#form-phone2").html(data.cel_phone);
-                $("#form-email").html(data.email);
-                $("#form-gender").html(data.gender);
-                $("#form-nationality").html(data.nationality);
-                $("#form-age").html(data.birthdate);
-                $("#form-address").html(data.address);
-                $("#form-additionalInformation").html(data.expedient);
+        if ($("#form-professor").val() !== "-1") {
+            var parameters = {
+                "id": $("#form-professor").val()
+            };
 
-            } else {
-                $("#form-id").html("");
-                $("#form-id-type").html("");
-                $("#form-name").html("");
-                $("#form-first-lastName").html("");
-                $("#form-second-lastName").html("");
-                $("#form-phone1").html("");
-                $("#form-phone2").html("");
-                $("#form-email").html("");
-                $("#form-gender").html("");
-                $("#form-nationality").html("");
-                $("#form-age").html("");
-                $("#form-address").html("");
-                $("#form-additionalInformation").html("");
-            }
-        }, "json");
+            SEMICOLON.widget.notifications($("#wait"));
+
+            $.post("?controller=Professor&action=select", parameters, function (data) {
+                if (data.identification) {
+                    $("#form-id").html(data.identification);
+                    $("#form-id-type").html(data.id_type);
+                    $("#form-name").html(data.name);
+                    $("#form-first-lastName").html(data.first_lastname);
+                    $("#form-second-lastName").html(data.second_lastname);
+                    $("#form-phone1").html(data.phone);
+                    $("#form-phone2").html(data.cel_phone);
+                    $("#form-email").html(data.email);
+                    $("#form-gender").html(data.gender);
+                    $("#form-nationality").html(data.nationality);
+                    $("#form-age").html(data.birthdate);
+                    $("#form-address").html(data.address);
+                    $("#form-additionalInformation").html(data.expedient);
+                    $("#form-submit").css('display','block');
+                    SEMICOLON.widget.notifications($("#success"));
+
+                } else {
+                    $("#form-id").html("");
+                    $("#form-id-type").html("");
+                    $("#form-name").html("");
+                    $("#form-first-lastName").html("");
+                    $("#form-second-lastName").html("");
+                    $("#form-phone1").html("");
+                    $("#form-phone2").html("");
+                    $("#form-email").html("");
+                    $("#form-gender").html("");
+                    $("#form-nationality").html("");
+                    $("#form-age").html("");
+                    $("#form-address").html("");
+                    $("#form-additionalInformation").html("");
+                }
+            }, "json");
+        } else {
+            $("#form-id").html("");
+            $("#form-id-type").html("");
+            $("#form-name").html("");
+            $("#form-first-lastName").html("");
+            $("#form-second-lastName").html("");
+            $("#form-phone1").html("");
+            $("#form-phone2").html("");
+            $("#form-email").html("");
+            $("#form-gender").html("");
+            $("#form-nationality").html("");
+            $("#form-age").html("");
+            $("#form-address").html("");
+            $("#form-additionalInformation").html("");
+
+        }
     });
 
     function validate() {
@@ -233,47 +251,38 @@ if (isset($session->permissions)) {
         gender = $("#form-gender").text().trim().toUpperCase();
 
         if (nameP.length < 3 || nameP.length > 49 || !isNaN(nameP)) {
-            $("#failed-name").attr("data-notify-msg", "<i class=icon-remove-sign></i> Dato de Nombre Incorrecto. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-name"));
             return false;
 
         } else if (firstLastName.length < 3 || firstLastName.length > 49 || !isNaN(firstLastName)) {
-            $("#failed-first-lastName").attr("data-notify-msg", "<i class=icon-remove-sign></i> Primer Apellido Incorrecto. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-firs-lastName"));
             return false;
 
         } else if (secondLastName.length < 3 || secondLastName.length > 49 || !isNaN(secondLastName)) {
-            $("#failed-second-lastName").attr("data-notify-msg", "<i class=icon-remove-sign></i> Segundo Apellido Incorrecto. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-second-lastName"));
             return false;
 
         } else if (phone.length < 8 || phone.length > 8 || isNaN(phone)) {
-            $("#failed-phone1").attr("data-notify-msg", "<i class=icon-remove-sign></i> Formato de telefono incorrecto. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-phone1"));
             return false;
 
         } else if (phone2.length < 8 || phone2.length > 8 || isNaN(phone2)) {
-            $("#failed-phone2").attr("data-notify-msg", "<i class=icon-remove-sign></i> Formato de otro telefono incorrecto. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-phone2"));
             return false;
 
         } else if (nationality.length < 6 || nationality.length > 49 || !isNaN(nationality) || nationality.split(" ", 2).length > 1) {
-            $("#failed-nationality").attr("data-notify-msg", "<i class=icon-remove-sign></i> Formato de nacionalidad incorrecto. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-nationality"));
             return false;
 
         } else if (address.length > 200) {
-            $("#failed-address").attr("data-notify-msg", "<i class=icon-remove-sign></i> Dirección muy extensa. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-address"));
             return false;
 
         } else if (additionalInformation.length > 2000) {
-            $("#failed-additionalInformation").attr("data-notify-msg", "<i class=icon-remove-sign></i> Información adicional muy extensa. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-additionalInformation"));
             return false;
 
-        } else if (gender.length > 1 || (gender != "M" && gender != "F")) {
-            $("#failed-gender").attr("data-notify-msg", "<i class=icon-remove-sign></i> Genero erroneo. Datos validos M o F. Complete e intente de nuevo!");
+        } else if (gender.length > 1 || (gender !== "M" && gender !== "F")) {
             SEMICOLON.widget.notifications($("#failed-gender"));
             return false;
         } else {
@@ -283,7 +292,7 @@ if (isset($session->permissions)) {
                     SEMICOLON.widget.notifications($("#failed-id"));
                     return false;
                 }
-            } else if (typeId == "D") {
+            } else if (typeId === "D") {
                 if (identification.length < 12 || identification.length > 12) {
                     $("#failed-id").attr("data-notify-msg", "<i class=icon-remove-sign></i> Formato de identificacion incorrecto. Complete e intente de nuevo!");
                     SEMICOLON.widget.notifications($("#failed-id"));
@@ -302,6 +311,12 @@ if (isset($session->permissions)) {
 
     //UPDATE 
     $("#form-submity").click(function () {
+
+        $("#form-submity").attr('disabled', 'disabled');
+        $("#form-close").attr('disabled', 'disabled');
+
+        SEMICOLON.widget.notifications($("#wait"));
+
         var parameters = {
             "id": $('#form-professor').val(),
             "identification": $("#form-id").text().trim(),
@@ -320,21 +335,13 @@ if (isset($session->permissions)) {
         };
         $.post("?controller=Professor&action=update", parameters, function (data) {
             if (data.result === "1") {
-                $("#success").attr({
-                    "data-notify-type": "success",
-                    "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!",
-                    "data-notify-position": "bottom-full-width"
-                });
                 SEMICOLON.widget.notifications($("#success"));
-                setTimeout("location.href = '?controller=Professor&action=update';", 2000);
+                setTimeout("location.href = '?controller=Professor&action=update';", 1500);
             } else {
-                $("#warning").attr({
-                    "data-notify-type": "warning",
-                    "data-notify-msg": "<i class=icon-warning-sign></i> Operacion Incompleta, intente de nuevo!",
-                    "data-notify-position": "bottom-full-width"
-                });
                 SEMICOLON.widget.notifications($("#warning"));
             }
+            $("#form-submity").removeAttr('disabled');
+            $("#form-close").removeAttr('disabled');
         }, "json");
     });
 

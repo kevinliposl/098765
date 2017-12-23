@@ -11,14 +11,11 @@ if (isset($session->permissions)) {
 <!-- Page Title
 ============================================= -->
 <section id="page-title">
-
     <div class="container clearfix">
         <h1>Ver Profesores</h1>
     </div>
-</section><!-- #page-title end -->
+</section>
 
-<!-- Content
-============================================= -->
 <section id="content">
     <div class="content-wrap">
         <div class="container clearfix">
@@ -28,7 +25,7 @@ if (isset($session->permissions)) {
                         <div class="white-section">
                             <label for="form-professor">Profesores:</label>
                             <select id="form-professor" class="selectpicker form-control" data-live-search="true">
-                                <option data-tokens="">Seleccione un Profesor</option>
+                                <option value="-1" data-tokens="">Seleccione un Profesor</option>
                                 <?php foreach ($vars as $var) { ?>
                                     <option value="<?php echo $var["identification"] ?>" data-tokens="">
                                         <?php echo $var["Name"] ?></option>
@@ -126,55 +123,76 @@ if (isset($session->permissions)) {
                                 </tbody>
                             </table>
                         </div>
+                        <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i>La operacion no se pudo realizar, intente de nuevo o m&aacute;s tarde!" data-notify-position="bottom-full-width"/>
+                        <input type="hidden" id="success" data-notify-type="success" data-notify-msg="<i class='icon-ok-sign'></i> Operaci&oacute;n exitosa, revise en breve...!" data-notify-position="bottom-full-width"/>
+                        <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Espere un momento...!" data-notify-position="bottom-full-width"/>
                     </form>
                 </div>
             </div>
         </div>
-</section><!-- #content end -->
-
+</section>
 
 <script>
 
     //Change Combobox
     $("#form-professor").change(function () {
-        var parameters = {
-            "id": $("#form-professor").val()
-        };
-        $.post("?controller=Professor&action=select", parameters, function (data) {
-            if (data.identification) {
-                $("#form-id").html(data.identification);
-                $("#form-id-type").html(data.id_type);
-                $("#form-name").html(data.name);
-                $("#form-first-lastName").html(data.first_lastname);
-                $("#form-second-lastName").html(data.second_lastname);
-                $("#form-phone1").html(data.phone);
-                $("#form-phone2").html(data.cel_phone);
-                $("#form-email").html(data.email);
-                $("#form-gender").html(data.gender);
-                $("#form-nationality").html(data.nationality);
-                $("#form-age").html(data.birthdate);
-                $("#form-address").html(data.address);
-                $("#form-additionalInformation").html(data.expedient);
-            } else {
-                $("#form-id").html("");
-                $("#form-id-type").html("");
-                $("#form-name").html("");
-                $("#form-first-lastName").html("");
-                $("#form-second-lastName").html("");
-                $("#form-phone1").html("");
-                $("#form-phone2").html("");
-                $("#form-email").html("");
-                $("#form-gender").html("");
-                $("#form-nationality").html("");
-                $("#form-age").html("");
-                $("#form-address").html("");
-                $("#form-additionalInformation").html("");
-            }
-        }, "json");
+        if ($("#form-professor").val() !== "-1") {
+            var parameters = {
+                "id": $("#form-professor").val()
+            };
+
+            SEMICOLON.widget.notifications($("#wait"));
+
+            $.post("?controller=Professor&action=select", parameters, function (data) {
+                if (data.identification) {
+                    $("#form-id").html(data.identification);
+                    $("#form-id-type").html(data.id_type);
+                    $("#form-name").html(data.name);
+                    $("#form-first-lastName").html(data.first_lastname);
+                    $("#form-second-lastName").html(data.second_lastname);
+                    $("#form-phone1").html(data.phone);
+                    $("#form-phone2").html(data.cel_phone);
+                    $("#form-email").html(data.email);
+                    $("#form-gender").html(data.gender);
+                    $("#form-nationality").html(data.nationality);
+                    $("#form-age").html(data.birthdate);
+                    $("#form-address").html(data.address);
+                    $("#form-additionalInformation").html(data.expedient);
+
+                    SEMICOLON.widget.notifications($("#success"));
+                } else {
+                    $("#form-id").html("");
+                    $("#form-id-type").html("");
+                    $("#form-name").html("");
+                    $("#form-first-lastName").html("");
+                    $("#form-second-lastName").html("");
+                    $("#form-phone1").html("");
+                    $("#form-phone2").html("");
+                    $("#form-email").html("");
+                    $("#form-gender").html("");
+                    $("#form-nationality").html("");
+                    $("#form-age").html("");
+                    $("#form-address").html("");
+                    $("#form-additionalInformation").html("");
+                }
+            }, "json");
+        } else {
+            $("#form-id").html("");
+            $("#form-id-type").html("");
+            $("#form-name").html("");
+            $("#form-first-lastName").html("");
+            $("#form-second-lastName").html("");
+            $("#form-phone1").html("");
+            $("#form-phone2").html("");
+            $("#form-email").html("");
+            $("#form-gender").html("");
+            $("#form-nationality").html("");
+            $("#form-age").html("");
+            $("#form-address").html("");
+            $("#form-additionalInformation").html("");
+        }
     });
 </script>
 
-<!-- End Content
-============================================= -->    
 <?php
 include_once 'public/footer.php';

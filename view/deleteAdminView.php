@@ -135,10 +135,10 @@ if (isset($session->permissions)) {
             $("#failed-id").attr("data-notify-msg", "<i class=icon-remove-sign></i> Seleccione un item. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-id"));
             return false;
+        } else {
+            $('#showModal').click();
+            return false;
         }
-
-        $('#showModal').click();
-        return false;
     }
 
     //Change Combobox
