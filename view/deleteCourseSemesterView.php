@@ -56,7 +56,8 @@ if (isset($session->permissions)) {
                                 </select>
                                 <input type="hidden" id="failed-form-courses" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class='icon-remove-sign'></i> Curso inválido. Seleccione e intente de nuevo!"/>
                             </div>
-                            <div class="col_full nobottommargin">
+                            <br>
+                            <div class="col_full nobottommargin clearfix">
                                 <input type="submit" value="Eliminar" id="form-submit" class="button button-3d button-black nomargin form-control" style="display: none; text-align: center;"/>
                                 <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i>La operacion no se pudo realizar, intente de nuevo o m&aacute;s tarde!" data-notify-position="bottom-full-width"/>
                                 <input type="hidden" id="success" data-notify-type="success" data-notify-msg="<i class='icon-ok-sign'></i> Operaci&oacute;n exitosa, revise en breve...!" data-notify-position="bottom-full-width"/>
@@ -114,8 +115,17 @@ if (isset($session->permissions)) {
                     $('#form-courses').append($("<option></option>").attr("value", data[i].initials).text(data[i].name));//AGREGAR OPCIONES
                 }
                 $("#form-courses").selectpicker("refresh");///REFRESCA SELECT PARA QUE AGARRE AGREGADOS
-                $("#form-submit").css("display","block");
             }, "json");
+        }
+    });
+    
+    $("#form-courses").change(function () {
+        if ($("#form-courses").val() === "-1" && $("#form-semester").val() === "-1" ) {
+            SEMICOLON.widget.notifications($("#failed-form-semester"));
+            $("#form-submit").css("display","none");
+            return false;
+        } else {
+            $("#form-submit").css("display","block");
         }
     });
 
