@@ -8,17 +8,11 @@ if (isset($session->permissions)) {
 }
 ?>
 
-<!-- Page Title
-============================================= -->
 <section id="page-title">
-
     <div class="container clearfix">
         <h1>Desmatricular</h1>
     </div>
-</section><!-- #page-title end -->
-
-<!-- Content
-============================================= -->
+</section>
 <section id="content">
     <div class="content-wrap">
         <div class="container clearfix">
