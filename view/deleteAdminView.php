@@ -132,7 +132,7 @@ if (isset($session->permissions)) {
     function validate() {
 
         var id = $("#form-admin").val();
-        
+
         if (id === "-1") {
             $("#failed-id").attr("data-notify-msg", "<i class=icon-remove-sign></i> Seleccione un item. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-id"));
@@ -160,7 +160,7 @@ if (isset($session->permissions)) {
                 $("#success-id").attr("data-notify-msg", "<i class=icon-ok-sign></i> Operacion Exitosa!");
 
                 SEMICOLON.widget.notifications($("#success-id"));
-                
+
             } else {
                 $("#form-id-table").html("");
                 $("#form-name-table").html("");
@@ -176,7 +176,7 @@ if (isset($session->permissions)) {
         var parameters = {
             "id": $("#form-admin").val()
         };
-        
+
         $.post("?controller=Admin&action=delete", parameters, function (data) {
             if (data.result === "1") {
                 $("#success").attr({
