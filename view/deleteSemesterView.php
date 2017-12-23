@@ -35,7 +35,7 @@ if (isset($session->permissions)) {
                                         if (isset($var["ID"])) {
                                             ?>
                                             <option value="<?php echo $var["ID"] ?> " data-tokens="">
-                                                <?php echo $var["ID"]; ?>
+                                                <?php echo $var["year"] . " - " . (($var["semester"] === '1') ? 'I' : 'II'); ?>
                                             </option>
                                             <?php
                                         }
@@ -110,7 +110,7 @@ if (isset($session->permissions)) {
     function validate() {
 
         var id = $("#form-id").val();
-        
+
         if (id === "-1") {
             $("#failed-id").attr("data-notify-msg", "<i class=icon-remove-sign></i> Seleccione un item. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-id"));
@@ -126,29 +126,29 @@ if (isset($session->permissions)) {
         var parameters = {
             "id": $("#form-id").val()
         };
-        if($("#form-id").val() !== "-1")
-        $.post("?controller=Semester&action=select", parameters, function (data) {
-            if (data.ID) {
-                $("#form-year-table").html(data.year);
-                $("#form-semester-table").html(data.semester);
-                
-                $("#success-id").attr("data-notify-msg", "<i class=icon-ok-sign></i> Operacion Exitosa!");
+        if ($("#form-id").val() !== "-1")
+            $.post("?controller=Semester&action=select", parameters, function (data) {
+                if (data.ID) {
+                    $("#form-year-table").html(data.year);
+                    $("#form-semester-table").html(data.semester);
 
-                SEMICOLON.widget.notifications($("#success-id"));
-            } else {
-                $("#form-year-table").html("");
-                $("#form-semester-table").html("");
-            }
-        }, "json");
+                    $("#success-id").attr("data-notify-msg", "<i class=icon-ok-sign></i> Operacion Exitosa!");
+
+                    SEMICOLON.widget.notifications($("#success-id"));
+                } else {
+                    $("#form-year-table").html("");
+                    $("#form-semester-table").html("");
+                }
+            }, "json");
     });
 
     //Delete 
     $("#form-submity").click(function () {
         var parameters = {
-            "id": $("#form-admin").val()
+            "id": $("#form-id").val()
         };
-        
-        $.post("?controller=Admin&action=delete", parameters, function (data) {
+        if ($("#form-id").val() !== "-1")
+        $.post("?controller=Semester&action=delete", parameters, function (data) {
             if (data.result === "1") {
                 $("#success").attr({
                     "data-notify-type": "success",
@@ -156,7 +156,7 @@ if (isset($session->permissions)) {
                     "data-notify-position": "bottom-full-width"
                 });
                 SEMICOLON.widget.notifications($("#success"));
-                location.href = "?controller=Admin&action=delete";
+                location.href = "?controller=Semester&action=delete";
             } else {
                 $("#warning").attr({
                     "data-notify-type": "warning",
