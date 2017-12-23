@@ -120,7 +120,7 @@ if (isset($session->permissions)) {
                 for (var i = 0; i < data.length; i++) {
                     $('#form-courses').append($("<option></option>").attr("value", data[i].initials).text(data[i].name));//AGREGAR OPCIONES
                 }
-                $("#form-courses").selectpicker("refresh");///REFRESCA SELECT PARA QUE AGARRE AGREGADOS
+                $("#form-courses").selectpicker("refresh");
             }, "json");
         }
     });
