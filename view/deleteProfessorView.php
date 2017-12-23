@@ -2,33 +2,31 @@
 $session = SSession::getInstance();
 
 if (isset($session->permissions)) {
-    include_once 'public/headerAdmin.php';
+    if ($session->permissions == 'A') {
+        include_once 'public/headerAdmin.php';
+    } else {
+        header('Location:?action=notFound');
+    }
 } else {
-    include_once 'public/header.php';
+    header('Location:?action=notFound');
 }
 ?>
-
-<!-- Page Title
-    ============================================= -->
 <section id="page-title">
     <div class="container clearfix">
-        <h1>Desactivar Profesor</h1>
+        <h1>Eliminar Profesor</h1>
     </div>
-</section><!-- #page-title end -->
-
-<!-- Content
-    ============================================= -->
+</section>
 <section id="content">
     <div class="content-wrap">
         <div class="container clearfix">
             <div class="accordion-lg divcenter nobottommargin" style="max-width: 550px;">
                 <div class="acctitle">
                     <div class="acc_content clearfix">
-                        <form id="form" class="nobottommargin">
+                        <form id="form" class="nobottommargin" onsubmit="return val();">
                             <div class="white-section">
                                 <label for="form-prof">Profesores:</label>
                                 <select id="form-prof" class="selectpicker form-control" data-live-search="true">
-                                    <option data-tokens="">Seleccione un Profesor</option>
+                                    <option value="-1" data-tokens="">Seleccione un Profesor</option>
                                     <?php
                                     foreach ($vars as $var) {
                                         if (isset($var["identification"])) {
@@ -46,7 +44,7 @@ if (isset($session->permissions)) {
                             <div class="acc_content clearfix"></div>
                             <div class="table-responsive">
                                 <table class="table table-bordered table-striped">
-                                    <h5 style="text-align: center;">Informaci&oacute;n del Curso</h5>
+                                    <h5 style="text-align: center;">Informaci&oacute;n del Profesor</h5>
                                     <colgroup>
                                         <col class="col-xs-3">
                                         <col class="col-xs-8">
@@ -90,7 +88,7 @@ if (isset($session->permissions)) {
                                 </table>
                             </div>
                             <div class="col_full nobottommargin">
-                                <input type="submit" id="submit" value="Registrar" class="button button-3d button-black nomargin form-control" style="display: block; text-align: center;"/>
+                                <input type="submit" id="form-submit" value="Eliminar" class="button button-3d button-black nomargin form-control" style="display: none; text-align: center;"/>
                                 <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i>La operacion no se pudo realizar, intente de nuevo o m&aacute;s tarde!" data-notify-position="bottom-full-width"/>
                                 <input type="hidden" id="success" data-notify-type="success" data-notify-msg="<i class='icon-ok-sign'></i> Operaci&oacute;n exitosa, revise en breve...!" data-notify-position="bottom-full-width"/>
                                 <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Espere un momento...!" data-notify-position="bottom-full-width"/>
@@ -113,14 +111,14 @@ if (isset($session->permissions)) {
                     <h4 class="modal-title" id="myModalLabel">¡Aviso!</h4>
                 </div>
                 <div class="modal-body">
-                    <h4 style="text-align: center;">¿Realmente desea insertar este Administrador?</h4>
+                    <h4 style="text-align: center;">¿Realmente desea eliminar este Profesor?</h4>
                     <p>Consejos:
-                    <li>Revisar que todos los campos tengan la informaci&oacute;n correcta</li>
+                    <li>Revisar que se tenga la informaci&oacute;n correcta</li>
                     </p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal" id="form-close">Cerrar</button>
-                    <input type="button" class="btn btn-primary button-black nomargin" id="form-submity" value="Registrar"/>
+                    <input type="button" class="btn btn-primary button-black nomargin" id="form-submity" value="Eliminar"/>
                 </div>
             </div>
         </div>
@@ -131,55 +129,66 @@ if (isset($session->permissions)) {
 
     //Change Combobox
     $("#form-prof").change(function () {
-        var parameters = {
-            "id": $("#form-prof").val()
-        };
-        $.post("?controller=Professor&action=select", parameters, function (data) {
-            if (data.identification) {
-                $("#form-id").html(data.identification);
-                $("#form-name").html(data.name);
-                $("#form-first-lastName").html(data.first_lastname);
-                $("#form-second-lastName").html(data.second_lastname);
-                $("#form-email").html(data.email);
-                $("#form-submit").css('display','block');
-                SEMICOLON.widget.notifications($("#success"));
-            } else {
-                $("#form-id").html("");
-                $("#form-name").html("");
-                $("#form-first-lastName").html("");
-                $("#form-second-lastName").html("");
-                $("#form-email").html("");
-            }
-        }, "json");
+        if ($("#form-prof").val() !== "-1") {
+            var parameters = {
+                "id": $("#form-prof").val()
+            };
+            SEMICOLON.widget.notifications($("#wait"));
+            $.post("?controller=Professor&action=select", parameters, function (data) {
+                if (data.identification) {
+                    $("#form-id").html(data.identification);
+                    $("#form-name").html(data.name);
+                    $("#form-first-lastName").html(data.first_lastname);
+                    $("#form-second-lastName").html(data.second_lastname);
+                    $("#form-email").html(data.email);
+                    $("#form-submit").css('display', 'block');
+                    SEMICOLON.widget.notifications($("#success"));
+                } else {
+                    $("#form-id").html("");
+                    $("#form-name").html("");
+                    $("#form-first-lastName").html("");
+                    $("#form-second-lastName").html("");
+                    $("#form-email").html("");
+                    $("#form-submit").css('display', 'none');
+                }
+            }, "json");
+        } else {
+            $("#form-id").html("");
+            $("#form-name").html("");
+            $("#form-first-lastName").html("");
+            $("#form-second-lastName").html("");
+            $("#form-email").html("");
+            $("#form-submit").css('display', 'none');
+        }
     });
 
     //Open Modal
-    $("#form-submit").click(function () {
-        $('#form-submit').attr('data-target', '#myModal');
-    });
+    function val() {
+        $('#showModal').click();
+        return false;
+    }
 
     //Delete 
     $("#form-submity").click(function () {
+        $("#form-submity").attr('disabled', 'disabled');
+        $("#form-close").attr('disabled', 'disabled');
+
+        SEMICOLON.widget.notifications($("#wait"));
+
         var parameters = {
             "id": $("#form-prof").val()
         };
         $.post("?controller=Professor&action=delete", parameters, function (data) {
             if (data.result === "1") {
-                $("#success").attr({
-                    "data-notify-type": "success",
-                    "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!",
-                    "data-notify-position": "bottom-full-width"
-                });
+
                 SEMICOLON.widget.notifications($("#success"));
-                setTimeout("location.href = '?controller=Professor&action=delete';", 2000);
+                setTimeout("location.href = '?controller=Professor&action=delete';", 1500);
             } else {
-                $("#warning").attr({
-                    "data-notify-type": "warning",
-                    "data-notify-msg": "<i class=icon-warning-sign></i> Operacion Incompleta, intente de nuevo!",
-                    "data-notify-position": "bottom-full-width"
-                });
+
                 SEMICOLON.widget.notifications($("#warning"));
             }
+            $("#form-submity").removeAttr('disabled');
+            $("#form-close").removeAttr('disabled');
         }, "json");
     });
 

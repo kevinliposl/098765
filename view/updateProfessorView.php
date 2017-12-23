@@ -198,7 +198,7 @@ if (isset($session->permissions)) {
                     $("#form-age").html(data.birthdate);
                     $("#form-address").html(data.address);
                     $("#form-additionalInformation").html(data.expedient);
-                    $("#form-submit").css('display','block');
+                    $("#form-submit").css('display', 'block');
                     SEMICOLON.widget.notifications($("#success"));
 
                 } else {
@@ -215,6 +215,7 @@ if (isset($session->permissions)) {
                     $("#form-age").html("");
                     $("#form-address").html("");
                     $("#form-additionalInformation").html("");
+                    $("#form-submit").css('display', 'none');
                 }
             }, "json");
         } else {
@@ -231,7 +232,7 @@ if (isset($session->permissions)) {
             $("#form-age").html("");
             $("#form-address").html("");
             $("#form-additionalInformation").html("");
-
+            $("#form-submit").css('display', 'none');
         }
     });
 

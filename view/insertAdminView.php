@@ -1,5 +1,4 @@
 <?php
-
 $session = SSession::getInstance();
 
 if (isset($session->permissions)) {
@@ -24,7 +23,7 @@ if (isset($session->permissions)) {
             <div class="accordion-lg divcenter nobottommargin" style="max-width: 550px;">
                 <div class="acctitle">
                     <div class="acc_content clearfix">
-                        <form id="form" class="nobottommargin" onsubmit="return false;">
+                        <form id="form" class="nobottommargin" onsubmit="return val();">
                             <div class="col_full">
                                 <label for="form-id">Cedula:</label>
                                 <input type="text" id="form-id" class="form-control" required minlength="9" placeholder="304440555"/>
@@ -93,7 +92,7 @@ if (isset($session->permissions)) {
 </div>
 
 <script>
-    $('#submit').click(function () {
+    function val() {
         var id, email, name, firstLastName, firstLastName, secondLastName;
 
         id = $("#form-id").val().trim();
@@ -124,13 +123,13 @@ if (isset($session->permissions)) {
         }
         $('#showModal').click();
         return false;
-    });
+    }
 
     //Insert
     $("#form-submity").click(function () {
         $("#form-submity").attr('disabled', 'disabled');
         $("#form-close").attr('disabled', 'disabled');
-        
+
         SEMICOLON.widget.notifications($("#wait"));
 
         var parameters = {
