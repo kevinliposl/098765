@@ -57,8 +57,7 @@ class AdminController {
         if (SSession::getInstance()->permissions == 'R') {
             $model = new AdminModel();
             if (isset($_POST["id"])) {
-                $admin = new Person($_POST["id"]);
-                $result = $model->delete($admin);
+                $result = $model->delete($_POST["id"]);
                 echo json_encode($result);
             } else {
                 $result = $model->selectAll();

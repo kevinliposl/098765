@@ -29,7 +29,7 @@ if (isset($session->permissions)) {
             <div class="accordion-lg divcenter nobottommargin" style="max-width: 550px;">
                 <div class="acctitle">
                     <div class="acc_content clearfix">
-                        <form id="form" class="nobottommargin" onsubmit="return validate();">
+                        <form id="form" class="nobottommargin" onsubmit="return val();">
                             <div class="white-section">
                                 <label for="form-id">Administradores:</label>
                                 <select id="form-admin" class="selectpicker form-control" data-live-search="true">
@@ -129,7 +129,7 @@ if (isset($session->permissions)) {
 </div>
 
 <script>
-    function validate() {
+    function val() {
 
         var id = $("#form-admin").val();
         
@@ -176,7 +176,7 @@ if (isset($session->permissions)) {
         var parameters = {
             "id": $("#form-admin").val()
         };
-        
+        alert('asdasdasd');
         $.post("?controller=Admin&action=delete", parameters, function (data) {
             if (data.result === "1") {
                 $("#success").attr({
@@ -194,6 +194,7 @@ if (isset($session->permissions)) {
                 });
                 SEMICOLON.widget.notifications($("#warning"));
             }
+            alert('asdasdasd2');
         }, "json");
     }
     );

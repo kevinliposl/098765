@@ -32,7 +32,7 @@ if (isset($session->permissions)) {
                             <div class="col_full">
                                 <label for="form-id">Cedula:</label>
                                 <input type="text" id="form-id" class="form-control" required minlength="9" placeholder="304440555"/>
-                                <input type="hidden" id="failed-id" data-notify-type="error" data-notify-position="bottom-full-width"/>
+                                <input type="hidden" id="failed-id" data-notify-type="error" data-notify-position="bottom-full-width" />
                             </div>
 
                             <div class="col_full">
@@ -60,19 +60,18 @@ if (isset($session->permissions)) {
                             </div>
 
                             <div class="col_full nobottommargin">                      
-                                <input type="submit" id="submit" value="Insertar" class="button button-3d button-black nomargin form-control" style="display: block; text-align: center;"/>
+                                <input type="submit" id="submit" value="Registrar" class="button button-3d button-black nomargin form-control" style="display: block; text-align: center;"/>
                                 <input type="hidden" id="warning"/>
-                                <input type="hidden" id="success"/>
-                                <input type="hidden" id="failed"/>
+                                <input type="hidden" id="success" data-notify-type="success" data-notify-msg="<i class='icon-ok-sign'></i> Operacion Exitosa!" data-notify-position="bottom-full-width"/>
+                                <input type="hidden" id="wait"/>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-</section><!-- #content end -->
+</section>
 
-<!--MODAL -->
 <a id="showModal" style="display: none;"class="button button-3d button-black nomargin" data-target="#myModal" data-toggle="modal">Modal</a>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -89,8 +88,8 @@ if (isset($session->permissions)) {
                     </p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    <input type="button" class="btn btn-primary button-black nomargin" id="form-submity" value="Insertar"/>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" id="form-close">Cerrar</button>
+                    <input type="button" class="btn btn-primary button-black nomargin" id="form-submity" value="Registrar"/>
                 </div>
             </div>
         </div>
@@ -138,6 +137,9 @@ if (isset($session->permissions)) {
 
     //Insert
     $("#form-submity").click(function () {
+        $("#form-submity").attr('disabled', 'disabled');
+        $("#form-close").attr('disabled', 'disabled');
+
         var parameters = {
             "id": $("#form-id").val().trim(),
             "email": $("#form-email").val().trim(),
@@ -147,11 +149,6 @@ if (isset($session->permissions)) {
         };
         $.post("?controller=Admin&action=insert", parameters, function (data) {
             if (data.result === "1") {
-                $("#success").attr({
-                    "data-notify-type": "success",
-                    "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!",
-                    "data-notify-position": "bottom-full-width"
-                });
                 SEMICOLON.widget.notifications($("#success"));
                 setTimeout("location.href = '?';", 1000);
             } else {
@@ -163,6 +160,8 @@ if (isset($session->permissions)) {
                 SEMICOLON.widget.notifications($("#warning"));
             }
             ;
+            $("#form-submity").removeAttr('disabled');
+            $("#form-close").removeAttr('disabled');
         }, "json");
     });
 </script>
