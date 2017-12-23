@@ -109,7 +109,6 @@ if (isset($session->permissions)) {
         };
         
         $.post("?controller=Semester&action=insert", parameters, function (data) {
-            alert(data);
             if (data.result === "1") {
                 $("#success").attr({
                     "data-notify-type": "success",
