@@ -77,13 +77,13 @@ if (isset($session->permissions)) {
 
                             <div class="col-lg-6" style="padding: 10px;">
                                 <label for="form-phone1">Tel&eacute;fono:</label>
-                                <input type="text" id="form-phone1" class="form-control" required/>
+                                <input type="text" id="form-phone1" class="form-control" minlength="8" maxlength="8" required pattern="{4-16}"/>
                                 <input type="hidden" id="failed-phone1" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                             </div>
 
                             <div class="col-lg-6" style="padding: 10px;">
                                 <label for="form-phone2">Otro Tel&eacute;fono:</label>
-                                <input type="text" id="form-phone2" class="form-control" required/>
+                                <input type="text" id="form-phone2" class="form-control" minlength="8" maxlength="8" required pattern="{4-16}"/>
                                 <input type="hidden" id="failed-phone2" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                             </div>
 

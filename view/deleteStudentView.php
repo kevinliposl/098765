@@ -5,9 +5,8 @@ include_once 'public/headerAdmin.php';
 <!-- Page Title
     ============================================= -->
     <section id="page-title">
-
         <div class="container clearfix">
-            <h1>Eliminar Estudiante</h1>
+            <h1>Desactivar Estudiante</h1>
         </div>
     </section>
 
@@ -62,7 +61,7 @@ include_once 'public/headerAdmin.php';
                                             </tbody>
                                         </table>
                                     </div>
-                                    <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" data-target="#myModal" id="next" data-target="" style="display: none; text-align: center;">Eliminar</a>
+                                    <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" data-target="#myModal" id="next" data-target="" style="display: none; text-align: center;">Desactivar</a>
                                     <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i> El Estudiante no se pudo eliminar!" data-notify-position="bottom-full-width"/>
                                     <input type="hidden" id="success" data-notify-type="success" data-notify-msg="<i class='icon-ok-sign'></i> Operacion Exitosa!" data-notify-position="bottom-full-width"/>
                                 </form>
@@ -78,15 +77,15 @@ include_once 'public/headerAdmin.php';
                                             <h4 class="modal-title" id="myModalLabel">¡Aviso!</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <h4 style="text-align: center;">¿Realmente desea eliminar este Estudiante?</h4>
+                                            <h4 style="text-align: center;">¿Realmente desea desactivar este Estudiante?</h4>
                                             <p>Consejos:
-                                                <li>Verificar bien, si es el estudiante que realmente desea eliminar</li>
+                                                <li>Verificar bien, si es el estudiante que realmente desea desactivar</li>
                                                 <li>El estudiante puede ser restaurado con servicio t&eacute;cnico</li>
                                             </p>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                                            <input type="button" class="btn btn-primary" button-black nomargin id="form-submity" value="Eliminar"/>  
+                                            <input type="button" class="btn btn-primary" button-black nomargin id="form-submity" value="Desactivar"/>  
                                         </div>
                                     </div>
                                 </div>

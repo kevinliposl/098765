@@ -27,7 +27,7 @@ include_once 'public/head.php';
                                     <li><a href="?controller=Professor&action=select"><div>Ver</div></a></li>
                                     <li><a href="?controller=Professor&action=insert"><div>Registrar</div></a></li>
                                     <li><a href="?controller=Professor&action=update"><div>Actualizar</div></a></li>  
-                                    <li><a href="?controller=Professor&action=delete"><div>Eliminar</div></a></li>
+                                    <li><a href="?controller=Professor&action=delete"><div>Desactivar</div></a></li>
                                 </ul>
                             </li>
                             <li><a href="?controller=Student&action=reactivateStudent"><div>Reactivar Usuario</div></a></li> 

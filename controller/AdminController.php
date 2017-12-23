@@ -100,12 +100,37 @@ class AdminController {
             if (isset($_POST['id']) && isset($_POST['email']) && isset($_POST['name']) && isset($_POST['firstLastName']) && isset($_POST['secondLastName'])) {
                 $result = $model->updatePersonalData(SSession::getInstance()->identification, $_POST['id'], $_POST['email'], $_POST['name'], $_POST['firstLastName'], $_POST['secondLastName']);
                 echo json_encode($result);
+                if ($result['result'] === '1') {
+                    SSession::getInstance()->identification = $_POST['id'];
+                }
             } else {
                 $result = $model->select($ssession->identification);
                 $this->view->show("updatePersonalDataAdminView.php", $result);
             }
         } else {
             $this->view->show("404View.php");
+        }
+    }
+
+    /**
+     * @return null
+     * @param integer $id Identificador de entidad
+     * @param string $email Email de entidad
+     * Funcion para reactivar estudiante
+     */
+    function reactivate() {
+        $ssession = SSession::getInstance();
+        if ($ssession->__isset("identification") && $ssession->__isset("permissions") && $ssession->__get("permissions") === "R") {
+            $model = new AdminModel();
+            if (isset($_POST["id"])) {
+                $result = $model->reactivate($_POST['id']);
+                echo json_encode($result);
+            } else {
+                $result = $model->selectAllDelete();
+                $this->view->show("reactivateAdminView.php", $result);
+            }
+        } else {
+            $this->view->show("indexView.php");
         }
     }
 

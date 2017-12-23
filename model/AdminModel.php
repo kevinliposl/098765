@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @authors <kevin.sandoval@ucr.ac.cr><diego.cendenofonseca@ucr.ac.cr><elena.calderonfernandez@ucr.ac.cr><brogudbarrientos@gmail.com>
  * @version 1.0
@@ -31,7 +32,7 @@ class AdminModel {
         $result = $query->fetch();
         return $result;
     }
-    
+
     /**
      * @return String result
      * @param integer $id Identificador de entidad
@@ -43,7 +44,7 @@ class AdminModel {
         $result = $query->fetch();
         return $result;
     }
-    
+
     /**
      * @return Admin
      * @param integer $id Identificador de entidad
@@ -58,10 +59,22 @@ class AdminModel {
 
     /**
      * @return array Admin
-     * Funcion para cambiar la contraseña del administrador
+     * Funcion para seleccionar todos los administrador
      */
     function selectAll() {
         $query = $this->db->prepare("call sp_select_all_admin()");
+        $query->execute();
+        $result = $query->fetchAll();
+        $query->closeCursor();
+        return $result;
+    }
+
+    /**
+     * @return array Admin
+     * Funcion para seleccionar todos los administrador borrados
+     */
+    function selectAllDelete() {
+        $query = $this->db->prepare("call sp_select_all_admin_delete()");
         $query->execute();
         $result = $query->fetchAll();
         $query->closeCursor();
@@ -83,4 +96,17 @@ class AdminModel {
         $result = $query->fetch();
         return $result;
     }
+
+    /**
+     * @return String result
+     * @param integer $id Identificador de entidad
+     * Funcion para reactivar administrador
+     */
+    function reactivate($id) {
+        $query = $this->db->prepare("call sp_reactivate_admin('$id')");
+        $query->execute();
+        $result = $query->fetch();
+        return $result;
+    }
+
 }

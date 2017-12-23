@@ -16,7 +16,8 @@ include_once 'public/head.php';
                         <ul>
                             <li><a href="?controller=Admin&action=insert"><div>Registrar</div></a></li>
                             <li><a href="?controller=Admin&action=delete"><div>Eliminar</div></a></li> 
-                            <li><a href="?controller=Admin&action=select"><div>Ver Administradores</div></a></li> 
+                            <li><a href="?controller=Admin&action=reactivate"><div>Reactivar</div></a></li>
+                            <li><a href="?controller=Admin&action=select"><div>Ver Administradores</div></a></li>
                         </ul>
                     </li>
                     <li><a href="?controller=User&action=signOff"><div>Cerrar Sesi&oacute;n</div></a></li>
