@@ -112,4 +112,26 @@ class AdminController {
         }
     }
 
+    /**
+     * @return null
+     * @param integer $id Identificador de entidad
+     * @param string $email Email de entidad
+     * Funcion para reactivar estudiante
+     */
+    function reactivate() {
+        $ssession = SSession::getInstance();
+        if ($ssession->__isset("identification") && $ssession->__isset("permissions") && $ssession->__get("permissions") === "R") {
+            $model = new AdminModel();
+            if (isset($_POST["id"])) {
+                $result = $model->reactivate($_POST['id']);
+                echo json_encode($result);
+            } else {
+                $result = $model->selectAllDelete();
+                $this->view->show("reactivateAdminView.php", $result);
+            }
+        } else {
+            $this->view->show("indexView.php");
+        }
+    }
+
 }

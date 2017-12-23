@@ -50,6 +50,7 @@ if (isset($session->permissions)) {
                                     <input type="submit" value="Cambiar" class="button button-3d button-black nomargin form-control" style="display: block; text-align: center;"/>
                                     <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i> Operacion Fallida!" data-notify-position="bottom-full-width"/>
                                     <input type="hidden" id="success" data-notify-type="success" data-notify-msg ="<i class='icon-ok-sign'></i> Operacion Exitosa!" data-notify-position="bottom-full-width"/>
+                                    <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Espere un momento...!" data-notify-position="bottom-full-width"/>
                                 </div>
                             </form>
                         </div>
@@ -84,6 +85,7 @@ if (isset($session->permissions)) {
         var parameters = {
             "newPass": pass1
         };
+        SEMICOLON.widget.notifications($("#wait"));
         $.post("?controller=User&action=changePassword", parameters, function (data) {
             if (data.result === "1") {
                 SEMICOLON.widget.notifications($("#success"));

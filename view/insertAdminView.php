@@ -11,17 +11,12 @@ if (isset($session->permissions)) {
     header('Location:?action=notFound');
 }
 ?>
-
-<!-- Page Title
-============================================= -->
 <section id="page-title">
     <div class="container clearfix">
         <h1>Registrar Administrador</h1>
     </div>
-</section><!-- #page-title end -->
+</section>
 
-<!-- Content
-============================================= -->
 <section id="content">
     <div class="content-wrap">
         <div class="container clearfix">

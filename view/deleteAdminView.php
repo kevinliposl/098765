@@ -94,14 +94,15 @@ if (isset($session->permissions)) {
                             <div class="col_full nobottommargin">
                                 <input type="submit" value="Eliminar" class="button button-3d button-black nomargin form-control" style="display: block; text-align: center;"/>
                                 <input type="hidden" id="warning" data-notify-position="bottom-full-width" data-notify-type= "warning"/>
-                                <input type="hidden" id="success" data-notify-position="bottom-full-width" data-notify-type= "success"/>
-                                <input type="hidden" id="failed" data-notify-position="bottom-full-width" data-notify-type= "failed"/>
+                                <input type="hidden" id="success" data-notify-position="bottom-full-width" data-notify-type= "success" data-notify-msg="<i class='icon-ok-sign'></i> Operacion Exitosa!"/>
+                                <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Espere un momento...!" data-notify-position="bottom-full-width"/>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 </section><!-- #content end -->
 
 <a id="showModal" style="display: none;"class="button button-3d button-black nomargin" data-target="#myModal" data-toggle="modal">Modal</a>
@@ -148,7 +149,8 @@ if (isset($session->permissions)) {
         var parameters = {
             "id": $("#form-admin").val()
         };
-
+        SEMICOLON.widget.notifications($("#wait"));
+        
         $.post("?controller=Admin&action=select", parameters, function (data) {
             if (data.identification) {
                 $("#form-id-table").html(data.identification);
@@ -156,11 +158,9 @@ if (isset($session->permissions)) {
                 $("#form-email-table").html(data.email);
                 $("#form-firstLastName-table").html(data.first_lastname);
                 $("#form-secondLastName-table").html(data.second_lastname);
-
-                $("#success-id").attr("data-notify-msg", "<i class=icon-ok-sign></i> Operacion Exitosa!");
-
-                SEMICOLON.widget.notifications($("#success-id"));
-
+                $("#success").attr();
+                SEMICOLON.widget.notifications($("#success"));
+                
             } else {
                 $("#form-id-table").html("");
                 $("#form-name-table").html("");
