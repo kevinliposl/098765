@@ -90,7 +90,7 @@ if (isset($session->permissions)) {
                                     </table>
                                 </div>
                                 <div class="col_full nobottommargin">
-                                    <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" style="display : block; text-align: center;" data-target="#myModal">Eliminar</a>
+                                    <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" style="display : block; text-align: center;" data-target="#myModal">Desactivar</a>
                                     <!--<input type="submit" value="Eliminar" class="button button-3d button-black nomargin form-control" style="display: block; text-align: center;"/>-->
                                     <input type="hidden" id="warning" value="w"/>
                                     <input type="hidden" id="success" value="s"/>
@@ -112,14 +112,14 @@ if (isset($session->permissions)) {
                             <h4 class="modal-title" id="myModalLabel">¡Aviso!</h4>
                         </div>
                         <div class="modal-body">
-                            <h4 style="text-align: center;">¿Realmente desea eliminar este profesor?</h4>
+                            <h4 style="text-align: center;">¿Realmente desea desactivar este profesor?</h4>
                             <p>Consejos:
-                                <li>Verificar bien, si es el profesor que realmente desea eliminar</li>
+                                <li>Verificar bien, si es el profesor que realmente desea desactivar</li>
                                 <li>Los datps del profesor pueden ser restaurado con servicio t&eacute;cnico</li></p>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                                <input type="button" class="btn btn-primary button-black nomargin" id="form-submity" value="Eliminar"/>
+                                <input type="button" class="btn btn-primary button-black nomargin" id="form-submity" value="Desactivar"/>
                             </div>
                         </div>
                     </div>
