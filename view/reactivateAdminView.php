@@ -106,7 +106,7 @@ if (isset($session->permissions)) {
 
 <script>
     $("#form-admin").change(function () {
-            SEMICOLON.widget.notifications($("#wait"));
+        SEMICOLON.widget.notifications($("#wait"));
 
         if ($("#form-admin").val() !== "-1") {
 
@@ -133,8 +133,8 @@ if (isset($session->permissions)) {
             document.getElementById("form-submit").style.display = "none";
         }
     });
-/*
-    
+
+
     function Redirect() {
         window.location = "?controller=Student&action=reactivateStudent";
     }
@@ -145,20 +145,20 @@ if (isset($session->permissions)) {
 
     $("#form-submity").click(function () {
         var parameters = {
-            "id": $("#form-admin").val();
+            "id": $("#form-admin").val()
         };
-        SEMICOLON.widget.notifications($("#wait"));    
+        SEMICOLON.widget.notifications($("#wait"));
         $.post("?controller=Admin&action=reactivate", parameters, function (data) {
+
             if (data.result === "1") {
                 SEMICOLON.widget.notifications($("#success"));
                 setTimeout('Redirect()', 1000);
             } else {
                 SEMICOLON.widget.notifications($("#warning"));
-            }
-            ;
+            };
         }, "json");
-    }
-    );
+    });
+
 </script>
 
 <!-- End Content
