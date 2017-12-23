@@ -41,6 +41,7 @@ include_once 'public/head.php';
                                     <li><a href="?controller=Course&action=insert"><div>Registrar</div></a></li> 
                                     <li><a href="?controller=Course&action=update"><div>Actualizar</div></a></li>
                                     <li><a href="?controller=Course&action=delete"><div>Eliminar</div></a></li>  
+                                    <li><a href="?controller=Course&action=reactivate"><div>Reactivar</div></a></li>  
                                 </ul>
                             </li>
                             <li><a href="#"><div>Semestre</div></a>
