@@ -41,7 +41,6 @@ if (isset($session->permissions)) {
                                     }
                                     ?>
                                 </select>
-                                <input type="hidden" id="success-id" data-notify-type="success" data-notify-position="bottom-full-width"/>
                                 <input type="hidden" id="failed-id" data-notify-type="error" data-notify-position="bottom-full-width" data-notify-msg= "<i class='icon-remove-sign'></i> Seleccione un item. Complete e intente de nuevo!"/>
                             </div>
                             <br>
@@ -93,7 +92,7 @@ if (isset($session->permissions)) {
                     </p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-default" id="form-close" data-dismiss="modal">Cerrar</button>
                     <input type="button" class="btn btn-primary button-black nomargin" id="form-submity" value="Eliminar"/>
                 </div>
             </div>

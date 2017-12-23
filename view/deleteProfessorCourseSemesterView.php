@@ -2,28 +2,21 @@
 $session = SSession::getInstance();
 
 if (isset($session->permissions)) {
-    if($session->permissions=='A'){
+    if ($session->permissions == 'A') {
         include_once 'public/headerAdmin.php';
-    }else{
-        header("Location:?controller=Index&action=notFound");
+    } else {
+        header("Location:?action=notFound");
     }
 } else {
-    include_once 'public/header.php';
+    header("Location:?action=notFound");
 }
 ?>
-?>
-
-<!-- Page Title
-============================================= -->
 <section id="page-title">
-
     <div class="container clearfix">
         <h1>Eliminar Asignaciones de Profesores a Cursos en Semestres</h1>
     </div>
-</section><!-- #page-title end -->
+</section>
 
-<!-- Content
-============================================= -->
 <section id="content">
     <div class="content-wrap">
         <div class="container clearfix">
@@ -41,11 +34,11 @@ if (isset($session->permissions)) {
                                             ?>
                                             <option value="<?php echo $var["ID"] ?> " data-tokens="">
                                                 <?php
-                                                        if($var["semester"]=='1'){
-                                                            echo "I semestre"." ".$var["year"];
-                                                        }else{
-                                                            echo "II semestre"." ".$var["year"];
-                                                        }
+                                                if ($var["semester"] == '1') {
+                                                    echo "I semestre" . " " . $var["year"];
+                                                } else {
+                                                    echo "II semestre" . " " . $var["year"];
+                                                }
                                                 ?>
                                             </option>
                                             <?php
@@ -54,7 +47,7 @@ if (isset($session->permissions)) {
                                     ?>
                                 </select>
                             </div>
-                            <input type="hidden" id="failed-form-semester" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                            <input type="hidden" id="failed-form-semester" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class='icon-remove-sign'></i> Semestre inválido. Seleccione e intente de nuevo!"/>
                             <br>
                             <div class="white-section">
                                 <label for="form-courses">Cursos:</label>
@@ -83,7 +76,8 @@ if (isset($session->permissions)) {
                 </div>
             </div>
         </div>
-</section><!-- #content end -->
+    </div>
+</section>
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -111,11 +105,10 @@ if (isset($session->permissions)) {
 
     //Change Combobox
     $("#form-semester").change(function () {
-        if($("#form-semester").val()==="-1"){
-            $("#failed-form-semester").attr("data-notify-msg", "<i class=icon-remove-sign></i> Semestre inválido. Seleccione e intente de nuevo!");
+        if ($("#form-semester").val() === "-1") {
             SEMICOLON.widget.notifications($("#failed-form-semester"));
             return false;
-        }else{
+        } else {
             var parameters = {
                 "ID_Semester": $("#form-semester").val()
             };
@@ -131,18 +124,18 @@ if (isset($session->permissions)) {
             }, "json");
         }
     });
-    
+
     //Change Combobox
     $("#form-courses").change(function () {
-        if($("#form-semester").val()==="-1"){
+        if ($("#form-semester").val() === "-1") {
             $("#failed-form-semester").attr("data-notify-msg", "<i class=icon-remove-sign></i> Semestre inválido. Seleccione e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-form-semester"));
             return false;
-        }else if($("#form-courses").val()==="-1"){
+        } else if ($("#form-courses").val() === "-1") {
             $("#failed-form-courses").attr("data-notify-msg", "<i class=icon-remove-sign></i> Curso inválido. Seleccione e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-form-courses"));
             return false;
-        }else{
+        } else {
             var parameters = {
                 "ID_Semester": $("#form-semester").val(),
                 "initials": $("#form-courses").val()
@@ -160,25 +153,25 @@ if (isset($session->permissions)) {
 
     //Open Modal
     $("#form-submit").click(function () {
-        if($("#form-semester").val()==="-1"){
-            $("#failed-form-semester").attr("data-notify-msg", "<i class=icon-remove-sign></i> Semestre inválido. Seleccione e intente de nuevo!");
+        if ($("#form-semester").val() === "-1") {
+
             SEMICOLON.widget.notifications($("#failed-form-semester"));
             return false;
-        }else if($("#form-courses").val()==="-1"){
+        } else if ($("#form-courses").val() === "-1") {
             $("#failed-form-courses").attr("data-notify-msg", "<i class=icon-remove-sign></i> Curso inválido. Seleccione e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-form-courses"));
             return false;
-        }else if($("#form-professors").val()==="-1"){
+        } else if ($("#form-professors").val() === "-1") {
             $("#failed-form-professors").attr("data-notify-msg", "<i class=icon-remove-sign></i> Profesor inválido. Seleccione e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-form-professors"));
             return false;
-        }else{   
+        } else {
             $('#form-submit').attr('data-target', '#myModal');
         }
     });
 
     //Delete 
-    $("#form-submity").click(function () {     
+    $("#form-submity").click(function () {
         var parameters = {
             "ID_Semester": $("#form-semester").val(),
             "initials": $("#form-courses").val(),
@@ -192,7 +185,7 @@ if (isset($session->permissions)) {
                     "data-notify-position": "bottom-full-width"
                 });
                 SEMICOLON.widget.notifications($("#success"));
-                setTimeout("location.href = '?controller=CourseSemester&action=deleteProfessor';",2000);
+                setTimeout("location.href = '?controller=CourseSemester&action=deleteProfessor';", 2000);
             } else {
                 $("#warning").attr({
                     "data-notify-type": "warning",

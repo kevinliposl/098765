@@ -147,7 +147,6 @@ if (isset($session->permissions)) {
             } else {
                 SEMICOLON.widget.notifications($("#warning"));
             }
-            ;
             $("#form-submity").removeAttr('disabled');
             $("#form-close").removeAttr('disabled');
         }, "json");

@@ -28,8 +28,8 @@ if (isset($session->permissions)) {
                                     foreach ($vars as $var) {
                                         if (isset($var["identification"])) {
                                             ?>
-                                            <option value="<?php echo $var["identification"] ?> " data-tokens=""> 
-                                                <?php echo $var["Name"];?>
+                                            <option value="<?php echo $var["identification"]; ?> " data-tokens=""> 
+                                                <?php echo $var["Name"]; ?>
                                             </option>
                                             <?php
                                         }
@@ -47,16 +47,16 @@ if (isset($session->permissions)) {
                             <br>
                             <div class="col_full nobottommargin">
                                 <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" style="display : block; text-align: center;" data-target="#myModal">Eliminar</a>
-                                <input type="hidden" id="warning" value="w"/>
-                                <input type="hidden" id="success" value="s"/>
-                                <input type="hidden" id="failed" value="f"/>
+                                <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i>La operacion no se pudo realizar, intente de nuevo o m&aacute;s tarde!" data-notify-position="bottom-full-width"/>
+                                <input type="hidden" id="success" data-notify-type="success" data-notify-msg="<i class='icon-ok-sign'></i> Operaci&oacute;n exitosa, revise en breve...!" data-notify-position="bottom-full-width"/>
+                                <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Espere un momento...!" data-notify-position="bottom-full-width"/>
                             </div>                     
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-</section><!-- #content end -->
+</section>
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -91,7 +91,7 @@ if (isset($session->permissions)) {
         document.getElementById("form-professors").options.length = 0;
         $.post("?controller=Enrollment&action=selectCourses", parameters, function (data) {
             for (var i = 0; i < data.length; i++) {
-                $('#form-professors').append($("<option></option>").attr("value", data[i].ID).text("Curso: "+data[i].name+"-Profesor(a): "+data[i].Name));//AGREGAR OPCIONES
+                $('#form-professors').append($("<option></option>").attr("value", data[i].ID).text("Curso: " + data[i].name + "-Profesor(a): " + data[i].Name));//AGREGAR OPCIONES
             }
             $("#form-professors").selectpicker("refresh");
         }, "json");
@@ -109,19 +109,9 @@ if (isset($session->permissions)) {
         };
         $.post("?controller=Enrollment&action=delete", parameters, function (data) {
             if (data.result === "1") {
-                $("#success").attr({
-                    "data-notify-type": "success",
-                    "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!",
-                    "data-notify-position": "bottom-full-width"
-                });
                 SEMICOLON.widget.notifications($("#success"));
                 setTimeout("location.href = '?controller=Enrollment&action=delete';", 2000);
             } else {
-                $("#warning").attr({
-                    "data-notify-type": "warning",
-                    "data-notify-msg": "<i class=icon-warning-sign></i> Operacion Incompleta, intente de nuevo!",
-                    "data-notify-position": "bottom-full-width"
-                });
                 SEMICOLON.widget.notifications($("#warning"));
             }
         }, "json");

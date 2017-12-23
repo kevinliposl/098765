@@ -169,8 +169,5 @@ if (isset($session->permissions)) {
     });
 </script>
 
-
-<!-- End Content
-============================================= -->    
 <?php
 include_once 'public/footer.php';
