@@ -2,28 +2,21 @@
 $session = SSession::getInstance();
 
 if (isset($session->permissions)) {
-    if($session->permissions=='A'){
+    if ($session->permissions == 'A') {
         include_once 'public/headerAdmin.php';
-    }else{
+    } else {
         header("Location:?controller=Index&action=notFound");
     }
 } else {
     include_once 'public/header.php';
 }
 ?>
-?>
-
-<!-- Page Title
-============================================= -->
 <section id="page-title">
-
     <div class="container clearfix">
         <h1>Eliminar Asignaciones de Cursos a Semestres</h1>
     </div>
-</section><!-- #page-title end -->
+</section>
 
-<!-- Content
-============================================= -->
 <section id="content">
     <div class="content-wrap">
         <div class="container clearfix">
@@ -41,11 +34,11 @@ if (isset($session->permissions)) {
                                             ?>
                                             <option value="<?php echo $var["ID"] ?> " data-tokens="">
                                                 <?php
-                                                        if($var["semester"]=='1'){
-                                                            echo "I semestre"." ".$var["year"];
-                                                        }else{
-                                                            echo "II semestre"." ".$var["year"];
-                                                        }
+                                                if ($var["semester"] == '1') {
+                                                    echo "I semestre" . " " . $var["year"];
+                                                } else {
+                                                    echo "II semestre" . " " . $var["year"];
+                                                }
                                                 ?>
                                             </option>
                                             <?php
@@ -53,7 +46,7 @@ if (isset($session->permissions)) {
                                     }
                                     ?>
                                 </select>
-                                <input type="hidden" id="failed-form-semester" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                                <input type="hidden" id="failed-form-semester" data-notify-type= "error" data-notify-position="bottom-full-width"  data-notify-msg="<i class='icon-remove-sign'></i> Semestre inválido. Seleccione e intente de nuevo!"/>
                             </div>
                             <br>
                             <div class="white-section">
@@ -61,22 +54,24 @@ if (isset($session->permissions)) {
                                 <select id="form-courses" class="form-control selectpicker" data-live-search="true">
                                     <option value="-1" data-tokens="">Seleccione un Curso</option>
                                 </select>
-                               <input type="hidden" id="failed-form-courses" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                                <input type="hidden" id="failed-form-courses" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+
                             </div>
-                            <br>
                             <div class="col_full nobottommargin">
-                                <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" style="display : block; text-align: center;" data-target="#myModal">Eliminar</a>
-                                <input type="hidden" id="warning" value="w"/>
-                                <input type="hidden" id="success" value="s"/>
-                                <input type="hidden" id="failed" value="f"/>
-                            </div>                     
+                                <input type="submit" value="Eliminar" id="form-submit" class="button button-3d button-black nomargin form-control" style="display: none; text-align: center;"/>
+                                <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i>La operacion no se pudo realizar, intente de nuevo o m&aacute;s tarde!" data-notify-position="bottom-full-width"/>
+                                <input type="hidden" id="success" data-notify-type="success" data-notify-msg="<i class='icon-ok-sign'></i> Operaci&oacute;n exitosa, revise en breve...!" data-notify-position="bottom-full-width"/>
+                                <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Espere un momento...!" data-notify-position="bottom-full-width"/>
+                            </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 </section><!-- #content end -->
 
+<a id="showModal" style="display: none;"class="button button-3d button-black nomargin" data-target="#myModal" data-toggle="modal">Modal</a>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-body">
@@ -86,12 +81,13 @@ if (isset($session->permissions)) {
                     <h4 class="modal-title" id="myModalLabel">¡Aviso!</h4>
                 </div>
                 <div class="modal-body">
-                    <h4 style="text-align: center;">¿Realmente desea eliminar la asignacion del curso al semestre?</h4>
+                    <h4 style="text-align: center;">¿Realmente desea eliminar este Administrador?</h4>
                     <p>Consejos:
-                    <li>Verificar bien si la asignaci&oacute;n es la correcta</li></p>
+                    <li>Verificar bien, si es el administrador que realmente desea eliminar</li>
+                    <li>El administrador puede ser restaurado con servicio t&eacute;cnico</li></p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-default" id="form-close" data-dismiss="modal">Cerrar</button>
                     <input type="button" class="btn btn-primary button-black nomargin" id="form-submity" value="Eliminar"/>
                 </div>
             </div>
@@ -100,14 +96,12 @@ if (isset($session->permissions)) {
 </div>
 
 <script>
-
     //Change Combobox
     $("#form-semester").change(function () {
-        if($("#form-semester").val()==="-1"){
-            $("#failed-form-semester").attr("data-notify-msg", "<i class=icon-remove-sign></i> Semestre inválido. Seleccione e intente de nuevo!");
+        if ($("#form-semester").val() === "-1") {
             SEMICOLON.widget.notifications($("#failed-form-semester"));
             return false;
-        }else{
+        } else {
             var parameters = {
                 "ID_Semester": $("#form-semester").val()
             };
@@ -124,15 +118,15 @@ if (isset($session->permissions)) {
 
     //Open Modal
     $("#form-submit").click(function () {
-        if($("#form-semester").val()==="-1"){
+        if ($("#form-semester").val() === "-1") {
             $("#failed-form-semester").attr("data-notify-msg", "<i class=icon-remove-sign></i> Semestre inválido. Seleccione e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-form-semester"));
             return false;
-        }else if($("#form-courses").val()==="-1"){
+        } else if ($("#form-courses").val() === "-1") {
             $("#failed-form-courses").attr("data-notify-msg", "<i class=icon-remove-sign></i> Curso inválido. Seleccione e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-form-courses"));
             return false;
-        }else{
+        } else {
             $('#form-submit').attr('data-target', '#myModal');
         }
     });
@@ -145,24 +139,13 @@ if (isset($session->permissions)) {
         };
         $.post("?controller=CourseSemester&action=deleteCourse", parameters, function (data) {
             if (data.result === "1") {
-                $("#success").attr({
-                    "data-notify-type": "success",
-                    "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!",
-                    "data-notify-position": "bottom-full-width"
-                });
                 SEMICOLON.widget.notifications($("#success"));
-                setTimeout("location.href = '?controller=CourseSemester&action=deleteCourse';",2000);
+                setTimeout("location.href = '?controller=CourseSemester&action=deleteCourse';", 2000);
             } else {
-                $("#warning").attr({
-                    "data-notify-type": "warning",
-                    "data-notify-msg": "<i class=icon-warning-sign></i> Operacion Incompleta, intente de nuevo!",
-                    "data-notify-position": "bottom-full-width"
-                });
                 SEMICOLON.widget.notifications($("#warning"));
             }
         }, "json");
     });
-
 </script>
 
 

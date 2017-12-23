@@ -15,7 +15,6 @@ if (isset($session->permissions)) {
 <!-- Page Title
 ============================================= -->
 <section id="page-title">
-
     <div class="container clearfix">
         <h1>Eliminar Administrador</h1>
     </div>
@@ -46,8 +45,6 @@ if (isset($session->permissions)) {
                                     }
                                     ?>
                                 </select>
-                                <input type="hidden" id="success-id" data-notify-type="success" data-notify-position="bottom-full-width"/>
-                                <input type="hidden" id="failed-id" data-notify-type="error" data-notify-position="bottom-full-width"/>
                             </div>
                             <br>
                             <div class="table-responsive">
@@ -92,9 +89,9 @@ if (isset($session->permissions)) {
                                 </table>
                             </div>
                             <div class="col_full nobottommargin">
-                                <input type="submit" value="Eliminar" class="button button-3d button-black nomargin form-control" style="display: block; text-align: center;"/>
-                                <input type="hidden" id="warning" data-notify-position="bottom-full-width" data-notify-type= "warning"/>
-                                <input type="hidden" id="success" data-notify-position="bottom-full-width" data-notify-type= "success" data-notify-msg="<i class='icon-ok-sign'></i> Operacion Exitosa!"/>
+                                <input type="submit" value="Eliminar" id="form-submit" class="button button-3d button-black nomargin form-control" style="display: none; text-align: center;"/>
+                                <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i>La operacion no se pudo realizar, intente de nuevo o m&aacute;s tarde!" data-notify-position="bottom-full-width"/>
+                                <input type="hidden" id="success" data-notify-type="success" data-notify-msg="<i class='icon-ok-sign'></i> Operaci&oacute;n exitosa, revise en breve...!" data-notify-position="bottom-full-width"/>
                                 <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Espere un momento...!" data-notify-position="bottom-full-width"/>
                             </div>
                         </form>
@@ -121,7 +118,7 @@ if (isset($session->permissions)) {
                     <li>El administrador puede ser restaurado con servicio t&eacute;cnico</li></p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-default" id="form-close" data-dismiss="modal">Cerrar</button>
                     <input type="button" class="btn btn-primary button-black nomargin" id="form-submity" value="Eliminar"/>
                 </div>
             </div>
@@ -146,57 +143,63 @@ if (isset($session->permissions)) {
 
     //Change Combobox
     $("#form-admin").change(function () {
-        var parameters = {
-            "id": $("#form-admin").val()
-        };
-        SEMICOLON.widget.notifications($("#wait"));
-        
-        $.post("?controller=Admin&action=select", parameters, function (data) {
-            if (data.identification) {
-                $("#form-id-table").html(data.identification);
-                $("#form-name-table").html(data.name);
-                $("#form-email-table").html(data.email);
-                $("#form-firstLastName-table").html(data.first_lastname);
-                $("#form-secondLastName-table").html(data.second_lastname);
-                $("#success").attr();
-                SEMICOLON.widget.notifications($("#success"));
-                
-            } else {
-                $("#form-id-table").html("");
-                $("#form-name-table").html("");
-                $("#form-email-table").html("");
-                $("#form-firstLastName-table").html("");
-                $("#form-secondLastName-table").html("");
-            }
-        }, "json");
+        if ($("#form-admin").val() !== "-1") {
+            var parameters = {
+                "id": $("#form-admin").val()
+            };
+            SEMICOLON.widget.notifications($("#wait"));
+
+            $.post("?controller=Admin&action=select", parameters, function (data) {
+                if (data.identification) {
+                    $("#form-id-table").html(data.identification);
+                    $("#form-name-table").html(data.name);
+                    $("#form-email-table").html(data.email);
+                    $("#form-firstLastName-table").html(data.first_lastname);
+                    $("#form-secondLastName-table").html(data.second_lastname);
+                    $("#form-submit").css('display', 'block');
+                    SEMICOLON.widget.notifications($("#success"));
+                } else {
+                    $("#form-id-table").html("");
+                    $("#form-name-table").html("");
+                    $("#form-email-table").html("");
+                    $("#form-firstLastName-table").html("");
+                    $("#form-secondLastName-table").html("");
+                    $("#form-submit").css('display', 'none');
+                }
+            }, "json");
+        } else {
+            $("#form-id-table").html("");
+            $("#form-name-table").html("");
+            $("#form-email-table").html("");
+            $("#form-firstLastName-table").html("");
+            $("#form-secondLastName-table").html("");
+            $("#form-submit").css('display', 'none');
+        }
     });
 
     //Delete 
     $("#form-submity").click(function () {
+
+        $("#form-submity").attr('disabled', 'disabled');
+        $("#form-close").attr('disabled', 'disabled');
+
+        SEMICOLON.widget.notifications($("#wait"));
+
         var parameters = {
             "id": $("#form-admin").val()
         };
+
         $.post("?controller=Admin&action=delete", parameters, function (data) {
             if (data.result === "1") {
-                $("#success").attr({
-                    "data-notify-type": "success",
-                    "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!",
-                    "data-notify-position": "bottom-full-width"
-                });
                 SEMICOLON.widget.notifications($("#success"));
                 setTimeout("location.href = '?controller=Admin&action=delete';", 2000);
             } else {
-                $("#warning").attr({
-                    "data-notify-type": "warning",
-                    "data-notify-msg": "<i class=icon-warning-sign></i> Operacion Incompleta, intente de nuevo!",
-                    "data-notify-position": "bottom-full-width"
-                });
                 SEMICOLON.widget.notifications($("#warning"));
             }
+            $("#form-submity").removeAttr('disabled');
+            $("#form-close").removeAttr('disabled');
         }, "json");
-    }
-    );
-
+    });
 </script>
 
 <!-- End Content
