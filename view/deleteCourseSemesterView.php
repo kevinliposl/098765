@@ -23,7 +23,7 @@ if (isset($session->permissions)) {
             <div class="accordion-lg divcenter nobottommargin" style="max-width: 550px;">
                 <div class="acctitle">
                     <div class="acc_content clearfix">
-                        <form id="form" class="nobottommargin">
+                        <form id="form" class="nobottommargin" onsubmit="return val();">
                             <div class="white-section">
                                 <label for="form-semester">Semestres:</label>
                                 <select id="form-semester" class="selectpicker form-control" data-live-search="true">
@@ -114,6 +114,7 @@ if (isset($session->permissions)) {
                     $('#form-courses').append($("<option></option>").attr("value", data[i].initials).text(data[i].name));//AGREGAR OPCIONES
                 }
                 $("#form-courses").selectpicker("refresh");///REFRESCA SELECT PARA QUE AGARRE AGREGADOS
+                $("#form-submit").css("display","block");
             }, "json");
         }
     });
