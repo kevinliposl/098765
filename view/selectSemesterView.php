@@ -35,7 +35,7 @@ if (isset($session->permissions)) {
                                         if (isset($var["ID"])) {
                                             ?>
                                             <option value="<?php echo $var["ID"] ?> " data-tokens="">
-                                                <?php echo $var["year"] . " | " . $var["semester"]; ?>
+                                                <?php echo $var["year"] . " - " . (($var["semester"] === '1') ? 'I' : 'II'); ?>
                                             </option>
                                             <?php
                                         }
@@ -91,14 +91,14 @@ if (isset($session->permissions)) {
             if (data.ID) {
                 $("#form-year-table").html(data.year);
                 $("#form-semester-table").html(data.semester);
-                
+
                 $("#success").attr("data-notify-msg", "<i class=icon-ok-sign></i> Operacion Exitosa!");
 
                 SEMICOLON.widget.notifications($("#success"));
             } else {
                 $("#form-year-table").html("");
                 $("#form-semester-table").html("");
-                
+
             }
         }, "json");
     });
