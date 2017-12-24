@@ -2,9 +2,9 @@
 $session = SSession::getInstance();
 
 if (isset($session->permissions)) {
-    if($session->permissions=='A'){
+    if ($session->permissions == 'A') {
         include_once 'public/headerAdmin.php';
-    }else{
+    } else {
         header("Location:?controller=Index&action=notFound");
     }
 } else {
@@ -12,17 +12,12 @@ if (isset($session->permissions)) {
 }
 ?>
 
-<!-- Page Title
-============================================= -->
 <section id="page-title">
-
     <div class="container clearfix">
         <h1>Ver Cursos</h1>
     </div>
-</section><!-- #page-title end -->
+</section>
 
-<!-- Content
-============================================= -->
 <section id="content">
     <div class="content-wrap">
         <div class="container clearfix">
@@ -83,13 +78,17 @@ if (isset($session->permissions)) {
                                         </tr>
                                     </tbody>
                                 </table>
-                            </div>                  
+                            </div> 
+                            <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i>La operacion no se pudo realizar, intente de nuevo o m&aacute;s tarde!" data-notify-position="bottom-full-width"/>
+                            <input type="hidden" id="success" data-notify-type="success" data-notify-msg="<i class='icon-ok-sign'></i> Operaci&oacute;n exitosa, revise en breve...!" data-notify-position="bottom-full-width"/>
+                            <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Espere un momento...!" data-notify-position="bottom-full-width"/>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-</section><!-- #content end -->
+    </div>
+</section>
 
 <script>
 
@@ -117,8 +116,5 @@ if (isset($session->permissions)) {
 
 </script>
 
-
-<!-- End Content
-============================================= -->    
 <?php
 include_once 'public/footer.php';

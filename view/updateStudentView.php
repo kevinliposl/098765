@@ -2,17 +2,12 @@
 include_once 'public/headerAdmin.php';
 ?>
 
-<!-- Page Title
-    ============================================= -->
 <section id="page-title">
-
     <div class="container clearfix">
         <h1>Actualizar Estudiante</h1>
     </div>
-</section><!-- #page-title end -->
+</section>
 
-<!-- Content
-    ============================================= -->
 <section id="content">
     <div class="content-wrap">
         <div class="container clearfix">
@@ -51,7 +46,7 @@ include_once 'public/headerAdmin.php';
                                     <li>Verificar bien, si es el estudiante que realmente desea actualizar</li>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal" id="form-close">Cerrar</button>
                                     <input type="button" class="btn btn-primary" button-black nomargin id="form-submity" value="Actualizar"/>
                                 </div>
                             </div>
@@ -60,7 +55,6 @@ include_once 'public/headerAdmin.php';
                 </div>
             </div>
         </div>
-
         <div class="container clearfix">
             <input type="hidden" id="form-old-id" name="form-old-id" value="">
             <div class="table-responsive">
@@ -99,7 +93,7 @@ include_once 'public/headerAdmin.php';
                         <tr>
                             <td>G&eacute;nero</td>
                             <td>
-                                <a id="form-gender" href="#" class="bt-group" data-emptytext='' data-type="select" data-pk="1" data-value="" data-title="Select sex"></a>
+                                <a id="form-gender" href="#" class="bt-group" data-emptytext='' data-type="select" data-pk="1" data-value="" data-title="Ingresar Sexo"></a>
                             </td>
                         </tr>
                         <tr>
@@ -123,7 +117,7 @@ include_once 'public/headerAdmin.php';
                         <tr>
                             <td>Email</td>
                             <td>
-                                <a id="form-email" href="#" class="bt-editable" data-emptytext='' data-type="text" data-pk="1"  data-placeholder="Required" data-title="Ingrese el email"></a>
+                                <a id="form-email" href="#" class="bt-editable" data-emptytext='' data-type="email" data-pk="1"  data-placeholder="Required" data-title="Ingrese el email"></a>
                             </td>
                         </tr>
                         <tr>
@@ -135,25 +129,25 @@ include_once 'public/headerAdmin.php';
                         <tr>
                             <td>Nombre del Contacto</td>
                             <td>
-                                <a id="form-contact-name" href="#" class="bt-editable" data-emptytext='' data-type="text" data-pk="1"  data-placeholder="Required" data-title="Ingrese el nombre completo del contacto"></a>
+                                <a id="form-contact-name" href="#" class="bt-editable" data-emptytext='' data-type="text" data-pk="1" data-title="Ingrese el nombre completo del contacto"></a>
                             </td>
                         </tr>
                         <tr>
                             <td>Tel&eacute;fono del Contacto</td>
                             <td>
-                                <a id="form-contact-phone" href="#" class="bt-editable" data-emptytext='' data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el teléfono"></a>
+                                <a id="form-contact-phone" href="#" class="bt-editable" data-emptytext='' data-type="text" data-pk="1" data-placeholder="Required" data-title="Ingrese el teléfono"></a>
                             </td>
                         </tr>
                         <tr>
                             <td>Relaci&oacute;n</td>
                             <td>
-                                <a id="form-relationship" href="#" class="bt-editable" data-emptytext='' data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese la relación con el estudiante"></a>
+                                <a id="form-relationship" href="#" class="bt-editable" data-emptytext='' data-type="text" data-pk="1" data-placeholder="Required" data-title="Ingrese la relación con el estudiante"></a>
                             </td>
                         </tr>
                         <tr>
                             <td>Email del Contacto</td>
                             <td>
-                                <a id="form-contact-email" href="#" class="bt-editable" data-emptytext='' data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el email"></a>
+                                <a id="form-contact-email" href="#" class="bt-editable" data-emptytext='' data-type="email" data-pk="1" data-placeholder="Required" data-title="Ingrese el email"></a>
                             </td>
                         </tr>
                     </tbody>
@@ -240,25 +234,32 @@ include_once 'public/headerAdmin.php';
     }
 
     $("#form-submity").click(function () {
+
+        $("#form-submity").attr('disabled', 'disabled');
+        $("#form-close").attr('disabled', 'disabled');
+
+        SEMICOLON.widget.notifications($("#wait"));
+
         var parameters = {
-            "id": document.getElementById("form-id").innerHTML.trim(),
-            "oldId": document.getElementById("form-old-id").value.trim(),
-            "idType": document.getElementById("form-id-type").innerHTML.trim(),
-            "email": document.getElementById("form-email").innerHTML.trim(),
-            "name": document.getElementById("form-name").innerHTML.trim(),
-            "firstLastName": document.getElementById("form-first-lastName").innerHTML.trim(),
-            "secondLastName": document.getElementById("form-second-lastName").innerHTML.trim(),
-            "age": document.getElementById("form-age").innerHTML.trim(),
+            "id": $("#form-id").text().trim(),
+            "oldId": $("#form-old-id").val().trim(),
+            "idType": $("#form-id-type").text().trim(),
+            "email": $("#form-email").text().trim(),
+            "name": $("#form-name").text().trim(),
+            "firstLastName": $("#form-first-lastName").text().trim(),
+            "secondLastName": $("#form-second-lastName").text().trim(),
+            "age": $("#form-age").text().trim(),
             "address": " ",
-            "gender": document.getElementById("form-gender").innerHTML.trim(),
-            "nationality": document.getElementById("form-nationality").innerHTML.trim(),
-            "phoneOne": document.getElementById("form-phone1").innerHTML.trim(),
-            "phoneTwo": document.getElementById("form-phone2").innerHTML.trim(),
-            "contactName": document.getElementById("form-contact-name").innerHTML.trim(),
-            "contactRelationship": document.getElementById("form-relationship").innerHTML.trim(),
-            "contactPhone": document.getElementById("form-contact-phone").innerHTML.trim(),
-            "contactEmail": document.getElementById("form-contact-email").innerHTML.trim()
+            "gender": $("#form-gender").text().trim(),
+            "nationality": $("#form-nationality").text().trim(),
+            "phoneOne": $("#form-phone1").text().trim(),
+            "phoneTwo": $("#form-phone2").text().trim(),
+            "contactName": $("#form-contact-name").text().trim(),
+            "contactRelationship": $("#form-relationship").text().trim(),
+            "contactPhone": $("#form-contact-phone").text().trim(),
+            "contactEmail": $("#form-contact-email").text().trim()
         };
+
         $.post("?controller=Student&action=updateStudent", parameters, function (data) {
             if (data.result === "1") {
                 SEMICOLON.widget.notifications($("#success"));
@@ -266,14 +267,16 @@ include_once 'public/headerAdmin.php';
             } else {
                 SEMICOLON.widget.notifications($("#warning"));
             }
-            ;
+
+            $("#form-submity").removeAttr('disabled');
+            $("#form-close").removeAttr('disabled');
+
         }, "json");
     });
 
     $(document).ready(function () {
 
         $('.bt-editable').editable();
-
         $('.bt-group').editable({
             showbuttons: false,
             source: [
@@ -285,8 +288,6 @@ include_once 'public/headerAdmin.php';
 
 </script>
 
-<!-- End Content
-    ============================================= -->    
 <?php
 include_once 'public/footer.php';
 

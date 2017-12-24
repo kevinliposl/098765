@@ -9,7 +9,6 @@ if (isset($session->permissions)) {
 ?>
 
 <section id="page-title">
-
     <div class="container clearfix">
         <h1>Actualizar Datos de Profesor</h1>
     </div>
@@ -31,10 +30,10 @@ if (isset($session->permissions)) {
                                 <?php } ?>
                             </select>
                         </div>
-                        <br>
                         <div class="acc_content clearfix"></div>
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped">
+                                <h5 style="text-align: center;">Informaci&oacute;n del Profesor</h5>
                                 <colgroup>
                                     <col class="col-xs-5">
                                     <col class="col-xs-8">
@@ -173,7 +172,6 @@ if (isset($session->permissions)) {
 </div>
 
 <script>
-
     //Change Combobox
     $("#form-professor").change(function () {
         if ($("#form-professor").val() !== "-1") {
@@ -287,7 +285,7 @@ if (isset($session->permissions)) {
             SEMICOLON.widget.notifications($("#failed-gender"));
             return false;
         } else {
-            if (typeId == "C") {
+            if (typeId === "C") {
                 if (isNaN(identification) || identification.length < 9 || identification.length > 9) {
                     $("#failed-id").attr("data-notify-msg", "<i class=icon-remove-sign></i> Formato de identificacion incorrecto. Complete e intente de nuevo!");
                     SEMICOLON.widget.notifications($("#failed-id"));
@@ -351,7 +349,5 @@ if (isset($session->permissions)) {
     });
 </script>
 
-<!-- End Content
-============================================= -->    
 <?php
 include_once 'public/footer.php';

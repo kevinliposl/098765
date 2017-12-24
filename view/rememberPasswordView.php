@@ -46,6 +46,7 @@ if (isset($session->permissions)) {
                 </div>
             </div>
         </div>
+    </div>
 </section>
 
 <script>

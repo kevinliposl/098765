@@ -2,9 +2,9 @@
 $session = SSession::getInstance();
 
 if (isset($session->permissions)) {
-    if($session->permissions=='A'){
+    if ($session->permissions == 'A') {
         include_once 'public/headerAdmin.php';
-    }else{
+    } else {
         header("Location:?action=notFound");
     }
 } else {
@@ -12,17 +12,12 @@ if (isset($session->permissions)) {
 }
 ?>
 
-<!-- Page Title
-============================================= -->
 <section id="page-title">
-
     <div class="container clearfix">
         <h1>Actualizar Curso</h1>
     </div>
-</section><!-- #page-title end -->
+</section>
 
-<!-- Content
-============================================= -->
 <section id="content">
     <div class="content-wrap">
         <div class="container clearfix">
@@ -43,7 +38,8 @@ if (isset($session->permissions)) {
                                             </option>
                                             <?php
                                         }
-                                    }?>
+                                    }
+                                    ?>
                                 </select>
                                 <input type="hidden" id="failed-form-courses" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                             </div>
@@ -62,44 +58,45 @@ if (isset($session->permissions)) {
                                                 Siglas
                                             </td>
                                             <td id="form-initials-table"><?php echo "" ?></td>
-                                            <input type="hidden" id="failed-initials" data-notify-type= "error" data-notify-position="bottom-full-width"/>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                               Nombre
-                                            </td>
-                                            <td id="form-name-table" class="bt-editable" href="#" data-type="text" data-pk="1" data-placeholder="Required" data-title="Ingrese el nombre"><?php echo " " ?></td>
-                                            <input type="hidden" id="failed-name" data-notify-type= "error" data-notify-position="bottom-full-width"/>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                Instrumento
-                                            </td>
-                                            <td id="form-instrument-table" class="bt-editable" href="#" data-type="text" data-pk="1" data-placeholder="Required" data-title="Ingrese el instrumento"><?php echo " " ?></td>
-                                             <input type="hidden" id="failed-instrument" data-notify-type= "error" data-notify-position="bottom-full-width"/>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                Descripci&oacute;n
-                                            </td>
-                                            <td id="form-description-table" class="bt-editable" href="#" data-type="text" data-pk="1" data-placeholder="Required" data-title="Ingrese la descripcion"><?php echo " " ?></td>
-                                            <input type="hidden" id="failed-description" data-notify-type= "error" data-notify-position="bottom-full-width"/>
-                                        </tr>
+                                    <input type="hidden" id="failed-initials" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Nombre
+                                        </td>
+                                        <td id="form-name-table" class="bt-editable" href="#" data-type="text" data-pk="1" data-placeholder="Required" data-title="Ingrese el nombre"><?php echo " " ?></td>
+                                    <input type="hidden" id="failed-name" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Instrumento
+                                        </td>
+                                        <td id="form-instrument-table" class="bt-editable" href="#" data-type="text" data-pk="1" data-placeholder="Required" data-title="Ingrese el instrumento"><?php echo " " ?></td>
+                                    <input type="hidden" id="failed-instrument" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Descripci&oacute;n
+                                        </td>
+                                        <td id="form-description-table" class="bt-editable" href="#" data-type="text" data-pk="1" data-placeholder="Required" data-title="Ingrese la descripcion"><?php echo " " ?></td>
+                                    <input type="hidden" id="failed-description" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                                    </tr>
                                     </tbody>
                                 </table>
                             </div>
                             <div class="col_full nobottommargin">                      
                                 <input type="submit" value="Actualizar" class="button button-3d button-black nomargin form-control" style="display: block; text-align: center;"/>
-                                <input type="hidden" id="warning"/>
-                                <input type="hidden" id="success"/>
-                                <input type="hidden" id="failed"/>
+                                <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i>La operacion no se pudo realizar, intente de nuevo o m&aacute;s tarde!" data-notify-position="bottom-full-width"/>
+                                <input type="hidden" id="success" data-notify-type="success" data-notify-msg="<i class='icon-ok-sign'></i> Operaci&oacute;n exitosa, revise en breve...!" data-notify-position="bottom-full-width"/>
+                                <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Espere un momento...!" data-notify-position="bottom-full-width"/>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-</section><!-- #content end -->
+    </div>
+</section>
 
 <!--MODAL -->
 <a id="showModal" style="display: none;"class="button button-3d button-black nomargin" data-target="#myModal" data-toggle="modal">Modal</a>
@@ -170,22 +167,22 @@ if (isset($session->permissions)) {
         description = $("#form-description-table").text().trim();
         instrument = $("#form-instrument-table").text().trim();
 
-        if($("#form-courses").val()==="-1"){
+        if ($("#form-courses").val() === "-1") {
             $("#failed-form-courses").attr("data-notify-msg", "<i class=icon-remove-sign></i> Curso inválido. Seleccione e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-form-courses"));
             return false;
-            
-        }else if (!isNaN(name) || name.length < 4 || name.length>50) {
+
+        } else if (!isNaN(name) || name.length < 4 || name.length > 50) {
             $("#failed-name").attr("data-notify-msg", "<i class=icon-remove-sign></i> Nombre Incorrecto. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-name"));
             return false;
 
-        } else if (!isNaN(description) || description.length < 4 || description.length>100) {
+        } else if (!isNaN(description) || description.length < 4 || description.length > 100) {
             $("#failed-description").attr("data-notify-msg", "<i class=icon-remove-sign></i> Descripción Incorrecto. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-description"));
             return false;
 
-        } else if (!isNaN(instrument) || instrument.length < 2 || instrument.length>100) {
+        } else if (!isNaN(instrument) || instrument.length < 2 || instrument.length > 100) {
             $("#failed-instrument").attr("data-notify-msg", "<i class=icon-remove-sign></i> Instrumento Incorrecto. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-instrument"));
             return false;
@@ -210,7 +207,7 @@ if (isset($session->permissions)) {
                     "data-notify-position": "bottom-full-width"
                 });
                 SEMICOLON.widget.notifications($("#success"));
-                setTimeout("location.href = '?controller=Course&action=update';",2000);
+                setTimeout("location.href = '?controller=Course&action=update';", 2000);
             } else {
                 $("#warning").attr({
                     "data-notify-type": "warning",
@@ -227,7 +224,5 @@ if (isset($session->permissions)) {
     });
 </script>
 
-<!-- End Content
-============================================= -->    
 <?php
 include_once 'public/footer.php';

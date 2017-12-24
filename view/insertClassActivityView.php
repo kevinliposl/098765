@@ -11,18 +11,12 @@ if (isset($session->permissions)) {
     include_once 'public/header.php';
 }
 ?>
-
-<!-- Page Title
-============================================= -->
 <section id="page-title">
-
     <div class="container clearfix">
         <h1>Registrar Actividad y Asistencia en Clase</h1>
     </div>
-</section><!-- #page-title end -->
+</section>
 
-<!-- Content
-============================================= -->
 <section id="content">
     <div class="content-wrap">
         <div class="container clearfix">
@@ -105,9 +99,9 @@ if (isset($session->permissions)) {
                             </div>
                             <div class="col_full" style="padding: 10px;">
                                 <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" style="display : block; text-align: center;" data-target="#myModal">Insertar</a>
-                                <input type="hidden" id="warning" value="w"/>
-                                <input type="hidden" id="success" value="s"/>
-                                <input type="hidden" id="failed" value="f"/>
+                                <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i>La operacion no se pudo realizar, intente de nuevo o m&aacute;s tarde!" data-notify-position="bottom-full-width"/>
+                                <input type="hidden" id="success" data-notify-type="success" data-notify-msg="<i class='icon-ok-sign'></i> Operaci&oacute;n exitosa, revise en breve...!" data-notify-position="bottom-full-width"/>
+                                <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Espere un momento...!" data-notify-position="bottom-full-width"/>
                             </div>  
                         </form>
                     </div>
@@ -152,7 +146,6 @@ if (isset($session->permissions)) {
         row.id = totalRowNumber;
         totalRowNumber = totalRowNumber + 1;
     }
-    ;
 
     function createCell(cell, len, text, style) {
         if (text !== "") {
@@ -175,14 +168,11 @@ if (isset($session->permissions)) {
             cell.appendChild(a);
         }
     }
-    ;
 
     function deleteActivity(rowNumber) {
         var row = document.getElementById(rowNumber);
         row.parentNode.removeChild(row);
     }
-    ;
-
 
 </script>
 

@@ -1,8 +1,8 @@
 <?php
+
 include_once 'public/head.php';
 ?>
-<!-- Content
-============================================= -->
+
 <section id="content">
     <div class="content-wrap nopadding">
         <div class="section nopadding nomargin" style="width: 100%; height: 100%; position: absolute; left: 0; top: 0; background: url('public/images/000.jpg') center center no-repeat; background-size: cover;"></div>
@@ -37,8 +37,9 @@ include_once 'public/head.php';
                             <div class="line line-sm"></div>
                             <div class="col_full nobottommargin">
                                 <input type="submit" class="button button-3d button-black nomargin" id="submit" value="Ingresar">
-                                <input type="hidden" id="failed" data-notify-type= "error" data-notify-position="bottom-full-width"/>
-
+                                <input type="hidden" id="failed" data-notify-type="warning" data-notify-position="bottom-full-width"/>
+                                <input type="hidden" id="success" data-notify-type="success" data-notify-msg="<i class='icon-ok-sign'></i> Operaci&oacute;n exitosa, revise en breve...!" data-notify-position="bottom-full-width"/>
+                                <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Espere un momento...!" data-notify-position="bottom-full-width"/>      
                                 <a href="?controller=User&action=rememberPassword" class="fright" >¿Olvidó su contraseña?</a>
                             </div>
                         </form>
@@ -49,9 +50,10 @@ include_once 'public/head.php';
             </div>
         </div>
     </div>
-</section><!-- #content end -->
+</section>
 
 <script src="public/js/validation/login.js" type="text/javascript"></script>
 
 <?php
+
 include_once 'public/footerEmpty.php';

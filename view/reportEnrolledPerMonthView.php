@@ -11,17 +11,14 @@ if (isset($session->permissions)) {
     header('Location:?action=notFound');
 }
 ?>
-<!-- Page Title
-============================================= -->
+
 <section id="page-title">
     <div class="container clearfix">
         <h1>Reporte Matricula</h1>
         <span>Cantidad de matriculas por mes y año</span>
     </div>
-</section><!-- #page-title end -->
+</section>
 
-<!-- Content
-============================================= -->
 <section id="content">
     <div class="content-wrap">
         <div class="container clearfix">
@@ -60,14 +57,13 @@ if (isset($session->permissions)) {
             </div>
         </div>
     </div>
-</section><!-- #content end -->
+</section>
 
 <script>
     $(document).ready(function () {
         $('#datatable').DataTable();
     });
 </script>
-<!-- End Content
-============================================= -->    
+
 <?php
 include_once 'public/footer.php';

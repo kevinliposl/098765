@@ -1,4 +1,5 @@
 <?php
+
 $session = SSession::getInstance();
 
 if (isset($session->permissions)) {
@@ -8,17 +9,12 @@ if (isset($session->permissions)) {
 }
 ?>
 
-<!-- Page Title
-============================================= -->
 <section id="page-title">
-
     <div class="container clearfix">
         <h1>Insertar Semestre</h1>
     </div>
-</section><!-- #page-title end -->
+</section>
 
-<!-- Content
-============================================= -->
 <section id="content">
     <div class="content-wrap">
         <div class="container clearfix">
@@ -41,21 +37,20 @@ if (isset($session->permissions)) {
                                 </select>
                                 <input type="hidden" id="failed-semester" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                             </div>
-
                             <div class="col_full nobottommargin">                      
                                 <input type="submit" value="Insertar" class="button button-3d button-black nomargin form-control" id="submit" style="display: block; text-align: center;"/>
-                                <input type="hidden" id="warning"/>
-                                <input type="hidden" id="success"/>
-                                <input type="hidden" id="failed"/>
+                                <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i>La operacion no se pudo realizar, intente de nuevo o m&aacute;s tarde!" data-notify-position="bottom-full-width"/>
+                                <input type="hidden" id="success" data-notify-type="success" data-notify-msg="<i class='icon-ok-sign'></i> Operaci&oacute;n exitosa, revise en breve...!" data-notify-position="bottom-full-width"/>
+                                <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Espere un momento...!" data-notify-position="bottom-full-width"/>      
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-</section><!-- #content end -->
+    </div>
+</section>
 
-<!--MODAL -->
 <a id="showModal" style="display: none;"class="button button-3d button-black nomargin" data-target="#myModal" data-toggle="modal">Modal</a>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -102,12 +97,12 @@ if (isset($session->permissions)) {
 
     //Insert
     $("#form-submity").click(function () {
-        
+
         var parameters = {
             'year': $("#form-year").val().trim(),
             'semester': $("#form-semester").val().trim()
         };
-        
+
         $.post("?controller=Semester&action=insert", parameters, function (data) {
             if (data.result === "1") {
                 $("#success").attr({
@@ -130,8 +125,5 @@ if (isset($session->permissions)) {
     });
 </script>
 
-<!-- End Content
-============================================= -->    
 <?php
 include_once 'public/footer.php';
-

@@ -7,10 +7,8 @@ include_once 'public/headerAdmin.php';
     <div class="container clearfix">
         <h1>Registrar Estudiante</h1>
     </div>
-</section><!-- #page-title end -->
+</section>
 
-<!-- Content
-============================================= -->
 <section id="content">
     <div class="content-wrap">
         <div class="container clearfix">
@@ -135,8 +133,7 @@ include_once 'public/headerAdmin.php';
             </div>
         </div>
     </div>
-</div>
-</section><!-- #content end -->
+</section>
 
 <script>
     function sendData() {
@@ -184,13 +181,9 @@ include_once 'public/headerAdmin.php';
             }
             ;
         }, "json");
-
-
     });
 </script>
 
 <?php
 
 include_once 'public/footer.php';
-
-

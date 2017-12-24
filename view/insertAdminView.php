@@ -1,4 +1,5 @@
 <?php
+
 $session = SSession::getInstance();
 
 if (isset($session->permissions)) {
@@ -65,6 +66,7 @@ if (isset($session->permissions)) {
                 </div>
             </div>
         </div>
+    </div>
 </section>
 
 <a id="showModal" style="display: none;"class="button button-3d button-black nomargin" data-target="#myModal" data-toggle="modal">Modal</a>
@@ -153,8 +155,6 @@ if (isset($session->permissions)) {
     });
 </script>
 
-<!-- End Content
-============================================= -->    
 <?php
 
 include_once 'public/footer.php';

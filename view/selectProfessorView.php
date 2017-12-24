@@ -8,8 +8,6 @@ if (isset($session->permissions)) {
 }
 ?>
 
-<!-- Page Title
-============================================= -->
 <section id="page-title">
     <div class="container clearfix">
         <h1>Ver Profesores</h1>
@@ -32,7 +30,6 @@ if (isset($session->permissions)) {
                                 <?php } ?>
                             </select>
                         </div>
-                        <br>
                         <div class="acc_content clearfix"></div>
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped">
@@ -130,6 +127,7 @@ if (isset($session->permissions)) {
                 </div>
             </div>
         </div>
+    </div>
 </section>
 
 <script>
@@ -193,6 +191,5 @@ if (isset($session->permissions)) {
         }
     });
 </script>
-
 <?php
 include_once 'public/footer.php';

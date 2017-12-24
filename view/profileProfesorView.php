@@ -1,11 +1,9 @@
 <?php
+
 include_once 'public/header.php';
 ?>
 
-<!-- Content
-                ============================================= -->
 <section id="content">
-
     <section id="page-title" class="page-title-parallax page-title-dark page-title-right" style="padding: 150px 0; background-image: url('public/images/parallax/parallax-bg.jpg'); background-size: cover; background-position: center center;" data-stellar-background-ratio="0.2">
         <div class="col-sm-9">
             <img src="public/images/icons/avatar.jpg" class="alignleft img-circle  img-thumbnail notopmargin nobottommargin" alt="Avatar" style="max-width: 400px;">
@@ -15,46 +13,34 @@ include_once 'public/header.php';
                 <span style="color: #DBDFE3;text-align: left" ><i>Direcci&oacute;n Coral</i></span>
             </div>
         </div>
-    </section><!-- #page-title end -->
-
+    </section>
     <br><br><br><br>
-
     <div class="content-wrap">
-
         <div class="container clearfix">
-
             <div class="col_one_third alignleft">
-
                 <div class="heading-block fancy-title nobottomborder title-bottom-border">
                     <h4> Perfil</h4>
                 </div>
-
                 <p style="text-align: justify;">
                     Siempre en constante formaci&oacute;n y capacitaci&oacute;n.
                     <br>Orientada al trabajo en ensambles vocales y corales, trabajando para llevar la m&uacute;sica a la comunidad.
                 </p>
-
             </div>
 
             <div class="col_two_fifth alignleft">
-
                 <div class="heading-block fancy-title nobottomborder title-bottom-border">
                     <h4> Habilidades</h4>
                 </div>
-
                 <p style="text-align: justify;">
                 <li>Habilidad para trabajar con ni&ntilde;os, adolescentes y adultos.</li>
                 <li>Enfoque de trabajo en equipo.</li>
                 <li>Gesti&oacute;n de proyectos musicales.</li>
                 </p>
-
             </div>
             <div class="col_one_fourth alignleft">
-
                 <div class="heading-block fancy-title nobottomborder title-bottom-border">
                     <h4 class="icon-users"> Contacto</h4>
                 </div>
-
                 <p>
                     Tom&aacute;s Guardia, Turrialba, Cartago, Costa Rica.
                 <li class="icon-browser"><a href="http://fusionacademiacr.com/" target="__blank"> fusionacademiacr.com</a></li>
@@ -63,14 +49,11 @@ include_once 'public/header.php';
                 <br>
                 <li class="icon-facebook-sign"><a href="fb.com/fusionacademiacr" target="__blank"> fusionacademiacr</a></li>
                 </p>
-
             </div>
             <div class="col_full aligncenter">
-
                 <div class="heading-block fancy-title nobottomborder title-bottom-border">
                     <h4 class="icon-study"> Formaci&oacute;n</h4>
                 </div>
-
                 <div class="tab-content clearfix" id="tab-replies">
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped">
@@ -104,21 +87,13 @@ include_once 'public/header.php';
                             </tbody>
                         </table>
                     </div>
-
                 </div>
-
             </div>
             <div class="col_two_third col_last alignright">
-
-
             </div>
-
         </div>
     </div>
-
 </section><!-- #content end -->
-
-
 <?php
+
 include_once 'public/footer.php';
-?>

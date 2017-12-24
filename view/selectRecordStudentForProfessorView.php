@@ -2,9 +2,9 @@
 $session = SSession::getInstance();
 
 if (isset($session->permissions)) {
-    if($session->permissions=='T'){
+    if ($session->permissions == 'T') {
         include_once 'public/headerProfessor.php';
-    }else{
+    } else {
         header("Location:?action=notFound");
     }
 } else {
@@ -12,17 +12,12 @@ if (isset($session->permissions)) {
 }
 ?>
 
-<!-- Page Title
-============================================= -->
 <section id="page-title">
-
     <div class="container clearfix">
         <h1>Ver Expediente Academico</h1>
     </div>
-</section><!-- #page-title end -->
+</section>
 
-<!-- Content
-============================================= -->
 <section id="content">
     <div class="content-wrap">
         <div class="container clearfix">
@@ -30,7 +25,6 @@ if (isset($session->permissions)) {
                 <div class="acctitle">
                     <div class="acc_content clearfix">
                         <form id="form" class="nobottommargin">
-                            
                             <div class="white-section">
                                 <label for="form-courses">Cursos Disponibles:</label>
                                 <select id="form-courses" class="selectpicker form-control" data-live-search="true">
@@ -40,7 +34,7 @@ if (isset($session->permissions)) {
                                         if (isset($var["ID"])) {
                                             ?>
                                             <option value="<?php echo $var["ID"] ?> " data-tokens="">
-                                                <?php echo $var["name"]?>
+                                                <?php echo $var["name"] ?>
                                             </option>
                                             <?php
                                         }
@@ -158,21 +152,24 @@ if (isset($session->permissions)) {
                                     </tbody>
                                 </table>
                             </div>
+                            <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i>La operacion no se pudo realizar, intente de nuevo o m&aacute;s tarde!" data-notify-position="bottom-full-width"/>
+                            <input type="hidden" id="success" data-notify-type="success" data-notify-msg="<i class='icon-ok-sign'></i> Operaci&oacute;n exitosa, revise en breve...!" data-notify-position="bottom-full-width"/>
+                            <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Espere un momento...!" data-notify-position="bottom-full-width"/>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-</section><!-- #content end -->
+    </div>
+</section>
 
-
-<script>  
+<script>
     $("#form-courses").change(function () {
-        if($("#form-courses").val()==="-1"){
+        if ($("#form-courses").val() === "-1") {
             $("#failed-form-courses").attr("data-notify-msg", "<i class=icon-remove-sign></i> Curso inválido. Seleccione e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-form-courses"));
             return false;
-        }else{
+        } else {
             var parameters = {
                 "appointment": $("#form-courses").val()
             };
@@ -193,17 +190,17 @@ if (isset($session->permissions)) {
             }, "json");
         }
     });
-    
+
     $("#form-student").change(function () {
-        if($("#form-courses").val()==="-1"){
+        if ($("#form-courses").val() === "-1") {
             $("#failed-form-courses").attr("data-notify-msg", "<i class=icon-remove-sign></i> Curso inválido. Seleccione e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-form-courses"));
             return false;
-        }else if($("#form-student").val()==="-1"){
+        } else if ($("#form-student").val() === "-1") {
             $("#failed-form-student").attr("data-notify-msg", "<i class=icon-remove-sign></i> Estudiante inválido. Seleccione e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-form-student"));
             return false;
-        }else{
+        } else {
             var parameters = {
                 "appointment": $("#form-courses").val(),
                 "identification": $("#form-student").val()
@@ -230,52 +227,52 @@ if (isset($session->permissions)) {
             }, "json");
         }
     });
-    
+
     $("#form-activity").change(function () {
-        if($("#form-courses").val()==="-1"){
+        if ($("#form-courses").val() === "-1") {
             $("#failed-form-courses").attr("data-notify-msg", "<i class=icon-remove-sign></i> Curso inválido. Seleccione e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-form-courses"));
             return false;
-        }else if($("#form-student").val()==="-1"){
+        } else if ($("#form-student").val() === "-1") {
             $("#failed-form-student").attr("data-notify-msg", "<i class=icon-remove-sign></i> Estudiante inválido. Seleccione e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-form-student"));
             return false;
-        }else if($("#form-activity").val()==="-1"){
+        } else if ($("#form-activity").val() === "-1") {
             $("#failed-form-activity").attr("data-notify-msg", "<i class=icon-remove-sign></i> Actividad de clase inválida. Seleccione e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-form-activity"));
             return false;
-        }else{
+        } else {
             var parameters = {
                 "appointment": $("#form-courses").val(),
                 "identification": $("#form-student").val(),
                 "consecutive": $("#form-activity").val()
             };
-            $.post("?controller=ClassActivity&action=selectClassActivity", parameters, function (data) {          
+            $.post("?controller=ClassActivity&action=selectClassActivity", parameters, function (data) {
                 if (data.consecutive_class) {
                     $("#form-consecutive-table").html(data.consecutive_class);
                     $("#form-date-table").html(data.date);
-                    if(data.assistance==="P"){
+                    if (data.assistance === "P") {
                         $("#form-typeA-table").html("Puntual");
-                    }else if(data.assistance==="I"){
+                    } else if (data.assistance === "I") {
                         $("#form-typeA-table").html("Asuncia Injustificada");
-                    }else{
+                    } else {
                         $("#form-typeA-table").html("Ausencia Justificada");
                     }
                     $("#form-observation-table").html(data.observation);
-                
+
                     var parameters2 = {
                         "appointment": $("#form-courses").val(),
                         "identification": $("#form-student").val(),
                         "consecutive": data.consecutive_class
                     };
-                    $.post("?controller=ClassActivity&action=selectRecordContentClassActivity", parameters2, function (data2) {   
+                    $.post("?controller=ClassActivity&action=selectRecordContentClassActivity", parameters2, function (data2) {
                         var table = document.getElementById("table-contents");
                         table.innerHTML = "";
                         for (var i = 0; i < data2.length; i++) {
                             var row = table.insertRow(0);
                             var cell1 = row.insertCell(0);
                             var cell2 = row.insertCell(1);
-                            cell1.innerHTML = "Contenido"+" "+(data2.length-i);
+                            cell1.innerHTML = "Contenido" + " " + (data2.length - i);
                             cell2.innerHTML = data2[i].content;
                         }
                     }, "json");
@@ -285,24 +282,22 @@ if (isset($session->permissions)) {
                         "data-notify-position": "bottom-full-width"
                     });
                     SEMICOLON.widget.notifications($("#success"));
-            } else {
-                $("#form-consecutive-table").html("");
-                $("#form-date-table").html("");
-                $("#form-typeA-table").html("");
-                $("#form-observation-table").html("");
-                $("#warning").attr({
-                    "data-notify-type": "warning",
-                    "data-notify-msg": "<i class=icon-warning-sign></i> Operacion Incompleta, intente de nuevo!",
-                    "data-notify-position": "bottom-full-width"
-                });
-                SEMICOLON.widget.notifications($("#warning"));
-            }
-        }, "json");
-    }
-});
+                } else {
+                    $("#form-consecutive-table").html("");
+                    $("#form-date-table").html("");
+                    $("#form-typeA-table").html("");
+                    $("#form-observation-table").html("");
+                    $("#warning").attr({
+                        "data-notify-type": "warning",
+                        "data-notify-msg": "<i class=icon-warning-sign></i> Operacion Incompleta, intente de nuevo!",
+                        "data-notify-position": "bottom-full-width"
+                    });
+                    SEMICOLON.widget.notifications($("#warning"));
+                }
+            }, "json");
+        }
+    });
 </script>
 
-<!-- End Content
-============================================= -->    
 <?php
 include_once 'public/footer.php';

@@ -2,27 +2,21 @@
 $session = SSession::getInstance();
 
 if (isset($session->permissions)) {
-    if($session->permissions=='A'){
+    if ($session->permissions == 'A') {
         include_once 'public/headerAdmin.php';
-    }else{
+    } else {
         header("Location:?controller=Index&action=notFound");
     }
 } else {
     include_once 'public/header.php';
 }
 ?>
-
-<!-- Page Title
-============================================= -->
 <section id="page-title">
-
     <div class="container clearfix">
         <h1>Eliminar Curso</h1>
     </div>
-</section><!-- #page-title end -->
+</section>
 
-<!-- Content
-============================================= -->
 <section id="content">
     <div class="content-wrap">
         <div class="container clearfix">
@@ -87,16 +81,17 @@ if (isset($session->permissions)) {
                             </div>
                             <div class="col_full nobottommargin">
                                 <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" style="display : block; text-align: center;" data-target="#myModal">Reactivar</a>
-                                <input type="hidden" id="warning" value="w"/>
-                                <input type="hidden" id="success" value="s"/>
-                                <input type="hidden" id="failed" value="f"/>
+                                <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i>La operacion no se pudo realizar, intente de nuevo o m&aacute;s tarde!" data-notify-position="bottom-full-width"/>
+                                <input type="hidden" id="success" data-notify-type="success" data-notify-msg="<i class='icon-ok-sign'></i> Operaci&oacute;n exitosa, revise en breve...!" data-notify-position="bottom-full-width"/>
+                                <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Espere un momento...!" data-notify-position="bottom-full-width"/>                        
                             </div>                     
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-</section><!-- #content end -->
+    </div>
+</section>
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -146,11 +141,11 @@ if (isset($session->permissions)) {
 
     //Open Modal
     $("#form-submit").click(function () {
-         if($("#form-courses").val()==="-1"){
+        if ($("#form-courses").val() === "-1") {
             $("#failed-form-courses").attr("data-notify-msg", "<i class=icon-remove-sign></i> Curso inválido. Seleccione e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-form-courses"));
             return false;
-        }else{
+        } else {
             $('#form-submit').attr('data-target', '#myModal');
         }
     });
@@ -168,7 +163,7 @@ if (isset($session->permissions)) {
                     "data-notify-position": "bottom-full-width"
                 });
                 SEMICOLON.widget.notifications($("#success"));
-                setTimeout("location.href = '?controller=Course&action=reactivate';",2000);
+                setTimeout("location.href = '?controller=Course&action=reactivate';", 2000);
             } else {
                 $("#warning").attr({
                     "data-notify-type": "warning",
@@ -182,8 +177,5 @@ if (isset($session->permissions)) {
 
 </script>
 
-
-<!-- End Content
-============================================= -->    
 <?php
 include_once 'public/footer.php';

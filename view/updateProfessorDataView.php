@@ -12,15 +12,12 @@ if (isset($session->permissions)) {
 }
 ?>
 
-<!-- Page Title
-============================================= -->
 <section id="page-title">
     <div class="container clearfix">
         <h1>Datos Personales</h1>
     </div>
 </section>
-<!-- Content
-============================================= -->
+
 <section id="content">
     <div class="content-wrap">
         <div class="container clearfix">
@@ -133,15 +130,16 @@ if (isset($session->permissions)) {
                         </div>
                         <div class="col_full nobottommargin">                      
                             <input type="submit" value="Actualizar" class="button button-3d button-black nomargin form-control" style="display: block; text-align: center;"/>
-                            <input type="hidden" id="warning"/>
-                            <input type="hidden" id="success"/>
-                            <input type="hidden" id="failed"/>
+                            <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i>La operacion no se pudo realizar, intente de nuevo o m&aacute;s tarde!" data-notify-position="bottom-full-width"/>
+                            <input type="hidden" id="success" data-notify-type="success" data-notify-msg="<i class='icon-ok-sign'></i> Operaci&oacute;n exitosa, revise en breve...!" data-notify-position="bottom-full-width"/>
+                            <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Espere un momento...!" data-notify-position="bottom-full-width"/>                        
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-</section><!-- #content end -->
+    </div>
+</section>
 
 <!--MODAL -->
 <a id="showModal" style="display: none;"class="button button-3d button-black nomargin" data-target="#myModal" data-toggle="modal">Modal</a>
@@ -275,7 +273,5 @@ if (isset($session->permissions)) {
     });
 </script>
 
-<!-- End Content
-============================================= -->    
 <?php
 include_once 'public/footer.php';

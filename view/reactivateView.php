@@ -2,17 +2,12 @@
 include_once 'public/headerAdmin.php';
 ?>
 
-<!-- Page Title
-    ============================================= -->
 <section id="page-title">
-
     <div class="container clearfix">
         <h1>Reactivar Usuario</h1>
     </div>
-</section><!-- #page-title end -->
+</section>
 
-<!-- Content
-    ============================================= -->
 <section id="content">
     <div class="content-wrap">
         <div class="container clearfix">
@@ -68,9 +63,9 @@ include_once 'public/headerAdmin.php';
                                 </table>
                             </div>
                             <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" data-target="#myModal" id="next" data-target="" style="display: none; text-align: center;">Reactivar</a>
-                            <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i> El Estudiante no se pudo activar!" data-notify-position="bottom-full-width"/>
-                            <input type="hidden" id="success" data-notify-type="success" data-notify-msg="<i class='icon-ok-sign'></i> Operacion Exitosa!" data-notify-position="bottom-full-width"/>
-                        </form>
+                            <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i>La operacion no se pudo realizar, intente de nuevo o m&aacute;s tarde!" data-notify-position="bottom-full-width"/>
+                            <input type="hidden" id="success" data-notify-type="success" data-notify-msg="<i class='icon-ok-sign'></i> Operaci&oacute;n exitosa, revise en breve...!" data-notify-position="bottom-full-width"/>
+                            <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Espere un momento...!" data-notify-position="bottom-full-width"/>                              </form>
                     </div>
                 </div>
                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -96,7 +91,8 @@ include_once 'public/headerAdmin.php';
                 </div>
             </div>
         </div>
-</section><!-- #content end -->
+    </div>
+</section>
 <script>
     $("#form-student").change(function () {
         if ($("#form-student").val() !== "-1") {
@@ -151,8 +147,6 @@ include_once 'public/headerAdmin.php';
     );
 </script>
 
-<!-- End Content
-    ============================================= -->    
 <?php
 include_once 'public/footer.php';
 

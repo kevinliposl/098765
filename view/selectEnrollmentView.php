@@ -8,17 +8,12 @@ if (isset($session->permissions)) {
 }
 ?>
 
-<!-- Page Title
-============================================= -->
 <section id="page-title">
-
     <div class="container clearfix">
         <h1>Obtener cursos matriculados</h1>
     </div>
-</section><!-- #page-title end -->
+</section>
 
-<!-- Content
-============================================= -->
 <section id="content">
     <div class="content-wrap">
         <div class="container clearfix">
@@ -36,7 +31,7 @@ if (isset($session->permissions)) {
                                             ?>
                                             <option value="<?php echo $var["identification"] ?> " data-tokens="">
                                                 <?php
-                                                        echo $var["Name"];
+                                                echo $var["Name"];
                                                 ?>
                                             </option>
                                             <?php
@@ -46,7 +41,7 @@ if (isset($session->permissions)) {
                                 </select>
                             </div>
                             <br>
-                           <div class="acc_content clearfix"></div>
+                            <div class="acc_content clearfix"></div>
                             <div class="table-responsive">
                                 <table class="table table-bordered table-striped" id="table-course-professor">
                                     <h5 style="text-align: center;">Matriculas Activas</h5>
@@ -59,12 +54,16 @@ if (isset($session->permissions)) {
                                     </tbody>
                                 </table>
                             </div>
+                            <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i>La operacion no se pudo realizar, intente de nuevo o m&aacute;s tarde!" data-notify-position="bottom-full-width"/>
+                            <input type="hidden" id="success" data-notify-type="success" data-notify-msg="<i class='icon-ok-sign'></i> Operaci&oacute;n exitosa, revise en breve...!" data-notify-position="bottom-full-width"/>
+                            <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Espere un momento...!" data-notify-position="bottom-full-width"/>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-</section><!-- #content end -->
+    </div>
+</section>
 
 <script>
     //Change Combobox
@@ -77,25 +76,25 @@ if (isset($session->permissions)) {
         $.post("?controller=Enrollment&action=selectCourses", parameters, function (data) {
 
             var table = document.getElementById("table-course-professor");
-          
+
             for (var i = 0; i < data.length; i++) {
                 var row = table.insertRow(0);
-               
+
                 var cell1 = row.insertCell(0);
                 var cell2 = row.insertCell(0);
                 var cell3 = row.insertCell(0);
-                
-                cell1.innerHTML = data[i].initials+": "+data[i].name;
+
+                cell1.innerHTML = data[i].initials + ": " + data[i].name;
                 cell2.innerHTML = data[i].Name;
                 cell3.innerHTML = data[i].date;
             }
-            
+
             var row = table.insertRow(0);
-               
+
             var cell1 = row.insertCell(0);
             var cell2 = row.insertCell(0);
             var cell3 = row.insertCell(0);
-                
+
             cell1.innerHTML = "Curso";
             cell2.innerHTML = "Profesor";
             cell3.innerHTML = "Fecha";
@@ -104,8 +103,5 @@ if (isset($session->permissions)) {
 
 </script>
 
-
-<!-- End Content
-============================================= -->    
 <?php
 include_once 'public/footer.php';

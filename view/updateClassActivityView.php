@@ -5,24 +5,19 @@ if (isset($session->permissions)) {
     if ($session->permissions == 'T') {
         include_once 'public/headerProfessor.php';
     } else {
-        header("Location:?controller=Index&action=notFound");
+        header("Location:?action=notFound");
     }
 } else {
     include_once 'public/header.php';
 }
 ?>
 
-<!-- Page Title
-============================================= -->
 <section id="page-title">
-
     <div class="container clearfix">
         <h1>Actualizar Actividad y Asistencia en Clase</h1>
     </div>
-</section><!-- #page-title end -->
+</section>
 
-<!-- Content
-============================================= -->
 <section id="content">
     <div class="content-wrap">
         <div class="container clearfix">
@@ -83,13 +78,10 @@ if (isset($session->permissions)) {
                                 <label for="form-content">Contenido de Clase:</label>
                                 <input type="text" id="form-content" class="form-control" required/>
                                 <input type="hidden" id="failed-content" data-notify-type= "error" data-notify-position="bottom-full-width"/>
-                                
+
                                 <div class="line line-sm"></div>
-                                
+
                                 <a id="form-save"  class="button button-3d button-black nomargin" style="display : block; text-align: center;" >Guardar Contenido</a>
-                                <input type="hidden" id="warning" value="w"/>
-                                <input type="hidden" id="success" value="s"/>
-                                <input type="hidden" id="failed" value="f"/>
                             </div>  
                             <div class="col-lg-6" style="padding: 10px;">
                                 <label for="form-addContent">Contenidos Agregados:</label>
@@ -97,13 +89,10 @@ if (isset($session->permissions)) {
                                     <option value="-1" data-tokens="">Seleccione un contenido</option>
                                 </select>
                                 <input type="hidden" id="failed-addContent" data-notify-type= "error" data-notify-position="bottom-full-width"/>
-                            
+
                                 <div class="line line-sm"></div>
-                                
+
                                 <a id="form-delete"  class="button button-3d button-black nomargin" style="display : block; text-align: center;" >Eliminar Contenido</a>
-                                <input type="hidden" id="warning" value="w"/>
-                                <input type="hidden" id="success" value="s"/>
-                                <input type="hidden" id="failed" value="f"/>
                             </div>
                             <div class="col_full" style="padding: 10px;">
                                 <label for="form-observation">Observaci&oacute;n General:</label>
@@ -112,9 +101,9 @@ if (isset($session->permissions)) {
                             </div>
                             <div class="col_full" style="padding: 10px;">
                                 <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" style="display : block; text-align: center;" data-target="#myModal">Actualizar</a>
-                                <input type="hidden" id="warning" value="w"/>
-                                <input type="hidden" id="success" value="s"/>
-                                <input type="hidden" id="failed" value="f"/>
+                                <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i>La operacion no se pudo realizar, intente de nuevo o m&aacute;s tarde!" data-notify-position="bottom-full-width"/>
+                                <input type="hidden" id="success" data-notify-type="success" data-notify-msg="<i class='icon-ok-sign'></i> Operaci&oacute;n exitosa, revise en breve...!" data-notify-position="bottom-full-width"/>
+                                <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Espere un momento...!" data-notify-position="bottom-full-width"/>
                             </div>  
                             <div class="white-section" style="display : none;">
                                 <select id="form-backup" class="form-control selectpicker" data-live-search="true">
@@ -125,9 +114,9 @@ if (isset($session->permissions)) {
                 </div>
             </div>
         </div>
-</section><!-- #content end -->
+    </div>
+</section>
 
-<!--MODAL -->
 <a id="showModal" style="display: none;"class="button button-3d button-black nomargin" data-target="#myModal" data-toggle="modal">Modal</a>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -364,7 +353,5 @@ if (isset($session->permissions)) {
     });
 </script>
 
-<!-- End Content
-============================================= -->    
 <?php
 include_once 'public/footer.php';
