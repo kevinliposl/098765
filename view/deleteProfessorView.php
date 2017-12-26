@@ -54,28 +54,24 @@ if (isset($session->permissions)) {
                                             <td>Identificaci&oacute;n</td>
                                             <td>
                                                 <a id="form-id"></a>
-                                                <input type="hidden" id="failed-id" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Nombre</td>
                                             <td>
                                                 <a id="form-name"></a>
-                                                <input type="hidden" id="failed-name" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Primer Apellido</td>
                                             <td>
                                                 <a id="form-first-lastName"></a>
-                                                <input type="hidden" id="failed-first-lastName" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Segundo Apellido</td>
                                             <td>
                                                 <a id="form-second-lastName"></a>
-                                                <input type="hidden" id="failed-second-lastName" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                             </td>
                                         </tr>
                                         <tr>
@@ -194,8 +190,5 @@ if (isset($session->permissions)) {
 
 </script>
 
-
-<!-- End Content
-    ============================================= -->    
 <?php
 include_once 'public/footer.php';

@@ -130,6 +130,7 @@ if (isset($session->permissions)) {
                     $("#form-year-table").html("");
                     $("#form-semester-table").html("");
                     $("#form-submit").css("display", 'none');
+                    SEMICOLON.widget.notifications($("#warning"));
                 }
             }, "json");
         } else {
@@ -144,23 +145,22 @@ if (isset($session->permissions)) {
 
         $("#form-submity").attr('disabled', 'disabled');
         $("#form-close").attr('disabled', 'disabled');
+
         SEMICOLON.widget.notifications($("#wait"));
 
         var parameters = {
             "id": $("#form-id").val()
         };
 
-        SEMICOLON.widget.notifications($("#wait"));
-
         $.post("?controller=Semester&action=delete", parameters, function (data) {
             if (data.result === "1") {
                 SEMICOLON.widget.notifications($("#success"));
-                location.href = "?controller=Semester&action=delete";
+                setTimeout("location.href='?controller=Semester&action=delete';", 1500);
             } else {
                 SEMICOLON.widget.notifications($("#warning"));
+                $("#form-submity").removeAttr('disabled');
+                $("#form-close").removeAttr('disabled');
             }
-            $("#form-submity").removeAttr('disabled');
-            $("#form-close").removeAttr('disabled');
         }, "json");
     });
 

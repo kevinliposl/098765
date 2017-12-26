@@ -1,5 +1,15 @@
 <?php
-    include_once 'public/headerStudent.php';
+$session = SSession::getInstance();
+
+if (isset($session->permissions)) {
+    if ($session->permissions == 'S') {
+        include_once 'public/headerStudent.php';
+    } else {
+        header('Location:?action=notFound');
+    }
+} else {
+    header('Location:?action=notFound');
+}
 ?>
 
 <section id="page-title">
@@ -38,9 +48,9 @@
                     ?>
                 </tbody>
             </table>
-        </div><!-- /.table-responsive -->
+        </div><
     </div>
-</section><!-- #content end -->
+</section>
 <script>
     $("#form-student").change(function () {
         if ($("#form-student").val() !== "-1") {
@@ -86,9 +96,5 @@
     });
 </script>
 
-<!-- End Content
-============================================= -->    
 <?php
 include_once 'public/footer.php';
-
-

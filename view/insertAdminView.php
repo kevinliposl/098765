@@ -145,12 +145,12 @@ if (isset($session->permissions)) {
         $.post("?controller=Admin&action=insert", parameters, function (data) {
             if (data.result === "1") {
                 SEMICOLON.widget.notifications($("#success"));
-                setTimeout("location.href = '?';", 1000);
+                setTimeout("location.href='?controller=Admin&action=delete';", 1500);
             } else {
                 SEMICOLON.widget.notifications($("#warning"));
+                $("#form-submity").removeAttr('disabled');
+                $("#form-close").removeAttr('disabled');
             }
-            $("#form-submity").removeAttr('disabled');
-            $("#form-close").removeAttr('disabled');
         }, "json");
     });
 </script>

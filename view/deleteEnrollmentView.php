@@ -2,9 +2,13 @@
 $session = SSession::getInstance();
 
 if (isset($session->permissions)) {
-    include_once 'public/headerAdmin.php';
+    if ($session->permissions == 'A') {
+        include_once 'public/headerAdmin.php';
+    } else {
+        header('Location:?action=notFound');
+    }
 } else {
-    include_once 'public/header.php';
+    header('Location:?action=notFound');
 }
 ?>
 
@@ -13,6 +17,7 @@ if (isset($session->permissions)) {
         <h1>Desmatricular</h1>
     </div>
 </section>
+
 <section id="content">
     <div class="content-wrap">
         <div class="container clearfix">
@@ -41,7 +46,6 @@ if (isset($session->permissions)) {
                             <div class="white-section">
                                 <label for="form-professors">Cursos disponibles:</label>
                                 <select name="form-professors" id="form-professors" class="form-control selectpicker" data-live-search="true">
-                                    <!--<option value="-1" data-tokens="">Seleccione los profesores</option>-->
                                 </select>
                             </div>
                             <br>
@@ -89,11 +93,15 @@ if (isset($session->permissions)) {
             "identification": $("#form-student").val()
         };
         document.getElementById("form-professors").options.length = 0;
+
+        SEMICOLON.widget.notifications($("#wait"));
+
         $.post("?controller=Enrollment&action=selectCourses", parameters, function (data) {
             for (var i = 0; i < data.length; i++) {
                 $('#form-professors').append($("<option></option>").attr("value", data[i].ID).text("Curso: " + data[i].name + "-Profesor(a): " + data[i].Name));//AGREGAR OPCIONES
             }
             $("#form-professors").selectpicker("refresh");
+
         }, "json");
     });
 
@@ -104,15 +112,23 @@ if (isset($session->permissions)) {
 
     //Delete 
     $("#form-submity").click(function () {
+
+        $("#form-submity").attr('disabled', 'disabled');
+        $("#form-close").attr('disabled', 'disabled');
+
+        SEMICOLON.widget.notifications($("#wait"));
+
         var parameters = {
             "ID": $("#form-professors").val()
         };
         $.post("?controller=Enrollment&action=delete", parameters, function (data) {
             if (data.result === "1") {
                 SEMICOLON.widget.notifications($("#success"));
-                setTimeout("location.href = '?controller=Enrollment&action=delete';", 2000);
+                setTimeout("location.href = '?controller=Enrollment&action=delete';", 1500);
             } else {
                 SEMICOLON.widget.notifications($("#warning"));
+                $("#form-submity").removeAttr('disabled');
+                $("#form-close").removeAttr('disabled');
             }
         }, "json");
     });

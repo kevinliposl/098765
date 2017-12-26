@@ -34,13 +34,13 @@ if (isset($session->permissions)) {
                             <div class="col_full">
                                 <label for="form-password">Nueva Contraseña:</label>
                                 <input type="password" id="form-password" class="form-control" required/>
-                                <input type="hidden" id="failed-password" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                                <input type="hidden" id="failed-password" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class='icon-remove-sign'></i> Formato no valido, Minimo 8 caracteres. Complete e intente de nuevo!"/>
                             </div>
 
                             <div class="col_full">
                                 <label for="form-password2">Digite nuevamente la nueva contraseña:</label>
                                 <input type="password" id="form-password2" class="form-control" required/>
-                                <input type="hidden" id="failed-password2" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                                <input type="hidden" id="failed-password2" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class='icon-remove-sign'></i> Las contraseñas no coinciden. Complete e intente de nuevo!"/>
                             </div>
 
                             <div class="col_full nobottommargin">                      
@@ -70,7 +70,7 @@ if (isset($session->permissions)) {
                     <h4 style="text-align: center;">¿Realmente desea cambiar su contraseña?</h4>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal"id="form-close">Cerrar</button>
                     <input type="button" class="btn btn-primary button-black nomargin" id="form-submity" value="Cambiar"/>
                 </div>
             </div>
@@ -80,6 +80,12 @@ if (isset($session->permissions)) {
 <script>
     //Insert
     $("#form-submity").click(function () {
+
+        $("#form-submity").attr('disabled', 'disabled');
+        $("#form-close").attr('disabled', 'disabled');
+
+        SEMICOLON.widget.notifications($("#wait"));
+
         var parameters = {
             "newPass": pass1
         };
@@ -90,8 +96,9 @@ if (isset($session->permissions)) {
                 setTimeout("location.href = '?';", 1500);
             } else {
                 SEMICOLON.widget.notifications($("#warning"));
+                $("#form-submity").removeAttr('disabled');
+                $("#form-close").removeAttr('disabled');
             }
-            ;
         }, "json");
     });
 
@@ -101,18 +108,15 @@ if (isset($session->permissions)) {
         pass2 = $("#form-password2").val().trim();
 
         if (pass1.length < 8 || pass1.length > 15 || pass1.split(" ", 2).length > 1) {
-            $("#failed-password").attr("data-notify-msg", "<i class=icon-remove-sign></i> Formato no valido, Minimo 8 caracteres. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-password"));
             return false;
 
         } else if (pass2.length < 8 || pass2.length > 15 || pass2.split(" ", 2).length > 1) {
-            $("#failed-password2").attr("data-notify-msg", "<i class=icon-remove-sign></i> Formato no valido. Minimo 8 caracteres. Complete e intente de nuevo!");
-            SEMICOLON.widget.notifications($("#failed-password2"));
+            SEMICOLON.widget.notifications($("#failed-password"));
             return false;
 
         } else if (pass1 !== pass2) {
-            $("#failed-password").attr("data-notify-msg", "<i class=icon-remove-sign></i> Las contraseñas no coinciden. Complete e intente de nuevo!");
-            SEMICOLON.widget.notifications($("#failed-password"));
+            SEMICOLON.widget.notifications($("#failed-password2"));
             return false;
         }
         $('#showModal').click();

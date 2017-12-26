@@ -5,7 +5,7 @@ if (isset($session->permissions)) {
     if ($session->permissions == 'A') {
         include_once 'public/headerAdmin.php';
     } else {
-        header("Location:?controller=Index&action=notFound");
+        header("Location:?action=notFound");
     }
 } else {
     include_once 'public/header.php';
@@ -106,9 +106,9 @@ if (isset($session->permissions)) {
                 "ID_Semester": $("#form-semester").val()
             };
             document.getElementById("form-courses").options.length = 0;
-            
+
             SEMICOLON.widget.notifications($("#wait"));
-            
+
             $.post("?controller=CourseSemester&action=selectAllCoursesSemester", parameters, function (data) {
                 $('#form-courses').append($("<option></option>").attr("value", "-1").text("Seleccione un Curso"));
                 for (var i = 0; i < data.length; i++) {
@@ -118,14 +118,14 @@ if (isset($session->permissions)) {
             }, "json");
         }
     });
-    
+
     $("#form-courses").change(function () {
-        if ($("#form-courses").val() === "-1" && $("#form-semester").val() === "-1" ) {
+        if ($("#form-courses").val() === "-1" && $("#form-semester").val() === "-1") {
             SEMICOLON.widget.notifications($("#failed-form-semester"));
-            $("#form-submit").css("display","none");
+            $("#form-submit").css("display", "none");
             return false;
         } else {
-            $("#form-submit").css("display","block");
+            $("#form-submit").css("display", "block");
         }
     });
 
@@ -145,26 +145,26 @@ if (isset($session->permissions)) {
 
     //Delete 
     $("#form-submity").click(function () {
-        
+
         $("#form-submity").attr('disabled', 'disabled');
         $("#form-close").attr('disabled', 'disabled');
-        
+
         SEMICOLON.widget.notifications($("#wait"));
-        
+
         var parameters = {
             "ID_Semester": $("#form-semester").val(),
             "initials": $("#form-courses").val()
         };
-        
+
         $.post("?controller=CourseSemester&action=deleteCourse", parameters, function (data) {
             if (data.result === "1") {
                 SEMICOLON.widget.notifications($("#success"));
                 setTimeout("location.href = '?controller=CourseSemester&action=deleteCourse';", 1500);
             } else {
                 SEMICOLON.widget.notifications($("#warning"));
+                $("#form-submity").removeAttr('disabled');
+                $("#form-close").removeAttr('disabled');
             }
-            $("#form-submity").removeAttr('disabled');
-            $("#form-close").removeAttr('disabled');
         }, "json");
     });
 </script>

@@ -5,10 +5,10 @@ if (isset($session->permissions)) {
     if ($session->permissions == 'T') {
         include_once 'public/headerProfessor.php';
     } else {
-        header("Location:?controller=Index&action=notFound");
+        header("Location:?action=notFound");
     }
 } else {
-    include_once 'public/header.php';
+    header("Location:?action=notFound");
 }
 ?>
 <section id="page-title">
@@ -108,6 +108,7 @@ if (isset($session->permissions)) {
                 </div>
             </div>
         </div>
+    </div>
 </section><!-- #content end -->
 
 <!--MODAL -->

@@ -2,8 +2,8 @@
 $session = SSession::getInstance();
 
 if (isset($session->permissions)) {
-    if ($session->permissions == 'R') {
-        include_once 'public/headerRoot.php';
+    if ($session->permissions == 'A') {
+        include_once 'public/headerAdmin.php';
     } else {
         header('Location:?action=notFound');
     }
@@ -66,40 +66,40 @@ if (isset($session->permissions)) {
                                 </table>
                             </div>
                             <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" data-target="#myModal" id="next" data-target="" style="display: none; text-align: center;">Desactivar</a>
-                                                            <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i>La operacion no se pudo realizar, intente de nuevo o m&aacute;s tarde!" data-notify-position="bottom-full-width"/>
-                                <input type="hidden" id="success" data-notify-type="success" data-notify-msg="<i class='icon-ok-sign'></i> Operaci&oacute;n exitosa, revise en breve...!" data-notify-position="bottom-full-width"/>
-                                <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Espere un momento...!" data-notify-position="bottom-full-width"/>
+                            <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i>La operacion no se pudo realizar, intente de nuevo o m&aacute;s tarde!" data-notify-position="bottom-full-width"/>
+                            <input type="hidden" id="success" data-notify-type="success" data-notify-msg="<i class='icon-ok-sign'></i> Operaci&oacute;n exitosa, revise en breve...!" data-notify-position="bottom-full-width"/>
+                            <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Espere un momento...!" data-notify-position="bottom-full-width"/>
                         </form>
-                    </div>
-                </div>
-
-                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-body">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                    <h4 class="modal-title" id="myModalLabel">¡Aviso!</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <h4 style="text-align: center;">¿Realmente desea desactivar este Estudiante?</h4>
-                                    <p>Consejos:
-                                    <li>Verificar bien, si es el estudiante que realmente desea desactivar</li>
-                                    <li>El estudiante puede ser restaurado con servicio t&eacute;cnico</li>
-                                    </p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal"id="form-close">Cerrar</button>
-                                    <input type="button" class="btn btn-primary" button-black nomargin id="form-submity" value="Desactivar"/>  
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-body">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">¡Aviso!</h4>
+                </div>
+                <div class="modal-body">
+                    <h4 style="text-align: center;">¿Realmente desea desactivar este Estudiante?</h4>
+                    <p>Consejos:
+                    <li>Verificar bien, si es el estudiante que realmente desea desactivar</li>
+                    <li>El estudiante puede ser restaurado con servicio t&eacute;cnico</li>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"id="form-close">Cerrar</button>
+                    <input type="button" class="btn btn-primary" button-black nomargin id="form-submity" value="Desactivar"/>  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script>
     $("#form-student").change(function () {
@@ -158,8 +158,6 @@ if (isset($session->permissions)) {
 
 </script>
 
-<!-- End Content
-    ============================================= -->    
 <?php
 include_once 'public/footer.php';
 

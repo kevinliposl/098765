@@ -1,6 +1,16 @@
 <?php
 
-include_once 'public/headerAdmin.php';
+$session = SSession::getInstance();
+
+if (isset($session->permissions)) {
+    if ($session->permissions == 'A') {
+        include_once 'public/headerAdmin.php';
+    } else {
+        header('Location:?action=notFound');
+    }
+} else {
+    header('Location:?action=notFound');
+}
 ?>
 
 <section id="page-title">
@@ -30,27 +40,23 @@ include_once 'public/headerAdmin.php';
                             </div>
                             <div class="col_full">
                                 <label for="form-name">Nombre:</label>
-                                <input type="text" id="form-name"class="form-control" minlength="3" maxlength="49" required/>
+                                <input type="text" id="form-name"class="form-control" minlength="3" maxlength="49" required placeholder="Marco"/>
                             </div>
-
                             <div class="col_full">
                                 <label for="form-firstLastName">Primer Apellido:</label>
-                                <input type="text" id="form-firstLastName"class="form-control" minlength="3" maxlength="49" required/>
+                                <input type="text" id="form-firstLastName"class="form-control" minlength="3" maxlength="49" required placeholder="Castro"/>
                             </div>
-
                             <div class="col_full">
                                 <label for="form-secondLastName">Segundo Apellido:</label>
-                                <input type="text" id="form-secondLastName"class="form-control" required minlength="3" maxlength="49" pattern="{4-16}"/>
+                                <input type="text" id="form-secondLastName"class="form-control" required minlength="3" maxlength="49" pattern="{4-16}" placeholder="Madriz"/>
                             </div>
-
                             <div class="col_full">
                                 <label for="form-age">Fecha de Nacimiento:</label>
                                 <input type="date" id="form-age"class="form-control" required pattern="{4-10}"/>
                             </div>
-
                             <div class="col_full">
                                 <label for="form-address">Lugar de Residencia:</label>
-                                <input type="text" id="form-address"class="form-control" minlength="5" maxlength="49" required pattern="{4-16}"/>
+                                <input type="text" id="form-address"class="form-control" minlength="5" maxlength="49" required pattern="{4-16}" placeholder="Turrialba"/>
                             </div>
                             <div class="col_full">
                                 <label for="form-gender">Género:</label>
@@ -59,19 +65,19 @@ include_once 'public/headerAdmin.php';
                             </div>
                             <div class="col_full">
                                 <label for="form-nationality">Nacionalidad:</label>
-                                <input type="text" id="form-nationality"class="form-control" minlength="5" maxlength="49" required pattern="{4-16}"/>
+                                <input type="text" id="form-nationality"class="form-control" minlength="5" maxlength="49" required pattern="{4-16}" placeholder="Costarricense"/>
                             </div>
                             <div class="col_full">
                                 <label for="form-phone1">Telefono:</label>
-                                <input type="text" id="form-phone1"class="form-control" minlength="8" maxlength="8" required pattern="{4-16}"/>
+                                <input type="text" id="form-phone1"class="form-control" minlength="8" maxlength="8" required pattern="{4-16}" placeholder="88888888"/>
                             </div>
                             <div class="col_full">
                                 <label for="form-phone2">Otro teléfono:</label>
-                                <input type="text" id="form-phone2"class="form-control" minlength="8" maxlength="8" required pattern="{4-16}"/>
+                                <input type="text" id="form-phone2"class="form-control" minlength="8" maxlength="8" required pattern="{4-16}" placeholder="88888888"/>
                             </div>
                             <div class="col_full">
                                 <label for="form-email">Correo Electronico:</label>
-                                <input type="email" id="form-email" class="form-control" required/>
+                                <input type="email" id="form-email" class="form-control" required placeholder="hola@dominio.com"/>
                             </div>
 
                             <h1 style="text-align: center;">Informaci&oacute;n de contacto</h1>
@@ -79,25 +85,25 @@ include_once 'public/headerAdmin.php';
                             <div class="acc_content clearfix"></div>
                             <div class="col_full">
                                 <label for="form-contact-name">Nombre completo:</label>
-                                <input type="text" id="form-contact-name"class="form-control"  minlength="3" maxlength="49" required pattern="{4-16}"/>
+                                <input type="text" id="form-contact-name"class="form-control"  minlength="3" maxlength="49" required pattern="{4-16}" placeholder="Laura"/>
                             </div>
                             <div class="col_full">
                                 <label for="form-contact-phone">Telefono:</label>
-                                <input type="text" id="form-contact-phone"class="form-control" minlength="8" maxlength="8" required pattern="{4-16}"/>
+                                <input type="text" id="form-contact-phone"class="form-control" minlength="8" maxlength="8" required pattern="{4-16}" placeholder="88888888"/>
                             </div>
                             <div class="col_full">
                                 <label for="form-relationship">Relaci&oacute;n:</label>
-                                <input type="text" id="form-relationship"class="form-control" minlength="3" maxlength="49" required pattern="{4-16}"/>
+                                <input type="text" id="form-relationship"class="form-control" minlength="3" maxlength="49" required pattern="{4-16}" placeholder="Abuela"/>
                             </div>
                             <div class="col_full">
                                 <label for="form-contact-email">Correo Electronico del contacto:</label>
-                                <input type="email" id="form-contact-email" class="form-control" required/>
+                                <input type="email" id="form-contact-email" class="form-control" required placeholder="hola@dominio.com"/>
                             </div>
                             <div class="col_full nobottommargin">                      
                                 <input type="submit" value="Insertar" class="button button-3d button-black nomargin form-control" style="display: block; text-align: center;"/>
-                                <input type="hidden" id="warning"/>
-                                <input type="hidden" id="success"/>
-                                <input type="hidden" id="failed"/>
+                                <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i>La operacion no se pudo realizar, intente de nuevo o m&aacute;s tarde!" data-notify-position="bottom-full-width"/>
+                                <input type="hidden" id="success" data-notify-type="success" data-notify-msg="<i class='icon-ok-sign'></i> Operaci&oacute;n exitosa, revise en breve...!" data-notify-position="bottom-full-width"/>
+                                <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Espere un momento...!" data-notify-position="bottom-full-width"/>
                             </div>
                         </form>
                     </div>
@@ -122,11 +128,8 @@ include_once 'public/headerAdmin.php';
                             <li>Recuerde que el correo electr&oacute;nico es un dato &uacute;nico por usuario</li></p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                            <input type="button" class="btn btn-primary" button-black nomargin id="insertButton" value="Registrar"/>
-                            <input type="hidden" id="warning" value="w"/>
-                            <input type="hidden" id="success" value="s"/>
-                            <input type="hidden" id="failed" value="f"/>
+                            <button type="button" class="btn btn-default" data-dismiss="modal" id="form-close">Cerrar</button>
+                            <input type="button" class="btn btn-primary" button-black nomargin id="form-submity" value="Registrar"/>
                         </div>
                     </div>
                 </div>
@@ -146,6 +149,11 @@ include_once 'public/headerAdmin.php';
     }
 
     $("#insertButton").click(function () {
+        $("#form-submity").attr('disabled', 'disabled');
+        $("#form-close").attr('disabled', 'disabled');
+
+        SEMICOLON.widget.notifications($("#wait"));
+
         var parameters = {
             "id": $("#form-id").val().trim(),
             "idType": $("input:radio[name='form-typeId']:checked").val().trim(),
@@ -166,20 +174,13 @@ include_once 'public/headerAdmin.php';
         };
         $.post("?controller=Student&action=insertStudent", parameters, function (data) {
             if (data.result === "1") {
-                $("#success").attr({
-                    "data-notify-type": "success",
-                    "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!<br><br> Se redirigir&aacute; en breve..."
-                });
                 SEMICOLON.widget.notifications($("#success"));
-                setTimeout('Redirect()', 2000);
+                setTimeout('Redirect()', 1500);
             } else {
-                $("#warning").attr({
-                    "data-notify-type": "warning",
-                    "data-notify-msg": "<i class=icon-warning-sign></i> Ese estudiante ya existe!"
-                });
                 SEMICOLON.widget.notifications($("#warning"));
+                $("#form-submity").removeAttr('disabled');
+                $("#form-close").removeAttr('disabled');
             }
-            ;
         }, "json");
     });
 </script>

@@ -12,16 +12,12 @@ if (isset($session->permissions)) {
 }
 ?>
 
-<!-- Page Title
-============================================= -->
 <section id="page-title">
     <div class="container clearfix">
         <h1>Eliminar Administrador</h1>
     </div>
-</section><!-- #page-title end -->
+</section>
 
-<!-- Content
-============================================= -->
 <section id="content">
     <div class="content-wrap">
         <div class="container clearfix">
@@ -45,6 +41,7 @@ if (isset($session->permissions)) {
                                     }
                                     ?>
                                 </select>
+                                <input type="hidden" id="failed-id" data-notify-type= "error" data-notify-position="bottom-full-width"  data-notify-msg="<i class='icon-remove-sign'></i> Seleccione un item. Complete e intente de nuevo!" /> 
                             </div>
                             <br>
                             <div class="table-responsive">
@@ -118,7 +115,7 @@ if (isset($session->permissions)) {
                     <li>El administrador puede ser restaurado con servicio t&eacute;cnico</li></p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" id="form-close" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" id="form-close">Cerrar</button>
                     <input type="button" class="btn btn-primary button-black nomargin" id="form-submity" value="Eliminar"/>
                 </div>
             </div>
@@ -129,10 +126,7 @@ if (isset($session->permissions)) {
 <script>
     function val() {
 
-        var id = $("#form-admin").val();
-
-        if (id === "-1") {
-            $("#failed-id").attr("data-notify-msg", "<i class=icon-remove-sign></i> Seleccione un item. Complete e intente de nuevo!");
+        if ($("#form-admin").val() === "-1") {
             SEMICOLON.widget.notifications($("#failed-id"));
             return false;
         } else {
@@ -192,12 +186,12 @@ if (isset($session->permissions)) {
         $.post("?controller=Admin&action=delete", parameters, function (data) {
             if (data.result === "1") {
                 SEMICOLON.widget.notifications($("#success"));
-                setTimeout("location.href = '?controller=Admin&action=delete';", 2000);
+                setTimeout("location.href = '?controller=Admin&action=delete';", 1500);
             } else {
                 SEMICOLON.widget.notifications($("#warning"));
+                $("#form-submity").removeAttr('disabled');
+                $("#form-close").removeAttr('disabled');
             }
-            $("#form-submity").removeAttr('disabled');
-            $("#form-close").removeAttr('disabled');
         }, "json");
     });
 </script>

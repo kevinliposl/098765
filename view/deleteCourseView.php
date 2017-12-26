@@ -183,15 +183,12 @@ if (isset($session->permissions)) {
                 setTimeout("location.href = '?controller=Course&action=delete';", 1500);
             } else {
                 SEMICOLON.widget.notifications($("#warning"));
+                $("#form-submity").removeAttr('disabled');
+                $("#form-close").removeAttr('disabled');
             }
-            $("#form-submity").removeAttr('disabled');
-            $("#form-close").removeAttr('disabled');
         }, "json");
     });
 </script>
 
-
-<!-- End Content
-============================================= -->    
 <?php
 include_once 'public/footer.php';

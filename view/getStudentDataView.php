@@ -1,5 +1,15 @@
 <?php
-include_once 'public/headerAdmin.php';
+$session = SSession::getInstance();
+
+if (isset($session->permissions)) {
+    if ($session->permissions == 'A') {
+        include_once 'public/headerAdmin.php';
+    } else {
+        header('Location:?action=notFound');
+    }
+} else {
+    header('Location:?action=notFound');
+}
 ?>
 
 <section id="page-title">
@@ -21,7 +31,7 @@ include_once 'public/headerAdmin.php';
                                 <?php foreach ($vars as $var) { ?>
                                     <option value="<?php echo $var["identification"] ?>" data-tokens="">
                                         <?php echo $var["identification"] . " | " . $var["name"] . " " . $var["first_lastname"] . " " . $var["second_lastname"]; ?></option>
-                                <?php } ?>
+                                    <?php } ?>
                             </select>
                         </div>
                         <br>
@@ -134,29 +144,30 @@ include_once 'public/headerAdmin.php';
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
+    </div>
+</section>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-body">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">¡Aviso!</h4>
+                </div>
                 <div class="modal-body">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h4 class="modal-title" id="myModalLabel">¡Aviso!</h4>
-                        </div>
-                        <div class="modal-body">
-                            <h4 style="text-align: center;">¿Realmente desea actualizar los datos de este Estudiante?</h4>
-                            <p>Consejos:
-                            <li>Verificar bien, si es el estudiante que realmente desea actualizar</li>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                            <input type="button" class="btn btn-primary" button-black nomargin id="form-submity" value="Actualizar"/>
-                        </div>
-                    </div>
+                    <h4 style="text-align: center;">¿Realmente desea actualizar los datos de este Estudiante?</h4>
+                    <p>Consejos:
+                    <li>Verificar bien, si es el estudiante que realmente desea actualizar</li>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <input type="button" class="btn btn-primary" button-black nomargin id="form-submity" value="Actualizar"/>
                 </div>
             </div>
         </div>
     </div>
-</section>
+</div>
 
 <script>
     $("#form-student").change(function () {
@@ -213,6 +224,5 @@ include_once 'public/headerAdmin.php';
     });
 
 </script>
-
 <?php
 include_once 'public/footer.php';
