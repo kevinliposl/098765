@@ -1,7 +1,16 @@
 <?php
-include_once 'public/headerStudent.php';
-?>
+$session = SSession::getInstance();
 
+if (isset($session->permissions)) {
+    if ($session->permissions == 'S') {
+        include_once 'public/headerStudent.php';
+    } else {
+        header('Location:?action=notFound');
+    }
+} else {
+    header('Location:?action=notFound');
+}
+?>
 <section id="page-title">
     <div class="container clearfix">
         <h1>Actualizar Estudiante</h1>
@@ -26,7 +35,7 @@ include_once 'public/headerStudent.php';
                                     <li>Verificar si los datos ingresados están correctamente</li>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal" id="form-close">Cerrar</button>
                                     <input type="button" class="btn btn-primary" button-black nomargin id="form-submity" value="Actualizar"/>
                                 </div>
                             </div>
@@ -38,10 +47,14 @@ include_once 'public/headerStudent.php';
         <div class="container clearfix"> 
             <input type="hidden" id="form-old-id" name="form-old-id" value="<?php echo $vars['identification']; ?>">
             <table class="table table-bordered table-striped" style="clear: both">
+                <colgroup>
+                    <col class="col-xs-4">
+                    <col class="col-xs-8">
+                </colgroup>
                 <tbody>
                     <tr>
-                        <td width="15%">Identificaci&oacute;n</td>
-                        <td width="55%">
+                        <td>Identificaci&oacute;n</td>
+                        <td>
                             <a id="form-id" class="bt-editable" href="#" data-type="text" data-pk="1" data-placeholder="Required" data-title="Ingrese la identificación"><?php echo $vars['identification']; ?></a>
                         </td>
                     </tr>
@@ -164,20 +177,11 @@ include_once 'public/headerStudent.php';
         };
         $.post("?controller=Student&action=updatePersonalDataStudent", parameters, function (data) {
             if (data.result === "1") {
-                $("#success").attr({
-                    "data-notify-type": "success",
-                    "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!"
-                });
                 SEMICOLON.widget.notifications($("#success"));
                 setTimeout('Redirect()', 1000);
             } else {
-                $("#warning").attr({
-                    "data-notify-type": "warning",
-                    "data-notify-msg": "<i class=icon-warning-sign></i> No se puedieron actualizar los datos!"
-                });
                 SEMICOLON.widget.notifications($("#warning"));
             }
-            ;
         }, "json");
     }
     );

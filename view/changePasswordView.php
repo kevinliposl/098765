@@ -27,30 +27,28 @@ if (isset($session->permissions)) {
     <div class="content-wrap">
         <div class="container clearfix">
             <div class="accordion-lg divcenter nobottommargin" style="max-width: 550px;">
-                <div class="acctitle">
-                    <div class="acc_content clearfix">
-                        <form class="nobottommargin" onsubmit="return val();">
+                <div class="acc_content clearfix">
+                    <form class="nobottommargin" onsubmit="return val();">
 
-                            <div class="col_full">
-                                <label for="form-password">Nueva Contraseña:</label>
-                                <input type="password" id="form-password" class="form-control" required/>
-                                <input type="hidden" id="failed-password" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class='icon-remove-sign'></i> Formato no valido, Minimo 8 caracteres. Complete e intente de nuevo!"/>
-                            </div>
+                        <div class="col_full">
+                            <label for="form-password">Nueva Contraseña:</label>
+                            <input type="password" id="form-password" class="form-control" minlength="8" maxlength="15" required/>
+                            <input type="hidden" id="failed-password" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class='icon-remove-sign'></i> Formato no valido, Minimo 8 caracteres. Complete e intente de nuevo!"/>
+                        </div>
 
-                            <div class="col_full">
-                                <label for="form-password2">Digite nuevamente la nueva contraseña:</label>
-                                <input type="password" id="form-password2" class="form-control" required/>
-                                <input type="hidden" id="failed-password2" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class='icon-remove-sign'></i> Las contraseñas no coinciden. Complete e intente de nuevo!"/>
-                            </div>
+                        <div class="col_full">
+                            <label for="form-password2">Digite nuevamente la nueva contraseña:</label>
+                            <input type="password" id="form-password2" class="form-control" minlength="8" maxlength="15" required/>
+                            <input type="hidden" id="failed-password2" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class='icon-remove-sign'></i> Las contraseñas no coinciden. Complete e intente de nuevo!"/>
+                        </div>
 
-                            <div class="col_full nobottommargin">                      
-                                <input type="submit" value="Cambiar" class="button button-3d button-black nomargin form-control" style="display: block; text-align: center;"/>
-                                <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i> Operacion Fallida!" data-notify-position="bottom-full-width"/>
-                                <input type="hidden" id="success" data-notify-type="success" data-notify-msg ="<i class='icon-ok-sign'></i> Operacion Exitosa!" data-notify-position="bottom-full-width"/>
-                                <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Espere un momento...!" data-notify-position="bottom-full-width"/>
-                            </div>
-                        </form>
-                    </div>
+                        <div class="col_full nobottommargin">                      
+                            <input type="submit" value="Cambiar" class="button button-3d button-black nomargin form-control" style="display: block; text-align: center;"/>
+                            <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i> Operacion Fallida!" data-notify-position="bottom-full-width"/>
+                            <input type="hidden" id="success" data-notify-type="success" data-notify-msg ="<i class='icon-ok-sign'></i> Operacion Exitosa!" data-notify-position="bottom-full-width"/>
+                            <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Espere un momento...!" data-notify-position="bottom-full-width"/>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -77,31 +75,8 @@ if (isset($session->permissions)) {
         </div>
     </div>
 </div>
+
 <script>
-    //Insert
-    $("#form-submity").click(function () {
-
-        $("#form-submity").attr('disabled', 'disabled');
-        $("#form-close").attr('disabled', 'disabled');
-
-        SEMICOLON.widget.notifications($("#wait"));
-
-        var parameters = {
-            "newPass": pass1
-        };
-        SEMICOLON.widget.notifications($("#wait"));
-        $.post("?controller=User&action=changePassword", parameters, function (data) {
-            if (data.result === "1") {
-                SEMICOLON.widget.notifications($("#success"));
-                setTimeout("location.href = '?';", 1500);
-            } else {
-                SEMICOLON.widget.notifications($("#warning"));
-                $("#form-submity").removeAttr('disabled');
-                $("#form-close").removeAttr('disabled');
-            }
-        }, "json");
-    });
-
     //Open Modal
     function val() {
         pass1 = $("#form-password").val().trim();
@@ -122,7 +97,32 @@ if (isset($session->permissions)) {
         $('#showModal').click();
         return false;
     }
+
+    $("#form-submity").click(function () {
+
+        $("#form-submity").attr('disabled', 'disabled');
+        $("#form-close").attr('disabled', 'disabled');
+
+        SEMICOLON.widget.notifications($("#wait"));
+
+        var parameters = {
+            "newPass": pass1
+        };
+
+        $.post("?controller=User&action=changePassword", parameters, function (data) {
+            if (data.result === "1") {
+                SEMICOLON.widget.notifications($("#success"));
+                setTimeout("location.href = '?';", 1500);
+            } else {
+                SEMICOLON.widget.notifications($("#warning"));
+                $("#form-submity").removeAttr('disabled');
+                $("#form-close").removeAttr('disabled');
+            }
+        }, "json");
+    });
+
 </script>
 
 <?php
+
 include_once 'public/footer.php';

@@ -5,10 +5,10 @@ if (isset($session->permissions)) {
     if ($session->permissions == 'T') {
         include_once 'public/headerProfessor.php';
     } else {
-        header("Location:?controller=Index&action=notFound");
+        header("Location:?action=notFound");
     }
 } else {
-    include_once 'public/header.php';
+    header("Location:?action=notFound");
 }
 ?>
 
@@ -22,96 +22,94 @@ if (isset($session->permissions)) {
     <div class="content-wrap">
         <div class="container clearfix">
             <div class="accordion-lg divcenter nobottommargin">
-                <div class="acctitle">
-                    <div class="acc_content clearfix">
-                        <form id="form" class="nobottommargin">                  
-                            <div class="white-section">
-                                <label for="form-courses">Cursos Disponibles:</label>
-                                <select id="form-courses" class="selectpicker form-control" data-live-search="true">
-                                    <option value="-1" data-tokens="">Seleccione un Curso</option>
-                                    <?php
-                                    foreach ($vars as $var) {
-                                        if (isset($var["ID"])) {
-                                            ?>
-                                            <option value="<?php echo $var["ID"] ?> " data-tokens="">
-                                                <?php echo $var["name"] ?>
-                                            </option>
-                                            <?php
-                                        }
+                <div class="acc_content clearfix">
+                    <form id="form" class="nobottommargin">                  
+                        <div class="white-section">
+                            <label for="form-courses">Cursos Disponibles:</label>
+                            <select id="form-courses" class="selectpicker form-control" data-live-search="true">
+                                <option value="-1" data-tokens="">Seleccione un Curso</option>
+                                <?php
+                                foreach ($vars as $var) {
+                                    if (isset($var["ID"])) {
+                                        ?>
+                                        <option value="<?php echo $var["ID"] ?> " data-tokens="">
+                                            <?php echo $var["name"] ?>
+                                        </option>
+                                        <?php
                                     }
-                                    ?>
-                                </select>
-                                <input type="hidden" id="failed-form-courses" data-notify-type= "error" data-notify-position="bottom-full-width"/>
-                            </div>
-                            <br>
-                            <div class="white-section">
-                                <label for="form-student">Estudiantes Disponibles:</label>
-                                <select id="form-student" class="form-control selectpicker" data-live-search="true">
-                                    <option value="-1" data-tokens="">Seleccione un Estudiante</option>
-                                </select>
-                                <input type="hidden" id="failed-form-student" data-notify-type= "error" data-notify-position="bottom-full-width"/>
-                            </div>  
-                            <br>
-                            <div class="white-section">
-                                <label for="form-activity">Actividades Disponibles:</label>
-                                <select id="form-activity" class="form-control selectpicker" data-live-search="true">
-                                    <option value="-1" data-tokens="">Seleccione una Actividad</option>
-                                </select>
-                                <input type="hidden" id="failed-form-activity" data-notify-type= "error" data-notify-position="bottom-full-width"/>
-                            </div> 
-                            <br>
-                            <div class="acc_content clearfix"></div>
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-striped">
-                                    <h5 style="text-align: center;">Informaci&oacute;n de la Actividad de Clase</h5>
-                                    <colgroup>
-                                        <col class="col-xs-3">
-                                        <col class="col-xs-8">
-                                    </colgroup>
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                Consecutivo
-                                            </td>
-                                            <td id="form-consecutive-table"><?php echo "" ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                Fecha de Realizaci&oacute;n
-                                            </td>
-                                            <td id="form-date-table"><?php echo "" ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                Asistencia
-                                            </td>
-                                            <td id="form-typeA-table"><?php echo "" ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                Observaci&oacute;n General
-                                            </td>
-                                            <td id="form-observation-table"><?php echo "" ?></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>    
-                            <br>
-                            <div class="acc_content clearfix"></div>
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-striped" id="table-contents">
-                                    <h5 style="text-align: center;">Contenidos de la Actividad</h5>
-                                    <colgroup>
-                                        <col class="col-xs-8">
-                                        <col class="col-xs-8">
-                                    </colgroup>
-                                    <tbody>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </form>
-                    </div>
+                                }
+                                ?>
+                            </select>
+                            <input type="hidden" id="failed-form-courses" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                        </div>
+                        <br>
+                        <div class="white-section">
+                            <label for="form-student">Estudiantes Disponibles:</label>
+                            <select id="form-student" class="form-control selectpicker" data-live-search="true">
+                                <option value="-1" data-tokens="">Seleccione un Estudiante</option>
+                            </select>
+                            <input type="hidden" id="failed-form-student" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                        </div>  
+                        <br>
+                        <div class="white-section">
+                            <label for="form-activity">Actividades Disponibles:</label>
+                            <select id="form-activity" class="form-control selectpicker" data-live-search="true">
+                                <option value="-1" data-tokens="">Seleccione una Actividad</option>
+                            </select>
+                            <input type="hidden" id="failed-form-activity" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                        </div> 
+                        <br>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped">
+                                <h5 style="text-align: center;">Informaci&oacute;n de la Actividad de Clase</h5>
+                                <colgroup>
+                                    <col class="col-xs-4">
+                                    <col class="col-xs-8">
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            Consecutivo
+                                        </td>
+                                        <td id="form-consecutive-table"><?php echo "" ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Fecha de Realizaci&oacute;n
+                                        </td>
+                                        <td id="form-date-table"><?php echo "" ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Asistencia
+                                        </td>
+                                        <td id="form-typeA-table"><?php echo "" ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Observaci&oacute;n General
+                                        </td>
+                                        <td id="form-observation-table"><?php echo "" ?></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>    
+                        <br>
+                        <div class="acc_content clearfix"></div>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped" id="table-contents">
+                                <h5 style="text-align: center;">Contenidos de la Actividad</h5>
+                                <colgroup>
+                                    <col class="col-xs-4">
+                                    <col class="col-xs-8">
+                                </colgroup>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
                 </div>
+
             </div>
         </div>
     </div>

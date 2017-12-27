@@ -21,90 +21,85 @@ if (isset($session->permissions)) {
     <div class="content-wrap">
         <div class="container clearfix">
             <div class="accordion-lg divcenter nobottommargin ">
-                <div class="acctitle">
-                    <div class="acc_content clearfix">
-                        <form id="form" class="nobottommargin">                            
-                            <div class="col-lg-6" style="padding: 10px;">
-                                <label for="form-courses">Cursos Disponibles:</label>
-                                <select id="form-courses" class="selectpicker form-control" data-live-search="true">
-                                    <option value="-1" data-tokens="">Seleccione un Curso</option>
-                                    <?php
-                                    foreach ($vars as $var) {
-                                        if (isset($var["ID"])) {
-                                            ?>
-                                            <option value="<?php echo $var["ID"] ?> " data-tokens="">
-                                                <?php echo $var["name"] ?>
-                                            </option>
-                                            <?php
-                                        }
+                <div class="acc_content clearfix">
+                    <form id="form" class="nobottommargin">                            
+                        <div class="col-lg-6" style="padding: 10px;">
+                            <label for="form-courses">Cursos Disponibles:</label>
+                            <select id="form-courses" class="selectpicker form-control" data-live-search="true">
+                                <option value="-1" data-tokens="">Seleccione un Curso</option>
+                                <?php
+                                foreach ($vars as $var) {
+                                    if (isset($var["ID"])) {
+                                        ?>
+                                        <option value="<?php echo $var["ID"] ?> " data-tokens="">
+                                            <?php echo $var["name"] ?>
+                                        </option>
+                                        <?php
                                     }
-                                    ?>
-                                </select>
-                                <input type="hidden" id="failed-form-courses" data-notify-type= "error" data-notify-position="bottom-full-width"/>
-                            </div>
-                            <div class="col-lg-6" style="padding: 10px;">
-                                <label for="form-student">Estudiantes Disponibles:</label>
-                                <select id="form-student" class="form-control selectpicker" data-live-search="true">
-                                    <option value="-1" data-tokens="">Seleccione un Estudiante</option>
-                                </select>
-                                <input type="hidden" id="failed-form-student" data-notify-type= "error" data-notify-position="bottom-full-width"/>
-                            </div>
-                            <div class="col-lg-6" style="padding: 10px;">
-                                <label for="form-consecutive">Consecutivo de Actividad:</label>
-                                <input type="text" id="form-consecutive" class="form-control" readonly="readonly" />
-                                <input type="hidden" id="failed-consecutive" data-notify-type= "error" data-notify-position="bottom-full-width"/>
-                            </div>
-                            <div class="col-lg-6" style="padding: 10px;">
-                                <label for="form-date">Fecha de Realizaci&oacute;n:</label>
-                                <input type="date" id="form-date" class="form-control" required/>
-                                <input type="hidden" id="failed-date" data-notify-type= "error" data-notify-position="bottom-full-width"/>
-                            </div>
-                            <div class="col_full" style="padding: 10px;">
-                                <label for="form-typeId">Control de Asistencia:</label>
-                                <input type="radio" name="form-typeA" value="P" checked/><label>Puntual</label>
-                                <input type="radio" name="form-typeA" value="I"/><label>Ausencia Injustificada</label>
-                                <input type="radio" name="form-typeA" value="J"/><label>Ausencia Justificada</label>
-                            </div>
-                            <div class="line line-sm"></div>
-                            <div class="col_full" style="padding: 10px;">
-                                <label for="form-content">Contenido de Clase:</label>    
-                                <input type="text" id="form-content" class="form-control" required/>
-                                <input type="hidden" id="failed-content" data-notify-type= "error" data-notify-position="bottom-full-width"/>
-                            </div>
-                            <div class="col_full" style="padding: 10px;">
-                                <a id="form-save"  class="button button-3d button-black nomargin" style="display : block; text-align: center;" >Guardar Contenido</a>
-                                <input type="hidden" id="warning" value="w"/>
-                                <input type="hidden" id="success" value="s"/>
-                                <input type="hidden" id="failed" value="f"/>
-                            </div>
-                            <div class="white-section" style="text-align: center;">
-                                <label for="form-addContent" >Contenidos Agregados</label>
-                                <input type="hidden" id="failed-addContent" data-notify-type= "error" data-notify-position="bottom-full-width"/>
-                            </div>
-                            <div class="table-responsive col_full" style="padding: 10px;">
-                                <table  class="table table-bordered table-striped" style="clear: both;">
-                                    <tbody id="bodyTable">
-                                        <tr>
-                                            <th  width="40%" style="text-align: center;">Actividades</th>
-                                            <th width="20%" style="text-align: center;">Acci&oacute;n</th>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="line line-sm"></div>
-                            <div class="col_full" style="padding: 10px;">
-                                <label for="form-observation">Observaci&oacute;n General:</label>
-                                <input type="text" rows="4" cols="50"    id="form-observation" class="form-control" required/>
-                                <input type="hidden" id="failed-observation" data-notify-type= "error" data-notify-position="bottom-full-width"/>
-                            </div>
-                            <div class="col_full" style="padding: 10px;">
-                                <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" style="display : block; text-align: center;" data-target="#myModal">Insertar</a>
-                                <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i>La operacion no se pudo realizar, intente de nuevo o m&aacute;s tarde!" data-notify-position="bottom-full-width"/>
-                                <input type="hidden" id="success" data-notify-type="success" data-notify-msg="<i class='icon-ok-sign'></i> Operaci&oacute;n exitosa, revise en breve...!" data-notify-position="bottom-full-width"/>
-                                <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Espere un momento...!" data-notify-position="bottom-full-width"/>
-                            </div>  
-                        </form>
-                    </div>
+                                }
+                                ?>
+                            </select>
+                            <input type="hidden" id="failed-form-courses" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                        </div>
+                        <div class="col-lg-6" style="padding: 10px;">
+                            <label for="form-student">Estudiantes Disponibles:</label>
+                            <select id="form-student" class="form-control selectpicker" data-live-search="true">
+                                <option value="-1" data-tokens="">Seleccione un Estudiante</option>
+                            </select>
+                            <input type="hidden" id="failed-form-student" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                        </div>
+                        <div class="col-lg-6" style="padding: 10px;">
+                            <label for="form-consecutive">Consecutivo de Actividad:</label>
+                            <input type="text" id="form-consecutive" class="form-control" readonly="readonly" />
+                            <input type="hidden" id="failed-consecutive" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                        </div>
+                        <div class="col-lg-6" style="padding: 10px;">
+                            <label for="form-date">Fecha de Realizaci&oacute;n:</label>
+                            <input type="date" id="form-date" class="form-control" required/>
+                            <input type="hidden" id="failed-date" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                        </div>
+                        <div class="col_full" style="padding: 10px;">
+                            <label for="form-typeId">Control de Asistencia:</label>
+                            <input type="radio" name="form-typeA" value="P" checked/><label>Puntual</label>
+                            <input type="radio" name="form-typeA" value="I"/><label>Ausencia Injustificada</label>
+                            <input type="radio" name="form-typeA" value="J"/><label>Ausencia Justificada</label>
+                        </div>
+                        <div class="line line-sm"></div>
+                        <div class="col_full" style="padding: 10px;">
+                            <label for="form-content">Contenido de Clase:</label>    
+                            <input type="text" id="form-content" class="form-control" required/>
+                            <input type="hidden" id="failed-content" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                        </div>
+                        <div class="col_full" style="padding: 10px;">
+                            <a id="form-save"  class="button button-3d button-black nomargin" style="display : block; text-align: center;" >Guardar Contenido</a>
+                        </div>
+                        <div class="white-section" style="text-align: center;">
+                            <label for="form-addContent" >Contenidos Agregados</label>
+                            <input type="hidden" id="failed-addContent" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                        </div>
+                        <div class="table-responsive col_full" style="padding: 10px;">
+                            <table  class="table table-bordered table-striped" style="clear: both;">
+                                <tbody id="bodyTable">
+                                    <tr>
+                                        <th  width="40%" style="text-align: center;">Actividades</th>
+                                        <th width="20%" style="text-align: center;">Acci&oacute;n</th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="line line-sm"></div>
+                        <div class="col_full" style="padding: 10px;">
+                            <label for="form-observation">Observaci&oacute;n General:</label>
+                            <input type="text" rows="4" cols="50"    id="form-observation" class="form-control" required/>
+                            <input type="hidden" id="failed-observation" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                        </div>
+                        <div class="col_full" style="padding: 10px;">
+                            <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" style="display : block; text-align: center;" data-target="#myModal">Insertar</a>
+                            <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i>La operacion no se pudo realizar, intente de nuevo o m&aacute;s tarde!" data-notify-position="bottom-full-width"/>
+                            <input type="hidden" id="success" data-notify-type="success" data-notify-msg="<i class='icon-ok-sign'></i> Operaci&oacute;n exitosa, revise en breve...!" data-notify-position="bottom-full-width"/>
+                            <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Espere un momento...!" data-notify-position="bottom-full-width"/>
+                        </div>  
+                    </form>
                 </div>
             </div>
         </div>
@@ -189,6 +184,9 @@ if (isset($session->permissions)) {
                 "appointment": $("#form-courses").val()
             };
             document.getElementById("form-student").options.length = 0;
+
+            SEMICOLON.widget.notifications($("#wait"));
+
             $.post("?controller=ClassActivity&action=selectStudentClassActivity", parameters, function (data) {
                 $('#form-student').append($("<option></option>").attr("value", "-1").text("Seleccione un Estudiante"));
                 for (var i = 0; i < data.length; i++) {
@@ -277,21 +275,14 @@ if (isset($session->permissions)) {
                 "count": ((tableReg.rows.length) - 1),
                 "observation": $("#form-observation").val()
             };
+
+            SEMICOLON.widget.notifications($("#wait"));
+
             $.post("?controller=ClassActivity&action=insert", parameters, function (data) {
                 if (data.result === "1") {
-                    $("#success").attr({
-                        "data-notify-type": "success",
-                        "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!",
-                        "data-notify-position": "bottom-full-width"
-                    });
                     SEMICOLON.widget.notifications($("#success"));
                     setTimeout("location.href = '?controller=ClassActivity&action=insert';", 2000);
                 } else {
-                    $("#warning").attr({
-                        "data-notify-type": "warning",
-                        "data-notify-msg": "<i class=icon-warning-sign></i> Operacion Incompleta, intente de nuevo!",
-                        "data-notify-position": "bottom-full-width"
-                    });
                     SEMICOLON.widget.notifications($("#warning"));
                 }
             }, "json");
@@ -305,7 +296,5 @@ if (isset($session->permissions)) {
     });
 </script>
 
-<!-- End Content
-============================================= -->    
 <?php
 include_once 'public/footer.php';

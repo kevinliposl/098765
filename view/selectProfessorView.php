@@ -2,9 +2,13 @@
 $session = SSession::getInstance();
 
 if (isset($session->permissions)) {
-    include_once 'public/headerAdmin.php';
+    if ($session->permissions == 'A') {
+        include_once 'public/headerAdmin.php';
+    } else {
+        header("Location:?action=notFound");
+    }
 } else {
-    include_once 'public/header.php';
+    header("Location:?action=notFound");
 }
 ?>
 
@@ -30,12 +34,12 @@ if (isset($session->permissions)) {
                                 <?php } ?>
                             </select>
                         </div>
-                        <div class="acc_content clearfix"></div>
+                        <br>
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped">
                                 <h5 style="text-align: center;">Informaci&oacute;n del Profesor</h5>
                                 <colgroup>
-                                    <col class="col-xs-5">
+                                    <col class="col-xs-4">
                                     <col class="col-xs-8">
                                 </colgroup>
                                 <tbody>

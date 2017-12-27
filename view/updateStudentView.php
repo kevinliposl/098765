@@ -1,5 +1,15 @@
 <?php
-include_once 'public/headerAdmin.php';
+$session = SSession::getInstance();
+
+if (isset($session->permissions)) {
+    if ($session->permissions == 'A') {
+        include_once 'public/headerAdmin.php';
+    } else {
+        header('Location:?action=notFound');
+    }
+} else {
+    header('Location:?action=notFound');
+}
 ?>
 
 <section id="page-title">
@@ -30,7 +40,7 @@ include_once 'public/headerAdmin.php';
                                 <input type="hidden" id="form-old-id" name="form-old-id" value="">
                                 <h5 style="text-align: center;">Informaci&oacute;n del Estudiante</h5>
                                 <colgroup>
-                                    <col class="col-xs-5">
+                                    <col class="col-xs-4">
                                     <col class="col-xs-8">
                                 </colgroup>
                                 <tbody>
@@ -133,7 +143,6 @@ include_once 'public/headerAdmin.php';
                         <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Espere un momento...!" data-notify-position="bottom-full-width"/>
                     </form>
                 </div>
-
             </div>
         </div>
     </div>

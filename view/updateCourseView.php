@@ -8,7 +8,7 @@ if (isset($session->permissions)) {
         header("Location:?action=notFound");
     }
 } else {
-    include_once 'public/header.php';
+    header("Location:?action=notFound");
 }
 ?>
 
@@ -21,77 +21,75 @@ if (isset($session->permissions)) {
 <section id="content">
     <div class="content-wrap">
         <div class="container clearfix">
-            <div class="accordion-lg divcenter nobottommargin" style="max-width: 550px;">
-                <div class="acctitle">
-                    <div class="acc_content clearfix">
-                        <form id="form" class="nobottommargin" onsubmit="return validate();">
-                            <div class="white-section">
-                                <label for="form-initials">Cursos:</label>
-                                <select id="form-courses" class="selectpicker form-control" data-live-search="true">
-                                    <option value="-1" data-tokens="">Seleccione un Curso</option>
-                                    <?php
-                                    foreach ($vars as $var) {
-                                        if (isset($var["initials"])) {
-                                            ?>
-                                            <option value="<?php echo $var["initials"] ?> " data-tokens="">
-                                                <?php echo $var["name"] ?>
-                                            </option>
-                                            <?php
-                                        }
+            <div class="accordion-lg divcenter nobottommargin">
+                <div class="acc_content clearfix">
+                    <form id="form" class="nobottommargin" onsubmit="return val();">
+                        <div class="white-section">
+                            <label for="form-initials">Cursos:</label>
+                            <select id="form-courses" class="selectpicker form-control" data-live-search="true">
+                                <option value="-1" data-tokens="">Seleccione un Curso</option>
+                                <?php
+                                foreach ($vars as $var) {
+                                    if (isset($var["initials"])) {
+                                        ?>
+                                        <option value="<?php echo $var["initials"] ?> " data-tokens="">
+                                            <?php echo $var["name"] ?>
+                                        </option>
+                                        <?php
                                     }
-                                    ?>
-                                </select>
-                                <input type="hidden" id="failed-form-courses" data-notify-type= "error" data-notify-position="bottom-full-width"/>
-                            </div>
-                            <br>
-                            <div class="acc_content clearfix"></div>
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-striped">
-                                    <h5 style="text-align: center;">Informaci&oacute;n del Curso</h5>
-                                    <colgroup>
-                                        <col class="col-xs-3">
-                                        <col class="col-xs-8">
-                                    </colgroup>
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                Siglas
-                                            </td>
-                                            <td id="form-initials-table"><?php echo "" ?></td>
-                                    <input type="hidden" id="failed-initials" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                                }
+                                ?>
+                            </select>
+                            <input type="hidden" id="failed-form-courses" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class=icon-remove-sign></i> Curso inválido. Seleccione e intente de nuevo!"/>
+                        </div>
+                        <br>
+                        <div class="acc_content clearfix"></div>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped">
+                                <h5 style="text-align: center;">Informaci&oacute;n del Curso</h5>
+                                <colgroup>
+                                    <col class="col-xs-4">
+                                    <col class="col-xs-8">
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <td>Siglas</td>
+                                        <td>
+                                            <a id="form-initials-table" class="bt-editable" data-emptytext='' href="#" data-type="text" data-pk="1" data-placeholder="Required" data-title="Ingrese la identificación"></a>
+                                            <input type="hidden" id="failed-initials" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                                        </td>
                                     </tr>
                                     <tr>
+                                        <td>Nombre</td>
                                         <td>
-                                            Nombre
+                                            <a id="form-name-table" class="bt-editable" data-emptytext='' href="#" data-type="text" data-pk="1" data-placeholder="Required" data-title="Ingrese la identificación"></a>
+                                            <input type="hidden" id="failed-name" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class=icon-remove-sign></i> Nombre Incorrecto. Complete e intente de nuevo!"/>
                                         </td>
-                                        <td id="form-name-table" class="bt-editable" href="#" data-type="text" data-pk="1" data-placeholder="Required" data-title="Ingrese el nombre"><?php echo " " ?></td>
-                                    <input type="hidden" id="failed-name" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                     </tr>
                                     <tr>
+                                        <td>Instrumento</td>
                                         <td>
-                                            Instrumento
+                                            <a id="form-instrument-table" class="bt-editable" data-emptytext='' href="#" data-type="text" data-pk="1" data-placeholder="Required" data-title="Ingrese la identificación"></a>
+                                            <input type="hidden" id="failed-instrument" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class=icon-remove-sign></i> Instrumento Incorrecto. Complete e intente de nuevo!"/>
                                         </td>
-                                        <td id="form-instrument-table" class="bt-editable" href="#" data-type="text" data-pk="1" data-placeholder="Required" data-title="Ingrese el instrumento"><?php echo " " ?></td>
-                                    <input type="hidden" id="failed-instrument" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                     </tr>
                                     <tr>
+                                        <td>Descripci&oacute;n</td>
                                         <td>
-                                            Descripci&oacute;n
+                                            <a id="form-description-table" class="bt-editable" data-emptytext='' href="#" data-type="text" data-pk="1" data-placeholder="Required" data-title="Ingrese la identificación"></a>
+                                            <input type="hidden" id="failed-description" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg= "<i class=icon-remove-sign></i> Descripción Incorrecto. Complete e intente de nuevo!"/>
                                         </td>
-                                        <td id="form-description-table" class="bt-editable" href="#" data-type="text" data-pk="1" data-placeholder="Required" data-title="Ingrese la descripcion"><?php echo " " ?></td>
-                                    <input type="hidden" id="failed-description" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                     </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="col_full nobottommargin">                      
-                                <input type="submit" value="Actualizar" class="button button-3d button-black nomargin form-control" style="display: block; text-align: center;"/>
-                                <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i>La operacion no se pudo realizar, intente de nuevo o m&aacute;s tarde!" data-notify-position="bottom-full-width"/>
-                                <input type="hidden" id="success" data-notify-type="success" data-notify-msg="<i class='icon-ok-sign'></i> Operaci&oacute;n exitosa, revise en breve...!" data-notify-position="bottom-full-width"/>
-                                <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Espere un momento...!" data-notify-position="bottom-full-width"/>
-                            </div>
-                        </form>
-                    </div>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col_full nobottommargin">                      
+                            <input type="submit" value="Actualizar" class="button button-3d button-black nomargin form-control" style="display: block; text-align: center;"/>
+                            <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i>La operacion no se pudo realizar, intente de nuevo o m&aacute;s tarde!" data-notify-position="bottom-full-width"/>
+                            <input type="hidden" id="success" data-notify-type="success" data-notify-msg="<i class='icon-ok-sign'></i> Operaci&oacute;n exitosa, revise en breve...!" data-notify-position="bottom-full-width"/>
+                            <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Espere un momento...!" data-notify-position="bottom-full-width"/>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -127,63 +125,63 @@ if (isset($session->permissions)) {
 
     //Change Combobox
     $("#form-courses").change(function () {
-        var parameters = {
-            "initials": $("#form-courses").val()
-        };
-        $.post("?controller=Course&action=select", parameters, function (data) {
-            if (data.initials) {
-                $("#form-initials-table").html(data.initials);
-                $("#form-name-table").html(data.name);
-                $("#form-instrument-table").html(data.instrument);
-                $("#form-description-table").html(data.description);
 
-                $("#success").attr({
-                    "data-notify-type": "success",
-                    "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!",
-                    "data-notify-position": "bottom-full-width"
-                });
-                SEMICOLON.widget.notifications($("#success"));
-            } else {
-                $("#form-initials-table").html("");
-                $("#form-name-table").html("");
-                $("#form-instrument-table").html("");
-                $("#form-description-table").html("");
-                $("#form-secondLastName-table").html("");
-                $("#warning").attr({
-                    "data-notify-type": "warning",
-                    "data-notify-msg": "<i class=icon-warning-sign></i> Operacion Incompleta, intente de nuevo!",
-                    "data-notify-position": "bottom-full-width"
-                });
-                SEMICOLON.widget.notifications($("#warning"));
-            }
-        }, "json");
+        if ($("#form-courses").val() !== "-1") {
+            var parameters = {
+                "initials": $("#form-courses").val()
+            };
+
+            SEMICOLON.widget.notifications($("#wait"));
+
+            $.post("?controller=Course&action=select", parameters, function (data) {
+                if (data.initials) {
+                    $("#form-initials-table").html(data.initials);
+                    $("#form-name-table").html(data.name);
+                    $("#form-instrument-table").html(data.instrument);
+                    $("#form-description-table").html(data.description);
+
+                    SEMICOLON.widget.notifications($("#success"));
+                } else {
+                    $("#form-initials-table").html("");
+                    $("#form-name-table").html("");
+                    $("#form-instrument-table").html("");
+                    $("#form-description-table").html("");
+                    $("#form-secondLastName-table").html("");
+
+                    SEMICOLON.widget.notifications($("#warning"));
+                }
+            }, "json");
+        } else {
+            $("#form-initials-table").html("");
+            $("#form-name-table").html("");
+            $("#form-instrument-table").html("");
+            $("#form-description-table").html("");
+            $("#form-secondLastName-table").html("");
+        }
     });
 
-    function validate() {
-        var initials, name, description, instrument;
-
-        initials = $("#form-initials-table").text().trim();
-        name = $("#form-name-table").text().trim();
-        description = $("#form-description-table").text().trim();
-        instrument = $("#form-instrument-table").text().trim();
+    function val() {
+        
+        args = {
+            "initials": $("#form-initials-table").text().trim(),
+            "name": $("#form-name-table").text().trim(),
+            "description": $("#form-description-table").text().trim(),
+            "instrument": $("#form-instrument-table").text().trim()
+        };
 
         if ($("#form-courses").val() === "-1") {
-            $("#failed-form-courses").attr("data-notify-msg", "<i class=icon-remove-sign></i> Curso inválido. Seleccione e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-form-courses"));
             return false;
 
-        } else if (!isNaN(name) || name.length < 4 || name.length > 50) {
-            $("#failed-name").attr("data-notify-msg", "<i class=icon-remove-sign></i> Nombre Incorrecto. Complete e intente de nuevo!");
+        } else if (!isNaN(args['name']) || args['name'].length < 4 || args['name'].length > 50) {
             SEMICOLON.widget.notifications($("#failed-name"));
             return false;
 
-        } else if (!isNaN(description) || description.length < 4 || description.length > 100) {
-            $("#failed-description").attr("data-notify-msg", "<i class=icon-remove-sign></i> Descripción Incorrecto. Complete e intente de nuevo!");
+        } else if (!isNaN(args['description']) || args['description'].length < 4 || args['description'].length > 100) {
             SEMICOLON.widget.notifications($("#failed-description"));
             return false;
 
-        } else if (!isNaN(instrument) || instrument.length < 2 || instrument.length > 100) {
-            $("#failed-instrument").attr("data-notify-msg", "<i class=icon-remove-sign></i> Instrumento Incorrecto. Complete e intente de nuevo!");
+        } else if (!isNaN(args['instrument']) || args['instrument'].length < 2 || args['instrument'].length > 100) {
             SEMICOLON.widget.notifications($("#failed-instrument"));
             return false;
         }
@@ -193,28 +191,20 @@ if (isset($session->permissions)) {
 
     //Delete 
     $("#form-submity").click(function () {
-        var parameters = {
-            "initials": $("#form-initials-table").text().trim(),
-            "name": $("#form-name-table").text().trim(),
-            "description": $("#form-description-table").text().trim(),
-            "instrument": $("#form-instrument-table").text().trim()
-        };
-        $.post("?controller=Course&action=update", parameters, function (data) {
+
+        $("#form-submity").attr('disabled', 'disabled');
+        $("#form-close").attr('disabled', 'disabled');
+
+        SEMICOLON.widget.notifications($("#wait"));
+        
+        $.post("?controller=Course&action=update", args, function (data) {
             if (data.result === "1") {
-                $("#success").attr({
-                    "data-notify-type": "success",
-                    "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!",
-                    "data-notify-position": "bottom-full-width"
-                });
                 SEMICOLON.widget.notifications($("#success"));
-                setTimeout("location.href = '?controller=Course&action=update';", 2000);
+                setTimeout("location.href = '?controller=Course&action=update';", 1500);
             } else {
-                $("#warning").attr({
-                    "data-notify-type": "warning",
-                    "data-notify-msg": "<i class=icon-warning-sign></i> Operacion Incompleta, intente de nuevo!",
-                    "data-notify-position": "bottom-full-width"
-                });
                 SEMICOLON.widget.notifications($("#warning"));
+                $("#form-submity").removeAttr('disabled');
+                $("#form-close").removeAttr('disabled');
             }
         }, "json");
     });

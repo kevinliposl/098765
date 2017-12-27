@@ -20,19 +20,20 @@ if (isset($session->permissions)) {
     <div class="content-wrap">
         <div class="container clearfix">
             <div class="accordion-lg divcenter nobottommargin">
+
                 <div class="acc_content clearfix">
-                    <form id="form" class="nobottommargin" onsubmit="return false;">
+                    <form id="form" class="nobottommargin" onsubmit="return val();">
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped">
                                 <colgroup>
-                                    <col class="col-xs-5">
+                                    <col class="col-xs-4">
                                     <col class="col-xs-8">
                                 </colgroup>
                                 <tbody>
                                     <tr>
                                         <td>Identificaci&oacute;n</td>
                                         <td>
-                                            <a id="form-id" class="bt-editable" href="#" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese la identificación"><?php echo $vars['identification']; ?></a>
+                                            <a id="form-id" class="bt-editable" href="#" data-type="text" data-pk="1" data-placeholder="Required" data-title="Ingrese la identificación"><?php echo $vars['identification']; ?></a>
                                             <input type="hidden" id="failed-id" data-notify-type= "error" data-notify-position="bottom-full-width"
                                                    data-notify-msg="<i class=icon-remove-sign></i> Identificación Incorrecta. Verifique e intente de nuevo!"/>
                                         </td>
@@ -40,7 +41,7 @@ if (isset($session->permissions)) {
                                     <tr>
                                         <td>Email</td>
                                         <td>
-                                            <a id="form-email" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el email"><?php echo $vars['email']; ?></a>
+                                            <a id="form-email" href="#" class="bt-editable" data-type="text" data-pk="1" data-placeholder="Required" data-title="Ingrese el email"><?php echo $vars['email']; ?></a>
                                             <input type="hidden" id="failed-email" data-notify-type= "error" data-notify-position="bottom-full-width"
                                                    data-notify-msg="<i class=icon-remove-sign></i> Email Incorrecto. Verifique e intente de nuevo!"/>
                                         </td>
@@ -48,7 +49,7 @@ if (isset($session->permissions)) {
                                     <tr>
                                         <td>Nombre</td>
                                         <td>
-                                            <a id="form-name" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el nombre"><?php echo $vars['name']; ?></a>
+                                            <a id="form-name" href="#" class="bt-editable" data-type="text" data-pk="1" data-placeholder="Required" data-title="Ingrese el nombre"><?php echo $vars['name']; ?></a>
                                             <input type="hidden" id="failed-name" data-notify-type= "error" data-notify-position="bottom-full-width"
                                                    data-notify-msg="<i class=icon-remove-sign></i> Nombre Incorrecto. Verifique e intente de nuevo!"/>
                                         </td>
@@ -56,14 +57,14 @@ if (isset($session->permissions)) {
                                     <tr>
                                         <td>Primer Apellido</td>
                                         <td>
-                                            <a id="form-first-lastName" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el Primer Apellido"> <?php echo $vars['first_lastname']; ?></a>
+                                            <a id="form-first-lastName" href="#" class="bt-editable" data-type="text" data-pk="1" data-placeholder="Required" data-title="Ingrese el Primer Apellido"> <?php echo $vars['first_lastname']; ?></a>
                                             <input type="hidden" id="failed-first-lastName" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class=icon-remove-sign></i> Primer Apellido Incorrecto. Verifique e intente de nuevo!"/>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Segundo Apellido</td>
                                         <td>
-                                            <a id="form-second-lastName" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el Segundo Apellido"><?php echo $vars['second_lastname']; ?></a>
+                                            <a id="form-second-lastName" href="#" class="bt-editable" data-type="text" data-pk="1" data-placeholder="Required" data-title="Ingrese el Segundo Apellido"><?php echo $vars['second_lastname']; ?></a>
                                             <input type="hidden" id="failed-second-lastName" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class=icon-remove-sign></i> Segundo Apellido Incorrecto. Verifique e intente de nuevo!"/>
                                         </td>
                                     </tr>
@@ -110,7 +111,7 @@ if (isset($session->permissions)) {
 
 <script>
 
-    $("#form-submit").click(function () {
+    function val() {
 
         var identification = $("#form-id").text().trim();
         var email = $("#form-email").text().trim();
@@ -133,7 +134,7 @@ if (isset($session->permissions)) {
         }
 
         $('#showModal').click();
-    });
+    }
 
     $("#form-submity").click(function () {
         var parameters = {

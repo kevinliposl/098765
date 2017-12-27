@@ -2,9 +2,13 @@
 $session = SSession::getInstance();
 
 if (isset($session->permissions)) {
-    include_once 'public/headerAdmin.php';
+    if ($session->permissions == 'A') {
+        include_once 'public/headerAdmin.php';
+    } else {
+        header('Location:?action=notFound');
+    }
 } else {
-    include_once 'public/header.php';
+    header('Location:?action=notFound');
 }
 ?>
 
@@ -254,7 +258,7 @@ if (isset($session->permissions)) {
             </div>
         </div>
     </div>
-</section><!-- #content end -->
+</section>
 
 <script>
 

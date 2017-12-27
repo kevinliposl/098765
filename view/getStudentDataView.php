@@ -31,7 +31,7 @@ if (isset($session->permissions)) {
                                 <?php foreach ($vars as $var) { ?>
                                     <option value="<?php echo $var["identification"] ?>" data-tokens="">
                                         <?php echo $var["identification"] . " | " . $var["name"] . " " . $var["first_lastname"] . " " . $var["second_lastname"]; ?></option>
-                                    <?php } ?>
+                                <?php } ?>
                             </select>
                         </div>
                         <br>
@@ -40,7 +40,7 @@ if (isset($session->permissions)) {
                                 <input type="hidden" id="form-old-id" name="form-old-id" value="">
                                 <h5 style="text-align: center;">Informaci&oacute;n del Estudiante</h5>    
                                 <colgroup>
-                                    <col class="col-xs-5">
+                                    <col class="col-xs-4">
                                     <col class="col-xs-8">
                                 </colgroup>
                                 <tbody>
@@ -219,10 +219,26 @@ if (isset($session->permissions)) {
                 }
             }, "json");
         } else {
-            document.getElementById("form-submit").style.display = "none";
+            $("#form-id").text("");
+            $("#form-old-id").text("");
+            $("#form-id-type").text('');
+            $("#form-name").text('');
+            $("#form-first-lastName").text('');
+            $("#form-second-lastName").text('');
+            $("#form-phone1").text('');
+            $("#form-phone2").text('');
+            $("#form-email").text('');
+            $("#form-gender").text('');
+            $("#form-nationality").text('');
+            $("#form-age").text('');
+            $("#form-contact-name").text('');
+            $("#form-contact-phone").text('');
+            $("#form-relationship").text('');
+            $("#form-contact-email").text('');
         }
     });
 
 </script>
+
 <?php
 include_once 'public/footer.php';

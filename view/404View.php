@@ -20,7 +20,6 @@ if (isset($session->permissions)) {
 ?>
 <section id="slider" class="slider-parallax swiper_wrapper full-screen">
     <div class="slider-parallax-inner">
-
         <div class="swiper-container swiper-parent">
             <div class="swiper-wrapper">
                 <div class="swiper-slide dark" style="background: url(public/images/landing/static.jpg) center;">
