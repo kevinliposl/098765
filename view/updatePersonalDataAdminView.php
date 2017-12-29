@@ -16,7 +16,7 @@ if (isset($session->permissions)) {
     </div>
 </section>
 
-<section id="content">
+<section id="content" style="position: relative;">
     <div class="content-wrap">
         <div class="container clearfix">
             <div class="accordion-lg divcenter nobottommargin">

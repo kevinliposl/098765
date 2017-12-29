@@ -12,15 +12,45 @@ if (isset($session->permissions)) {
 }
 ?>
 
+<<<<<<< HEAD
 <section id="page-title">
     <div class="container clearfix">
         <h1>Insertar Asignaciones de Cursos a Semestres</h1>
     </div>
 </section>
 
+<style>
+
+	.white-section {
+		background-color: #FFF;
+		padding: 25px 20px;
+		-webkit-box-shadow: 0px 1px 1px 0px #dfdfdf;
+		box-shadow: 0px 1px 1px 0px #dfdfdf;
+		border-radius: 3px;
+	}
+
+	.white-section label {
+		display: block;
+		margin-bottom: 15px;
+	}
+
+	.white-section pre { margin-top: 15px; }
+
+	.dark .white-section {
+		background-color: #111;
+		-webkit-box-shadow: 0px 1px 1px 0px #444;
+		box-shadow: 0px 1px 1px 0px #444;
+	}
+
+	</style>
+
+=======
+>>>>>>> e21e3bcf69b71be20c52ecf5a2a5d64a12188ddc
 <section id="content">
     <div class="content-wrap">
         <div class="container clearfix">
+            <h1 class="center">Asignaciones</h1>
+            <br><br>
             <div class="accordion-lg divcenter nobottommargin" style="max-width: 550px;">
                 <div class="acc_content clearfix">
                     <form id="form" class="nobottommargin">
@@ -45,26 +75,35 @@ if (isset($session->permissions)) {
                                     }
                                 }
                                 ?>
+                                        <option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option>    
                             </select>
                             <input type="hidden" id="failed-form-semester" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                         </div> 
-                        <br>
+                        
                         <div class="white-section">
                             <label for="form-courses">Cursos:</label>
-                            <select id="form-courses" class="form-control selectpicker" data-live-search="true">
+<<<<<<< HEAD
+                            <select id="form-courses" class="selectpicker form-control" data-live-search="true">
+=======
+                            <select id="form-courses" class="form-control selectpicker" data-live-search="true" >
+>>>>>>> e21e3bcf69b71be20c52ecf5a2a5d64a12188ddc
                                 <option value="-1" data-tokens="">Seleccione un Curso</option>
+                                <option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option>
+                                
+                                
                             </select>
                             <input type="hidden" id="failed-form-courses" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                         </div>
-                        <br>
+                        
                         <div class="white-section">
                             <label for="form-professors">Profesores:</label>
-                            <select multiple name="form-professors[]" id="form-professors" class="form-control selectpicker" data-live-search="true">
+                            <select multiple name="form-professors[]" id="form-professors" class="selectpicker form-control" data-live-search="true">
+                                <option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option>
                             </select>
                             <input type="hidden" id="failed-form-professors" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                         </div>
-                        <br>
-                        <div class="col_full nobottommargin">
+                        
+                        <div class="col_full">
                             <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" style="display : block; text-align: center;" data-target="#myModal">Asignar</a>
                             <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i>La operacion no se pudo realizar, intente de nuevo o m&aacute;s tarde!" data-notify-position="bottom-full-width"/>
                             <input type="hidden" id="success" data-notify-type="success" data-notify-msg="<i class='icon-ok-sign'></i> Operaci&oacute;n exitosa, revise en breve...!" data-notify-position="bottom-full-width"/>
