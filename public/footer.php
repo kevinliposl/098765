@@ -129,7 +129,8 @@
 
 <script type="text/javascript">
     $('.selectpicker').selectpicker({
-        size: 4
+        size: 3,
+        windowPadding: 2
     });
 </script>
 
