@@ -5,10 +5,10 @@ if (isset($session->permissions)) {
     if ($session->permissions == 'A') {
         include_once 'public/headerAdmin.php';
     } else {
-        header("Location:?controller=Index&action=notFound");
+        header('Location:?action=notFound');
     }
 } else {
-    include_once 'public/header.php';
+    header('Location:?action=notFound');
 }
 ?>
 
@@ -22,60 +22,59 @@ if (isset($session->permissions)) {
     <div class="content-wrap">
         <div class="container clearfix">
             <div class="accordion-lg divcenter nobottommargin" style="max-width: 550px;">
-                <div class="acctitle">
-                    <div class="acc_content clearfix">
-                        <form id="form" class="nobottommargin">
-                            <div class="white-section">
-                                <label for="form-semester">Semestres:</label>
-                                <select id="form-semester" class="selectpicker form-control" data-live-search="true">
-                                    <option value="-1" data-tokens="">Seleccione un Semestre</option>
-                                    <?php
-                                    foreach ($vars as $var) {
-                                        if (isset($var["ID"])) {
-                                            ?>
-                                            <option value="<?php echo $var["ID"] ?> " data-tokens="">
-                                                <?php
-                                                if ($var["semester"] == '1') {
-                                                    echo "I semestre" . " " . $var["year"];
-                                                } else {
-                                                    echo "II semestre" . " " . $var["year"];
-                                                }
-                                                ?>
-                                            </option>
+                <div class="acc_content clearfix">
+                    <form id="form" class="nobottommargin">
+                        <div class="white-section">
+                            <label for="form-semester">Semestres:</label>
+                            <select id="form-semester" class="selectpicker form-control" data-live-search="true">
+                                <option value="-1" data-tokens="">Seleccione un Semestre</option>
+                                <?php
+                                foreach ($vars as $var) {
+                                    if (isset($var["ID"])) {
+                                        ?>
+                                        <option value="<?php echo $var["ID"] ?> " data-tokens="">
                                             <?php
-                                        }
+                                            if ($var["semester"] == '1') {
+                                                echo "I semestre" . " " . $var["year"];
+                                            } else {
+                                                echo "II semestre" . " " . $var["year"];
+                                            }
+                                            ?>
+                                        </option>
+                                        <?php
                                     }
-                                    ?>
-                                </select>
-                                <input type="hidden" id="failed-form-semester" data-notify-type= "error" data-notify-position="bottom-full-width"/>
-                            </div> 
-                            <br>
-                            <div class="white-section">
-                                <label for="form-courses">Cursos:</label>
-                                <select id="form-courses" class="form-control selectpicker" data-live-search="true">
-                                    <option value="-1" data-tokens="">Seleccione un Curso</option>
-                                </select>
-                                <input type="hidden" id="failed-form-courses" data-notify-type= "error" data-notify-position="bottom-full-width"/>
-                            </div>
-                            <br>
-                            <div class="white-section">
-                                <label for="form-professors">Profesores:</label>
-                                <select multiple name="form-professors[]" id="form-professors" class="form-control selectpicker" data-live-search="true">
-                                </select>
-                                <input type="hidden" id="failed-form-professors" data-notify-type= "error" data-notify-position="bottom-full-width"/>
-                            </div>
-                            <br>
-                            <div class="col_full nobottommargin">
-                                <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" style="display : block; text-align: center;" data-target="#myModal">Asignar</a>
-                                <input type="hidden" id="warning" value="w"/>
-                                <input type="hidden" id="success" value="s"/>
-                                <input type="hidden" id="failed" value="f"/>
-                            </div>                     
-                        </form>
-                    </div>
+                                }
+                                ?>
+                            </select>
+                            <input type="hidden" id="failed-form-semester" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                        </div> 
+                        <br>
+                        <div class="white-section">
+                            <label for="form-courses">Cursos:</label>
+                            <select id="form-courses" class="form-control selectpicker" data-live-search="true">
+                                <option value="-1" data-tokens="">Seleccione un Curso</option>
+                            </select>
+                            <input type="hidden" id="failed-form-courses" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                        </div>
+                        <br>
+                        <div class="white-section">
+                            <label for="form-professors">Profesores:</label>
+                            <select multiple name="form-professors[]" id="form-professors" class="form-control selectpicker" data-live-search="true">
+                            </select>
+                            <input type="hidden" id="failed-form-professors" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                        </div>
+                        <br>
+                        <div class="col_full nobottommargin">
+                            <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" style="display : block; text-align: center;" data-target="#myModal">Asignar</a>
+                            <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i>La operacion no se pudo realizar, intente de nuevo o m&aacute;s tarde!" data-notify-position="bottom-full-width"/>
+                            <input type="hidden" id="success" data-notify-type="success" data-notify-msg="<i class='icon-ok-sign'></i> Operaci&oacute;n exitosa, revise en breve...!" data-notify-position="bottom-full-width"/>
+                            <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Espere un momento...!" data-notify-position="bottom-full-width"/>
+                        </div>                     
+                    </form>
                 </div>
             </div>
         </div>
+    </div>
 </section>
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -112,6 +111,8 @@ if (isset($session->permissions)) {
             var parameters = {
                 "ID_Semester": $("#form-semester").val()
             };
+            SEMICOLON.widget.notifications($("#wait"));
+
             document.getElementById("form-courses").options.length = 0;
             document.getElementById("form-professors").options.length = 0;
             $('#form-professors').append($("<option></option>").attr("value", "-1").text("Seleccione los profesores"));
@@ -140,6 +141,8 @@ if (isset($session->permissions)) {
                 "ID_Semester": $("#form-semester").val(),
                 "initials": $("#form-courses").val()
             };
+            SEMICOLON.widget.notifications($("#wait"));
+
             document.getElementById("form-professors").options.length = 0;
             $.post("?controller=CourseSemester&action=selectNotAllProfessorsCourseSemester", parameters, function (data) {
                 for (var i = 0; i < data.length; i++) {
@@ -184,21 +187,14 @@ if (isset($session->permissions)) {
             "initials": $("#form-courses").val(),
             "professors": $("#form-professors").val()
         };
+
+        SEMICOLON.widget.notifications($("#wait"));
+
         $.post("?controller=CourseSemester&action=insert", parameters, function (data) {
             if (data.result === "1") {
-                $("#success").attr({
-                    "data-notify-type": "success",
-                    "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!",
-                    "data-notify-position": "bottom-full-width"
-                });
                 SEMICOLON.widget.notifications($("#success"));
                 setTimeout("location.href = '?controller=CourseSemester&action=insert';", 2000);
             } else {
-                $("#warning").attr({
-                    "data-notify-type": "warning",
-                    "data-notify-msg": "<i class=icon-warning-sign></i> Operacion Incompleta, intente de nuevo!",
-                    "data-notify-position": "bottom-full-width"
-                });
                 SEMICOLON.widget.notifications($("#warning"));
             }
         }, "json");

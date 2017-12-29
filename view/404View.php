@@ -3,12 +3,14 @@
 $session = SSession::getInstance();
 
 if (isset($session->permissions)) {
-    if ($session->permissions == 'S') {
+    if ($session->permissions == 'T') {
+        include_once 'public/headerProfessor.php';
+    } else if ($session->permissions == 'S') {
         include_once 'public/headerStudent.php';
     } else if ($session->permissions == 'A') {
         include_once 'public/headerAdmin.php';
-    } elseif ($session->permissions == 'T') {
-        include_once 'public/headerProfessor.php';
+    } else if ($session->permissions == 'R') {
+        include_once 'public/headerRoot.php';
     } else {
         include_once 'public/header.php';
     }
@@ -16,10 +18,8 @@ if (isset($session->permissions)) {
     include_once 'public/header.php';
 }
 ?>
-
 <section id="slider" class="slider-parallax swiper_wrapper full-screen">
     <div class="slider-parallax-inner">
-
         <div class="swiper-container swiper-parent">
             <div class="swiper-wrapper">
                 <div class="swiper-slide dark" style="background: url(public/images/landing/static.jpg) center;">
@@ -35,6 +35,6 @@ if (isset($session->permissions)) {
         </div>
     </div>
 </section>
-
 <?php
+
 include_once 'public/footer.php';

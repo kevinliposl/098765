@@ -20,6 +20,11 @@ include_once 'public/head.php';
                             <li><a href="?controller=Admin&action=select"><div>Ver Administradores</div></a></li>
                         </ul>
                     </li>
+                    <li><a href="#"><div>Perfil</div></a>
+                        <ul>
+                            <li><a href="?controller=User&action=changePassword"><div>Cambiar Contraseña</div></a></li> 
+                        </ul>
+                    </li> 
                     <li><a href="?controller=User&action=signOff"><div>Cerrar Sesi&oacute;n</div></a></li>
                 </ul>
             </nav>

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @authors <kevin.sandoval@ucr.ac.cr>,<diego.cendenofonseca@ucr.ac.cr>,<elena.calderonfernandez@ucr.ac.cr>,<brogudbarrientos@gmail.com>
  * @version 1.0
@@ -56,7 +57,7 @@ class IndexController {
     function contactSendEmail() {
         $mail = SMail::getInstance();
         $result = $mail->contactMail($_POST['form-name'], $_POST['form-email'], $_POST['form-phone'], $_POST['form-service'], $_POST['form-subject'], $_POST['form-message']);
-        echo json_encode(array('result' => $result.''));
+        echo json_encode(array('result' => $result . ''));
     }
 
     /**
@@ -90,4 +91,5 @@ class IndexController {
     function ejemploProfesor() {
         $this->view->show("profileProfesorView.php");
     }
+
 }

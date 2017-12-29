@@ -38,15 +38,10 @@ if (isset($session->permissions)) {
     </div>
 </section>
 
-<!-- Content
-============================================= -->
 <section id="content">
-
     <div class="content-wrap">
-
         <div class="container clearfix">
             <div class="row clearfix">
-
                 <div class="col-lg-5">
                     <div class="heading-block topmargin">
                         <h1>L&iacute;der en educaci&oacute;n musical en Turrialba</h1>
@@ -56,18 +51,14 @@ if (isset($session->permissions)) {
                         en el cant&oacute;n de Turrialba, formando futuros grandes m&uacute;sicos. 
                     </p>
                 </div>
-
                 <div class="col-lg-7">
 
                     <div style="position: relative; margin-bottom: -60px;" class="ohidden" data-height-lg="426" data-height-md="567" data-height-sm="470" data-height-xs="287" data-height-xxs="183">
                         <img src="public/images/landing/piano.png" style="position: absolute; top: 0; left: 0;" data-animate="fadeInUp" data-delay="400" alt="Fa">
                     </div>
-
                 </div>
-
             </div>
         </div>
-
         <div class="section nobottommargin">
             <div class="container clear-bottommargin clearfix">
                 <div class="row topmargin-sm clearfix">
@@ -84,7 +75,6 @@ if (isset($session->permissions)) {
                             <br><br><a href="?controlador=Index&action=aboutus">¡Conozca m&aacute;s sobre nosotros!</a>
                         </p>
                     </div>
-
                     <div class="col-md-4 bottommargin">
                         <div class="heading-block nobottomborder" style="margin-bottom: 15px;">
                             <span class="before-heading"></span>
@@ -98,7 +88,6 @@ if (isset($session->permissions)) {
                             <br><br><a href="?controlador=Index&action=instruments">¡Conozca m&aacute;s sobre los cursos!</a>
                         </p>
                     </div>
-
                     <div class="col-md-4 bottommargin">
                         <div class="heading-block nobottomborder" style="margin-bottom: 15px;">
                             <span class="before-heading"></span>
@@ -113,22 +102,15 @@ if (isset($session->permissions)) {
                             <br><br><a href="#">¡Conozca m&aacute;s sobre nuestros docentes!</a>
                         </p>
                     </div>
-
                 </div>
-
             </div>
         </div>
-
         <div class="container clearfix">
-
             <div class="clear"></div>
-
             <div class="section parallax dark nobottommargin" style="background-image: url('public/images/landing/EscritorioFusion.jpg'); padding: 100px 0;" data-stellar-background-ratio="0.4">
-
                 <div class="heading-block center">
                     <h3>¿Qu&eacute; dice nuestros clientes?</h3>
                 </div>
-
                 <div class="fslider testimonial testimonial-full" data-animation="fade" data-arrows="false">
                     <div class="flexslider">
                         <div class="slider-wrap">
@@ -149,7 +131,6 @@ if (isset($session->permissions)) {
                         </div>
                     </div>
                 </div>
-
             </div>
 
 
@@ -176,9 +157,7 @@ if (isset($session->permissions)) {
                         </div>-->
 
         </div>
-
-</section><!-- #content end -->
+</section>
 
 <?php
-
 include_once 'public/footer.php';

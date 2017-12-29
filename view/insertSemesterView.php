@@ -1,61 +1,58 @@
 <?php
+
 $session = SSession::getInstance();
 
 if (isset($session->permissions)) {
-    include_once 'public/headerAdmin.php';
+    if ($session->permissions == 'A') {
+        include_once 'public/headerAdmin.php';
+    } else {
+        header('Location:?action=notFound');
+    }
 } else {
-    include_once 'public/header.php';
+    header('Location:?action=notFound');
 }
 ?>
 
-<!-- Page Title
-============================================= -->
 <section id="page-title">
-
     <div class="container clearfix">
         <h1>Insertar Semestre</h1>
     </div>
-</section><!-- #page-title end -->
+</section>
 
-<!-- Content
-============================================= -->
 <section id="content">
     <div class="content-wrap">
         <div class="container clearfix">
             <div class="accordion-lg divcenter nobottommargin" style="max-width: 550px;">
-                <div class="acctitle">
-                    <div class="acc_content clearfix">
-                        <form id="form" class="nobottommargin" onsubmit="return false">
-                            <div class="col_full">
-                                <label for="form-year">A&ncaron;o:</label>
-                                <input type="number" id="form-year" class="form-control" required minlength="4" maxlength="4" placeholder="2000"/>
-                                <input type="hidden" id="failed-year" data-notify-type= "error" data-notify-position="bottom-full-width"/>
-                            </div>
+                <div class="acc_content clearfix">
+                    <form id="form" class="nobottommargin" onsubmit="return val();">
+                        <div class="col_full">
+                            <label for="form-year">A&ncaron;o:</label>
+                            <input type="number" id="form-year" class="form-control" required minlength="4" maxlength="4" placeholder="2000"/>
+                            <input type="hidden" id="failed-year" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                        </div>
 
-                            <div class="col_full">
-                                <label for="form-semester">Semestre:</label>
-                                <select id="form-semester" class="form-control" data-live-search="true">
-                                    <option value="-1" data-tokens="">Seleccione un Semestre</option>
-                                    <option value="1" data-tokens=""> I Semestre</option>
-                                    <option value="2" data-tokens="">II Semestre</option>
-                                </select>
-                                <input type="hidden" id="failed-semester" data-notify-type= "error" data-notify-position="bottom-full-width"/>
-                            </div>
-
-                            <div class="col_full nobottommargin">                      
-                                <input type="submit" value="Insertar" class="button button-3d button-black nomargin form-control" id="submit" style="display: block; text-align: center;"/>
-                                <input type="hidden" id="warning"/>
-                                <input type="hidden" id="success"/>
-                                <input type="hidden" id="failed"/>
-                            </div>
-                        </form>
-                    </div>
+                        <div class="col_full">
+                            <label for="form-semester">Semestre:</label>
+                            <select id="form-semester" class="form-control" data-live-search="true">
+                                <option value="-1" data-tokens="">Seleccione un Semestre</option>
+                                <option value="1" data-tokens=""> I Semestre</option>
+                                <option value="2" data-tokens="">II Semestre</option>
+                            </select>
+                            <input type="hidden" id="failed-semester" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                        </div>
+                        <div class="col_full nobottommargin">                      
+                            <input type="submit" value="Insertar" class="button button-3d button-black nomargin form-control" id="submit" style="display: block; text-align: center;"/>
+                            <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i>La operacion no se pudo realizar, intente de nuevo o m&aacute;s tarde!" data-notify-position="bottom-full-width"/>
+                            <input type="hidden" id="success" data-notify-type="success" data-notify-msg="<i class='icon-ok-sign'></i> Operaci&oacute;n exitosa, revise en breve...!" data-notify-position="bottom-full-width"/>
+                            <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Espere un momento...!" data-notify-position="bottom-full-width"/>      
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-</section><!-- #content end -->
+    </div>
+</section>
 
-<!--MODAL -->
 <a id="showModal" style="display: none;"class="button button-3d button-black nomargin" data-target="#myModal" data-toggle="modal">Modal</a>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -81,7 +78,7 @@ if (isset($session->permissions)) {
 </div>
 
 <script>
-    $("#submit").click(function () {
+    function val() {
 
         var year = $("#form-year").val().trim();
         var semester = $("#form-semester").val().trim();
@@ -98,16 +95,16 @@ if (isset($session->permissions)) {
 
         $('#showModal').click();
         return false;
-    });
+    }
 
     //Insert
     $("#form-submity").click(function () {
-        
+
         var parameters = {
             'year': $("#form-year").val().trim(),
             'semester': $("#form-semester").val().trim()
         };
-        
+
         $.post("?controller=Semester&action=insert", parameters, function (data) {
             if (data.result === "1") {
                 $("#success").attr({
@@ -124,14 +121,11 @@ if (isset($session->permissions)) {
                     "data-notify-position": "bottom-full-width"
                 });
                 SEMICOLON.widget.notifications($("#warning"));
-            }
-            ;
+            };
         }, "json");
     });
 </script>
 
-<!-- End Content
-============================================= -->    
 <?php
-include_once 'public/footer.php';
 
+include_once 'public/footer.php';

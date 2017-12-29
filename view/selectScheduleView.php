@@ -2,22 +2,22 @@
 $session = SSession::getInstance();
 
 if (isset($session->permissions)) {
-    include_once 'public/headerAdmin.php';
+    if ($session->permissions == 'A') {
+        include_once 'public/headerAdmin.php';
+    } else {
+        header("Location:?action=notFound");
+    }
 } else {
-    include_once 'public/header.php';
+    header("Location:?action=notFound");
 }
 ?>
-<!-- Page Title
-============================================= -->
-<section id="page-title">
 
+<section id="page-title">
     <div class="container clearfix">
         <h1>Horarios</h1>
     </div>
-</section><!-- #page-title end -->
+</section>
 
-<!-- Content
-============================================= -->
 <section id="content">
     <div class="content-wrap">
         <div class="container clearfix">
@@ -40,9 +40,9 @@ if (isset($session->permissions)) {
                     </select>
                 </div>
                 <div class="col_full nobottommargin">
-                    <input type="hidden" id="warning" data-notify-position="bottom-full-width" data-notify-type= "warning"/>
-                    <input type="hidden" id="success" data-notify-position="bottom-full-width" data-notify-type= "success"/>
-                    <input type="hidden" id="failed" data-notify-position="bottom-full-width" data-notify-type= "error"/>
+                    <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i>La operacion no se pudo realizar, intente de nuevo o m&aacute;s tarde!" data-notify-position="bottom-full-width"/>
+                    <input type="hidden" id="success" data-notify-type="success" data-notify-msg="<i class='icon-ok-sign'></i> Operaci&oacute;n exitosa, revise en breve...!" data-notify-position="bottom-full-width"/>
+                    <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Espere un momento...!" data-notify-position="bottom-full-width"/>
                 </div>
             </form>
             <div class="table-responsive">
@@ -195,8 +195,7 @@ if (isset($session->permissions)) {
             </div>
         </div>
     </div>
-
-</section><!-- #content end -->
+</section>
 
 <script>
     var days = {
@@ -220,7 +219,6 @@ if (isset($session->permissions)) {
         return Math.floor(Math.random() * (max - min)) + min;
     }
 
-//Change Combobox
     $("#form-semester").change(function () {
         var parameters = {
             "ID_Semester": $("#form-semester").val()
@@ -246,9 +244,6 @@ if (isset($session->permissions)) {
 
 </script>
 
-
-<!-- End Content
-============================================= -->    
 <?php
 include_once 'public/footer.php';
 

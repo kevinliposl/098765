@@ -20,81 +20,74 @@ if (isset($session->permissions)) {
     <div class="content-wrap">
         <div class="container clearfix">
             <div class="accordion-lg divcenter nobottommargin" style="max-width: 550px;">
-                <div class="acctitle">
-                    <div class="acc_content clearfix">
-                        <form id="form" class="nobottommargin" onsubmit="return val();">
-                            <div class="white-section">
-                                <label for="form-prof">Profesores:</label>
-                                <select id="form-prof" class="selectpicker form-control" data-live-search="true">
-                                    <option value="-1" data-tokens="">Seleccione un Profesor</option>
-                                    <?php
-                                    foreach ($vars as $var) {
-                                        if (isset($var["identification"])) {
-                                            ?>
-                                            <option value="<?php echo $var["identification"] ?> " data-tokens="">
-                                                <?php echo $var["Name"] ?>
-                                            </option>
-                                            <?php
-                                        }
+                <div class="acc_content clearfix">
+                    <form id="form" class="nobottommargin" onsubmit="return val();">
+                        <div class="white-section">
+                            <label for="form-prof">Profesores:</label>
+                            <select id="form-prof" class="selectpicker form-control" data-live-search="true">
+                                <option value="-1" data-tokens="">Seleccione un Profesor</option>
+                                <?php
+                                foreach ($vars as $var) {
+                                    if (isset($var["identification"])) {
+                                        ?>
+                                        <option value="<?php echo $var["identification"] ?> " data-tokens="">
+                                            <?php echo $var["Name"] ?>
+                                        </option>
+                                        <?php
                                     }
-                                    ?>
-                                </select>
-                            </div>
-                            <br>
-                            <div class="acc_content clearfix"></div>
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-striped">
-                                    <h5 style="text-align: center;">Informaci&oacute;n del Profesor</h5>
-                                    <colgroup>
-                                        <col class="col-xs-3">
-                                        <col class="col-xs-8">
-                                    </colgroup>
-                                    <tbody>
-                                        <tr>
-                                            <td>Identificaci&oacute;n</td>
-                                            <td>
-                                                <a id="form-id"></a>
-                                                <input type="hidden" id="failed-id" data-notify-type= "error" data-notify-position="bottom-full-width"/>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Nombre</td>
-                                            <td>
-                                                <a id="form-name"></a>
-                                                <input type="hidden" id="failed-name" data-notify-type= "error" data-notify-position="bottom-full-width"/>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Primer Apellido</td>
-                                            <td>
-                                                <a id="form-first-lastName"></a>
-                                                <input type="hidden" id="failed-first-lastName" data-notify-type= "error" data-notify-position="bottom-full-width"/>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Segundo Apellido</td>
-                                            <td>
-                                                <a id="form-second-lastName"></a>
-                                                <input type="hidden" id="failed-second-lastName" data-notify-type= "error" data-notify-position="bottom-full-width"/>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Email</td>
-                                            <td>
-                                                <a id="form-email"></a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="col_full nobottommargin">
-                                <input type="submit" id="form-submit" value="Eliminar" class="button button-3d button-black nomargin form-control" style="display: none; text-align: center;"/>
-                                <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i>La operacion no se pudo realizar, intente de nuevo o m&aacute;s tarde!" data-notify-position="bottom-full-width"/>
-                                <input type="hidden" id="success" data-notify-type="success" data-notify-msg="<i class='icon-ok-sign'></i> Operaci&oacute;n exitosa, revise en breve...!" data-notify-position="bottom-full-width"/>
-                                <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Espere un momento...!" data-notify-position="bottom-full-width"/>
-                            </div>                     
-                        </form>
-                    </div>
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <br>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped">
+                                <h5 style="text-align: center;">Informaci&oacute;n del Profesor</h5>
+                                <colgroup>
+                                    <col class="col-xs-3">
+                                    <col class="col-xs-8">
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <td>Identificaci&oacute;n</td>
+                                        <td>
+                                            <a id="form-id"></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Nombre</td>
+                                        <td>
+                                            <a id="form-name"></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Primer Apellido</td>
+                                        <td>
+                                            <a id="form-first-lastName"></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Segundo Apellido</td>
+                                        <td>
+                                            <a id="form-second-lastName"></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Email</td>
+                                        <td>
+                                            <a id="form-email"></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col_full nobottommargin">
+                            <input type="submit" id="form-submit" value="Eliminar" class="button button-3d button-black nomargin form-control" style="display: none; text-align: center;"/>
+                            <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i>La operacion no se pudo realizar, intente de nuevo o m&aacute;s tarde!" data-notify-position="bottom-full-width"/>
+                            <input type="hidden" id="success" data-notify-type="success" data-notify-msg="<i class='icon-ok-sign'></i> Operaci&oacute;n exitosa, revise en breve...!" data-notify-position="bottom-full-width"/>
+                            <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Espere un momento...!" data-notify-position="bottom-full-width"/>
+                        </div>                     
+                    </form>
                 </div>
             </div>
         </div>
@@ -134,6 +127,7 @@ if (isset($session->permissions)) {
                 "id": $("#form-prof").val()
             };
             SEMICOLON.widget.notifications($("#wait"));
+
             $.post("?controller=Professor&action=select", parameters, function (data) {
                 if (data.identification) {
                     $("#form-id").html(data.identification);
@@ -150,6 +144,7 @@ if (isset($session->permissions)) {
                     $("#form-second-lastName").html("");
                     $("#form-email").html("");
                     $("#form-submit").css('display', 'none');
+                    SEMICOLON.widget.notifications($("#warning"));
                 }
             }, "json");
         } else {
@@ -194,8 +189,5 @@ if (isset($session->permissions)) {
 
 </script>
 
-
-<!-- End Content
-    ============================================= -->    
 <?php
 include_once 'public/footer.php';

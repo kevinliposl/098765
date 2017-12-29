@@ -89,7 +89,7 @@ class UserController {
      * Funcion para recordar contraseña de usuario
      */
     function rememberPassword() {
-        if (!SSession::getInstance()->__isset("identification")) {
+        if (!SSession::getInstance()->__isset("permissions")) {
             if (isset($_POST["email"])) {
                 $model = new UserModel();
                 $result = $model->rememberPassword($_POST["email"]);
@@ -118,12 +118,12 @@ class UserController {
      * Funcion para cambiar la contraseñas
      */
     function changePassword() {
-        if (SSession::getInstance()->permissions == 'A' || SSession::getInstance()->permissions == 'T' || SSession::getInstance()->permissions == 'S') {
+        if (SSession::getInstance()->permissions == 'R' || SSession::getInstance()->permissions == 'A' || SSession::getInstance()->permissions == 'T' || SSession::getInstance()->permissions == 'S') {
             if (isset($_POST['newPass'])) {
                 $model = new UserModel();
                 $result = $model->changePassword(SSession::getInstance()->identification, $_POST['newPass']);
                 echo json_encode($result);
-                if ($result["result"] === '1') {
+                if ($result["result"] === '1' && !SSession::getInstance()->permissions == 'R') {
                     $mail = SMail::getInstance();
                     $mail->sendMail($result["email"], 'Contraseña de ingreso al sitio', 'Hola, su contraseña a sido cambiada. Su nueva contraseña'
                             . ' de ingreso al sitio es... <br><h1>' . $result["password"] . '</h1>');
@@ -135,4 +135,5 @@ class UserController {
             $this->view->show("404View.php");
         }
     }
+
 }

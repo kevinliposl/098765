@@ -2,9 +2,13 @@
 $session = SSession::getInstance();
 
 if (isset($session->permissions)) {
-    include_once 'public/headerAdmin.php';
+    if ($session->permissions == 'A') {
+        include_once 'public/headerAdmin.php';
+    } else {
+        header('Location:?action=notFound');
+    }
 } else {
-    include_once 'public/header.php';
+    header('Location:?action=notFound');
 }
 ?>
 
@@ -13,49 +17,48 @@ if (isset($session->permissions)) {
         <h1>Desmatricular</h1>
     </div>
 </section>
+
 <section id="content">
     <div class="content-wrap">
         <div class="container clearfix">
             <div class="accordion-lg divcenter nobottommargin" style="max-width: 550px;">
-                <div class="acctitle">
-                    <div class="acc_content clearfix">
-                        <form id="form" class="nobottommargin">
-                            <div class="white-section">
-                                <label for="form-student">Estudiantes:</label>
-                                <select id="form-student" class="selectpicker form-control" data-live-search="true">
-                                    <option data-tokens="">Seleccione un estudiante</option>
-                                    <?php
-                                    foreach ($vars as $var) {
-                                        if (isset($var["identification"])) {
-                                            ?>
-                                            <option value="<?php echo $var["identification"]; ?> " data-tokens=""> 
-                                                <?php echo $var["Name"]; ?>
-                                            </option>
-                                            <?php
-                                        }
+                <div class="acc_content clearfix">
+                    <form id="form" class="nobottommargin">
+                        <div class="white-section">
+                            <label for="form-student">Estudiantes:</label>
+                            <select id="form-student" class="selectpicker form-control" data-live-search="true">
+                                <option data-tokens="">Seleccione un estudiante</option>
+                                <?php
+                                foreach ($vars as $var) {
+                                    if (isset($var["identification"])) {
+                                        ?>
+                                        <option value="<?php echo $var["identification"]; ?> " data-tokens=""> 
+                                            <?php echo $var["Name"]; ?>
+                                        </option>
+                                        <?php
                                     }
-                                    ?>
-                                </select>
-                            </div>
-                            <br>
-                            <div class="white-section">
-                                <label for="form-professors">Cursos disponibles:</label>
-                                <select name="form-professors" id="form-professors" class="form-control selectpicker" data-live-search="true">
-                                    <!--<option value="-1" data-tokens="">Seleccione los profesores</option>-->
-                                </select>
-                            </div>
-                            <br>
-                            <div class="col_full nobottommargin">
-                                <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" style="display : block; text-align: center;" data-target="#myModal">Eliminar</a>
-                                <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i>La operacion no se pudo realizar, intente de nuevo o m&aacute;s tarde!" data-notify-position="bottom-full-width"/>
-                                <input type="hidden" id="success" data-notify-type="success" data-notify-msg="<i class='icon-ok-sign'></i> Operaci&oacute;n exitosa, revise en breve...!" data-notify-position="bottom-full-width"/>
-                                <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Espere un momento...!" data-notify-position="bottom-full-width"/>
-                            </div>                     
-                        </form>
-                    </div>
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <br>
+                        <div class="white-section">
+                            <label for="form-professors">Cursos disponibles:</label>
+                            <select name="form-professors" id="form-professors" class="form-control selectpicker" data-live-search="true">
+                            </select>
+                        </div>
+                        <br>
+                        <div class="col_full nobottommargin">
+                            <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" style="display : block; text-align: center;" data-target="#myModal">Eliminar</a>
+                            <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i>La operacion no se pudo realizar, intente de nuevo o m&aacute;s tarde!" data-notify-position="bottom-full-width"/>
+                            <input type="hidden" id="success" data-notify-type="success" data-notify-msg="<i class='icon-ok-sign'></i> Operaci&oacute;n exitosa, revise en breve...!" data-notify-position="bottom-full-width"/>
+                            <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Espere un momento...!" data-notify-position="bottom-full-width"/>
+                        </div>                     
+                    </form>
                 </div>
             </div>
         </div>
+    </div>
 </section>
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -89,11 +92,15 @@ if (isset($session->permissions)) {
             "identification": $("#form-student").val()
         };
         document.getElementById("form-professors").options.length = 0;
+
+        SEMICOLON.widget.notifications($("#wait"));
+
         $.post("?controller=Enrollment&action=selectCourses", parameters, function (data) {
             for (var i = 0; i < data.length; i++) {
                 $('#form-professors').append($("<option></option>").attr("value", data[i].ID).text("Curso: " + data[i].name + "-Profesor(a): " + data[i].Name));//AGREGAR OPCIONES
             }
             $("#form-professors").selectpicker("refresh");
+
         }, "json");
     });
 
@@ -104,15 +111,23 @@ if (isset($session->permissions)) {
 
     //Delete 
     $("#form-submity").click(function () {
+
+        $("#form-submity").attr('disabled', 'disabled');
+        $("#form-close").attr('disabled', 'disabled');
+
+        SEMICOLON.widget.notifications($("#wait"));
+
         var parameters = {
             "ID": $("#form-professors").val()
         };
         $.post("?controller=Enrollment&action=delete", parameters, function (data) {
             if (data.result === "1") {
                 SEMICOLON.widget.notifications($("#success"));
-                setTimeout("location.href = '?controller=Enrollment&action=delete';", 2000);
+                setTimeout("location.href = '?controller=Enrollment&action=delete';", 1500);
             } else {
                 SEMICOLON.widget.notifications($("#warning"));
+                $("#form-submity").removeAttr('disabled');
+                $("#form-close").removeAttr('disabled');
             }
         }, "json");
     });
