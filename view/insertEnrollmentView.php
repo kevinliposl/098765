@@ -100,7 +100,6 @@ if (isset($session->permissions)) {
                 if (data.length > 0) {
                     for (var i = 0; i < data.length; i++) {
                         $('#form-professors').append($("<option></option>").attr("value", data[i].ID).text("Curso: " + data[i].name + "-Profesor(a): " + data[i].Name)); //AGREGAR OPCIONES
-                        alert(data[i].ID);
                     }
                     $("#form-professors").selectpicker("refresh");
                     SEMICOLON.widget.notifications($("#success"));
