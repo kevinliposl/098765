@@ -12,15 +12,11 @@ if (isset($session->permissions)) {
 }
 ?>
 
-<section id="page-title">
-    <div class="container clearfix">
-        <h1>Insertar Asignaciones de Cursos a Semestres</h1>
-    </div>
-</section>
-
 <section id="content">
     <div class="content-wrap">
         <div class="container clearfix">
+            <h1 class="center">Asignaciones</h1>
+            <br><br>
             <div class="accordion-lg divcenter nobottommargin" style="max-width: 550px;">
                 <div class="acc_content clearfix">
                     <form id="form" class="nobottommargin">
@@ -51,7 +47,7 @@ if (isset($session->permissions)) {
                         <br>
                         <div class="white-section">
                             <label for="form-courses">Cursos:</label>
-                            <select id="form-courses" class="form-control selectpicker" data-live-search="true">
+                            <select id="form-courses" class="form-control selectpicker" data-live-search="true" >
                                 <option value="-1" data-tokens="">Seleccione un Curso</option>
                             </select>
                             <input type="hidden" id="failed-form-courses" data-notify-type= "error" data-notify-position="bottom-full-width"/>
