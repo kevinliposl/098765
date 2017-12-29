@@ -132,6 +132,12 @@
 //        size: 4
 //    });
     $('.selectsplitter').selectsplitter();
+
+
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
+        $('.selectpicker').selectpicker('mobile');
+    }
+
 </script>
 
 <script src="public/js/functions.js" type="text/javascript"></script>
