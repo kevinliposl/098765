@@ -81,6 +81,22 @@ class CourseSemesterController {
     /**
      * @return null
      * @param integer $ID_Semester Identificador de semestre
+     * Funcion para seleccionar todos los cursos por semestre administrador
+     */
+    function selectAllDeleteCoursesSemester() {
+        if (isset($_POST['ID_Semester']) && SSession::getInstance()->permissions == 'A') {
+            require 'model/CourseSemesterModel.php';
+            $model = new CourseSemesterModel();
+            $result = $model->selectAllDeleteCourseSemester($_POST['ID_Semester']);
+            echo json_encode($result);
+        } else {
+            $this->view->show("indexView.php");
+        }
+    }
+
+    /**
+     * @return null
+     * @param integer $ID_Semester Identificador de semestre
      * @param string $initials Identificador de curso
      * Funcion para seleccionar los profesores que no estan inscritos en un curso del semestre
      */
@@ -156,7 +172,7 @@ class CourseSemesterController {
             $this->view->show("indexView.php");
         }
     }
-    
+
     /**
      * @return null
      * @param integer $ID_Semester Identificador de semestre
@@ -189,4 +205,5 @@ class CourseSemesterController {
             $this->view->show("404View.php");
         }
     }
+
 }
