@@ -23,7 +23,7 @@ if (isset($session->permissions)) {
         <div class="container clearfix">
             <div class="accordion-lg divcenter nobottommargin" style="max-width: 550px;">
                 <div class="acc_content clearfix">
-                    <form id="form" class="nobottommargin" onsubmit="return validate();">
+                    <form id="form" class="nobottommargin">
                         <div class="white-section">
                             <label for="form-id">Administradores:</label>
                             <select id="form-admin" class="selectpicker form-control" data-live-search="true">
@@ -98,29 +98,33 @@ if (isset($session->permissions)) {
 
     //Change Combobox
     $("#form-admin").change(function () {
-        var parameters = {
-            "id": $("#form-admin").val()
-        };
 
-        $.post("?controller=Admin&action=select", parameters, function (data) {
-            if (data.identification) {
-                $("#form-id-table").html(data.identification);
-                $("#form-name-table").html(data.name);
-                $("#form-email-table").html(data.email);
-                $("#form-firstLastName-table").html(data.first_lastname);
-                $("#form-secondLastName-table").html(data.second_lastname);
+        if ($("#form-admin").val() !== "-1") {
 
-                $("#success").attr("data-notify-msg", "<i class=icon-ok-sign></i> Operacion Exitosa!");
+            var parameters = {
+                "id": $("#form-admin").val()
+            };
 
-                SEMICOLON.widget.notifications($("#success"));
-            } else {
-                $("#form-id-table").html("");
-                $("#form-name-table").html("");
-                $("#form-email-table").html("");
-                $("#form-firstLastName-table").html("");
-                $("#form-secondLastName-table").html("");
-            }
-        }, "json");
+            SEMICOLON.widget.notifications($("#wait"));
+
+            $.post("?controller=Admin&action=select", parameters, function (data) {
+                if (data.identification) {
+                    $("#form-id-table").html(data.identification);
+                    $("#form-name-table").html(data.name);
+                    $("#form-email-table").html(data.email);
+                    $("#form-firstLastName-table").html(data.first_lastname);
+                    $("#form-secondLastName-table").html(data.second_lastname);
+                    SEMICOLON.widget.notifications($("#success"));
+                } else {
+                    $("#form-id-table").html("");
+                    $("#form-name-table").html("");
+                    $("#form-email-table").html("");
+                    $("#form-firstLastName-table").html("");
+                    $("#form-secondLastName-table").html("");
+                    SEMICOLON.widget.notifications($("#warning"));
+                }
+            }, "json");
+        }
     });
 
 </script>

@@ -13,7 +13,7 @@ if (isset($session->permissions)) {
 ?>
 <section id="page-title">
     <div class="container clearfix">
-        <h1>Eliminar Curso</h1>
+        <h1>Reactivar Cursos</h1>
     </div>
 </section>
 
@@ -46,7 +46,7 @@ if (isset($session->permissions)) {
                             <table class="table table-bordered table-striped">
                                 <h5 style="text-align: center;">Informaci&oacute;n del Curso</h5>
                                 <colgroup>
-                                    <col class="col-xs-3">
+                                    <col class="col-xs-4">
                                     <col class="col-xs-8">
                                 </colgroup>
                                 <tbody>
@@ -54,31 +54,39 @@ if (isset($session->permissions)) {
                                         <td>
                                             Siglas
                                         </td>
-                                        <td id="form-initials-table"><?php echo "" ?></td>
+                                        <td>
+                                            <a id="form-initials-table"></a> 
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>
                                             Nombre
                                         </td>
-                                        <td id="form-name-table"><?php echo "" ?></td>
+                                        <td>
+                                            <a id="form-name-table"></a>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>
                                             Instrumento
                                         </td>
-                                        <td id="form-instrument-table"><?php echo "" ?></td>
+                                        <td>
+                                            <a id="form-instrument-table"></a>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>
                                             Descripci&oacute;n
                                         </td>
-                                        <td id="form-description-table"><?php echo "" ?></td>
+                                        <td>
+                                            <a id="form-description-table"></a>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                         <div class="col_full nobottommargin">
-                            <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" style="display : block; text-align: center;" data-target="#myModal">Reactivar</a>
+                            <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" style="display : none; text-align: center;" data-target="#myModal">Reactivar</a>
                             <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i>La operacion no se pudo realizar, intente de nuevo o m&aacute;s tarde!" data-notify-position="bottom-full-width"/>
                             <input type="hidden" id="success" data-notify-type="success" data-notify-msg="<i class='icon-ok-sign'></i> Operaci&oacute;n exitosa, revise en breve...!" data-notify-position="bottom-full-width"/>
                             <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Espere un momento...!" data-notify-position="bottom-full-width"/>                        
@@ -105,7 +113,7 @@ if (isset($session->permissions)) {
                     <li>El Curso puede ser restaurado con servicio t&eacute;cnico</li></p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal"id="form-close">Cerrar</button>
                     <input type="button" class="btn btn-primary button-black nomargin" id="form-submity" value="Reactivar"/>
                 </div>
             </div>
@@ -117,23 +125,42 @@ if (isset($session->permissions)) {
 
     //Change Combobox
     $("#form-courses").change(function () {
-        var parameters = {
-            "initials": $("#form-courses").val()
-        };
-        $.post("?controller=Course&action=selectDelete", parameters, function (data) {
-            if (data.initials) {
-                $("#form-initials-table").html(data.initials);
-                $("#form-name-table").html(data.name);
-                $("#form-instrument-table").html(data.instrument);
-                $("#form-description-table").html(data.description);
-            } else {
-                $("#form-initials-table").html("");
-                $("#form-name-table").html("");
-                $("#form-instrument-table").html("");
-                $("#form-description-table").html("");
-                $("#form-secondLastName-table").html("");
-            }
-        }, "json");
+        if ($("#form-courses").val() !== "-1") {
+            args = {
+                "initials": $("#form-courses").val()
+            };
+
+            SEMICOLON.widget.notifications($("#wait"));
+
+            $.post("?controller=Course&action=selectDelete", args, function (data) {
+                if (data.initials) {
+                    $("#form-initials-table").html(data.initials);
+                    $("#form-name-table").html(data.name);
+                    $("#form-instrument-table").html(data.instrument);
+                    $("#form-description-table").html(data.description);
+                    SEMICOLON.widget.notifications($("#success"));
+
+                    $("#form-submit").css("display", "block");
+                } else {
+                    $("#form-initials-table").html("");
+                    $("#form-name-table").html("");
+                    $("#form-instrument-table").html("");
+                    $("#form-description-table").html("");
+                    $("#form-secondLastName-table").html("");
+                    SEMICOLON.widget.notifications($("#warning"));
+
+                    $("#form-submit").css("display", "none");
+                }
+            }, "json");
+        } else {
+            $("#form-initials-table").html("");
+            $("#form-name-table").html("");
+            $("#form-instrument-table").html("");
+            $("#form-description-table").html("");
+            $("#form-secondLastName-table").html("");
+
+            $("#form-submit").css("display", "none");
+        }
     });
 
     //Open Modal
@@ -149,25 +176,19 @@ if (isset($session->permissions)) {
 
     //Delete 
     $("#form-submity").click(function () {
-        var parameters = {
-            "initials": $("#form-courses").val()
-        };
-        $.post("?controller=Course&action=reactivate", parameters, function (data) {
+        $("#form-submity").attr('disabled', 'disabled');
+        $("#form-close").attr('disabled', 'disabled');
+
+        SEMICOLON.widget.notifications($("#wait"));
+
+        $.post("?controller=Course&action=reactivate", args, function (data) {
             if (data.result === "1") {
-                $("#success").attr({
-                    "data-notify-type": "success",
-                    "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!",
-                    "data-notify-position": "bottom-full-width"
-                });
                 SEMICOLON.widget.notifications($("#success"));
                 setTimeout("location.href = '?controller=Course&action=reactivate';", 2000);
             } else {
-                $("#warning").attr({
-                    "data-notify-type": "warning",
-                    "data-notify-msg": "<i class=icon-warning-sign></i> Operacion Incompleta, intente de nuevo!",
-                    "data-notify-position": "bottom-full-width"
-                });
                 SEMICOLON.widget.notifications($("#warning"));
+                $("#form-submity").removeAttr('disabled');
+                $("#form-close").removeAttr('disabled');
             }
         }, "json");
     });

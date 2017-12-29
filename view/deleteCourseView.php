@@ -54,25 +54,31 @@ if (isset($session->permissions)) {
                                         <td>
                                             Siglas
                                         </td>
-                                        <td id="form-initials-table"><?php echo "" ?></td>
+                                        <td>
+                                            <a id="form-initials-table"></a>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>
                                             Nombre
                                         </td>
-                                        <td id="form-name-table"><?php echo "" ?></td>
+                                        <td> 
+                                            <a id="form-name-table"></a>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>
                                             Instrumento
                                         </td>
-                                        <td id="form-instrument-table"><?php echo "" ?></td>
+                                        <td>
+                                            <a id="form-instrument-table"></a>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>
                                             Descripci&oacute;n
                                         </td>
-                                        <td id="form-description-table"><?php echo "" ?></td>
+                                        <td><a id="form-description-table"></a></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -105,7 +111,7 @@ if (isset($session->permissions)) {
                     <li>El Curso puede ser restaurado con servicio t&eacute;cnico</li></p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" id="form-close" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" id="form-close">Cerrar</button>
                     <input type="button" class="btn btn-primary button-black nomargin" id="form-submity" value="Eliminar"/>
                 </div>
             </div>
@@ -174,6 +180,7 @@ if (isset($session->permissions)) {
         var parameters = {
             "initials": $("#form-courses").val()
         };
+        
         $.post("?controller=Course&action=delete", parameters, function (data) {
             if (data.result === "1") {
                 SEMICOLON.widget.notifications($("#success"));

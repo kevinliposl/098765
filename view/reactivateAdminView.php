@@ -27,10 +27,15 @@ if (isset($session->permissions)) {
                             <label for="form-admin">Estudiantes:</label>
                             <select id="form-admin" class="selectpicker form-control" data-live-search="true">
                                 <option value="-1" data-tokens="">Seleccione un Administrador</option>
-                                <?php foreach ($vars as $var) { ?>
-                                    <option value="<?php echo $var["identification"]; ?>" data-tokens="">
+                                <?php
+                                foreach ($vars as $var) {
+                                    if (isset($var["identification"])) {
+                                        ?>
+                                        <option value="<?php echo $var["identification"]; ?>" data-tokens="">
                                         <?php echo $var["identification"] . " | " . $var["name"] . " " . $var["first_lastname"] . " " . $var["second_lastname"]; ?></option>
-                                <?php }
+                                    <?php
+                                    }
+                                }
                                 ?>
                             </select>
                         </div>
@@ -135,7 +140,7 @@ if (isset($session->permissions)) {
 
 
     function Redirect() {
-        window.location = "?controller=Student&action=reactivateStudent";
+        window.location = "?controller=Admin&action=reactivate";
     }
 
     $("#form-submit").click(function () {
@@ -143,26 +148,29 @@ if (isset($session->permissions)) {
     });
 
     $("#form-submity").click(function () {
+        $("#form-submity").attr('disabled', 'disabled');
+        $("#form-close").attr('disabled', 'disabled');
+
+        SEMICOLON.widget.notifications($("#wait"));
+
         var parameters = {
             "id": $("#form-admin").val()
         };
-        SEMICOLON.widget.notifications($("#wait"));
-        $.post("?controller=Admin&action=reactivate", parameters, function (data) {
 
+        $.post("?controller=Admin&action=reactivate", parameters, function (data) {
             if (data.result === "1") {
                 SEMICOLON.widget.notifications($("#success"));
                 setTimeout('Redirect()', 1000);
             } else {
                 SEMICOLON.widget.notifications($("#warning"));
+                $("#form-submity").removeAttr('disabled');
+                $("#form-close").removeAttr('disabled');
             }
-            ;
         }, "json");
     });
 
 </script>
 
-<!-- End Content
-    ============================================= -->    
 <?php
 include_once 'public/footer.php';
 

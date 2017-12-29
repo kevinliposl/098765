@@ -55,28 +55,28 @@ if (isset($session->permissions)) {
                                     <tr>
                                         <td>Siglas</td>
                                         <td>
-                                            <a id="form-initials-table" class="bt-editable" data-emptytext='' href="#" data-type="text" data-pk="1" data-placeholder="Required" data-title="Ingrese la identificación"></a>
+                                            <a id="form-initials-table" class="bt-editable" data-emptytext='' href="#" data-type="text" data-pk="1" data-placeholder="Required" data-title="Ingrese las iniciales"></a>
                                             <input type="hidden" id="failed-initials" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Nombre</td>
                                         <td>
-                                            <a id="form-name-table" class="bt-editable" data-emptytext='' href="#" data-type="text" data-pk="1" data-placeholder="Required" data-title="Ingrese la identificación"></a>
+                                            <a id="form-name-table" class="bt-editable" data-emptytext='' href="#" data-type="text" data-pk="1" data-placeholder="Required" data-title="Ingrese el nombre"></a>
                                             <input type="hidden" id="failed-name" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class=icon-remove-sign></i> Nombre Incorrecto. Complete e intente de nuevo!"/>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Instrumento</td>
                                         <td>
-                                            <a id="form-instrument-table" class="bt-editable" data-emptytext='' href="#" data-type="text" data-pk="1" data-placeholder="Required" data-title="Ingrese la identificación"></a>
+                                            <a id="form-instrument-table" class="bt-editable" data-emptytext='' href="#" data-type="text" data-pk="1" data-placeholder="Required" data-title="Ingrese el instrumento"></a>
                                             <input type="hidden" id="failed-instrument" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class=icon-remove-sign></i> Instrumento Incorrecto. Complete e intente de nuevo!"/>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Descripci&oacute;n</td>
                                         <td>
-                                            <a id="form-description-table" class="bt-editable" data-emptytext='' href="#" data-type="text" data-pk="1" data-placeholder="Required" data-title="Ingrese la identificación"></a>
+                                            <a id="form-description-table" class="bt-editable" data-emptytext='' href="#" data-type="text" data-pk="1" data-placeholder="Required" data-title="Ingrese una descripci&oacute;n"></a>
                                             <input type="hidden" id="failed-description" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg= "<i class=icon-remove-sign></i> Descripción Incorrecto. Complete e intente de nuevo!"/>
                                         </td>
                                     </tr>
@@ -84,7 +84,7 @@ if (isset($session->permissions)) {
                             </table>
                         </div>
                         <div class="col_full nobottommargin">                      
-                            <input type="submit" value="Actualizar" class="button button-3d button-black nomargin form-control" style="display: block; text-align: center;"/>
+                            <input type="submit" value="Actualizar" class="button button-3d button-black nomargin form-control" style="display: none; text-align: center;"/>
                             <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i>La operacion no se pudo realizar, intente de nuevo o m&aacute;s tarde!" data-notify-position="bottom-full-width"/>
                             <input type="hidden" id="success" data-notify-type="success" data-notify-msg="<i class='icon-ok-sign'></i> Operaci&oacute;n exitosa, revise en breve...!" data-notify-position="bottom-full-width"/>
                             <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Espere un momento...!" data-notify-position="bottom-full-width"/>
@@ -139,6 +139,7 @@ if (isset($session->permissions)) {
                     $("#form-name-table").html(data.name);
                     $("#form-instrument-table").html(data.instrument);
                     $("#form-description-table").html(data.description);
+                    $("#form-submit").css("display", "block");
 
                     SEMICOLON.widget.notifications($("#success"));
                 } else {
@@ -147,6 +148,7 @@ if (isset($session->permissions)) {
                     $("#form-instrument-table").html("");
                     $("#form-description-table").html("");
                     $("#form-secondLastName-table").html("");
+                    $("#form-submit").css("display", "none");
 
                     SEMICOLON.widget.notifications($("#warning"));
                 }
@@ -157,11 +159,12 @@ if (isset($session->permissions)) {
             $("#form-instrument-table").html("");
             $("#form-description-table").html("");
             $("#form-secondLastName-table").html("");
+            $("#form-submit").attr("display", "none");
         }
     });
 
     function val() {
-        
+
         args = {
             "initials": $("#form-initials-table").text().trim(),
             "name": $("#form-name-table").text().trim(),
@@ -196,7 +199,7 @@ if (isset($session->permissions)) {
         $("#form-close").attr('disabled', 'disabled');
 
         SEMICOLON.widget.notifications($("#wait"));
-        
+
         $.post("?controller=Course&action=update", args, function (data) {
             if (data.result === "1") {
                 SEMICOLON.widget.notifications($("#success"));
