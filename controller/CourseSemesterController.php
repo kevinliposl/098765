@@ -178,7 +178,7 @@ class CourseSemesterController {
                 }
                 $num_professors = $num_professors + 1;
             }//for        
-            $result = $model->insertCourseSemester($_POST['ID_Semester'], $_POST['initials'], $professors, $num_professors);
+            $result = $model->reactivateCourseSemester($_POST['ID_Semester'], $_POST['initials'], $professors, $num_professors);
             echo json_encode($result);
         } else if (SSession::getInstance()->permissions == 'A') {
             require 'model/SemesterModel.php';

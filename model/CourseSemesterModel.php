@@ -40,7 +40,7 @@ class CourseSemesterModel {
     }
 
     function selectAllDeleteCourseSemester($ID_semester) {
-        $query = $this->db->prepare("call sp_select_all_course_semester('$ID_semester')");
+        $query = $this->db->prepare("call sp_select_all_delete_course_semester('$ID_semester')");
         $query->execute();
         $result = $query->fetchAll();
         $query->closeCursor();
