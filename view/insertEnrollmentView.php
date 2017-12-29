@@ -101,6 +101,7 @@ if (isset($session->permissions)) {
                     $('#form-professors').append($("<option></option>").attr("value", data[i].ID).text("Curso: " + data[i].name + "-Profesor(a): " + data[i].Name)); //AGREGAR OPCIONES
                 }
                 $("#form-professors").selectpicker("refresh");
+                SEMICOLON.widget.notifications($("#success"));
             }, "json");
         }
     });
