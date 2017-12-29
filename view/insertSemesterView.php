@@ -27,8 +27,8 @@ if (isset($session->permissions)) {
                     <form id="form" class="nobottommargin" onsubmit="return val();">
                         <div class="col_full">
                             <label for="form-year">A&ncaron;o:</label>
-                            <input type="number" id="form-year" class="form-control" required minlength="4" maxlength="4" placeholder="2000"/>
-                            <input type="hidden" id="failed-year" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                            <input type="number" id="form-year" class="form-control" pattern="[0-9]+$" required minlength="4" maxlength="4" placeholder="2000"/>
+                            <input type="hidden" id="failed-year" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class=icon-remove-sign></i> A&ncaron;o Incorrecto. Complete e intente de nuevo!"/>
                         </div>
 
                         <div class="col_full">
@@ -38,7 +38,7 @@ if (isset($session->permissions)) {
                                 <option value="1" data-tokens=""> I Semestre</option>
                                 <option value="2" data-tokens="">II Semestre</option>
                             </select>
-                            <input type="hidden" id="failed-semester" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                            <input type="hidden" id="failed-semester" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class=icon-remove-sign></i> Semestre no Seleccionado. Complete e intente de nuevo!"/>
                         </div>
                         <div class="col_full nobottommargin">                      
                             <input type="submit" value="Insertar" class="button button-3d button-black nomargin form-control" id="submit" style="display: block; text-align: center;"/>
@@ -69,7 +69,7 @@ if (isset($session->permissions)) {
                     </p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal"id="form-close">Cerrar</button>
                     <input type="button" class="btn btn-primary button-black nomargin" id="form-submity" value="Insertar"/>
                 </div>
             </div>
@@ -80,15 +80,15 @@ if (isset($session->permissions)) {
 <script>
     function val() {
 
-        var year = $("#form-year").val().trim();
-        var semester = $("#form-semester").val().trim();
+        args = {
+            'year': $("#form-year").val().trim(),
+            'semester': $("#form-semester").val().trim()
+        };
 
-        if (year < 2000 && !isNaN(year)) {
-            $("#failed-year").attr("data-notify-msg", "<i class=icon-remove-sign></i> A&ncaron;o Incorrecto. Complete e intente de nuevo!");
+        if (args['year'] < 2000 && !isNaN(args['year'])) {
             SEMICOLON.widget.notifications($("#failed-year"));
             return false;
-        } else if (semester < 1) {
-            $("#failed-semester").attr("data-notify-msg", "<i class=icon-remove-sign></i> Semestre no Seleccionado. Complete e intente de nuevo!");
+        } else if (args['semester'] < 1) {
             SEMICOLON.widget.notifications($("#failed-semester"));
             return false;
         }
@@ -100,28 +100,20 @@ if (isset($session->permissions)) {
     //Insert
     $("#form-submity").click(function () {
 
-        var parameters = {
-            'year': $("#form-year").val().trim(),
-            'semester': $("#form-semester").val().trim()
-        };
+        $("#form-submity").attr('disabled', 'disabled');
+        $("#form-close").attr('disabled', 'disabled');
 
-        $.post("?controller=Semester&action=insert", parameters, function (data) {
+        SEMICOLON.widget.notifications($("#wait"));
+
+        $.post("?controller=Semester&action=insert", args, function (data) {
             if (data.result === "1") {
-                $("#success").attr({
-                    "data-notify-type": "success",
-                    "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!",
-                    "data-notify-position": "bottom-full-width"
-                });
                 SEMICOLON.widget.notifications($("#success"));
                 setTimeout("location.href = '?controller=Semester&action=insert';", 2000);
             } else {
-                $("#warning").attr({
-                    "data-notify-type": "warning",
-                    "data-notify-msg": "<i class=icon-warning-sign></i> El Semestre ya existe en el Sistema!",
-                    "data-notify-position": "bottom-full-width"
-                });
                 SEMICOLON.widget.notifications($("#warning"));
-            };
+                $("#form-submity").removeAttr('disabled');
+                $("#form-close").removeAttr('disabled');
+            }
         }, "json");
     });
 </script>
