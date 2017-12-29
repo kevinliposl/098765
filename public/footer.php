@@ -128,23 +128,19 @@
 <script src="public/js/bs-datatable.js" type="text/javascript"></script>
 
 <script type="text/javascript">
-<<<<<<< HEAD
     $('.selectpicker').selectpicker({
         size: 3,
         dropupAuto: false
     });
-=======
 //    $('.selectpicker').selectpicker({
 //        size: 4
 //    });
-    $('.selectsplitter').selectsplitter();
+//    $('.selectsplitter').selectsplitter();
 
 
-    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
-        $('.selectpicker').selectpicker('mobile');
-    }
-
->>>>>>> fa0882c898003cb35dc7dc78b292d7f3030dfe77
+    //if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
+     //   $('.selectpicker').selectpicker('mobile');
+    //}
 </script>
 
 <script src="public/js/functions.js" type="text/javascript"></script>
