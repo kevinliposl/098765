@@ -128,10 +128,10 @@
 <script src="public/js/bs-datatable.js" type="text/javascript"></script>
 
 <script type="text/javascript">
-    $('.selectpicker').selectpicker({
-        size: 3,
-        windowPadding: 2
-    });
+//    $('.selectpicker').selectpicker({
+//        size: 4
+//    });
+    $('.selectsplitter').selectsplitter();
 </script>
 
 <script src="public/js/functions.js" type="text/javascript"></script>
