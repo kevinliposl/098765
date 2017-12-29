@@ -97,11 +97,16 @@ if (isset($session->permissions)) {
             document.getElementById("form-professors").options.length = 0;
 
             $.post("?controller=Enrollment&action=selectCourseNotStudent", args, function (data) {
-                for (var i = 0; i < data.length; i++) {
-                    $('#form-professors').append($("<option></option>").attr("value", data[i].ID).text("Curso: " + data[i].name + "-Profesor(a): " + data[i].Name)); //AGREGAR OPCIONES
+                if (data.length > 0) {
+                    for (var i = 0; i < data.length; i++) {
+                        $('#form-professors').append($("<option></option>").attr("value", data[i].ID).text("Curso: " + data[i].name + "-Profesor(a): " + data[i].Name)); //AGREGAR OPCIONES
+                        alert(data[i].ID);
+                    }
+                    $("#form-professors").selectpicker("refresh");
+                    SEMICOLON.widget.notifications($("#success"));
+                } else {
+                    SEMICOLON.widget.notifications($("#warning"));
                 }
-                $("#form-professors").selectpicker("refresh");
-                SEMICOLON.widget.notifications($("#success"));
             }, "json");
         }
     });
