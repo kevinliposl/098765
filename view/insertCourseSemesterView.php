@@ -13,6 +13,7 @@ if (isset($session->permissions)) {
 ?>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <section id="page-title">
     <div class="container clearfix">
         <h1>Insertar Asignaciones de Cursos a Semestres</h1>
@@ -44,6 +45,8 @@ if (isset($session->permissions)) {
 
 	</style>
 
+=======
+>>>>>>> e21e3bcf69b71be20c52ecf5a2a5d64a12188ddc
 =======
 >>>>>>> e21e3bcf69b71be20c52ecf5a2a5d64a12188ddc
 <section id="content">
@@ -83,7 +86,11 @@ if (isset($session->permissions)) {
                         <div class="white-section">
                             <label for="form-courses">Cursos:</label>
 <<<<<<< HEAD
+<<<<<<< HEAD
                             <select id="form-courses" class="selectpicker form-control" data-live-search="true">
+=======
+                            <select id="form-courses" class="form-control selectpicker" data-live-search="true" >
+>>>>>>> e21e3bcf69b71be20c52ecf5a2a5d64a12188ddc
 =======
                             <select id="form-courses" class="form-control selectpicker" data-live-search="true" >
 >>>>>>> e21e3bcf69b71be20c52ecf5a2a5d64a12188ddc
