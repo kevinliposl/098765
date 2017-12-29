@@ -12,7 +12,7 @@ if (isset($session->permissions)) {
 ?>
 <section id="page-title">
     <div class="container clearfix">
-        <h1>Actualizar Datos de Profesor</h1>
+        <h1>Actualizar datos personales</h1>
     </div>
 </section>
 
@@ -20,7 +20,6 @@ if (isset($session->permissions)) {
     <div class="content-wrap">
         <div class="container clearfix">
             <div class="accordion-lg divcenter nobottommargin">
-
                 <div class="acc_content clearfix">
                     <form id="form" class="nobottommargin" onsubmit="return val();">
                         <div class="table-responsive">
@@ -134,6 +133,7 @@ if (isset($session->permissions)) {
         }
 
         $('#showModal').click();
+        return false;
     }
 
     $("#form-submity").click(function () {
