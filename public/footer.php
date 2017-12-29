@@ -1,19 +1,9 @@
-<!-- Footer
-============================================= -->
 <footer id="footer" class="dark">
-
     <div class="container">
-
-        <!-- Footer Widgets
-        ============================================= -->
         <div class="footer-widgets-wrap clearfix">
-
             <div class="col_two_third">
-
                 <div class="col_one_third">
-
                     <div class="widget clearfix">
-
                         <img src="public/images/footer-fusion.png" alt="" class="footer-logo">
                         <div style="background: url('public/images/world-map.png') no-repeat center center; background-size: 100%;">
                             <address>
@@ -55,7 +45,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="col_one_third col_last">
                 <div class="widget clearfix" style="margin-bottom: -20px;">
                     <div class="row">
@@ -85,11 +74,8 @@
                     </div>
                 </div>
             </div>
-        </div><!-- .footer-widgets-wrap end -->
+        </div>
     </div>
-
-    <!-- Copyrights
-    ============================================= -->
     <div id="copyrights">
         <div class="container clearfix">
             <div class="col_half">
@@ -101,12 +87,10 @@
                 <i class="icon-envelope2"></i> musica@fusionacademiacr.com <span class="middot">&middot;</span> <i class="icon-headphones"></i> 8326-1731 ó 8545-0829 <span class="middot">&middot;</span> <i class="icon-facebook"></i> fusionacademiacr
             </div>
         </div>
-    </div><!-- #copyrights end -->
-</footer><!-- #footer end -->
-</div><!-- #wrapper end -->
+    </div>
+</footer>
+</div>
 
-<!-- Go To Top
-============================================= -->
 <div id="gotoTop" class="icon-angle-up"></div>
 
 <!-- Footer Scripts
