@@ -24,8 +24,8 @@ if (isset($session->permissions)) {
                 <div class="acc_content clearfix">
                     <form id="form" class="nobottommargin">
                         <div class="col_full">
-                            <label for="form-semester">Semestres:</label><br>
-                            <select id="form-semester" class="selectpicker" data-live-search="true" data-size="3">
+                            <label for="form-semester">Semestres:</label>
+                            <select id="form-semester" class="selectpicker form-control" data-live-search="true">
                                 <option value="-1" data-tokens="">Seleccione un Semestre</option>
                                 <?php
                                 foreach ($vars as $var) {
@@ -49,16 +49,16 @@ if (isset($session->permissions)) {
                         </div> 
                         
                         <div class="col_full">
-                            <label for="form-courses">Cursos:</label><br>
-                            <select id="form-courses" class="selectpicker" data-live-search="true" data-size="3">
+                            <label for="form-courses">Cursos:</label>
+                            <select id="form-courses" class="selectpicker form-control" data-live-search="true">
                                 <option value="-1" data-tokens="">Seleccione un Curso</option>
                             </select>
                             <input type="hidden" id="failed-form-courses" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                         </div>
                         
                         <div class="col_full">
-                            <label for="form-professors">Profesores:</label><br>
-                            <select multiple name="form-professors[]" id="form-professors" class="selectpicker accordion-lg" data-live-search="true" data-size="3">
+                            <label for="form-professors">Profesores:</label>
+                            <select multiple name="form-professors[]" id="form-professors" class="selectpicker form-control" data-live-search="true">
                                 <option value="-1" data-tokens="">Seleccione un Curso</option>
                             </select>
                             <input type="hidden" id="failed-form-professors" data-notify-type= "error" data-notify-position="bottom-full-width"/>
