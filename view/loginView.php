@@ -18,7 +18,7 @@ include_once 'public/head.php';
                             <h3>Ingrese a su cuenta</h3>
                             <div class="col_full">
                                 <label for="form-email">Email:</label>
-                                <input type="email" id="form-email" class="form-control not-dark" required/>
+                                <input type="email" id="form-email" class="form-control not-dark" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required/>
                                 <input type="hidden" id="failed-email" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                             </div>
                             <div class="col_full">
@@ -55,5 +55,4 @@ include_once 'public/head.php';
 <script src="public/js/validation/login.js" type="text/javascript"></script>
 
 <?php
-
 include_once 'public/footerEmpty.php';
