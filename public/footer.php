@@ -131,7 +131,6 @@
     $('.selectpicker').selectpicker({
         size: 4
     });
-
     //$('.selectsplitter').selectsplitter();
 </script>
 

@@ -12,43 +12,11 @@ if (isset($session->permissions)) {
 }
 ?>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 <section id="page-title">
     <div class="container clearfix">
         <h1>Insertar Asignaciones de Cursos a Semestres</h1>
     </div>
 </section>
-
-<style>
-
-	.white-section {
-		background-color: #FFF;
-		padding: 25px 20px;
-		-webkit-box-shadow: 0px 1px 1px 0px #dfdfdf;
-		box-shadow: 0px 1px 1px 0px #dfdfdf;
-		border-radius: 3px;
-	}
-
-	.white-section label {
-		display: block;
-		margin-bottom: 15px;
-	}
-
-	.white-section pre { margin-top: 15px; }
-
-	.dark .white-section {
-		background-color: #111;
-		-webkit-box-shadow: 0px 1px 1px 0px #444;
-		box-shadow: 0px 1px 1px 0px #444;
-	}
-
-	</style>
-
-=======
->>>>>>> e21e3bcf69b71be20c52ecf5a2a5d64a12188ddc
-=======
->>>>>>> e21e3bcf69b71be20c52ecf5a2a5d64a12188ddc
 <section id="content">
     <div class="content-wrap">
         <div class="container clearfix">
@@ -85,19 +53,15 @@ if (isset($session->permissions)) {
                         
                         <div class="white-section">
                             <label for="form-courses">Cursos:</label>
-<<<<<<< HEAD
-<<<<<<< HEAD
                             <select id="form-courses" class="selectpicker form-control" data-live-search="true">
-=======
-                            <select id="form-courses" class="form-control selectpicker" data-live-search="true" >
->>>>>>> e21e3bcf69b71be20c52ecf5a2a5d64a12188ddc
-=======
-                            <select id="form-courses" class="form-control selectpicker" data-live-search="true" >
->>>>>>> e21e3bcf69b71be20c52ecf5a2a5d64a12188ddc
                                 <option value="-1" data-tokens="">Seleccione un Curso</option>
-                                <option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option>
-                                
-                                
+                                <option value="-1" data-tokens="">Seleccione un Curso</option>
+                                <option value="-1" data-tokens="">Seleccione un Curso</option>
+                                <option value="-1" data-tokens="">Seleccione un Curso</option>
+                                <option value="-1" data-tokens="">Seleccione un Curso</option>
+                                <option value="-1" data-tokens="">Seleccione un Curso</option>
+                                <option value="-1" data-tokens="">Seleccione un Curso</option>
+                                <option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option><option value="-1" data-tokens="">Seleccione un Curso</option>
                             </select>
                             <input type="hidden" id="failed-form-courses" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                         </div>
