@@ -63,7 +63,8 @@ include_once 'public/head.php';
                                     <li><a href="?controller=CourseSemester&action=select"><div>Ver Asignaciones</div></a></li>
                                     <li><a href="?controller=CourseSemester&action=insert"><div>Registrar Asignacion</div></a></li> 
                                     <li><a href="?controller=CourseSemester&action=deleteCourse"><div>Eliminar Asignacion De Curso</div></a></li> 
-                                    <li><a href="?controller=CourseSemester&action=deleteProfessor"><div>Eliminar Asignacion De Profesor</div></a></li>  
+                                    <li><a href="?controller=CourseSemester&action=deleteProfessor"><div>Eliminar Asignacion De Profesor</div></a></li>
+                                    <li><a href="?controller=CourseSemester&action=reactivare"><div>Reactivar Asignacion</div></a></li> 
                                 </ul>
                             </li>
                             <li><a href="#"><div>Horarios</div></a>

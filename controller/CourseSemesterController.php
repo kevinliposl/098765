@@ -156,4 +156,37 @@ class CourseSemesterController {
             $this->view->show("indexView.php");
         }
     }
+    
+    /**
+     * @return null
+     * @param integer $ID_Semester Identificador de semestre
+     * @param string[] $professors identificador de profesor
+     * @param string $initials identificador de curso
+     * Funcion para insertar curso en semestre
+     */
+    function reactivare() {
+        if (isset($_POST['professors']) && isset($_POST['ID_Semester']) && isset($_POST['initials']) && SSession::getInstance()->permissions == 'A') {
+            require 'model/CourseSemesterModel.php';
+            $model = new CourseSemesterModel();
+            $professors = "";
+            $num_professors = 0;
+            foreach ($_POST['professors'] as $valorActual) {
+                if ($professors == '' || $professors == '-1') {
+                    $professors = $valorActual;
+                } else {
+                    $professors = $valorActual . "," . $professors;
+                }
+                $num_professors = $num_professors + 1;
+            }//for        
+            $result = $model->insertCourseSemester($_POST['ID_Semester'], $_POST['initials'], $professors, $num_professors);
+            echo json_encode($result);
+        } else if (SSession::getInstance()->permissions == 'A') {
+            require 'model/SemesterModel.php';
+            $model = new SemesterModel();
+            $result = $model->selectAll();
+            $this->view->show("reactivateCourseSemesterView.php", $result);
+        } else {
+            $this->view->show("404View.php");
+        }
+    }
 }
