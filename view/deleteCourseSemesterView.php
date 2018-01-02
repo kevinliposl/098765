@@ -8,7 +8,7 @@ if (isset($session->permissions)) {
         header("Location:?action=notFound");
     }
 } else {
-    include_once 'public/header.php';
+    header("Location:?action=notFound");
 }
 ?>
 <section id="page-title">
@@ -113,6 +113,7 @@ if (isset($session->permissions)) {
                     $('#form-courses').append($("<option></option>").attr("value", data[i].initials).text(data[i].name));//AGREGAR OPCIONES
                 }
                 $("#form-courses").selectpicker("refresh");///REFRESCA SELECT PARA QUE AGARRE AGREGADOS
+                SEMICOLON.widget.notifications($("#success"));
             }, "json");
         }
     });

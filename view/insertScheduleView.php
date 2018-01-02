@@ -320,25 +320,30 @@ if (isset($session->permissions)) {
 
     //Change Combobox
     $("#form-courses").change(function () {
-        $('#form-hour-end').attr("disabled", false);
-        $('#form-hour-init').attr("disabled", false);
+        $('#form-hour-end').removeAttr('disabled');
+        $('#form-hour-init').removeAttr('disabled');
     });
 
     $("#form-hour-init").change(function () {
-        if ($("#form-hour-init").val() !== -1 && $("#form-hour-end").val() !== -1) {
-            $('#form-days').attr("disabled", false);
+        if ($("#form-hour-init").val() !== '-1' && $("#form-hour-end").val() !== '-1') {
+            $('#form-days').removeAttr('disabled');
             $('#form-days').selectpicker("refresh");
         }
     });
 
     $("#form-hour-end").change(function () {
-        if ($("#form-hour-init").val() !== -1 && $("#form-hour-end").val() !== -1) {
-            $('#form-days').attr("disabled", false);
+        if ($("#form-hour-init").val() !== '-1' && $("#form-hour-end").val() !== '-1') {
+            $('#form-days').removeAttr('disabled');
             $('#form-days').selectpicker("refresh");
         }
     });
 
     $('#form-submit').click(function () {
+
+        $("#form-submity").attr('disabled', 'disabled');
+        $("#form-close").attr('disabled', 'disabled');
+        SEMICOLON.widget.notifications($("#wait"));
+
         var parameters = {
             "ID": $("#form-courses").val(),
             "start": $("#form-hour-init").val(),
@@ -347,6 +352,7 @@ if (isset($session->permissions)) {
         };
 
         $.post("?controller=Schedule&action=insert", parameters, function (data) {
+            alert(data +"     "+data.result);
             if (data.result === '1') {
                 var temp = getRandomArbitrary(0, 3);
                 $("#" + $("#form-days").val() + $("#form-hour-init").val()).addClass('info');
@@ -358,6 +364,11 @@ if (isset($session->permissions)) {
                         $("#" + $("#form-days").val() + j).text($("#form-courses option:selected").text().trim());
                     }
                 }
+                SEMICOLON.widget.notifications($("#success"));
+            } else {
+                SEMICOLON.widget.notifications($("#warning"));
+                $("#form-submity").removeAttr('disabled');
+                $("#form-close").removeAttr('disabled');
             }
         }, "json");
     });

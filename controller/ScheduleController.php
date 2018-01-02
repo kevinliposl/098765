@@ -32,7 +32,7 @@ class ScheduleController {
             } else {
                 require 'model/SemesterModel.php';
                 $model = new SemesterModel();
-                $result = $model->selectAll();
+                $result = $model->selectAllSemesterWithAssignments();
                 $this->view->show("insertScheduleView.php", $result);
             }
         } else {
@@ -78,7 +78,7 @@ class ScheduleController {
             } else {
                 require 'model/SemesterModel.php';
                 $model = new SemesterModel();
-                $result = $model->selectAll();
+                $result = $model->selectAllSemesterWithAssignments();
                 $this->view->show("selectScheduleView.php", $result);
             }
         } else {
@@ -94,8 +94,8 @@ class ScheduleController {
     function selectWithoutSchedule() {
         if (SSession::getInstance()->permissions == 'A' || SSession::getInstance()->permissions == 'T') {
             if (isset($_POST["ID_Semester"])) {
-                require 'model/CourseSemesterModel.php';
-                $model = new CourseSemesterModel();
+                require 'model/ScheduleModel.php';
+                $model = new ScheduleModel();
                 $result = $model->selectWithoutSchedule($_POST["ID_Semester"]);
                 echo json_encode($result);
             } else{
@@ -105,5 +105,4 @@ class ScheduleController {
             $this->view->show("404View.php");
         }
     }
-
 }

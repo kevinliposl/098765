@@ -10,7 +10,7 @@ class ScheduleModel {
     }
 
     function insert($ID, $start, $end, $day) {
-        $query = $this->db->prepare("call sp_insert_schedule($ID,'$start','$end','$day')");
+        $query = $this->db->prepare("call sp_insert_schedule($ID, $start, $end, '$day')");
         $query->execute();
         $result = $query->fetch();
         return $result;
@@ -38,4 +38,13 @@ class ScheduleModel {
         $query->closeCursor();
         return $result;
     }
+
+    function selectWithoutSchedule($ID_semester) {
+        $query = $this->db->prepare("call sp_select_appointment_schedule($ID_semester)");
+        $query->execute();
+        $result = $query->fetchAll();
+        $query->closeCursor();
+        return $result;
+    }
+
 }

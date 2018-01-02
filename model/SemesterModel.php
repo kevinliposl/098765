@@ -38,4 +38,12 @@ class SemesterModel {
         return $result;
     }
 
+    function selectAllSemesterWithAssignments() {
+        $query = $this->db->prepare("call sp_select_all_semester_with_assignments()");
+        $query->execute();
+        $result = $query->fetchAll();
+        $query->closeCursor();
+        return $result;
+    }
+
 }

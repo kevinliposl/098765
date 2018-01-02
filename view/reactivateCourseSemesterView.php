@@ -113,16 +113,18 @@ if (isset($session->permissions)) {
             };
             SEMICOLON.widget.notifications($("#wait"));
 
-            document.getElementById("form-courses").options.length = 0;
-            document.getElementById("form-professors").options.length = 0;
-            $('#form-professors').append($("<option></option>").attr("value", "-1").text("Seleccione los profesores"));
-
-            $.post("?controller=CourseSemester&action=selectAll", parameters, function (data) {
+            $('#form-courses').empty();
+            $('#form-professors').empty();
+            
+            $.post("?controller=Course&action=selectAll", parameters, function (data) {
                 $('#form-courses').append($("<option></option>").attr("value", "-1").text("Seleccione un Curso"));
+                
                 for (var i = 0; i < data.length; i++) {
                     $('#form-courses').append($("<option></option>").attr("value", data[i].initials).text(data[i].name));//AGREGAR OPCIONES
                 }
+                
                 $("#form-courses").selectpicker("refresh");
+                
                 SEMICOLON.widget.notifications($("#success"));
             }, "json");
         }
