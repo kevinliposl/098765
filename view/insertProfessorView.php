@@ -65,14 +65,6 @@ if (isset($session->permissions)) {
                             <input type="radio" name="form-gender" value="M" checked/> <label>Masculino</label>
                             <input type="radio" name="form-gender" value="F"/><label>Femenino</label>
                         </div>
-<<<<<<< HEAD
-=======
-                        <div class="col_full" style="padding: 10px;">
-                            <label for="form-address">Lugar de Residencia:</label>
-                            <input type="text" id="form-address" class="form-control" pattern="[a-zA-Z\s]+$" minlength="5" maxlength="200" required/>
-                            <input type="hidden" id="failed-address" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class=icon-remove-sign></i> Dirección muy extensa. Complete e intente de nuevo!"/>
-                        </div>
->>>>>>> 780d914954fccaf17651b8be8a19d17ec17e0dea
 
                         <div class="col-lg-6" style="padding: 10px;">
                             <label for="form-nationality">Nacionalidad:</label>
