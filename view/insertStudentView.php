@@ -28,14 +28,14 @@ if (isset($session->permissions)) {
                         <h1 style="text-align: center;">Informaci&oacute;n Personal</h1>
                         <div class="acc_content clearfix"></div>
                         <div class="col_full">
-                            <label for="form-id">Número de Identificación:</label>
-                            <input type="text" id="form-id" class="form-control" minlength="9" placeholder="301230123" required/>
-                        </div>
-                        <div class="col_full">
                             <label for="form-typeId">Tipo de Identificación:</label>
                             <input type="radio" name="form-typeId" value="C" checked/><label>Cédula Nacional</label>
                             <input type="radio" name="form-typeId" value="D"/> <label>Dimex</label>
                             <input type="radio" name="form-typeId" value="P"/><label>Pasaporte</label>
+                        </div>
+                        <div class="col_full">
+                            <label for="form-id">Número de Identificación:</label>
+                            <input type="text" id="form-id" class="form-control" minlength="9" placeholder="301230123" required/>
                         </div>
                         <div class="col_full">
                             <label for="form-name">Nombre:</label>
@@ -147,7 +147,7 @@ if (isset($session->permissions)) {
         window.location = "?controller=Student&action=insertStudent";
     }
 
-    $("#insertButton").click(function () {
+    $("#form-submity").click(function () {
         $("#form-submity").attr('disabled', 'disabled');
         $("#form-close").attr('disabled', 'disabled');
 
