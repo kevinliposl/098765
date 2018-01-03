@@ -26,10 +26,10 @@ if (isset($session->permissions)) {
                 <div class="acc_content clearfix">
                     <form id="form" class="nobottommargin" onsubmit="return val();">
                         <div class="col-lg-6" style="padding: 10px;">
-                            <label for="form-typeId">Tipo de Identificaci&oacute;n:</label>
-                            <input type="radio" name="form-typeId" value="C" checked/><label>Cédula.</label>
-                            <input type="radio" name="form-typeId" value="D"/> <label> Dimex.</label>
-                            <input type="radio" name="form-typeId" value="P"/><label> Pasaporte.</label>
+                            <label for="form-typeId">Tipo de Identificación:</label>
+                            <input type="radio" name="form-typeId" value="C" onclick="checkTypeId('C');" checked/><label>Cédula Nacional</label>
+                            <input type="radio" name="form-typeId" value="D" onclick="checkTypeId('D');"/> <label>Dimex</label>
+                            <input type="radio" name="form-typeId" value="P" onclick="checkTypeId('P');"/><label>Pasaporte</label>
                         </div>
 
                         <div class="col-lg-6" style="padding: 10px;">
@@ -61,7 +61,7 @@ if (isset($session->permissions)) {
                             <input type="radio" name="form-gender" value="M" checked/> <label>Masculino</label>
                             <input type="radio" name="form-gender" value="F"/><label>Femenino</label>
                         </div>
-                        
+
                         <div class="col_full" style="padding: 10px;">
                             <label for="form-address">Lugar de Residencia:</label>
                             <input type="text" id="form-address" class="form-control" pattern="[a-zA-Z\s]+$" minlength="5" maxlength="200" required/>
@@ -142,22 +142,34 @@ if (isset($session->permissions)) {
 </div>
 
 <script>
+    function checkTypeId(type) {
+        if (type === 'C') {
+            $("#form-id").attr('minlength', '9');
+            $("#form-id").attr('maxlength', '9');
+            $("#form-id").val('');
+        } else {
+            $("#form-id").attr('minlength', '9');
+            $("#form-id").attr('maxlength', '20');
+            $("#form-id").val('');
+        }
+    }
+
     function val() {
 
-            var typeId = $("input[name*='form-typeId']").val();
-            var id = $("#form-id").val().trim();
-            var email= $("#form-email").val().trim();
-            var name = $("#form-name").val().trim();
-            var firstLastName= $("#form-firstLastName").val().trim();
-            var secondLastName= $("#form-secondLastName").val().trim();
-            var gender = $("input[name*='form-gender']").val();
-            var nationality = $("#form-nationality").val().trim();
-            var phone = $("#form-phone1").val().trim();
-            var phone2 = $("#form-phone2").val().trim();
-            var additionalInformation = $("#form-additionalInformation").val().trim();
-            var address = $("#form-address").val().trim();
-            var age = $("#form-age").val();
-        
+        var typeId = $("input[name*='form-typeId']").val();
+        var id = $("#form-id").val().trim();
+        var email = $("#form-email").val().trim();
+        var name = $("#form-name").val().trim();
+        var firstLastName = $("#form-firstLastName").val().trim();
+        var secondLastName = $("#form-secondLastName").val().trim();
+        var gender = $("input[name*='form-gender']").val();
+        var nationality = $("#form-nationality").val().trim();
+        var phone = $("#form-phone1").val().trim();
+        var phone2 = $("#form-phone2").val().trim();
+        var additionalInformation = $("#form-additionalInformation").val().trim();
+        var address = $("#form-address").val().trim();
+        var age = $("#form-age").val();
+
 
         if (name.length < 3 || name.length > 49 || !isNaN(name)) {
             SEMICOLON.widget.notifications($("#failed-name"));
