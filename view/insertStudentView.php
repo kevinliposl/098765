@@ -28,13 +28,13 @@ if (isset($session->permissions)) {
                         <div class="acc_content clearfix"></div>
                         <div class="col_full">
                             <label for="form-typeId">Tipo de Identificación:</label>
-                            <input type="radio" name="form-typeId" value="C" checked/><label>Cédula Nacional</label>
-                            <input type="radio" name="form-typeId" value="D"/> <label>Dimex</label>
-                            <input type="radio" name="form-typeId" value="P"/><label>Pasaporte</label>
+                            <input type="radio" name="form-typeId" value="C" onclick="checkTypeId('C');" checked/><label>Cédula Nacional</label>
+                            <input type="radio" name="form-typeId" value="D" onclick="checkTypeId('D');"/> <label>Dimex</label>
+                            <input type="radio" name="form-typeId" value="P" onclick="checkTypeId('P');"/><label>Pasaporte</label>
                         </div>
                         <div class="col_full">
                             <label for="form-id">Número de Identificación:</label>
-                            <input type="text" id="form-id" class="form-control" minlength="9" placeholder="301230123" required/>
+                            <input type="text" id="form-id" class="form-control" maxlength="9" minlength="9" placeholder="301230123" required/>
                         </div>
                         <div class="col_full">
                             <label for="form-name">Nombre:</label>
@@ -147,6 +147,18 @@ if (isset($session->permissions)) {
 </section>
 
 <script>
+    function checkTypeId(type) {
+        if (type === 'C') {
+            $("#form-id").attr('minlength', '9');
+            $("#form-id").attr('maxlength', '9');
+            $("#form-id").val('');
+        } else {
+            $("#form-id").attr('minlength', '9');
+            $("#form-id").attr('maxlength', '20');
+            $("#form-id").val('');
+        }
+    }
+
     function sendData() {
         $('#showModal').click();
         return false;
@@ -159,9 +171,7 @@ if (isset($session->permissions)) {
     $("#form-submity").click(function () {
         $("#form-submity").attr('disabled', 'disabled');
         $("#form-close").attr('disabled', 'disabled');
-
         SEMICOLON.widget.notifications($("#wait"));
-
         var parameters = {
             "id": $("#form-id").val().trim(),
             "idType": $("input:radio[name='form-typeId']:checked").val().trim(),

@@ -25,10 +25,10 @@ if (isset($session->permissions)) {
                 <div class="acc_content clearfix">
                     <form id="form" class="nobottommargin" onsubmit="return val();">
                         <div class="col-lg-6" style="padding: 10px;">
-                            <label for="form-typeId">Tipo de Identificaci&oacute;n:</label>
-                            <input type="radio" name="form-typeId" value="C" checked/><label>Cédula.</label>
-                            <input type="radio" name="form-typeId" value="D"/> <label> Dimex.</label>
-                            <input type="radio" name="form-typeId" value="P"/><label> Pasaporte.</label>
+                            <label for="form-typeId">Tipo de Identificación:</label>
+                            <input type="radio" name="form-typeId" value="C" onclick="checkTypeId('C');" checked/><label>Cédula Nacional</label>
+                            <input type="radio" name="form-typeId" value="D" onclick="checkTypeId('D');"/> <label>Dimex</label>
+                            <input type="radio" name="form-typeId" value="P" onclick="checkTypeId('P');"/><label>Pasaporte</label>
                         </div>
 
                         <div class="col-lg-6" style="padding: 10px;">
@@ -67,6 +67,14 @@ if (isset($session->permissions)) {
                             <input type="radio" name="form-gender" value="F"/><label>Femenino</label>
                         </div>
 
+<<<<<<< HEAD
+                        <div class="col_full" style="padding: 10px;">
+                            <label for="form-address">Lugar de Residencia:</label>
+                            <input type="text" id="form-address" class="form-control" pattern="[a-zA-Z\s]+$" minlength="5" maxlength="200" required/>
+                            <input type="hidden" id="failed-address" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class=icon-remove-sign></i> Dirección muy extensa. Complete e intente de nuevo!"/>
+                        </div>
+=======
+>>>>>>> 9a6a3dd86773d998afd3160641ee4d2fcf4d01ae
 
                         <div class="col-lg-6" style="padding: 10px;">
                             <label for="form-nationality">Nacionalidad:</label>
@@ -151,6 +159,18 @@ if (isset($session->permissions)) {
 </div>
 
 <script>
+    function checkTypeId(type) {
+        if (type === 'C') {
+            $("#form-id").attr('minlength', '9');
+            $("#form-id").attr('maxlength', '9');
+            $("#form-id").val('');
+        } else {
+            $("#form-id").attr('minlength', '9');
+            $("#form-id").attr('maxlength', '20');
+            $("#form-id").val('');
+        }
+    }
+
     function val() {
 
         var typeId = $("input[name*='form-typeId']").val();
