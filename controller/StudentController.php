@@ -47,9 +47,8 @@ class StudentController {
                             . ' de ingreso al sitio es... <br><h1>' . $result['password'] . '</h1>');
                 }
             } else {
-                $file = file_get_contents("libs/asd.json");
-                $contents = utf8_encode($file);
-                $this->view->show("insertStudentView.php", json_decode($contents, true));
+                $file = file_get_contents("libs/nationalities.json");
+                $this->view->show("insertStudentView.php", json_decode($file, true));
             }
         } else {
             $this->view->show("indexView.php");
