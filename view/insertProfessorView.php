@@ -133,7 +133,7 @@ if (isset($session->permissions)) {
                     </p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" id="form-close">Cerrar</button>
                     <input type="button" class="btn btn-primary button-black nomargin" id="form-submity" value="Insertar"/>
                 </div>
             </div>
@@ -194,19 +194,19 @@ if (isset($session->permissions)) {
             return false;
 
         } else {
-            if (args['typeId'] === "C") {
-                if (isNaN(args['identification']) || args['identification'].length < 9 || args['identification'].length > 9) {
-                    $("#failed-id").attr("data-notify-msg", "<i class=icon-remove-sign></i> Formato de identificacion incorrecto. Complete e intente de nuevo!");
-                    SEMICOLON.widget.notifications($("#failed-id"));
-                    return false;
-                }
-            } else if (args['typeId'] === "D") {
-                if (args['identification'].length < 12 || args['identification'].length > 12) {
-                    $("#failed-id").attr("data-notify-msg", "<i class=icon-remove-sign></i> Formato de identificacion incorrecto. Complete e intente de nuevo!");
-                    SEMICOLON.widget.notifications($("#failed-id"));
-                    return false;
-                }
-            }//if-else
+//            if (args['typeId'] === "C") {
+//                if (isNaN(args['identification']) || args['identification'].length < 9 || args['identification'].length > 9) {
+//                    $("#failed-id").attr("data-notify-msg", "<i class=icon-remove-sign></i> Formato de identificacion incorrecto. Complete e intente de nuevo!");
+//                    SEMICOLON.widget.notifications($("#failed-id"));
+//                    return false;
+//                }
+//            } else if (args['typeId'] === "D") {
+//                if (args['identification'].length < 12 || args['identification'].length > 12) {
+//                    $("#failed-id").attr("data-notify-msg", "<i class=icon-remove-sign></i> Formato de identificacion incorrecto. Complete e intente de nuevo!");
+//                    SEMICOLON.widget.notifications($("#failed-id"));
+//                    return false;
+//                }
+//            }//if-else
         }//final
 
         $('#showModal').click();
@@ -221,6 +221,8 @@ if (isset($session->permissions)) {
         SEMICOLON.widget.notifications($("#wait"));
 
         $.post("?controller=Professor&action=insert", args, function (data) {
+            
+            alert(data.result);
             if (data.result === "1") {
                 SEMICOLON.widget.notifications($("#success"));
                 setTimeout("location.href = '?controller=Professor&action=insert';", 1500);
