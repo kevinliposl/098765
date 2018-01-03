@@ -58,7 +58,8 @@ if (isset($session->permissions)) {
                             <input type="submit" id="submit" value="Registrar" class="button button-3d button-black nomargin form-control" style="display: block; text-align: center;"/>
                             <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i>La operacion no se pudo realizar, intente de nuevo o m&aacute;s tarde!" data-notify-position="bottom-full-width"/>
                             <input type="hidden" id="success" data-notify-type="success" data-notify-msg="<i class='icon-ok-sign'></i> Operaci&oacute;n exitosa, revise en breve...!" data-notify-position="bottom-full-width"/>
-                            <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Se ha creado el administrador, pero no se ha podido enviarle el correo Electronico, contacte con el tecnico!!" data-notify-position="bottom-full-width"/>
+                            <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Un momento por favor..." data-notify-position="bottom-full-width"/>
+                            <input type="hidden" id="alert" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Se ha creado el administrador, pero no se ha podido enviarle el correo Electronico, ¡contacte con Soporte tecnico!" data-notify-position="bottom-full-width"/>
                         </div>
                     </form>
                 </div>
@@ -141,7 +142,7 @@ if (isset($session->permissions)) {
                 $("#form-submity").removeAttr('disabled');
                 $("#form-close").removeAttr('disabled');
             }else{
-                SEMICOLON.widget.notifications($("#info"));
+                SEMICOLON.widget.notifications($("#alert"));
                 setTimeout("location.href='?controller=Admin&action=insert';", 2000);
             }
         }, "json");
