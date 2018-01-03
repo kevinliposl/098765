@@ -39,15 +39,15 @@ if (isset($session->permissions)) {
                         </div>
                         <div class="col_full">
                             <label for="form-name">Nombre:</label>
-                            <input type="text" id="form-name"class="form-control" minlength="3" maxlength="49" required placeholder="Marco"/>
+                            <input type="text" id="form-name"class="form-control" minlength="3" maxlength="49" pattern="[a-zA-Z]{3,49}" required placeholder="Marco"/>
                         </div>
                         <div class="col_full">
                             <label for="form-firstLastName">Primer Apellido:</label>
-                            <input type="text" id="form-firstLastName"class="form-control" minlength="3" maxlength="49" required placeholder="Castro"/>
+                            <input type="text" id="form-firstLastName"class="form-control" minlength="3" maxlength="49" pattern="[a-zA-Z]{3,49}" required placeholder="Castro"/>
                         </div>
                         <div class="col_full">
                             <label for="form-secondLastName">Segundo Apellido:</label>
-                            <input type="text" id="form-secondLastName"class="form-control" required minlength="3" maxlength="49" pattern="{4-16}" placeholder="Madriz"/>
+                            <input type="text" id="form-secondLastName"class="form-control" required minlength="3" maxlength="49" pattern="[a-zA-Z]{3,49}" placeholder="Madriz"/>
                         </div>
                         <div class="col_full">
                             <label for="form-age">Fecha de Nacimiento:</label>
@@ -55,7 +55,7 @@ if (isset($session->permissions)) {
                         </div>
                         <div class="col_full">
                             <label for="form-address">Lugar de Residencia:</label>
-                            <input type="text" id="form-address"class="form-control" minlength="5" maxlength="49" required pattern="{4-16}" placeholder="Turrialba"/>
+                            <input type="text" id="form-address"class="form-control" minlength="5" maxlength="49" required pattern="{5,49}" placeholder="Turrialba"/>
                         </div>
                         <div class="col_full">
                             <label for="form-gender">Género:</label>
@@ -64,15 +64,15 @@ if (isset($session->permissions)) {
                         </div>
                         <div class="col_full">
                             <label for="form-nationality">Nacionalidad:</label>
-                            <input type="text" id="form-nationality"class="form-control" minlength="5" maxlength="49" required pattern="{4-16}" placeholder="Costarricense"/>
+                            <input type="text" id="form-nationality"class="form-control" minlength="5" maxlength="49" required pattern="{5-49}" placeholder="Costarricense"/>
                         </div>
                         <div class="col_full">
                             <label for="form-phone1">Telefono:</label>
-                            <input type="text" id="form-phone1"class="form-control" minlength="8" maxlength="8" required pattern="{4-16}" placeholder="88888888"/>
+                            <input type="text" id="form-phone1"class="form-control" minlength="8" maxlength="8" required pattern="[0-9]{8,8}" placeholder="88888888"/>
                         </div>
                         <div class="col_full">
                             <label for="form-phone2">Otro teléfono:</label>
-                            <input type="text" id="form-phone2"class="form-control" minlength="8" maxlength="8" required pattern="{4-16}" placeholder="88888888"/>
+                            <input type="text" id="form-phone2"class="form-control" minlength="8" maxlength="8" required pattern="[0-9]{8,8}" placeholder="88888888"/>
                         </div>
                         <div class="col_full">
                             <label for="form-email">Correo Electronico:</label>
@@ -84,15 +84,15 @@ if (isset($session->permissions)) {
                         <div class="acc_content clearfix"></div>
                         <div class="col_full">
                             <label for="form-contact-name">Nombre completo:</label>
-                            <input type="text" id="form-contact-name"class="form-control"  minlength="3" maxlength="49" required pattern="{4-16}" placeholder="Laura"/>
+                            <input type="text" id="form-contact-name"class="form-control"  minlength="3" maxlength="49" required pattern="[a-zA-Z]{3,49}" placeholder="Laura"/>
                         </div>
                         <div class="col_full">
                             <label for="form-contact-phone">Telefono:</label>
-                            <input type="text" id="form-contact-phone"class="form-control" minlength="8" maxlength="8" required pattern="{4-16}" placeholder="88888888"/>
+                            <input type="text" id="form-contact-phone"class="form-control" minlength="8" maxlength="8" pattern="[0-9]{8,8}" required pattern="{4-16}" placeholder="88888888"/>
                         </div>
                         <div class="col_full">
                             <label for="form-relationship">Relaci&oacute;n:</label>
-                            <input type="text" id="form-relationship"class="form-control" minlength="3" maxlength="49" required pattern="{4-16}" placeholder="Abuela"/>
+                            <input type="text" id="form-relationship"class="form-control" minlength="3" maxlength="49" required pattern="[a-zA-Z]{3,49}" placeholder="Abuela"/>
                         </div>
                         <div class="col_full">
                             <label for="form-contact-email">Correo Electronico del contacto:</label>
