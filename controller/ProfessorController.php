@@ -40,10 +40,11 @@ class ProfessorController {
                 if ($result["result"] === '1') {
                     $mail = SMail::getInstance();
                     $mail->sendMail($_POST["email"], 'Contraseña de ingreso al sitio', 'Hola, gracias por formar parte de la academia, la contraseña'
-                                    . ' de ingreso al sitio es... <br><h1>' . $result['password'] . '</h1>');
+                            . ' de ingreso al sitio es... <br><h1>' . $result['password'] . '</h1>');
                 }
             } else {
-                $this->view->show("insertProfessorView.php");
+                $file = file_get_contents("libs/nationalities.json");
+                $this->view->show("insertProfessorView.php", json_decode($file, true));
             }//else
         } else {
             $this->view->show("indexView.php");

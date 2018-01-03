@@ -1,5 +1,4 @@
 <?php
-
 $session = SSession::getInstance();
 
 if (isset($session->permissions)) {
@@ -55,25 +54,43 @@ if (isset($session->permissions)) {
                             <input type="text" id="form-secondLastName" class="form-control" pattern="[a-zA-Z\s]+$" placeholder="Garcia" minlength="3" maxlength="50" required/>
                             <input type="hidden" id="failed-secondLastName" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class=icon-remove-sign></i> Segundo Apellido Incorrecto. Complete e intente de nuevo!"/>
                         </div>
-
                         <div class="col-lg-6" style="padding: 10px;">
-                            <label for="form-gender">G&eacute;nero:</label>
-                            <input type="radio" name="form-gender" value="M" checked/> <label>Masculino</label>
-                            <input type="radio" name="form-gender" value="F"/><label>Femenino</label>
-                        </div>
-
-                        <div class="col_full" style="padding: 10px;">
                             <label for="form-address">Lugar de Residencia:</label>
                             <input type="text" id="form-address" class="form-control" pattern="[a-zA-Z\s]+$" minlength="5" maxlength="200" required/>
                             <input type="hidden" id="failed-address" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class=icon-remove-sign></i> Dirección muy extensa. Complete e intente de nuevo!"/>
                         </div>
 
                         <div class="col-lg-6" style="padding: 10px;">
-                            <label for="form-nationality">Nacionalidad:</label>
-                            <input type="text" id="form-nationality" class="form-control" required/>
-                            <input type="hidden" id="failed-nationality" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class=icon-remove-sign></i> Formato de nacionalidad incorrecto. Complete e intente de nuevo!"/>
+                            <label for="form-gender">G&eacute;nero:</label>
+                            <br>
+                            <input type="radio" name="form-gender" value="M" checked/> <label>Masculino</label>
+                            <input type="radio" name="form-gender" value="F"/><label>Femenino</label>
                         </div>
 
+<<<<<<< HEAD
+                        <div class="col_full" style="padding: 10px;">
+                            <label for="form-address">Lugar de Residencia:</label>
+                            <input type="text" id="form-address" class="form-control" pattern="[a-zA-Z\s]+$" minlength="5" maxlength="200" required/>
+                            <input type="hidden" id="failed-address" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class=icon-remove-sign></i> Dirección muy extensa. Complete e intente de nuevo!"/>
+                        </div>
+=======
+>>>>>>> 9a6a3dd86773d998afd3160641ee4d2fcf4d01ae
+
+                        <div class="col-lg-6" style="padding: 10px;">
+                            <label for="form-nationality">Nacionalidad:</label>
+                            <select id="form-nationality" class="selectpicker form-control" data-live-search="true">
+                                <?php
+                                foreach ($vars as $var) {
+                                    ?>
+                                    <option value="<?php print_r($var['name']); ?> " data-tokens="">
+                                        <?php print_r($var['name']); ?>
+                                    </option>
+                                    <?php
+                                }
+                                ?>
+                            </select>
+                            <input type="hidden" id="failed-nationality" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class=icon-remove-sign></i> Formato de nacionalidad incorrecto. Complete e intente de nuevo!"/>
+                        </div>
                         <div class="col-lg-6" style="padding: 10px;">
                             <label for="form-phone1">Tel&eacute;fono:</label>
                             <input type="text" id="form-phone1" class="form-control" minlength="8" maxlength="8" required pattern="{4-16}"/>
@@ -100,7 +117,7 @@ if (isset($session->permissions)) {
 
                         <div class="col_full" style="padding: 10px;">
                             <label for="form-additionalInformation">Informaci&oacute;n Adicional:</label>
-                            <input type="text" id="form-additionalInformation" class="form-control" minlength="5" maxlength="2000" required/>
+                            <textarea class="form-control" id="form-additionalInformation" rows="6" cols="30" required style="resize: none;"></textarea>
                             <input type="hidden" id="failed-additionalInformation" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class=icon-remove-sign></i> Información adicional muy extensa. Complete e intente de nuevo!"/>
                         </div>
 
@@ -261,5 +278,4 @@ if (isset($session->permissions)) {
 </script>
 
 <?php
-
 include_once 'public/footer.php';
