@@ -62,7 +62,6 @@ if (isset($session->permissions)) {
     </div>
 </section>
 
-<!--MODAL -->
 <a id="showModal" style="display: none;"class="button button-3d button-black nomargin" data-target="#myModal" data-toggle="modal">Modal</a>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -90,26 +89,24 @@ if (isset($session->permissions)) {
 <script>
     function val() {
 
-        args = {
-            "initials": $("#form-initials").val().toUpperCase().trim(),
-            "name": $("#form-name").val().trim(),
-            "description": $("#form-description").val().trim(),
-            "instrument": $("#form-instrument").val().trim()
-        };
+        var initials = $("#form-initials").val().toUpperCase().trim();
+        var name = $("#form-name").val().trim();
+        var description = $("#form-description").val().trim();
+        var instrument = $("#form-instrument").val().trim();
 
-        if (isNaN(array['initials'].substr(3, 3)) || /^[a-z][a-z]*/.test(array['initials'].substr(0, 3)) || array['initials'].split(" ", 2).length > 1) {
+        if (isNaN(initials.substr(3, 3)) || /^[a-z][a-z]*/.test(initials.substr(0, 3)) || initials.split(" ", 2).length > 1) {
             SEMICOLON.widget.notifications($("#failed-initials"));
             return false;
 
-        } else if (!isNaN(array['name'])) {
+        } else if (!isNaN(name)) {
             SEMICOLON.widget.notifications($("#failed-name"));
             return false;
 
-        } else if (!isNaN(array['description'])) {
+        } else if (!isNaN(description)) {
             SEMICOLON.widget.notifications($("#failed-description"));
             return false;
 
-        } else if (!isNaN(array['instrument'])) {
+        } else if (!isNaN(instrument)) {
             SEMICOLON.widget.notifications($("#failed-instrument"));
             return false;
         }
@@ -122,6 +119,12 @@ if (isset($session->permissions)) {
         $("#form-submity").attr('disabled', 'disabled');
         $("#form-close").attr('disabled', 'disabled');
 
+        var args = {
+            'initials': $("#form-initials").val().toUpperCase().trim(),
+            'name': $("#form-name").val().trim(),
+            'description': $("#form-description").val().trim(),
+            'instrument': $("#form-instrument").val().trim()
+        };
         SEMICOLON.widget.notifications($("#wait"));
 
         $.post("?controller=Course&action=insert", args, function (data) {
@@ -138,5 +141,4 @@ if (isset($session->permissions)) {
 </script>
 
 <?php
-
 include_once 'public/footer.php';

@@ -118,7 +118,6 @@ if (isset($session->permissions)) {
             </div>
         </div>
 
-
         <a id="showModal" style="display: none;"class="button button-3d button-black nomargin" data-target="#myModal" data-toggle="modal">Modal</a>
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -156,6 +155,7 @@ if (isset($session->permissions)) {
             $("#form-id").attr('minlength', '9');
             $("#form-id").attr('maxlength', '20');
             $("#form-id").val('');
+            
         }
     }
 
