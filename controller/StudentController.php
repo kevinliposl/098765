@@ -48,7 +48,8 @@ class StudentController {
                 }
             } else {
                 $file = file_get_contents("libs/asd.json");
-                $this->view->show("insertStudentView.php",$file);
+                $contents = utf8_encode($file);
+                $this->view->show("insertStudentView.php", json_decode($contents, true));
             }
         } else {
             $this->view->show("indexView.php");
