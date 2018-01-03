@@ -63,7 +63,6 @@ if (isset($session->permissions)) {
                         </div>
                         <div class="col_full">
                             <label for="form-nationality">Nacionalidad:</label>
-<<<<<<< HEAD
                             <select id="form-nationality" class="selectpicker form-control" data-live-search="true">
                                 <?php
                                 foreach ($vars as $var) {
@@ -75,14 +74,6 @@ if (isset($session->permissions)) {
                                 }
                                 ?>
                             </select>
-=======
-                            <<<<<<< HEAD
-                            <input type="text" id="form-nationality"class="form-control" minlength="5" maxlength="49" required pattern="{5-49}" placeholder="Costarricense"/>
-                            =======
-                            <?php print_r($vars); ?>
-                            <input type="text" id="form-nationality"class="form-control" minlength="5" maxlength="49" required pattern="{4-16}" placeholder="Costarricense"/>
-                            >>>>>>> b8324b8d9ea7edf069b2ad8bf2f1daf956ee0f51
->>>>>>> 241236d305fb704a81a6d1062e41f59d8fad53c9
                         </div>
                         <div class="col_full">
                             <label for="form-phone1">Telefono:</label>
