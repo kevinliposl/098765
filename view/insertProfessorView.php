@@ -33,7 +33,7 @@ if (isset($session->permissions)) {
 
                         <div class="col-lg-6" style="padding: 10px;">
                             <label for="form-id">Número de Identificaci&oacute;n:</label>
-                            <input type="text" id="form-id" class="form-control" required/>
+                            <input type="text" id="form-id" class="form-control" maxlength="9" minlength="9" placeholder="301230123" required/>
                             <input type="hidden" id="failed-id" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                         </div>
 
@@ -71,7 +71,7 @@ if (isset($session->permissions)) {
                             <input type="text" id="form-address" class="form-control" pattern="[a-zA-Z\s]+$" minlength="5" maxlength="200" required/>
                             <input type="hidden" id="failed-address" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class=icon-remove-sign></i> Dirección muy extensa. Complete e intente de nuevo!"/>
                         </div>
-                        
+
                         <div class="col-lg-6" style="padding: 10px;">
                             <label for="form-nationality">Nacionalidad:</label>
                             <select id="form-nationality" class="selectpicker form-control" data-live-search="true">
