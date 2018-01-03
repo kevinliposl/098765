@@ -64,6 +64,7 @@ if (isset($session->permissions)) {
                         </div>
                         <div class="col_full">
                             <label for="form-nationality">Nacionalidad:</label>
+                            <?php print_r($vars); ?>
                             <input type="text" id="form-nationality"class="form-control" minlength="5" maxlength="49" required pattern="{4-16}" placeholder="Costarricense"/>
                         </div>
                         <div class="col_full">
