@@ -46,16 +46,16 @@ class ScheduleController {
      * Funcion para eliminar horario
      */
     function delete() {
-        if (SSession::getInstance()->permissions == 'A' || SSession::getInstance()->permissions == 'T') {
-            if (isset($_POST["id"])) {
+        if (SSession::getInstance()->permissions == 'A') {
+            if (isset($_POST["ID"]) && isset($_POST["ID_schedule"])) {
                 require 'model/ScheduleModel.php';
                 $model = new ScheduleModel();
-                $result = $model->delete($_POST["id"]);
+                $result = $model->delete($_POST["ID"],$_POST["ID_schedule"]);
                 echo json_encode($result);
             } else {    
                 require 'model/SemesterModel.php';
                 $model = new SemesterModel();
-                $result = $model->selectAll();
+                $result = $model->selectAllSemesterWithAssignmentsAndSchedule();
                 $this->view->show("deleteScheduleView.php", $result);
             }
         } else {
@@ -105,4 +105,37 @@ class ScheduleController {
             $this->view->show("404View.php");
         }
     }
+    //FUNCION PARA LA VISTA ELIMINAR
+    function selectWithSchedule() {
+        if (SSession::getInstance()->permissions == 'A') {
+            if (isset($_POST["ID_Semester"])) {
+                require 'model/ScheduleModel.php';
+                $model = new ScheduleModel();
+                $result = $model->selectWithSchedule($_POST["ID_Semester"]);
+                echo json_encode($result);
+            } else{
+                $this->view->show("404View.php");
+            }
+        } else {
+            $this->view->show("404View.php");
+        }
+    }
+
+    ///METODO PARA VISTA ELIMINAR
+    function selectCourseSchedules() {
+        if (SSession::getInstance()->permissions == 'A' || SSession::getInstance()->permissions == 'T') {
+            if (isset($_POST["ID_appointment"])) {
+                require 'model/ScheduleModel.php';
+                $model = new ScheduleModel();
+                $result = $model->selectCourseSchedules($_POST["ID_appointment"]);
+                echo json_encode($result);
+            } else{
+                $this->view->show("404View.php");
+            }
+        } else {
+            $this->view->show("404View.php");
+        }
+    }
 }
+
+

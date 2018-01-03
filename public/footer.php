@@ -23,7 +23,7 @@
                             <div class="spost clearfix">
                                 <div class="entry-c">
                                     <div class="entry-title">
-                                        <h4><a href="?controlador=Index&action=instruments">Nuestros Cursos</a></h4>
+                                        <h4><a href="?action=instruments">Nuestros Cursos</a></h4>
                                     </div>
                                 </div>
                             </div>
@@ -37,7 +37,7 @@
                             <div class="spost clearfix">
                                 <div class="entry-c">
                                     <div class="entry-title">
-                                        <h4><a href="?controlador=Index&action=contact">Contacto</a></h4>
+                                        <h4><a href="?action=contact">Contacto</a></h4>
                                     </div>
                                 </div>
                             </div>
@@ -45,7 +45,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col_one_third col_last">
+            <!--<div class="col_one_third col_last">
                 <div class="widget clearfix" style="margin-bottom: -20px;">
                     <div class="row">
                         <div class="col-md-6 clearfix bottommargin-sm">
@@ -73,7 +73,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>-->
         </div>
     </div>
     <div id="copyrights">
@@ -133,9 +133,9 @@
         dropupAuto: false
     });
 
-    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
-        $('.selectpicker').selectpicker('mobile');
-    }
+//    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
+//        $('.selectpicker').selectpicker('mobile');
+//    }
 </script>
 
 <script src="public/js/functions.js" type="text/javascript"></script>

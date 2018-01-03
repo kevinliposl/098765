@@ -24,8 +24,8 @@ class ScheduleModel {
         return $result;
     }
 
-    function delete($id) {
-        $query = $this->db->prepare("call sp_delete_schedule($id)");
+    function delete($ID, $ID_schedule) {
+        $query = $this->db->prepare("call sp_delete_schedule($ID,$ID_schedule)");
         $query->execute();
         $result = $query->fetch();
         return $result;
@@ -41,6 +41,22 @@ class ScheduleModel {
 
     function selectWithoutSchedule($ID_semester) {
         $query = $this->db->prepare("call sp_select_appointment_schedule($ID_semester)");
+        $query->execute();
+        $result = $query->fetchAll();
+        $query->closeCursor();
+        return $result;
+    }
+
+    function selectWithSchedule($ID_semester) {
+        $query = $this->db->prepare("call sp_select_appointment_with_schedule($ID_semester)");
+        $query->execute();
+        $result = $query->fetchAll();
+        $query->closeCursor();
+        return $result;
+    }
+
+    function selectCourseSchedules($ID_appointment) {
+        $query = $this->db->prepare("call sp_select_course_schedules($ID_appointment)");
         $query->execute();
         $result = $query->fetchAll();
         $query->closeCursor();

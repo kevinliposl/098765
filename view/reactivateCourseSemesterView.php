@@ -66,7 +66,7 @@ if (isset($session->permissions)) {
                         </div>
 
                         <div class="col_full">
-                            <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" style="display : block; text-align: center;" data-target="#myModal">Asignar</a>
+                            <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" style="display : block; text-align: center;" data-target="#myModal">Reactivar</a>
                             <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i>La operacion no se pudo realizar, intente de nuevo o m&aacute;s tarde!" data-notify-position="bottom-full-width"/>
                             <input type="hidden" id="success" data-notify-type="success" data-notify-msg="<i class='icon-ok-sign'></i> Operaci&oacute;n exitosa, revise en breve...!" data-notify-position="bottom-full-width"/>
                             <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Espere un momento...!" data-notify-position="bottom-full-width"/>
@@ -106,7 +106,6 @@ if (isset($session->permissions)) {
     $("#form-semester").change(function () {
         if ($("#form-semester").val() === "-1") {
             SEMICOLON.widget.notifications($("#failed-form-semester"));
-            return false;
         } else {
             var parameters = {
                 "ID_Semester": $("#form-semester").val()

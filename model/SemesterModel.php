@@ -46,4 +46,12 @@ class SemesterModel {
         return $result;
     }
 
+    function selectAllSemesterWithAssignmentsAndSchedule() {
+        $query = $this->db->prepare("call sp_select_all_semester_with_assignments_and_schedule()");
+        $query->execute();
+        $result = $query->fetchAll();
+        $query->closeCursor();
+        return $result;
+    }
+
 }

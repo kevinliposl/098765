@@ -40,12 +40,19 @@ if (isset($session->permissions)) {
                     </tfoot>
                     <tbody>
                         <?php
+
+                        function nombremes($mes) {
+                            setlocale(LC_TIME, 'spanish');
+                            $nombre = strftime("%B", mktime(0, 0, 0, $mes, 1, 2000));
+                            return $nombre;
+                        }
+
                         foreach ($vars as $var) {
                             if (isset($var["enrollment"])) {
                                 ?>
                                 <tr>
                                     <td><?php echo $var["enrollment"]; ?></td>
-                                    <td><?php echo $var["month"]; ?></td>
+                                    <td><?php echo nombremes($var["month"]); ?></td>
                                     <td><?php echo $var["year"]; ?></td>
                                 </tr>
                                 <?php

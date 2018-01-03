@@ -14,21 +14,16 @@ if (isset($session->permissions)) {
 }
 ?>
 
-<!-- Page Title
-    ============================================= -->
-<section id="page-title">
+<!--<section id="page-title">
     <div class="container clearfix">
         <h1>Contactenos</h1>
     </div>
-</section>
+</section>-->
 
-<!-- Content
-    ============================================= -->
+
 <section id="content">
     <div class="content-wrap">
         <div class="container clearfix">
-            <!-- Contact Form
-                ============================================= -->
             <div class="col_half">
                 <div class="fancy-title title-dotted-border">
                     <h3>Envianos un correo</h3>
@@ -68,7 +63,7 @@ if (isset($session->permissions)) {
 
                     <div class="col_full">
                         <label for="form-message">Mensaje <small>*</small></label>
-                        <textarea class="form-control" id="form-message" rows="6" cols="30" required></textarea>
+                        <textarea class="form-control" id="form-message" rows="6" cols="30" required style="resize: none;"></textarea>
                     </div>
                     <div class="col_full">
                         <input type="submit" id="form-submit" value="¡Enviar!" class="button button-3d button-black nomargin"/>
@@ -77,21 +72,15 @@ if (isset($session->permissions)) {
                         <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Espere un momento...!" data-notify-position="bottom-full-width"/>
                     </div>
                 </form>
-                <br>
-            </div><!-- Contact Form End -->
+            </div>
 
-            <!-- Google Map
-                ============================================= -->
             <div class="col_half col_last">
                 <section id="google-map" class="gmap" style="height: 410px;"></section>
-            </div><!-- Google Map End -->
+            </div>
 
             <div class="clear"></div>
 
-            <!-- Contact Info
-                ============================================= -->
             <div class="row clear-bottommargin">
-
                 <div class="col-md-4 bottommargin clearfix">
                     <div class="feature-box fbox-center fbox-bg fbox-plain">
                         <div class="fbox-icon">
@@ -118,10 +107,10 @@ if (isset($session->permissions)) {
                         <h3>Visitanos<span class="subtitle">fusionacademiacr</span></h3>
                     </div>
                 </div>
-            </div><!-- Contact Info End -->
+            </div>
         </div>
     </div>
-</section><!-- #content end -->
+</section>
 
 <script type="text/javascript">
     function val() {
@@ -143,7 +132,6 @@ if (isset($session->permissions)) {
             } else {
                 SEMICOLON.widget.notifications($("#warning"));
             }
-            ;
         }, "json");
         return false;
     }
@@ -160,7 +148,7 @@ if (isset($session->permissions)) {
         markers: [
             {
                 address: "Fusión Academia de Música, Turrialba, Provincia de Cartago, Costa Rica",
-                html: '<div style="width: 300px;"><h4 style="margin-bottom: 8px;">Hi, we\'re <span>Envato</span></h4><p class="nobottommargin">Our mission is to help people to <strong>earn</strong> and to <strong>learn</strong> online. We operate <strong>marketplaces</strong> where hundreds of thousands of people buy and sell digital goods every day, and a network of educational blogs where millions learn <strong>creative skills</strong>.</p></div>',
+                html: '<div style="width: 300px;"><h4 style="margin-bottom: 8px;">Hi, we\'re <span>Envato</span></h4><p class="nobottommargin">CAMBIAR DESCRIPCI&oacuteN to <strong>earn</strong> and to <strong>learn</strong> online. We operate <strong>marketplaces</strong> where hundreds of thousands of people buy and sell digital goods every day, and a network of educational blogs where millions learn <strong>creative skills</strong>.</p></div>',
                 icon: {
                     image: "public/images/icons/map-icon-red.png",
                     iconsize: [32, 39],
