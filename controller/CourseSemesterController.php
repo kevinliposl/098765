@@ -199,7 +199,7 @@ class CourseSemesterController {
         } else if (SSession::getInstance()->permissions == 'A') {
             require 'model/SemesterModel.php';
             $model = new SemesterModel();
-            $result = $model->selectAll();
+            $result = $model->selectAllSemesterWithDeletedAssignments();
             $this->view->show("reactivateCourseSemesterView.php", $result);
         } else {
             $this->view->show("404View.php");

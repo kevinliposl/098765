@@ -12,7 +12,8 @@ if (isset($session->permissions)) {
 ?>
 <section id="page-title">
     <div class="container clearfix">
-        <h1>Actualizar datos personales</h1>
+        <h1>Datos personales</h1>
+        <span>Descripcion de la funcionalidad</span>
     </div>
 </section>
 

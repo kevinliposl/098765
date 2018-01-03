@@ -14,12 +14,12 @@ if (isset($session->permissions)) {
 }
 ?>
 
-<!--<section id="page-title">
+<section id="page-title">
     <div class="container clearfix">
-        <h1>Contactenos</h1>
+        <h1>Contactenos (ARREGLAR DESCRIPCION DE MAPA)</h1>
+        <span>Descripci&oacute;n de la funcionalidad de la vista</span>
     </div>
-</section>-->
-
+</section>
 
 <section id="content">
     <div class="content-wrap">

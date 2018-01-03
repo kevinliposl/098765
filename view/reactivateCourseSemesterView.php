@@ -115,13 +115,11 @@ if (isset($session->permissions)) {
             $('#form-courses').empty();
             $('#form-professors').empty();
             
-            $.post("?controller=Course&action=selectAll", parameters, function (data) {
-                $('#form-courses').append($("<option></option>").attr("value", "-1").text("Seleccione un Curso"));
-                
+            $.post("?controller=Course&action=selectAllCourseDeleted", parameters, function (data) {
+                $('#form-courses').append($("<option></option>").attr("value", "-1").text("Seleccione un Curso"));    
                 for (var i = 0; i < data.length; i++) {
                     $('#form-courses').append($("<option></option>").attr("value", data[i].initials).text(data[i].name));//AGREGAR OPCIONES
                 }
-                
                 $("#form-courses").selectpicker("refresh");
                 
                 SEMICOLON.widget.notifications($("#success"));
@@ -145,7 +143,7 @@ if (isset($session->permissions)) {
             
             SEMICOLON.widget.notifications($("#wait"));
 
-            document.getElementById("form-professors").options.length = 0;
+            $("#form-professors").empty();
             
             $.post("?controller=CourseSemester&action=selectNotAllProfessorsCourseSemester", parameters, function (data) {
                 for (var i = 0; i < data.length; i++) {
@@ -191,10 +189,10 @@ if (isset($session->permissions)) {
 
         SEMICOLON.widget.notifications($("#wait"));
 
-        $.post("?controller=CourseSemester&action=insert", parameters, function (data) {
+        $.post("?controller=CourseSemester&action=reactivare", parameters, function (data) {
             if (data.result === "1") {
                 SEMICOLON.widget.notifications($("#success"));
-                setTimeout("location.href = '?controller=CourseSemester&action=insert';", 2000);
+                setTimeout("location.href = '?controller=CourseSemester&action=reactivare';", 2000);
             } else {
                 SEMICOLON.widget.notifications($("#warning"));
             }

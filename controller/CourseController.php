@@ -34,7 +34,7 @@ class CourseController {
             $this->view->show("indexView.php");
         }
     }
-    
+
     function selectDelete() {
         if (isset($_POST["initials"]) && SSession::getInstance()->permissions == 'A') {
             require 'model/CourseModel.php';
@@ -56,6 +56,21 @@ class CourseController {
             $model = new CourseModel();
             $result = $model->selectAll();
             echo json_encode($result);
+        } else {
+            $this->view->show("404View.php");
+        }
+    }
+
+    function selectAllCourseDeleted() {
+        if (SSession::getInstance()->permissions == 'A') {
+            if (isset($_POST['ID_Semester'])) {
+                require 'model/CourseModel.php';
+                $model = new CourseModel();
+                $result = $model->selectAllCourseDeleted($_POST['ID_Semester']);
+                echo json_encode($result);
+            } else {
+                $this->view->show("404View.php");
+            }
         } else {
             $this->view->show("404View.php");
         }
@@ -102,7 +117,7 @@ class CourseController {
             $this->view->show("404View.php");
         }
     }
-    
+
     /**
      * @return null
      * @param integer $id Identificador de entidad
@@ -147,4 +162,5 @@ class CourseController {
             $this->view->show("404View.php");
         }
     }
+
 }

@@ -23,6 +23,14 @@ class CourseModel {
         $query->closeCursor();
         return $result;
     }
+
+    public function selectAllCourseDeleted($ID_Semester) {
+        $query = $this->db->prepare("call sp_select_all_course_deleted($ID_Semester)");
+        $query->execute();
+        $result = $query->fetchAll();
+        $query->closeCursor();
+        return $result;
+    }
     
     public function selectAllDelete() {
         $query = $this->db->prepare("call sp_select_all_course_delete()");
