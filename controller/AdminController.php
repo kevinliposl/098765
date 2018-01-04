@@ -35,7 +35,7 @@ class AdminController {
                                     . ' de ingreso al sitio es... <br><h1>' . $result['password'] . '</h1>')) {
                         echo json_encode(array("result" => '1'));
                     } else {
-                        echo json_encode(array("result" => '2'));
+                        echo json_encode(array("result" => '0'));
                     }
                 } else {
                     echo json_encode(array("result" => '0'));

@@ -40,11 +40,16 @@ class StudentController {
                 require 'model/StudentModel.php';
                 $model = new StudentModel();
                 $result = $model->insertStudent($_POST["id"], $_POST['idType'], $_POST["email"], $_POST["name"], $_POST["firstLastName"], $_POST["secondLastName"], $_POST["age"], $_POST["address"], $_POST["gender"], $_POST["nationality"], $_POST["phoneOne"], $_POST["phoneTwo"], $_POST["contactName"], $_POST["contactRelationship"], $_POST["contactPhone"], $_POST["contactEmail"]);
-                echo json_encode($result);
                 if ($result['result'] === '1') {
                     $mail = SMail::getInstance();
-                    $mail->sendMail($result['email'], 'Contraseña de ingreso al sitio', 'Hola, gracias por formar parte de la academia, la contraseña'
-                            . ' de ingreso al sitio es... <br><h1>' . $result['password'] . '</h1>');
+                    if ($mail->sendMail($_POST["email"], 'Contraseña de ingreso al sitio', 'Hola, gracias por formar parte de la academia, la contraseña'
+                                    . ' de ingreso al sitio es... <br><h1>' . $result['password'] . '</h1>')) {
+                        echo json_encode(array("result" => '1'));
+                    } else {
+                        echo json_encode(array("result" => '0'));
+                    }
+                } else {
+                    echo json_encode(array("result" => '0'));
                 }
             } else {
                 $file = file_get_contents("libs/nationalities.json");

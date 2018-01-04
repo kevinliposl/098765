@@ -13,9 +13,9 @@ if (isset($session->permissions)) {
 ?>
 <section id="page-title">
     <div class="container clearfix">
-        <h1>Actualizar Estudiante</h1>
+        <h1>Informaci&oacute;n Estudiante</h1>
     </div>
-</section>s
+</section>
 
 <section id="content">
     <div class="content-wrap">
@@ -144,7 +144,7 @@ if (isset($session->permissions)) {
                     </tr>
                 </tbody>
             </table>
-            <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" data-target="#myModal" id="next" data-target="" style="text-align: center;">Actualizar</a>
+            <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" data-target="#myModal" id="next" data-target="" style="text-align: center; display: block;">Actualizar</a>
             <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i>La operacion no se pudo realizar, intente de nuevo o m&aacute;s tarde!" data-notify-position="bottom-full-width"/>
             <input type="hidden" id="success" data-notify-type="success" data-notify-msg="<i class='icon-ok-sign'></i> Operaci&oacute;n exitosa, revise en breve...!" data-notify-position="bottom-full-width"/>
             <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Un momento por favor..." data-notify-position="bottom-full-width"/>

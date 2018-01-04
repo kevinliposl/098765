@@ -48,7 +48,7 @@ if (isset($session->permissions)) {
                     ?>
                 </tbody>
             </table>
-        </div><
+        </div>
     </div>
 </section>
 <script>

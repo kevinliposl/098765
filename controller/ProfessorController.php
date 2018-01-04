@@ -36,11 +36,16 @@ class ProfessorController {
                 require 'model/ProfessorModel.php';
                 $model = new ProfessorModel();
                 $result = $model->insertProfessor($_POST["typeId"], $_POST["id"], $_POST["nationality"], $_POST["name"], $_POST["firstLastName"], $_POST["secondLastName"], $_POST["address"], $_POST["gender"], $_POST["phone"], $_POST["phone2"], $_POST["email"], $_POST["additionalInformation"], $_POST["age"]);
-                echo json_encode($result);
-                if ($result["result"] === '1') {
+                if ($result['result'] === '1') {
                     $mail = SMail::getInstance();
-                    $mail->sendMail($_POST["email"], 'Contraseña de ingreso al sitio', 'Hola, gracias por formar parte de la academia, la contraseña'
-                            . ' de ingreso al sitio es... <br><h1>' . $result['password'] . '</h1>');
+                    if ($mail->sendMail($_POST["email"], 'Contraseña de ingreso al sitio', 'Hola, gracias por formar parte de la academia, la contraseña'
+                                    . ' de ingreso al sitio es... <br><h1>' . $result['password'] . '</h1>')) {
+                        echo json_encode(array("result" => '1'));
+                    } else {
+                        echo json_encode(array("result" => '0'));
+                    }
+                } else {
+                    echo json_encode(array("result" => '0'));
                 }
             } else {
                 $file = file_get_contents("libs/nationalities.json");

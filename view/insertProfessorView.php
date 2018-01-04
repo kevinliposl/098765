@@ -82,11 +82,6 @@ if (isset($session->permissions)) {
                             <input type="hidden" id="failed-nationality" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class=icon-remove-sign></i> Formato de nacionalidad incorrecto. Complete e intente de nuevo!"/>
                         </div>
 
-                        <div class="col_full" style="padding: 10px;">
-                            <label for="form-address">Lugar de Residencia:</label>
-                            <input type="text" id="form-address" class="form-control" pattern="[a-zA-Z\s]+$" minlength="5" maxlength="200" required/>
-                            <input type="hidden" id="failed-address" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class=icon-remove-sign></i> Dirección muy extensa. Complete e intente de nuevo!"/>
-                        </div>
                         <div class="col-lg-6" style="padding: 10px;">
                             <label for="form-phone1">Tel&eacute;fono:</label>
                             <input type="text" id="form-phone1" class="form-control" minlength="8" maxlength="8" required pattern="{4-16}"/>
@@ -202,10 +197,6 @@ if (isset($session->permissions)) {
 
         } else if (phone2.length < 8 || phone2.length > 8 || isNaN(phone2)) {
             SEMICOLON.widget.notifications($("#failed-phone2"));
-            return false;
-
-        } else if (nationality.length < 6 || nationality.length > 49 || !isNaN(nationality) || nationality.split(" ", 2).length > 1) {
-            SEMICOLON.widget.notifications($("#failed-nationality"));
             return false;
 
         } else if (address.length > 200) {

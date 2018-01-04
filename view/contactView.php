@@ -16,8 +16,8 @@ if (isset($session->permissions)) {
 
 <section id="page-title">
     <div class="container clearfix">
-        <h1>Contactenos (ARREGLAR DESCRIPCION DE MAPA)</h1>
-        <span>Descripci&oacute;n de la funcionalidad de la vista</span>
+        <h1>Contactenos</h1>
+        <span>Siempre al alcance</span>
     </div>
 </section>
 
@@ -148,7 +148,7 @@ if (isset($session->permissions)) {
         markers: [
             {
                 address: "Fusión Academia de Música, Turrialba, Provincia de Cartago, Costa Rica",
-                html: '<div style="width: 300px;"><h4 style="margin-bottom: 8px;">Hi, we\'re <span>Envato</span></h4><p class="nobottommargin">CAMBIAR DESCRIPCI&oacuteN to <strong>earn</strong> and to <strong>learn</strong> online. We operate <strong>marketplaces</strong> where hundreds of thousands of people buy and sell digital goods every day, and a network of educational blogs where millions learn <strong>creative skills</strong>.</p></div>',
+                html: '<div style="width: 300px;"><h4 style="margin-bottom: 8px;">Hola, <span>Amigo</span></h4><p class="nobottommargin">Est&aacute es nuestra <strong>ubicaci&oacuten</strong> fisica.</p></div>',
                 icon: {
                     image: "public/images/icons/map-icon-red.png",
                     iconsize: [32, 39],
