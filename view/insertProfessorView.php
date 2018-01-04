@@ -84,13 +84,13 @@ if (isset($session->permissions)) {
 
                         <div class="col-lg-6" style="padding: 10px;">
                             <label for="form-phone1">Tel&eacute;fono:</label>
-                            <input type="text" id="form-phone1" class="form-control" minlength="8" maxlength="8" required pattern="{4-16}"/>
+                            <input type="text" id="form-phone1" class="form-control" minlength="8" maxlength="8" required pattern="[0-9]{8}"/>
                             <input type="hidden" id="failed-phone1" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class=icon-remove-sign></i> Formato de telefono incorrecto. Complete e intente de nuevo!"/>
                         </div>
 
                         <div class="col-lg-6" style="padding: 10px;">
                             <label for="form-phone2">Otro Tel&eacute;fono:</label>
-                            <input type="text" id="form-phone2" class="form-control" minlength="8" maxlength="8" required pattern="{4-16}"/>
+                            <input type="text" id="form-phone2" class="form-control" minlength="8" maxlength="8" required pattern="[0-9]{8}"/>
                             <input type="hidden" id="failed-phone2" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class=icon-remove-sign></i> Formato de telefono incorrecto. Complete e intente de nuevo!"/>
                         </div>
 
@@ -218,14 +218,14 @@ if (isset($session->permissions)) {
         $("#form-close").attr('disabled', 'disabled');
 
         var param = {
-            "typeId": $("input[name*='form-typeId']").val(),
             "id": $("#form-id").val().trim(),
+            "typeId": $('input[name="form-typeId"]:checked').val(),
             "email": $("#form-email").val().trim(),
             "name": $("#form-name").val().trim(),
             "firstLastName": $("#form-firstLastName").val().trim(),
             "secondLastName": $("#form-secondLastName").val().trim(),
-            "gender": $("input[name*='form-gender']").val(),
-            "nationality": $("#form-nationality").val().trim(),
+            "gender": $('input[name="form-gender"]:checked').val(),
+            "nationality": $("#form-nationality").val(),
             "phone": $("#form-phone1").val().trim(),
             "phone2": $("#form-phone2").val().trim(),
             "additionalInformation": $("#form-additionalInformation").val().trim(),
