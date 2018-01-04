@@ -107,6 +107,11 @@ if (isset($session->permissions)) {
                                 </tbody>
                             </table>
                         </div>
+                        <div class="col_full nobottommargin">                      
+                            <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i>La operacion no se pudo realizar, intente de nuevo o m&aacute;s tarde!" data-notify-position="bottom-full-width"/>
+                            <input type="hidden" id="success" data-notify-type="success" data-notify-msg="<i class='icon-ok-sign'></i> Operaci&oacute;n exitosa, revise en breve...!" data-notify-position="bottom-full-width"/>
+                            <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Espere un momento...!" data-notify-position="bottom-full-width"/>
+                        </div>
                     </form>
                 </div>
 
@@ -211,11 +216,6 @@ if (isset($session->permissions)) {
                             cell2.innerHTML = data2[i].content;
                         }
                     }, "json");
-                    $("#success").attr({
-                        "data-notify-type": "success",
-                        "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!",
-                        "data-notify-position": "bottom-full-width"
-                    });
                     SEMICOLON.widget.notifications($("#success"));
                 } else {
                     $("#form-consecutive-table").html("");
