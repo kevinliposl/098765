@@ -51,7 +51,7 @@ if (isset($session->permissions)) {
                             <input type="hidden" id="failed-form-student" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                         </div>  
                         <br>
-                        <div class="table-responsive">
+                        <div class="table-responsive" id="personal">
                             <table class="table table-bordered table-striped">
                                 <h5 style="text-align: center;">Informaci&oacute;n del Estudiante</h5>
                                 <colgroup>
@@ -172,6 +172,7 @@ if (isset($session->permissions)) {
                         <input type="hidden" id="success" data-notify-type="success" data-notify-msg="<i class='icon-ok-sign'></i> Operaci&oacute;n exitosa, revise en breve...!" data-notify-position="bottom-full-width"/>
                         <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Espere un momento...!" data-notify-position="bottom-full-width"/>
                     </form>
+                    <button onclick="javascript:demoFromHTML();">PDF</button>
                 </div>
             </div>
         </div>
@@ -312,7 +313,48 @@ if (isset($session->permissions)) {
             }, "json");
         }
     });
-</script>
 
+    function demoFromHTML() {
+        alert('1');
+        var pdf = new jsPDF('p', 'pt', 'letter');
+        // source can be HTML-formatted string, or a reference
+        // to an actual DOM element from which the text will be scraped.
+        alert('2');
+        source = $('#personal')[0];
+        alert('3');
+        // we support special element handlers. Register them with jQuery-style 
+        // ID selector for either ID or node name. ("#iAmID", "div", "span" etc.)
+        // There is no support for any other type of selectors 
+        // (class, of compound) at this time.
+        specialElementHandlers = {
+            // element with id of "bypass" - jQuery style selector
+            '#bypassme': function (element, renderer) {
+                // true = "handled elsewhere, bypass text extraction"
+                return true
+            }
+        };
+        margins = {
+            top: 80,
+            bottom: 60,
+            left: 10,
+            width: 700
+        };
+        // all coords and widths are in jsPDF instance's declared units
+        // 'inches' in this case
+        pdf.fromHTML(
+                source, // HTML string or DOM elem ref.
+                margins.left, // x coord
+                margins.top, {// y coord
+                    'width': margins.width, // max width of content on PDF
+                    'elementHandlers': specialElementHandlers
+                },
+                function (dispose) {
+                    // dispose: object with X, Y of the last line add to the PDF 
+                    //          this allow the insertion of new lines after html
+                    pdf.save('Test.pdf');
+                }, margins);
+    }
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
 <?php
 include_once 'public/footer.php';
