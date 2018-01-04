@@ -33,19 +33,19 @@ if (isset($session->permissions)) {
 
                         <div class="col_full">
                             <label for="form-name">Nombre:</label>
-                            <input type="text" id="form-name" class="form-control" pattern="[a-zA-Z\s]+$" placeholder="Canto Lírico" minlength="3" maxlength="49" required/>
+                            <input type="text" id="form-name" class="form-control" pattern="([A-z0-9À-ž\s]){4,}" placeholder="Canto Lirico" minlength="3" maxlength="49" required/>
                             <input type="hidden" id="failed-name" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class='icon-remove-sign'></i> Nombre Incorrecto. Complete e intente de nuevo!"/>
                         </div>
 
                         <div class="col_full">
                             <label for="form-instrument">Instrumento:</label>
-                            <input type="text" id="form-instrument" class="form-control" pattern="[a-zA-Z\s]+$" placeholder="Voz" minlength="3" maxlength="99" required/>
+                            <input type="text" id="form-instrument" class="form-control" pattern="([A-z0-9À-ž\s]){2,}" placeholder="Voz" minlength="3" maxlength="99" required/>
                             <input type="hidden" id="failed-instrument" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class='icon-remove-sign'></i> Descripción Incorrecto. Complete e intente de nuevo!"/>
                         </div>
 
                         <div class="col_full">
                             <label for="form-description">Breve Descripci&oacute;n:</label>
-                            <input type="text" id="form-description" class="form-control" pattern="[a-zA-Z\s]+$" placeholder="Breve Descripción" minlength="3" maxlength="99" required/>
+                            <input type="text" id="form-description" class="form-control" pattern="([A-z0-9À-ž\s]){2,}" placeholder="Breve Descripción" minlength="3" maxlength="99" required/>
                             <input type="hidden" id="failed-description" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class='icon-remove-sign'></i> Instrumento Incorrecto. Complete e intente de nuevo!"/>
                         </div>
 
