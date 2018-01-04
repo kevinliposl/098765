@@ -44,12 +44,12 @@ class StudentController {
                     $mail = SMail::getInstance();
                     if ($mail->sendMail($_POST["email"], 'Contraseña de ingreso al sitio', 'Hola, gracias por formar parte de la academia, la contraseña'
                                     . ' de ingreso al sitio es... <br><h1>' . $result['password'] . '</h1>')) {
-                        echo json_encode(array("result" => '1'));
+                        echo json_encode('1');
                     } else {
-                        echo json_encode(array("result" => '0'));
+                        echo json_encode('0');
                     }
                 } else {
-                    echo json_encode(array("result" => '0'));
+                    echo json_encode('0');
                 }
             } else {
                 $file = file_get_contents("libs/nationalities.json");

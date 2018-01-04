@@ -155,7 +155,7 @@ if (isset($session->permissions)) {
             $("#form-id").attr('minlength', '9');
             $("#form-id").attr('maxlength', '20');
             $("#form-id").val('');
-            
+
         }
     }
 
@@ -169,9 +169,6 @@ if (isset($session->permissions)) {
     }
 
     $("#form-submity").click(function () {
-        $("#form-submity").attr('disabled', 'disabled');
-        $("#form-close").attr('disabled', 'disabled');
-        SEMICOLON.widget.notifications($("#wait"));
         var parameters = {
             "id": $("#form-id").val().trim(),
             "idType": $("input:radio[name='form-typeId']:checked").val().trim(),
@@ -190,16 +187,28 @@ if (isset($session->permissions)) {
             "contactPhone": $("#form-contact-phone").val().trim(),
             "contactEmail": $("#form-contact-email").val().trim()
         };
-        $.post("?controller=Student&action=insertStudent", parameters, function (data) {
-            if (data.result === "1") {
-                SEMICOLON.widget.notifications($("#success"));
-                setTimeout('Redirect()', 1500);
-            } else {
-                SEMICOLON.widget.notifications($("#warning"));
-                $("#form-submity").removeAttr('disabled');
-                $("#form-close").removeAttr('disabled');
+        $.ajax({
+            data: parameters,
+            url: "?controller=Student&action=insertStudent",
+            type: 'POST',
+            beforeSend: function () {
+                $("#form-submity").attr('disabled', 'disabled');
+                $("#form-close").attr('disabled', 'disabled');
+                SEMICOLON.widget.notifications($("#wait"));
+            },
+            success: function (response) {
+                var data = JSON.parse(response);
+                if (data[0] === '1') {
+                    SEMICOLON.widget.notifications($("#success"));
+                    setTimeout('Redirect()', 1500);
+                } else {
+                    SEMICOLON.widget.notifications($("#warning"));
+                    $("#form-submity").removeAttr('disabled');
+                    $("#form-close").removeAttr('disabled');
+                }
             }
-        }, "json");
+        }
+        );
     });
 </script>
 
