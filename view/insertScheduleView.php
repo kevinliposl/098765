@@ -290,7 +290,13 @@ if (isset($session->permissions)) {
         };
 
         $('#form-courses').attr("disabled", false);
-        $.post("?controller=Schedule&action=selectWithoutSchedule", parameters, function (data) {
+        
+        alert(JSON.stringify(parameters));    
+        
+        $.post("?controller=Schedule&action=selectWithSchedule", parameters, function (data) {
+            alert(JSON.stringify(data));
+            
+            
             $('#form-courses').empty();
             $('#form-courses').append($("<option></option>").attr("value", -1).text('Seleccione un Curso'));
             for (var i = 0; i < data.length; i++) {

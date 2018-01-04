@@ -181,26 +181,41 @@ class CourseSemesterController {
      * Funcion para insertar curso en semestre
      */
     function reactivare() {
-        if (isset($_POST['professors']) && isset($_POST['ID_Semester']) && isset($_POST['initials']) && SSession::getInstance()->permissions == 'A') {
+        if (isset($_POST['professor']) && isset($_POST['id_course_semester']) && SSession::getInstance()->permissions == 'A') {
             require 'model/CourseSemesterModel.php';
             $model = new CourseSemesterModel();
-            $professors = "";
-            $num_professors = 0;
-            foreach ($_POST['professors'] as $valorActual) {
-                if ($professors == '' || $professors == '-1') {
-                    $professors = $valorActual;
-                } else {
-                    $professors = $valorActual . "," . $professors;
-                }
-                $num_professors = $num_professors + 1;
-            }//for        
-            $result = $model->reactivateCourseSemester($_POST['ID_Semester'], $_POST['initials'], $professors, $num_professors);
+
+            $result = $model->reactivateAppointmentProfessor($_POST['id_course_semester'], $_POST['professor']);
             echo json_encode($result);
-        } else if (SSession::getInstance()->permissions == 'A') {
+        } elseif (isset($_POST['ID_Semester']) && isset($_POST['initials'])) {
+            require 'model/CourseSemesterModel.php';
+            $model = new CourseSemesterModel ();
+            $result = $model->reactivateCourseSemester($_POST['ID_Semester'], $_POST['initials']);
+            echo json_encode($result);
+        } elseif (SSession::getInstance()->permissions == 'A' && !isset($_POST['initials'])) {
             require 'model/SemesterModel.php';
             $model = new SemesterModel();
             $result = $model->selectAllSemesterWithDeletedAssignments();
-            $this->view->show("reactivateCourseSemesterView.php", $result);
+            $result2 = $model->selectCourseWithoutApp();
+            $this->view->show("reactivateCourseSemesterView.php", array($result, $result2));
+        } else {
+            $this->view->show("404View.php");
+        }
+    }
+
+    /**
+     * @return null
+     * @param integer $ID_Semester Identificador de semestre
+     * @param string[] $professors identificador de profesor
+     * @param string $initials identificador de curso
+     * Funcion para insertar curso en semestre
+     */
+    function selectNotAllProfessorsWithOutApp() {
+        if (isset($_POST['id']) && SSession::getInstance()->permissions == 'A') {
+            require 'model/CourseSemesterModel.php';
+            $model = new CourseSemesterModel ();
+            $result = $model->selectNotAllProfessorsWithOutApp($_POST['id']);
+            echo json_encode($result);
         } else {
             $this->view->show("404View.php");
         }

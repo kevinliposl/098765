@@ -91,20 +91,6 @@ class ScheduleController {
      * @param integer $id Identificador de curso
      * Funcion para seleccionar los cursos del semestre sin horario
      */
-    function selectWithoutSchedule() {
-        if (SSession::getInstance()->permissions == 'A' || SSession::getInstance()->permissions == 'T') {
-            if (isset($_POST["ID_Semester"])) {
-                require 'model/ScheduleModel.php';
-                $model = new ScheduleModel();
-                $result = $model->selectWithoutSchedule($_POST["ID_Semester"]);
-                echo json_encode($result);
-            } else{
-                $this->view->show("404View.php");
-            }
-        } else {
-            $this->view->show("404View.php");
-        }
-    }
     //FUNCION PARA LA VISTA ELIMINAR
     function selectWithSchedule() {
         if (SSession::getInstance()->permissions == 'A') {

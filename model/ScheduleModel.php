@@ -39,14 +39,6 @@ class ScheduleModel {
         return $result;
     }
 
-    function selectWithoutSchedule($ID_semester) {
-        $query = $this->db->prepare("call sp_select_appointment_schedule($ID_semester)");
-        $query->execute();
-        $result = $query->fetchAll();
-        $query->closeCursor();
-        return $result;
-    }
-
     function selectWithSchedule($ID_semester) {
         $query = $this->db->prepare("call sp_select_appointment_with_schedule($ID_semester)");
         $query->execute();

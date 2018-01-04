@@ -114,7 +114,9 @@ if (isset($session->permissions)) {
             
             document.getElementById("form-courses").options.length = 0;
             document.getElementById("form-professors").options.length = 0;
+            
             $('#form-professors').append($("<option></option>").attr("value", "-1").text("Seleccione el profesor"));
+            
             $.post("?controller=CourseSemester&action=selectAllCoursesSemester", parameters, function (data) {
                 $('#form-courses').append($("<option></option>").attr("value", "-1").text("Seleccione un Curso"));
                 for (var i = 0; i < data.length; i++) {
@@ -180,6 +182,8 @@ if (isset($session->permissions)) {
             "initials": $("#form-courses").val(),
             "identification": $("#form-professors").val()
         };
+        
+        
         $.post("?controller=CourseSemester&action=deleteProfessor", parameters, function (data) {
             if (data.result === "1") {
                 SEMICOLON.widget.notifications($("#success"));

@@ -237,7 +237,7 @@ if (isset($session->permissions)) {
             $('#form-courses').empty();
             $('#form-courses').append($("<option></option>").attr("value", -1).text('Seleccione un Curso'));
             $("#form-courses").selectpicker("refresh");
-            
+
             $("#form-hour").attr('disabled', 'disabled');
             $('#form-hour').empty();
             $('#form-hour').append($("<option></option>").attr("value", -1).text('Seleccione un Horario'));
@@ -248,7 +248,21 @@ if (isset($session->permissions)) {
         var parameters = {
             "ID_Semester": $("#form-semester").val()
         };
-        
+
+
+        clearTable();
+
+        $.post("?controller=Schedule&action=select", parameters, function (data) {
+            alert(JSON.stringify(data));
+            for (var i = 0; i < data.length; i++) {
+                var temp = getRandomArbitrary(0, 3);
+                for (var j = data[i].start; j <= data[i].end; j++) {
+                    $("#" + data[i].day + '' + j).addClass(colorClass[temp]);
+                    $("#" + data[i].day + '' + j).text(data[i].initials + ' | ' + data[i].name);
+                }
+            }
+        }, "json");
+
         $('#form-courses').removeAttr('disabled');
 
         $.post("?controller=Schedule&action=selectWithSchedule", parameters, function (data) {
@@ -259,18 +273,6 @@ if (isset($session->permissions)) {
             }
             $("#form-courses").selectpicker("refresh");
 
-        }, "json");
-
-        clearTable();
-
-        $.post("?controller=Schedule&action=select", parameters, function (data) {
-            for (var i = 0; i < data.length; i++) {
-                var temp = getRandomArbitrary(0, 3);
-                for (var j = data[i].start; j <= data[i].end; j++) {
-                    $("#" + data[i].day + '' + j).addClass(colorClass[temp]);
-                    $("#" + data[i].day + '' + j).text(data[i].initials + ' | ' + data[i].name);
-                }
-            }
         }, "json");
     });
     //CARGA HORARIOS EN SELECT
@@ -302,7 +304,6 @@ if (isset($session->permissions)) {
 
     $('#form-submit').click(function () {
 
-        $("#form-submit").attr('disabled', 'disabled');
         SEMICOLON.widget.notifications($("#wait"));
 
         var temp = $("#form-hour").val();
@@ -312,12 +313,28 @@ if (isset($session->permissions)) {
             "ID_schedule": arr[1]
         };
 
+
         $.post("?controller=Schedule&action=delete", parameters, function (data) {
             if (data.result === '1') {
                 SEMICOLON.widget.notifications($("#success"));
             } else {
                 SEMICOLON.widget.notifications($("#warning"));
-                $("#form-submit").removeAttr('disabled');
+
+            }
+        }, "json");
+
+        var par = {
+            "ID_Semester": $("#form-semester").val()
+        };
+
+        clearTable();
+        $.post("?controller=Schedule&action=select", par, function (data) {
+            for (var i = 0; i < data.length; i++) {
+                var temp = getRandomArbitrary(0, 3);
+                for (var j = data[i].start; j <= data[i].end; j++) {
+                    $("#" + data[i].day + '' + j).addClass(colorClass[temp]);
+                    $("#" + data[i].day + '' + j).text(data[i].initials + ' | ' + data[i].name);
+                }
             }
         }, "json");
     });
