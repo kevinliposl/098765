@@ -27,7 +27,7 @@ if (isset($session->permissions)) {
                     <tr>
                         <th width="10%">Siglas</th>
                         <th width="25%">Nombre</th>
-                        <th width="25%">Instrumento</th>
+                        <th width="25%">Profesor</th>
                         <th width="10%">Ciclo</th>
                         <th width="10%">Estado</th>
                         <th width="10%">Fecha</th>
@@ -38,9 +38,9 @@ if (isset($session->permissions)) {
                         <tr>
                             <td><?php echo $var["initials"]; ?></td>
                             <td><?php echo $var["name"]; ?></td>
-                            <td><?php echo $var["instrument"]; ?></td>
-                            <td><?php echo $var["cicle"]; ?></td>
-                            <td><?php echo ($var["state"] == 1) ? "Matriculado" : "Terminado/retirado"; ?></td>
+                            <td><?php echo $var["Professor"]; ?></td>
+                            <td><?php echo $var["Cicle"]; ?></td>
+                            <td><?php echo ($var["state"] === "1") ? "Matriculado" : "Terminado/retirado"; ?></td>
                             <td><?php echo $var["date"]; ?></td>
                         </tr>
                         <?php
