@@ -67,25 +67,24 @@ if (isset($session->permissions)) {
 
                         <div class="col-lg-6" style="padding: 10px;">
                             <label for="form-professors">Profesores:</label>
-                            <select multiple name="form-professors[]" id="form-professors" class="selectpicker form-control" data-live-search="true">
+                            <select multiple id="form-professors" class="selectpicker form-control" data-live-search="true">
                                 <option value="-1" data-tokens="">Seleccione un Curso</option>
                             </select>
                             <input type="hidden" id="failed-form-professors" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class=icon-remove-sign></i> Profesor inválido. Seleccione e intente de nuevo!"/>
                         </div>
 
-                        <div class="col-lg-6" style="padding: 10px;">
-                            <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" style="display : block; text-align: center;" data-target="#myModal">Reactivar Curso</a>
+                        <div class="col-lg-6" style="padding: 10px; margin-top: 20px;">
+                            <a id="form-submit-course" data-toggle="modal" class="button button-3d button-black nomargin" style="display : block; text-align: center;" data-target="#myModal">Reactivar Curso</a>
                             <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i>La operacion no se pudo realizar, intente de nuevo o m&aacute;s tarde!" data-notify-position="bottom-full-width"/>
                             <input type="hidden" id="success" data-notify-type="success" data-notify-msg="<i class='icon-ok-sign'></i> Operaci&oacute;n exitosa, revise en breve...!" data-notify-position="bottom-full-width"/>
                             <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Espere un momento...!" data-notify-position="bottom-full-width"/>
                         </div> 
-                        <div class="col-lg-6" style="padding: 10px;">
-                            <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" style="display : block; text-align: center;" data-target="#myModal">Reactivar Profesor</a>
+                        <div class="col-lg-6" style="padding: 10px; margin-top: 20px;">
+                            <a id="form-submit-professor" data-toggle="modal" class="button button-3d button-black nomargin" style="display : block; text-align: center;" data-target="#myModal">Reactivar Profesor</a>
                             <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i>La operacion no se pudo realizar, intente de nuevo o m&aacute;s tarde!" data-notify-position="bottom-full-width"/>
                             <input type="hidden" id="success" data-notify-type="success" data-notify-msg="<i class='icon-ok-sign'></i> Operaci&oacute;n exitosa, revise en breve...!" data-notify-position="bottom-full-width"/>
                             <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Espere un momento...!" data-notify-position="bottom-full-width"/>
                         </div> 
-
                     </form>
                 </div>
             </div>
@@ -93,7 +92,7 @@ if (isset($session->permissions)) {
     </div>
 </section>
 
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="myModal-professor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-body">
             <div class="modal-content">
@@ -102,13 +101,36 @@ if (isset($session->permissions)) {
                     <h4 class="modal-title" id="myModalLabel">¡Aviso!</h4>
                 </div>
                 <div class="modal-body">
-                    <h4 style="text-align: center;">¿Realmente desea Asignar los Profesores al Curso en el Semestre?</h4>
+                    <h4 style="text-align:center;">¿Realmente desea reactivar los Profesores a este Curso?</h4>
                     <p>Consejos:
                     <li>Verificar bien si la asignaci&oacute;n esta completa</li></p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal"id="form-close">Cerrar</button>
-                    <input type="button" class="btn btn-primary button-black nomargin" id="form-submity" value="Asignar"/>
+                    <button type="button" class="btn btn-default" data-dismiss="modal"id="form-close-professor">Cerrar</button>
+                    <input type="button" class="btn btn-primary button-black nomargin" id="form-submity-professor" value="Asignar"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="myModal-course" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-body">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">¡Aviso!</h4>
+                </div>
+                <div class="modal-body">
+                    <h4 style="text-align: center;">¿Realmente reactivar este Curso?</h4>
+                    <p>Consejos:
+                    <li>Verificar bien si la asignaci&oacute;n esta completa</li>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" id="form-close-course">Cerrar</button>
+                    <input type="button" class="btn btn-primary button-black nomargin" id="form-submity-course" value="Asignar"/>
                 </div>
             </div>
         </div>
@@ -116,7 +138,6 @@ if (isset($session->permissions)) {
 </div>
 
 <script>
-
     //Change Combobox
     $("#form-semester").change(function () {
         if ($("#form-semester").val() === "-1") {
