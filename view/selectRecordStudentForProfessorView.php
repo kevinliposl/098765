@@ -14,7 +14,7 @@ if (isset($session->permissions)) {
 
 <section id="page-title">
     <div class="container clearfix">
-        <h1>Ver Expediente Academico</h1>
+        <h1>Expedientes Academicos</h1>
     </div>
 </section>
 
@@ -64,7 +64,7 @@ if (isset($session->permissions)) {
                                             Identificacion
                                         </td>
                                         <td>
-                                            <a id="form-observation-table"></a>
+                                            <a id="form-identification-table"></a>
                                         </td>
                                     </tr>
                                     <tr>
