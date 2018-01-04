@@ -248,15 +248,13 @@ if (isset($session->permissions)) {
         var parameters = {
             "ID_Semester": $("#form-semester").val()
         };
-
-
         clearTable();
 
         $.post("?controller=Schedule&action=select", parameters, function (data) {
             alert(JSON.stringify(data));
             for (var i = 0; i < data.length; i++) {
                 var temp = getRandomArbitrary(0, 3);
-                for (var j = data[i].start; j <= data[i].end; j++) {
+                for (var j = parseInt(data[i].start); j <= parseInt(data[i].end); j++) {
                     $("#" + data[i].day + '' + j).addClass(colorClass[temp]);
                     $("#" + data[i].day + '' + j).text(data[i].initials + ' | ' + data[i].name);
                 }
@@ -272,6 +270,7 @@ if (isset($session->permissions)) {
                 $('#form-courses').append($("<option></option>").attr("value", data[i].ID).text(data[i].initials + ' | ' + data[i].name));
             }
             $("#form-courses").selectpicker("refresh");
+            SEMICOLON.widget.notifications($("#success"));
 
         }, "json");
     });
@@ -290,13 +289,17 @@ if (isset($session->permissions)) {
         };
         $('#form-hour').removeAttr('disabled');
 
+        alert("asdasd");
+
         $.post("?controller=Schedule&action=selectCourseSchedules", parameters, function (data) {
+
             $('#form-hour').empty();
             $('#form-hour').append($("<option></option>").attr("value", -1).text('Seleccione un Horario'));
             for (var i = 0; i < data.length; i++) {
                 $('#form-hour').append($("<option></option>").attr("value", data[i].ID + "," + data[i].ID_schedule).text(data[i].day + ' | ' + data[i].start_time + ':00 a ' + data[i].end_time + ':50.')); //AGREGAR OPCIONES
             }
-            $("#form-hour").selectpicker("refresh"); ///REFRESCA SELECT PARA QUE AGARRE AGREGADOS
+            $("#form-hour").selectpicker("refresh");
+            SEMICOLON.widget.notifications($("#success"));
 
         }, "json");
     });
@@ -317,9 +320,10 @@ if (isset($session->permissions)) {
         $.post("?controller=Schedule&action=delete", parameters, function (data) {
             if (data.result === '1') {
                 SEMICOLON.widget.notifications($("#success"));
+                $('#form-hour').find('option:selected').remove();
+                $("#form-hour").selectpicker("refresh");
             } else {
                 SEMICOLON.widget.notifications($("#warning"));
-
             }
         }, "json");
 
@@ -331,7 +335,7 @@ if (isset($session->permissions)) {
         $.post("?controller=Schedule&action=select", par, function (data) {
             for (var i = 0; i < data.length; i++) {
                 var temp = getRandomArbitrary(0, 3);
-                for (var j = data[i].start; j <= data[i].end; j++) {
+                for (var j = parseInt(data[i].start); j <= parseInt(data[i].end); j++) {
                     $("#" + data[i].day + '' + j).addClass(colorClass[temp]);
                     $("#" + data[i].day + '' + j).text(data[i].initials + ' | ' + data[i].name);
                 }

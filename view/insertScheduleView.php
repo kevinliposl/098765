@@ -83,9 +83,6 @@ if (isset($session->permissions)) {
                         <option value="17">17:50</option>
                         <option value="18">18:50</option>
                         <option value="19">19:50</option>
-                        <option value="20">20:50</option>
-                        <option value="21">21:50</option>
-                        <option value="22">22:50</option>
                     </select>
                 </div>
 
@@ -290,13 +287,13 @@ if (isset($session->permissions)) {
         };
 
         $('#form-courses').attr("disabled", false);
-        
-        alert(JSON.stringify(parameters));    
-        
+
+        alert(JSON.stringify(parameters));
+
         $.post("?controller=Schedule&action=selectWithSchedule", parameters, function (data) {
             alert(JSON.stringify(data));
-            
-            
+
+
             $('#form-courses').empty();
             $('#form-courses').append($("<option></option>").attr("value", -1).text('Seleccione un Curso'));
             for (var i = 0; i < data.length; i++) {
@@ -358,18 +355,12 @@ if (isset($session->permissions)) {
         };
 
         $.post("?controller=Schedule&action=insert", parameters, function (data) {
-            alert(data +"     "+data.result);
             if (data.result === '1') {
-                var temp = getRandomArbitrary(0, 3);
-                $("#" + $("#form-days").val() + $("#form-hour-init").val()).addClass('info');
-                $("#" + $("#form-days").val() + $("#form-hour-init").val()).text($("#form-courses option:selected").text().trim());
-
-                if ($("#form-hour-init").val() < $("#form-hour-end").val()) {
-                    for (var j = $("#form-hour-init").val(); j <= $("#form-hour-end").val(); j++) {
+                    var temp = getRandomArbitrary(0, 3);
+                    for (var j = parseInt($("#form-hour-init").val()); j <= parseInt($("#form-hour-end").val()); j++) {
                         $("#" + $("#form-days").val() + j).addClass(colorClass[temp]);
                         $("#" + $("#form-days").val() + j).text($("#form-courses option:selected").text().trim());
                     }
-                }
                 SEMICOLON.widget.notifications($("#success"));
             } else {
                 SEMICOLON.widget.notifications($("#warning"));
