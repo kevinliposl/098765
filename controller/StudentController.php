@@ -93,7 +93,7 @@ class StudentController {
         $ssession = SSession::getInstance();
         if ($ssession->__isset("identification") && $ssession->__isset("permissions") && $ssession->__get("permissions") === "S") {
             $model = new StudentModel();
-            $result = $model->getStudentExp($ssession->__get("identification"));
+            $result = $model->getStudentExp($ssession->identification);
             $this->view->show("getStudentExpView.php", $result);
         } else {
             $this->view->show("indexView.php", null);
