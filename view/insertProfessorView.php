@@ -117,6 +117,7 @@ if (isset($session->permissions)) {
                             <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i>La operacion no se pudo realizar, intente de nuevo o m&aacute;s tarde!" data-notify-position="bottom-full-width"/>
                             <input type="hidden" id="success" data-notify-type="success" data-notify-msg="<i class='icon-ok-sign'></i> Operaci&oacute;n exitosa, revise en breve...!" data-notify-position="bottom-full-width"/>
                             <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Espere un momento...!" data-notify-position="bottom-full-width"/>                            
+                            <input type="hidden" id="alert" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Se ha creado el administrador, pero no se ha podido enviarle el correo Electronico, ¡contacte con Soporte tecnico!" data-notify-position="bottom-full-width"/>
                         </div>
                     </form>
                 </div>
@@ -217,35 +218,38 @@ if (isset($session->permissions)) {
         $("#form-submity").attr('disabled', 'disabled');
         $("#form-close").attr('disabled', 'disabled');
 
-        var param = {
-            "id": $("#form-id").val().trim(),
-            "typeId": $('input[name="form-typeId"]:checked').val(),
-            "email": $("#form-email").val().trim(),
+        var parameters = {
+            "identification": $("#form-id").val().trim(),
             "name": $("#form-name").val().trim(),
             "firstLastName": $("#form-firstLastName").val().trim(),
             "secondLastName": $("#form-secondLastName").val().trim(),
             "gender": $('input[name="form-gender"]:checked').val(),
             "nationality": $("#form-nationality").val(),
-            "phone": $("#form-phone1").val().trim(),
-            "phone2": $("#form-phone2").val().trim(),
-            "additionalInformation": $("#form-additionalInformation").val().trim(),
             "address": $("#form-address").val().trim(),
-            "age": $("#form-age").val()
+            "typeId": $('input[name="form-typeId"]:checked').val(),
+            "phone": $("#form-phone1").val().trim(),
+            "cel_phone": $("#form-phone2").val().trim(),
+            "expedient": $("#form-additionalInformation").val().trim(),
+            "email": $("#form-email").val().trim(),
+            "birthdate": $("#form-age").val()
         };
 
         SEMICOLON.widget.notifications($("#wait"));
 
-        $.post("?controller=Professor&action=insert", param, function (data) {
+        $.post("?controller=Professor&action=insert", parameters, function (data) {
             if (data.result === "1") {
                 SEMICOLON.widget.notifications($("#success"));
-                setTimeout("location.href = '?controller=Professor&action=insert';", 1500);
-            } else {
+                setTimeout("location.href='?controller=Professor&action=insert';", 1500);
+            } else if (data.result === "0") {
                 SEMICOLON.widget.notifications($("#warning"));
                 $("#form-submity").removeAttr('disabled');
                 $("#form-close").removeAttr('disabled');
+            } else {
+                SEMICOLON.widget.notifications($("#alert"));
+                setTimeout("location.href = '?controller=Professor&action=insert';", 1500);
             }
-
         }, "json");
+
     });
 </script>
 
