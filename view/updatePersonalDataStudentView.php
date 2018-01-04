@@ -61,7 +61,7 @@ if (isset($session->permissions)) {
                     <tr>
                         <td>Tipo de Identificaci&oacute;n</td>
                         <td>
-                            <a id="form-id-type" class="bt-editable" href="#" data-type="text" data-pk="1" data-placeholder="Required" data-title="Ingrese el tipo de identificación"><?php echo $vars['id_type']; ?></a>
+                            <a id="form-id-type" href="#" data-type="text" data-pk="1" data-placeholder="Required" data-title="Ingrese el tipo de identificación"><?php echo $vars['id_type']; ?></a>
                         </td>
                     </tr>
                     <tr>
@@ -147,6 +147,7 @@ if (isset($session->permissions)) {
             <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" data-target="#myModal" id="next" data-target="" style="text-align: center; display: block;">Actualizar</a>
             <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i>La operacion no se pudo realizar, intente de nuevo o m&aacute;s tarde!" data-notify-position="bottom-full-width"/>
             <input type="hidden" id="success" data-notify-type="success" data-notify-msg="<i class='icon-ok-sign'></i> Operaci&oacute;n exitosa, revise en breve...!" data-notify-position="bottom-full-width"/>
+            <input type="hidden" id="warningEmail" data-notify-type="warning" data-notify-msg="<i class='icon-ok-sign'></i> Formato de correos incorrectos!" data-notify-position="bottom-full-width"/>
             <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Un momento por favor..." data-notify-position="bottom-full-width"/>
 
         </div>
@@ -159,42 +160,56 @@ if (isset($session->permissions)) {
         window.location = "?controller=Student&action=updatePersonalDataStudent";
     }
 
-    $("#form-submity").click(function () {
-        var parameters = {
-            "id": document.getElementById("form-id").innerHTML.trim(),
-            "oldId": document.getElementById("form-old-id").value.trim(),
-            "idType": document.getElementById("form-id-type").innerHTML.trim(),
-            "email": document.getElementById("form-email").innerHTML.trim(),
-            "name": document.getElementById("form-name").innerHTML.trim(),
-            "firstLastName": document.getElementById("form-first-lastName").innerHTML.trim(),
-            "secondLastName": document.getElementById("form-second-lastName").innerHTML.trim(),
-            "age": document.getElementById("form-age").innerHTML.trim(),
-            "address": " ",
-            "gender": document.getElementById("form-gender").innerHTML.trim(),
-            "nationality": document.getElementById("form-nationality").innerHTML.trim(),
-            "phoneOne": document.getElementById("form-phone1").innerHTML.trim(),
-            "phoneTwo": document.getElementById("form-phone2").innerHTML.trim(),
-            "contactName": document.getElementById("form-contact-name").innerHTML.trim(),
-            "contactRelationship": document.getElementById("form-relationship").innerHTML.trim(),
-            "contactPhone": document.getElementById("form-contact-phone").innerHTML.trim(),
-            "contactEmail": document.getElementById("form-contact-email").innerHTML.trim()
-        };
-        $.post("?controller=Student&action=updatePersonalDataStudent", parameters, function (data) {
-            if (data.result === "1") {
-                SEMICOLON.widget.notifications($("#success"));
-                setTimeout('Redirect()', 1000);
-            } else {
-                SEMICOLON.widget.notifications($("#warning"));
-            }
-        }, "json");
+    function validateEmail() {
+        var emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+        var contactEmail = document.getElementById("form-contact-email").innerHTML.trim();
+        var email = document.getElementById("form-email").innerHTML.trim();
+        if (emailRegex.test(email) && emailRegex.test(contactEmail)) {
+            return true;
+        } else {
+            SEMICOLON.widget.notifications($("#warningEmail"));
+            return false;
+        }
     }
-    );
-</script>
+
+    $("#form-submity").click(function () {
+        if (validateEmail()) {
+            var parameters = {
+                "id": document.getElementById("form-id").innerHTML.trim(),
+                "oldId": document.getElementById("form-old-id").value.trim(),
+                "idType": document.getElementById("form-id-type").innerHTML.trim(),
+                "email": document.getElementById("form-email").innerHTML.trim(),
+                "name": document.getElementById("form-name").innerHTML.trim(),
+                "firstLastName": document.getElementById("form-first-lastName").innerHTML.trim(),
+                "secondLastName": document.getElementById("form-second-lastName").innerHTML.trim(),
+                "age": document.getElementById("form-age").innerHTML.trim(),
+                "address": " ",
+                "gender": document.getElementById("form-gender").innerHTML.trim(),
+                "nationality": document.getElementById("form-nationality").innerHTML.trim(),
+                "phoneOne": document.getElementById("form-phone1").innerHTML.trim(),
+                "phoneTwo": document.getElementById("form-phone2").innerHTML.trim(),
+                "contactName": document.getElementById("form-contact-name").innerHTML.trim(),
+                "contactRelationship": document.getElementById("form-relationship").innerHTML.trim(),
+                "contactPhone": document.getElementById("form-contact-phone").innerHTML.trim(),
+                "contactEmail": document.getElementById("form-contact-email").innerHTML.trim()
+            };
+            $.post("?controller=Student&action=updatePersonalDataStudent", parameters, function (data) {
+                if (data.result === "1") {
+                    SEMICOLON.widget.notifications($("#success"));
+                    setTimeout('Redirect()', 1000);
+                } else {
+                    SEMICOLON.widget.notifications($("#warning"));
+                }
+            }, "json");
+        } else {
+
+        }
+
+    });</script>
 
 <script>
     $(document).ready(function () {
         $('.bt-editable').editable();
-
         $('.bt-group').editable({
             showbuttons: false,
             source: [

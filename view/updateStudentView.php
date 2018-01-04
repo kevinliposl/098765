@@ -140,6 +140,7 @@ if (isset($session->permissions)) {
                         </div>
                         <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i>La operacion no se pudo realizar, intente de nuevo o m&aacute;s tarde!" data-notify-position="bottom-full-width"/>
                         <input type="hidden" id="success" data-notify-type="success" data-notify-msg="<i class='icon-ok-sign'></i> Operaci&oacute;n exitosa, revise en breve...!" data-notify-position="bottom-full-width"/>
+                        <input type="hidden" id="warningEmail" data-notify-type="warning" data-notify-msg="<i class='icon-ok-sign'></i> Formato de correos incorrectos!" data-notify-position="bottom-full-width"/>
                         <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Espere un momento...!" data-notify-position="bottom-full-width"/>
                     </form>
                 </div>
@@ -246,45 +247,62 @@ if (isset($session->permissions)) {
         window.location = "?controller=Student&action=updateStudent";
     }
 
+    function validateEmail() {
+        var emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+        var contactEmail = document.getElementById("form-contact-email").innerHTML.trim();
+        var email = document.getElementById("form-email").innerHTML.trim();
+        if (emailRegex.test(email) && emailRegex.test(contactEmail)) {
+            return true;
+        } else {
+            SEMICOLON.widget.notifications($("#warningEmail"));
+            return false;
+        }
+    }
+
     $("#form-submity").click(function () {
 
-        $("#form-submity").attr('disabled', 'disabled');
-        $("#form-close").attr('disabled', 'disabled');
+        if (validateEmail()) {
 
-        SEMICOLON.widget.notifications($("#wait"));
+            $("#form-submity").attr('disabled', 'disabled');
+            $("#form-close").attr('disabled', 'disabled');
 
-        var parameters = {
-            "id": $("#form-id").text().trim(),
-            "oldId": $("#form-old-id").val().trim(),
-            "idType": $("#form-id-type").text().trim(),
-            "email": $("#form-email").text().trim(),
-            "name": $("#form-name").text().trim(),
-            "firstLastName": $("#form-first-lastName").text().trim(),
-            "secondLastName": $("#form-second-lastName").text().trim(),
-            "age": $("#form-age").text().trim(),
-            "address": " ",
-            "gender": $("#form-gender").text().trim(),
-            "nationality": $("#form-nationality").text().trim(),
-            "phoneOne": $("#form-phone1").text().trim(),
-            "phoneTwo": $("#form-phone2").text().trim(),
-            "contactName": $("#form-contact-name").text().trim(),
-            "contactRelationship": $("#form-relationship").text().trim(),
-            "contactPhone": $("#form-contact-phone").text().trim(),
-            "contactEmail": $("#form-contact-email").text().trim()
-        };
+            SEMICOLON.widget.notifications($("#wait"));
 
-        $.post("?controller=Student&action=updateStudent", parameters, function (data) {
-            if (data.result === "1") {
-                SEMICOLON.widget.notifications($("#success"));
-                setTimeout('Redirect()', 1000);
-            } else {
-                SEMICOLON.widget.notifications($("#warning"));
-            }
+            var parameters = {
+                "id": $("#form-id").text().trim(),
+                "oldId": $("#form-old-id").val().trim(),
+                "idType": $("#form-id-type").text().trim(),
+                "email": $("#form-email").text().trim(),
+                "name": $("#form-name").text().trim(),
+                "firstLastName": $("#form-first-lastName").text().trim(),
+                "secondLastName": $("#form-second-lastName").text().trim(),
+                "age": $("#form-age").text().trim(),
+                "address": " ",
+                "gender": $("#form-gender").text().trim(),
+                "nationality": $("#form-nationality").text().trim(),
+                "phoneOne": $("#form-phone1").text().trim(),
+                "phoneTwo": $("#form-phone2").text().trim(),
+                "contactName": $("#form-contact-name").text().trim(),
+                "contactRelationship": $("#form-relationship").text().trim(),
+                "contactPhone": $("#form-contact-phone").text().trim(),
+                "contactEmail": $("#form-contact-email").text().trim()
+            };
 
-            $("#form-submity").removeAttr('disabled');
-            $("#form-close").removeAttr('disabled');
+            $.post("?controller=Student&action=updateStudent", parameters, function (data) {
+                if (data.result === "1") {
+                    SEMICOLON.widget.notifications($("#success"));
+                    setTimeout('Redirect()', 1000);
+                } else {
+                    SEMICOLON.widget.notifications($("#warning"));
+                }
 
-        }, "json");
+                $("#form-submity").removeAttr('disabled');
+                $("#form-close").removeAttr('disabled');
+
+            }, "json");
+        } else {
+            SEMICOLON.widget.notifications($("#warningEmail"));
+        }
     });
 
     $(document).ready(function () {
