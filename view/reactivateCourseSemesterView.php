@@ -21,10 +21,10 @@ if (isset($session->permissions)) {
 <section id="content">
     <div class="content-wrap">
         <div class="container clearfix">
-            <div class="accordion-lg divcenter nobottommargin" style="max-width: 550px;">
+            <div class="accordion-lg divcenter nobottommargin">
                 <div class="acc_content clearfix">
                     <form id="form" class="nobottommargin">
-                        <div class="col_full">
+                        <div class="col-lg-6" style="padding: 10px;">
                             <label for="form-semester">Semestres:</label>
                             <select id="form-semester" class="selectpicker form-control" data-live-search="true">
                                 <option value="-1" data-tokens="">Seleccione un Semestre</option>
@@ -49,7 +49,7 @@ if (isset($session->permissions)) {
                             <input type="hidden" id="failed-form-semester" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class=icon-remove-sign></i> Semestre inválido. Seleccione e intente de nuevo!"/>
                         </div> 
 
-                        <div class="col_full">
+                        <div class="col-lg-6" style="padding: 10px;">
                             <label for="form-courses">Cursos:</label>
                             <select id="form-courses" class="selectpicker form-control" data-live-search="true">
                                 <option value="-1" data-tokens="">Seleccione un Curso</option>
@@ -57,7 +57,15 @@ if (isset($session->permissions)) {
                             <input type="hidden" id="failed-form-courses" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class=icon-remove-sign></i> Curso inválido. Seleccione e intente de nuevo!"/>           
                         </div>
 
-                        <div class="col_full">
+                        <div class="col-lg-6" style="padding: 10px;">
+                            <label for="form-courses">Cursos:</label>
+                            <select id="form-courses" class="selectpicker form-control" data-live-search="true">
+                                <option value="-1" data-tokens="">Seleccione un Curso</option>
+                            </select>
+                            <input type="hidden" id="failed-form-courses" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class=icon-remove-sign></i> Curso inválido. Seleccione e intente de nuevo!"/>           
+                        </div>
+
+                        <div class="col-lg-6" style="padding: 10px;">
                             <label for="form-professors">Profesores:</label>
                             <select multiple name="form-professors[]" id="form-professors" class="selectpicker form-control" data-live-search="true">
                                 <option value="-1" data-tokens="">Seleccione un Curso</option>
@@ -65,12 +73,19 @@ if (isset($session->permissions)) {
                             <input type="hidden" id="failed-form-professors" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class=icon-remove-sign></i> Profesor inválido. Seleccione e intente de nuevo!"/>
                         </div>
 
-                        <div class="col_full">
-                            <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" style="display : block; text-align: center;" data-target="#myModal">Reactivar</a>
+                        <div class="col-lg-6" style="padding: 10px;">
+                            <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" style="display : block; text-align: center;" data-target="#myModal">Reactivar Curso</a>
                             <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i>La operacion no se pudo realizar, intente de nuevo o m&aacute;s tarde!" data-notify-position="bottom-full-width"/>
                             <input type="hidden" id="success" data-notify-type="success" data-notify-msg="<i class='icon-ok-sign'></i> Operaci&oacute;n exitosa, revise en breve...!" data-notify-position="bottom-full-width"/>
                             <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Espere un momento...!" data-notify-position="bottom-full-width"/>
-                        </div>                     
+                        </div> 
+                        <div class="col-lg-6" style="padding: 10px;">
+                            <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" style="display : block; text-align: center;" data-target="#myModal">Reactivar Profesor</a>
+                            <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i>La operacion no se pudo realizar, intente de nuevo o m&aacute;s tarde!" data-notify-position="bottom-full-width"/>
+                            <input type="hidden" id="success" data-notify-type="success" data-notify-msg="<i class='icon-ok-sign'></i> Operaci&oacute;n exitosa, revise en breve...!" data-notify-position="bottom-full-width"/>
+                            <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Espere un momento...!" data-notify-position="bottom-full-width"/>
+                        </div> 
+
                     </form>
                 </div>
             </div>
@@ -114,14 +129,14 @@ if (isset($session->permissions)) {
 
             $('#form-courses').empty();
             $('#form-professors').empty();
-            
+
             $.post("?controller=Course&action=selectAllCourseDeleted", parameters, function (data) {
-                $('#form-courses').append($("<option></option>").attr("value", "-1").text("Seleccione un Curso"));    
+                $('#form-courses').append($("<option></option>").attr("value", "-1").text("Seleccione un Curso"));
                 for (var i = 0; i < data.length; i++) {
                     $('#form-courses').append($("<option></option>").attr("value", data[i].initials).text(data[i].name));//AGREGAR OPCIONES
                 }
                 $("#form-courses").selectpicker("refresh");
-                
+
                 SEMICOLON.widget.notifications($("#success"));
             }, "json");
         }
@@ -140,11 +155,11 @@ if (isset($session->permissions)) {
                 "ID_Semester": $("#form-semester").val(),
                 "initials": $("#form-courses").val()
             };
-            
+
             SEMICOLON.widget.notifications($("#wait"));
 
             $("#form-professors").empty();
-            
+
             $.post("?controller=CourseSemester&action=selectNotAllProfessorsCourseSemester", parameters, function (data) {
                 for (var i = 0; i < data.length; i++) {
                     $('#form-professors').append($("<option></option>").attr("value", data[i].identification).text(data[i].name));//AGREGAR OPCIONES
