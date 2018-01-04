@@ -207,22 +207,7 @@ if (isset($session->permissions)) {
             SEMICOLON.widget.notifications($("#failed-additionalInformation"));
             return false;
 
-        } else {
-//            if (args['typeId'] === "C") {
-//                if (isNaN(args['identification']) || args['identification'].length < 9 || args['identification'].length > 9) {
-//                    $("#failed-id").attr("data-notify-msg", "<i class=icon-remove-sign></i> Formato de identificacion incorrecto. Complete e intente de nuevo!");
-//                    SEMICOLON.widget.notifications($("#failed-id"));
-//                    return false;
-//                }
-//            } else if (args['typeId'] === "D") {
-//                if (args['identification'].length < 12 || args['identification'].length > 12) {
-//                    $("#failed-id").attr("data-notify-msg", "<i class=icon-remove-sign></i> Formato de identificacion incorrecto. Complete e intente de nuevo!");
-//                    SEMICOLON.widget.notifications($("#failed-id"));
-//                    return false;
-//                }
-//            }//if-else
-        }//final
-
+        }
         $('#showModal').click();
         return false;
     }
