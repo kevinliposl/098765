@@ -27,7 +27,7 @@ if (isset($session->permissions)) {
                         <div class="acc_content clearfix"></div>
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped">
-                                <h5 style="text-align: center;">Informaci&oacute;n Personal</h5>
+                                <h5 style="text-align: center;">Datos Personales</h5>
                                 <colgroup>
                                     <col class="col-xs-4">
                                     <col class="col-xs-8">
@@ -36,89 +36,89 @@ if (isset($session->permissions)) {
                                     <tr>
                                         <td>Identificaci&oacute;n</td>
                                         <td>
-                                            <a id="form-id"><?php echo $vars[0]; ?></a>
+                                            <a id="form-id"><?php echo $vars[0]['identification']; ?></a>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Tipo de Identificaci&oacute;n</td>
                                         <td>
-                                            <a id="form-id-type"><?php echo $vars[6]; ?></a>
+                                            <a id="form-id-type"><?php echo $vars[0]['id_type']; ?></a>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Nombre</td>
                                         <td>
-                                            <a id="form-name" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el nombre"><?php echo $vars[1]; ?></a>
+                                            <a id="form-name" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el nombre"><?php echo $vars[0]['name']; ?></a>
                                             <input type="hidden" id="failed-name" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Primer Apellido</td>
                                         <td>
-                                            <a id="form-first-lastName" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el Primer Apellido"><?php echo $vars[2]; ?></a>
+                                            <a id="form-first-lastName" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el Primer Apellido"><?php echo $vars[0]['first_lastname']; ?></a>
                                             <input type="hidden" id="failed-first-lastName" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Segundo Apellido</td>
                                         <td>
-                                            <a id="form-second-lastName" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el Segundo Apellido"><?php echo $vars[3]; ?></a>
+                                            <a id="form-second-lastName" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el Segundo Apellido"><?php echo $vars[0]['second_lastname']; ?></a>
                                             <input type="hidden" id="failed-second-lastName" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>G&eacute;nero</td>
                                         <td>
-                                            <a id="form-gender" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el g&eacute;nero (M: Masculino, F: Femenino)"><?php echo $vars[4]; ?></a>
+                                            <a id="form-gender" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el g&eacute;nero (M: Masculino, F: Femenino)"><?php echo $vars[0]['gender']; ?></a>
                                             <input type="hidden" id="failed-gender" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Nacionalidad</td>
                                         <td>
-                                            <a id="form-nationality" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese la nacionalidad"><?php echo $vars[5]; ?></a>
+                                            <a id="form-nationality" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese la nacionalidad"><?php echo $vars[0]['nationality']; ?></a>
                                             <input type="hidden" id="failed-nationality" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Tel&eacute;fono</td>
                                         <td>
-                                            <a id="form-phone1" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el Teléfono"><?php echo $vars[7]; ?></a>
+                                            <a id="form-phone1" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el Teléfono"><?php echo $vars[0]['phone']; ?></a>
                                             <input type="hidden" id="failed-phone1" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Otro Tel&eacute;fono</td>
                                         <td>
-                                            <a id="form-phone2" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese otro Teléfono"><?php echo $vars[8]; ?></a>
+                                            <a id="form-phone2" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese otro Teléfono"><?php echo $vars[0]['cel_phone']; ?></a>
                                             <input type="hidden" id="failed-phone2" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Email</td>
                                         <td>
-                                            <a id="form-email" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el email"><?php echo $vars[12]; ?></a>
+                                            <a id="form-email" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese el email"><?php echo $vars[0]['email']; ?></a>
                                             <input type="hidden" id="failed-email" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Fecha de Nacimiento</td>
                                         <td>
-                                            <a id="form-age" href="#" class="bt-editable" data-type="date" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese la fecha de nacimiento"><?php echo $vars[11]; ?></a>
+                                            <a id="form-age" href="#" class="bt-editable" data-type="date" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese la fecha de nacimiento"><?php echo $vars[0]['birthdate']; ?></a>
                                             <input type="hidden" id="failed-age" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Direcci&oacute;n</td>
                                         <td>
-                                            <a id="form-address" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese la dirección"><?php echo $vars[10]; ?></a>
+                                            <a id="form-address" href="#" class="bt-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Ingrese la dirección"><?php echo $vars[0]['address']; ?></a>
                                             <input type="hidden" id="failed-address" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Informaci&oacute;n Adicional</td>
                                         <td>
-                                            <a id="form-additionalInformation" class="bt-editable" href="#" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Información Adicional"><?php echo $var[9]; ?></a>
+                                            <a id="form-additionalInformation" class="bt-editable" href="#" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Información Adicional"><?php echo $vars[0]['expedient']; ?></a>
                                             <input type="hidden" id="failed-additionalInformation" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                                         </td>
                                     </tr>
@@ -128,6 +128,7 @@ if (isset($session->permissions)) {
                         <div class="col_full nobottommargin">                      
                             <input type="submit" value="Actualizar" class="button button-3d button-black nomargin form-control" style="display: block; text-align: center;"/>
                             <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i>La operacion no se pudo realizar, intente de nuevo o m&aacute;s tarde!" data-notify-position="bottom-full-width"/>
+                            <input type="hidden" id="warningEmail" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i>Formato de Correo incorrecto!" data-notify-position="bottom-full-width"/>
                             <input type="hidden" id="success" data-notify-type="success" data-notify-msg="<i class='icon-ok-sign'></i> Operaci&oacute;n exitosa, revise en breve...!" data-notify-position="bottom-full-width"/>
                             <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Espere un momento...!" data-notify-position="bottom-full-width"/>                        
                         </div>
@@ -178,6 +179,7 @@ if (isset($session->permissions)) {
         nationality = $("#form-nationality").text().trim();
         gender = $("#form-gender").text().trim().toUpperCase();
 
+
         if (nameP.length < 3 || nameP.length > 49 || !isNaN(nameP)) {
             $("#failed-name").attr("data-notify-msg", "<i class=icon-remove-sign></i> Dato de Nombre Incorrecto. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-name"));
@@ -222,12 +224,24 @@ if (isset($session->permissions)) {
             $("#failed-gender").attr("data-notify-msg", "<i class=icon-remove-sign></i> Genero erroneo. Datos validos M o F. Complete e intente de nuevo!");
             SEMICOLON.widget.notifications($("#failed-gender"));
             return false;
+        }else if (!validateEmail()){
+            return false;
         }
 
         $('#showModal').click();
         return false;
     }
 
+    function validateEmail() {
+        var emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+        var email = document.getElementById("form-email").innerHTML.trim();
+        if (emailRegex.test(email)) {
+            return true;
+        } else {
+            SEMICOLON.widget.notifications($("#warningEmail"));
+            return false;
+        }
+    }
     //UPDATE 
     $("#form-submity").click(function () {
         var parameters = {
