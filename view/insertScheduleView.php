@@ -286,14 +286,9 @@ if (isset($session->permissions)) {
             "ID_Semester": $("#form-semester").val()
         };
 
-        $('#form-courses').attr("disabled", false);
-
-        alert(JSON.stringify(parameters));
-
         $.post("?controller=Schedule&action=selectWithSchedule", parameters, function (data) {
             alert(JSON.stringify(data));
-
-
+            $('#form-courses').attr("disabled", false);
             $('#form-courses').empty();
             $('#form-courses').append($("<option></option>").attr("value", -1).text('Seleccione un Curso'));
             for (var i = 0; i < data.length; i++) {
@@ -342,10 +337,13 @@ if (isset($session->permissions)) {
     });
 
     $('#form-submit').click(function () {
-
         $("#form-submity").attr('disabled', 'disabled');
         $("#form-close").attr('disabled', 'disabled');
         SEMICOLON.widget.notifications($("#wait"));
+
+        if($("#" + $("#form-days").val()+''+$("#form-hour-init").val()).hasClass('')){
+         alert("Mierda");   
+        }
 
         var parameters = {
             "ID": $("#form-courses").val(),

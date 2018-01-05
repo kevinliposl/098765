@@ -36,7 +36,7 @@ if (isset($session->permissions)) {
                         </div>
                         <br>
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped" style="clear: both">
+                            <table id="datatable" class="table table-bordered table-striped" style="clear: both">
                                 <input type="hidden" id="form-old-id" name="form-old-id" value="">
                                 <h5 style="text-align: center;">Informaci&oacute;n del Estudiante</h5>    
                                 <colgroup>
@@ -117,7 +117,7 @@ if (isset($session->permissions)) {
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>Tel&eacute;fono del Contacto</td>
+                                        <td>Telefono del Contacto</td>
                                         <td>
                                             <a id="form-contact-phone"></a>
                                         </td>
@@ -142,32 +142,27 @@ if (isset($session->permissions)) {
                         <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Espere un momento...!" data-notify-position="bottom-full-width"/>
                     </form>
                 </div>
+                <input type="button" onclick="tableToExcel('datatable', 'Report_User')" value="Export to Excel">
             </div>
         </div>
     </div>
 </section>
 
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-body">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="myModalLabel">¡Aviso!</h4>
-                </div>
-                <div class="modal-body">
-                    <h4 style="text-align: center;">¿Realmente desea actualizar los datos de este Estudiante?</h4>
-                    <p>Consejos:
-                    <li>Verificar bien, si es el estudiante que realmente desea actualizar</li>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    <input type="button" class="btn btn-primary" button-black nomargin id="form-submity" value="Actualizar"/>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<script type="text/javascript">
+var tableToExcel = (function() {
+  var uri = 'data:application/vnd.ms-excel;base64,'
+    , template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>'
+    , base64 = function(s) { return window.btoa(unescape(encodeURIComponent(s))); }
+    , format = function(s, c) { return s.replace(/{(\w+)}/g, function(m, p) { return c[p]; }
+                ) }
+  return function(table, name) {
+    if (!table.nodeType) table = document.getElementById(table);
+    var ctx = {worksheet: name || 'Worksheet', table: table.innerHTML};
+    window.location.href = uri + base64(format(template, ctx));
+  };
+})();
+</script>
+
 
 <script>
     $("#form-student").change(function () {
