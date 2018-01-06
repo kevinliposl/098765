@@ -117,7 +117,7 @@ if (isset($session->permissions)) {
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>Telefono del Contacto</td>
+                                        <td>Teléfono del Contacto</td>
                                         <td>
                                             <a id="form-contact-phone"></a>
                                         </td>
