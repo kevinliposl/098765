@@ -86,6 +86,7 @@ if (isset($session->permissions)) {
     </div>
 </section>
 
+<<<<<<< HEAD
 <script>
     function exportPdf() {
         if ($("#form-admin").val() !== "-1") {
@@ -162,6 +163,10 @@ if (isset($session->permissions)) {
 
 </script>
 
+=======
+<script src="public/js/Views/selectAdminView.js" type="text/javascript"></script>
+
+>>>>>>> 652a3e189a1afe423906f37835e7712d0080bc7d
 <?php
 include_once 'public/footer.php';
 ?>
