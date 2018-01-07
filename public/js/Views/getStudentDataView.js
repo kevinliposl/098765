@@ -1,22 +1,45 @@
-var tableToExcel = (function () {
-    var uri = 'data:application/vnd.ms-excel;base64,'
-            , template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>'
-            , base64 = function (s) {
-                return window.btoa(unescape(encodeURIComponent(s)));
-            }
-    , format = function (s, c) {
-        return s.replace(/{(\w+)}/g, function (m, p) {
-            return c[p];
+function exportPdf() {
+    var pdf = new jsPDF('l', 'pt', 'letter');
+    source = $('#data').get(0);
+
+    specialElementHandlers = {
+        '#bypassme': function (element, renderer) {
+            return true;
         }
-        )
-    }
-    return function (table, name) {
-        if (!table.nodeType)
-            table = document.getElementById(table);
-        var ctx = {worksheet: name || 'Worksheet', table: table.innerHTML};
-        window.location.href = uri + base64(format(template, ctx));
     };
-})();
+
+    margins = {
+        top: 40,
+        bottom: 20,
+        left: 10,
+        width: "100%"
+    };
+
+    pdf.fromHTML(
+            source,
+            margins.left,
+            margins.top, {
+                'width': margins.width,
+                'elementHandlers': specialElementHandlers
+            },
+            function (dispose) {
+                pdf.save('Test.pdf');
+            }, margins);
+}
+
+function exportExcel() {
+    if ($("#form-student").val() !== "-1") {
+        $("#datatable").table2excel({
+            exclude: ".noExl",
+            filename: $("#form-student option:selected").text().trim(),
+            fileext: ".xls",
+            name: "Estudiante",
+            exclude_img: true,
+            exclude_links: true,
+            exclude_inputs: true
+        });
+    }
+}
 
 $("#form-student").change(function () {
     if ($("#form-student").val() !== "-1") {
