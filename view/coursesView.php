@@ -1,5 +1,18 @@
 <?php
-include_once 'public/header.php';
+
+$session = SSession::getInstance();
+
+if (isset($session->permissions)) {
+    if ($session->permissions == 'S') {
+        include_once 'public/headerStudent.php';
+    } else if ($session->permissions == 'A') {
+        include_once 'public/headerAdmin.php';
+    } elseif ($session->permissions == 'T') {
+        include_once 'public/headerProfessor.php';
+    }
+} else {
+    include_once 'public/header.php';
+}
 ?>
 
 <section id="page-title">
@@ -52,4 +65,5 @@ include_once 'public/header.php';
 <script src="public/js/Views/coursesView.js" type="text/javascript"></script>
 
 <?php
+
 include_once 'public/footer.php';
