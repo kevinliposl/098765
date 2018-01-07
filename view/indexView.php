@@ -133,6 +133,30 @@ if (isset($session->permissions)) {
                 </div>
             </div>
 
+            <div class="modal-on-load" data-target="#myModal1"></div>
+
+            <!-- Modal -->
+            <div class="modal1 mfp-hide subscribe-widget" id="myModal1">
+                <div class="block dark divcenter" style="background: url('public/images/footer-bg.jpg') no-repeat; background-size: cover; max-width: 700px;" data-height-lg="400">
+                    <div style="padding: 50px;">
+                        <div class="center" style="max-width:500px;">
+                            <h3>¡Nuestra p&aacute;gina a&uacute;n se encuentra en construcci&oacute;n!</h3>
+                        </div>
+                        <span>Si encuentras alg&uacute;n error puedes enviarnos un correo a:</span>
+                        <p class="nobottommargin"><small>pabloBarrientos@fusionacademiacr.com</small></p>
+                        <p class="nobottommargin"><small>kevinSandoval@fusionacademiacr.com</small></p>
+                        
+                        <div class="heading-block nobottomborder bottommargin-sm" style="max-width:500px;">
+                            <span>O bien, lo puedes hacer desde nuestra secci&oacute;n de 
+                                <a href="?controller=Index&action=contact" class="badge">Contacto</a></span>
+                        </div>
+                    </div>
+                    <div class="section center nomargin" style="padding: 30px;">
+                        <a href="#" class="button" onClick="$.magnificPopup.close();return false;">¡Entendido!</a>
+                    </div>
+                </div>
+            </div>
+
 
             <!--            <br><h2 class="center">¡Nuestros socios!</h2>
             
@@ -160,4 +184,5 @@ if (isset($session->permissions)) {
 </section>
 
 <?php
+
 include_once 'public/footer.php';
