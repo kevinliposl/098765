@@ -67,7 +67,5 @@ include_once 'public/footer.php';
 ?>
 
 <script src="public/js/jquery.table2excel.min.js" type="text/javascript"></script>
-
 <script src="public/js/pdf/html2pdf.js" type="text/javascript"></script>
 <script src="public/js/pdf/jspdf.debug.js" type="text/javascript"></script>
-<script src="public/js/pdf/from_html.js" type="text/javascript"></script>

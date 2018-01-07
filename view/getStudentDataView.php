@@ -44,7 +44,7 @@ if (isset($session->permissions)) {
             </form>
             <div id="data">
                 <div class="table-responsive">
-                    <table id="datatable" class="table table-bordered table-striped" style="clear: both">
+                    <table id="datatable" class="table table-bordered table-striped">
                         <input type="hidden" id="form-old-id" name="form-old-id" value="">
                         <h5 style="text-align: center;">Informaci&oacute;n del Estudiante</h5>    
                         <colgroup>
@@ -54,15 +54,11 @@ if (isset($session->permissions)) {
                         <tbody>
                             <tr>
                                 <td>Identificaci&oacute;n</td>
-                                <td>
-                                    <a id="form-id"></a>
-                                </td>
+                                <td><a id="form-id"></a></td>
                             </tr>
                             <tr>
                                 <td>Tipo de Identificaci&oacute;n</td>
-                                <td>
-                                    <a id="form-id-type"></a>
-                                </td>
+                                <td><a id="form-id-type"></a></td>
                             </tr>
                             <tr>
                                 <td>Nombre</td>
@@ -157,7 +153,5 @@ include_once 'public/footer.php';
 ?>
 
 <script src="public/js/jquery.table2excel.min.js" type="text/javascript"></script>
-
 <script src="public/js/pdf/html2pdf.js" type="text/javascript"></script>
 <script src="public/js/pdf/jspdf.debug.js" type="text/javascript"></script>
-<script src="public/js/pdf/from_html.js" type="text/javascript"></script>
