@@ -66,6 +66,8 @@ include_once 'public/header.php';
 
 </section>
 
+<script src="public/js/Views/coursesView.js" type="text/javascript"></script>
+
 <?php
 include_once 'public/footer.php';
 ?>
