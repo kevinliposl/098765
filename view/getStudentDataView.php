@@ -62,81 +62,55 @@ if (isset($session->permissions)) {
                             </tr>
                             <tr>
                                 <td>Nombre</td>
-                                <td>
-                                    <a id="form-name"></a>
-                                </td>
+                                <td><a id="form-name"></a></td>
                             </tr>
                             <tr>
                                 <td>Primer Apellido</td>
-                                <td>
-                                    <a id="form-first-lastName"></a>
-                                </td>
+                                <td><a id="form-first-lastName"></a></td>
                             </tr>
                             <tr>
                                 <td>Segundo Apellido</td>
-                                <td >
-                                    <a id="form-second-lastName"></a>
-                                </td>
+                                <td><a id="form-second-lastName"></a></td>
                             </tr>
                             <tr>
                                 <td>G&eacute;nero</td>
-                                <td >
-                                    <a id="form-gender"></a>
-                                </td>
+                                <td><a id="form-gender"></a></td>
                             </tr>
                             <tr>
                                 <td>Nacionalidad</td>
-                                <td>
-                                    <a id="form-nationality"></a>
-                                </td>
+                                <td><a id="form-nationality"></a></td>
                             </tr>
                             <tr>
                                 <td>Tel&eacute;fono 1</td>
-                                <td>
-                                    <a id="form-phone1"></a> 
-                                </td>
+                                <td><a id="form-phone1"></a> </td>
                             </tr>
                             <tr>
                                 <td>Tel&eacute;fono 2</td>
-                                <td>
-                                    <a id="form-phone2"></a>
-                                </td>
+                                <td><a id="form-phone2"></a></td>
                             </tr>
                             <tr>
                                 <td>Email</td>
-                                <td>
-                                    <a id="form-email"></a>
-                                </td>
+                                <td><a id="form-email"></a></td>
                             </tr>
                             <tr>
                                 <td>Fecha de Nacimiento</td>
-                                <td>
-                                    <a id="form-age"></a>
-                                </td>
+                                <td><a id="form-age"></a></td>
                             </tr>
                             <tr>
                                 <td>Nombre del Contacto</td>
-                                <td> 
-                                    <a id="form-contact-name"></a>
-                                </td>
+                                <td><a id="form-contact-name"></a></td>
                             </tr>
                             <tr>
                                 <td>Teléfono del Contacto</td>
-                                <td>
-                                    <a id="form-contact-phone"></a>
-                                </td>
+                                <td><a id="form-contact-phone"></a></td>
                             </tr>
                             <tr>
                                 <td>Relaci&oacute;n</td>
-                                <td>
-                                    <a id="form-relationship"></a>
-                                </td>
+                                <td><a id="form-relationship"></a></td>
                             </tr>
                             <tr>
                                 <td>Email del Contacto</td>
-                                <td>
-                                    <a id="form-contact-email"></a>
-                                </td>
+                                <td><a id="form-contact-email"></a></td>
                             </tr>
                         </tbody>
                     </table>
