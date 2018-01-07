@@ -208,7 +208,7 @@ if (isset($session->permissions)) {
 
 <script>
     function exportPdf() {
-        var pdf = new jsPDF('p', 'pt', 'letter');
+        var pdf = new jsPDF('l', 'pt', 'letter');
         source = $('#data').get(0);
         specialElementHandlers = {
             '#bypassme': function (element, renderer) {
@@ -218,10 +218,11 @@ if (isset($session->permissions)) {
         margins = {
             top: 40,
             bottom: 20,
-            left: 40,
+            rigth: 10,
+            left: 10,
             width: 700
         };
-
+        
         pdf.fromHTML(
                 source,
                 margins.left,
