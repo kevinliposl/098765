@@ -16,7 +16,7 @@ if (isset($session->permissions)) {
     include_once 'public/header.php';
 }
 ?>
-<section id="page-title" class="page-title-parallax page-title-dark" style="padding: 250px 0; background-image: url('public/images/about/8.jpg'); background-size: cover; background-position: center center;" data-stellar-background-ratio="0.4">s
+<section id="page-title" class="page-title-parallax page-title-dark" style="padding: 250px 0; background-image: url('public/images/presentation/1.jpg'); background-size: cover; background-position: center center;" data-stellar-background-ratio="0.4">
     <div class="container clearfix">
         <h1>Sobre Nosotros</h1>
         <span>¡Todos deben conocernos!</span>
@@ -47,7 +47,7 @@ if (isset($session->permissions)) {
         </div>
     </div>
     <div class="row common-height clearfix">
-        <div class="col-sm-5 col-padding" style="background: url('images/team/3.jpg') center center no-repeat; background-size: cover;"></div>
+        <div class="col-sm-5 col-padding" style="background: url('images/presentation/2.jpg') center center no-repeat; background-size: cover;"></div>
         <div class="col-sm-7 col-padding">
             <div>
                 <div class="heading-block">
