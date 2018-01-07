@@ -210,17 +210,18 @@ if (isset($session->permissions)) {
     function exportPdf() {
         var pdf = new jsPDF('l', 'pt', 'letter');
         source = $('#data').get(0);
+        
         specialElementHandlers = {
             '#bypassme': function (element, renderer) {
                 return true;
             }
         };
+        
         margins = {
             top: 40,
             bottom: 20,
-            rigth: 10,
             left: 10,
-            width: 700
+            width: "100%"
         };
         
         pdf.fromHTML(
