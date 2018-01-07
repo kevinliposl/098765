@@ -79,5 +79,4 @@ if (isset($session->permissions)) {
 <script src="public/js/Views/changePasswordView.js" type="text/javascript"></script>
 
 <?php
-
 include_once 'public/footer.php';
