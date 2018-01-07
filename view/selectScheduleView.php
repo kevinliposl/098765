@@ -22,7 +22,7 @@ if (isset($session->permissions)) {
     <div class="content-wrap">
         <div class="container clearfix">
             <form class="nobottommargin" onsubmit="return false;">
-                <div class="col_full">
+                <div class="col_three_fourth">
                     <label for="form-semester">Semestre:</label>
                     <select id="form-semester" class="selectpicker form-control" data-live-search="true">
                         <option value="-1" data-tokens="">Seleccione un Semestre</option>
@@ -31,13 +31,20 @@ if (isset($session->permissions)) {
                             if (isset($var["ID"])) {
                                 ?>
                                 <option value="<?php echo $var["ID"] ?> " data-tokens="">
-                                    <?php echo $var["year"] . " | " . $var["semester"]; ?>
+                                    <?php
+                                    echo "Año " . $var["year"] . " | Semestre ";
+                                    echo $var["semester"] == 1 ? 'I' : 'II';
+                                    ?>
                                 </option>
                                 <?php
                             }
                         }
                         ?>
                     </select>
+                </div>
+                <div class="col_one_fifth">
+                    <input type="button" value="Exportar PDF" class="button button-3d button-black form-control"/>
+                    <input type="button" id="form-button-excel" value="Exportar EXCEL" class="button button-3d button-black form-control"/>
                 </div>
                 <div class="col_full nobottommargin">
                     <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i>La operacion no se pudo realizar, intente de nuevo o m&aacute;s tarde!" data-notify-position="bottom-full-width"/>
@@ -46,10 +53,10 @@ if (isset($session->permissions)) {
                 </div>
             </form>
             <div class="table-responsive">
-                <table class="table table-bordered nobottommargin table-striped" id="shedule">
+                <table id="datatable" class="table table-bordered nobottommargin table-striped">
                     <thead>
                         <tr>
-                            <th>Horas</th>
+                            <th style="width: 10%;">Horas</th>
                             <th>(L) Lunes</th>
                             <th>(K) Martes</th>
                             <th>(M) Miercoles</th>
@@ -91,7 +98,7 @@ if (isset($session->permissions)) {
                             <td id="Domingo9"></td>
                         </tr>
                         <tr>
-                            <td class="hora">10:00 - 10:50</td>
+                            <td>10:00 - 10:50</td>
                             <td id="Lunes10"></td>
                             <td id="Martes10"></td>
                             <td id="Miercoles10"></td>
@@ -101,7 +108,7 @@ if (isset($session->permissions)) {
                             <td id="Domingo10"></td>
                         </tr>
                         <tr>
-                            <td class="hora">11:00 - 11:50</td>
+                            <td>11:00 - 11:50</td>
                             <td id="Lunes11"></td>
                             <td id="Martes11"></td>
                             <td id="Miercoles11"></td>
@@ -111,7 +118,7 @@ if (isset($session->permissions)) {
                             <td id="Domingo11"></td>
                         </tr>
                         <tr>
-                            <td class="hora">12:00 - 12:50</td>
+                            <td>12:00 - 12:50</td>
                             <td id="Lunes12"></td>
                             <td id="Martes12"></td>
                             <td id="Miercoles12"></td>
@@ -121,7 +128,7 @@ if (isset($session->permissions)) {
                             <td id="Domingo12"></td>
                         </tr>
                         <tr>
-                            <td class="hora">13:00 - 13:50</td>
+                            <td>13:00 - 13:50</td>
                             <td id="Lunes13"></td>
                             <td id="Martes13"></td>
                             <td id="Miercoles13"></td>
@@ -131,7 +138,7 @@ if (isset($session->permissions)) {
                             <td id="Domingo13"></td>
                         </tr>
                         <tr>
-                            <td class="hora">14:00 - 14:50</td>
+                            <td>14:00 - 14:50</td>
                             <td id="Lunes14"></td>
                             <td id="Martes14"></td>
                             <td id="Miercoles14"></td>
@@ -141,7 +148,7 @@ if (isset($session->permissions)) {
                             <td id="Domingo14"></td>
                         </tr>
                         <tr>
-                            <td class="hora">15:00 - 15:50</td>
+                            <td>15:00 - 15:50</td>
                             <td id="Lunes15"></td>
                             <td id="Martes15"></td>
                             <td id="Miercoles15"></td>
@@ -151,7 +158,7 @@ if (isset($session->permissions)) {
                             <td id="Domingo15"></td>
                         </tr>
                         <tr>
-                            <td class="hora">16:00 - 16:50</td>
+                            <td>16:00 - 16:50</td>
                             <td id="Lunes16"></td>
                             <td id="Martes16"></td>
                             <td id="Miercoles16"></td>
@@ -161,7 +168,7 @@ if (isset($session->permissions)) {
                             <td id="Domingo16"></td>
                         </tr>
                         <tr>
-                            <td class="hora">17:00 - 17:50</td>
+                            <td>17:00 - 17:50</td>
                             <td id="Lunes17"></td>
                             <td id="Martes17"></td>
                             <td id="Miercoles17"></td>
@@ -171,7 +178,7 @@ if (isset($session->permissions)) {
                             <td id="Domingo17"></td>
                         </tr>
                         <tr>
-                            <td class="hora">18:00 - 18:50</td>
+                            <td>18:00 - 18:50</td>
                             <td id="Lunes18"></td>
                             <td id="Martes18"></td>
                             <td id="Miercoles18"></td>
@@ -181,7 +188,7 @@ if (isset($session->permissions)) {
                             <td id="Domingo18"></td>
                         </tr>
                         <tr>
-                            <td class="hora">19:00 - 19:50</td>
+                            <td>19:00 - 19:50</td>
                             <td id="Lunes19"></td>
                             <td id="Martes19"></td>
                             <td id="Miercoles19"></td>
@@ -198,6 +205,71 @@ if (isset($session->permissions)) {
 </section>
 
 <script>
+function demoFromHTML() {
+	var pdf = new jsPDF('p', 'pt', 'letter')
+	, source = $('#fromHTMLtestdiv')[0]
+
+	// we support special element handlers. Register them with jQuery-style 
+	// ID selector for either ID or node name. ("#iAmID", "div", "span" etc.)
+	// There is no support for any other type of selectors 
+	// (class, of compound) at this time.
+	, specialElementHandlers = {
+		// element with id of "bypass" - jQuery style selector
+		'#bypassme': function(element, renderer){
+			// true = "handled elsewhere, bypass text extraction"
+			return true
+		},
+		'.hide': function(element, renderer){
+      		// true = "handled elsewhere, bypass text extraction"
+			return true
+		}
+	}
+
+	margins = {
+      top: 80,
+      bottom: 60,
+      left: 40,
+      width: 522
+    };
+    // all coords and widths are in jsPDF instance's declared units
+    // 'inches' in this case
+    pdf.fromHTML(
+    	source // HTML string or DOM elem ref.
+    	, margins.left // x coord
+    	, margins.top // y coord
+    	, {
+    		'width': margins.width // max width of content on PDF
+    		, 'elementHandlers': specialElementHandlers
+    	},
+    	function (dispose) {
+    	  // dispose: object with X, Y of the last line add to the PDF 
+    	  //          this allow the insertion of new lines after html
+          pdf.save('Test.pdf');
+        },
+    	margins
+    )
+}
+
+</script>
+
+<script>
+    $("#form-button-excel").click(function () {
+        if ($("#form-semester").val() !== "-1") {
+            $("#datatable").table2excel({
+                exclude: ".noExl",
+                filename: $("#form-semester option:selected").text().trim(),
+                fileext: ".xls",
+                name: "Horario",
+                exclude_img: true,
+                exclude_links: true,
+                exclude_inputs: true
+            });
+        }
+    });
+</script>
+
+<script>
+
     var days = {
         1: 'Lunes',
         2: 'Martes',
@@ -207,43 +279,51 @@ if (isset($session->permissions)) {
         6: 'Sabado',
         7: 'Domingo'
     };
-
     var colorClass = {
         0: 'info',
         1: 'success',
         2: 'danger',
         3: 'warning'
     };
-
     function getRandomArbitrary(min, max) {
         return Math.floor(Math.random() * (max - min)) + min;
     }
 
     $("#form-semester").change(function () {
-        var parameters = {
-            "ID_Semester": $("#form-semester").val()
-        };
+        if ($("#form-semester").val() !== "") {
 
-        for (var k = 1; k <= 7; k++) {
-            for (var x = 7; x <= 19; x++) {
-                $("#" + days[k] + '' + x).removeClass();
-                $("#" + days[k] + '' + x).text('');
-            }
-        }
-
-        $.post("?controller=Schedule&action=select", parameters, function (data) {
-            for (var i = 0; i < data.length; i++) {
-                var temp = getRandomArbitrary(0, 4);
-                for (var j = parseInt(data[i].start); j <= parseInt(data[i].end); j++) {
-                    $("#" + data[i].day + '' + j).addClass(colorClass[temp]);
-                    $("#" + data[i].day + '' + j).text(data[i].initials + ' | ' + data[i].name);
+            var parameters = {
+                "ID_Semester": $("#form-semester").val()
+            };
+            SEMICOLON.widget.notifications($("#wait"));
+            $.post("?controller=Schedule&action=select", parameters, function (data) {
+                for (var k = 1; k <= 7; k++) {
+                    for (var x = 7; x <= 19; x++) {
+                        $("#" + days[k] + '' + x).removeClass();
+                        $("#" + days[k] + '' + x).text('');
+                    }
+                }
+                for (var i = 0; i < data.length; i++) {
+                    var temp = getRandomArbitrary(0, 4);
+                    for (var j = parseInt(data[i].start); j <= parseInt(data[i].end); j++) {
+                        $("#" + data[i].day + '' + j).addClass(colorClass[temp]);
+                        $("#" + data[i].day + '' + j).text(data[i].initials + ' | ' + data[i].name);
+                    }
+                }
+            }, "json");
+        } else {
+            for (var k = 1; k <= 7; k++) {
+                for (var x = 7; x <= 19; x++) {
+                    $("#" + days[k] + '' + x).removeClass();
+                    $("#" + days[k] + '' + x).text('');
                 }
             }
-        }, "json");
+        }
     });
-
 </script>
 
 <?php
 include_once 'public/footer.php';
+?>
 
+<script src="public/js/jquery.table2excel.min.js" type="text/javascript"></script>

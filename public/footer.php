@@ -129,13 +129,9 @@
 
 <script type="text/javascript">
     $('.selectpicker').selectpicker({
-        size: 3,
+        size: 4,
         dropupAuto: false
     });
-
-//    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
-//        $('.selectpicker').selectpicker('mobile');
-//    }
 </script>
 
 <script src="public/js/functions.js" type="text/javascript"></script>

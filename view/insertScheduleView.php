@@ -48,54 +48,35 @@ if (isset($session->permissions)) {
                 </div>
                 <div class="col_one_fourth">
                     <label for="form-hour-init">Horario</label>
-                    <select id="form-hour-init" class="form-control" data-live-search="true" disabled="true">
-                        <option value="-1" data-tokens>Seleccione la Hora de Inicio</option>
-                        <option value="7" data-tokens>7:00</option>
-                        <option value="8" data-tokens>8:00</option>
-                        <option value="9" data-tokens>9:00</option>
-                        <option value="10" data-tokens>10:00</option>
-                        <option value="11" data-tokens>11:00</option>
-                        <option value="12" data-tokens>12:00</option>
-                        <option value="13" data-tokens>13:00</option>
-                        <option value="14" data-tokens>14:00</option>
-                        <option value="15" data-tokens>15:00</option>
-                        <option value="16" data-tokens>16:00</option>
-                        <option value="17" data-tokens>17:00</option>
-                        <option value="18" data-tokens>18:00</option>
-                        <option value="19" data-tokens>19:00</option>
-                        <option value="20" data-tokens>20:00</option>
-                        <option value="21" data-tokens>21:00</option>
-                        <option value="22" data-tokens>22:00</option>
+                    <select id="form-hour-init" class="form-control" disabled="true">
+                        <option value="-1">Seleccione la Hora de Inicio</option>
+                        <?php for ($var = 7; $var < 20; $var ++) { ?>
+                            <option value="<?php echo $var ?>">
+                                <?php echo $var . ":00" ?>
+                            </option>
+                        <?php } ?>
                     </select>
                     </br>
                     <select id="form-hour-end" class="form-control" data-live-search="true" disabled="true">
                         <option value="-1" data-tokens="">Seleccione la Hora de Finalizaci&oacute;n</option>
-                        <option value="7">7:50</option>
-                        <option value="8">8:50</option>
-                        <option value="9">9:50</option>
-                        <option value="10">10:50</option>
-                        <option value="11">11:50</option>
-                        <option value="12">12:50</option>
-                        <option value="13">13:50</option>
-                        <option value="14">14:50</option>
-                        <option value="15">15:50</option>
-                        <option value="16">16:50</option>
-                        <option value="17">17:50</option>
-                        <option value="18">18:50</option>
-                        <option value="19">19:50</option>
+                        <?php for ($var = 7; $var < 20; $var ++) { ?>
+                            <option value="<?php echo $var ?>">
+                                <?php echo $var . ":50" ?>
+                            </option>
+                        <?php } ?>
                     </select>
                 </div>
 
                 <div class="col_one_fourth">
                     <label for="form-days">Dias:</label>
-                    <select id="form-days" class="form-control selectpicker" data-live-search="true" disabled>
-                        <option value="Lunes" data-tokens="">L</option>
-                        <option value="Martes" data-tokens="">K</option>
-                        <option value="Miercoles" data-tokens="">M</option>
-                        <option value="Jueves" data-tokens="">J</option>
-                        <option value="Viernes" data-tokens="">V</option>
-                        <option value="Sabado" data-tokens="">S</option>
-                        <option value="Domingo" data-tokens="">D</option>
+                    <select id="form-days" class="form-control" disabled>
+                        <option value="Lunes">Lunes (L)</option>
+                        <option value="Martes">Martes (K)</option>
+                        <option value="Miercoles">Miercoles (M)</option>
+                        <option value="Jueves">Jueves (J)</option>
+                        <option value="Viernes">Viernes (V)</option>
+                        <option value="Sabado">Sabado (S)</option>
+                        <option value="Domingo">Domingo (D)</option>
                     </select>
                 </div>
                 <div class="col_full nobottommargin">
@@ -109,7 +90,7 @@ if (isset($session->permissions)) {
                 <table class="table table-bordered nobottommargin table-striped" id="shedule">
                     <thead>
                         <tr>
-                            <th>Horas</th>
+                            <th style="width: 10%;">Horas</th>
                             <th>(L) Lunes</th>
                             <th>(K) Martes</th>
                             <th>(M) Miercoles</th>
@@ -161,7 +142,7 @@ if (isset($session->permissions)) {
                             <td id="Domingo10"></td>
                         </tr>
                         <tr>
-                            <td class="hora">11:00 - 11:50</td>
+                            <td>11:00 - 11:50</td>
                             <td id="Lunes11"></td>
                             <td id="Martes11"></td>
                             <td id="Miercoles11"></td>
@@ -171,7 +152,7 @@ if (isset($session->permissions)) {
                             <td id="Domingo11"></td>
                         </tr>
                         <tr>
-                            <td class="hora">12:00 - 12:50</td>
+                            <td>12:00 - 12:50</td>
                             <td id="Lunes12"></td>
                             <td id="Martes12"></td>
                             <td id="Miercoles12"></td>
@@ -181,7 +162,7 @@ if (isset($session->permissions)) {
                             <td id="Domingo12"></td>
                         </tr>
                         <tr>
-                            <td class="hora">13:00 - 13:50</td>
+                            <td>13:00 - 13:50</td>
                             <td id="Lunes13"></td>
                             <td id="Martes13"></td>
                             <td id="Miercoles13"></td>
@@ -191,7 +172,7 @@ if (isset($session->permissions)) {
                             <td id="Domingo13"></td>
                         </tr>
                         <tr>
-                            <td class="hora">14:00 - 14:50</td>
+                            <td>14:00 - 14:50</td>
                             <td id="Lunes14"></td>
                             <td id="Martes14"></td>
                             <td id="Miercoles14"></td>
@@ -201,7 +182,7 @@ if (isset($session->permissions)) {
                             <td id="Domingo14"></td>
                         </tr>
                         <tr>
-                            <td class="hora">15:00 - 15:50</td>
+                            <td>15:00 - 15:50</td>
                             <td id="Lunes15"></td>
                             <td id="Martes15"></td>
                             <td id="Miercoles15"></td>
@@ -211,7 +192,7 @@ if (isset($session->permissions)) {
                             <td id="Domingo15"></td>
                         </tr>
                         <tr>
-                            <td class="hora">16:00 - 16:50</td>
+                            <td>16:00 - 16:50</td>
                             <td id="Lunes16"></td>
                             <td id="Martes16"></td>
                             <td id="Miercoles16"></td>
@@ -221,7 +202,7 @@ if (isset($session->permissions)) {
                             <td id="Domingo16"></td>
                         </tr>
                         <tr>
-                            <td class="hora">17:00 - 17:50</td>
+                            <td>17:00 - 17:50</td>
                             <td id="Lunes17"></td>
                             <td id="Martes17"></td>
                             <td id="Miercoles17"></td>
@@ -231,7 +212,7 @@ if (isset($session->permissions)) {
                             <td id="Domingo17"></td>
                         </tr>
                         <tr>
-                            <td class="hora">18:00 - 18:50</td>
+                            <td>18:00 - 18:50</td>
                             <td id="Lunes18"></td>
                             <td id="Martes18"></td>
                             <td id="Miercoles18"></td>
@@ -241,7 +222,7 @@ if (isset($session->permissions)) {
                             <td id="Domingo18"></td>
                         </tr>
                         <tr>
-                            <td class="hora">19:00 - 19:50</td>
+                            <td>19:00 - 19:50</td>
                             <td id="Lunes19"></td>
                             <td id="Martes19"></td>
                             <td id="Miercoles19"></td>
@@ -287,8 +268,7 @@ if (isset($session->permissions)) {
         };
 
         $.post("?controller=Schedule&action=selectWithSchedule", parameters, function (data) {
-            alert(JSON.stringify(data));
-            $('#form-courses').attr("disabled", false);
+            $('#form-courses').removeAttr('disabled');
             $('#form-courses').empty();
             $('#form-courses').append($("<option></option>").attr("value", -1).text('Seleccione un Curso'));
             for (var i = 0; i < data.length; i++) {
@@ -308,7 +288,7 @@ if (isset($session->permissions)) {
         $.post("?controller=Schedule&action=select", parameters, function (data) {
             for (var i = 0; i < data.length; i++) {
                 var temp = getRandomArbitrary(0, 3);
-                for (var j = data[i].start; j <= data[i].end; j++) {
+                for (var j = parseInt(data[i].start); j <= parseInt(data[i].end); j++) {
                     $("#" + data[i].day + '' + j).addClass(colorClass[temp]);
                     $("#" + data[i].day + '' + j).text(data[i].initials + ' | ' + data[i].name);
                 }
@@ -341,10 +321,6 @@ if (isset($session->permissions)) {
         $("#form-close").attr('disabled', 'disabled');
         SEMICOLON.widget.notifications($("#wait"));
 
-        if($("#" + $("#form-days").val()+''+$("#form-hour-init").val()).hasClass('')){
-         alert("Mierda");   
-        }
-
         var parameters = {
             "ID": $("#form-courses").val(),
             "start": $("#form-hour-init").val(),
@@ -354,11 +330,11 @@ if (isset($session->permissions)) {
 
         $.post("?controller=Schedule&action=insert", parameters, function (data) {
             if (data.result === '1') {
-                    var temp = getRandomArbitrary(0, 3);
-                    for (var j = parseInt($("#form-hour-init").val()); j <= parseInt($("#form-hour-end").val()); j++) {
-                        $("#" + $("#form-days").val() + j).addClass(colorClass[temp]);
-                        $("#" + $("#form-days").val() + j).text($("#form-courses option:selected").text().trim());
-                    }
+                var temp = getRandomArbitrary(0, 3);
+                for (var j = parseInt($("#form-hour-init").val()); j <= parseInt($("#form-hour-end").val()); j++) {
+                    $("#" + $("#form-days").val() + j).addClass(colorClass[temp]);
+                    $("#" + $("#form-days").val() + j).text($("#form-courses option:selected").text().trim());
+                }
                 SEMICOLON.widget.notifications($("#success"));
             } else {
                 SEMICOLON.widget.notifications($("#warning"));

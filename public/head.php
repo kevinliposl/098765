@@ -24,8 +24,8 @@
         <link rel="stylesheet" href="public/css/responsive.css" type="text/css" />
 
         <script src="public/js/jquery.min.js" type="text/javascript"></script>
-
+        
         <title>Fusi&oacute;n Academia de M&uacute;sica</title>
     </head>
-    <body class="stretched" oncontextmenu="return false">
+    <body class="stretched">
         <div id="wrapper" class="clearfix">

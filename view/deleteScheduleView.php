@@ -63,7 +63,7 @@ if (isset($session->permissions)) {
                 <table class="table table-bordered nobottommargin table-striped" id="shedule">
                     <thead>
                         <tr>
-                            <th>Horas</th>
+                            <th style="width: 10%;">Horas</th>
                             <th>(L) Lunes</th>
                             <th>(K) Martes</th>
                             <th>(M) Miercoles</th>
@@ -105,7 +105,7 @@ if (isset($session->permissions)) {
                             <td id="Domingo9"></td>
                         </tr>
                         <tr>
-                            <td class="hora">10:00 - 10:50</td>
+                            <td>10:00 - 10:50</td>
                             <td id="Lunes10"></td>
                             <td id="Martes10"></td>
                             <td id="Miercoles10"></td>
@@ -115,7 +115,7 @@ if (isset($session->permissions)) {
                             <td id="Domingo10"></td>
                         </tr>
                         <tr>
-                            <td class="hora">11:00 - 11:50</td>
+                            <td>11:00 - 11:50</td>
                             <td id="Lunes11"></td>
                             <td id="Martes11"></td>
                             <td id="Miercoles11"></td>
@@ -125,7 +125,7 @@ if (isset($session->permissions)) {
                             <td id="Domingo11"></td>
                         </tr>
                         <tr>
-                            <td class="hora">12:00 - 12:50</td>
+                            <td>12:00 - 12:50</td>
                             <td id="Lunes12"></td>
                             <td id="Martes12"></td>
                             <td id="Miercoles12"></td>
@@ -135,7 +135,7 @@ if (isset($session->permissions)) {
                             <td id="Domingo12"></td>
                         </tr>
                         <tr>
-                            <td class="hora">13:00 - 13:50</td>
+                            <td>13:00 - 13:50</td>
                             <td id="Lunes13"></td>
                             <td id="Martes13"></td>
                             <td id="Miercoles13"></td>
@@ -145,7 +145,7 @@ if (isset($session->permissions)) {
                             <td id="Domingo13"></td>
                         </tr>
                         <tr>
-                            <td class="hora">14:00 - 14:50</td>
+                            <td>14:00 - 14:50</td>
                             <td id="Lunes14"></td>
                             <td id="Martes14"></td>
                             <td id="Miercoles14"></td>
@@ -155,7 +155,7 @@ if (isset($session->permissions)) {
                             <td id="Domingo14"></td>
                         </tr>
                         <tr>
-                            <td class="hora">15:00 - 15:50</td>
+                            <td>15:00 - 15:50</td>
                             <td id="Lunes15"></td>
                             <td id="Martes15"></td>
                             <td id="Miercoles15"></td>
@@ -165,7 +165,7 @@ if (isset($session->permissions)) {
                             <td id="Domingo15"></td>
                         </tr>
                         <tr>
-                            <td class="hora">16:00 - 16:50</td>
+                            <td>16:00 - 16:50</td>
                             <td id="Lunes16"></td>
                             <td id="Martes16"></td>
                             <td id="Miercoles16"></td>
@@ -175,7 +175,7 @@ if (isset($session->permissions)) {
                             <td id="Domingo16"></td>
                         </tr>
                         <tr>
-                            <td class="hora">17:00 - 17:50</td>
+                            <td>17:00 - 17:50</td>
                             <td id="Lunes17"></td>
                             <td id="Martes17"></td>
                             <td id="Miercoles17"></td>
@@ -185,7 +185,7 @@ if (isset($session->permissions)) {
                             <td id="Domingo17"></td>
                         </tr>
                         <tr>
-                            <td class="hora">18:00 - 18:50</td>
+                            <td>18:00 - 18:50</td>
                             <td id="Lunes18"></td>
                             <td id="Martes18"></td>
                             <td id="Miercoles18"></td>
@@ -195,7 +195,7 @@ if (isset($session->permissions)) {
                             <td id="Domingo18"></td>
                         </tr>
                         <tr>
-                            <td class="hora">19:00 - 19:50</td>
+                            <td>19:00 - 19:50</td>
                             <td id="Lunes19"></td>
                             <td id="Martes19"></td>
                             <td id="Miercoles19"></td>
@@ -220,19 +220,55 @@ if (isset($session->permissions)) {
         return Math.floor(Math.random() * (max - min)) + min;
     }
 
-    function clearTable() {
-        for (var k = 1; k <= 7; k++) {
-            for (var x = 7; x <= 19; x++) {
-                $("#" + days[k] + '' + x).removeClass();
-                $("#" + days[k] + '' + x).text('');
-            }
-        }
-    }
-
     //CARGA CURSOS EN SELECT
     $("#form-semester").change(function () {
-        if ($("#form-semester").val() === "-1") {
-            clearTable();
+        if ($("#form-semester").val() !== "-1") {
+
+            var parameters = {
+                "ID_Semester": $("#form-semester").val()
+            };
+            SEMICOLON.widget.notifications($("#wait"));
+
+            $.post("?controller=Schedule&action=select", parameters, function (data) {
+                if (data[0].initials) {
+                    for (var k = 1; k <= 7; k++) {
+                        for (var x = 7; x <= 19; x++) {
+                            $("#" + days[k] + '' + x).removeClass();
+                            $("#" + days[k] + '' + x).text('');
+                        }
+                    }
+                    for (var i = 0; i < data.length; i++) {
+                        var temp = getRandomArbitrary(0, 3);
+                        for (var j = parseInt(data[i].start); j <= parseInt(data[i].end); j++) {
+                            $("#" + data[i].day + '' + j).addClass(colorClass[temp]);
+                            $("#" + data[i].day + '' + j).text(data[i].initials + ' | ' + data[i].name);
+                        }
+                    }
+                }
+            }, "json");
+
+            $.post("?controller=Schedule&action=selectWithSchedule", parameters, function (data) {
+                if (data[0].ID) {
+                    $('#form-courses').removeAttr('disabled');
+                    $('#form-courses').empty();
+                    $('#form-courses').append($("<option></option>").attr("value", -1).text('Seleccione un Curso'));
+                    for (var i = 0; i < data.length; i++) {
+                        $('#form-courses').append($("<option></option>").attr("value", data[i].ID).text(data[i].initials + ' | ' + data[i].name));
+                    }
+                    $("#form-courses").selectpicker("refresh");
+                } else {
+                    SEMICOLON.widget.notifications($("#warning"));
+                }
+            }, "json");
+
+        } else {
+            for (var k = 1; k <= 7; k++) {
+                for (var x = 7; x <= 19; x++) {
+                    $("#" + days[k] + '' + x).removeClass();
+                    $("#" + days[k] + '' + x).text('');
+                }
+            }
+
             $("#form-courses").attr('disabled', 'disabled');
             $('#form-courses').empty();
             $('#form-courses').append($("<option></option>").attr("value", -1).text('Seleccione un Curso'));
@@ -244,105 +280,82 @@ if (isset($session->permissions)) {
             $("#form-hour").selectpicker("refresh");
             return;
         }
-
-        var parameters = {
-            "ID_Semester": $("#form-semester").val()
-        };
-        clearTable();
-
-        $.post("?controller=Schedule&action=select", parameters, function (data) {
-            alert(JSON.stringify(data));
-            for (var i = 0; i < data.length; i++) {
-                var temp = getRandomArbitrary(0, 3);
-                for (var j = parseInt(data[i].start); j <= parseInt(data[i].end); j++) {
-                    $("#" + data[i].day + '' + j).addClass(colorClass[temp]);
-                    $("#" + data[i].day + '' + j).text(data[i].initials + ' | ' + data[i].name);
-                }
-            }
-        }, "json");
-
-        $('#form-courses').removeAttr('disabled');
-
-        $.post("?controller=Schedule&action=selectWithSchedule", parameters, function (data) {
-            $('#form-courses').empty();
-            $('#form-courses').append($("<option></option>").attr("value", -1).text('Seleccione un Curso'));
-            for (var i = 0; i < data.length; i++) {
-                $('#form-courses').append($("<option></option>").attr("value", data[i].ID).text(data[i].initials + ' | ' + data[i].name));
-            }
-            $("#form-courses").selectpicker("refresh");
-            SEMICOLON.widget.notifications($("#success"));
-
-        }, "json");
     });
     //CARGA HORARIOS EN SELECT
 
     $("#form-courses").change(function () {
-        if ($("#form-courses").val() === "-1") {
+        if ($("#form-courses").val() !== "-1") {
+
+            var parameters = {
+                "ID_appointment": $("#form-courses").val()
+            };
+            SEMICOLON.widget.notifications($("#wait"));
+
+            $.post("?controller=Schedule&action=selectCourseSchedules", parameters, function (data) {
+                if (data[0].day) {
+                    $('#form-hour').removeAttr('disabled');
+                    $('#form-hour').empty();
+                    $('#form-hour').append($("<option></option>").attr("value", -1).text('Seleccione un Horario'));
+                    for (var i = 0; i < data.length; i++) {
+                        $('#form-hour').append($("<option></option>").attr("value", data[i].ID + "," + data[i].ID_schedule).text(data[i].day + ' | ' + data[i].start_time + ':00 a ' + data[i].end_time + ':50.')); //AGREGAR OPCIONES
+                    }
+                    $("#form-hour").selectpicker("refresh");
+
+                } else {
+                    SEMICOLON.widget.notifications($("#warning"));
+                }
+            }, "json");
+        } else {
             $('#form-hour').empty();
             $('#form-hour').append($("<option></option>").attr("value", -1).text('Seleccione un Horario'));
             $("#form-hour").selectpicker("refresh");
-            return;
         }
-
-        var parameters = {
-            "ID_appointment": $("#form-courses").val()
-        };
-        $('#form-hour').removeAttr('disabled');
-
-        alert("asdasd");
-
-        $.post("?controller=Schedule&action=selectCourseSchedules", parameters, function (data) {
-
-            $('#form-hour').empty();
-            $('#form-hour').append($("<option></option>").attr("value", -1).text('Seleccione un Horario'));
-            for (var i = 0; i < data.length; i++) {
-                $('#form-hour').append($("<option></option>").attr("value", data[i].ID + "," + data[i].ID_schedule).text(data[i].day + ' | ' + data[i].start_time + ':00 a ' + data[i].end_time + ':50.')); //AGREGAR OPCIONES
-            }
-            $("#form-hour").selectpicker("refresh");
-            SEMICOLON.widget.notifications($("#success"));
-
-        }, "json");
     });
-
 
     $('#form-submit').click(function () {
+        if ($("#form-hour").val() !== "-1") {
 
-        SEMICOLON.widget.notifications($("#wait"));
+            var temp = $("#form-hour").val();
+            var arr = temp.split(",");
+            var parameters = {
+                "ID": arr[0],
+                "ID_schedule": arr[1]
+            };
+            SEMICOLON.widget.notifications($("#wait"));
 
-        var temp = $("#form-hour").val();
-        var arr = temp.split(",");
-        var parameters = {
-            "ID": arr[0],
-            "ID_schedule": arr[1]
-        };
-
-
-        $.post("?controller=Schedule&action=delete", parameters, function (data) {
-            if (data.result === '1') {
-                SEMICOLON.widget.notifications($("#success"));
-                $('#form-hour').find('option:selected').remove();
-                $("#form-hour").selectpicker("refresh");
-            } else {
-                SEMICOLON.widget.notifications($("#warning"));
-            }
-        }, "json");
-
-        var par = {
-            "ID_Semester": $("#form-semester").val()
-        };
-
-        clearTable();
-        $.post("?controller=Schedule&action=select", par, function (data) {
-            for (var i = 0; i < data.length; i++) {
-                var temp = getRandomArbitrary(0, 3);
-                for (var j = parseInt(data[i].start); j <= parseInt(data[i].end); j++) {
-                    $("#" + data[i].day + '' + j).addClass(colorClass[temp]);
-                    $("#" + data[i].day + '' + j).text(data[i].initials + ' | ' + data[i].name);
+            $.post("?controller=Schedule&action=delete", parameters, function (data) {
+                if (data.result === '1') {
+                    $('#form-hour').find('option:selected').remove();
+                    $("#form-hour").selectpicker("refresh");
+                    SEMICOLON.widget.notifications($("#success"));
+                } else {
+                    SEMICOLON.widget.notifications($("#warning"));
                 }
-            }
-        }, "json");
-    });
+            }, "json");
 
+            var args = {
+                "ID_Semester": $("#form-semester").val()
+            };
+
+            $.post("?controller=Schedule&action=select", args, function (data) {
+                for (var k = 1; k <= 7; k++) {
+                    for (var x = 7; x <= 19; x++) {
+                        $("#" + days[k] + '' + x).removeClass();
+                        $("#" + days[k] + '' + x).text('');
+                    }
+                }
+                if (data[0].day) {
+                    for (var i = 0; i < data.length; i++) {
+                        var temp = getRandomArbitrary(0, 3);
+                        for (var j = parseInt(data[i].start); j <= parseInt(data[i].end); j++) {
+                            $("#" + data[i].day + '' + j).addClass(colorClass[temp]);
+                            $("#" + data[i].day + '' + j).text(data[i].initials + ' | ' + data[i].name);
+                        }
+                    }
+                }
+            }, "json");
+        }
+    });
 </script>
 
 <?php
