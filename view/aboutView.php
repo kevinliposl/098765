@@ -93,21 +93,25 @@ if (isset($session->permissions)) {
     <div class="section footer-stick">
         <h4 class="uppercase center">¿Qu&eacute; dicen nuestros <span>clientes</span>?</h4>
         <div class="fslider testimonial testimonial-full" data-animation="fade" data-arrows="false">
-            <div id="fb-root"></div>
-            <script>(function (d, s, id) {
-                    var js, fjs = d.getElementsByTagName(s)[0];
-                    if (d.getElementById(id))
-                        return;
-                    js = d.createElement(s);
-                    js.id = id;
-                    js.src = 'https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.11';
-                    fjs.parentNode.insertBefore(js, fjs);
-                }(document, 'script', 'facebook-jssdk'));</script>
+            <div class="flexslider">
+                <div class="slider-wrap">
+                    <div id="fb-root"></div>
+                    <script>(function (d, s, id) {
+                            var js, fjs = d.getElementsByTagName(s)[0];
+                            if (d.getElementById(id))
+                                return;
+                            js = d.createElement(s);
+                            js.id = id;
+                            js.src = 'https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.11';
+                            fjs.parentNode.insertBefore(js, fjs);
+                        }(document, 'script', 'facebook-jssdk'));</script>
 
+                    <div class="fb-comments" data-href="http://fusionacademiacr.com/" data-numposts="5"></div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="fb-comments" data-href="http://fusionacademiacr.com/" data-numposts="5"></div>
-    
+
 </section>
 
 <?php
