@@ -1,1 +1,0 @@
-//<script src="public/js/changePasswordView.js" type="text/javascript"></script>
