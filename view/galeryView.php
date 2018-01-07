@@ -106,6 +106,8 @@ include_once 'public/header.php';
     </div>
 </section><!-- #content end -->
 
+<script src="public/js/Views/galeryView.js" type="text/javascript"></script>
+
 <?php
 include_once 'public/footer.php';
 ?>
