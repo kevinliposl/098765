@@ -30,12 +30,6 @@ if (isset($session->permissions)) {
                             <th>Cantidad</th>
                         </tr>
                     </thead>
-                    <tfoot>
-                        <tr>
-                            <th>Rol</th>
-                            <th>Cantidad</th>
-                        </tr>
-                    </tfoot>
                     <tbody>
                         <?php
                         foreach ($vars as $var) {
