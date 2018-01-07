@@ -11,7 +11,6 @@ if (isset($session->permissions)) {
     header('Location:?action=notFound');
 }
 ?>
-
 <section id="page-title">
     <div class="container clearfix">
         <h1>Actualizar Datos de Profesor</h1>
