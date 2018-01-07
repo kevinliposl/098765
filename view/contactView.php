@@ -112,61 +112,9 @@ if (isset($session->permissions)) {
     </div>
 </section>
 
-<script type="text/javascript">
-    function val() {
-        var parameters = {
-            'form-name': $("#form-name").val(),
-            'form-email': $("#form-email").val().trim(),
-            'form-phone': $("#form-phone").val().trim(),
-            'form-service': $("#form-service").val().trim(),
-            'form-subject': $("#form-subject").val().trim(),
-            'form-message': $("#form-message").val().trim()
-        };
-
-        SEMICOLON.widget.notifications($("#wait"));
-
-        $.post("?controller=Index&action=contactSendEmail", parameters, function (data) {
-            if (data.result === "1") {
-                SEMICOLON.widget.notifications($("#success"));
-                setTimeout("location.href = '?';", 1500);
-            } else {
-                SEMICOLON.widget.notifications($("#warning"));
-            }
-        }, "json");
-        return false;
-    }
-</script>>
-
 <script type='text/javascript' src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCQkWM0oTBZWWCQZudbiZVOU0DEooJ4FSw'></script>
 <script type="text/javascript" src="public/js/jquery.gmap.js"></script>
-
-<script>
-    $('#google-map').gMap({
-        address: 'Fusión Academia de Música, Turrialba, Provincia de Cartago, Costa Rica',
-        maptype: 'ROADMAP',
-        zoom: 15,
-        markers: [
-            {
-                address: "Fusión Academia de Música, Turrialba, Provincia de Cartago, Costa Rica",
-                html: '<div style="width: 300px;"><h4 style="margin-bottom: 8px;">Hola, <span>Amigo</span></h4><p class="nobottommargin">Est&aacute es nuestra <strong>ubicaci&oacuten</strong> fisica.</p></div>',
-                icon: {
-                    image: "public/images/icons/map-icon-red.png",
-                    iconsize: [32, 39],
-                    iconanchor: [32, 39]
-                }
-            }
-        ],
-        doubleclickzoom: true,
-        controls: {
-            panControl: true,
-            zoomControl: true,
-            mapTypeControl: true,
-            scaleControl: false,
-            streetViewControl: false,
-            overviewMapControl: false
-        }
-    });
-</script>
+<script type="text/javascript" src="public/js/contactView.js"></script>
 
 <?php
 include_once 'public/footer.php';
