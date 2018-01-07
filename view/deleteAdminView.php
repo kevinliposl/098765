@@ -24,7 +24,7 @@ if (isset($session->permissions)) {
             <div class="accordion-lg divcenter nobottommargin" style="max-width: 550px;">
                 <div class="acc_content clearfix">
                     <form id="form" class="nobottommargin" onsubmit="return val();">
-                        <div class="white-section">
+                        <div class="col_full">
                             <label for="form-id">Administradores:</label>
                             <select id="form-admin" class="selectpicker form-control" data-live-search="true">
                                 <option value="-1" data-tokens="">Seleccione un Administrador</option>
