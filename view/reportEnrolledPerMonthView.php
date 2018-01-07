@@ -66,11 +66,8 @@ if (isset($session->permissions)) {
     </div>
 </section>
 
-<script>
-    $(document).ready(function () {
-        $('#datatable').DataTable();
-    });
-</script>
+<script src="public/js/Views/reportEnrolledPerMonthView.js" type="text/javascript"></script>
+<script src="public/js/Views/general.js" type="text/javascript"></script>
 
 <?php
 include_once 'public/footer.php';
