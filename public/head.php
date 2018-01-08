@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="es">
     <head>
+        <meta property="fb:app_id" content="2016568741962286" />
+        <!--<meta property="fb:admins" content="1289480648" />-->
+
         <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -21,11 +24,11 @@
         <link rel="stylesheet" href="public/css/components/bs-editable.css" type="text/css" />
         <link rel="stylesheet" href="public/css/typeahead.js-bootstrap.css" type="text/css"/>
         <link rel="stylesheet" href="public/css/components/bs-select.css" type="text/css" />
-        
+
         <link rel="stylesheet" href="public/css/responsive.css" type="text/css" />
 
         <script src="public/js/jquery.min.js" type="text/javascript"></script>
-        
+
         <title>Fusi&oacute;n Academia de M&uacute;sica</title>
     </head>
     <body class="stretched">

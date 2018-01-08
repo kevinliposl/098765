@@ -70,7 +70,7 @@ if (isset($session->permissions)) {
         </div>
     </div>
     <div class="row common-height bottommargin-lg clearfix">
-        <div class="col-sm-7 col-padding" style="background-color: #F5F5F5;">
+        <div class="col-sm-7 col-padding">
             <div>
                 <div class="heading-block">
                     <span class="before-heading color">Co-Fundador</span>
@@ -107,12 +107,14 @@ if (isset($session->permissions)) {
                         }(document, 'script', 'facebook-jssdk'));</script>
 
                     <div class="fb-comments" data-href="http://fusionacademiacr.com/" data-numposts="5"></div>
+                    <div class="clearfix "><br><br><br><br><br></div>
                 </div>
             </div>
         </div>
     </div>
-
 </section>
+
+<script src="public/js/Views/general.js" type="text/javascript"></script>
 
 <?php
 
