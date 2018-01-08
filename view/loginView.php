@@ -51,7 +51,7 @@ include_once 'public/head.php';
     </div>
 </section>
 
-<script src="public/js/validation/login.js" type="text/javascript"></script>
+<script src="public/js/Views/login.js" type="text/javascript"></script>
 
 <?php
 include_once 'public/footerEmpty.php';
