@@ -2,7 +2,6 @@
 <html dir="ltr" lang="es">
     <head>
         <meta property="fb:app_id" content="2016568741962286" />
-        <!--<meta property="fb:admins" content="1289480648" />-->
 
         <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
