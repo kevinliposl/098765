@@ -104,85 +104,57 @@ if (isset($session->permissions)) {
                 </div>
             </div>
         </div>
-        <div class="container clearfix">
-            <div class="clear"></div>
-            <div class="section parallax dark nobottommargin" style="background-image: url('public/images/landing/EscritorioFusion.jpg'); padding: 100px 0;" data-stellar-background-ratio="0.4">
-                <div class="heading-block center">
-                    <h3>¿Qu&eacute; dice nuestros clientes?</h3>
-                </div>
-                <div class="fslider testimonial testimonial-full" data-animation="fade" data-arrows="false">
-                    <div class="flexslider">
-                        <div class="slider-wrap">
-                            <div class="slide">
-                                <!--                                <div class="testi-image">
-                                                                    <a href="#"><img src="public/images/icons/avatar.jpg" alt="Customer Testimonails"></a>
-                                                                </div>-->
-                                <div class="testi-content">
-                                    <p>
-                                        Fusi&oacute;n es una excelente opci&oacute;n para aprender m&uacute;sica
-                                    </p>
-                                    <div class="testi-meta">
-                                        Pablo Barrientos
-                                        <span>Estudiante - Universidad de Costa Rica</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
+        <div class="section footer-stick">
+            <h4 class="uppercase center">¿Qu&eacute; dicen nuestros <span>clientes</span>?</h4>
+            <div class="fslider testimonial testimonial-full" data-animation="fade" data-arrows="false">
+                <div class="flexslider">
+                    <div class="slider-wrap">
+                        <div id="fb-root"></div>
+                        <script>(function (d, s, id) {
+                                var js, fjs = d.getElementsByTagName(s)[0];
+                                if (d.getElementById(id))
+                                    return;
+                                js = d.createElement(s);
+                                js.id = id;
+                                js.src = 'https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.11';
+                                fjs.parentNode.insertBefore(js, fjs);
+                            }(document, 'script', 'facebook-jssdk'));</script>
+
+                        <div class="fb-comments" data-href="http://fusionacademiacr.com/" data-numposts="5"></div>
+                        <div class="clearfix "><br><br><br><br><br></div>
                     </div>
                 </div>
             </div>
-
-            <?php if (isset($session->permissions)) { ?>
-                <div class="modal-on-load" data-target="#myModal1"></div>
-            <?php } ?>
-            <!-- Modal -->
-            <div class="modal1 mfp-hide subscribe-widget" id="myModal1">
-                <div class="block dark divcenter" style="background: url('public/images/footer-bg.jpg') no-repeat; background-size: cover; max-width: 500px;" data-height-lg="400">
-                    <div style="padding: 50px;">
-                        <div class="center" style="max-width:500px;">
-                            <h3>¡Nuestra p&aacute;gina a&uacute;n se encuentra en construcci&oacute;n!</h3>
-                        </div>
-                        <div class="heading-block nobottomborder bottommargin-sm" style="max-width:500px;">
-                            <span>Si encuentras alg&uacute;n error puedes enviarnos un correo a:</span>
-                            <br>
-                            <p class="nobottommargin"><small>pabloBarrientos@fusionacademiacr.com</small></p>
-                            <p class="nobottommargin"><small>kevinSandoval@fusionacademiacr.com</small></p>
-                        </div>
-                        <div class="heading-block nobottomborder bottommargin-sm" style="max-width:500px;">
-                            <span>O bien, lo puedes hacer desde nuestra secci&oacute;n de 
-                                <a href="?controller=Index&action=contact" class="badge">Contacto</a></span>
-                        </div>
-                    </div>
-                    <div class="section center nomargin" style="padding: 30px;">
-                        <a href="#" class="button" onClick="$.magnificPopup.close();return false;">Entendido</a>
-                    </div>
-                </div>
-            </div>
-
-
-            <!--            <br><h2 class="center">¡Nuestros socios!</h2>
-            
-                        <div class="container clearfix">
-            
-                            <div id="oc-clients" class="owl-carousel image-carousel carousel-widget" data-margin="60" data-loop="true" data-nav="false" data-autoplay="5000" data-pagi="false" data-items-xxs="2" data-items-xs="3" data-items-sm="4" data-items-md="5" data-items-lg="6">
-            
-                                <div class="oc-item"><a href="#"><img src="public/images/icons/avatar.jpg" alt="Clients"></a></div>
-                                <div class="oc-item"><a href="#"><img src="public/images/icons/avatar.jpg" alt="Clients"></a></div>
-                                <div class="oc-item"><a href="#"><img src="public/images/icons/avatar.jpg" alt="Clients"></a></div>
-                                <div class="oc-item"><a href="#"><img src="public/images/icons/avatar.jpg" alt="Clients"></a></div>
-                                <div class="oc-item"><a href="#"><img src="public/images/icons/avatar.jpg" alt="Clients"></a></div>
-                                <div class="oc-item"><a href="#"><img src="public/images/icons/avatar.jpg" alt="Clients"></a></div>
-                                <div class="oc-item"><a href="#"><img src="public/images/icons/avatar.jpg" alt="Clients"></a></div>
-                                <div class="oc-item"><a href="#"><img src="public/images/icons/avatar.jpg" alt="Clients"></a></div>
-                                <div class="oc-item"><a href="#"><img src="public/images/icons/avatar.jpg" alt="Clients"></a></div>
-                                <div class="oc-item"><a href="#"><img src="public/images/icons/avatar.jpg" alt="Clients"></a></div>
-            
-                            </div>
-            
-            
-                        </div>-->
-
         </div>
+
+        <?php if (isset($session->permissions)) { ?>
+            <div class="modal-on-load" data-target="#myModal1"></div>
+        <?php } ?>
+        <!-- Modal -->
+        <div class="modal1 mfp-hide subscribe-widget" id="myModal1">
+            <div class="block dark divcenter" style="background: url('public/images/footer-bg.jpg') no-repeat; background-size: cover; max-width: 500px;" data-height-lg="400">
+                <div style="padding: 50px;">
+                    <div class="center" style="max-width:500px;">
+                        <h3>¡Nuestra p&aacute;gina a&uacute;n se encuentra en construcci&oacute;n!</h3>
+                    </div>
+                    <div class="heading-block nobottomborder bottommargin-sm" style="max-width:500px;">
+                        <span>Si encuentras alg&uacute;n error puedes enviarnos un correo a:</span>
+                        <br>
+                        <p class="nobottommargin"><small>pabloBarrientos@fusionacademiacr.com</small></p>
+                        <p class="nobottommargin"><small>kevinSandoval@fusionacademiacr.com</small></p>
+                    </div>
+                    <div class="heading-block nobottomborder bottommargin-sm" style="max-width:500px;">
+                        <span>O bien, lo puedes hacer desde nuestra secci&oacute;n de 
+                            <a href="?controller=Index&action=contact" class="badge">Contacto</a></span>
+                    </div>
+                </div>
+                <div class="section center nomargin" style="padding: 30px;">
+                    <a href="#" class="button" onClick="$.magnificPopup.close();return false;">Entendido</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
 <?php
