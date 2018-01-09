@@ -30,5 +30,5 @@
 
         <title>Fusi&oacute;n Academia de M&uacute;sica</title>
     </head>
-    <body class="stretched">
+    <body class="stretched" oncontextmenu="return false;">
         <div id="wrapper" class="clearfix">
