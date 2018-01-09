@@ -23,7 +23,7 @@ include_once 'public/head.php';
                             <div class="col_full">
                                 <label for="form-password">Contrase&ncaron;a:</label>
                                 <input type="password" id="form-password" class="form-control not-dark" required/>
-                                <input type="hidden" id="failed-password" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                                <input type="hidden" id="failed-password" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class='icon-remove-sign'></i> Correo Incorrecto. Complete correctamente e intente de nuevo!"/>
                             </div>
                             <div class="col_full" id="div-permissions" style="display: none;">
                                 <label for="form-permissions">Rol:</label>
@@ -31,12 +31,12 @@ include_once 'public/head.php';
                                     <option value="-1" data-tokens="" disabled selected>Seleccione un Rol</option>
                                 </select>
                                 <input type="hidden" id="permissions" value="0"/>
-                                <input type="hidden" id="failed-permissions" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                                <input type="hidden" id="failed-permissions" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class=icon-remove-sign></i> Seleccione un Rol. Complete correctamente e intente de nuevo!"/>
                             </div>
                             <div class="line line-sm"></div>
                             <div class="col_full nobottommargin">
                                 <input type="submit" class="button button-3d button-black nomargin" id="submit" value="Ingresar">
-                                <input type="hidden" id="failed" data-notify-type="warning" data-notify-position="bottom-full-width"/>
+                                <input type="hidden" id="failed" data-notify-type="warning" data-notify-position="bottom-full-width" data-notify-msg="<i class=icon-remove-sign></i> Contrase&ncaron;a o Correo Incorrecto. Complete correctamente e intente de nuevo!"/>
                                 <input type="hidden" id="success" data-notify-type="success" data-notify-msg="<i class='icon-ok-sign'></i> Operaci&oacute;n exitosa, revise en breve...!" data-notify-position="bottom-full-width"/>
                                 <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Espere un momento...!" data-notify-position="bottom-full-width"/>      
                                 <a href="?controller=User&action=rememberPassword" class="fright" >¿Olvidó su contraseña?</a>
@@ -51,7 +51,80 @@ include_once 'public/head.php';
     </div>
 </section>
 
-<script src="public/js/Views/login.js" type="text/javascript"></script>
+<script>
+    $('#form-email').change(function () {
+        $('#permissions').val(0);
+        $('#form-permissions option').remove();
+    });
+
+    function encrypt(data) {
+        var publickey = "<?= $vars['result']; ?>";
+        var rsakey = new RSAKey();
+        rsakey.setPublic(publickey, "10001");
+        return rsakey.encrypt(data);
+    }
+
+    $("#submit").click(function () {
+
+        var email = $('#form-email').val().trim();
+        var password = $('#form-password').val().trim();
+
+        if (!/\w+@\w+\.+[a-z]/.test(email) || email.split(' ', 2).length > 1) {
+            SEMICOLON.widget.notifications($('#failed-email'));
+            return false;
+        }
+        if (password.length < 1 || email.split(' ', 2).length > 1) {
+            SEMICOLON.widget.notifications($('#failed-password'));
+            return false;
+        }
+
+        if ($('#permissions').val() <= 0) {
+            $('#permissions').val(1);
+
+            var parameters = {
+                "pass": encrypt($("#form-password").val()),
+                "email": encrypt($("#form-email").val())
+            };
+
+            $.post('?controller=User&action=logIn', parameters, function (data) {
+                if (data.result === '0') {
+                    $('#permissions').val(0);
+                    SEMICOLON.widget.notifications($('#failed'));
+                } else if (data.result === '1') {
+                    location.href = '?';
+                } else if (data[0].permissions) {
+                    for (var i = 0; i < data.length; i++) {
+                        var per;
+                        data[i].permissions === 'A' ? per = 'Administrador' : data[i].permissions === 'S' ? per = 'Estudiante' : per = 'Profesor';
+                        $('#form-permissions').append($("<option></option>").attr("value", data[i].permissions).text(per));
+                    }
+                    $('#div-permissions').css('display', 'block');
+                    $('#permissions').val(2);
+                }
+            }, 'json');
+        }
+        if ($('#permissions').val() >= 2) {
+            if ($('#form-permissions').val()) {
+                var param = {
+                    'permissions': $('#form-permissions').val()
+                };
+                $.post('?controller=User&action=setPermissions', param, function (data) {
+                    location.href = '?';
+                }, 'json');
+            } else {
+                SEMICOLON.widget.notifications($('#failed-permissions'));
+            }
+        }
+    });
+</script>
+
+<script src="public/js/RSA/jsbn.js"></script>
+<script src="public/js/RSA/jsbn2.js"></script>
+<script src="public/js/RSA/prng4.js"></script>
+<script src="public/js/RSA/rng.js"></script>
+<script src="public/js/RSA/rsa.js"></script>
+<script src="public/js/RSA/rsa2.js"></script>
 
 <?php
 include_once 'public/footerEmpty.php';
+?>

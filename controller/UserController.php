@@ -24,16 +24,23 @@ class UserController {
     function logIn() {
         $ssession = SSession::getInstance();
         if (!$ssession->__isset("identification")) {
-            if (isset($_POST['email']) && $_POST['password']) {
+            if (isset($_POST['email']) && $_POST['pass']) {
                 $model = new UserModel();
-                $result = $model->logIn($_POST['email'], $_POST['password']);
+
+                $keyPrivate = SSession::getInstance()->keys['privatekey'];
+                $email = RSA::getInstance()->decrypt($keyPrivate, $_POST["email"]);
+                $pass = RSA::getInstance()->decrypt($keyPrivate, $_POST["pass"]);
+                $result = $model->logIn($email, $pass);
+
                 if (isset($result[0]['identification'])) {
                     $this->permissions($result);
                 } else {
                     echo json_encode(array('result' => '0'));
                 }
             } else {
-                $this->view->show("loginView.php");
+                SSession::getInstance()->keys = RSA::getInstance()->keygen();
+                $keyPublicHex = RSA::getInstance()->publicKeyToHex(SSession::getInstance()->keys['privatekey']);
+                $this->view->show("loginView.php", array('result' => $keyPublicHex));
             }
         } else {
             $this->view->show("indexView.php");
