@@ -1,3 +1,5 @@
+/* global SEMICOLON */
+
 function val() {
     args = {
         "id": $("#form-id").val().trim(),
@@ -28,7 +30,6 @@ function val() {
         return false;
     }
     $('#showModal').click();
-    return false;
 }
 
 $("#form-submity").click(function () {
@@ -47,6 +48,7 @@ $("#form-submity").click(function () {
             $("#form-close").removeAttr('disabled');
         } else {
             SEMICOLON.widget.notifications($("#alert"));
+            alert(data.err);
             setTimeout("location.href='?controller=Admin&action=insert';", 2000);
         }
     }, "json");

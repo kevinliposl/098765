@@ -31,11 +31,12 @@ class AdminController {
                 $result = $model->insert($_POST["id"], $_POST["email"], $_POST["name"], $_POST["firstLastName"], $_POST["secondLastName"]);
                 if ($result['result'] === '1') {
                     $mail = SMail::getInstance();
-                    if ($mail->sendMail($_POST["email"], 'Contraseña de ingreso al sitio', 'Hola, gracias por formar parte de la academia, la contraseña'
-                                    . ' de ingreso al sitio es... <br><h1>' . $result['password'] . '</h1>')) {
+                    $result = $mail->sendMail($_POST["email"], 'Contraseña de ingreso al sitio', 'Hola, gracias por formar parte de la academia, la contraseña'
+                            . ' de ingreso al sitio es... <br><h1>' . $result['password'] . '</h1>');
+                    if ($result['result']) {
                         echo json_encode(array("result" => '1'));
                     } else {
-                        echo json_encode(array("result" => '2'));
+                        echo json_encode(array("result" => '2', 'err' => $result['err']));
                     }
                 } else {
                     echo json_encode(array("result" => '0'));

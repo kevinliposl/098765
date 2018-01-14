@@ -23,7 +23,7 @@ if (isset($session->permissions)) {
         <div class="container clearfix">
             <div class="accordion-lg divcenter nobottommargin" style="max-width: 550px;">
                 <div class="acc_content clearfix">
-                    <form id="form" class="nobottommargin" onsubmit="return val();">
+                    <form id="form" class="nobottommargin" onsubmit="return val(); return false">
                         <div class="col_full">
                             <label for="form-id">Cedula:</label>
                             <input type="text" id="form-id" class="form-control" pattern="[0-9]+$" required minlength="9" placeholder="304440555"/>
