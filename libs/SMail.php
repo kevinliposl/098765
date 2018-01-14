@@ -6,7 +6,7 @@ class SMail {
     private static $instance = null;
 
     private function __construct() {
-        require 'phpmailer/PHPMailerAutoload.php';
+        require 'libs/phpmailer/PHPMailerAutoload.php';
         date_default_timezone_set('Etc/UTC');
         ignore_user_abort(true);
         $this->autoLoad();
@@ -64,7 +64,7 @@ class SMail {
             $this->mail->Body = $body1;
             $this->mail->AltBody = 'Mensaje de ' . $form_name . ' -- ' . $form_email . ' -- ' . $form_phone;
 
-            $this->mail->addAddress('kevinliposl@gmail.com'); //////Poner direccion de envio
+            $this->mail->addAddress('brogudbarrientos@gmail.com'); //////Poner direccion de envio
             
             $result = $this->mail->send();
             return array('result' => $result, 'err' => NULL);
