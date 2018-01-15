@@ -48,8 +48,8 @@ class SMail {
 
     function contactMail($form_name, $form_email, $form_phone, $form_service, $form_subject, $form_message) {
         try {
-            $this->mail->Username = "3msqueters@gmail.com";
-            $this->mail->Password = "mosquetero";
+            $this->mail->Username = "consultas@fusionacademiacr.com";
+            $this->mail->Password = "consultasfusion";
             $this->mail->setFrom('fusionAcademiaMusical.com', 'info');
 
             $this->mail->Subject = $form_subject;
@@ -64,7 +64,7 @@ class SMail {
             $this->mail->Body = $body1;
             $this->mail->AltBody = 'Mensaje de ' . $form_name . ' -- ' . $form_email . ' -- ' . $form_phone;
 
-            $this->mail->addAddress('brogudbarrientos@gmail.com'); //////Poner direccion de envio
+            $this->mail->addAddress('consultas@fusionacademiacr.com'); //////Poner direccion de envio
 
             $result = $this->mail->send();
             return array('result' => $result, 'err' => NULL);
@@ -82,9 +82,9 @@ class SMail {
             $this->mail->SMTPDebug = 0; //Mensajes de debug; 0 = no mostrar (en producción), 1 = de cliente, 2 = de cliente y servidor
             $this->mail->Debugoutput = 'html'; //Mostrar mensajes (resultados) de depuración(debug) en html
 
-            $this->mail->Host = 'smtp.gmail.com'; //Nombre de host
+            $this->mail->Host = 'mail.fusionacademiacr.com'; //Nombre de host
 
-            $this->mail->Port = 587; //Puerto SMTP, 587 para autenticado TLS
+            $this->mail->Port = 465; //Puerto SMTP, 587 para autenticado TLS
             $this->mail->SMTPSecure = 'tls'; //Sistema de encriptación - ssl (obsoleto) o tls
             $this->mail->SMTPAuth = true; //Usar autenticación SMTP
             $this->mail->SMTPOptions = array(
