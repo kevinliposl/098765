@@ -34,24 +34,21 @@ if (isset($session->permissions)) {
                                         <td>Identificaci&oacute;n</td>
                                         <td>
                                             <a id="form-id" class="bt-editable" href="#" data-type="text" data-pk="1" data-placeholder="Required" data-title="Ingrese la identificación"><?php echo $vars['identification']; ?></a>
-                                            <input type="hidden" id="failed-id" data-notify-type= "error" data-notify-position="bottom-full-width"
-                                                   data-notify-msg="<i class=icon-remove-sign></i> Identificación Incorrecta. Verifique e intente de nuevo!"/>
+                                            <input type="hidden" id="failed-id" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class=icon-remove-sign></i> Identificación Incorrecta. Verifique e intente de nuevo!"/>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Email</td>
                                         <td>
                                             <a id="form-email" href="#" class="bt-editable" data-type="text" data-pk="1" data-placeholder="Required" data-title="Ingrese el email"><?php echo $vars['email']; ?></a>
-                                            <input type="hidden" id="failed-email" data-notify-type= "error" data-notify-position="bottom-full-width"
-                                                   data-notify-msg="<i class=icon-remove-sign></i> Email Incorrecto. Verifique e intente de nuevo!"/>
+                                            <input type="hidden" id="failed-email" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class=icon-remove-sign></i> Email Incorrecto. Verifique e intente de nuevo!"/>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Nombre</td>
                                         <td>
                                             <a id="form-name" href="#" class="bt-editable" data-type="text" data-pk="1" data-placeholder="Required" data-title="Ingrese el nombre"><?php echo $vars['name']; ?></a>
-                                            <input type="hidden" id="failed-name" data-notify-type= "error" data-notify-position="bottom-full-width"
-                                                   data-notify-msg="<i class=icon-remove-sign></i> Nombre Incorrecto. Verifique e intente de nuevo!"/>
+                                            <input type="hidden" id="failed-name" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class=icon-remove-sign></i> Nombre Incorrecto. Verifique e intente de nuevo!"/>
                                         </td>
                                     </tr>
                                     <tr>

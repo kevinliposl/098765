@@ -38,6 +38,7 @@ include_once 'public/head.php';
                                 <input type="submit" class="button button-3d button-black nomargin" id="submit" value="Ingresar">
                                 <input type="hidden" id="failed" data-notify-type="warning" data-notify-position="bottom-full-width" data-notify-msg="<i class=icon-remove-sign></i> Contrase&ncaron;a o Correo Incorrecto. Complete correctamente e intente de nuevo!"/>
                                 <input type="hidden" id="success" data-notify-type="success" data-notify-msg="<i class='icon-ok-sign'></i> Operaci&oacute;n exitosa, revise en breve...!" data-notify-position="bottom-full-width"/>
+                                <input type="hidden" id="alert" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Algo ha ocurrido. Intente ingresar nuevamente ahora o m&aacute;s tarde...!" data-notify-position="bottom-full-width"/>
                                 <input type="hidden" id="wait" data-notify-type="info" data-notify-msg="<i class=icon-info-sign></i> Espere un momento...!" data-notify-position="bottom-full-width"/>      
                                 <a href="?controller=User&action=rememberPassword" class="fright" >¿Olvidó su contraseña?</a>
                             </div>
@@ -86,7 +87,12 @@ include_once 'public/head.php';
                 "email": encrypt($("#form-email").val())
             };
 
-            $.post('?controller=User&action=logIn', parameters, function (data) {
+            $.ajax({
+                data: parameters,
+                type: "POST",
+                dataType: "json",
+                url: '?controller=User&action=logIn'
+            }).done(function (data) {
                 if (data.result === '0') {
                     $('#permissions').val(0);
                     SEMICOLON.widget.notifications($('#failed'));
@@ -101,7 +107,9 @@ include_once 'public/head.php';
                     $('#div-permissions').css('display', 'block');
                     $('#permissions').val(2);
                 }
-            }, 'json');
+            }).fail(function () {
+                SEMICOLON.widget.notifications($('#alert'));
+            });
         }
         if ($('#permissions').val() >= 2) {
             if ($('#form-permissions').val()) {
