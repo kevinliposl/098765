@@ -118,9 +118,16 @@ include_once 'public/head.php';
                 var param = {
                     'permissions': $('#form-permissions').val()
                 };
-                $.post('?controller=User&action=setPermissions', param, function (data) {
+                $.ajax({
+                    data: param,
+                    type: "POST",
+                    dataType: "json",
+                    url: '?controller=User&action=setPermissions'
+                }).done(function (data) {
                     location.href = '?';
-                }, 'json');
+                }).fail(function () {
+                    SEMICOLON.widget.notifications($('#alert'));
+                });
             } else {
                 SEMICOLON.widget.notifications($('#failed-permissions'));
             }
