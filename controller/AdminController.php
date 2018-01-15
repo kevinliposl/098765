@@ -33,7 +33,7 @@ class AdminController {
                     $mail = SMail::getInstance();
                     $result = $mail->sendMail($_POST["email"], 'Contraseña de ingreso al sitio', 'Hola, gracias por formar parte de la academia, la contraseña'
                             . ' de ingreso al sitio es... <br><h1>' . $result['password'] . '</h1>');
-                    if ($result['result']) {
+                    if ($result['result'] === '1') {
                         echo json_encode(array("result" => '1'));
                     } else {
                         echo json_encode(array("result" => '2', 'err' => $result['err']));

@@ -52,4 +52,6 @@ $("#form-submity").click(function () {
             setTimeout("location.href='?controller=Admin&action=insert';", 2000);
         }
     }, "json");
+    
+    return false;
 });
