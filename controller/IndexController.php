@@ -57,7 +57,7 @@ class IndexController {
     function contactSendEmail() {
         $mail = SMail::getInstance();
         $result = $mail->contactMail($_POST['form-name'], $_POST['form-email'], $_POST['form-phone'], $_POST['form-service'], $_POST['form-subject'], $_POST['form-message']);
-        echo json_encode(array('result' => $result . ''));
+        echo json_encode($result);
     }
 
     /**

@@ -21,7 +21,7 @@ class SMail {
 
     function sendMail($addressee, $subject, $messaje) {
         try {
-             $this->mail->Username = "consultas@fusionacademiacr.com";
+            $this->mail->Username = "consultas@fusionacademiacr.com";
             $this->mail->Password = "consultasfusion";
             $this->mail->setFrom('http://fusionacademiacr.com/', 'info');
 
@@ -40,7 +40,12 @@ class SMail {
             $this->mail->addAddress($addressee);
 
             $result = $this->mail->send();
-            return array('result' => $result, 'err' => NULL);
+
+            if ($result) {
+                return array('result' => '1', 'err' => NULL);
+            } else {
+                return array('result' => '0', 'err' => NULL);
+            }
         } catch (Exception $exc) {
             return array('result' => false, 'err' => $exc);
         }
@@ -67,9 +72,13 @@ class SMail {
             $this->mail->addAddress('consultas@fusionacademiacr.com'); //////Poner direccion de envio
 
             $result = $this->mail->send();
-            return array('result' => $result, 'err' => NULL);
+            if ($result) {
+                return array('result' => '1', 'err' => NULL);
+            } else {
+                return array('result' => '0', 'err' => NULL);
+            }
         } catch (Exception $exc) {
-            return array('result' => false, 'err' => $exc);
+            return array('result' => '0', 'err' => $exc);
         }
     }
 
@@ -85,11 +94,11 @@ class SMail {
             $this->mail->Host = 'mail.fusionacademiacr.com'; //Nombre de host
 
             $this->mail->Port = 465; //Puerto SMTP, 587 para autenticado TLS
-            $this->mail->SMTPSecure = 'tls'; //Sistema de encriptación - ssl (obsoleto) o tls
+            $this->mail->SMTPSecure = 'ssl'; //Sistema de encriptación - ssl (obsoleto) o tls
             $this->mail->SMTPAuth = true; //Usar autenticación SMTP
-            $this->mail->SMTPOptions = array(
-                'ssl' => array('verify_peer' => false, 'verify_peer_name' => false, 'allow_self_signed' => true)
-            );
+//            $this->mail->SMTPOptions = array(
+//                'ssl' => array('verify_peer' => false, 'verify_peer_name' => false, 'allow_self_signed' => true)
+//            );
         } catch (Exception $exc) {
             return $exc;
         }
