@@ -18,12 +18,12 @@ include_once 'public/head.php';
                             <div class="col_full">
                                 <label for="form-email">Email:</label>
                                 <input type="email" id="form-email" class="form-control not-dark" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required/>
-                                <input type="hidden" id="failed-email" data-notify-type= "error" data-notify-position="bottom-full-width"/>
+                                <input type="hidden" id="failed-email" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class='icon-remove-sign'></i>Complete correctamente el correo e intente de nuevo!"/>
                             </div>
                             <div class="col_full">
                                 <label for="form-password">Contrase&ncaron;a:</label>
                                 <input type="password" id="form-password" class="form-control not-dark" required/>
-                                <input type="hidden" id="failed-password" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class='icon-remove-sign'></i> Correo Incorrecto. Complete correctamente e intente de nuevo!"/>
+                                <input type="hidden" id="failed-password" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class='icon-remove-sign'></i>Complete correctamente la contrase&ncaron;a e intente de nuevo!"/>
                             </div>
                             <div class="col_full" id="div-permissions" style="display: none;">
                                 <label for="form-permissions">Rol:</label>
@@ -86,6 +86,8 @@ include_once 'public/head.php';
                 "pass": encrypt($("#form-password").val()),
                 "email": encrypt($("#form-email").val())
             };
+
+            SEMICOLON.widget.notifications($('#wait'));
 
             $.ajax({
                 data: parameters,
