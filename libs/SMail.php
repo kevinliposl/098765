@@ -65,7 +65,7 @@ class SMail {
             $this->mail->AltBody = 'Mensaje de ' . $form_name . ' -- ' . $form_email . ' -- ' . $form_phone;
 
             $this->mail->addAddress('brogudbarrientos@gmail.com'); //////Poner direccion de envio
-            
+
             $result = $this->mail->send();
             return array('result' => $result, 'err' => NULL);
         } catch (Exception $exc) {
@@ -74,21 +74,25 @@ class SMail {
     }
 
     private function autoLoad() {
-        $this->mail = new PHPMailer;
-        $this->mail->isSMTP(); //Indicar que se usará SMTP
-        $this->mail->CharSet = 'UTF-8'; //permitir envío de caracteres especiales (tildes y ñ)
+        try {
+            $this->mail = new PHPMailer;
+            $this->mail->isSMTP(); //Indicar que se usará SMTP
+            $this->mail->CharSet = 'UTF-8'; //permitir envío de caracteres especiales (tildes y ñ)
 
-        $this->mail->SMTPDebug = 0; //Mensajes de debug; 0 = no mostrar (en producción), 1 = de cliente, 2 = de cliente y servidor
-        $this->mail->Debugoutput = 'html'; //Mostrar mensajes (resultados) de depuración(debug) en html
+            $this->mail->SMTPDebug = 0; //Mensajes de debug; 0 = no mostrar (en producción), 1 = de cliente, 2 = de cliente y servidor
+            $this->mail->Debugoutput = 'html'; //Mostrar mensajes (resultados) de depuración(debug) en html
 
-        $this->mail->Host = 'smtp.gmail.com'; //Nombre de host
+            $this->mail->Host = 'smtp.gmail.com'; //Nombre de host
 
-        $this->mail->Port = 587; //Puerto SMTP, 587 para autenticado TLS
-        $this->mail->SMTPSecure = 'tls'; //Sistema de encriptación - ssl (obsoleto) o tls
-        $this->mail->SMTPAuth = true; //Usar autenticación SMTP
-        $this->mail->SMTPOptions = array(
-            'ssl' => array('verify_peer' => false, 'verify_peer_name' => false, 'allow_self_signed' => true)
-        );
+            $this->mail->Port = 587; //Puerto SMTP, 587 para autenticado TLS
+            $this->mail->SMTPSecure = 'tls'; //Sistema de encriptación - ssl (obsoleto) o tls
+            $this->mail->SMTPAuth = true; //Usar autenticación SMTP
+            $this->mail->SMTPOptions = array(
+                'ssl' => array('verify_peer' => false, 'verify_peer_name' => false, 'allow_self_signed' => true)
+            );
+        } catch (Exception $exc) {
+            return $exc;
+        }
     }
 
 }
