@@ -21,9 +21,9 @@ class SMail {
 
     function sendMail($addressee, $subject, $messaje) {
         try {
-            $this->mail->Username = "3msqueters@gmail.com";
-            $this->mail->Password = "mosquetero";
-            $this->mail->setFrom('fusionAcademiaMusical.com', 'info');
+             $this->mail->Username = "consultas@fusionacademiacr.com";
+            $this->mail->Password = "consultasfusion";
+            $this->mail->setFrom('http://fusionacademiacr.com/', 'info');
 
             $this->mail->Subject = $subject;
 
@@ -50,7 +50,7 @@ class SMail {
         try {
             $this->mail->Username = "consultas@fusionacademiacr.com";
             $this->mail->Password = "consultasfusion";
-            $this->mail->setFrom('fusionAcademiaMusical.com', 'info');
+            $this->mail->setFrom('http://fusionacademiacr.com/', 'info');
 
             $this->mail->Subject = $form_subject;
 
