@@ -38,15 +38,15 @@ if (isset($session->permissions)) {
                         </div>
                         <div class="col_full">
                             <label for="form-name">Nombre:</label>
-                            <input type="text" id="form-name"class="form-control" minlength="3" maxlength="49" pattern="[a-zA-Z]{3,49}" required placeholder="Marco"/>
+                            <input type="text" id="form-name"class="form-control" minlength="3" maxlength="49" pattern="[a-zA-Z ]{3,49}" required placeholder="Marco"/>
                         </div>
                         <div class="col_full">
                             <label for="form-firstLastName">Primer Apellido:</label>
-                            <input type="text" id="form-firstLastName"class="form-control" minlength="3" maxlength="49" pattern="[a-zA-Z]{3,49}" required placeholder="Castro"/>
+                            <input type="text" id="form-firstLastName"class="form-control" minlength="3" maxlength="49" pattern="[a-zA-Z ]{3,49}" required placeholder="Castro"/>
                         </div>
                         <div class="col_full">
                             <label for="form-secondLastName">Segundo Apellido:</label>
-                            <input type="text" id="form-secondLastName"class="form-control" required minlength="3" maxlength="49" pattern="[a-zA-Z]{3,49}" placeholder="Madriz"/>
+                            <input type="text" id="form-secondLastName"class="form-control" required minlength="3" maxlength="49" pattern="[a-zA-Z ]{3,49}" placeholder="Madriz"/>
                         </div>
                         <div class="col_full">
                             <label for="form-age">Fecha de Nacimiento:</label>
@@ -93,7 +93,7 @@ if (isset($session->permissions)) {
                         <div class="acc_content clearfix"></div>
                         <div class="col_full">
                             <label for="form-contact-name">Nombre completo:</label>
-                            <input type="text" id="form-contact-name"class="form-control"  minlength="3" maxlength="49" required pattern="[a-zA-Z]{3,49}" placeholder="Laura"/>
+                            <input type="text" id="form-contact-name"class="form-control"  minlength="3" maxlength="49" required pattern="[a-zA-Z ]{3,49}" placeholder="Laura"/>
                         </div>
                         <div class="col_full">
                             <label for="form-contact-phone">Telefono:</label>
@@ -101,7 +101,7 @@ if (isset($session->permissions)) {
                         </div>
                         <div class="col_full">
                             <label for="form-relationship">Relaci&oacute;n:</label>
-                            <input type="text" id="form-relationship"class="form-control" minlength="3" maxlength="49" required pattern="[a-zA-Z]{3,49}" placeholder="Abuela"/>
+                            <input type="text" id="form-relationship"class="form-control" minlength="3" maxlength="49" required pattern="[a-zA-Z ]{3,49}" placeholder="Abuela"/>
                         </div>
                         <div class="col_full">
                             <label for="form-contact-email">Correo Electronico del contacto:</label>
