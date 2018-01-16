@@ -39,24 +39,24 @@ if (isset($session->permissions)) {
 
                         <div class="col-lg-6" style="padding: 10px;">
                             <label for="form-name">Nombre:</label>
-                            <input type="text" id="form-name" class="form-control" pattern="[a-zA-Z\s]+$" placeholder="Manuel" minlength="3" maxlength="50" required/>
+                            <input type="text" id="form-name" class="form-control" pattern="[a-zA-Z \s]+$" placeholder="Manuel" minlength="3" maxlength="50" required/>
                             <input type="hidden" id="failed-name" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class=icon-remove-sign></i> Dato de Nombre Incorrecto. Complete e intente de nuevo!"/>
                         </div>
 
                         <div class="col-lg-6" style="padding: 10px;">
                             <label for="form-firstLastName">Primer Apellido:</label>
-                            <input type="text" id="form-firstLastName" class="form-control" pattern="[a-zA-Z\s]+$" placeholder="Garcia" minlength="3" maxlength="50" required/>
+                            <input type="text" id="form-firstLastName" class="form-control" pattern="[a-zA-Z \s]+$" placeholder="Garcia" minlength="3" maxlength="50" required/>
                             <input type="hidden" id="failed-firstLastName" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class=icon-remove-sign></i> Primer Apellido Incorrecto. Complete e intente de nuevo!"/>
                         </div>
 
                         <div class="col-lg-6" style="padding: 10px;">
                             <label for="form-secondLastName">Segundo Apellido:</label>
-                            <input type="text" id="form-secondLastName" class="form-control" pattern="[a-zA-Z\s]+$" placeholder="Garcia" minlength="3" maxlength="50" required/>
+                            <input type="text" id="form-secondLastName" class="form-control" pattern="[a-zA-Z \s]+$" placeholder="Garcia" minlength="3" maxlength="50" required/>
                             <input type="hidden" id="failed-secondLastName" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class=icon-remove-sign></i> Segundo Apellido Incorrecto. Complete e intente de nuevo!"/>
                         </div>
                         <div class="col-lg-6" style="padding: 10px;">
                             <label for="form-address">Lugar de Residencia:</label>
-                            <input type="text" id="form-address" class="form-control" pattern="[a-zA-Z\s]+$" minlength="5" maxlength="200" required/>
+                            <input type="text" id="form-address" class="form-control" pattern="[a-zA-Z \s]+$" minlength="5" maxlength="200" required/>
                             <input type="hidden" id="failed-address" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class=icon-remove-sign></i> Dirección muy extensa. Complete e intente de nuevo!"/>
                         </div>
 
