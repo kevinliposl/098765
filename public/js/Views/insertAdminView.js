@@ -9,29 +9,27 @@ function val() {
         "secondLastName": $("#form-secondLastName").val().trim()
     };
 
-    if (!/\w+@\w+\.+[a-z]/.test(args['email']) || args['email'].split(" ").length > 1) {
+    if (!/\w+@\w+\.+[a-z]/.test(args['email'])) {
         SEMICOLON.widget.notifications($("#failed-email"));
         return false;
 
-    } else if (isNaN(args['id']) || args['id'].length < 9 || args['id'].split(" ", 2).length > 1) {
+    } else if (isNaN(args['id']) || args['id'].length < 9) {
         SEMICOLON.widget.notifications($("#failed-id"));
         return false;
 
-    } else if (args['name'].length < 4 || args['name'].split(" ", 2).length > 1) {
+    } else if (args['name'].length < 4) {
         SEMICOLON.widget.notifications($("#failed-name"));
         return false;
 
-    } else if (args['firstLastName'].length < 4 || args['firstLastName'].split(" ", 2).length > 1) {
+    } else if (args['firstLastName'].length < 4) {
         SEMICOLON.widget.notifications($("#failed-firstLastName"));
         return false;
 
-    } else if (args['secondLastName'].length < 4 || args['secondLastName'].split(" ", 2).length > 1) {
+    } else if (args['secondLastName'].length < 4) {
         SEMICOLON.widget.notifications($("#failed-secondLastName"));
         return false;
     }
     $('#showModal').click();
-
-    return false;
 }
 
 $("#form-submity").click(function () {
