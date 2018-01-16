@@ -38,7 +38,17 @@ $("#form-submity").click(function () {
 
     SEMICOLON.widget.notifications($("#wait"));
 
-    $.post("?controller=Admin&action=insert", args, function (data) {
+    $.ajax({
+        data: args,
+        type: "POST",
+        dataType: "json",
+        url: "?controller=Admin&action=insert",
+        beforeSend: function () {
+            $("#form-submity").attr('disabled', 'disabled');
+            $("#form-close").attr('disabled', 'disabled');
+            SEMICOLON.widget.notifications($("#wait"));
+        }
+    }).done(function (data) {
         if (data.result === "1") {
             SEMICOLON.widget.notifications($("#success"));
             setTimeout("location.href='?controller=Admin&action=insert';", 1500);
@@ -51,7 +61,7 @@ $("#form-submity").click(function () {
             alert(data.err);
             setTimeout("location.href='?controller=Admin&action=insert';", 2000);
         }
-    }, "json");
-
-    return false;
+    }).fail(function () {
+        SEMICOLON.widget.notifications($('#warning'));
+    });
 });

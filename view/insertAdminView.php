@@ -32,25 +32,25 @@ if (isset($session->permissions)) {
 
                         <div class="col_full">
                             <label for="form-email">Correo Electronico:</label>
-                            <input type="email" id="form-email" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required placeholder="hola@dominio.com"/>
+                            <input type="email" id="form-email" class="form-control" required placeholder="hola@dominio.com"/>
                             <input type="hidden" id="failed-email" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class='icon-remove-sign'></i> Correo Incorrecto. Complete e intente de nuevo!"/>
                         </div>
 
                         <div class="col_full">
                             <label for="form-name">Nombre:</label>
-                            <input type="text" id="form-name" class="form-control" pattern="[a-zA-Z\s]+$" required minlength="3" placeholder="Laura"/>
+                            <input type="text" id="form-name" class="form-control" pattern="[a-zA-Z ]{3,49}" required minlength="3" placeholder="Laura"/>
                             <input type="hidden" id="failed-name" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg= "<i class='icon-remove-sign'></i> Nombre Incorrecto. Complete e intente de nuevo!"/>
                         </div>
 
                         <div class="col_full">
                             <label for="form-firstlastname">Primer Apellido:</label>
-                            <input type="text" id="form-firstLastName"class="form-control" pattern="[a-zA-Z\s]+$" required minlength="3" placeholder="Brenes"/>
+                            <input type="text" id="form-firstLastName"class="form-control" pattern="[a-zA-Z ]{3,49}" required minlength="3" placeholder="Brenes"/>
                             <input type="hidden" id="failed-firstLastName" data-notify-type="error" data-notify-position="bottom-full-width" data-notify-msg="<i class='icon-remove-sign'></i> Primer Apellido Incorrecto. Complete e intente de nuevo!"/>
                         </div>
 
                         <div class="col_full">
                             <label for="form-secondlastname">Segundo Apellido:</label>
-                            <input type="text" id="form-secondLastName" class="form-control" pattern="[a-zA-Z\s]+$" required minlength="3" placeholder="Mora"/>
+                            <input type="text" id="form-secondLastName" class="form-control" pattern="[a-zA-Z ]{3,49}" required minlength="3" placeholder="Mora"/>
                             <input type="hidden" id="failed-secondLastName" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class='icon-remove-sign'></i> Segundo Apellido Incorrecto. Complete e intente de nuevo!"/>
                         </div>
 
