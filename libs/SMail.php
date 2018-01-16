@@ -61,7 +61,8 @@ class SMail {
             
             $this->mail->setFrom('http://fusionacademiacr.com/', 'info');
             $this->mail->FromName = 'Soporte Tecnico';
-
+            $this->mail->From = 'consultas@fusionacademiacr.com';
+            
             $this->mail->Subject = $form_subject;
 
             $html = file_get_contents('view/mailView.php');
