@@ -93,7 +93,7 @@ if (isset($session->permissions)) {
                         <div class="acc_content clearfix"></div>
                         <div class="col_full">
                             <label for="form-contact-name">Nombre completo:</label>
-                            <input type="text" id="form-contact-name"class="form-control"  minlength="3" maxlength="49" required pattern="[a-zA-Z ]{3,49}" placeholder="Laura"/>
+                            <input type="text" id="form-contact-name"class="form-control"  minlength="3" maxlength="49" required pattern="[a-zA-Z Ñ-ñ]{3,49}" placeholder="Laura"/>
                         </div>
                         <div class="col_full">
                             <label for="form-contact-phone">Telefono:</label>
