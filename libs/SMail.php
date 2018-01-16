@@ -97,8 +97,8 @@ class SMail {
 
             $this->mail->Host = 'mail.fusionacademiacr.com'; //Nombre de host
 
-            $this->mail->Port = 465; //Puerto SMTP, 587 para autenticado TLS
-            $this->mail->SMTPSecure = 'ssl'; //Sistema de encriptación - ssl (obsoleto) o tls
+            $this->mail->Port = 587; //Puerto SMTP, 587 para autenticado TLS
+            $this->mail->SMTPSecure = 'tsl'; //Sistema de encriptación - ssl (obsoleto) o tls
             $this->mail->SMTPAuth = true; //Usar autenticación SMTP
 //            $this->mail->SMTPOptions = array(
 //                'ssl' => array('verify_peer' => false, 'verify_peer_name' => false, 'allow_self_signed' => true)
