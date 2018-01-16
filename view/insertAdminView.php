@@ -26,7 +26,7 @@ if (isset($session->permissions)) {
                     <form id="form" class="nobottommargin" onsubmit="return val(); return false">
                         <div class="col_full">
                             <label for="form-id">Cedula:</label>
-                            <input type="text" id="form-id" class="form-control" pattern="[0-9]+$" required minlength="9" placeholder="304440555"/>
+                            <input type="text" id="form-id" class="form-control" pattern="[0-9]+$" required minlength="9" maxlength="9" placeholder="304440555"/>
                             <input type="hidden" id="failed-id" data-notify-type="error" data-notify-position="bottom-full-width" data-notify-msg="<i class='icon-remove-sign'></i> Cedula Incorrecta. Complete e intente de nuevo!"/>
                         </div>
 
