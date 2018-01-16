@@ -30,6 +30,7 @@ function val() {
         return false;
     }
     $('#showModal').click();
+    return false;
 }
 
 $("#form-submity").click(function () {
@@ -62,6 +63,8 @@ $("#form-submity").click(function () {
             setTimeout("location.href='?controller=Admin&action=insert';", 2000);
         }
     }).fail(function () {
+        $("#form-submity").removeAttr('disabled');
+        $("#form-close").removeAttr('disabled');
         SEMICOLON.widget.notifications($('#warning'));
     });
 });
