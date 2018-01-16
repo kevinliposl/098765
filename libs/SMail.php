@@ -23,8 +23,10 @@ class SMail {
         try {
             $this->mail->Username = "consultas@fusionacademiacr.com";
             $this->mail->Password = "consultasfusion";
+            
             $this->mail->setFrom('http://fusionacademiacr.com/', 'info');
-
+            $this->mail->FromName = 'Soporte Tecnico';
+            
             $this->mail->Subject = $subject;
 
             $html = file_get_contents('view/mailView.php');
@@ -55,7 +57,9 @@ class SMail {
         try {
             $this->mail->Username = "consultas@fusionacademiacr.com";
             $this->mail->Password = "consultasfusion";
+            
             $this->mail->setFrom('http://fusionacademiacr.com/', 'info');
+            $this->mail->FromName = 'Soporte Tecnico';
 
             $this->mail->Subject = $form_subject;
 
