@@ -52,6 +52,7 @@ include_once 'public/head.php';
     </div>
 </section>
 
+<script src="public/js/jquery.min.js" type="text/javascript"></script>
 <script>
     $('#form-email').change(function () {
         $('#permissions').val(0);
@@ -135,7 +136,6 @@ include_once 'public/head.php';
     });
 </script>
 
-<script src="public/js/jquery.min.js" type="text/javascript"></script>
 <script src="public/js/RSA/jsbn.js"></script>
 <script src="public/js/RSA/jsbn2.js"></script>
 <script src="public/js/RSA/prng4.js"></script>
