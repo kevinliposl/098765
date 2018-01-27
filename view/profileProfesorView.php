@@ -94,6 +94,9 @@ include_once 'public/header.php';
         </div>
     </div>
 </section><!-- #content end -->
+
+<script src="public/js/jquery.min.js" type="text/javascript"></script>
+
 <?php
 
 include_once 'public/footer.php';

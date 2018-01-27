@@ -61,7 +61,9 @@ if (isset($session->permissions)) {
     </div>
 </section>
 
+<script src="public/js/jquery.min.js" type="text/javascript"></script>
 <script src="public/js/Views/getStudentExpView.js" type="text/javascript"></script>
+
 <?php
 include_once 'public/footer.php';
 ?>

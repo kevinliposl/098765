@@ -67,6 +67,7 @@ if (isset($session->permissions)) {
     </div>
 </section>
 
+<script src="public/js/jquery.min.js" type="text/javascript"></script>
 <script src="public/js/Views/selectEnrollmentView.js" type="text/javascript"></script>
 
 <?php

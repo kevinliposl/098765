@@ -112,6 +112,7 @@ if (isset($session->permissions)) {
     </div>
 </section>
 
+<script src="public/js/jquery.min.js" type="text/javascript"></script>
 <script type='text/javascript' src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCQkWM0oTBZWWCQZudbiZVOU0DEooJ4FSw'></script>
 <script type="text/javascript" src="public/js/jquery.gmap.js"></script>
 <script type="text/javascript" src="public/js/Views/contactView.js"></script>

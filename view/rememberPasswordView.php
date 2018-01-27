@@ -32,6 +32,7 @@ include_once 'public/header.php';
     </div>
 </section>
 
+<script src="public/js/jquery.min.js" type="text/javascript"></script>
 <script src="public/js/Views/rememberPasswordView.js" type="text/javascript"></script>
 
 <?php

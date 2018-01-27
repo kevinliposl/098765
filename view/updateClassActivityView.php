@@ -139,6 +139,7 @@ if (isset($session->permissions)) {
     </div>
 </div>
 
+<script src="public/js/jquery.min.js" type="text/javascript"></script>
 <script src="public/js/Views/updateClassActivityView.js" type="text/javascript"></script>
 <script src="public/js/Views/general.js" type="text/javascript"></script>
 

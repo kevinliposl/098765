@@ -84,10 +84,9 @@ if (isset($session->permissions)) {
     </div>
 </div>
 
+<script src="public/js/jquery.min.js" type="text/javascript"></script>
 <script src="public/js/Views/deleteEnrollmentView.js" type="text/javascript"></script>
 
-<!-- End Content
-============================================= -->    
 <?php
 include_once 'public/footer.php';
 

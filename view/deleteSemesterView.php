@@ -99,6 +99,7 @@ if (isset($session->permissions)) {
     </div>
 </div>
 
+<script src="public/js/jquery.min.js" type="text/javascript"></script>
 <script src="public/js/Views/deleteSemesterView.js" type="text/javascript"></script>
 
 <?php

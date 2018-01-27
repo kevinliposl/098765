@@ -106,6 +106,7 @@ include_once 'public/header.php';
     </div>
 </section><!-- #content end -->
 
+<script src="public/js/jquery.min.js" type="text/javascript"></script>
 <script src="public/js/Views/galeryView.js" type="text/javascript"></script>
 
 <?php
