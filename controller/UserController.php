@@ -43,7 +43,10 @@ class UserController {
                 $this->view->show("loginView.php", array('result' => $keyPublicHex));
             }
         } else {
-            $this->view->show("indexView.php");
+            SSession::getInstance()->destroy();
+            SSession::getInstance()->keys = RSA::getInstance()->keygen();
+            $keyPublicHex = RSA::getInstance()->publicKeyToHex(SSession::getInstance()->keys['privatekey']);
+            $this->view->show("loginView.php", array('result' => $keyPublicHex));
         }
     }
 
