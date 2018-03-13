@@ -17,13 +17,12 @@ $("#form-professor").change(function () {
                 $("#form-phone2").html(data.cel_phone);
                 $("#form-email").html(data.email);
                 $("#form-gender").html(data.gender);
-                $("#form-nationality").html(data.nationality);
+                $("#form-nationality").html(data.nationality.trim());
                 $("#form-age").html(data.birthdate);
                 $("#form-address").html(data.address);
                 $("#form-additionalInformation").html(data.expedient);
                 $("#form-submit").css('display', 'block');
-                SEMICOLON.widget.notifications($("#success"));
-
+                //SEMICOLON.widget.notifications($("#success"));
             } else {
                 $("#form-id").html("");
                 $("#form-id-type").html("");
@@ -60,29 +59,27 @@ $("#form-professor").change(function () {
 });
 
 function validate() {
-    var identification, typeId, nameP, firstLastName, secondLastName, additionalInformation, address, phone, phone2, nationality, gender;
-
-    identification = $("#form-id").text().trim();
-    typeId = $("#form-id-type").text().trim();
-    nameP = $("#form-name").text().trim();
-    firstLastName = $("#form-first-lastName").text().trim();
-    secondLastName = $("#form-second-lastName").text().trim();
-    additionalInformation = $("#form-additionalInformation").text().trim();
-    address = $("#form-address").text().trim();
-    phone = $("#form-phone1").text().trim();
-    phone2 = $("#form-phone2").text().trim();
-    nationality = $("#form-nationality").text().trim();
-    gender = $("#form-gender").text().trim().toUpperCase();
+    var identification = $("#form-id").text().trim();
+    var typeId = $("#form-id-type").text().trim();
+    var nameP = $("#form-name").text().trim();
+    var firstLastName = $("#form-first-lastName").text().trim();
+    var secondLastName = $("#form-second-lastName").text().trim();
+    var additionalInformation = $("#form-additionalInformation").text().trim();
+    var address = $("#form-address").text().trim();
+    var phone = $("#form-phone1").text().trim();
+    var phone2 = $("#form-phone2").text().trim();
+    var nationality = $("#form-nationality").text().trim();
+    var gender = $("#form-gender").text().trim().toUpperCase();
 
     if (nameP.length < 3 || nameP.length > 49 || !isNaN(nameP)) {
         SEMICOLON.widget.notifications($("#failed-name"));
         return false;
 
-    } else if (firstLastName.length < 3 || firstLastName.length > 49 || !isNaN(firstLastName)) {
-        SEMICOLON.widget.notifications($("#failed-firs-lastName"));
+    } else if (firstLastName.length < 3 || firstLastName.length > 49) {
+        SEMICOLON.widget.notifications($("#failed-first-lastName"));
         return false;
 
-    } else if (secondLastName.length < 3 || secondLastName.length > 49 || !isNaN(secondLastName)) {
+    } else if (secondLastName.length < 3 || secondLastName.length > 49) {
         SEMICOLON.widget.notifications($("#failed-second-lastName"));
         return false;
 
@@ -94,7 +91,7 @@ function validate() {
         SEMICOLON.widget.notifications($("#failed-phone2"));
         return false;
 
-    } else if (nationality.length < 6 || nationality.length > 49 || !isNaN(nationality) || nationality.split(" ", 2).length > 1) {
+    } else if (nationality.length < 4 || nationality.length > 49) {
         SEMICOLON.widget.notifications($("#failed-nationality"));
         return false;
 

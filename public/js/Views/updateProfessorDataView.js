@@ -11,7 +11,6 @@ function val() {
     nationality = $("#form-nationality").text().trim();
     gender = $("#form-gender").text().trim().toUpperCase();
 
-
     if (nameP.length < 3 || nameP.length > 49 || !isNaN(nameP)) {
         $("#failed-name").attr("data-notify-msg", "<i class=icon-remove-sign></i> Dato de Nombre Incorrecto. Complete e intente de nuevo!");
         SEMICOLON.widget.notifications($("#failed-name"));
@@ -37,7 +36,7 @@ function val() {
         SEMICOLON.widget.notifications($("#failed-phone2"));
         return false;
 
-    } else if (nationality.length < 6 || nationality.length > 49 || !isNaN(nationality) || nationality.split(" ", 2).length > 1) {
+    } else if (nationality.length < 6 || nationality.length > 49) {
         $("#failed-nationality").attr("data-notify-msg", "<i class=icon-remove-sign></i> Formato de nacionalidad incorrecto. Complete e intente de nuevo!");
         SEMICOLON.widget.notifications($("#failed-nationality"));
         return false;
