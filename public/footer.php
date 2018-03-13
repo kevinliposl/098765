@@ -45,35 +45,6 @@
                     </div>
                 </div>
             </div>
-            <!--<div class="col_one_third col_last">
-                <div class="widget clearfix" style="margin-bottom: -20px;">
-                    <div class="row">
-                        <div class="col-md-6 clearfix bottommargin-sm">
-                            <a href="#" class="social-icon si-dark si-colored si-facebook nobottommargin" style="margin-right: 10px;">
-                                <i class="icon-facebook"></i>
-                                <i class="icon-facebook"></i>
-                            </a>
-                            <a href="#"><small style="display: block; margin-top: 3px;"><strong>Siguenos</strong><br>en Facebook</small></a>
-                        </div>
-                        <div class="col-md-6 clearfix">
-                            <a href="#" class="social-icon si-dark si-colored si-youtube nobottommargin" style="margin-right: 10px;">
-                                <i class="icon-youtube"></i>
-                                <i class="icon-youtube"></i>
-                            </a>
-                            <a href="#"><small style="display: block; margin-top: 3px;"><strong>Siguenos</strong><br>en Youtube</small></a>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 clearfix bottommargin-sm">
-                            <a href="#" class="social-icon si-dark si-colored si-instagram nobottommargin" style="margin-right: 10px;">
-                                <i class="icon-instagram"></i>
-                                <i class="icon-instagram"></i>
-                            </a>
-                            <a href="#"><small style="display: block; margin-top: 3px;"><strong>Siguenos</strong><br>en Instagram</small></a>
-                        </div>
-                    </div>
-                </div>
-            </div>-->
         </div>
     </div>
     <div id="copyrights">
@@ -100,31 +71,31 @@
 <script src="public/js/moment.js" type="text/javascript"></script>
 
 <!-- Bootstrap Select2
-============================================= -->
+============================================= 
 <script src="public/js/select2.js" type="text/javascript"></script>
 
-<!-- Bootstrap Editable Plugin
-============================================= -->
+ Bootstrap Editable Plugin
+============================================= 
 <script src="public/js/bs-editable.js" type="text/javascript"></script>
 
-<!-- Bootstrap Typeaheadjs Plugin SE QUITO ELEMENTOS
-============================================= -->
+ Bootstrap Typeaheadjs Plugin SE QUITO ELEMENTOS
+============================================= 
 <script src="public/js/typeahead.js" type="text/javascript"></script>
 
-<!-- Date & Time Picker JS
-============================================= -->
+ Date & Time Picker JS
+============================================= 
 <script src="public/js/datepicker.js" type="text/javascript"></script>
 <script src="public/js/timepicker.js" type="text/javascript"></script>
 
-<!-- Bootstrap Select Plugin
-============================================= -->
+ Bootstrap Select Plugin
+============================================= 
 <script src="public/js/bs-select.js" type="text/javascript"></script>
 
-<!-- Select Splitter Plugin
-============================================= -->
+ Select Splitter Plugin
+============================================= 
 <script src="public/js/selectsplitter.js" type="text/javascript"></script>
 
-<!-- Bootstrap Data Table Plugin -->
+ Bootstrap Data Table Plugin 
 <script src="public/js/bs-datatable.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -132,7 +103,11 @@
         size: 4,
         dropupAuto: false
     });
-</script>
+</script>-->
+
+
+<script src="public/js/bs-editable.js" type="text/javascript"></script>
+
 
 <script src="public/js/functions.js" type="text/javascript"></script>
 

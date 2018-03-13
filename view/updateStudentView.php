@@ -175,7 +175,18 @@ if (isset($session->permissions)) {
 <script src="public/js/Views/updateStudentView.js" type="text/javascript"></script>
 <script src="public/js/Views/general.js" type="text/javascript"></script>
 
+<script src="public/js/bs-select.js" type="text/javascript"></script>
+<script src="public/js/selectsplitter.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+    $('.selectpicker').selectpicker({
+        size: 4,
+        dropupAuto: false
+    });
+</script>
+
 <?php
 include_once 'public/footer.php';
+?>
 
-
+<script src="public/js/bs-editable.js" type="text/javascript"></script>
