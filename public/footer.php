@@ -68,7 +68,7 @@
 ============================================= -->
 <script src="public/js/jquery.js" type="text/javascript"></script>
 <script src="public/js/plugins.js" type="text/javascript"></script>
-<script src="public/js/moment.js" type="text/javascript"></script>
+<!--<script src="public/js/moment.js" type="text/javascript"></script>-->
 
 <!-- Bootstrap Select2
 ============================================= 
