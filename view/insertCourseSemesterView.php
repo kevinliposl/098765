@@ -47,7 +47,7 @@ if (isset($session->permissions)) {
                             </select>
                             <input type="hidden" id="failed-form-semester" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                         </div> 
-                        
+
                         <div class="col_full">
                             <label for="form-courses">Cursos:</label>
                             <select id="form-courses" class="selectpicker form-control" data-live-search="true">
@@ -55,7 +55,7 @@ if (isset($session->permissions)) {
                             </select>
                             <input type="hidden" id="failed-form-courses" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                         </div>
-                        
+
                         <div class="col_full">
                             <label for="form-professors">Profesores:</label>
                             <select multiple name="form-professors[]" id="form-professors" class="selectpicker form-control" data-live-search="true">
@@ -63,7 +63,7 @@ if (isset($session->permissions)) {
                             </select>
                             <input type="hidden" id="failed-form-professors" data-notify-type= "error" data-notify-position="bottom-full-width"/>
                         </div>
-                        
+
                         <div class="col_full">
                             <a id="form-submit" data-toggle="modal" class="button button-3d button-black nomargin" style="display : block; text-align: center;" data-target="#myModal">Asignar</a>
                             <input type="hidden" id="warning" data-notify-type="warning" data-notify-msg="<i class='icon-warning-sign'></i>La operacion no se pudo realizar, intente de nuevo o m&aacute;s tarde!" data-notify-position="bottom-full-width"/>
@@ -102,5 +102,17 @@ if (isset($session->permissions)) {
 <script src="public/js/jquery.min.js" type="text/javascript"></script>
 <script src="public/js/Views/insertCourseSemesterView.js" type="text/javascript"></script>
 
+
 <?php
 include_once 'public/footer.php';
+?>
+
+<script src="public/js/bs-select.js" type="text/javascript"></script>
+<script src="public/js/selectsplitter.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+    $('.selectpicker').selectpicker({
+        size: 4,
+        dropupAuto: false
+    });
+</script>

@@ -104,3 +104,14 @@ if (isset($session->permissions)) {
 
 <?php
 include_once 'public/footer.php';
+?>
+
+<script src="public/js/bs-select.js" type="text/javascript"></script>
+<script src="public/js/selectsplitter.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+    $('.selectpicker').selectpicker({
+        size: 4,
+        dropupAuto: false
+    });
+</script>

@@ -51,36 +51,20 @@ if (isset($session->permissions)) {
                                 </colgroup>
                                 <tbody>
                                     <tr>
-                                        <td>
-                                            Siglas
-                                        </td>
-                                        <td>
-                                            <a id="form-initials-table"></a>
-                                        </td>
+                                        <td>Siglas</td>
+                                        <td><a id="form-initials-table"></a></td>
                                     </tr>
                                     <tr>
-                                        <td>
-                                            Nombre
-                                        </td>
-                                        <td>
-                                            <a id="form-name-table"></a>
-                                        </td>
+                                        <td>Nombre</td>
+                                        <td><a id="form-name-table"></a></td>
                                     </tr>
                                     <tr>
-                                        <td>
-                                            Instrumento
-                                        </td>
-                                        <td>
-                                            <a id="form-instrument-table"></a>
-                                        </td>
+                                        <td>Instrumento</td>
+                                        <td><a id="form-instrument-table"></a></td>
                                     </tr>
                                     <tr>
-                                        <td>
-                                            Descripci&oacute;n
-                                        </td>
-                                        <td> 
-                                            <a id="form-description-table"></a>
-                                        </td>
+                                        <td>Descripci&oacute;n</td>
+                                        <td><a id="form-description-table"></a></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -97,6 +81,16 @@ if (isset($session->permissions)) {
 
 <script src="public/js/jquery.min.js" type="text/javascript"></script>
 <script src="public/js/Views/selectCourseView.js" type="text/javascript"></script>
+
+<script src="public/js/bs-select.js" type="text/javascript"></script>
+<script src="public/js/selectsplitter.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+    $('.selectpicker').selectpicker({
+        size: 4,
+        dropupAuto: false
+    });
+</script>
 
 <?php
 include_once 'public/footer.php';

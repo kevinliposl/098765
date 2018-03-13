@@ -105,10 +105,6 @@
     });
 </script>-->
 
-
-<script src="public/js/bs-editable.js" type="text/javascript"></script>
-
-
 <script src="public/js/functions.js" type="text/javascript"></script>
 
 </body>

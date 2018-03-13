@@ -123,6 +123,7 @@ if (isset($session->permissions)) {
 <script src="public/js/jquery.min.js" type="text/javascript"></script>
 <script src="public/js/Views/getStudentDataView.js" type="text/javascript"></script>
 
+
 <script src="public/js/bs-select.js" type="text/javascript"></script>
 <script src="public/js/selectsplitter.js" type="text/javascript"></script>
 
@@ -133,9 +134,12 @@ if (isset($session->permissions)) {
                         });
 </script>
 
+
 <?php
 include_once 'public/footer.php';
 ?>
+
+<script src="public/js/bs-editable.js" type="text/javascript"></script>
 
 <script src="public/js/jquery.table2excel.min.js" type="text/javascript"></script>
 <script src="public/js/pdf/html2pdf.js" type="text/javascript"></script>

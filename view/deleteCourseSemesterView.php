@@ -53,6 +53,9 @@ if (isset($session->permissions)) {
                             <select id="form-courses" class="form-control selectpicker" data-live-search="true">
                                 <option value="-1" data-tokens="">Seleccione un Curso</option>
                             </select>
+                            <br>
+                            <br>
+                            <br>
                             <input type="hidden" id="failed-form-courses" data-notify-type= "error" data-notify-position="bottom-full-width" data-notify-msg="<i class='icon-remove-sign'></i> Curso inválido. Seleccione e intente de nuevo!"/>
                         </div>
                         <br>
@@ -98,3 +101,15 @@ if (isset($session->permissions)) {
 
 <?php
 include_once 'public/footer.php';
+?>
+
+<script src="public/js/bs-select.js" type="text/javascript"></script>
+<script src="public/js/selectsplitter.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+                        $('.selectpicker').selectpicker({
+                            size: 4,
+                            dropupAuto: false
+                        });
+</script>
+

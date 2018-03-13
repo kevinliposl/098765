@@ -45,7 +45,7 @@ if (isset($session->permissions)) {
                         <br>
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped">
-                                <h5 style="text-align: center;">Informaci&oacute;n del Administrador</h5>
+                                <h5 style="text-align: center;">Informaci&oacute;n del Semestre</h5>
                                 <colgroup>
                                     <col class="col-xs-3">
                                     <col class="col-xs-8">
@@ -101,6 +101,17 @@ if (isset($session->permissions)) {
 
 <script src="public/js/jquery.min.js" type="text/javascript"></script>
 <script src="public/js/Views/deleteSemesterView.js" type="text/javascript"></script>
+
+
+<script src="public/js/bs-select.js" type="text/javascript"></script>
+<script src="public/js/selectsplitter.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+                        $('.selectpicker').selectpicker({
+                            size: 4,
+                            dropupAuto: false
+                        });
+</script>
 
 <?php
 include_once 'public/footer.php';

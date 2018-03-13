@@ -112,3 +112,7 @@ if (isset($session->permissions)) {
 
 <?php
 include_once 'public/footer.php';
+?>
+
+<script src="public/js/bs-editable.js" type="text/javascript"></script>
+
