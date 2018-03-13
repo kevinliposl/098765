@@ -89,11 +89,14 @@ $("#form-submity").click(function () {
         "email": $("#form-email").text().trim(),
         "age": $("#form-age").text().trim()
     };
+
+    SEMICOLON.widget.notifications($("#wait"));
+
     $.post("?controller=Professor&action=updatePersonal", parameters, function (data) {
         if (data.result === "1") {
             $("#success").attr({
                 "data-notify-type": "success",
-                "data-notify-msg": "<i class=icon-ok-sign></i> Operacion Exitosa!",
+                "data-notify-msg": "<i class=icon-ok-sign></i> Actualizaci&oacuten Exitosa!",
                 "data-notify-position": "bottom-full-width"
             });
             SEMICOLON.widget.notifications($("#success"));
