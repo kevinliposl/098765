@@ -7,7 +7,7 @@ include_once 'public/header.php';
 
     <section id="page-title" class="page-title-parallax page-title-dark page-title-right" style="padding: 150px 0; background-image: url('public/images/parallax/parallax-bg.jpg'); background-size: cover; background-position: center center;" data-stellar-background-ratio="0.2">
         <div class="col-sm-9">
-            <img src="public/images/professors/camilo_alvarado.jpg" class="alignleft img-circle  img-thumbnail notopmargin nobottommargin" alt="Avatar" style="max-width: 400px;">
+            <img src="public/images/professors/camilo_alvarado1.jpg" class="alignleft img-circle  img-thumbnail notopmargin nobottommargin" alt="Avatar" style="max-width: 400px;">
             <br><br>   
             <div class="alignleft heading-block noborder">
                 <h3 style="color: #DBDFE3;"><b>Camilo Alvarado</b></h3>
