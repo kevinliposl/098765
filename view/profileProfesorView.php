@@ -18,7 +18,7 @@ include_once 'public/header.php';
     <br><br><br><br>
     <div class="content-wrap">
         <div class="container clearfix">
-            <div class="col_one_third alignleft">
+            <div class="col_two_third alignleft">
                 <div class="heading-block fancy-title nobottomborder title-bottom-border">
                     <h4> Perfil</h4>
                 </div>
@@ -26,18 +26,7 @@ include_once 'public/header.php';
                     Músico nacido en Juan Viñas, Cartago. Inicia los estudios musicales en la escuela municipal de música de Jiménez, en saxofón y percusión. Posteriormente ingresa a la Etapa Básica de Música de la Universidad de Costa Rica, Sede del Atlántico en saxofón con el profesor Juan Pablo Sandí y en percusión con el profesor Sabah Halabi. Ha participado en el Sax Fest Costa Rica Internacional en el año 2015 y 2017, donde recibió clases maestras con los saxofonistas Eric Marienthal, Natán Bogart, Phillip Geiss, Preston Duncan, entre otros. Ha participado en clínicas de percusión con Carlos “Tapado” Vargas y Marcos Novoa. Actualmente cursa la carrera de Bachillerato y Licenciatura en Enseñanza de la Música en la Universidad de Costa Rica.
                 </p>
             </div>
-
-            <div class="col_two_fifth alignleft">
-                <div class="heading-block fancy-title nobottomborder title-bottom-border">
-                    <h4> Habilidades</h4>
-                </div>
-                <p style="text-align: justify;">
-                <li>Habilidad para trabajar con ni&ntilde;os, adolescentes y adultos.</li>
-                <li>Enfoque de trabajo en equipo.</li>
-                <li>Gesti&oacute;n de proyectos musicales.</li>
-                </p>
-            </div>
-            <div class="col_one_fourth alignleft">
+            <div class="col_one_third alignleft">
                 <div class="heading-block fancy-title nobottomborder title-bottom-border">
                     <h4 class="icon-users"> Contacto</h4>
                 </div>
@@ -49,45 +38,6 @@ include_once 'public/header.php';
                 <br>
                 <li class="icon-facebook-sign"><a href="fb.com/fusionacademiacr" target="__blank"> fusionacademiacr</a></li>
                 </p>
-            </div>
-            <div class="col_full aligncenter">
-                <div class="heading-block fancy-title nobottomborder title-bottom-border">
-                    <h4 class="icon-study"> Formaci&oacute;n</h4>
-                </div>
-                <div class="tab-content clearfix" id="tab-replies">
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-striped">
-                            <colgroup>
-                                <col class="col-xs-7">
-                                <col class="col-xs-1">
-                            </colgroup>
-                            <thead>
-                                <tr>
-                                    <th style="text-align: center;">Titulo</th>
-                                    <th style="text-align: center;">A&ntilde;o</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        UNA. Bach en ense&ntilde;anza y ejecuci&oacute;n de la direcci&oacute;n coral.
-                                    </td>
-                                    <td>
-                                        2017
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        UCR. Bach y Lic en educaci&oacute;n musical.
-                                    </td>
-                                    <td>
-                                        2014
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
             </div>
             <div class="col_two_third col_last alignright">
             </div>
@@ -106,7 +56,7 @@ include_once 'public/header.php';
     <br><br><br><br>
     <div class="content-wrap">
         <div class="container clearfix">
-            <div class="col_one_third alignleft">
+            <div class="col_two_third alignleft">
                 <div class="heading-block fancy-title nobottomborder title-bottom-border">
                     <h4>Perfil</h4>
                 </div>
@@ -114,20 +64,9 @@ include_once 'public/header.php';
                     Nacido en Juan Viñas, Cartago. Cuenta con estudios formales en la docencia musical y la guitarra por la Universidad de Costa Rica, es Bachiller en la Enseñanza de la Música y estudiante de la guitarrista cubana Rosa Matos, también cuenta con clases maestras con los músicos Carlos Rivera y Mario Ulloa. Se ha desarrollado como solista y como miembro de diferentes agrupaciones musicales, con las que se ha presentado en importantes escenarios tales como: El Teatro Nacional, El Teatro Popular Melico Salazar, El Palacio de Cultura de Nicaragua y El Museo de León Viejo entre otros, el Festival Internacional de Calypso “Walter Ferguson”, el Festival Centroamericano de Guitarra Joven y el Festival Internacional del Cantautor.
                 </p>
             </div>
-
-            <div class="col_two_fifth alignleft">
+            <div class="col_one_third alignleft">
                 <div class="heading-block fancy-title nobottomborder title-bottom-border">
-                    <h4> Habilidades</h4>
-                </div>
-                <p style="text-align: justify;">
-                <li>Habilidad para trabajar con ni&ntilde;os, adolescentes y adultos.</li>
-                <li>Enfoque de trabajo en equipo.</li>
-                <li>Gesti&oacute;n de proyectos musicales.</li>
-                </p>
-            </div>
-            <div class="col_one_fourth alignleft">
-                <div class="heading-block fancy-title nobottomborder title-bottom-border">
-                    <h4 class="icon-users"> Contacto</h4>
+                    <h4 class="icon-users">Contacto</h4>
                 </div>
                 <p>
                     Tom&aacute;s Guardia, Turrialba, Cartago, Costa Rica.
@@ -137,45 +76,6 @@ include_once 'public/header.php';
                 <br>
                 <li class="icon-facebook-sign"><a href="fb.com/fusionacademiacr" target="__blank"> fusionacademiacr</a></li>
                 </p>
-            </div>
-            <div class="col_full aligncenter">
-                <div class="heading-block fancy-title nobottomborder title-bottom-border">
-                    <h4 class="icon-study"> Formaci&oacute;n</h4>
-                </div>
-                <div class="tab-content clearfix" id="tab-replies">
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-striped">
-                            <colgroup>
-                                <col class="col-xs-7">
-                                <col class="col-xs-1">
-                            </colgroup>
-                            <thead>
-                                <tr>
-                                    <th style="text-align: center;">Titulo</th>
-                                    <th style="text-align: center;">A&ntilde;o</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        UNA. Bach en ense&ntilde;anza y ejecuci&oacute;n de la direcci&oacute;n coral.
-                                    </td>
-                                    <td>
-                                        2017
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        UCR. Bach y Lic en educaci&oacute;n musical.
-                                    </td>
-                                    <td>
-                                        2014
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
             </div>
             <div class="col_two_third col_last alignright">
             </div>
