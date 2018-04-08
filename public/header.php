@@ -15,6 +15,7 @@ include_once 'public/head.php';
                     <li><a href="?controller=User&action=logIn"><div>Iniciar Sesi&oacute;n</div></a></li>
                     <li><a href="?controller=Index&action=contact"><div>Contacto</div></a></li>
                     <li><a href="?action=aboutus"><div>Sobre Nosotros</div></a></li>
+                    <li><a href="?action=professors"><div>Sobre Nosotros</div></a></li>
                 </ul>
             </nav>
         </div>

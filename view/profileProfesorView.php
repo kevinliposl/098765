@@ -89,7 +89,7 @@ include_once 'public/header.php';
             <br><br>   
             <div class="alignleft heading-block noborder">
                 <h3 style="color: #DBDFE3;"><b>Alonso Cerdas</b></h3>
-                <span style="color: #DBDFE3;text-align: left" ><i>Direcci&oacute;n Coral</i></span>
+                <span style="color: #DBDFE3;text-align: left" ><i>Profesor</i></span>
             </div>
         </div>
     </section>
@@ -130,7 +130,7 @@ include_once 'public/header.php';
             <br><br>   
             <div class="alignleft heading-block noborder">
                 <h3 style="color: #DBDFE3;"><b>Juli&aacute;n Sol&iacute;s</b></h3>
-                <span style="color: #DBDFE3;text-align: left" ><i>Direcci&oacute;n Coral</i></span>
+                <span style="color: #DBDFE3;text-align: left" ><i>Profesor</i></span>
             </div>
         </div>
     </section>
@@ -177,7 +177,7 @@ include_once 'public/header.php';
             <br><br>   
             <div class="alignleft heading-block noborder">
                 <h3 style="color: #DBDFE3;"><b>Yendri S&aacute;nchez</b></h3>
-                <span style="color: #DBDFE3;text-align: left" ><i>Direcci&oacute;n Coral</i></span>
+                <span style="color: #DBDFE3;text-align: left" ><i>Profesor</i></span>
             </div>
         </div>
     </section>
@@ -218,7 +218,7 @@ include_once 'public/header.php';
                 <br><br>   
                 <div class="alignleft heading-block noborder">
                     <h3 style="color: #DBDFE3;"><b>Cristhy Chac&oacute;n</b></h3>
-                    <span style="color: #DBDFE3;text-align: left" ><i>Direcci&oacute;n Coral</i></span>
+                    <span style="color: #DBDFE3;text-align: left" ><i>Profesor</i></span>
                 </div>
             </div>
         </section>
@@ -256,13 +256,13 @@ include_once 'public/header.php';
         </div>
     </div>
     <div>
-        <section id="page-title" class="page-title-parallax page-title-dark page-title-right" style="padding: 150px 0; background-image: url('public/images/parallax/parallax-bg.jpg'); background-size: cover; background-position: center center;" data-stellar-background-ratio="0.2">
+        <section id="page-title" class="page-title-parallax page-title-dark page-title-right" style="padding: 150px 0; background-image: url('public/images/presentation/4.jpg'); background-size: cover; background-position: center center;" data-stellar-background-ratio="0.2">
             <div class="col-sm-9">
                 <img src="public/images/icons/avatar.jpg" class="alignleft img-circle  img-thumbnail notopmargin nobottommargin" alt="Avatar" style="max-width: 400px;">
                 <br><br>   
                 <div class="alignleft heading-block noborder">
                     <h3 style="color: #DBDFE3;"><b>Aaron Alvarado</b></h3>
-                    <span style="color: #DBDFE3;text-align: left" ><i>Direcci&oacute;n Coral</i></span>
+                    <span style="color: #DBDFE3;text-align: left"><i>Profesor</i></span>
                 </div>
             </div>
         </section>

@@ -88,7 +88,7 @@ class IndexController {
      * @return null
      * Funcion para mostrar perfil de profesor
      */
-    function ejemploProfesor() {
+    function professors() {
         $this->view->show("profileProfesorView.php");
     }
 
