@@ -16,10 +16,28 @@ if (isset($session->permissions)) {
     include_once 'public/header.php';
 }
 ?>
-<section id="page-title" class="page-title-parallax page-title-dark" style="padding: 250px 0; background-image: url('public/images/presentation/1.jpg'); background-size: cover; background-position: center center;" data-stellar-background-ratio="0.4">
-    <div class="container clearfix">
-        <h1>Sobre Nosotros</h1>
-        <span>¡Todos deben conocernos!</span>
+
+<section id="slider" class="slider-parallax swiper_wrapper dark full-screen">
+    <div class="slider-parallax-inner">
+        <div class="swiper-container swiper-parent">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide dark" style="background-image: url('public/images/presentation/1.jpg');">
+                    <div class="container clearfix">
+                        <div class="slider-caption slider-caption-left">
+                            <h2 data-caption-animate="fadeInRight" style="text-align: center;">
+                                Nosotros
+                            </h2>
+                            <p data-caption-animate="fadeInUp" data-caption-delay="200" style="font-size: big; text-align: center;">
+                                <b>
+                                ¡Todos deben conocernos!
+                                </b>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="#" data-scrollto="#content" data-offset="100" class="dark one-page-arrow"><i class="icon-angle-down infinite animated fadeInDown"></i></a>
     </div>
 </section>
 
