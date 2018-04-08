@@ -82,9 +82,11 @@ if (isset($session->permissions)) {
 				<img src="public/images/about/perfilMan.jpg" alt="Josh Clark">
 			</div>
 			<div class="team-desc">
-				<div class="team-title"><h4>Josh Clark</h4><span>Co-Founder</span></div>
+				<div class="team-title"><h4>WAGNER VARGAS MOYA</h4><span>Co-Fundador</span></div>
 				<div class="team-content">
-					<p>Carbon emissions reductions giving, legitimize amplify non-partisan Aga Khan. Policy dialogue assessment expert free-speech cornerstone disruptor freedom. Cesar Chavez empower.</p>
+					<p style="text-align: justify; text-justify: inter-word;">
+                    Administrador de Fusión Academia de Música. Profesional de la administración de negocios, emprendedor y músico. Licenciado en Contaduría Pública por la Universidad de Costa Rica, más de 10 años de experiencia en el área de la administración, más de 12 años de experiencia como músico, multi instrumentista, profesor del instrumento bajo eléctrico. Cursó estudios musicales en la Etapa Básica de Música de la Universidad de Costa Rica, Sede del Atlántico en el año 2002 y 2003, en la cátedra de guitarra popular, también formo parte del Coro Universitario, en ese entonces dirigido por el maestro Marvin Camacho.
+                    </p>
 				</div>
 				<a href="#" class="social-icon si-rounded si-small si-light si-facebook">
 					<i class="icon-facebook"></i>
