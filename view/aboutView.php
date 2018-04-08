@@ -52,57 +52,62 @@ if (isset($session->permissions)) {
             </div>
         </div>
     </div>
-    <div class="heading-block center">
-		<h2>¿Quienes est&aacute;n detr&aacute;s de Fusi&oacute;n?</h2>
-	</div>
-    <div class="row clearfix">
-	<div class="col-md-6 bottommargin">
-		<div class="team team-list clearfix">
-			<div class="team-image">
-				<img src="public/images/about/perfilWoman.jpg" alt="ESTEFANIE SANCHEZ COTO">
-			</div>
-			<div class="team-desc">
-				<div class="team-title"><h4>ESTEFANIE SANCHEZ COTO</h4><span>Co-Fundadora</span></div>
-				<div class="team-content">
-					<p style="text-align: justify; text-justify: inter-word;">
-                    Directora de Fusión Academia de Música. Emprendedora, música y docente. Licenciada en Enseñanza de la Música por la Universidad de Costa Rica, Bachiller en Interpretación y Enseñanza  de la Dirección Coral por la Universidad Nacional de Costa Rica, bajo la tutela del maestro David Ramírez. Directora coral, docente universitaria, docente para el Ministerio de Educación Pública. Integrante del grupo vocal internacional Ocho en Voz, multi instrumentista, gestora del movimiento coral en Turrialba, más de 5 años de experiencia como docente y directora coral. Directora de Coro Zafra, Coro Universitario y Coro de Niños, agrupaciones corales de la Universidad de Costa Rica, Sede del Atlántico, Turrialba. Ha recibidos clases maestras con los directores Hanz-Peter Shurz (Alemania), T.J Harper (Estados Unidos) y Cesar Alejandro Carrillo (Venezuela).
-                    </p>
-				</div>
-				<a href="https://www.facebook.com/tef.sanchezcoto" target="__blank" class="social-icon si-rounded si-small si-light si-facebook">
-					<i class="icon-facebook"></i>
-					<i class="icon-facebook"></i>
-				</a>
-			</div>
-		</div>
-	</div>
+    <div class="row">
+        <div class="heading-block center">
+            <h2>¿Quienes est&aacute;n detr&aacute;s de Fusi&oacute;n?</h2>
+        </div>
+        <div class="col-md-0 col-md-offset-1">
+        <div class="row clearfix">
+        <div class="col-md-10 bottommargin">
+            <div class="team team-list clearfix">
+                <div class="team-image">
+                    <img src="public/images/about/perfilWoman.jpg" alt="ESTEFANIE SANCHEZ COTO">
+                </div>
+                <div class="team-desc">
+                    <div class="team-title"><h4>ESTEFANIE SANCHEZ COTO</h4><span>Co-Fundadora</span></div>
+                    <div class="team-content">
+                        <p style="text-align: justify; text-justify: inter-word;">
+                        Directora de Fusión Academia de Música. Emprendedora, música y docente. Licenciada en Enseñanza de la Música por la Universidad de Costa Rica, Bachiller en Interpretación y Enseñanza  de la Dirección Coral por la Universidad Nacional de Costa Rica, bajo la tutela del maestro David Ramírez. Directora coral, docente universitaria, docente para el Ministerio de Educación Pública. Integrante del grupo vocal internacional Ocho en Voz, multi instrumentista, gestora del movimiento coral en Turrialba, más de 5 años de experiencia como docente y directora coral. Directora de Coro Zafra, Coro Universitario y Coro de Niños, agrupaciones corales de la Universidad de Costa Rica, Sede del Atlántico, Turrialba. Ha recibidos clases maestras con los directores Hanz-Peter Shurz (Alemania), T.J Harper (Estados Unidos) y Cesar Alejandro Carrillo (Venezuela).
+                        </p>
+                    </div>
+                    <a href="https://www.facebook.com/tef.sanchezcoto" target="__blank" class="social-icon si-rounded si-small si-light si-facebook">
+                        <i class="icon-facebook"></i>
+                        <i class="icon-facebook"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
 
-	<div class="col-md-6 bottommargin">
-		<div class="team team-list clearfix">
-			<div class="team-image">
-				<img src="public/images/about/perfilMan.jpg" alt="Josh Clark">
-			</div>
-			<div class="team-desc">
-				<div class="team-title"><h4>WAGNER VARGAS MOYA</h4><span>Co-Fundador</span></div>
-				<div class="team-content">
-					<p style="text-align: justify; text-justify: inter-word;">
-                    Administrador de Fusión Academia de Música. Profesional de la administración de negocios, emprendedor y músico. Licenciado en Contaduría Pública por la Universidad de Costa Rica, más de 10 años de experiencia en el área de la administración, más de 12 años de experiencia como músico, multi instrumentista, profesor del instrumento bajo eléctrico. Cursó estudios musicales en la Etapa Básica de Música de la Universidad de Costa Rica, Sede del Atlántico en el año 2002 y 2003, en la cátedra de guitarra popular, también formo parte del Coro Universitario, en ese entonces dirigido por el maestro Marvin Camacho.
-                    </p>
-				</div>
-				<a href="#" class="social-icon si-rounded si-small si-light si-facebook">
-					<i class="icon-facebook"></i>
-					<i class="icon-facebook"></i>
-				</a>
-				<a href="#" class="social-icon si-rounded si-small si-light si-twitter">
-					<i class="icon-twitter"></i>
-					<i class="icon-twitter"></i>
-				</a>
-				<a href="#" class="social-icon si-rounded si-small si-light si-gplus">
-					<i class="icon-gplus"></i>
-					<i class="icon-gplus"></i>
-				</a>
-			</div>
-		</div>
-	</div>
+        <div class="col-md-10 bottommargin">
+            <div class="team team-list clearfix">
+                <div class="team-image">
+                    <img src="public/images/about/perfilMan.jpg" alt="Josh Clark">
+                </div>
+                <div class="team-desc">
+                    <div class="team-title"><h4>WAGNER VARGAS MOYA</h4><span>Co-Fundador</span></div>
+                    <div class="team-content">
+                        <p style="text-align: justify; text-justify: inter-word;">
+                        Administrador de Fusión Academia de Música. Profesional de la administración de negocios, emprendedor y músico. Licenciado en Contaduría Pública por la Universidad de Costa Rica, más de 10 años de experiencia en el área de la administración, más de 12 años de experiencia como músico, multi instrumentista, profesor del instrumento bajo eléctrico. Cursó estudios musicales en la Etapa Básica de Música de la Universidad de Costa Rica, Sede del Atlántico en el año 2002 y 2003, en la cátedra de guitarra popular, también formo parte del Coro Universitario, en ese entonces dirigido por el maestro Marvin Camacho.
+                        </p>
+                    </div>
+                    <a href="#" class="social-icon si-rounded si-small si-light si-facebook">
+                        <i class="icon-facebook"></i>
+                        <i class="icon-facebook"></i>
+                    </a>
+                    <a href="#" class="social-icon si-rounded si-small si-light si-twitter">
+                        <i class="icon-twitter"></i>
+                        <i class="icon-twitter"></i>
+                    </a>
+                    <a href="#" class="social-icon si-rounded si-small si-light si-gplus">
+                        <i class="icon-gplus"></i>
+                        <i class="icon-gplus"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
 </div>
     <div class="section footer-stick">
         <h4 class="uppercase center">¿Qu&eacute; dicen nuestros <span>clientes</span>?</h4>
