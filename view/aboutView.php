@@ -58,7 +58,7 @@ if (isset($session->permissions)) {
     <div class="row clearfix">
 	<div class="col-md-6 bottommargin">
 		<div class="team team-list clearfix">
-			<div>
+			<div class="team-image">
 				<img src="public/images/about/perfilWoman.jpg" alt="ESTEFANIE SANCHEZ COTO">
 			</div>
 			<div class="team-desc">
@@ -78,7 +78,7 @@ if (isset($session->permissions)) {
 
 	<div class="col-md-6 bottommargin">
 		<div class="team team-list clearfix">
-			<div>
+			<div class="team-image">
 				<img src="public/images/about/perfilMan.jpg" alt="Josh Clark">
 			</div>
 			<div class="team-desc">
