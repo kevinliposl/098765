@@ -84,7 +84,7 @@ if (isset($session->permissions)) {
                             estudiantes se forman en diferentes &aacute;reas de la 
                             música como Violin, Canto, Piano, Bater&iacute;a, Guitarra
                             entre muchas otras m&aacute;s.
-                            <br><br><a href="?controlador=Index&action=instruments">¡Conozca m&aacute;s sobre los cursos!</a>
+                            <br><br><a href="#">¡Conozca m&aacute;s sobre los cursos!</a>
                         </p>
                     </div>
                     <div class="col-md-4 bottommargin">
@@ -98,7 +98,7 @@ if (isset($session->permissions)) {
                             Todo miembro que integra nuestro equipo 
                             docente ha pasado por múltiples etapas de calificación 
                             y habilidades.
-                            <br><br><a href="#">¡Conozca m&aacute;s sobre nuestros docentes!</a>
+                            <br><br><a href="?action=professors">¡Conozca m&aacute;s sobre nuestros docentes!</a>
                         </p>
                     </div>
                 </div>
